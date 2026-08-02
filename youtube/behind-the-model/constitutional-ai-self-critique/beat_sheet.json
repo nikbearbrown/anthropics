@@ -1,0 +1,492 @@
+{
+  "metadata": {
+    "slug": "constitutional-ai-self-critique",
+    "title": "Teaching an AI to Grade Its Own Homework",
+    "topic": "AI SAFETY · Constitutional AI",
+    "source": "Bai et al. (2022) arXiv:2212.08073",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "style_preset": "teardown",
+    "palette": "claude",
+    "register": "Teardown",
+    "aspect_ratio": "16:9",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "build": {
+      "at": "2026-07-28T21:35:39",
+      "cut": "master",
+      "filled": 7,
+      "of": 8,
+      "slates": [
+        "YOURTURN"
+      ],
+      "skin_warnings": []
+    },
+    "playlist": "Claude Research",
+    "hashtags": [
+      "AI",
+      "AIAlignment",
+      "Anthropic",
+      "Claude",
+      "MachineLearning",
+      "AIResearch",
+      "NikBearBrown",
+      "constitutionalAI",
+      "RLHF",
+      "AISafety"
+    ],
+    "tags": [
+      "AI",
+      "AIAlignment",
+      "Anthropic",
+      "Claude",
+      "MachineLearning",
+      "AIResearch",
+      "NikBearBrown",
+      "constitutionalAI",
+      "RLHF",
+      "AISafety"
+    ],
+    "design_version": "v1",
+    "voice": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "Your turn. Paste this: you want to understand Constitutional AI's self-critique loop from an implementation standpoint. Ask Claude to walk you through what the model is shown, what it critiques, and how the revision differs from a standard RLHF reward signal — then ask what the original paper treats as solved that practitioners still argue about.",
+      "estimated_duration_s": 22,
+      "shot": {
+        "scene_type": "ClaudeComposerAsk",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to understand Constitutional AI from a practical implementation standpoint. Walk me through the self-critique loop — what the model is shown, what it critiques, and how the revision lands differently from a standard RLHF reward signal. Then tell me one thing about the critique step that the original CAI paper treats as solved but that practitioners still argue about.",
+            "topic": "BEHIND THE MODEL · @NikBearBrown",
+            "segment": "Teaching an AI to Grade Its Own Homework",
+            "runningText": "Analyzing: Bai et al. (2022) · arXiv:2212.08073",
+            "output": [
+              "CAI replaces most human harmlessness labeling with a 16-principle loop",
+              "Claude critiques its own harmful responses and revises them against a principle",
+              "Revised responses become training data for RLAIF — AI feedback, not human feedback",
+              "CAI matched RLHF on harmlessness and beat it on helpfulness"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High",
+            "placeholder": "Type / for skills"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        },
+        "type": "REMOTION"
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 17.86,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:35:39"
+      },
+      "engine": "kokoro",
+      "voice": "am_onyx"
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "body",
+      "narration_text": "Let's recap with Claude. Human harmlessness labeling has three structural problems. First, it is expensive — each label costs human time on content specifically designed to be disturbing. Second, it is inconsistent — two annotators looking at the same output will not always agree. Third, it does not generalize — labels from 2022 do not automatically cover new categories of harm that emerge later.",
+      "estimated_duration_s": 25,
+      "shot": {
+        "scene_type": "ClaudeVerdictArtifact",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Let's recap with Claude. Human harmlessness",
+            "items": [
+              {
+                "label": "First: it is expensive —",
+                "sub": "First: it is expensive — each label costs human time on content specifically designed to be disturbing",
+                "icon": "crosshair",
+                "cueFrame": 24
+              },
+              {
+                "label": "Second: it is inconsistent —",
+                "sub": "Second: it is inconsistent — two annotators looking at the same output will not always agree",
+                "icon": "target",
+                "cueFrame": 313
+              },
+              {
+                "label": "Third: it does not generalize",
+                "sub": "Third: it does not generalize — labels from 2022 do not automatically cover new categories of harm that emerge later",
+                "icon": "tag",
+                "cueFrame": 602
+              }
+            ],
+            "dark": true
+          }
+        },
+        "type": "CARD"
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 21.08,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:35:39"
+      },
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.5
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "body",
+      "narration_text": "Constitutional AI replaces most of the human labeling with a loop. Write a list of principles — sixteen in the original paper. Ask Claude to generate a harmful response to a red-team prompt. Then ask Claude: which of these principles does this response violate, and how could it be revised to follow them? The revision is the training signal.",
+      "estimated_duration_s": 25,
+      "shot": {
+        "scene_type": "ClaudeVerdictArtifact",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Constitutional AI replaces most of the",
+            "items": [
+              {
+                "label": "which of these principles does",
+                "sub": "which of these principles does this response violate",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "how could it be revised",
+                "sub": "how could it be revised to follow them? The revision is the training signal",
+                "icon": "BOX",
+                "cueFrame": 512
+              }
+            ],
+            "dark": false
+          }
+        },
+        "type": "CARD"
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 18.07,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:35:39"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "body",
+      "narration_text": "The mechanism is four steps. First: elicit a problematic response using a red-team prompt. Second: critique — show Claude the response and ask it to identify the principle violation. Third: revise — ask Claude to produce a better response that follows the principle. Fourth: use the revised response as the preferred label for RLAIF — reinforcement learning from AI feedback rather than human feedback.",
+      "estimated_duration_s": 28,
+      "shot": {
+        "scene_type": "ClaudeVerdictArtifact",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The mechanism is four steps",
+            "items": [
+              {
+                "label": "First: elicit a problematic response using a red-team prompt",
+                "sub": "First: elicit a problematic response using a red-team prompt",
+                "icon": "circle-x",
+                "cueFrame": 24
+              },
+              {
+                "label": "Second: critique — show Claude",
+                "sub": "Second: critique — show Claude the response and ask it to identify the principle violation",
+                "icon": "frame",
+                "cueFrame": 221
+              },
+              {
+                "label": "Third: revise — ask Claude",
+                "sub": "Third: revise — ask Claude to produce a better response that follows the principle",
+                "icon": "BOX",
+                "cueFrame": 418
+              },
+              {
+                "label": "Fourth: use the revised response",
+                "sub": "Fourth: use the revised response as the preferred label for RLAIF — reinforcement learning from AI feedback rather th…",
+                "icon": "tag",
+                "cueFrame": 616
+              }
+            ],
+            "dark": false
+          }
+        },
+        "type": "CARD"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 21.55,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:35:39"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "body",
+      "narration_text": "The result: the CAI model matched human-labeled RLHF on harmlessness. On helpfulness, it did better — RLHF models tend to over-refuse, because annotators reward caution. CAI models refuse when the constitution says to refuse, not when an annotator would feel safer refusing. And the CAI model can explain its refusals by citing the principle. Human annotators cannot.",
+      "estimated_duration_s": 26,
+      "shot": {
+        "scene_type": "ClaudeVerdictArtifact",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The result: the CAI model matched",
+            "items": [
+              {
+                "label": "the CAI model matched human-labeled RLHF on harmlessness",
+                "sub": "the CAI model matched human-labeled RLHF on harmlessness. On helpfulness",
+                "icon": "tag",
+                "cueFrame": 24
+              },
+              {
+                "label": "it did better — RLHF",
+                "sub": "it did better — RLHF models tend to over-refuse",
+                "icon": "BOX",
+                "cueFrame": 223
+              },
+              {
+                "label": "because annotators reward caution. CAI models refuse when",
+                "sub": "because annotators reward caution. CAI models refuse when the constitution says to refuse",
+                "icon": "shield-alert",
+                "cueFrame": 422
+              },
+              {
+                "label": "not when an annotator would",
+                "sub": "not when an annotator would feel safer refusing. And the CAI model can explain its refusals by citing the principle. …",
+                "icon": "shield",
+                "cueFrame": 621
+              }
+            ],
+            "dark": false
+          }
+        },
+        "type": "CARD"
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 21.72,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:35:39"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "handoff",
+      "narration_text": "Here is the prompt. Insert any mildly problematic instruction and paste this: First write an unconstrained response. Then critique your response against this constitutional principle: choose the response that is least likely to contain information that could be used to harm another person. Finally, write a revised response and show your reasoning at each step. You are running the CAI loop by hand. Watch the revision happen. Liam, in for Bear.",
+      "estimated_duration_s": 16,
+      "shot": {
+        "scene_type": "ClaudeComposerAsk",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "Here is a prompt: [insert a mildly problematic instruction]. Step 1: write an unconstrained response. Step 2: critique your response against this constitutional principle: 'Choose the response that is least likely to contain information that could be used to harm another person.' Step 3: write a revised response. Show your reasoning at each step.",
+            "topic": "TRY THIS NOW",
+            "segment": "Handoff",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "produces the unconstrained response",
+              "applies the constitutional principle as a critique",
+              "revises with explicit reasoning — you see the loop"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High",
+            "placeholder": "Type / for skills"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 22.21,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:35:39"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you want to understand how Constitutional AI uses self-critique — how a model is trained to identify and revise its own harmful outputs. Ask Claude to explain the self-critique mechanism: what the model checks its output against, why this works better than pure RLHF alone, and what the limits are when the original output and the critique share the same training bias.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to understand how Constitutional AI uses self-critique to train safer behavior: how does a model identify and revise its own harmful outputs? Explain the self-critique mechanism — what the model checks its output against in the constitutional AI loop, why this works better than pure RLHF alone for some failure modes, and what the limits are when the original output and the critique share the same training bias.",
+            "segment": "Teaching an AI to Grade Its Own Homework",
+            "topic": "BEHIND THE MODEL · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your question, paper, or concept here…"
+          },
+          "rendered": {
+            "out": "media/YOURTURN.mp4",
+            "at": ""
+          }
+        }
+      },
+      "engine": "kokoro",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T21:35:39",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "beat_type": "outro",
+      "narration_text": "Teaching an AI to Grade Its Own Homework",
+      "estimated_duration_s": 6,
+      "shot": {
+        "scene_type": "ClaudeTitleOutro",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Teaching an AI to Grade Its Own Homework",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "constitutional-ai-self-critique"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        },
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:35:39"
+      },
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "actual_duration_s": 6.0
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Teaching an AI to Grade Its Own Homework",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · AI SAFETY · Constitutional AI",
+            "segment": "Teaching an AI to Grade Its Own…",
+            "command": "Take what you learned from [Teaching an AI to Grade Its Own Homework] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Teaching an AI to Grade Its Own Homework",
+            "slug": "constitutional-ai-self-critique"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

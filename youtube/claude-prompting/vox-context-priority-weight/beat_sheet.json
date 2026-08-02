@@ -1,0 +1,585 @@
+{
+  "metadata": {
+    "slug": "vox-context-priority-weight",
+    "title": "Why More Context Can Make the Output Worse",
+    "topic": "PROMPT ENGINEERING",
+    "source": "claude-prompt-engineering/chapters/02-context-what-claude-needs-and-what-it-does-not.md",
+    "purpose": "Without source labels and priority signals, Claude weights pasted documents by statistical features — length and formality — not by recency or user intent.",
+    "clock": "narration (ElevenLabs) — durations below are word-count estimates until GATE 0 audio lock",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "palette": "teardown",
+    "isotype_mark": "square",
+    "color_semantics": "INK = labeled / correctly weighted documents; CRIMSON = unlabeled / incorrectly weighted documents",
+    "note": "Card exclusions honored: NO retrieval-augmented generation, NO token-limit or chunking discussion, NO extended literature on context-window utilization. Mechanism only: unlabeled documents create false priority ordering by length and formality.",
+    "total_estimated_duration_seconds": 210.23,
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam",
+            "topic": "PROMPT ENGINEERING",
+            "segment": "Why More Context Can Make the Output…",
+            "command": "Why More Context Can Make the Output Worse?",
+            "runningText": "building the answer…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "t_start": 0.0,
+      "estimated_duration_s": 10,
+      "act": "COLD OPEN",
+      "narration_text": "She pasted six documents — all about the same project. Claude produced a summary that reflected the longest, most formal one. The actual decision was in the short email at the bottom of the paste. It got almost no weight.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why More Context Can Make the Output Worse",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why more context can make the output worse",
+        "sub": "unlabeled documents create false priority orders"
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 13.51,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "t_start": 9.0,
+      "estimated_duration_s": 12.0,
+      "act": "COLD OPEN",
+      "narration_text": "Keiko is a marketing manager. She pastes a 15-page brand guide, a 6-page competitor analysis, and a one-page client brief marked only FYI. The brief contains a hard constraint: nothing blue. She asks Claude to write the campaign summary.",
+      "shot": {
+        "type": "STILL",
+        "source": "own"
+      },
+      "scene_description": "Marketing professional at a desk with multiple printed documents spread out, looking at screen, editorial newsprint treatment",
+      "image_prompt": "B02, marketing manager at a desk with multiple stacked documents spread out, focused at a laptop screen, editorial documentary newsprint treatment, desaturated flat print collage",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 16.2
+    },
+    {
+      "beat_id": "B03",
+      "t_start": 21.0,
+      "estimated_duration_s": 9.0,
+      "act": "THE QUESTION",
+      "narration_text": "The output follows the brand guide. It is predominantly blue. The hard constraint — nothing blue — was in the unlabeled brief at the bottom of the paste. Why did more context produce worse output?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "media": "media/B03.mp4",
+        "manim": {
+          "scene_class": "Scene_B03_VoxContextPriority",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": "2026-07-25T12:04:05.441043"
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "Why did more context produce worse output?",
+        "sub": ""
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 12.36
+    },
+    {
+      "beat_id": "B04",
+      "t_start": 30.0,
+      "estimated_duration_s": 12.0,
+      "act": "THE PROBLEM",
+      "narration_text": "Without source labels, Claude treats all pasted documents as a single undifferentiated block. It cannot determine which source is authoritative or current. So it weights them by what it can see: length, formality, structural completeness.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "media": "media/B04.mp4",
+        "manim": {
+          "scene_class": "Scene_B04_VoxContextPriority",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": "2026-07-25T12:04:08.129644"
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B04_DocumentStack"
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 15.91
+    },
+    {
+      "beat_id": "B05",
+      "t_start": 42.0,
+      "estimated_duration_s": 11.0,
+      "act": "THE PROBLEM",
+      "narration_text": "The brand guide is 15 pages — long and formally structured. The competitor analysis is 6 pages. The brief is 1 page, labeled FYI, informal. Length and formality strongly predict attention weight when no label assigns it explicitly.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "media": "media/B05.mp4",
+        "manim": {
+          "scene_class": "Scene_B05_VoxContextPriority",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": "2026-07-25T12:04:11.133188"
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B05_WeightByLength"
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 15.78
+    },
+    {
+      "beat_id": "B06",
+      "t_start": 53.0,
+      "estimated_duration_s": 11.0,
+      "act": "THE MECHANISM",
+      "narration_text": "The brief's constraint — nothing blue — gets proportional weight: roughly one fifteenth of the brand guide's influence. Not because it is less important. Because it is shorter and less formal. Unlabeled context creates a priority order you never chose.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "media": "media/B06.mp4",
+        "manim": {
+          "scene_class": "Scene_B06_VoxContextPriority",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": "2026-07-25T12:04:13.917025"
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B06_PriorityOrder"
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 15.78
+    },
+    {
+      "beat_id": "B07",
+      "t_start": 64.0,
+      "estimated_duration_s": 10.0,
+      "act": "THE MECHANISM",
+      "narration_text": "Adding more unlabeled documents makes this worse, not better. Each new document adds noise and potentially buries the information that matters most. More is not more here — it is dilution.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "media": "media/B07.mp4",
+        "manim": {
+          "scene_class": "Scene_B07_VoxContextPriority",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": "2026-07-25T12:04:16.931103"
+          }
+        }
+      },
+      "card": {
+        "kind": "section",
+        "copy": "More unlabeled context = more false priority",
+        "sub": ""
+      },
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 12.3
+    },
+    {
+      "beat_id": "B08",
+      "t_start": 74.0,
+      "estimated_duration_s": 12.0,
+      "act": "THE MECHANISM",
+      "narration_text": "The fix is label and prune. Label each source before it appears — tell Claude what it is and how to treat it. Then prune to what the task actually draws on. The brief becomes: Source A — primary, use this as the binding constraint. The rest are background.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "media": "media/B08.mp4",
+        "manim": {
+          "scene_class": "Scene_B08_VoxContextPriority",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": "2026-07-25T12:04:19.762748"
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B08_LabeledSources"
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 17.14
+    },
+    {
+      "beat_id": "B09",
+      "t_start": 86.0,
+      "estimated_duration_s": 11.0,
+      "act": "THE MECHANISM",
+      "narration_text": "With labels, Keiko assigns the priority order she actually intends. Claude treats the brief as binding — nothing blue is now a hard constraint, not a footnote in an ocean of blue brand assets.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "media": "media/B09.mp4",
+        "manim": {
+          "scene_class": "Scene_B09_VoxContextPriority",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": "2026-07-25T12:04:22.666641"
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B09_CorrectPriority"
+      },
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 11.96
+    },
+    {
+      "beat_id": "B10",
+      "t_start": 97.0,
+      "estimated_duration_s": 10.0,
+      "act": "THE IMPLICATION",
+      "narration_text": "This applies to any multi-document paste. Meeting notes plus a policy document plus an email thread: without labels, the formal policy dominates. With labels that say 'the email overrides the policy on the timeline,' the output reflects what you actually intended.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "media": "media/B10.mp4",
+        "manim": {
+          "scene_class": "Scene_B10_VoxContextPriority",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": "2026-07-25T12:04:25.743159"
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B10_AnyMultiDoc"
+      },
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 17.37
+    },
+    {
+      "beat_id": "B11",
+      "t_start": 107.0,
+      "estimated_duration_s": 13.0,
+      "act": "THE EXAMPLE",
+      "narration_text": "A school administrator pastes a 20-page district handbook, a 3-page teacher memo, and a 2-sentence email from the principal saying the decision in the memo is overridden. She asks Claude to summarize the current policy. Claude summarizes the handbook. The override email is invisible in the noise.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "media": "media/B11.mp4",
+        "manim": {
+          "scene_class": "Scene_B11_VoxContextPriority",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": "2026-07-25T12:04:28.934442"
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B11_SchoolExample"
+      },
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 18.42
+    },
+    {
+      "beat_id": "B12",
+      "t_start": 120.0,
+      "estimated_duration_s": 12.0,
+      "act": "THE EXAMPLE",
+      "narration_text": "She adds two labels: handbook — background. Principal email — binding override on section 4. Now Claude weights the email appropriately. The summary reflects the override. Three words of labeling reversed the priority order.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "media": "media/B12.mp4",
+        "manim": {
+          "scene_class": "Scene_B12_VoxContextPriority",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B12.mp4",
+            "at": "2026-07-25T12:04:32.133714"
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B12_SchoolFixed"
+      },
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 14.16
+    },
+    {
+      "beat_id": "B13",
+      "t_start": 132.0,
+      "estimated_duration_s": 11.0,
+      "act": "THE PRACTICE",
+      "narration_text": "Before pasting multiple documents: label each one. Use three categories: primary — use this as the binding source; background — for context, do not quote directly; override — this takes priority over all conflicting information above. Then prune each to what the task actually needs.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "media": "media/B13.mp4",
+        "manim": {
+          "scene_class": "Scene_B13_VoxContextPriority",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B13.mp4",
+            "at": "2026-07-25T12:04:35.999898"
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B13_Practice"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 20.56
+    },
+    {
+      "beat_id": "B14",
+      "t_start": 143.0,
+      "estimated_duration_s": 10.0,
+      "act": "RECAP",
+      "narration_text": "More unlabeled context gives Claude more to weight incorrectly. Label your sources — and the priority order you assign is the one Claude uses.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "media": "media/B14.mp4",
+        "manim": {
+          "scene_class": "Scene_B14_VoxContextPriority",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B14.mp4",
+            "at": "2026-07-25T12:04:38.505762"
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Unlabeled context creates false priority orders.",
+        "sub": "Label your sources. Assign the weight yourself."
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 9.731
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "CLOSE",
+      "lane": "REMOTION",
+      "scene": "ClaudeComposerAsk",
+      "narration_text": "Your turn. Paste this: you pasted six project documents into Claude and the summary reflected the longest formal document, ignoring the short email that had the actual decision. Ask Claude to show you the context priority rule — how Claude weights context by structural prominence, which documents to prune before pasting, and how to signal to Claude which part of the context is load-bearing.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I pasted six project documents into Claude and the summary reflected the longest, most formal one — ignoring the short email at the bottom that had the actual decision. Show me the context priority rule: how Claude weights context by structural prominence, which documents to prune before pasting, and how to signal to Claude which part of the context is load-bearing.",
+            "segment": "Why More Context Can Make the Output Worse",
+            "topic": "CLAUDE PROMPTING · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your prompt or system prompt here…"
+          }
+        }
+      },
+      "est_s": 14
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "CLOSE",
+      "lane": "REMOTION",
+      "scene": "ClaudeTitleOutro",
+      "narration_text": "Why More Context Can Make the Output Worse.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why More Context Can Make the Output Worse",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "vox-context-priority-weight"
+          }
+        }
+      },
+      "est_s": 8,
+      "build": {
+        "status": "SLATE",
+        "note": "design-v1: remotion props added"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why More Context Can Make the Output Worse",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · PROMPT ENGINEERING",
+            "segment": "Why More Context Can Make the Output…",
+            "command": "Take what you learned from [Why More Context Can Make the Output Worse] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why More Context Can Make the Output Worse",
+            "slug": "vox-context-priority-weight"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

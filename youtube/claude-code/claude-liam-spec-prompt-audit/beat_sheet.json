@@ -1,0 +1,517 @@
+{
+  "metadata": {
+    "slug": "claude-liam-spec-prompt-audit",
+    "title": "Build and Audit a Specification Prompt with Claude Code",
+    "topic": "CLAUDE CODE FOR STUDENTS",
+    "style": "cli",
+    "palette": "claude",
+    "style_preset": "nikbearbrown",
+    "source": "claude-code-for-students/chapters/08-prompts-as-specifications.md",
+    "segment": "SPECIFICATION PROMPTS",
+    "ground": "#FFFFFF",
+    "total_estimated_duration_seconds": 118.0,
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "register": "Teardown",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "_variant_todo": [
+      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
+      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
+      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
+      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
+    ],
+    "channel": "NikBearBrown",
+    "build": {
+      "at": "2026-07-16T02:13:38",
+      "cut": "master",
+      "filled": 5,
+      "of": 10,
+      "slates": [
+        "B01",
+        "B04",
+        "B06",
+        "B07",
+        "B08"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B09: palette=claude but the outro is 'NikBearBrownOutro' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "Two prompts, one minute apart, same model. The specification prompt produces forty lines of correct code. The vague one imports a library that breaks the lab machine.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOpen",
+          "props": {
+            "topic": "CLAUDE CODE FOR STUDENTS",
+            "lines": [
+              "Nik Bear Brown",
+              "Specification Prompts, taken apart."
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 8,
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 10.03,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T02:13:38"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM",
+      "narration_text": "A specification prompt is not a longer prompt — it is a different kind of thing. It leaves Claude nothing to guess that wasn't authorized.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "A SPECIFICATION PROMPT IS",
+            "items": [
+              {
+                "label": "A specification prompt is not",
+                "sub": "A specification prompt is not a longer prompt —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "it is a different kind",
+                "sub": "it is a different kind of thing.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "It leaves Claude nothing to guess that wasn't authorized",
+                "sub": "It leaves Claude nothing to guess that wasn't authorized.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 7.77,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "narration_text": "We run two prompts side by side: a weak vague request, and a five-element specification with invariants, context, output format, and constraints.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Write parse_grades(path) -> list[Grade]\\n  invariants: stdlib only, no pandas\\n  UTF-8 BOM tolerated\\n  empty cells -> None not ''\\n  run: python -m pytest tests/ -q\\n  do not modify models/grade.py\"",
+            "topic": "CLAUDE CODE FOR STUDENTS",
+            "segment": "SPECIFICATION PROMPTS",
+            "runningText": "generating specification output…",
+            "greeting": "The ask,"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 8.83,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T02:13:38"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "narration_text": "The specification output uses csv.reader with encoding utf-8-sig, handles empty cells as None, and passes all three tests. The vague output imports pandas and fails on the lab machine.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownCodeBlock",
+          "props": {
+            "filename": "parse_grades.py",
+            "topic": "CLAUDE CODE FOR STUDENTS",
+            "segment": "SPECIFICATION PROMPTS",
+            "code": "# parse_grades.py — specification-prompt output\nimport csv, pathlib\nfrom models.grade import Grade\n\ndef parse_grades(path) -> list:\n    result = []\n    with open(path, encoding='utf-8-sig', newline='') as f:\n        reader = csv.DictReader(f)\n        for row in reader:\n            score = row.get('score') or None\n            result.append(Grade(\n                name=row['name'],\n                score=float(score) if score else None\n            ))\n    return result"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 12.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T02:13:38"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT",
+      "narration_text": "Two outputs, side by side. The specification version: 42 lines, stdlib only, pytest exit 0. The vague version: 80 lines, pandas import, InstallError on first run. The specification controlled every dimension the vague prompt left open.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "TWO OUTPUTS, SIDE BY",
+            "items": [
+              {
+                "label": "Two outputs, side by side.",
+                "sub": "Two outputs, side by side.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "The specification version: 42 lines,",
+                "sub": "The specification version: 42 lines, stdlib only, pytest exit 0.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "The vague version: 80 lines,",
+                "sub": "The vague version: 80 lines, pandas import, InstallError on first run.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 20,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 15.59,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE",
+      "narration_text": "We run the weak prompt twice and show the two outputs differ. We run the specification twice and show the outputs are functionally equivalent.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Run parse_grades prompt twice.\\nAre outputs functionally equivalent?\\nCompare: lib choices, empty-cell handling,\\nBOM handling across both runs.\"",
+            "topic": "CLAUDE CODE FOR STUDENTS",
+            "segment": "SPECIFICATION PROMPTS",
+            "runningText": "comparing outputs…",
+            "greeting": "The ask,"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 10,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 8.36,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T02:13:38"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "OUTPUT",
+      "narration_text": "Weak prompt run 1: pandas. Weak prompt run 2: openpyxl. Both break on lab machines. Specification run 1 and run 2: identical csv.reader implementation. Specification left nothing to draw from training data that didn't know the project.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "WEAK PROMPT RUN 1:",
+            "items": [
+              {
+                "label": "Weak prompt run 1: pandas.",
+                "sub": "Weak prompt run 1: pandas.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Weak prompt run 2: openpyxl.",
+                "sub": "Weak prompt run 2: openpyxl.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Both break on lab machines.",
+                "sub": "Both break on lab machines.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 15.25,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you want to audit an existing spec prompt for Claude Code to find what's ambiguous or missing. Ask Claude to run an audit on the spec you paste — flag every sentence that could be interpreted multiple ways, mark every missing rejection condition, and return a corrected spec.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to audit a spec prompt I've been using with Claude Code to find what's ambiguous or missing. Run an audit on the spec I paste: flag every sentence that could be interpreted more than one way, mark every missing rejection condition, and return a corrected version of the spec that closes the ambiguities.",
+            "segment": "Build and Audit a Specification Prompt with Claude Code",
+            "topic": "CLAUDE CODE · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your spec, CLAUDE.md, or build plan here…"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "OUTRO",
+      "narration_text": "A specification is not a longer prompt. It is a set of invariants, a context pointer, and an output contract. The difference is not verbosity — it is what Claude is permitted to invent.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "media": "media/B07.mp4",
+        "manim": {
+          "scene_class": "Scene_B07_ClaudeLiamSpec",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": "2026-07-25T10:06:23.245904"
+          }
+        },
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Build and Audit a Specification Prompt with Claude Code",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-spec-prompt-audit"
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 10.65,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B07"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "NEXT STEPS",
+      "narration_text": "Next: catch a package hallucination before it becomes a slopsquatting attack.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "NEXT: CATCH A PACKAGE",
+            "items": [
+              {
+                "label": "Next: catch a package hallucination before it becomes a slopsquatting attack",
+                "sub": "Next: catch a package hallucination before it becomes a slopsquatting attack.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 8,
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 4.84,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B08"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Build and Audit a Specification Prompt with Claude Code",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CLAUDE CODE FOR STUDENTS",
+            "segment": "Build and Audit a Specification Prompt with…",
+            "command": "Take what you learned from [Build and Audit a Specification Prompt with Claude Code] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Build and Audit a Specification Prompt with Claude Code",
+            "slug": "claude-liam-spec-prompt-audit"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

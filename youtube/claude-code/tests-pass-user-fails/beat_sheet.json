@@ -1,0 +1,450 @@
+{
+  "metadata": {
+    "slug": "tests-pass-user-fails",
+    "title": "Why the Build Passes Its Tests and Fails Its User",
+    "topic": "CLAUDE CODE",
+    "purpose": "vox-explainer slate cut of Claude Code for Students candidate 09. Source chapter: claude-code-for-students/chapters/13-verification.md (three-pass verification / Pass 3 SDD-needs section).",
+    "clock": "narration (ElevenLabs) — durations below are word-count estimates until GATE 0 audio lock",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "palette": "teardown",
+    "isotype_mark": "square",
+    "color_semantics": "CRIMSON = tests passing / code-level proxy / the structural blind spot; INK = user need / SDD prose / Pass 3 judgment. One accent. Never swap.",
+    "note": "Exclusions honored: no formal Hoare-triple notation; no ISO/IEC 25010 standard detail; no Therac-25 or Mars Climate Orbiter history; no mutation-testing tooling tutorial.",
+    "total_estimated_duration_seconds": 237.11,
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam",
+            "topic": "CLAUDE CODE",
+            "segment": "Why the Build Passes Its Tests and…",
+            "command": "Why the Build Passes Its Tests and Fails Its User?",
+            "runningText": "building the answer…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "npm test: 9 of 9 passing.",
+        "The build is done.",
+        "The user can't see their data at a glance."
+      ],
+      "narration_text": "Seth finishes Phase 1 of his college application tracker. Nine of nine tests pass. The page loads. Persistence works. He is about to commit. He re-reads the SDD aloud: 'The user should be able to see at a glance which applications remain to submit and which are already in.' He looks at the running build. Six applications scattered in insertion order. At a glance fails. Every test passed. The build failed its user.",
+      "estimated_duration": 23,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 27.66,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why the Build Passes Its Tests and Fails Its User",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "THE QUESTION",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "Nine tests pass.",
+        "Why did the build fail its user?"
+      ],
+      "narration_text": "A test suite that passes all cases should confirm correctness. Nine tests passed. Why did the build fail the user?",
+      "estimated_duration": 9,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 7.24,
+      "shot": {
+        "media": "media/B02.mp4",
+        "manim": {
+          "scene_class": "Scene_B02_TestsPassUser",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": "2026-07-25T10:31:36.960194"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE PROBLEM",
+      "shot_type": "GRAPHIC",
+      "shot_source": "own",
+      "shot_motion": "drawon",
+      "on_screen": [
+        "Tests verify code against tests.",
+        "The SDD named a need.",
+        "No test tested the need."
+      ],
+      "narration_text": "Tests verify code against tests. The suite passes because the code matches the tests — not because the build satisfies the need that motivated it. Seth's score had rows for addApplication, toggleSubmitted, deleteApplication. No row existed for display order. The SDD buried it in a prose sentence. By row 5, he had stopped reading section 2.3. The test suite was structurally incapable of catching the failure — because the failure was never enrolled as a test.",
+      "estimated_duration": 22,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 31.06,
+      "shot": {
+        "media": "media/B03.mp4",
+        "manim": {
+          "scene_class": "Scene_B03_TestsPassUser",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": "2026-07-25T10:31:39.925243"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "The tests passed.",
+        "The need was never tested.",
+        "These are not the same thing."
+      ],
+      "narration_text": "The 2026 version of this failure is sharper. If Claude wrote the tests and read the spec, both sides may share the same misreading. The tests pass because the code matches the tests — and the tests match the wrong reading of the spec. The loop is self-consistent and wrong. Code passes its self-generated tests at high rates while failing human-written tests at much lower rates. The gap between those two numbers is the gap between tests pass and needs met.",
+      "estimated_duration": 20,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 29.39,
+      "shot": {
+        "media": "media/B04.mp4",
+        "manim": {
+          "scene_class": "Scene_B04_TestsPassUser",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": "2026-07-25T10:31:41.974180"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE MECHANISM",
+      "shot_type": "STILL",
+      "shot_source": "ai",
+      "shot_motion": "kenburns",
+      "on_screen": [],
+      "narration_text": "Tony Hoare made the formal version of this argument in 1969. A program is correct with respect to a specification — never in the abstract. Correctness is a relation between code and spec, not a property of code alone. Tests are evidence about whether the code meets the spec. A test suite that does not include the user need is evidence about the wrong question.",
+      "estimated_duration": 18,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 23.22,
+      "shot": {
+        "media": "media/B05.mp4",
+        "manim": {
+          "scene_class": "Scene_B05_TestsPassUser",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": "2026-07-25T10:31:44.523347"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "shot_type": "GRAPHIC",
+      "shot_source": "own",
+      "shot_motion": "drawon",
+      "on_screen": [
+        "Pass 1 — functional",
+        "Pass 2 — edge cases",
+        "Pass 3 — SDD needs (read aloud)"
+      ],
+      "narration_text": "Verification runs in three passes. Pass 1: does it run on the happy path? Pass 2: does it handle the boundaries the SDD names? Both passes are partially automatable. Both are blind to Pass 3. Pass 3: read each user-need sentence aloud against the running build — not by running a test, by using the build, by looking at it, by asking whether a person who had not just built it would experience the sentence as true. Pass 3 is the pass you cannot automate. It is the pass Claude cannot run.",
+      "estimated_duration": 22,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 32.86,
+      "shot": {
+        "media": "media/B06.mp4",
+        "manim": {
+          "scene_class": "Scene_B06_TestsPassUser",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": "2026-07-25T10:31:46.635146"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: your Claude Code build passed all automated tests but failed the first time a real user touched it. Ask Claude to explain the test-user gap — what automated tests cannot represent — and how to write a user-facing verification step that catches this class of failure before you hand off the build.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "My Claude Code build passed all automated tests but failed the first time a real user touched it. Explain the test-user gap: what do automated tests fundamentally fail to represent — and how do I write a user-facing verification step that catches this class of failure before I hand off the build?",
+            "segment": "Why the Build Passes Its Tests and Fails Its User",
+            "topic": "CLAUDE CODE · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your spec, CLAUDE.md, or build plan here…"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "Pass 3 fails when the build is",
+        "functionally correct",
+        "and needfully wrong."
+      ],
+      "narration_text": "Pass 3 fails when the build is functionally correct and needfully wrong. Seth's code was correct. His at-a-glance need was not met. The resolution: fix the code — sort not-yet-submitted first, submitted below, each subgroup in insertion order. New handoff condition: three unsubmitted and three submitted, unsubmitted render above submitted on every refresh. Claude writes a six-line change and one new test. Ten of ten pass. Pass 3: green. The build is done.",
+      "estimated_duration": 22,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 32.21,
+      "shot": {
+        "media": "media/B07.mp4",
+        "manim": {
+          "scene_class": "Scene_B07_TestsPassUser",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": "2026-07-25T10:31:48.566766"
+          }
+        },
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why the Build Passes Its Tests and Fails Its User",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "tests-pass-user-fails"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE PRACTICE",
+      "shot_type": "GRAPHIC",
+      "shot_source": "own",
+      "shot_motion": "drawon",
+      "on_screen": [
+        "Before you commit:",
+        "Open the SDD.",
+        "Read each user-need sentence aloud.",
+        "Check the running build against each one."
+      ],
+      "narration_text": "The practice is concrete. Before you commit, open the SDD to the User Needs section. Read each sentence aloud. After each sentence, look at the running build and ask: does a user who has not just built this experience the sentence as true? This is not a test. It is judgment. The at-a-glance need cannot be asserted by a runner. It has to be seen. The cheapest moment to run Pass 3 is right before the commit — when the build is live and the needs are fresh.",
+      "estimated_duration": 22,
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 29.15,
+      "shot": {
+        "media": "media/B08.mp4",
+        "manim": {
+          "scene_class": "Scene_B08_TestsPassUser",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": "2026-07-25T10:31:50.498452"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "RECAP",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "Tests passing is not done.",
+        "Done means the SDD's needs are met.",
+        "Read them aloud. Before you commit."
+      ],
+      "narration_text": "Tests passing is not done. Done means the needs the SDD named are satisfied — a strictly larger claim. The test suite catches what it was written to catch. The user need that was never enrolled as a test can pass nine automated checks and still fail the person it was built for. Read the user-need sentences aloud against the running build. Every time. Pass 3 is the one you cannot skip.",
+      "estimated_duration": 19,
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 24.32,
+      "shot": {
+        "media": "media/B09.mp4",
+        "manim": {
+          "scene_class": "Scene_B09_TestsPassUser",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": "2026-07-25T10:31:52.433929"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why the Build Passes Its Tests and Fails Its User",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CLAUDE CODE",
+            "segment": "Why the Build Passes Its Tests and…",
+            "command": "Take what you learned from [Why the Build Passes Its Tests and Fails Its User] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why the Build Passes Its Tests and Fails Its User",
+            "slug": "tests-pass-user-fails"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ],
+  "estimated_total_duration": 177
+}

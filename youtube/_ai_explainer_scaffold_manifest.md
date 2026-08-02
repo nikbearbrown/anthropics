@@ -1,0 +1,95 @@
+# ai-explainer scaffold manifest (2026-07-24)
+
+Folder + scaffold beat_sheet.json created for each of the 76 ai-explainer Sweep cards, filed by best-match category. Existing folders untouched.
+
+## Per-category counts
+
+- behind-the-model: 7
+- claude-plugins: 6
+- claude-agent-skills: 16
+- claude-prompting: 11
+- claude-basics: 10
+- claude-research: 7
+- claude-code: 12
+- claude-skills: 4
+- claude-for-education: 1
+- claude-mcp-connectors: 2
+
+## Created (76)
+
+- claude-code/defending-code-reference-harness-count-field-checked-one-pass
+- claude-code/claude-code-four-agents-scoring-same-bug
+- claude-plugins/claude-plugins-official-live-bot-hands-pairing-codes
+- behind-the-model/sleeper-agents-paper-ai-s-hidden-scratchpad-blind
+- claude-research/sycophancy-to-subterfuge-paper-safety-test-passes-safety-test
+- behind-the-model/political-neutrality-eval-two-graders-rank-every-topic
+- claude-research/hh-rlhf-safer-training-objective-gets-fewest
+- claude-basics/claude-constitution-one-narrow-safety-rule-make
+- behind-the-model/evals-same-question-gets-different-answer
+- behind-the-model/jacobian-lens-model-spells-word-right-inside
+- behind-the-model/headvis-one-always-present-token-secretly
+- claude-research/toy-models-of-superposition-crowded-features-arrange-themselves
+- claude-research/attribution-graphs-frontend-language-model-adds-two-numbers
+- claude-prompting/courses-asking-claude-json-gives-prose
+- claude-basics/claude-quickstarts-50-turn-agent-pays-same
+- claude-basics/claude-quickstarts-claude-s-click-lands-wrong
+- claude-agent-skills/agent-sdk-workshop-adding-one-capability-time-changes
+- claude-agent-skills/agent-sdk-workshop-parallelism-prompt-problem-code-problem
+- claude-agent-skills/claude-agent-sdk-demos-interleaved-parallel-tool-logs-still
+- claude-prompting/anthropic-sdk-python-tool-calling-loop-stops-model
+- claude-basics/anthropic-sdk-typescript-partial-json-valid-object-before
+- claude-basics/anthropic-sdk-php-server-hands-back-encrypted-context
+- claude-mcp-connectors/github-mcp-server-one-generic-cli-drive-api
+- claude-mcp-connectors/github-mcp-server-giving-model-tools-makes-choose
+- claude-code/claude-code-security-review-same-eval-real-bug-one
+- claude-code/claude-code-action-natural-trigger-review-counting-check
+- claude-code/claude-code-monitoring-guide-doubling-claude-code-session-time
+- claude-code/riv2025-long-horizon-coding-agent-demo-backend-test-passes-reali
+- claude-agent-skills/cwc-long-running-agents-agent-will-mark-feature-done
+- claude-agent-skills/launch-your-agent-autonomous-agent-freeze-mid-run
+- claude-research/original-performance-takehome-ai-told-speed-up-program
+- claude-code/claudes-c-compiler-assembly-shrinks-through-13-sequential
+- claude-code/defending-code-reference-harness-pipeline-runs-same-crash-three
+- claude-agent-skills/healthcare-swapping-fast-model-made-whole
+- claude-agent-skills/healthcare-no-family-history-pe-needs
+- claude-skills/skills-claude-spends-5000-thinking-tokens
+- claude-plugins/claude-plugins-official-same-assistant-code-runs-discord
+- claude-plugins/claude-plugins-community-image-model-s-burned-captions
+- claude-agent-skills/financial-services-untrusted-document-s-hidden-instructions
+- claude-agent-skills/claude-for-legal-one-context-flag-flips-every
+- claude-research/constitutionalharmlessnesspaper-safe-answer-one-argues-back
+- claude-research/decompositionfaithfulnesspaper-answering-sub-questions-separate
+- behind-the-model/scone-bench-benchmark-score-may-memorization-score
+- claude-basics/evals-model-says-i-have-no
+- behind-the-model/model-cards-re-reading-own-order-back
+- claude-agent-skills/claude-cookbooks-cheap-worker-crew-reads-9
+- claude-prompting/courses-claude-handed-ten-tools-one
+- claude-agent-skills/claude-quickstarts-waiting-each-result-before-next
+- claude-prompting/claude-quickstarts-agent-fresh-memory-every-session
+- claude-basics/claudeforfoundationmodels-web-search-never-runs-code
+- claude-basics/claudeforfoundationmodels-same-api-key-shipped-prototype
+- claude-prompting/prompt-eng-interactive-tutorial-wrapping-one-email-tags-stops
+- claude-prompting/prompt-eng-interactive-tutorial-claude-t-think-silently-reasonin
+- claude-prompting/prompt-eng-interactive-tutorial-helpful-claude-invents-answer-pe
+- claude-agent-skills/agent-sdk-workshop-agent-s-memory-guardrail-one
+- claude-agent-skills/anthropic-tools-channel-returns-tool-results-also
+- claude-basics/anthropic-retrieval-demo-wrapping-same-text-xml-changes
+- claude-agent-skills/claude-agent-sdk-typescript-sending-full-list-beats-sending
+- claude-agent-skills/cwc-workshops-cutting-402-line-agent-prompt
+- claude-code/claude-code-monitoring-guide-typing-one-word-multiply-api
+- claude-code/riv2025-long-horizon-coding-agent-demo-wildcard-covering-every-a
+- claude-skills/skills-50-round-agent-survives-past
+- claude-plugins/claude-plugins-official-enabling-sms-breaks-access-control
+- claude-agent-skills/healthcare-prior-auth-ai-structurally-cannot
+- claude-for-education/k12-teacher-skills-missing-math-prerequisite-t-scaffolded
+- claude-plugins/claude-plugins-community-copyright-restrictions-mean-three-compl
+- claude-skills/skills-number-s-color-financial-model
+- claude-skills/skills-claude-write-right-spreadsheet-formula
+- claude-basics/claude-cookbooks-splitting-chunk-from-document-makes
+- claude-prompting/courses-three-graders-read-same-answer
+- claude-prompting/prompt-eng-interactive-tutorial-swapping-order-two-arguments-fli
+- claude-prompting/prompt-eng-interactive-tutorial-telling-claude-logic-bot-turns
+- claude-prompting/anthropic-sdk-typescript-schema-enters-types-travels-text
+- claude-code/claude-code-base-action-turn-budget-stops-runaway-agent
+- claude-code/claude-code-coding-assistant-deliberately-refuses-write
+- claude-plugins/knowledge-work-plugins-responding-webhook-after-processing-silen

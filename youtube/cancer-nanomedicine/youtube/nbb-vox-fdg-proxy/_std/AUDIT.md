@@ -1,0 +1,31 @@
+# AUDIT — nbb-vox-fdg-proxy
+_Generated 2026-07-25T10:12:56_
+
+## Beat Classification
+
+| Beat | Narration | Visual | Class | Fix |
+|------|-----------|--------|-------|-----|
+| NBB00 | The unsettling part is that FDG-PET measures hexokinase ac | remotion:ClaudeComposerAsk | EXEMPT | leave as-is (bookend) |
+| B01 | Three lymph nodes, lighting up bright on the PET scan. A s | own:own | SHOWS | leave as-is (SHOWS) |
+| B02 | FDG-PET is the standard tool for staging cancer and checki | ai:ai | SHOWS | leave as-is (SHOWS) |
+| B03 | A PET scan is used to detect cancer. The tracer isn't look | own:own | SHOWS | leave as-is (SHOWS) |
+| B04 | FDG stands for fluorodeoxyglucose — a radioactive version  | own:own | SHOWS | leave as-is (SHOWS) |
+| B05 | The PET camera doesn't see cancer. It sees glucose metabol | own:own | SHOWS | leave as-is (SHOWS) |
+| B06 | And glucose metabolism is not unique to cancer. Activated  | own:own | SHOWS | leave as-is (SHOWS) |
+| B07 | False negatives are equally real. Tumors with low glycolyt | own:own | SHOWS | leave as-is (SHOWS) |
+| B08 | Every imaging signal is a proxy. It reports what the tumor | own:own | SHOWS | leave as-is (SHOWS) |
+| B09 | Here's an illustrative case. A 58-year-old patient — breas | ai:ai | SHOWS | leave as-is (SHOWS) |
+| B10 | On biopsy: all three are reactive lymph nodes. The patient | own:own | SHOWS | leave as-is (SHOWS) |
+| B11 | The PET scan did its job. It faithfully reported elevated  | own:own | SHOWS | leave as-is (SHOWS) |
+| B12 | FDG-PET doesn't show cancer. It shows glucose metabolism — | own:own | SHOWS | leave as-is (SHOWS) |
+| NBB01 | Let's recap with Claude. Here's what the body just demonst | remotion:ClaudeVerdictArtifact | EXEMPT | leave as-is (bookend) |
+| NBB02 | Take this prompt, run it on your own — pick any cancer typ | remotion:ClaudeComposerAsk | EXEMPT | leave as-is (bookend) |
+| NBB03 | Why a Glowing PET Scan Doesn't Actually Show Cancer | remotion:ClaudeTitleOutro | EXEMPT | leave as-is (bookend) |
+
+## TELLS → SHOWS Upgrades
+
+(none)
+
+## QC
+
+No TELLS found — video already compliant.

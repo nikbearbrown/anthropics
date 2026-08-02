@@ -1,0 +1,28 @@
+# AUDIT — nbb-black-scholes-put-pricer
+_Generated 2026-07-25T10:12:57_
+
+## Beat Classification
+
+| Beat | Narration | Visual | Class | Fix |
+|------|-----------|--------|-------|-----|
+| NBB00 | The eleven-cent gap between the $5.16 model price and the  | remotion:ClaudeComposerAsk | EXEMPT | leave as-is (bookend) |
+| B00 | Nik Bear Brown. Build it with a CLI, then take it apart. | remotion:NikBearBrownOpen | EXEMPT | leave as-is (bookend) |
+| B01 | Jin wants to floor his $925K AAPL position for six months. | None:None | SHOWS | leave as-is (SHOWS) |
+| B02 | Ask Claude to write the Black-Scholes pricer and back-solv | remotion:NikBearBrownTerminalAsk | EXEMPT | leave as-is (bookend) |
+| B03 | The code computes d1, d2, then calls norm.cdf with negativ | remotion:NikBearBrownCodeBlock | EXEMPT | leave as-is (bookend) |
+| B04 | The put payoff hockey stick draws in — flat at minus the p | manim:manim | SHOWS | leave as-is (SHOWS) |
+| B05 | Now change the volatility assumption: replace flat vol wit | remotion:NikBearBrownTerminalAsk | EXEMPT | leave as-is (bookend) |
+| B06 | The OTM put at K=170 reprices from $5.16 to $5.38 — a 4% j | None:None | SHOWS | leave as-is (SHOWS) |
+| B07 | The Black-Scholes price is not the option's cost — it is w | None:None | SHOWS | leave as-is (SHOWS) |
+| B08 | Next: try adding a simple volatility skew — OTM puts at si | None:None | SHOWS | leave as-is (SHOWS) |
+| NBB01 | Let's recap with Claude. Here's what the body just demonst | remotion:ClaudeVerdictArtifact | EXEMPT | leave as-is (bookend) |
+| NBB02 | Take this prompt, run it on your own — pick any cancer typ | remotion:ClaudeComposerAsk | EXEMPT | leave as-is (bookend) |
+| NBB03 | Build the Black-Scholes Put Pricer with Claude Code | remotion:ClaudeTitleOutro | EXEMPT | leave as-is (bookend) |
+
+## TELLS → SHOWS Upgrades
+
+(none)
+
+## QC
+
+No TELLS found — video already compliant.

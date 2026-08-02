@@ -1,0 +1,569 @@
+{
+  "metadata": {
+    "title": "Map the Agentic Loop: Observe - Plan - Act - Check - Report with Claude",
+    "slug": "map-the-agentic-loop",
+    "topic": "AGENTIC AI",
+    "source": "claude-agentic-ai/chapters/02-the-agentic-loop.md",
+    "register": "Teardown",
+    "voice": "am_onyx",
+    "palette": "claude",
+    "style_preset": "nikbearbrown",
+    "style": "cli",
+    "note": "CLI video. Exclusions: ReAct vs. Reflexion framework comparison, multi-step planning benchmarks.",
+    "total_estimated_duration_seconds": 86.14,
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "_variant_todo": [
+      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
+      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
+      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
+      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
+    ],
+    "build": {
+      "at": "2026-07-16T06:05:11",
+      "cut": "master",
+      "filled": 5,
+      "of": 10,
+      "slates": [
+        "B01",
+        "B04",
+        "B06",
+        "B07",
+        "B08"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B09: palette=claude but the outro is 'NikBearBrownOutro' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "This is Liam, in for Bear. Nik Bear Brown. Build it with a CLI, then take it apart.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOpen",
+          "props": {
+            "topic": "NIK BEAR BROWN",
+            "lines": [
+              "Nik Bear Brown",
+              "Map the Agentic Loop."
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 5.48,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T06:05:11"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM -- why care",
+      "role_note": "the problem, context, stakes -- BEFORE the CLI opens",
+      "narration_text": "Ask Claude to narrate its own loop on a real task. The loop runs whether you label it or not -- Observe, Plan, Act, Check, Report. The Check stage is where agents self-certify instead of verify. You will not see it unless you ask for the labels.",
+      "visual_intent": "SLATE -- title card: THE LOOP RUNS EITHER WAY. Without labels, the Check stage is invisible.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "ASK CLAUDE TO NARRATE",
+            "items": [
+              {
+                "label": "Ask Claude to narrate its own loop on a real task",
+                "sub": "Ask Claude to narrate its own loop on a real task.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "The loop runs whether you",
+                "sub": "The loop runs whether you label it or not -- Observe, Plan, Act, Check, Report.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "The Check stage is where",
+                "sub": "The Check stage is where agents self-certify instead of verify.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 15,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 13.5,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "role_note": "terminal (Onda) -- the command typed",
+      "narration_text": "Ask Claude to label each stage before doing it -- and at Check, list what it verified and how, not a self-certification.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Perform this task with explicit loop narration: summarize three documents in [folder]. Label each step as Observe / Plan / Act / Check / Report before doing it. At Check: list specifically what you verified and how -- do not self-certify.\"",
+            "topic": "AGENTIC AI",
+            "segment": "AGENTIC LOOP",
+            "runningText": "generating...",
+            "greeting": "The ask,"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 6.95,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T06:05:11"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "role_note": "terminal (Onda) -- reading the generated code",
+      "narration_text": "The loop trace parser reads Claude's labeled output and flags any Check stage that returns a self-report instead of a named artifact.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownCodeBlock",
+          "props": {
+            "filename": "loop_trace.py",
+            "topic": "AGENTIC AI",
+            "segment": "AGENTIC LOOP",
+            "code": "import re, sys\nSTAGES = [\"Observe\",\"Plan\",\"Act\",\"Check\",\"Report\"]\ntext = open(sys.argv[1]).read()\nfor stage in STAGES:\n    matches = re.findall(rf\"{stage}:(.*?)(?={'|'.join(STAGES)}|$)\",\n                         text, re.DOTALL)\n    for m in matches:\n        is_self = any(w in m for w in\n            [\"verified successfully\",\"confirmed\",\"looks good\"])\n        tag = \"SELF-REPORT\" if is_self else \"ARTIFACT\"\n        print(f\"{stage}: [{tag}] {m.strip()[:80]}\")"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 8.28,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T06:05:11"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT -- run",
+      "role_note": "first output -- OPEN vox slot",
+      "narration_text": "The labeled loop prints. Five stages visible. One Check stage says 'verified successfully' -- tagged SELF-REPORT, not an artifact.",
+      "visual_intent": "SLATE -- screen-recording: terminal showing loop trace with Observe/Plan/Act tagged ARTIFACT and one Check stage tagged SELF-REPORT highlighted in red",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THE LABELED LOOP PRINTS",
+            "items": [
+              {
+                "label": "The labeled loop prints.",
+                "sub": "The labeled loop prints.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Five stages visible.",
+                "sub": "Five stages visible.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "One Check stage says 'verified",
+                "sub": "One Check stage says 'verified successfully' -- tagged SELF-REPORT, not an artifact.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 8.04,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE -- check and revise",
+      "role_note": "terminal (Onda) -- THE REQUIRED revision",
+      "narration_text": "Now remove the loop-narration instruction and run the same task. What does the output look like without explicit stage labels?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Summarize the three documents in [folder].\"",
+            "topic": "AGENTIC AI",
+            "segment": "AGENTIC LOOP",
+            "runningText": "updating...",
+            "greeting": "The change,"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 11,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 7.53,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T06:05:11"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "OUTPUT -- revised",
+      "role_note": "revised output -- OPEN vox slot",
+      "narration_text": "Default output: no stage labels. The Check stage is gone. The agent completed the task -- but there is no visible moment where verification happened.",
+      "visual_intent": "SLATE -- screen-recording: terminal showing unlabeled summary output side-by-side comparison -- left has 5 labeled stages, right has prose output with no Check stage visible",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "DEFAULT OUTPUT: NO STAGE",
+            "items": [
+              {
+                "label": "Default output: no stage labels.",
+                "sub": "Default output: no stage labels.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "The Check stage is gone.",
+                "sub": "The Check stage is gone.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "The agent completed the task",
+                "sub": "The agent completed the task -- but there is no visible moment where verification happened.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 8.81,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "SUMMARY",
+      "role_note": "the lesson -- one beat",
+      "narration_text": "The loop happens whether you ask for it or not. Naming the stages makes the Check stage visible -- and visible means you can require an artifact instead of a statement.",
+      "visual_intent": "SLATE -- recap card: NAME THE STAGES. The Check stage is invisible without explicit labels.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THE LOOP HAPPENS WHETHER",
+            "items": [
+              {
+                "label": "The loop happens whether you",
+                "sub": "The loop happens whether you ask for it or not.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Naming the stages makes the",
+                "sub": "Naming the stages makes the Check stage visible -- and visible means you can require an artifact instead of a statement.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 9.41,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B07"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "NEXT STEPS",
+      "role_note": "what to do next",
+      "narration_text": "On your next agentic task, require explicit stage labels at the Check stage. Verify the Check produces an artifact -- a named file, count, or diff -- not a statement.",
+      "visual_intent": "SLATE -- next-steps card: Require loop labels. At Check: demand an artifact, not 'verified successfully.'",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "ON YOUR NEXT AGENTIC",
+            "items": [
+              {
+                "label": "On your next agentic task,",
+                "sub": "On your next agentic task, require explicit stage labels at the Check stage.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Verify the Check produces an artifact -- a named file",
+                "sub": "Verify the Check produces an artifact -- a named file, count, or diff -- not a statement.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 11,
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 10.13,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B08"
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "lane": "REMOTION",
+      "scene": "ClaudeComposerAsk",
+      "narration_text": "Your turn. Paste this: you're building an agentic Claude workflow and you want to map every step to the observe-plan-act-check-report loop so you know exactly where human oversight belongs. Ask Claude to walk you through a concrete workflow — say, a document review pipeline — and label each step with its loop phase, the failure mode if that phase is skipped, and where the human gate should sit.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I'm building an agentic Claude workflow and I want to map every step to the observe-plan-act-check-report loop so I know where human oversight belongs. Walk me through a concrete workflow — a document review pipeline — and label each step with its loop phase, the failure mode if that phase is skipped, and where the human gate should sit so I can verify before anything irreversible happens.",
+            "segment": "Map the Agentic Loop: Observe - Plan - Act - Check - Report with Claude",
+            "topic": "CLAUDE COWORK · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your task, workflow, or brief here…"
+          }
+        }
+      },
+      "est_s": 14
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "OUTRO",
+      "lane": "REMOTION",
+      "scene": "ClaudeTitleOutro",
+      "narration_text": "Map the Agentic Loop: Observe - Plan - Act - Check - Report with Claude.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Map the Agentic Loop: Observe - Plan - Act - Check - Report with Claude",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-map-the-agentic-loop"
+          }
+        }
+      },
+      "est_s": 8,
+      "build": {
+        "status": "SLATE",
+        "note": "design-v1: remotion props added"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Map the Agentic Loop: Observe - Plan - Act - Check - Report with Claude",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · AGENTIC AI",
+            "segment": "Map the Agentic Loop: Observe - Plan…",
+            "command": "Take what you learned from [Map the Agentic Loop: Observe - Plan - Act - Check - Report with Claude] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Map the Agentic Loop: Observe - Plan - Act - Check - Report with Claude",
+            "slug": "map-the-agentic-loop"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

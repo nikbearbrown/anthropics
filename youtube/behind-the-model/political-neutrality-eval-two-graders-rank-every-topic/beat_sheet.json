@@ -1,0 +1,499 @@
+{
+  "metadata": {
+    "slug": "political-neutrality-eval-two-graders-rank-every-topic",
+    "title": "Why two graders can rank every topic identically yet flip a quarter of their verdicts",
+    "topic": "Aggregate correlation versus per-sample agreement",
+    "purpose": "Correlation measures the rank order of topic means; agreement measures instance-by-instance coincidence; noisy per-case disagreements cancel inside each topic average, so ρ stays high while κ stays middling.",
+    "category": "behind-the-model",
+    "playlist": "Behind The Model",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "audience": "claude-liam",
+    "palette": "claude",
+    "register": "Teardown",
+    "style_preset": "teardown",
+    "aspect_ratio": "16:9",
+    "clock": "narration (Kokoro am_onyx) — master clock; conform each beat to measured audio",
+    "scaffold": true,
+    "scaffold_source": "anthropics/youtube/video-ideas.md — ai-explainer Sweep 2026-07-24",
+    "builder": "ai-explainer",
+    "source": "`anthropics/political-neutrality-eval/README.md`",
+    "origin": "promoted",
+    "score": "9/10",
+    "length_band": "2–3 min",
+    "still_lanes": "raster (side-by-side scatter), c2v (verdicts → topic mean)",
+    "prerequisites": "Pearson ρ, Cohen's κ, mean aggregation",
+    "exclusions": "Spearman vs Pearson, weighted κ, reliability-theory derivations",
+    "visual_object": "Two scatter plots — left, noisy individual verdicts (κ = 0.76); right, tight topic means (ρ > 0.99) — same data, different aggregation window.",
+    "manim_move": "accumulate",
+    "hook": "Two graders agree at ρ > 0.99 on overall scores and only κ = 0.76 on individual cases — both numbers are correct, and they say opposite things about trust.",
+    "greeting": "Konnichiwa, Liam",
+    "design_version": "v1",
+    "voice": "am_onyx",
+    "build": {
+      "at": "2026-07-28T22:07:41",
+      "cut": "master",
+      "filled": 0,
+      "of": 8,
+      "slates": [
+        "B00",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "YOURTURN",
+        "OUTRO"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "Claude Sonnet 4.5 and Claude Opus 4.1 correlate above 0.99 on topic-level even-handedness scores yet disagree on 24% of individual response judgments using the same rubric on the same 250 prompts.",
+      "estimated_duration_s": 13,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "from Key case — cold open on the concrete instance",
+      "actual_duration_s": 15.08,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "CLAUDE SONNET 4.5 AND",
+            "items": [
+              {
+                "label": "Claude Sonnet 4.5 and Claude",
+                "sub": "Claude Sonnet 4.5 and Claude Opus 4.1 correlate above 0.99 on topic-level even-handedness scores yet disagree on 24% of individual response judgments using the same rubric on the same 250 prompts.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "question",
+      "narration_text": "If two graders rank every topic almost identically, why do they flip one verdict in four — and which number should govern trust in the eval?",
+      "estimated_duration_s": 8,
+      "visual": "on-screen QUESTION",
+      "slate": true,
+      "scaffold_note": "gap-form question beat",
+      "actual_duration_s": 8.17,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "IF TWO GRADERS RANK",
+            "items": [
+              {
+                "label": "If two graders rank every",
+                "sub": "If two graders rank every topic almost identically, why do they flip one verdict in four —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "and which number should govern",
+                "sub": "and which number should govern trust in the eval?",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "setup",
+      "narration_text": "Two graders agree at ρ > 0.99 on overall scores and only κ = 0.76 on individual cases — both numbers are correct, and they say opposite things about trust.",
+      "estimated_duration_s": 8,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "the tension, no visual",
+      "actual_duration_s": 11.63,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "TWO GRADERS AGREE AT",
+            "items": [
+              {
+                "label": "Two graders agree at ρ",
+                "sub": "Two graders agree at ρ > 0.99 on overall scores and only κ = 0.76 on individual cases —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "both numbers are correct, and",
+                "sub": "both numbers are correct, and they say opposite things about trust.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "mechanism",
+      "narration_text": "Correlation measures the rank order of topic means; agreement measures instance-by-instance coincidence; noisy per-case disagreements cancel inside each topic average, so ρ stays high while κ stays middling.",
+      "estimated_duration_s": 18,
+      "visual": "Two scatter plots — left, noisy individual verdicts (κ = 0.76); right, tight topic means (ρ > 0.99) — same data, different aggregation window.",
+      "manim_move": "accumulate",
+      "slate": true,
+      "scaffold_note": "the resolving mechanism; orbits the visual object",
+      "actual_duration_s": 12.63,
+      "engine": "kokoro",
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Correlation measures the rank order",
+            "items": [
+              {
+                "label": "Correlation measures the rank order of topic means",
+                "sub": "Correlation measures the rank order of topic means",
+                "icon": "clipboard-list",
+                "cueFrame": 24
+              },
+              {
+                "label": "agreement measures instance-by-instance coincidence",
+                "sub": "agreement measures instance-by-instance coincidence",
+                "icon": "ruler",
+                "cueFrame": 267
+              },
+              {
+                "label": "noisy per-case disagreements cancel inside each topic average",
+                "sub": "noisy per-case disagreements cancel inside each topic average, so ρ stays high while κ stays middling",
+                "icon": "star",
+                "cueFrame": 510
+              }
+            ],
+            "dark": false
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T22:07:41",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "example",
+      "narration_text": "Topic with 5 responses. Grader A: even/not/even/not/even. Grader B: not/even/even/even/not. Per-case agreement 60%; topic mean 0.60 for both. Repeat over 150 topics → ρ > 0.99, κ = 0.76.",
+      "estimated_duration_s": 16,
+      "visual": "16:9 worked example",
+      "slate": true,
+      "scaffold_note": "THE EXAMPLE act, illustrative",
+      "actual_duration_s": 19.37,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "TOPIC WITH 5 RESPONSES",
+            "items": [
+              {
+                "label": "Topic with 5 responses.",
+                "sub": "Topic with 5 responses.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Grader A: even/not/even/not/even.",
+                "sub": "Grader A: even/not/even/not/even.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Grader B: not/even/even/even/not.",
+                "sub": "Grader B: not/even/even/even/not.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "recap",
+      "narration_text": "Correlation measures the rank order of topic means; agreement measures instance-by-instance coincidence; noisy per-case disagreements cancel inside each topic average, so ρ stays high while κ stays middling.",
+      "estimated_duration_s": 8,
+      "visual": "verdict card",
+      "slate": true,
+      "scaffold_note": "recap + your-turn handoff",
+      "actual_duration_s": 12.63,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "CORRELATION MEASURES THE RANK",
+            "items": [
+              {
+                "label": "Correlation measures the rank order of topic means",
+                "sub": "Correlation measures the rank order of topic means; agreement measures instance-by-instance coincidence; noisy per-case disagreements cancel inside each topic average, so ρ stays high while κ stays middling.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: your two graders agree on topic-level neutrality scores but flip verdicts on a quarter of individual items. Ask Claude how to diagnose whether the disagreement is randomness, prompt sensitivity, or a genuine capability difference — and what a third grader run should look like to break the tie.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "BEHIND THE MODEL · @NikBearBrown",
+            "command": "I'm running a political neutrality eval where two model versions agree on topic-level scores but flip verdicts on a quarter of individual items. Show me how to diagnose whether the disagreement is randomness, prompt sensitivity, or a genuine capability difference — and what a third grader run should look like to break the tie.",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "Why two graders can rank every topic identically yet flip a quarter of their verdicts",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T22:07:41",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 16.94,
+      "audio_file": "mp3/beat-YOURTURN.mp3"
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "Why two graders can rank every topic identically yet flip a quarter of their verdicts",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why two graders can rank every topic identically yet flip a quarter of their verdicts",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "political-neutrality-eval-two-graders-rank-every-topic"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T22:07:41",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for OUTRO"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 5.5,
+      "audio_file": "mp3/beat-OUTRO.mp3"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why two graders can rank every topic identically yet flip a quarter of their verdicts",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Aggregate correlation versus per-sample agreement",
+            "segment": "Why two graders can rank every topic…",
+            "command": "Take what you learned from [Why two graders can rank every topic identically yet flip a quarter of their verdicts] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why two graders can rank every topic identically yet flip a quarter of their verdicts",
+            "slug": "political-neutrality-eval-two-graders-rank-every-topic"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

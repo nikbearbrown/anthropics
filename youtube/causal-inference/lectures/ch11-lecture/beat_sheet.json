@@ -1,0 +1,343 @@
+{
+  "slug": "Causal-Inference-ch11-chapter-sensitivity-analysis",
+  "title": "Chapter 15: Sensitivity Analysis — How Wrong Could We Be?",
+  "series": "Causal Inference",
+  "source": "chapters/11-chapter-sensitivity-analysis.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 15,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "UNMEASURED CONFOUNDERS ",
+          false
+        ],
+        [
+          "ARE UNTESTABLE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> Every causal method assumes you have controlled for all important confounders, but you cannot verify this assumption from your data alone.</div><p class=\"lead\">The assumption of no unmeasured confounding is, by construction, untestable. You can check balance on measured variables. You cannot check what you did not measure.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Here is the central problem at the heart of observational causal inference. Every method in this book — matching, weighting, instrumental variables — rests on a single assumption: that you have measured and adjusted for all important confounders. That assumption goes by different names depending on the method. Sometimes it is called ignorability. Sometimes conditional exchangeability. Sometimes no unmeasured confounding. But the assumption is always there. And here is what makes it uncomfortable: you cannot verify it from your data. You can check that treated and control groups are balanced on the variables you measured. You cannot check balance on variables you did not measure, because you do not have them. This creates a gap. The methods can give you an estimate — a best guess at the causal effect. What you actually need is a judgment: is this estimate robust enough to act on, or is it fragile? Sensitivity analysis is how you bridge that gap. It tells you how much unmeasured confounding would be needed to overturn your finding, and then asks you to evaluate whether that amount of confounding is plausible given what you know about your domain.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 56.79
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "STAKES",
+      "label": "02 / 12 · STAKES",
+      "dark": false,
+      "title": [
+        [
+          "WHAT CAUSAL METHODS GIVE ",
+          false
+        ],
+        [
+          "VERSUS WHAT YOU NEED.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>What methods provide</b><span>A point estimate of the causal effect, conditional on measured covariates being sufficient</span></div><div class=\"cell-part hot\"><b>What you need for action</b><span>A judgment about whether the estimate is robust to unmeasured confounding in your domain</span></div></div><p class=\"lead\">This is not merely a technical point. The difference between these two determines whether you can responsibly act on a finding.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The stakes become clear once you see the gap between what statistical methods can deliver and what decision-making requires. A causal method gives you a number: the estimated treatment effect, adjusted for the variables you measured. That number has uncertainty around it, quantified by a confidence interval and a p-value. But a p-value tells you something very specific: it tells you the probability of observing this result if the null hypothesis were true. It tells you nothing about whether an unmeasured variable is driving the association instead. To responsibly act on a finding — to recommend a new treatment, to change a policy, to shift resources — you need more than a point estimate. You need to know how fragile that estimate is. How sensitive is it to variables you did not measure? This is where most practitioners stop. They report the p-value, call the finding significant if it is below 0.05, and move on. That is intellectual shortcutting. The honest report requires sensitivity analysis: a systematic evaluation of how much hidden confounding your result could tolerate before it becomes unreliable.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 57.19
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "FRAMEWORK",
+      "label": "03 / 12 · FRAMEWORK",
+      "dark": false,
+      "title": [
+        [
+          "THE PROBLEM SENSITIVITY ANALYSIS ",
+          false
+        ],
+        [
+          "ACTUALLY SOLVES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Not this:</b><span>Does an unmeasured confounder exist?</span></div><div class=\"wire\"><b>Instead this:</b><span>How much unmeasured confounding would be needed to flip your conclusion?</span></div><div class=\"wire\"><b>Then this:</b><span>Is that amount of confounding plausible in your domain?</span></div></div><p class=\"lead\">Sensitivity analysis does not answer whether confounding exists. It quantifies the threshold at which existence matters, then asks you to make a judgment about plausibility.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Sensitivity analysis is often misunderstood as an attempt to test whether unmeasured confounding exists. That is not what it does. You cannot test that from observational data. Instead, sensitivity analysis answers a different question: how much unmeasured confounding would need to exist — in both directions — to explain away your finding? This is a threshold question. It converts the untestable claim 'no unmeasured confounding' into a testable quantification: 'the unmeasured confounder would need to achieve a risk ratio of at least 2.5 in both directions to overturn this result.' Once you have that threshold, you move into the realm of domain judgment. This is where intellectual honesty lives. You look at the literature in your field. You ask colleagues who know the biology or the economics or the psychology. You ask: are there known variables that could plausibly achieve that threshold? If the answer is no, your result is robust. If the answer is yes, your result is fragile. If the answer is 'we do not know,' you report that uncertainty honestly.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 55.79
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "04 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "UNMEASURED CONFOUNDING ",
+          false
+        ],
+        [
+          "AS CENTRAL THREAT.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Measured covariates</span><span class=\"arw\">→</span><span class=\"chip on\">Balanced by matching</span><span class=\"arw\">→</span><span class=\"chip warn\">Unmeasured variables</span><span class=\"arw\">→</span><span class=\"chip warn\">Spurious effect</span></div><p class=\"lead\">Propensity score matching protects you against confounding by measured variables. It offers no protection against confounders you did not measure and cannot condition on.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "To understand why sensitivity analysis is necessary, you need to understand the specific threat it addresses: unmeasured confounding. A confounder is a variable that influences both treatment assignment and the outcome, creating a spurious association between treatment and outcome even when there is no causal effect. If you measure that variable, you can adjust for it. Matching does this. Weighting does this. Any regression adjustment does this. But if you do not measure it, you cannot adjust for it. Propensity score matching balances treated and control groups on measured covariates, but it provides no protection against confounders you did not measure. This is not a failure of matching as a method. It is a feature of observational data. In a randomized trial, treatment is assigned independently of both measured and unmeasured confounders. In observational data, treatment assignment may depend on variables you never measured and never will. The central question of sensitivity analysis is: how much could these hidden variables bias your result?",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 52.69
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "05 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "E-VALUES MEASURE THE ",
+          false
+        ],
+        [
+          "CONFOUNDING THRESHOLD.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big on\">RR = 1.5</div><div class=\"cap\">Your estimated effect</div></div><div class=\"eq\">→</div><div class=\"stat\"><div class=\"big\">E-value = 2.4</div><div class=\"cap\">Confounder threshold</div></div></div><p class=\"lead\">The E-value tells you the risk ratio an unmeasured confounder would need to achieve in both directions to explain away your finding. Risk ratios below the E-value would not be sufficient to overturn the result.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The E-value is a specific tool for quantifying sensitivity. It answers this question: what is the minimum strength of association an unmeasured confounder would need to have, in both directions, to explain away your finding? The E-value is computed directly from your point estimate and confidence interval. If your estimated risk ratio is 1.5 with a narrow confidence interval, the E-value might be 2.4. That number means: an unmeasured confounder would need to be associated with treatment with a risk ratio of at least 2.4, and also associated with the outcome with a risk ratio of at least 2.4, in order to explain away your estimated effect of 1.5. If no known variable in your domain achieves an association that strong with both treatment and outcome, then your result is robust to that variable. The E-value converts an unbounded uncertainty — 'we do not know what unmeasured variables could bias this' — into a bounded threshold. That threshold is what makes domain judgment possible. It is the number you take to the literature and ask: are there confounders this strong in our field?",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 57.15
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "06 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "ROSENBAUM BOUNDS MEASURE ",
+          false
+        ],
+        [
+          "HIDDEN BIAS TOLERANCE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Rosenbaum bound (Γ)</b><span>How much hidden bias in treatment assignment the study could tolerate</span></div><div class=\"wire\"><b>Unlike E-values</b><span>Works directly from matched pair differences, not aggregate estimates</span></div><div class=\"wire\"><b>Interpretation</b><span>If Γ = 2.1, study remains significant even if hidden bias increases odds of treatment by 2.1×</span></div></div><p class=\"lead\">Rosenbaum bounds offer an alternative approach to sensitivity analysis, focusing on the process of treatment assignment rather than the strength of confounder associations.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The E-value is not the only sensitivity analysis tool. Rosenbaum bounds, named for Paul Rosenbaum, offer an alternative approach. Where E-values ask about the strength of confounder associations, Rosenbaum bounds ask about hidden bias in treatment assignment. The question is: how much could hidden confounding change the odds of receiving treatment before your result loses statistical significance? Rosenbaum bounds are particularly useful in matched studies. The method works directly from the pattern of outcomes in matched pairs, not from aggregate estimates. A Rosenbaum bound of Γ equals 2.1 means this: even if an unmeasured confounder could double the odds of treatment assignment between matched pairs, your finding would still be statistically significant. The practical interpretation is that the study is robust to considerable hidden bias. Like the E-value, the Rosenbaum bound transforms sensitivity analysis from an abstract concern into a concrete number. That number is what you take to domain experts and ask: is this amount of hidden bias plausible given what we know about treatment assignment in our setting?",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 58.35
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "07 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "BENCHMARKING THRESHOLDS AGAINST ",
+          false
+        ],
+        [
+          "REAL-WORLD EVIDENCE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid3\"><div class=\"cell-part\"><b>Literature search</b><span>What is the strongest association any known variable has achieved with both treatment and outcome?</span></div><div class=\"cell-part\"><b>Domain expertise</b><span>Which unmeasured variables might plausibly exist and how strong might their associations be?</span></div><div class=\"cell-part hot\"><b>Honest report</b><span>Compare the E-value or Rosenbaum bound to these benchmarks and state clearly whether the result is robust</span></div></div><p class=\"lead\">The formula is the easy part. The interpretation requires looking at the literature and making a judgment call that no algorithm can make for you.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Computing an E-value or Rosenbaum bound is straightforward. Interpreting it requires domain knowledge. This is the step where intellectual honesty either happens or does not. Once you have your sensitivity threshold — say, an E-value of 2.5 — you move into the empirical and theoretical literature of your field. You ask: what are the variables that actually affect treatment assignment and outcomes in this context? What are the strongest associations ever documented? If you are studying cardiovascular outcomes, you look at epidemiological literature and ask about confounders. You examine their association with both the treatment in question and the outcome. You ask colleagues whether there might be unmeasured variables you have not considered. This is not something a statistical formula can do. No algorithm can tell you that cognitive impairment, stress levels, or clinician expertise might be strong unmeasured confounders in your setting. But you might know this from your domain experience. If the E-value is 2.1 and you cannot find a known variable that achieves that strength in both directions, your result is robust. If such variables exist, your result is fragile.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 59.71
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "APPLICATION",
+      "label": "08 / 12 · APPLICATION",
+      "dark": false,
+      "title": [
+        [
+          "THE HOSPITAL READMISSION ",
+          false
+        ],
+        [
+          "CASE STUDY.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>The problem made concrete:</b> A hospital system studies whether post-discharge phone calls reduce 30-day readmissions in heart failure patients. Matching balances measured covariates but cannot protect against unmeasured variables like patient motivation or clinician judgment in call assignment.</div><p class=\"lead\">This case study makes the sensitivity analysis problem concrete. The question shifts from abstract to practical: which unmeasured variables in this specific clinical context pose the greatest threat to the estimate?</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The companion case study uses a concrete example: a hospital system runs a post-discharge phone call program for heart failure patients. Nurses call high-risk patients within 72 hours of discharge to check on medications, symptoms, and follow-up appointments. The hypothesis is that early contact reduces 30-day readmissions. Patients were not randomly assigned to receive calls. Nurses made judgment calls based on staffing, patient risk scores, and who was reachable. The analysis uses propensity score matching, balancing called and uncalled patients on age, primary diagnosis, length of stay, insurance type, and prior readmissions. After matching, called patients have a lower readmission rate. But this measured confounding adjustment leaves many unmeasured variables untouched. Which ones matter? Patient motivation to comply with medication and follow-up instructions is one. It likely influences whether nurses prioritize calling that patient, and it directly affects readmission risk. Clinician judgment about severity is another. These unmeasured variables could bias the estimate in either direction. Sensitivity analysis asks: how strong would these unmeasured confounders need to be to flip the conclusion about phone calls? That is the practical question.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 67.56
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "09 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "SENSITIVITY ANALYSIS TRANSFORMS ",
+          false
+        ],
+        [
+          "UNTESTABLE ASSUMPTIONS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Untestable assumption</span><span class=\"arw\">→</span><span class=\"chip on\">Quantified threshold</span><span class=\"arw\">→</span><span class=\"chip on\">Domain judgment</span><span class=\"arw\">→</span><span class=\"chip\">Actionable conclusion</span></div><p class=\"lead\">By converting 'no unmeasured confounding' into a specific threshold, sensitivity analysis makes it possible to evaluate robustness using domain knowledge rather than remaining in abstract uncertainty.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Sensitivity analysis solves a specific intellectual problem. You begin with an untestable assumption: there is no unmeasured confounding biasing your causal estimate. This assumption cannot be verified from data alone. But sensitivity analysis does not try to verify it. Instead, it transforms the problem. It asks: what would unmeasured confounding need to look like for your result to be wrong? The answer comes in two forms: the E-value and the Rosenbaum bound. Each provides a threshold. For the E-value, the threshold is expressed as a risk ratio. For the Rosenbaum bound, it is expressed as odds of treatment assignment. These thresholds are testable. You can ask: do known variables in my domain achieve this strength of association? This transforms the problem from untestable to evaluable. You move from abstract concern to concrete judgment. You read the literature. You consult experts. You ask what variables are plausible. You make a reasoned decision about whether the estimate is actionable. If the threshold is high and no known variable achieves it, the result is robust. If the threshold is low and known variables exceed it, the result is fragile. That judgment is not a formula. It is where science lives.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 62.14
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "10 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "REPORTING FINDINGS HONESTLY MEANS ",
+          false
+        ],
+        [
+          "CALIBRATING YOUR LANGUAGE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>If threshold is high</b><span>Result is robust · Finding can support action · Domain evidence supports assumptions</span></div><div class=\"fulcrum\">↔</div><div class=\"pan die\"><b>If threshold is low</b><span>Result is fragile · Cannot rule out confounding · Honest report is 'we cannot act'</span></div></div><p class=\"lead\">The sensitivity analysis informs not just whether you act, but how you communicate. Calibrated language conveys whether the estimate is fragile, moderately robust, or solid.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The fifth learning objective asks that you report findings honestly using calibrated language. This is the final step. Once you have computed your sensitivity threshold and benchmarked it against domain knowledge, you translate that judgment into language that conveys the actual robustness of your estimate. If the E-value is 3.2 and known confounders max out around 2.0, you can report the finding confidently. You might say: this result is robust to unmeasured confounding of the magnitude seen in related studies. You are not claiming perfect certainty. You are claiming appropriate confidence given the evidence. If the E-value is 1.4 and known confounders can exceed 2.0, you report differently. You might say: this result is sensitive to unmeasured confounding and we cannot rule out confounding as an explanation. This is not a negative finding. It is an honest finding. Intellectual integrity means not overstating what your data can support. The language shifts based on what sensitivity analysis reveals. Modest effects with low E-values deserve cautious language. Large effects with high E-values deserve confident language. This calibration is what responsible science looks like.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 62.51
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "SENSITIVITY ANALYSIS IS WHERE ",
+          false
+        ],
+        [
+          "CAUSAL INFERENCE MEETS JUDGMENT.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">The gap between what causal methods provide — a point estimate — and what decision-making requires — a judgment about robustness — is bridged by sensitivity analysis, which quantifies how much unmeasured confounding would be needed to flip a conclusion, then asks you to evaluate whether that amount is plausible in your domain.</div><p class=\"lead\">This is why the chapter exists. The formula is the easy part. The judgment is where intellectual honesty either happens or does not. Sensitivity analysis is not an appendix to causal inference. It is the step that determines whether an estimate is actionable.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "All methods in causal inference begin with an assumption: you have measured and controlled for the important confounders. This assumption is necessary. It is also untestable from observational data alone. The promise of sensitivity analysis is to bridge this gap. It cannot tell you whether unmeasured confounding exists — you cannot answer that question from data. But it can tell you how much unmeasured confounding would matter. It does this by converting the untestable assumption into a testable threshold. Instead of asking 'is there unmeasured confounding,' you ask 'how much unmeasured confounding would we need to flip our conclusion?' The E-value and Rosenbaum bound answer this quantitatively. But the harder work — the work that actually determines whether you act — comes next. You benchmark these thresholds against what you know about your domain. You search the literature. You consult expertise. You make a judgment about whether the threshold is realistic. This judgment is not formulaic. It is where scientific integrity lives. It is also why this chapter exists. The formula you can teach in a classroom. The judgment you develop through practice, reading, and honest engagement with what you know and do not know about your field.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 61.65
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "SENSITIVITY ANALYSIS: HOW WRONG ",
+          false
+        ],
+        [
+          "COULD WE BE?",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>UNMEASURED CONFOUNDING</span><span>//</span><span>QUANTIFIED THRESHOLDS</span><span>//</span><span>DOMAIN JUDGMENT</span></div><p class=\"sig\">Causal Inference · Chapter 15 · Sensitivity Analysis — How Wrong Could We Be?</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "This chapter has moved through the core tools of sensitivity analysis: the E-value for assessing confounder strength, the Rosenbaum bound for assessing hidden bias in assignment, and the process of benchmarking these measures against real-world confounders from your domain literature. But the central idea is simpler than the tools: you cannot verify that unmeasured confounding does not exist, but you can quantify how much would be needed to change your conclusion, and then you can evaluate whether that amount is plausible. This is the intellectual work that separates preliminary findings from actionable evidence. The five learning objectives have guided this journey. You now understand why sensitivity analysis is not optional but essential. You can compute E-values and Rosenbaum bounds. You can benchmark them. And you know that honest reporting means calibrating your language to the fragility or robustness your sensitivity analysis reveals. In observational causal inference, this last step — making the judgment, reporting it honestly, and knowing when to say we cannot rule out confounding — is where the science actually lives.",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 59.29
+        }
+      ]
+    }
+  ]
+}

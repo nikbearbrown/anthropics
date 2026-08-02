@@ -1,0 +1,343 @@
+{
+  "slug": "Causal-Inference-ch10-chapter-llms-causal-reasoning",
+  "title": "Can LLMs Actually Do Causal Reasoning?",
+  "series": "Causal Inference",
+  "source": "chapters/10-chapter-llms-causal-reasoning.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 11,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "A HOSPITAL PAID $2.3M FOR ADVICE THAT ",
+          false
+        ],
+        [
+          "DIDN'T WORK.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big on\">$2.3M</div><div class=\"cap\">INVESTED</div></div><div class=\"eq\">→</div><div class=\"stat\"><div class=\"big warn\">0 min</div><div class=\"cap\">SATISFACTION CHANGE</div></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "A hospital system observed a strong correlation between shorter ER wait times and higher patient satisfaction. Real, consistent, statistically significant across multiple facilities. An analyst fed three years of records into an LLM and asked what should we do about this? The model confidently identified the pattern and recommended reducing wait times. The hospital hired additional intake staff, cut median wait times by 22 minutes at a cost of $2.3 million, and patient satisfaction didn't move. The model had answered the question it could answer—what the data shows—not the question the analyst needed: what happens if we intervene? The difference isn't statistical. It's structural. The real causal story involved staffing levels as a common cause of both wait times and satisfaction, creating a back-door path. The model had no way to see this. It had patterns, not causal structure.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 47.13
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "THE STAKES",
+      "label": "02 / 12 · THE STAKES",
+      "dark": false,
+      "title": [
+        [
+          "OBSERVATION AND INTERVENTION ",
+          false
+        ],
+        [
+          "ARE STRUCTURALLY DIFFERENT.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>P(Y | X)</b><span>Observational: what we see when X is naturally low</span></div><div class=\"cell-part hot\"><b>P(Y | do(X))</b><span>Causal: what happens if we force X to be low</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The analyst needed P(Satisfaction | do(WaitTime=low))—the effect of intervening on wait times, severing that variable from everything that naturally causes it. The model answered P(Satisfaction | WaitTime=low)—the satisfaction observed when wait times happen to be short in the existing system. These look like the same question to someone working without causal vocabulary. They are not. The first is a causal quantity asking what happens under an intervention. The second is purely observational. The difference is not about getting a better estimate. It's a structural gap in the system. When you observe short wait times naturally, you're also observing whatever caused those short times. When you intervene, you cut those causal links. This distinction separates causal inference from pattern-matching, and it's exactly what next-token prediction struggles with.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 43.16
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "PEARL'S LADDER",
+      "label": "03 / 12 · PEARL'S LADDER",
+      "dark": false,
+      "title": [
+        [
+          "PEARL'S LADDER CLASSIFIES ",
+          false
+        ],
+        [
+          "CAUSAL QUESTIONS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Rung 1: Association</b><span>What patterns exist in the data?</span></div><div class=\"wire\"><b>Rung 2: Intervention</b><span>What happens if we force a change?</span></div><div class=\"wire\"><b>Rung 3: Counterfactual</b><span>What would have happened in another world?</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Judea Pearl's Ladder of Causation is the organizing framework for understanding what a causal question is asking. Rung 1 is association—purely observational questions about patterns in data: what does the data show? LLMs often answer these well because they are pattern-matching problems. Rung 2 is intervention—causal questions about do-operators: what happens if we change X? These require understanding structural causal models and breaking observational associations. Rung 3 is counterfactual reasoning: would this specific person have gotten sick if they hadn't taken the drug? The rungs build: Rung 3 requires everything Rung 2 requires, plus the ability to reason backward through time using individual-level potential outcomes. Most practical causal questions live on Rung 2. And most LLM failures on causal questions happen at Rung 2 or above.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 47.55
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "ARCHITECTURE",
+      "label": "04 / 12 · ARCHITECTURE",
+      "dark": false,
+      "title": [
+        [
+          "NEXT-TOKEN PREDICTION ",
+          false
+        ],
+        [
+          "CANNOT SEE STRUCTURE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> Next-token prediction optimizes for P(token | prior), which is inherently observational and does not reward or require understanding causal structure.</div><p class=\"lead\">This is why better data or larger models cannot solve the problem. The architecture itself does not include causal reasoning as an objective.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "This is an architectural problem, not a data quantity problem. Next-token prediction trains on observational data and learns to continue sequences based on statistical patterns. The model learns P(token | prior tokens). This is inherently an observational task. The training objective—predict what comes next given what came before—makes no distinction between correlation and causation. A model could see the pattern staffing levels predict wait times, wait times predict satisfaction and learn to reproduce that perfectly. But reproducing an observational pattern is not the same as understanding its causal structure. The model has no built-in way to reason about interventions, to imagine what would happen if you severed a causal link. It has no mechanism for representing the distinction between seeing a pattern and breaking a link. Scaling up data or model size doesn't fix this. The problem isn't that the model lacks information about causation. It's that the training task itself doesn't require or reward causal structure.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 54.02
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "PATTERNS VS STRUCTURE",
+      "label": "05 / 12 · PATTERNS VS STRUCTURE",
+      "dark": false,
+      "title": [
+        [
+          "THE MODEL HAD PATTERNS, ",
+          false
+        ],
+        [
+          "NOT A CAUSAL GRAPH.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Pattern</b><span>Regularity in observed data; correlations learned from examples</span></div><div class=\"cell-part hot\"><b>Causal Graph</b><span>Representation of mechanisms and structural relationships under intervention</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "In the hospital case, the LLM identified a real pattern: facilities with shorter wait times reported higher satisfaction. The model learned this association and could describe it fluently. But a causal graph would have revealed the backdoor path. If you draw the DAG—WaitTime ← StaffingLevel → Satisfaction—you immediately see that conditioning on WaitTime while StaffingLevel is uncontrolled leaves a confounding path open. The model had no such graph. It had statistical associations: WaitTime predicts Satisfaction, so changing WaitTime should change Satisfaction. These are qualitatively different objects. A pattern is a regularity in observed data. A causal graph is a representation of mechanisms—how variables relate through intervention, not just through observation. LLMs learn the former; causal reasoning requires the latter. You can have perfect pattern-matching and complete causal blindness simultaneously. This is not a flaw in training data or architecture. It's what the architecture is built to do.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 55.79
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "CONFOUNDING",
+      "label": "06 / 12 · CONFOUNDING",
+      "dark": false,
+      "title": [
+        [
+          "CONFOUNDING HIDES ",
+          false
+        ],
+        [
+          "IN BACK-DOOR PATHS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Backdoor path:</b> WaitTime ← StaffingLevel → Satisfaction. The association is real; the mechanism is confounded. Intervening on WaitTime without changing StaffingLevel leaves the confounding path open.</div><p class=\"lead\">This is why the $2.3M intervention didn't work. The model saw the correlation but missed the structural mechanism hiding behind it.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The hospital case contains a specific mechanism: staffing levels serve as a common cause for both wait times and satisfaction. This creates what Pearl calls a backdoor path: WaitTime ← StaffingLevel → Satisfaction. A backdoor path is an association that flows backward, not forward along causal arrows. It's confounding. When staffing is high, wait times are low and satisfaction is high—not because low wait times cause high satisfaction, but because staffing causes both. The observational correlation P(Satisfaction | WaitTime = low) is real. But it's generated entirely by the backdoor path. If you intervene on wait times without controlling staffing, you break the forward causal link but the backdoor path remains open. Satisfaction won't change because staffing, not wait time, does the causal work. This is why the intervention failed. The model could not see this path because it had no representation of causal structure. It saw only the association, which was real and strong.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 53.97
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "FAILURE MODES",
+      "label": "07 / 12 · FAILURE MODES",
+      "dark": false,
+      "title": [
+        [
+          "LLM CAUSAL FAILURE ",
+          false
+        ],
+        [
+          "TAKES THREE FORMS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid3\"><div class=\"cell-part\"><b>Confident Wrong</b><span>Real pattern misapplied; plausible false recommendation</span></div><div class=\"cell-part\"><b>Fabricated Mechanism</b><span>Generated explanation with no structural basis</span></div><div class=\"cell-part hot\"><b>Correct Hedge</b><span>True statement that may hide lack of reasoning</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "You will be able to predict the specific failure mode an LLM exhibits on a causal question. There are three. First: confident wrong answer. The model identifies a pattern, applies standard reasoning, and produces a plausible-sounding but false causal claim. The hospital case is this failure mode—the model confidently recommended intervening on wait times because it saw a real association and applied the heuristic: strong correlation, actionable variable, recommend intervention. Second: fabricated mechanism. The model, sensing that an explanation is expected, generates a causal story that sounds coherent but isn't grounded in structural reasoning. It invents mechanisms rather than discovering them. Third: correct hedge. The model says something like correlation doesn't imply causation, more data needed. This hedge is often right as a practical matter, but it obscures whether the model is reasoning cautiously or simply outputting a memorized phrase. These three modes are not equally common, and not equally dangerous.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 54.14
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "DETECTION",
+      "label": "08 / 12 · DETECTION",
+      "dark": false,
+      "title": [
+        [
+          "PROMPT SENSITIVITY ",
+          false
+        ],
+        [
+          "REVEALS GENUINE REASONING.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>Genuine Causal Reasoning</b><span>Responds to structural changes · adjusts for new confounders · updates recommendations when paths close</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>Trained Hedging</b><span>Same output regardless of structure · ignores added confounders · repeats template phrases</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "You can diagnose whether a model's correct-sounding hedge reflects genuine structural reasoning or trained hedging behavior using prompt sensitivity. If a model is truly reasoning about causation, its outputs should respond to changes in the causal structure you describe. If you add a confounder to the scenario, a reasoning model should flag new ambiguity or change its recommendation. If you block a causal path, it should reconsider. If the model's behavior doesn't change—if it outputs the same hedge regardless of structural changes, or confidently recommends the same action despite new confounders—then it's not reasoning about structure. It's pattern-matching or outputting a memorized response. Genuine causal reasoning is sensitive to causal structure. Trained hedging is not. This is your diagnostic instrument. It's not foolproof—a model could learn to fake sensitivity by pattern-matching on keywords—but it's far better than assuming that a cautious-sounding statement implies actual causal reasoning.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 53.72
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "ROUTING",
+      "label": "09 / 12 · ROUTING",
+      "dark": false,
+      "title": [
+        [
+          "ROUTE CAUSAL QUERIES ",
+          false
+        ],
+        [
+          "TO THE RIGHT TOOL.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Causal Query</span><span class=\"arw\">→</span><span class=\"chip\">Classify Rung</span><span class=\"arw\">→</span><span class=\"chip on\">Route to Tool</span><span class=\"arw\">→</span><span class=\"chip\">Deliver Answer</span></div><p class=\"lead\">Safe use of LLMs in causal reasoning depends on routing queries to the right tool based on the structural demands of the question.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The practical implication of understanding LLM causal limitations is learning how to route. Not all causal-sounding questions are the same. A Rung 1 question—what's the association?—LLMs often answer well. They can tell you what patterns exist in data. A Rung 2 question—what if we intervene?—requires either structural causal reasoning, which LLMs lack, or explicit causal inference tools. A Rung 3 question—what would have happened?—is even harder. A routing architecture assigns each query to the appropriate tool. If a user asks a Rung 1 question, route to the LLM or pattern-analysis tool. If they ask Rung 2 or 3, route to a causal inference framework that accepts a user-specified DAG, or route to a human who can help specify one. This is not because LLMs are useless for causal reasoning. It's because knowing their specific failure modes lets you use them safely within their bounds and supplement them with the right tools at the boundaries.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 51.56
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "10 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "UNDERSTANDING THE LIMITS ",
+          false
+        ],
+        [
+          "ENABLES SAFE USE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> LLM failures on causal questions are systematic and detectable. Knowing the failure modes enables you to use LLMs safely within their bounds and supplement them at the boundaries.</div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "These concepts connect around a central practical insight: LLM failures on causal questions are not random, and they're not invisible if you know what to look for. You now have the vocabulary to classify any causal question quickly—before an LLM gets a chance to mislead you. You know why next-token prediction cannot produce structural causal reasoning; this is architectural, which means no amount of data or scale will fix it. You can predict what failure mode an LLM will exhibit on a given causal question: confident wrong answer because it applied pattern-matching to a structural problem, fabricated mechanism because it generated a coherent-sounding story, or correct hedge that may or may not reflect real reasoning. You have a diagnostic tool—prompt sensitivity—to distinguish genuine causal reasoning from trained hedging. And you understand how to design a routing architecture that puts LLMs to work on problems they can solve while steering harder causal questions to tools that can handle structure. The problem this chapter opened with was expensive. Understanding it makes future mistakes cheaper and avoidable.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 60.16
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "LLMS ARE SYSTEMATICALLY BAD ",
+          false
+        ],
+        [
+          "AT CAUSAL REASONING.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">LLMs are <b>specifically bad at causal reasoning on Rung 2 and above</b>, in ways that are invisible without structural understanding and dangerous when missed.</div><p class=\"lead\">This is not because LLMs are weak models. It's because next-token prediction is an observational task. Knowing this lets you use them safely by routing causal queries to the right tool at each rung.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Three connected claims thread through this chapter, and they're worth stating together. First: the difference between association and intervention is structural, not statistical. You cannot estimate your way from observational patterns to causal claims without addressing that structure. Second: next-token prediction, by its nature, cannot capture this structure. It learns patterns in observational data and has no built-in objective to distinguish causation from correlation. Scaling the model makes this worse, not better—you get more fluent wrong answers. Third: this failure is not incidental to how LLMs work. It's central to what they do. Once you understand this, the failures stop looking like bugs and start looking like features—specific, predictable, and avoidable through proper routing and tool design. The LLM in the hospital case wasn't broken. It was doing exactly what it was trained to do: find patterns and extrapolate. It was just asked a question that required something different.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 49.98
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "",
+          false
+        ],
+        [
+          "",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>LLMS</span><span>//</span><span>CAUSATION</span><span>//</span><span>STRUCTURE</span></div><p class=\"sig\">Causal Inference · Chapter 11 · Can LLMs Actually Do Causal Reasoning?</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "You now have the vocabulary and the diagnostic tools to navigate this landscape safely. The rest of this section shows you what happens when you actually run the benchmark.",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 9.81
+        }
+      ]
+    }
+  ]
+}

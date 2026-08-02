@@ -1,0 +1,205 @@
+# Chapter 10 — Changing Work Environments and Future Trends
+
+## TL;DR
+
+- In a McDonald's in suburban Chicago, in 2017, a customer walks up to a touchscreen kiosk, customizes her order, swipes a card, and receives a number.
+- The chapter moves through Flexibility and its trade-offs, Displacement at scale, AI, accountability, and the questions without settled answers, What the three transitions have in common, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
+*Technology Is the Mechanism. Distribution Is the Ethics.*
+
+In a McDonald's in suburban Chicago, in 2017, a customer walks up to a touchscreen kiosk, customizes her order, swipes a card, and receives a number. Ninety seconds. No human cashier involved. The kiosk cost the restaurant approximately $35,000 to install. A human cashier at the federal minimum wage costs approximately $15,000 per year in direct wages, plus about thirty percent more in payroll taxes and benefits. The kiosk pays for itself in roughly eighteen months. After that, it earns the restaurant pure margin.
+
+McDonald's has reduced its global workforce by approximately fifty percent since the 1960s while serving a substantially larger customer base. The reduction has come in waves — standardized food-preparation processes in the 1960s and 70s, digitized order management in the 1990s, mobile-app ordering in the 2010s, kiosks now. In 2017, the McKinsey Global Institute published the projection that gets cited more than any other number in contemporary workforce policy: approximately eight hundred million jobs globally — roughly twenty percent of the entire global workforce — would face significant occupational disruption from automation by 2030.
+
+Eight hundred million is a number worth sitting with for a moment. It is roughly the entire workforce of China. Twice the total population of the United States. For the U.S. specifically, McKinsey estimated between thirty-nine and seventy-three million workers — between one quarter and one half of current U.S. employment — facing significant disruption. About twenty million would transition to comparable jobs without much retraining. The remaining nineteen to fifty-three million would require substantial retraining, redeployment, or extended unemployment.
+
+The chapter is about the work environments those workers inhabit — and will inhabit — and the ethical questions the transitions raise. The argument is not, primarily, about technology. It is about how the costs and benefits of transitions are distributed across stakeholders: workers, firms, customers, taxpayers, communities. Technology is the mechanism. Distribution is the ethics.
+
+![A horizontal timeline from 1960 to 2030, labeled](images/10-changing-work-environments-and-future-trends-fig-01.png)
+*Figure 10.1 — A horizontal timeline from 1960 to 2030, labeled*
+
+---
+
+## Flexibility and its trade-offs
+
+In late February 2013, the recently-installed CEO of Yahoo, Marissa Mayer, announced that all Yahoo employees working remotely were required to return to the office by June 1. The memo, leaked within hours, defended the policy on the grounds that speed and quality are often sacrificed when people work from home, and that some of the best decisions come from hallway conversations. The reaction was immediate and mostly negative. Industry commentators pointed out, among other things, that Mayer had recently built a private nursery adjacent to her office — an accommodation not available to the employees being required to relocate.
+
+The Mayer memo became the reference point for a debate that has, in the years since, substantially shifted. The COVID-19 pandemic of 2020-22 converted remote work from a niche arrangement into the baseline practice for most knowledge workers. The partial return-to-office push of 2022-25 produced mixed results; many large employers have settled on hybrid arrangements, two to three days in office and the rest remote-eligible. The question has moved from *whether to permit remote work* to *how to structure it so the benefits materialize without the cultural and equity costs*.
+
+The productivity research is, on the documented evidence, pretty clear. Nicholas Bloom's 2014 *Quarterly Journal of Economics* paper studied a randomized trial at a Chinese travel-agency call center and found that work-from-home produced a 13.5 percent increase in completed calls per worker, a fifty percent reduction in voluntary resignations, and statistically significant gains in worker satisfaction. JD Edwards reported a 20 to 25 percent productivity gain in its remote-work population; American Express reported a 43 percent gain on relevant tasks. The research points in one direction.
+
+The case against remote work is not, primarily, about productivity. It is about visibility. Workers who are not physically present in the office are, on extensive HR research, less likely to be promoted than equally-productive workers who are. The mechanism is *visibility bias* — the cognitive tendency to weight observed behavior more heavily than unobserved behavior of equal quality. The bias is well-documented and rational in the wrong way: it rewards presence, not performance, and it does so systematically, which means the workers who choose the more-remote end of a hybrid arrangement are, without deliberate management intervention, on a slower promotion track than the workers who choose the in-office end.
+
+The mitigation is operational: structured promotion-review processes that explicitly surface visibility-bias risk, documentation standards that make remote workers' contributions visible to reviewers who didn't observe them, calibration sessions that flag patterns before they calcify into promotion gaps. These interventions exist; most firms have not implemented them. A 2016 MIT pilot structured a hybrid arrangement with one mandated in-office day per week and found that every participant chose to continue after six months — a 100 percent continuation rate, which is the cleanest available evidence that a well-designed hybrid captures most of the productivity benefit of remote work while preserving the collaboration the Mayer memo named.
+
+| Study | Source | Context | Productivity finding | Equity |
+| --- | --- | --- | --- | --- |
+| Bloom 2014 QJE (Chinese travel-agency call center, RCT | A concrete checkpoint for applying the chapter concept. | Use the chapter example as the concrete test case. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| +13.5% calls per worker, -50% voluntary resignation | A concrete checkpoint for applying the chapter concept. | Use the chapter example as the concrete test case. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| not studied | A concrete checkpoint for applying the chapter concept. | Use the chapter example as the concrete test case. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| JD Edwards (enterprise software firm | A concrete checkpoint for applying the chapter concept. | Use the chapter example as the concrete test case. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| +20–25% productivity | A concrete checkpoint for applying the chapter concept. | Use the chapter example as the concrete test case. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| not reported | A concrete checkpoint for applying the chapter concept. | Use the chapter example as the concrete test case. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| American Express (+43% on relevant tasks | A concrete checkpoint for applying the chapter concept. | Use the chapter example as the concrete test case. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| not reported | A concrete checkpoint for applying the chapter concept. | Use the chapter example as the concrete test case. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| HR research on visibility bias (multiple firms | A concrete checkpoint for applying the chapter concept. | Use the chapter example as the concrete test case. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| not studied directly | A concrete checkpoint for applying the chapter concept. | Use the chapter example as the concrete test case. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| equally productive remote workers promoted at lower rates than in-office peers). Bottom row: MIT 2016 hybrid pilot (one in-office day | week | Use the chapter example as the concrete test case. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| 100% continuation rate | A concrete checkpoint for applying the chapter concept. | Use the chapter example as the concrete test case. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+
+At the other end of the spectrum from telecommuting is the campus. Apple Park, which opened in 2017 in Cupertino, occupies approximately 2.8 million square feet at an estimated construction cost of five billion dollars. Circular building, 9,000 trees, substantial on-site solar generation, room for approximately 12,000 employees. Facebook's Willow Village in Menlo Park goes further: the development plan includes approximately 1,500 housing units, retail space, a grocery store, a hotel, and parks, on a site adjacent to Facebook's existing campus. Roughly fifteen percent of the housing is reserved for low-income tenants under California's inclusionary-housing rules. It is, in effect, a small city that the firm builds and partly inhabits.
+
+The historical comparison is the company town. Pullman, Illinois — built by the railroad-car manufacturer George Pullman outside Chicago in 1881 — provided workers with housing, schools, healthcare, and recreation. So did Hershey, Pennsylvania and Kohler, Wisconsin. The model was paternalistic and it was monopsonistic: the firm was effectively the only employer, which suppressed wages and limited exit. The Pullman Strike of 1894 was, in part, a worker revolt against that structure. Company towns declined through the twentieth century as automobile ownership made commuting practical and as labor regulation constrained the dynamics.
+
+The contemporary tech campus is not a literal company town — workers can leave, the firms are not the only employers in their regions, the labor market remains broadly competitive. But the structural similarity is real enough that the ethical question transfers. The campus provides real benefits: on-site amenities, reduced commute friction, work-life integration that distant commuters cannot match. The benefit comes with a capture dynamic. The amenities — the gym, the subsidized meals, the childcare — lock workers geographically. Leaving the job involves leaving the housing arrangement, the social network the campus has facilitated, the daily routines organized around campus infrastructure. The convenience is real. The dependence it creates is also real.
+
+The chapter's framework: campus amenities are net-positive when they are genuinely voluntary — when the worker can use them or not without consequence. They become net-negative when they shade into operational expectations, when not using them becomes a signal of disengagement. Acuity Insurance's campus in Sheboygan, Wisconsin — which includes a climbing wall, a community theater, and an organic garden — is, on the available evidence, operating in the voluntary mode. Whether the Apple Park and Willow Village models produce the same outcome over time is a question the evidence is still answering.
+
+| Dimension | Contrast |
+| --- | --- |
+| Era, Representative examples, Housing provided?, Primary employer in region?, Worker freedom of exit, Amenities (what's included | Use the chapter example as the concrete test case. |
+| Monopsony risk, Ethical status (chapter's verdict). Company town column: 1880s–1940s | A concrete checkpoint for applying the chapter concept. |
+| Pullman IL, Hershey PA, Kohler WI | A concrete checkpoint for applying the chapter concept. |
+| Yes | firm-owned |
+| Yes | firm was the only employer |
+| Practically constrained (no car, no commute range | A concrete checkpoint for applying the chapter concept. |
+| Housing, schools, healthcare, recreation | A concrete checkpoint for applying the chapter concept. |
+| High | A concrete checkpoint for applying the chapter concept. |
+| Net negative | structure eventually produced Pullman Strike and decline. Tech campus column: 2010s–present |
+| Apple Park, Facebook Willow Village, Acuity Insurance | A concrete checkpoint for applying the chapter concept. |
+| Partially (Willow Village) or no | A concrete checkpoint for applying the chapter concept. |
+| No | competitive labor market |
+
+---
+
+## Displacement at scale
+
+A graphic designer — call him Joseph — assembles his weekly income from approximately five sources. Logo design for small businesses through an online platform. Per-project work for two regional advertising agencies. Album-cover design for two independent music labels. Occasional contract work for a former employer who calls when capacity is needed. Evenings and weekends, a small e-commerce side project. His annual income is approximately $58,000, comparable to the median graphic-designer salary in his metropolitan area. He has no employer-provided health insurance; he buys a high-deductible plan through the state ACA exchange. He has no employer retirement plan; he contributes to a personal IRA when his cash flow allows. He pays both halves of FICA — about 15.3 percent of gross income — because he is, for tax purposes, self-employed. His monthly income varies by approximately forty percent from highest to lowest month.
+
+Joseph is one of approximately fifty-five million U.S. workers — about thirty-five percent of the workforce, by the Freelancers Union's 2018 estimate, with current 2026 estimates placing the figure closer to forty percent — who participate in some form of gig-economy work. The figure has continued to grow.
+
+The *gig economy* is the labor-market arrangement in which workers are engaged through short-term contracts, project-based assignments, or platform-mediated tasks rather than through long-term employment. Gig work has existed as long as freelance professional services have; the contemporary version's distinguishing feature is platform mediation at scale — Uber, Lyft, DoorDash, Instacart, Upwork, Fiverr — which converted what was historically a niche arrangement into a normal labor-market structure. About a third of gig workers, by Freelancers Union surveys, prefer the arrangement to traditional employment. About two-thirds did not choose it as their preferred arrangement; they chose it because traditional employment was not available on terms they could accept.
+
+The central legal question is classification: is the gig worker, for purposes of employment law, an *employee* (entitled to minimum-wage protection, overtime, health insurance, employer FICA contribution, unemployment insurance, workers' compensation) or an *independent contractor* (entitled to none of the above)? The question has been the most contested workplace-policy dispute of the past decade. California's 2019 *AB 5* legislation tried to reclassify many gig workers as employees; the 2020 *Proposition 22*, backed by approximately $200 million in industry spending, partially reversed the reclassification for app-based drivers. The U.K. Supreme Court's 2021 *Uber B.V. v. Aslam* decision classified Uber drivers as workers under U.K. employment law. The EU's *Platform Work Directive* of 2024 establishes a presumption of employment status for platform workers in member states. The U.S. national framework is unsettled.
+
+The precedent the contemporary fights are working off is the Microsoft 2000 settlement. From the mid-1980s through the late 1990s, Microsoft retained large numbers of workers through staffing agencies, classifying them as independent contractors even when they performed work substantially identical to employees' and worked alongside employees for years at a time. A class-action lawsuit, *Vizcaino v. Microsoft Corp.*, filed in 1992, settled in December 2000 for approximately $97 million, with the plaintiffs receiving back-payment for stock-option benefits the courts found they were entitled to. Microsoft subsequently restructured its contractor relationships and now requires staffing partners to provide benefits to long-tenured contractors. The underlying structural pressure — firms hiring through intermediary arrangements to avoid employer obligations — has not changed. The legal definitions have.
+
+The British labor economist Guy Standing coined the term *precariat* for the new social class the gig economy has accelerated: workers whose employment relationship is *precarious* in a systematic sense — short-term, low-benefit, geographically mobile, lacking the stability the post-1945 standard employment relationship provided. Standing's analysis estimates that approximately twenty-five to thirty percent of the workforce in advanced economies operates in conditions that fit the description. Joseph — five income streams, forty-percent monthly income variance, paying both halves of FICA, hoping the IRA gets funded this quarter — is the precariat in its graphic-designer form.
+
+Now add automation to the gig displacement and the shape of the transition becomes clearer.
+
+McKinsey's December 2017 report estimated the sectoral breakdown of displacement risk. The occupations at highest risk: machine operators, factory workers, fast-food workers, bookkeepers, paralegals, cashiers, toll operators, and most categories of driver — taxi, truck, delivery — as autonomous-vehicle technology matures. The Bureau of Labor Statistics' independent projections converge on similar numbers: 80,000 fast-food jobs projected to disappear by 2024, 7.5 million retail jobs at risk from self-checkout and online commerce, 5 million driving jobs at risk in the near term.
+
+The occupations at lowest risk are the ones where the work involves the kind of unstructured human-to-human interaction that current AI cannot reliably handle: nurses, physicians, lawyers, teachers, social workers (the BLS projects 19 percent employment growth in social work through 2024), bartenders, hairstylists, sports coaches, musicians, therapists. The pattern is recognizable. Work that requires recognizing nuanced emotional state in a specific human being and responding to it with judgment is, on current AI capability, substantially safer than work that involves pattern-matching against standardized inputs and executing well-specified procedures.
+
+KPMG's 2017 analysis estimated that approximately fifty percent of current workplace *activities* are technically automatable using existing technology. The figure is widely cited and needs to be specified carefully. *Activities*, in the KPMG analysis, are not the same as *jobs*. Most jobs are bundles of activities — some automatable, some not. A job whose activities are fifty percent automatable is not a job that disappears; it is a job that, post-automation, consists primarily of the activities that were not automated, performed by fewer workers. The displacement is real. The framing matters.
+
+![Two-column occupation risk matrix](images/10-changing-work-environments-and-future-trends-fig-02.png)
+*Figure 10.2 — Two-column occupation risk matrix*
+
+The developing-nation comparison is worth one sentence: McKinsey's projections for India estimate approximately nine percent of the Indian workforce facing significant disruption, far below the U.S. figure. The reason is not that India is better organized. The reason is that Indian labor is, in many sectors, cheap enough that automation is not yet cost-justified. The disruption concentrated in advanced economies reflects, in part, the relative cost of labor versus capital, not the relative sophistication of the two economies.
+
+---
+
+## AI, accountability, and the questions without settled answers
+
+In December 2022, OpenAI released ChatGPT. Within five days: one million registered users. Within two months: one hundred million. The release was the first mass-market introduction of generative AI capable of producing human-grade prose, code, summaries, analyses, and creative content on demand. The subsequent three years produced rapid deployment by Anthropic, Google, Meta, and others, and the integration of AI capabilities into most major productivity software, customer-service systems, hiring platforms, and creative tools.
+
+By 2026, the question is not whether AI is affecting work. It is. The questions are about how the affected workers are treated, how the affected customers are informed, how the affected legal systems assign liability, and how the affected societies adapt.
+
+Three specific questions have not been answered, and the reader who enters a firm making AI-deployment decisions will encounter all three.
+
+The first is *disclosure*. When a customer interacts with a customer-service system, must the firm disclose whether the system is human or AI? California's *B.O.T. Act* of 2018 requires disclosure for certain commercial interactions. The EU AI Act of 2024 requires disclosure for AI systems in many commercial contexts. The U.S. national framework is under development. The ethical case for disclosure is simple: customers who believe they are talking to a human and are not have been deceived about a material fact. The business case against disclosure is also simple: disclosed AI systems produce lower customer satisfaction scores than undisclosed ones, for reasons that presumably reflect the gap between customer expectations and AI capability. The two cases are in direct tension. The legal regime will eventually resolve the tension; the reader's firm may have to act before the regime arrives.
+
+The second is *liability*. When an AI-driven system makes a consequential decision — denying a loan, recommending a hire, diagnosing a patient — and the decision turns out to be wrong, who is liable? The firm that deployed the system, the firm that built the model, the data providers whose data trained it, the engineers who specified the model's parameters? The legal answer is unsettled in the U.S. The EU AI Act establishes a tiered liability regime for high-risk AI applications; U.S. case law is being built through specific cases working through the courts. The operational implication for a firm deploying AI systems in high-stakes decisions: the records matter. What the system was told to optimize for, what constraints it was given, what decisions it made, and what the outcomes were should be documented precisely, because the liability question will eventually be answered and the firm that documented will be in a much stronger position than the firm that did not.
+
+The third is what philosophers call the *personhood question*: as AI systems become more capable of producing human-grade output, do they have, or should they have, some form of moral or legal standing? The contemporary philosophical consensus is that current AI systems do not have consciousness or moral patient status in the traditional sense. The technical question — what would count as evidence that an AI system had consciousness, and how would we know — remains deeply contested. The legal question — should AI systems have independent standing in any legal context — has not been answered affirmatively in any major jurisdiction. The operational ethics for AI deployment should not wait on these answers. The safer and more defensible position, pending resolution, is to treat AI systems as instruments for which the humans who deploy them bear full responsibility for outcomes. The personhood question is worth following as it develops; it should not become an excuse for diffusing accountability.
+
+| Item | Meaning |
+| --- | --- |
+| AI workplace questions | current status as of 2026. Three rows, one per question. Row 1 |
+| Business case against (disclosed AI produces lower satisfaction scores | A concrete checkpoint for applying the chapter concept. |
+| U.S. status (developing, no national rule | A concrete checkpoint for applying the chapter concept. |
+| EU status (EU AI Act 2024 requires disclosure in many commercial contexts | Use the chapter example as the concrete test case. |
+| California (B.O.T. Act 2018, certain commercial interactions). Row 2 | Liability: Who is potentially liable (deploying firm, model builder, data providers, specifying engineers |
+| U.S. status (unsettled, case law building | A concrete checkpoint for applying the chapter concept. |
+| EU status (EU AI Act tiered liability regime for high-risk applications | A concrete checkpoint for applying the chapter concept. |
+| Operational implication (document what the system optimized for, what constraints it was given, what decisions it made). Row 3 | Personhood: Philosophical consensus (current AI lacks consciousness |
+| Technical question (unsettled | what would count as evidence? |
+| Legal status (no affirmative jurisdiction anywhere | A concrete checkpoint for applying the chapter concept. |
+| Operational implication (treat as instrument | A concrete checkpoint for applying the chapter concept. |
+| humans bear full accountability for deployment outcomes). Reader should notice all three questions are in different stages of resolution, and the firm deploying AI in 2026 must act before the first two are settled. | A concrete checkpoint for applying the chapter concept. |
+
+---
+
+## What the three transitions have in common
+
+The flexibility transition, the displacement transition, and the AI transition are not three separate developments. They are three aspects of the same underlying pressure: technology is changing the structure of work faster than the institutional frameworks governing work — employment law, labor regulation, welfare systems, retirement policy — can adapt.
+
+The flexibility transition is the clearest example of this lag. The telecommuting technology has been available since the 1970s; the cultural and legal norms for managing it well are still being worked out in 2026. The visibility-bias problem has been documented for twenty years; the promotion-review interventions designed to correct for it are not yet standard practice. The campus model has been building for a decade; the regulatory framework for what distinguishes a company town from a campus has not caught up.
+
+The displacement transition is the lag in sharpest form. The McKinsey projections were published in 2017; the retraining infrastructure they imply — scalable, effective, accessible to workers who are older, geographically concentrated, and deeply specialized in displaced occupations — does not yet exist at the required scale. The evidence on retraining outcomes is honest about this: retraining works for some workers, typically younger ones with prior education in regions with active labor demand. It does not work systematically for the workers who most need it — the fifty-three-year-old truck driver in a town where the next nearest employer is two hundred miles away and the available retraining programs are designed for a twenty-five-year-old who can absorb six months of classroom instruction without an income.
+
+The AI transition is the lag in its most acute form because the technology is advancing faster than any previous wave. The agricultural-to-industrial transition took generations. The industrial-to-services transition took decades. The current AI capability curve is, on the available evidence, moving in years and accelerating. The institutional lag is correspondingly more dangerous. The EU AI Act of 2024 is the most ambitious regulatory attempt; it is also operating in real time against a technology that is changing faster than regulatory drafting can follow.
+
+The ethical posture the chapter proposes is not optimism or pessimism about the transitions. It is specificity. The question *will automation eliminate jobs?* is not answerable in a way that is useful. The questions *which specific occupations, in which specific regions, on which specific timelines, and what specific interventions would mitigate the transition costs for the specific workers most affected?* are answerable. The McKinsey projections are an attempt to answer the specific questions. The EU AI Act is an attempt to answer specific questions about liability and disclosure. The Microsoft 2000 settlement answered a specific question about classification.
+
+The transitions will happen. They are happening. The ethical question is not whether they happen but who bears the cost when they do — and whether the distribution of that cost is the result of deliberate choices by named people who could have chosen differently, or the result of nobody choosing, which is the most expensive and least defensible outcome of all.
+
+---
+
+## Exercises
+
+### Warm-up
+
+**Exercise 10.1.** *Tests the remote-work productivity and equity evidence.* The chapter presents two separate cases about remote work: a productivity case (the research generally supports it) and an equity case (visibility bias disadvantages remote workers in promotions). In your own words, explain why these two findings can both be true simultaneously — and why a firm that acts only on the productivity finding, without addressing the equity finding, has made an incomplete decision. Difficulty: easy.
+
+**Exercise 10.2.** *Tests the activities-vs-jobs distinction.* KPMG's 50 percent automatable-activities figure is frequently misquoted as meaning 50 percent of jobs will disappear. Explain in your own words why this is a misreading, using the activities-vs-jobs distinction. Then identify one specific occupation from the chapter's high-risk list and describe the specific activities within that occupation that are automatable versus the activities that are not. Difficulty: easy.
+
+### Application
+
+**Exercise 10.3.** *Tests the campus-vs-company-town analysis.* The chapter identifies voluntariness as the key variable distinguishing a net-positive campus from a net-negative one: amenities are beneficial when optional, harmful when they become operational expectations. Apply this test to one real campus you can research (Apple Park, Meta Menlo Park, Google's Bay Area campus, or another of your choosing). Identify two specific amenities and assess, for each, whether the available evidence suggests workers can decline to use them without consequence. State what additional information you would need to make a confident assessment. Difficulty: moderate.
+
+**Exercise 10.4.** *Tests the gig-classification framework.* The Microsoft 2000 *Vizcaino* settlement established the structural precedent for gig-classification disputes. Identify one current gig-classification dispute — Uber, DoorDash, Amazon Flex, or a platform in another country — and apply the three-factor test the courts typically use (degree of firm control over daily activity, exclusivity of the worker-firm relationship, centrality of the work to the firm's core operation). State which classification the three-factor test supports and where the argument is most contested. Difficulty: moderate.
+
+**Exercise 10.5.** *Tests the AI-disclosure question.* A mid-sized U.S. insurance company is deploying an AI-driven first-contact system for claims inquiries. The system can handle approximately 70 percent of inquiries without escalation; the remaining 30 percent transfer to human agents. The company's A/B test found that disclosed AI produces 18-point-lower customer satisfaction scores than undisclosed AI. Construct the argument for disclosure and the argument against it, using the chapter's framework. Then state which argument you find more persuasive and why — acknowledging what you are trading off. Difficulty: moderate.
+
+### Synthesis
+
+**Exercise 10.6.** *Tests the institutional-lag framework.* The closing section argues that all three transitions — flexibility, displacement, AI — share the same underlying structure: technology advancing faster than the institutional frameworks governing it. Apply this framework to one additional domain not covered in the chapter (autonomous vehicles, algorithmic hiring, AI-generated creative content, remote healthcare delivery). Identify the specific institutional lag: which framework is most behind, by how much, and what specific event or regulatory action would constitute meaningful catch-up? Difficulty: harder.
+
+**Exercise 10.7.** *Tests the distribution ethics argument.* The chapter's core ethical claim is that the transitions are not random — they concentrate costs on specific workers in specific occupations in specific regions — and that the distribution of those costs is the result of identifiable choices by named parties. Take the specific case of autonomous-vehicle deployment displacing commercial truck drivers. Identify the named parties who will make or have made decisions affecting that distribution (technology firms, freight companies, state and federal regulators, industry associations). For each, identify one specific decision that would shift more of the transition cost onto the firm and away from displaced workers, and one decision that would do the reverse. Difficulty: harder.
+
+### Challenge
+
+**Exercise 10.8.** *Open-ended.* Design a corporate policy for a mid-sized U.S. firm (500–2,000 employees, knowledge-work-heavy, currently considering a major AI deployment affecting approximately 150 positions) that addresses all three of the chapter's transitions simultaneously: the hybrid-work flexibility question, the displacement and retraining question, and the AI-disclosure and liability question. The policy should specify: the hybrid-work structure and the visibility-bias mitigation it builds in; the approach to affected positions (attrition, buyouts, redeployment, retraining — with specific terms); and the AI-disclosure and documentation standards for the deployment. Identify the strongest objection to your policy from each of three stakeholders — affected employees, the board, and the firm's customers — and state how the policy addresses each objection. The submission should be 1,500–2,000 words. All empirical claims must cite named sources. Difficulty: hardest.
+
+---
+
+## LLM Exercises
+
+**Exercise 10-LLM-1.** Ask an AI assistant to evaluate the ethical trade-offs of a specific current flexibility arrangement — a major company's return-to-office mandate, a platform-labor classification decision, a four-day-workweek pilot. Have it identify the specific stakeholders affected and the cost shift that the arrangement performs (who bears the cost of flexibility; who captures the benefit). Evaluate whether the AI engages with the cost-shift specifically or treats the arrangement as a neutral choice between equally weighted preferences.
+
+**Exercise 10-LLM-2.** Give an AI assistant a specific industry currently experiencing automation-driven displacement — radiology, legal document review, customer service, transportation — and ask it to estimate the magnitude and timing of the displacement. Have it identify the specific worker populations affected and propose a transition framework that would meaningfully address displacement without simply slowing the technology adoption. Evaluate whether the AI's framework is operationally specific (which retraining, which income support, which timeline) or whether it defaults to vague calls for "supporting affected workers."
+
+**Exercise 10-LLM-3.** Ask an AI assistant to identify a specific contemporary AI-deployment decision in a high-stakes domain (hiring, lending, medical triage, criminal-justice risk assessment, military targeting) and to apply the chapter's accountability framework. Have it identify who is accountable for which kinds of failure, what evidence would be needed to assign responsibility, and where the current accountability infrastructure has gaps. Evaluate whether the AI engages with the specific accountability question (who is liable when the system fails, and on what grounds) or defaults to general calls for "human oversight" without specifying what oversight produces what outcome.
+---
+
+##  AI Wayback Machine
+The ideas in this chapter didn't appear from nowhere. **Shoshana Zuboff** wrote *In the Age of the Smart Machine* in 1988 — the first serious account of how digital surveillance would transform the workplace, decades before "surveillance capitalism" became a household phrase. Her later work made the case explicit.
+
+**Run this:**
+
+```
+Who is Shoshana Zuboff, and how does her work on workplace technology and surveillance capitalism connect to the changing work environments we covered in this chapter? Keep it to three paragraphs. End with the single most surprising thing about her career or ideas.
+```
+
+→ Search **"Shoshana Zuboff"** on Wikipedia.
+
+**Now make the prompt better.** Try one of these:
+
+- Ask it to apply Zuboff's framework to one specific 2020s workplace technology (employee monitoring, productivity AI, biometric scanning) — what does it predict?
+- Ask it to discuss the criticisms of Zuboff's "surveillance capitalism" thesis from technology scholars.
+
+What changes? What gets better? What gets worse?

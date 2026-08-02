@@ -1,0 +1,177 @@
+# Chapter 17 — The Somatic Nervous System
+*How the body routes sensation in, routes commands out, and why the roads cross at different levels.*
+
+Your hand is already pulling away from the hot cup before you know you should move it.
+
+The signal — heat above 43°C, detected by free nerve endings in your fingertip — travels into the spinal cord and synapses directly onto a motor neuron. That motor neuron fires. Its axon runs to your biceps. The muscle contracts. The whole sequence takes less than a second, and consciousness arrives late. You feel the heat and the surprise only after your hand is in motion. The reflex has already executed.
+
+But that spinal reflex is only the bottom layer of what the somatic nervous system does. Even as your hand withdraws, other signals are traveling upward: touch receptors reporting pressure and texture, proprioceptors in your muscles reporting arm position, pain receptors reporting damage. These signals climb through the brainstem to the thalamus, which relays them to the somatosensory cortex. You perceive what happened. Your prefrontal cortex registers surprise, searches for an explanation, decides what to do next. Your motor cortex sends new commands down: relax the biceps, steady the balance, perhaps reach for something cold. The commands travel down the corticospinal tract to the spinal cord, where they synapse on motor neurons, which fire muscles.
+
+This is the somatic nervous system: sensory information coming in, motor commands going out, and a set of pathways that route each kind of signal through a different road. Understanding those roads — why there are two ascending sensory pathways, why motor commands pass through two tiers of neurons before reaching muscle — is the key to understanding why some injuries leave you numb but still moving, while others leave you moving but unable to feel.
+
+---
+
+## Sensory Receptors: Transducers at the Boundary
+
+A sensory receptor is a transducer. It converts a physical or chemical stimulus — heat, pressure, tissue damage, a dissolved molecule — into a change in membrane potential, which generates an action potential that travels toward the brain. The brain then interprets the location and character of that signal as sensation. But the receptor itself is not doing interpretation. It is doing translation.
+
+The simplest receptors are *free nerve endings*: the bare terminals of sensory axons, unenclosed by any surrounding structure, distributed widely through skin and most tissues. They are evolutionarily old and cheap to build. Free nerve endings detect temperature and pain — the two stimuli most directly linked to survival. Heat above 43°C activates a membrane protein called TRPV2, which opens ion channels in direct response to temperature. Cold below about 25°C activates a different protein, TRPM8. The receptor is not interpreting hot or cold; it is a molecule that changes its electrical behavior when its physical environment changes. Capsaicin — the molecule in hot peppers — binds to the same channels that respond to high heat and activates them without any temperature change at all. This is why your mouth burns after eating a hot pepper: you are not raising the temperature of your mouth; you are triggering the heat detector by chemical imitation.
+
+Pain receptors — nociceptors — are also free nerve endings, but tuned differently. They fire when chemicals released by damaged cells arrive: potassium leaking from ruptured cell membranes, ATP spilling into the extracellular space, prostaglandins and bradykinin produced by the inflammatory response. The sensation of pain is not the damage itself; it is the nociceptor's response to evidence of damage. This is why pain often outlasts the injury — the wound stops bleeding, but the damaged cells continue leaking inflammatory chemicals for hours. And it is why some anti-inflammatory drugs reduce pain: they block prostaglandin synthesis, removing one of the chemical triggers that keeps the nociceptors firing.
+
+<!-- → [DIAGRAM: free nerve ending in skin cross-section — show axon terminal branching among keratinocytes in the epidermis and dermis; small inset showing TRPV2 channel in membrane with heat arrow activating it, and a separate inset showing capsaicin binding the same channel; caption: "the receptor doesn't distinguish between real heat and chemical imitation of heat — it responds to the channel opening, not to the underlying cause"] -->
+
+The encapsulated receptors are more sophisticated. A Meissner corpuscle — found just below the epidermis in fingertips, lips, and other highly sensitive areas — is a nerve ending wrapped in layers of connective tissue. The capsule filters the stimulus: the Meissner corpuscle responds to light touch and motion but not to sustained, unchanging pressure. A Pacinian corpuscle is even more elaborately encapsulated, with dozens of concentric layers of connective tissue separated by fluid. When you press on it, the outer layers compress, but fluid redistributes and the inner layers are shielded from sustained pressure. The Pacinian corpuscle responds only to the onset and release of pressure, and to vibration — it fires at the beginning when you grip the handle, then falls silent, then fires again when you release. It is detecting change, not steady state. The capsule is doing work; it is a mechanical filter built into the receptor itself.
+
+<!-- → [DIAGRAM: comparison of Meissner vs. Pacinian corpuscle cross-sections — Meissner shown just below epidermis with lamellated connective tissue capsule; Pacinian shown deeper in dermis with many more concentric layers; indicate depth from skin surface and the stimulus each is tuned to; caption: "both are mechanoreceptors, but the capsule architecture makes one a texture detector and the other a vibration and onset detector — structure is function"] -->
+
+Proprioceptors — the position sensors — deserve special attention because they are so central to coordinated movement. *Muscle spindles* are sensory neurons wrapped helically around specialized muscle fibers called intrafusal fibers. When the muscle is passively stretched, the spindle stretches with it and fires. When the muscle contracts and shortens, the spindle goes slack and falls silent. The brain reads the pattern of spindle firing and constructs, continuously, a map of where every limb is and whether it is moving. *Golgi tendon organs* are sensory endings woven into tendons, positioned to detect tension: how hard the muscle is pulling. Together, muscle spindles and Golgi tendon organs give the nervous system moment-to-moment knowledge of the mechanical state of every muscle — not just position but load.
+
+The functional organization across all these receptor types follows a single principle: specificity. Each receptor type is exquisitely sensitive to its own stimulus and relatively insensitive to others. A photoreceptor in the retina can fire in response to a handful of photons but will not respond to touch or sound. A thermoreceptor detects a temperature change of less than 1°C but ignores pressure. This specificity is what allows the brain to know what kind of stimulus is present, not just that something happened. The cost of specificity is redundancy — you need multiple receptor types to cover the full range of possible stimuli, and the skin of your fingertip has at least four different mechanoreceptor types because touch can be light, vibratory, sustained, or movement of hair, and each requires a different kind of detector.
+
+<!-- → [TABLE: sensory receptor summary — columns: receptor name, structural type (free/encapsulated/specialized), stimulus detected, location in body, functional role; rows: free nerve endings (thermoreceptor), free nerve endings (nociceptor), Meissner corpuscle, Pacinian corpuscle, muscle spindle, Golgi tendon organ — a reference the student will use throughout the chapter and in clinical contexts] -->
+
+---
+
+## Two Roads to the Brain
+
+The somatic nervous system does not bring all sensory information to the brain on a single pathway. It built two parallel ascending highways, each carrying different information, each crossing the midline at a different level. This distinction matters clinically because it means a single spinal cord injury can eliminate one kind of sensation while leaving another completely intact.
+
+**Fine touch and proprioception travel the slow road.** A Meissner corpuscle in your fingertip fires. The sensory neuron — whose cell body sits in the dorsal root ganglion just outside the spinal cord — carries the signal through the dorsal root and into the spinal cord. Here, instead of synapsing in the gray matter, the axon enters the white matter of the *dorsal column* and travels upward toward the brain. It does not cross the midline. It does not synapse until it reaches the medulla, at the bottom of the brainstem. There, axons carrying signals from the legs synapse in the nucleus gracilis; axons from the arms synapse in the nucleus cuneatus. This first synapse is nearly three feet from where the signal entered the spinal cord.
+
+The second neuron — arising from the nucleus gracilis or cuneatus — now crosses the midline in the medulla and travels upward as the *medial lemniscus*, a tightly organized bundle of axons that maintains somatotopic order (legs in one part of the bundle, arms in another). It reaches the thalamus, synapses on a third neuron, which projects to the primary somatosensory cortex in the parietal lobe. The cortex too is somatotopically organized — there is a map of the body surface carved into the postcentral gyrus, with fingers and lips taking up disproportionately large territories because they have the densest receptor populations and require the most precise discrimination.
+
+This pathway — dorsal column to medial lemniscus to cortex — is the pathway for fine touch, vibration, and proprioception. The information travels a long way before it crosses the midline. That has a consequence: if you damage the dorsal column in the spinal cord, you lose fine touch and proprioception on the *same side* as the damage, because the axons in the dorsal column have not yet crossed.
+
+**Pain and temperature take the fast road.** A nociceptor fires. The sensory neuron enters the spinal cord through the dorsal root — but instead of climbing the dorsal column, it synapses immediately in the dorsal horn gray matter. The second neuron crosses the midline *right there*, within the spinal cord, at the same level where the signal entered. It then travels upward in the *spinothalamic tract*, along the ventral and lateral white matter, reaches the thalamus, and synapses on a third neuron that projects to the somatosensory cortex.
+
+The spinothalamic tract crosses in the spinal cord, not the medulla. That reverses the clinical picture: if you damage the spinothalamic tract in the spinal cord, you lose pain and temperature on the *opposite side* from the damage, because those fibers have already crossed at the level they entered.
+
+<!-- → [DIAGRAM: spinal cord cross-section at mid-thoracic level showing both pathways — on the left half of the cord, show a dorsal column axon ascending uncrossed with label "fine touch/proprioception — crosses in medulla"; on the right half, show a spinothalamic axon crossing immediately in the gray matter with label "pain/temperature — crosses at entry level"; use color coding to distinguish the two pathways; caption: "the level of decussation is the anatomical fact that makes Brown-Séquard syndrome diagnosable — one pathway has crossed, the other hasn't, and their different sides tell you which was damaged"] -->
+
+Why build two pathways? The answer is in what each carries and what each needs to do. Fine touch and proprioception require precision: you need to know exactly where on your hand is being touched, what texture the surface has, what angle your elbow is at. These are questions that demand careful spatial preservation of signal. The dorsal column achieves this by climbing all the way to the medulla before synapsing — fewer synapses means less opportunity for spatial information to be degraded. Pain and temperature, by contrast, are warning signals. They need to reach consciousness fast and grab attention. The spinothalamic tract crosses and climbs quickly. It also has more direct connections to the reticular activating system and the limbic system — the brain structures that mediate arousal and emotional response. Pain hijacks attention in a way that light touch does not, and the pathway reflects that priority.
+
+Vitamin B12 deficiency destroys the myelin in the dorsal columns specifically (a condition called subacute combined degeneration). These patients lose proprioception and fine touch but retain pain and temperature. They cannot tell where their legs are without looking — a condition called sensory ataxia — and they develop a characteristic high-stepping gait to compensate. But they can still feel a pin. The double dissociation is the evidence: two pathways, two functions, two vulnerabilities.
+
+A partial spinal cord lesion — hemisection of the cord, sometimes called Brown-Séquard syndrome — produces the most revealing pattern. The cord is cut on one side. Below the lesion on that side, the dorsal column is interrupted: fine touch and proprioception are lost ipsilaterally (same side). But the spinothalamic fibers from that side have already crossed before ascending, so they are unaffected — pain and temperature are preserved ipsilaterally. Meanwhile, spinothalamic fibers from the opposite side, which crossed at their entry level and are now ascending on the damaged side of the cord, are cut: pain and temperature are lost contralaterally (opposite side) below the lesion. Fine touch and proprioception from the opposite side travel in the opposite dorsal column, which is intact — those are preserved.
+
+The result: below the lesion, same side loses fine touch and proprioception; opposite side loses pain and temperature. The anatomy of the two pathways, written in the pattern of loss.
+
+<!-- → [DIAGRAM: Brown-Séquard syndrome schematic — show a cord hemisected on the right side; use color-coded arrows to trace: (1) right dorsal column fibers cut → ipsilateral loss of fine touch/proprioception below; (2) right spinothalamic ascending fibers (originally from left, already crossed) cut → contralateral loss of pain/temperature below; (3) left dorsal column intact → left fine touch preserved; (4) left spinothalamic (already crossed to right, but cut) → left pain/temperature lost; caption: "Brown-Séquard is the anatomy exam you take without studying — if you know where each pathway crosses, the pattern of loss follows inevitably"] -->
+
+---
+
+## Motor Commands: Two Tiers from Cortex to Muscle
+
+The sensory system reports the state of the world. The motor system acts on it. Motor commands originate in the cortex and travel down to the spinal cord through the *corticospinal tract*, but the path has two stages — and the distinction between those stages is as clinically important as the distinction between the two sensory pathways.
+
+**Upper motor neurons** have their cell bodies in the primary motor cortex — the precentral gyrus of the frontal lobe — and in adjacent motor areas. These are large neurons, among the largest in the nervous system. Their axons travel down through the internal capsule, through the brainstem, and reach the medulla, where most of them cross the midline at the pyramidal decussation. They continue down the spinal cord as the corticospinal tract. At the appropriate spinal cord level, they synapse onto lower motor neurons. Upper motor neurons never directly touch muscle. They are command neurons, transmitting intent from cortex to spinal cord.
+
+**Lower motor neurons** have their cell bodies in the ventral horn of the spinal cord. Their axons leave through the ventral root, travel through peripheral nerves, and synapse on muscle fibers at the neuromuscular junction. Acetylcholine is released, the muscle fiber membrane depolarizes, and the muscle contracts. Lower motor neurons are the final common pathway for all movement — every command, from the cortex, from the cerebellum, from spinal reflexes, converges on them. If the lower motor neuron is gone, the muscle cannot be moved by any means. There is no other way to reach it.
+
+Lower motor neurons also maintain the health of muscle tissue. They continuously release neurotrophic factors — proteins that keep muscle fibers alive and functioning. If a lower motor neuron is severed, the muscle fiber it supplies does not just lose the ability to contract; it begins to atrophy. Over weeks to months, denervated muscle wastes away. This is not disuse atrophy from being inactive; it is the loss of chemical signals the fiber needs to survive.
+
+<!-- → [DIAGRAM: full motor pathway from cortex to muscle — show: (1) upper motor neuron cell body in precentral gyrus; (2) axon descending through internal capsule and brainstem; (3) pyramidal decussation in medulla (label "most fibers cross here"); (4) corticospinal tract in lateral white matter of spinal cord; (5) synapse onto lower motor neuron in ventral horn; (6) lower motor neuron axon exiting via ventral root and peripheral nerve; (7) neuromuscular junction on muscle fiber; caption: "the upper motor neuron commands; the lower motor neuron executes — and only the lower motor neuron can make the muscle contract"] -->
+
+The contrast between upper and lower motor neuron lesions is one of the most useful patterns in clinical neurology. Damage to the upper motor neurons — from a stroke affecting the motor cortex, or from a lesion in the corticospinal tract — produces a characteristic picture. The paralysis is contralateral (because the corticospinal tract has decussated). The affected muscles have increased tone — spasticity — and the deep tendon reflexes are exaggerated. The muscles do not waste away. The reason for the spasticity and hyperreflexia is that upper motor neurons provide continuous inhibitory control over the lower motor neurons. When that inhibition is removed, the lower motor neurons become hyperexcitable. Remove the ceiling and the floor rises.
+
+Damage to the lower motor neurons — from poliomyelitis destroying the ventral horn cells, from trauma cutting a peripheral nerve — produces the opposite picture. The paralysis is ipsilateral (the lower motor neuron controls muscles on the same side). The affected muscles are flaccid, with low or absent tone. The reflexes are diminished or absent, because the motor neuron itself is part of the reflex arc. And the muscles visibly waste away, because the trophic support is gone.
+
+Spasticity or flaccidity, hyperreflexia or hyporeflexia, intact muscle bulk or atrophy: these contrasting features allow a clinician to locate the level of damage in the nervous system from the bedside. A patient who comes in after a stroke with right-sided weakness, stiff limbs, and brisk reflexes has an upper motor neuron lesion — probably in the left motor cortex or left corticospinal tract. A patient with progressive weakness, wasting of the hand muscles, and absent reflexes has a lower motor neuron lesion — probably in the spinal cord ventral horn or in peripheral nerves. The same muscle, immobilized, but for entirely different reasons, with entirely different implications.
+
+<!-- → [TABLE: upper vs. lower motor neuron lesion comparison — columns: feature, upper motor neuron lesion, lower motor neuron lesion; rows: side of weakness (contralateral vs. ipsilateral), muscle tone (spasticity vs. flaccidity), reflexes (hyperreflexia vs. hyporeflexia/areflexia), muscle bulk (preserved vs. atrophy), example disease (stroke/MS vs. polio/peripheral nerve injury) — the table that makes the bedside exam interpretable] -->
+
+The corticospinal system is the most recently evolved motor pathway and the most capable. It allows independent, precise movement of individual fingers — something impossible with the older motor systems. But its precision comes with fragility: the entire pathway runs in a single tract, and damage anywhere along it produces paralysis. The older motor systems — vestibulospinal and reticulospinal tracts — are more diffuse, bilaterally distributed, and control gross movements: posture, balance, coordinated limb movement. They are less capable of fine manipulation but more resistant to injury. A patient with complete corticospinal tract damage can still make some postural adjustments and gross movements because the older systems remain. The newer system was added on top of the old one, not as a replacement.
+
+---
+
+## The Reflex Arc and the Layered Response
+
+The spinal reflex is the simplest complete circuit in the somatic nervous system: sensory receptor fires, signal enters the spinal cord, synapses on a motor neuron, motor neuron fires muscle. No cortex involved. The circuit closes within the spinal cord. In a monosynaptic reflex — the knee-jerk reflex is the paradigm — there is exactly one synapse between the sensory neuron and the motor neuron. Strike the patellar tendon, the quadriceps muscle stretches, the muscle spindle fires, the sensory axon enters the spinal cord and synapses directly on the quadriceps motor neuron, the motor neuron fires, the leg kicks. The whole thing completes before any signal has reached the brain.
+
+The reflex arc exists because some responses cannot wait for cortical deliberation. If you step on a sharp object, the withdrawal reflex fires before conscious pain is registered. The spinal cord is doing emergency triage. Importantly, the same sensory signal that activates the withdrawal reflex also travels upward to the brain — the two routes run simultaneously. The reflex acts; the brain learns what happened.
+
+<!-- → [DIAGRAM: monosynaptic reflex arc for the knee-jerk reflex — show: patellar tendon struck → quadriceps stretches → muscle spindle fires → dorsal root ganglion → single synapse onto motor neuron in ventral horn → motor neuron fires → quadriceps contracts; add a branch showing the same sensory signal continuing upward to the brain (dotted line); caption: "the reflex closes in the spinal cord; the brain finds out afterward — this is not a design flaw, it is the point"] -->
+
+Reflexes can be modified by descending commands from the cortex and brainstem. When a doctor strikes your knee and your leg kicks, the magnitude of the kick depends on the state of your descending motor control. An upper motor neuron lesion removes inhibitory control and produces an exaggerated reflex. A lower motor neuron lesion damages the reflex arc directly and reduces or eliminates the reflex. Testing reflexes at the bedside is testing the integrity of both the spinal circuit and the descending control.
+
+---
+
+## The System as a Whole
+
+The somatic nervous system is called a system because sensation and action are not separate problems with separate solutions. They are coupled. Sensory information shapes motor commands in real time. Motor commands change what the sensory system detects next.
+
+When you reach for a cup, your motor cortex sends a command. Your muscle spindles immediately report back whether the arm is moving as commanded. Your Golgi tendon organs report how hard the muscles are working. Your tactile receptors in your fingers report when contact is made and how much pressure is needed. The cerebellum monitors all of this in parallel, comparing the intended movement against the sensory feedback, sending corrections if the arm is drifting off course. By the time you grasp the cup, hundreds of sensory-motor loops have completed.
+
+The architecture of the somatic nervous system — multiple receptor types, two ascending pathways with different properties, a two-tier motor system, reflexes that bypass cortical latency — is the architecture of a system that has been solving the problem of sensation and action for hundreds of millions of years. Every redundancy is there because failures happen and the cost of failure is high. Every specialization is there because different stimuli require different response properties. The dorsal column is slow and precise because fine touch needs to be located accurately. The spinothalamic tract is fast and emotionally connected because pain needs to command attention. The upper motor neuron is capable and fragile. The lower motor neuron is the irreplaceable final link.
+
+The patterns of deficit from specific lesions — Brown-Séquard syndrome, upper vs. lower motor neuron paralysis, Vitamin B12-induced dorsal column degeneration — are not arbitrary clinical trivia. They are the anatomy of the system, made visible by what fails when a piece is removed. To understand what breaks is to understand what each piece was doing.
+
+---
+
+## Exercises
+
+**Warm-up**
+
+1. A free nerve ending and a Pacinian corpuscle are both mechanoreceptors — they both detect mechanical stimuli. Explain in one sentence why the Pacinian corpuscle responds to vibration and onset of pressure but not sustained pressure, using what you know about the role of its capsule.
+
+2. You cut your finger. The pain persists for two hours after the bleeding stops. Explain the mechanism: why does pain outlast the tissue damage, and what class of molecule is keeping the nociceptors firing?
+
+3. A sensory neuron carrying proprioceptive information from the left ankle enters the spinal cord at L4 (lumbar level). Where does it synapse for the first time, and on which side of the brainstem does that synapse occur?
+
+**Application**
+
+4. A patient with multiple sclerosis has a lesion in the dorsal column of the right side of the spinal cord at T6. Predict the pattern of sensory loss: which modalities are affected, on which side, and below which level. Explain which modalities are *preserved* and why.
+
+5. A neurologist tests a patient and finds brisk knee-jerk reflexes on the right side and absent knee-jerk reflexes on the left. The patient also has weakness on both sides. Propose a hypothesis for what is damaged on each side, distinguishing between upper and lower motor neuron involvement. What additional findings would confirm your hypothesis?
+
+6. Capsaicin cream is sometimes used as a topical pain treatment — applied repeatedly to an area, it eventually reduces pain sensation. Using what you know about nociceptor activation and receptor desensitization, construct a hypothesis for the mechanism: why might repeated activation of TRPV1/TRPV2 channels by capsaicin eventually *reduce* pain rather than maintain or increase it?
+
+**Synthesis**
+
+7. A patient sustains a spinal cord injury at C5 on the right side (Brown-Séquard syndrome). Map out the complete pattern of sensory loss and preservation below the level of injury, for both sides of the body, for both fine touch/proprioception and pain/temperature. Explain each element of the pattern by tracing where each pathway crosses.
+
+8. ALS (amyotrophic lateral sclerosis) progressively destroys upper motor neurons and lower motor neurons simultaneously. Predict the clinical picture: how would the signs of upper motor neuron damage and lower motor neuron damage coexist in the same patient, and which sign might dominate early versus late in the disease? Why is ALS ultimately fatal, given that both motor neuron types are affected?
+
+9. You are designing a diagnostic test to distinguish between a lesion in the dorsal column and a lesion in the primary somatosensory cortex, both of which could produce loss of fine touch on the right hand. Describe two tests you would perform and explain what result each would give for each lesion location — making use of the pathway anatomy to justify your predictions.
+
+**Challenge**
+
+10. Phantom limb pain — pain perceived in an amputated limb — occurs in the absence of any nociceptor input from the missing limb. Using what you know about the somatosensory cortex, somatotopic organization, and the relationship between peripheral input and cortical representation, propose a mechanism that could generate pain perception without peripheral nociceptor firing. What prediction does your mechanism make about what you would find if you imaged the brain of a phantom limb pain patient?
+
+---
+
+## LLM Exercises
+
+The following exercises are designed to be worked through with a language model. In each case, do not just ask for the answer — ask the model to explain its reasoning, then probe that reasoning.
+
+**Exercise 1 — Why two pathways for somatosensation.** Ask a language model to explain why touch and proprioception travel up the dorsal column-medial lemniscal pathway, while pain and temperature travel up the spinothalamic pathway. Specifically: why do these two pathways cross the midline at different levels (medulla for the dorsal column, spinal cord for the spinothalamic)? Then ask: how does this anatomical difference produce the clinical pattern in Brown-Séquard syndrome (hemisection of the spinal cord), where the patient loses position sense on one side and pain sensation on the other? Force the model to reason from anatomy to clinical presentation, not just describe each pathway separately.
+
+**Exercise 2 — Two-point discrimination and homunculus mapping.** Ask a language model to explain why the fingertips and lips can distinguish two points only 2 mm apart, while the back of the body requires 40-50 mm of separation. Walk through the receptor density and cortical representation: the homunculus in the somatosensory cortex disproportionately devotes area to high-resolution body parts. Then ask: why does this mismatch between body area and cortical area exist? The answer reveals that the brain prioritizes high-resolution sensing where it matters for behavior — manipulation, social communication — over uniform body coverage.
+
+**Exercise 3 — Upper motor neuron vs. lower motor neuron lesions.** Ask a language model to compare the clinical signs of upper motor neuron lesion (e.g., stroke affecting motor cortex) with lower motor neuron lesion (e.g., poliomyelitis affecting anterior horn cells). Specifically: why does UMN lesion produce hyperreflexia and spasticity, while LMN lesion produces flaccid paralysis and atrophy? Trace the mechanism: UMN normally inhibits spinal reflex circuits; without that inhibition, reflexes become exaggerated. LMN provides the only motor signal to muscle; without it, the muscle has no input at all. Then ask: how would a neurologist distinguish the two from physical exam alone?
+
+**Exercise 4 — The reflex arc as decision-free response.** Ask a language model to explain why the patellar reflex (knee jerk) does not require the brain — only the spinal cord. Then push: what is the evolutionary logic for hardwiring some responses below the level of conscious processing? The answer is speed — the brain takes 100+ ms to process and respond, while a spinal reflex can fire in 30-50 ms. Then ask: when would this hardwired response be a problem (when conscious modulation would be better)? Examples include withdrawal reflexes when carrying hot objects you cannot drop, or postural reflexes that conflict with intended movement.
+
+**Exercise 5 — Pain modulation and the gate-control theory.** Ask a language model to explain the gate-control theory of pain (Melzack and Wall, 1965): non-painful sensory input can inhibit painful input at the spinal cord level, before it reaches consciousness. Why does rubbing a stubbed toe genuinely reduce the pain (not just distract from it)? Walk through the mechanism: large myelinated fibers carrying touch input activate inhibitory interneurons that suppress transmission of nociceptive signals. Then ask: what other approaches to pain management (TENS units, acupuncture potentially) exploit this gating mechanism, and why do they work for some patients but not others?
+
+---
+
+## AI Wayback Machine
+
+The ideas in this chapter didn't appear from nowhere. **Henry Head** was a British neurologist who, in 1903, had a colleague sever his own radial nerve and then mapped the slow regeneration of sensation over the next four years — producing the first detailed account of how the somatic nervous system rebuilds itself after injury.
+
+**Run this:**
+
+```
+Who was Henry Head, and how does his self-experimentation on nerve regeneration connect to the somatic nervous system we covered in this chapter? Keep it to three paragraphs. End with the single most surprising thing about his career or ideas.
+```
+
+→ Search **"Henry Head"** on Wikipedia. See what the model got right, got wrong, or left out.
+
+**Now make the prompt better.** Try one of these:
+
+- Ask it to walk through what Head felt week-by-week as his radial nerve regrew, and connect it to the sensory pathways you learned in this chapter.
+- Ask it to compare Head's protopathic/epicritic distinction with the modern classification of sensory fibers.
+
+What changes? What gets better? What gets worse?

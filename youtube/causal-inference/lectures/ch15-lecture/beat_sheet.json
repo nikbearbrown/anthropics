@@ -1,0 +1,334 @@
+{
+  "slug": "Causal-Inference-ch15-case-confounding-cmapss-turbofan",
+  "title": "Chapter 15 — Case: Don't Trust the Sensors",
+  "series": "Causal Inference",
+  "source": "chapters/15-case-confounding-cmapss-turbofan.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 15,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "ALARM OVERLOAD BEFORE THE TEXACO EXPLOSION",
+          false
+        ],
+        [
+          "OPERATORS IGNORED ALL ALERTS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> The 1994 Texaco Milford Haven explosion ran at 275 alarms in eleven minutes, and the UK Health and Safety Executive concluded the alarm load was a contributing factor.</div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "This case opens with a catastrophe. In 1994, the Texaco Milford Haven plant ran 275 alarms in the eleven minutes before an explosion that killed one operator, seriously injured others, and destroyed the facility. The subsequent UK Health and Safety Executive investigation identified alarm overload itself as a contributing factor. When operators face that volume of alerts, signal becomes noise. They learn to ignore the system entirely. The engineering failure is not that alarms exist—it is that they cannot tell the difference between routine operation at different regimes and genuine engine degradation. A turbofan engine at sea level has different temperature and pressure baselines than the same engine at 35,000 feet. A global detection threshold that fires on any deviation above the mean cannot distinguish cruise from compressor wear. This chapter asks a specific causal question: does a sensor alert indicate that the engine is actually degrading, or only that it is operating in a regime the training set under-represented?",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 58.39
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "THE STAKES",
+      "label": "02 / 12 · THE STAKES",
+      "dark": false,
+      "title": [
+        [
+          "CRUISE ALTITUDE RUNS ENGINES HOTTER AND FASTER",
+          false
+        ],
+        [
+          "THRESHOLDS CANNOT DISTINGUISH REGIMES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Global Threshold</b><span>Fire on any deviation above mean · cannot tell altitude from degradation</span></div><div class=\"cell-part hot\"><b>Regime-Conditional</b><span>Judge reading against expectation in this operating regime · signal emerges from noise</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Why does regime-awareness matter? A turbofan engine climbing at 35,000 feet runs hotter and at higher pressure than the same engine at sea level. The thermodynamics are deterministic: altitude, Mach number, and throttle resolver angle drive predictable changes to sensor readings through known physical relationships. A detector using only the global training mean cannot tell what is expected at this altitude from what is anomalous. It fires on \"hot for cruise\" as if the engine were degrading at rest. Operators, drowning in false positives, habituate to the alerts. The 1994 Texaco explosion happened in that environment: 275 alarms in eleven minutes, none of them actionable, most of them noise. Understanding regime-aware anomaly detection prevents that cascade. It turns a sensor reading from ambiguous to causal: this deviation is real relative to what thermodynamics predicts at this regime, and therefore it reflects genuine engine health change rather than routine operation.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 57.71
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "03 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "OPERATING SETTINGS CONFOUND SENSOR SIGNAL",
+          false
+        ],
+        [
+          "THEY DRIVE BOTH REGIME AND READING.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Settings</span><span class=\"arw\">→</span><span class=\"chip on\">Regime & Sensor Baselines</span><span class=\"arw\">→</span><span class=\"chip warn\">Ambiguous Signal</span></div><p class=\"lead\">The three operating settings (altitude, Mach, throttle resolver angle) determine both the regime classifier and the conditional expectation of every sensor through thermodynamics. Without conditioning, they create a classic back-door confounder from Chapter 3.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The causal problem is confounding. The flight crew sets three operating settings: altitude (op_setting_1), Mach number (op_setting_2), and throttle resolver angle (op_setting_3). These three variables determine the conditional expectation of every observed sensor through the engine's thermodynamic relationships. They are not hidden—they are recorded in every flight. But they are also the exact features used to classify operating regime. A KMeans clustering on the three op_settings directly partitions the data into six regimes. This creates a classic back-door confounder: the settings shape both the regime classification and the sensor baselines. Any reading above the global mean could be high because the engine is at altitude, where thermodynamics predict high readings, or because the compressor is genuinely wearing out. Without conditioning on settings, the association between the sensor and engine health is confounded. The back-door path Sensor ← Settings → (other readings) contaminates the estimate of the causal effect EngineHealth → Sensor.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 56.68
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "04 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "THREE LAYERS: SETTINGS, LATENT PHYSICS, OBSERVATIONS",
+          false
+        ],
+        [
+          "ENGINE HEALTH CONTAMINATES THE SIGNAL.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Root Layer</b><span>Operating settings determined by flight crew: altitude, Mach, throttle resolver angle</span></div><div class=\"wire\"><b>Latent Physics</b><span>Air density, tip speed, fuel flow, combustor temperature, HPC loading—mapped by thermodynamics</span></div><div class=\"wire\"><b>Observed Leaves</b><span>Five sensor channels (3, 4, 9, 11, 15) plus engine health (RUL) as separate causal parent</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The causal DAG Patel specifies has three nested layers. At the root are the three operating settings set by the flight crew: altitude, Mach number, throttle resolver angle. These are the exogenous instruments the pilot controls. The second layer holds latent physical variables that the settings determine through known thermodynamic equations: air density, compressor tip speed, fuel flow rate, combustor temperature, high-pressure compressor loading. These are unmeasured but their effects are deterministic given the settings. The third layer—the leaves—contains five observed sensor channels: sensors 3, 4, 9, 11, and 15. These are the measurements that feed the anomaly detection system. Engine health, indexed by remaining useful life (RUL), is a separate causal parent of the observed sensors, independent of the settings. The two parents of any observed sensor are therefore the settings (acting through latent physics) and engine health (acting as unobserved degradation). A scoring rule asking \"is this reading far from the global mean\" cannot tell which parent moved the sensor.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 58.77
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "05 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "ONE READING IS AMBIGUOUS",
+          false
+        ],
+        [
+          "REGIME OR DEGRADATION BOTH MOVE SENSORS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Operating Regime</b><span>Engine is at altitude · thermodynamics predict high readings · all sensors move predictably together</span></div><div class=\"cell-part hot\"><b>Engine Degradation</b><span>Compressor wearing out · genuinely hotter and higher pressure than design intent · the effect we want to identify</span></div></div><p class=\"lead\">Both can move a single reading high. Without identifying which parent moved it, the alert is unidentified and unreliable.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Here is the core identification problem. Sensor 11 (HPC outlet temperature) reads high. What caused it? Two possibilities are indistinguishable in the raw data. First: the engine is at cruise altitude where thermodynamics predict high readings. The air is thin, the compressor works harder to maintain pressure, combustor temperature rises by design. All sensors move together in a predictable pattern consistent with the operating regime. Second: the engine's compressor is degrading, running genuinely hotter than design intent independent of altitude. The remaining useful life has declined; the machine is wearing out. Both scenarios produce a high reading. Both are plausible given only the number itself and a global threshold. Without knowing which parent—settings or engine health—moved the sensor, the causal inference claim \"this engine is failing\" is unidentified. The structure demands that we partition the data by regime, learn the conditional expectation under settings, and judge each reading against regime-specific baselines rather than the global mean.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 56.38
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "06 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "BLOCK THE BACK-DOOR PATH WITH STRATIFICATION",
+          false
+        ],
+        [
+          "PARTITION BY OPERATING REGIME.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Stratify by Operating Regime</span><span class=\"arw\">→</span><span class=\"chip on\">Block Back-Door Through Settings</span><span class=\"arw\">→</span><span class=\"chip on\">Residual Driven by Health</span></div><p class=\"lead\">Partition readings by regime. Within each regime, compare against regime-conditional expectation. The back-door path is blocked; what remains is the causal signal of engine degradation.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Patel's identification strategy is back-door adjustment by stratification on operating regime. The argument is direct: the three operating settings determine the conditional expectation of every observed sensor through known thermodynamic relationships. They are not hidden—they are recorded in the flight data. If we partition the data by regime and judge each reading against the within-regime expected value, the back-door path through settings is blocked. What remains in the residual is the contribution of engine health plus measurement noise—the causal signal we wanted. The mechanics are clean: a KMeans classifier with k equals six, trained on the three op_setting columns, assigns each incoming reading to a cluster representing one discrete operating regime. Inside each cluster, a separate linear regression predicts each sensor from the operating settings. The anomaly score is then the residual z-score: observed minus predicted, divided by within-regime residual standard deviation. This is the causal z-score. It measures deviation from the regime-conditional expectation, not from the global mean.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 60.18
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "07 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "KMEANS CLUSTERING ASSIGNS SIX OPERATING CONDITIONS",
+          false
+        ],
+        [
+          "MATCHING THERMODYNAMIC DESIGN SPECIFICATIONS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big\">1133.9</div><div class=\"cap\">Inertia at k=5</div></div><div class=\"eq\">→</div><div class=\"stat\"><div class=\"big on\">0.2</div><div class=\"cap\">Inertia at k=6</div></div><div class=\"eq\">→</div><div class=\"stat\"><div class=\"big\">0.9971</div><div class=\"cap\">Silhouette Score</div></div></div><p class=\"lead\">The CMAPSS specification defines six discrete operating points. KMeans with k=6 confirms this cleanly; silhouette analysis on FD002 shows no ambiguity.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The choice of k=6 clusters is not arbitrary. The CMAPSS benchmark specification itself defines six discrete operating points that the simulator implements. Patel validates this choice with silhouette analysis on the FD002 sub-dataset. The silhouette score at k=6 is 0.9971, extremely clean. Within-cluster inertia collapses from 1133.9 at k=5 to 0.2 at k=6, a massive drop indicating that the sixth cluster captures genuine structure in the data. This is the elbow: adding a seventh cluster would carve at noise, not signal. The clustering is trained on the three operating-setting columns only, not on the sensor values. This is crucial: it means the regime classification is independent of the raw sensor readings, avoiding circularity. Each incoming flight reading is assigned to one of the six clusters based on its operating settings. Inside each cluster, a separate linear regression predicts each sensor from the op_settings. The within-cluster predictions capture the regime-conditional expected value.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 61.57
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "08 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "THE RESIDUAL Z-SCORE IS THE CAUSAL ANOMALY",
+          false
+        ],
+        [
+          "DEVIATION FROM REGIME-CONDITIONAL EXPECTATION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Observed Sensor</span><span class=\"arw\">−</span><span class=\"chip\">Regime-Specific Prediction</span><span class=\"arw\">÷</span><span class=\"chip on\">Within-Regime Std Dev</span><span class=\"arw\">=</span><span class=\"chip on\">Causal Z-Score</span></div><p class=\"lead\">Aggregate the top three of five sensor z-scores by mean, cap at five sigma. This is the causal anomaly: deviation from what thermodynamics predicts at this regime.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The anomaly score is defined precisely as the residual z-score from the regime-conditional expected value. For each of the five causal-branch sensors, compute the prediction under the regime-specific linear regression learned from that cluster. Take the observed value, subtract the prediction, divide by the within-cluster residual standard deviation. This gives a standardized deviation: a z-score. Interpret it as the number of within-regime standard deviations the reading deviates from what thermodynamics predicts. Aggregate across the five sensors by selecting the top three z-scores (the three that deviate most) and taking their mean. This creates an ensemble score that reduces noise and requires multiple sensors to concur. Cap the final result at five sigma, a hard ceiling, to prevent extreme outliers from dominating the system. This number is what the system calls the causal anomaly. It is not the deviation from the global mean—that was the noise source in the original problem. It is the deviation from the regime-conditional mean, the expectation under the operating settings the flight data recorded.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 60.57
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "09 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "ISENTROPIC RELATIONS COUPLE PRESSURE AND TEMPERATURE",
+          false
+        ],
+        [
+          "VIOLATIONS SIGNAL SENSOR FAULTS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>Isentropic Coupling</b><span>Sensor 11 (HPC temp) and Sensor 15 (HPC pressure) must move together by thermodynamic law</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>Violation Signals Fault</b><span>G-test rejects independence (χ² > 26.30) · apply veto 1.0 − 0.5 × min(G/26.30, 1.0)</span></div></div><p class=\"lead\">Physical constraints act as a sensitivity check. Violations suggest sensor malfunction rather than engine wear, and down-weight the alert accordingly.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "A second device, presented as a sensitivity check rather than primary identification, applies a structural veto rooted in physical law. The isentropic compression relation requires HPC outlet temperature (sensor_11) and HPC outlet pressure (sensor_15) to move together deterministically. If one is high, the other must be high. If one stays flat while the other spikes, one of them is likely broken. Patel implements a G-test for independence on a 5×5 contingency table built from the last 100 readings. The test checks whether these two sensors move independently—a null hypothesis they should strongly reject under normal conditions. The critical value is χ²(df=16, p=0.05) equals 26.30, not the 9.49 of a simpler 3×3 table. When the test rejects independence—when the two sensors are moving together as thermodynamics demands—the system proceeds with the normal causal z-score. When the test fails to reject—when the two sensors move independently, violating isentropic law—the system applies a graduated veto factor: one point zero minus zero point five times min(G/26.30, one). This down-weights the alert, treating it as more consistent with sensor fault than engine degradation.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 71.42
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "10 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "STRATIFICATION BLOCKS THE BACK-DOOR",
+          false
+        ],
+        [
+          "ENGINE HEALTH SIGNAL EMERGES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Confounding Blocked</b><span>Stratifying on regime eliminates the back-door path through operating settings</span></div><div class=\"wire\"><b>Signal Emerges</b><span>Within-regime residuals are driven by engine degradation plus measurement noise, not setting confounding</span></div><div class=\"wire\"><b>Constraint Check</b><span>Isentropic coupling veto filters false alerts from sensor malfunction versus genuine wear</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "These pieces fit together into a complete identification argument. Operating settings confound the raw sensor signal—they drive both the regime classification and the sensor baselines through thermodynamics. This is inescapable: altitude, Mach, and throttle determine the physical state of the engine. Stratifying on regime—partitioning the data by KMeans cluster—blocks the back-door path through settings. Within each cluster, the operating settings are nearly constant, so their variation cannot confound. The conditional expectation of each sensor is now regime-specific; learned by within-cluster regression. The residuals—observed minus regime-conditional predicted—are now driven by engine degradation plus measurement noise. Engine health no longer competes with regime as an explanation for high readings; regime has been conditioned away. The structural veto adds a second screen using isentropic law. If sensor 11 and sensor 15 decouple, it suggests measurement error rather than true physical change. Together, these create an alert that says: this deviation is real, not explained by regime, and respects the laws of thermodynamics. It is a causal claim grounded in identification.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 64.68
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "WHAT'S NORMAL IS REGIME-DEPENDENT NOT GLOBAL",
+          false
+        ],
+        [
+          "CONFOUNDING HIDES SIGNAL IN NOISE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">Anomaly detection is fundamentally a <b>causal claim</b>—and causal claims require conditioning on confounders.</div><p class=\"lead\">What looks normal depends entirely on regime. The same sensor reading means different things at different altitudes, Mach numbers, and throttle settings. You must stratify to identify the true signal of engine degradation.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Three connected claims thread through this chapter. First: anomaly detection is fundamentally a causal claim. When you alert that a sensor reading is anomalous, you are claiming causal linkage—this reading indicates this engine is failing. You are not describing the data; you are making an inference about the unobserved health state. Second: causal claims require identification of the effect. You must condition on confounders. Ignoring regime is like ignoring altitude when interpreting blood pressure—the confounder drowns the signal. Third: the practical lesson is hard and deep. What looks normal is regime-dependent, not globally universal. The same temperature reading is benign at cruise and alarming at idle. The same pressure is expected under load and wrong at rest. A sensor reading gains meaning only when judged against the conditional expectation within its operating context. The most dangerous error is trusting a sensor in isolation, as if it were a direct readout of engine health. Sensors are noisy observations of latent thermodynamic states that vary by design with regime. You must block the back-door confounding path to see the signal hiding in that noise.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 61.57
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": null,
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>CONFOUNDING</span><span>//</span><span>STRATIFICATION</span><span>//</span><span>REGIME-AWARE ANOMALY TRIAGE</span></div><p class=\"sig\">Causal Inference · Chapter 15 · Case: Don't Trust the Sensors</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 2.0
+        }
+      ]
+    }
+  ]
+}

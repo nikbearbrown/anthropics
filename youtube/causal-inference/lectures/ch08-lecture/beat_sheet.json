@@ -1,0 +1,343 @@
+{
+  "slug": "Causal-Inference-ch08-counterfactuals-and-mediation",
+  "title": "Chapter 8: Counterfactuals and Mediation",
+  "series": "Causal Inference",
+  "source": "chapters/08-counterfactuals-and-mediation.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 8,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "PASCAL'S COUNTERFACTUAL: HAD CLEOPATRA'S NOSE BEEN ",
+          false
+        ],
+        [
+          "SHORTER, HISTORY CHANGED.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Pascal's paradox:</b> \"Had Cleopatra's nose been shorter, the whole face of the world would have changed.\" — Yet we cannot rerun history to test it.</div>\n<p class=\"lead\">This is the central puzzle: counterfactuals are untestable, yet we reason about them constantly. How?</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Blaise Pascal wrote in 1669: \"Had Cleopatra's nose been shorter, the whole face of the world would have changed.\" He was claiming that a hypothetical alteration—a shorter nose—would have cascaded into historical consequences. Julius Caesar and Mark Antony both found Cleopatra attractive, and their judgments shaped Rome's political destiny. Had Cleopatra's appearance been different, their decisions might have differed, and the empire might have developed along entirely different lines.\n\nThe claim is untestable. We have one Cleopatra and one history. We cannot rerun the first century BCE with a differently proportioned queen to see what happens. The counterfactual world Pascal invokes is, by definition, unavailable for empirical inspection.\n\nYet this kind of reasoning is inescapable. Legal systems ask if an injury would have occurred but-for a defendant's negligence. Doctors ask what would happen if we chose a different treatment. Historians constantly ask what-if. Parents wonder if they should have said something different. Counterfactual reasoning is as natural as breathing. And it is also the hardest kind of causal reasoning to do rigorously. This chapter teaches how.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 61.44
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "STAKES",
+      "label": "02 / 12 · STAKES",
+      "dark": false,
+      "title": [
+        [
+          "COUNTERFACTUAL REASONING SHAPES ",
+          false
+        ],
+        [
+          "LAW, MEDICINE, AND POLICY.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\">\n<div class=\"wire\"><b>Law</b><span>Did the defendant's negligence cause the injury? What would have happened but-for the action?</span></div>\n<div class=\"wire\"><b>Medicine</b><span>Which treatment should Joe receive? What would his outcome be under different drug choices?</span></div>\n<div class=\"wire\"><b>Policy</b><span>Would GDP have grown higher under a different fiscal policy? How much did the intervention help?</span></div>\n<div class=\"wire\"><b>History</b><span>What if the battle had gone differently? What was conditional on that event?</span></div>\n</div>\n<p class=\"lead\">In all cases, we ask: what would have happened in a world that did not occur? This is the third rung of the causal ladder.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Counterfactual questions appear everywhere in practice. In law, the concept of \"but-for causation\" is foundational: was the injury caused by the defendant's action, or would it have occurred anyway? The answer hinges on a counterfactual. In medicine, the choice of treatment for an individual patient rests on counterfactual reasoning: if we give aspirin versus ibuprofen, what would each outcome look like? In policy, we ask whether a specific outcome—economic growth, crime reduction, poverty alleviation—would have been different under an alternative policy.\n\nWhat makes counterfactuals hard is that we observe only one branch of reality. We see what actually happened, never what would have happened. Yet we must make decisions. Legal judgments, medical choices, policy reforms, and personal regrets all turn on our ability to reason rigorously about counterfactuals. The third rung of the causal ladder—what would have happened—is where the most consequential questions live.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 48.47
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "03 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "THE COUNTERFACTUAL CONTRAST ",
+          false
+        ],
+        [
+          "WHAT IF X CHANGED.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\">\n<div class=\"wire\"><b>Factual</b><span>Joe took aspirin (X = aspirin) and his headache went away (Y = no headache). Observed.</span></div>\n<div class=\"wire\"><b>Counterfactual</b><span>Y_no aspirin is the value Y would have taken if Joe had not taken aspirin. Unobserved.</span></div>\n<div class=\"wire\"><b>The effect</b><span>The contrast Y_aspirin − Y_no aspirin tells us whether aspirin caused Joe's relief.</span></div>\n</div>\n<p class=\"lead\">This notation Y_x denotes \"the value of Y if X had been set to x.\" It is well-defined even though unobserved.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "A counterfactual is formally written as Y_x, pronounced \"Y under x.\" It denotes the value that Y would have taken if X had been set to x. Start with an example. Joe took aspirin and his headache went away. We observe X equals aspirin, Y equals no headache. Now ask the counterfactual: what would Joe's headache status be if he had not taken aspirin? Call this Y_no aspirin. It is unobserved—we cannot see into that branch of reality. Yet it is well-defined. Either Joe's headache would have persisted, in which case Y_no aspirin equals headache, or it would have cleared on its own, in which case Y_no aspirin equals no headache.\n\nThe causal effect of aspirin on Joe is the contrast between these two potential outcomes: Y_aspirin minus Y_no aspirin. If the contrast is zero, aspirin had no effect on Joe. If it is positive, aspirin cured his headache. This is the fundamental unit of causal reasoning at the third rung—the comparison of what happened to what would have happened.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 51.01
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "04 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "WE OBSERVE EITHER FACTUAL OR COUNTERFACTUAL, ",
+          false
+        ],
+        [
+          "NEVER BOTH.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\">\n<div class=\"cell-part\"><b>The Factual</b><span>What actually happened to Joe. We see this outcome.</span></div>\n<div class=\"cell-part hot\"><b>The Counterfactual</b><span>What would have happened had X been different. We never see this.</span></div>\n</div>\n<p class=\"lead\">This is the fundamental problem of causal inference: we cannot observe both slices of reality for the same person, at the same time. Yet we reason from one to estimate the other.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "This is Judea Pearl's fundamental problem of causal inference, and it cuts to the heart of why counterfactuals are hard. For any individual, we observe either the factual outcome—what actually happened—or a counterfactual outcome—what would have happened under a different condition. We never see both. We observe Joe's headache with aspirin, but not without it. We observe Jane's outcome under treatment, but not her outcome had she been a control. We observe one slice of reality, never the alternative.\n\nThis asymmetry seems like a fatal barrier. How can we make causal claims if we can never observe the counterfactual comparison? Yet we can. The key is that while we cannot observe both factual and counterfactual outcomes within a single individual, we can use the factual outcomes of many individuals to infer something about the counterfactual outcomes of specific individuals. This is the bridge that potential outcomes and causal models provide.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 47.74
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "05 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "EACH PERSON HAS ",
+          false
+        ],
+        [
+          "MULTIPLE POTENTIAL OUTCOMES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\">\n<div class=\"wire\"><b>Y(1)</b><span>The outcome if treated. Observed for treated individuals, unobserved for controls.</span></div>\n<div class=\"wire\"><b>Y(0)</b><span>The outcome if untreated. Observed for controls, unobserved for treated individuals.</span></div>\n<div class=\"wire\"><b>The framework</b><span>Associate each person with both outcomes. Then ask: what can we learn about each from observing the other?</span></div>\n</div>\n<p class=\"lead\">Jerzy Neyman introduced this framework in 1923 for agricultural experiments. Donald Rubin extended it in the 1970s to create the Neyman-Rubin or Rubin causal model.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The potential outcomes framework, formalized by Jerzy Neyman in 1923 and later extended by Donald Rubin from the 1970s onward, solves this by changing how we think about outcomes. Instead of a single outcome Y, associate each individual with a vector of potential outcomes, one for each possible treatment assignment. If there are two treatments—treated and control—then each person carries Y of one and Y of zero. Joe has both Y_aspirin and Y_no aspirin. He actually took aspirin, so we observe Y_aspirin. But Y_no aspirin exists as a quantity, even though unobserved. Same for Jane under control: we see her Y_zero but not her Y_one.\n\nThis reframing is powerful. It formalizes the counterfactual as a defined random variable. We can now ask: what can we learn about the unobserved potential outcomes from the observed ones? The answer depends on causal assumptions, which we encode in our causal model.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 52.25
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "06 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "JOE'S INDIVIDUAL EFFECT DIFFERS FROM ",
+          false
+        ],
+        [
+          "POPULATION AVERAGES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\">\n<div class=\"cell-part\"><b>Population Effect</b><span>Average causal effect across all people: E[Y(1)] − E[Y(0)]. This is what experiments measure.</span></div>\n<div class=\"cell-part hot\"><b>Individual Effect</b><span>The effect on Joe specifically: Y_aspirin − Y_no aspirin. This is what patients care about.</span></div>\n</div>\n<p class=\"lead\">Intervention questions (rung 2) can be answered by experiment. Counterfactual questions (rung 3) are about the specific individual and cannot be resolved by experiment alone.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "There is a critical distinction between the individual causal effect and the population average causal effect. The individual effect on Joe is the contrast Y_aspirin minus Y_no aspirin. This is what Joe cares about: would this specific treatment have helped me? But we cannot directly observe this contrast. We see only one branch.\n\nThe population average causal effect is the expected value across all people: E of Y one minus E of Y zero. This is what a randomized experiment measures. Run the experiment, give half the people aspirin and half placebo, compare the average outcomes. You now have an unbiased estimate of the population ATE.\n\nBut that average tells us nothing about Joe individually. Joe's individual effect could be zero, positive, or negative, even if the population average is large. Counterfactual reasoning asks about the individual effect—the most practically relevant question. And it cannot be answered by experiment alone, only through causal modeling.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 51.07
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "07 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "COUNTERFACTUALS OCCUPY THE ",
+          false
+        ],
+        [
+          "THIRD RUNG.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\">\n<div class=\"wire\"><b>Rung 1: Association</b><span>What is? Observational: P(Y | X). Does coffee correlate with alertness?</span></div>\n<div class=\"wire\"><b>Rung 2: Intervention</b><span>What if I do? Experimental: P(Y | do(X)). If I force coffee consumption, what happens?</span></div>\n<div class=\"wire\"><b>Rung 3: Counterfactual</b><span>What if I had done? Retrospective: Y_x. Given that someone drank coffee, would they have felt alert without it?</span></div>\n</div>\n<p class=\"lead\">Counterfactuals are the hardest kind of causal reasoning, but also the most natural. They live on the top rung.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Causal reasoning lives on three rungs of a ladder. The first rung is association: what is the relationship between X and Y in the data? This is purely observational. Does coffee correlate with alertness? Easy to answer: look at people who drink coffee and compare their alertness to those who do not. But association is not causation.\n\nThe second rung is intervention: if I do X, what happens to Y? This requires thinking about manipulation. If I force someone to drink coffee, what follows? This can be answered experimentally: randomize coffee consumption, measure alertness. The causal effect under intervention.\n\nThe third rung is counterfactual: what if I had done X in the past? Given that someone drank coffee, would they have been tired without it? This is retrospective and personal. Experiments cannot answer this because they are forward-looking and cannot replay the past for the same individual. Counterfactuals are the hardest rung, but also the most natural to human reasoning.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 48.47
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "08 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "CAUSAL MODELS LET US COMPUTE ",
+          false
+        ],
+        [
+          "THE UNOBSERVED.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Observed data</span><span class=\"arw\">→</span><span class=\"chip on\">Causal model</span><span class=\"arw\">→</span><span class=\"chip\">Counterfactual outcomes</span></div>\n<p class=\"lead\">Given a causal model and factual observations, we can estimate what would have happened under counterfactual conditions. The model acts as the bridge from the observable to the unobservable. This is the computational core of the chapter.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The remarkable fact is that counterfactuals, though unobservable, are tractable. Given a causal model and observed data, we can compute estimates of counterfactual outcomes. The causal model acts as a bridge from the observable world to the unobservable one. Here is the flow: we begin with observed data, specify a causal model that encodes our assumptions about how variables relate, apply that model to the data, and extract counterfactual predictions.\n\nThe model might be a set of structural equations, a causal graph, or a simulation. The details vary. But the principle is constant: the model encodes knowledge about causal mechanisms. Given Joe's observed treatment and outcome, and given our model, we can estimate what Joe's outcome would have been under the alternative treatment. The model fills in the missing counterfactual. This is why mastering causal modeling is essential to counterfactual reasoning.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 45.61
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "09 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "MEDIATION DECOMPOSES EFFECTS INTO ",
+          false
+        ],
+        [
+          "DIRECT AND INDIRECT.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid3\">\n<div class=\"cell-part\"><b>Total Effect</b><span>X → Y. Direct consequence of the treatment.</span></div>\n<div class=\"cell-part\"><b>Indirect Effect</b><span>X → M → Y. Effect flowing through a mediator M.</span></div>\n<div class=\"cell-part hot\"><b>Mediation Question</b><span>How much of X's effect on Y goes through M, versus directly?</span></div>\n</div>\n<p class=\"lead\">Mediation analysis is disguised counterfactual reasoning. It asks: had M not changed, what would Y be? This is a counterfactual question answered using the potential outcomes framework.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Mediation analysis is the problem of decomposing a causal effect into direct and indirect pathways. Suppose X affects Y, and we suspect it does so partly directly and partly by changing an intermediate variable M. For instance, education might increase earnings both directly—educated workers are more productive—and indirectly, by increasing self-confidence, which then increases earnings further. Mediation asks: how much of the total effect of education on earnings flows through self-confidence?\n\nThis is actually a counterfactual question in disguise. It asks: had self-confidence not changed, what would earnings be? This is Y under a counterfactual intervention. The potential outcomes framework addresses it by comparing Y_x,m with Y_x,m prime—the outcome under treatment X, but with the mediator fixed to different levels. Mediation analysis reveals the hidden mechanisms through which causes operate.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 49.86
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "10 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "COUNTERFACTUAL REASONING CONNECTS ",
+          false
+        ],
+        [
+          "THEORY TO PRACTICE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\">\n<div class=\"wire\"><b>The fundamental problem</b><span>We see only one version of reality for each person. Yet we reason about unobserved alternatives.</span></div>\n<div class=\"wire\"><b>The solution</b><span>Causal models and potential outcomes let us estimate counterfactuals from observed data under assumptions.</span></div>\n<div class=\"wire\"><b>The power</b><span>This enables mediation analysis, individual treatment effect estimation, and policy counterfactuals.</span></div>\n</div>\n<p class=\"lead\">Counterfactual methods ask questions no other framework can answer. They are hard to execute rigorously, but essential to human reasoning about causation.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The ideas in this chapter connect to form a coherent approach to the hardest causal questions. The fundamental problem tells us why counterfactuals are needed: we must make decisions based on unobserved alternatives. The potential outcomes framework formalizes these alternatives as well-defined random variables, one per treatment per person. The ladder of causation situates counterfactuals at the third rung, the highest and most difficult to reach.\n\nCausal models provide the machinery to compute counterfactuals from data. They encode causal assumptions—often written as structural equations or DAGs—and allow us to bridge from observed to unobserved. Mediation analysis applies this machinery to the decomposition problem: what fraction of an effect is direct versus indirect? These concepts are not separate; they form a unified framework for counterfactual reasoning. The payoff is the ability to answer questions that no other method can.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 50.47
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "WE REASON ABOUT UNOBSERVED WORLDS, ",
+          false
+        ],
+        [
+          "AND CAUSAL MODELS MAKE IT TRACTABLE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">The <b>counterfactual third rung</b> unlocks causal questions about specific individuals, even though we can never observe both the factual and counterfactual outcomes together.</div>\n<p class=\"lead\">Potential outcomes framework formalizes this: each person carries a vector of possible outcomes, one for each treatment. Causal models allow us to estimate those we never observe. Mediation analysis is the art of decomposing effects into pathways through hidden mechanisms.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The central insight of this chapter is that counterfactual reasoning, though it requires comparing two branches of reality we can never both observe, is essential and tractable. Counterfactuals live on the third rung of the causal ladder because they ask what would have happened under a hypothetical intervention in a specific individual. This is different from both association and average causal effects.\n\nThe potential outcomes framework gives us the vocabulary: Y_x as the outcome under the counterfactual treatment x. The fundamental problem of causal inference—observing only factual or counterfactual, never both—is the constraint we must work within. Yet given a causal model, we can estimate the unobserved outcomes from the observed data, under certain assumptions. Mediation analysis shows how to apply these tools to the practical question of decomposing effects. Counterfactual reasoning is hard, abstract, and essential.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 51.05
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "CHAPTER 8: COUNTERFACTUALS ",
+          false
+        ],
+        [
+          "AND MEDIATION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>COUNTERFACTUALS</span><span>//</span><span>POTENTIAL OUTCOMES</span><span>//</span><span>MEDIATION</span></div><p class=\"sig\">Causal Inference · Chapter 8 · Counterfactuals and Mediation</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "This chapter has introduced you to the formal framework for counterfactual reasoning, the hardest and most powerful kind of causal inference. You have learned what counterfactuals are, how they live at the third rung of the causal ladder, why they are essential to medicine, law, and policy, and how causal models make them tractable. Potential outcomes and mediation analysis are the practical tools you will use to reason about unobserved worlds. The reward is the ability to answer the questions that matter most: what would have happened if things had been different?",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 28.27
+        }
+      ]
+    }
+  ]
+}

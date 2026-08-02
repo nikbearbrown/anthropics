@@ -1,0 +1,523 @@
+{
+  "metadata": {
+    "slug": "healthcare-swapping-fast-model-made-whole",
+    "title": "Why swapping in the \"fast\" model made the whole pipeline slower",
+    "topic": "Extraction-quality feedback loops in multi-document pipelines",
+    "purpose": "What was never extracted cannot be rescued — paraphrase recall is a capability gap no downstream pass closes. Each rescue pass costs multiples of the original extraction, so the model that saves ~30% per document but misses 26% of facts becomes the slowest sweep end to end.",
+    "category": "claude-agent-skills",
+    "playlist": "Claude Agent Skills",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "audience": "claude-liam",
+    "palette": "claude",
+    "register": "Teardown",
+    "style_preset": "teardown",
+    "aspect_ratio": "16:9",
+    "clock": "narration (Kokoro am_onyx) — master clock; conform each beat to measured audio",
+    "scaffold": true,
+    "scaffold_source": "anthropics/youtube/video-ideas.md — ai-explainer Sweep 2026-07-24",
+    "builder": "ai-explainer",
+    "source": "`anthropics/healthcare/plugins/healthcare/skills/contracts/README.md`",
+    "origin": "promoted",
+    "score": "9/10",
+    "length_band": "2–3 min",
+    "still_lanes": "raster, c2v",
+    "prerequisites": "multi-stage LLM pipelines, recall vs. precision, cost-quality tradeoffs",
+    "exclusions": "amendment-chain architecture, OCR pipeline details, contract law",
+    "visual_object": "A 4-bar chart (haiku / sonnet / fable / opus), each bar three stacked segments — primary extraction, rescue, idle — the rescue segment swelling until haiku's total overtops opus's.",
+    "manim_move": "accumulate",
+    "hook": "You swap opus for haiku on a 500-contract sweep to cut costs. The sweep takes 37% longer.",
+    "greeting": "Konnichiwa, Liam",
+    "design_version": "v1",
+    "voice": "am_onyx",
+    "build": {
+      "at": "2026-07-28T22:50:19",
+      "cut": "master",
+      "filled": 0,
+      "of": 8,
+      "slates": [
+        "B00",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "YOURTURN",
+        "OUTRO"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "The measured 500-doc benchmark: opus finishes in 389s (0.2% rescue rate); haiku finishes in 590s (26% rescue rate). The cheap model costs more total because its misses trigger reader-agent rescue passes whose latency exceeds the per-doc inference savings.",
+      "estimated_duration_s": 13,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "from Key case — cold open on the concrete instance",
+      "actual_duration_s": 18.2,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THE MEASURED 500-DOC BENCHMARK:",
+            "items": [
+              {
+                "label": "The measured 500-doc benchmark: opus finishes in 389s (0",
+                "sub": "The measured 500-doc benchmark: opus finishes in 389s (0.2% rescue rate); haiku finishes in 590s (26% rescue rate).",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "The cheap model costs more",
+                "sub": "The cheap model costs more total because its misses trigger reader-agent rescue passes whose latency exceeds the per-doc inference savings.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "question",
+      "narration_text": "Lower per-doc inference cost should make the sweep cheaper and faster; this case shows the weaker model runs the whole pipeline slower — why does lower recall invert the economics?",
+      "estimated_duration_s": 8,
+      "visual": "on-screen QUESTION",
+      "slate": true,
+      "scaffold_note": "gap-form question beat",
+      "actual_duration_s": 10.18,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "LOWER PER-DOC INFERENCE COST",
+            "items": [
+              {
+                "label": "Lower per-doc inference cost should make the sweep cheaper and faster",
+                "sub": "Lower per-doc inference cost should make the sweep cheaper and faster; this case shows the weaker model runs the whole pipeline slower —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "why does lower recall invert",
+                "sub": "why does lower recall invert the economics?",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "setup",
+      "narration_text": "You swap opus for haiku on a 500-contract sweep to cut costs. The sweep takes 37% longer.",
+      "estimated_duration_s": 8,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "the tension, no visual",
+      "actual_duration_s": 7.06,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "YOU SWAP OPUS FOR",
+            "items": [
+              {
+                "label": "You swap opus for haiku",
+                "sub": "You swap opus for haiku on a 500-contract sweep to cut costs.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "The sweep takes 37% longer.",
+                "sub": "The sweep takes 37% longer.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "mechanism",
+      "narration_text": "What was never extracted cannot be rescued — paraphrase recall is a capability gap no downstream pass closes. Each rescue pass costs multiples of the original extraction, so the model that saves ~30% per document but misses 26% of facts becomes the slowest sweep end to end.",
+      "estimated_duration_s": 18,
+      "visual": "A 4-bar chart (haiku / sonnet / fable / opus), each bar three stacked segments — primary extraction, rescue, idle — the rescue segment swelling until haiku's total overtops opus's.",
+      "manim_move": "accumulate",
+      "slate": true,
+      "scaffold_note": "the resolving mechanism; orbits the visual object",
+      "actual_duration_s": 17.3,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "WHAT WAS NEVER EXTRACTED",
+            "items": [
+              {
+                "label": "What was never extracted cannot",
+                "sub": "What was never extracted cannot be rescued —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "paraphrase recall is a capability",
+                "sub": "paraphrase recall is a capability gap no downstream pass closes.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Each rescue pass costs multiples",
+                "sub": "Each rescue pass costs multiples of the original extraction, so the model that saves ~30% per document but misses 26% of facts becomes the slowest sweep end to end.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "example",
+      "narration_text": "100 contracts. Haiku: 100×0.5s = 50s extract; 26 misses ×15s rescue = 390s; total 440s. Opus: 100×0.8s = 80s; 0.2 misses ×15s = 3s; total 83s. The \"fast\" model takes 5× longer.",
+      "estimated_duration_s": 16,
+      "visual": "16:9 worked example",
+      "slate": true,
+      "scaffold_note": "THE EXAMPLE act, illustrative",
+      "actual_duration_s": 18.58,
+      "engine": "kokoro",
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "100 contracts. Haiku: 100×0.5s =",
+            "items": [
+              {
+                "label": "100 contracts. Haiku: 100×0.5s =",
+                "sub": "100 contracts. Haiku: 100×0.5s = 50s extract",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "26 misses ×15s rescue =",
+                "sub": "26 misses ×15s rescue = 390s",
+                "icon": "life-buoy",
+                "cueFrame": 166
+              },
+              {
+                "label": "total 440s. Opus: 100×0.8s =",
+                "sub": "total 440s. Opus: 100×0.8s = 80s",
+                "icon": "BOX",
+                "cueFrame": 308
+              },
+              {
+                "label": "0.2 misses ×15s = 3s",
+                "sub": "0.2 misses ×15s = 3s",
+                "icon": "BOX",
+                "cueFrame": 450
+              }
+            ],
+            "dark": false
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T22:50:19",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "recap",
+      "narration_text": "What was never extracted cannot be rescued — paraphrase recall is a capability gap no downstream pass closes. Each rescue pass costs multiples of the original extraction, so the model that saves ~30% per document but misses 26% of facts becomes the slowest sweep end to end.",
+      "estimated_duration_s": 8,
+      "visual": "verdict card",
+      "slate": true,
+      "scaffold_note": "recap + your-turn handoff",
+      "actual_duration_s": 17.3,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "WHAT WAS NEVER EXTRACTED",
+            "items": [
+              {
+                "label": "What was never extracted cannot",
+                "sub": "What was never extracted cannot be rescued —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "paraphrase recall is a capability",
+                "sub": "paraphrase recall is a capability gap no downstream pass closes.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Each rescue pass costs multiples",
+                "sub": "Each rescue pass costs multiples of the original extraction, so the model that saves ~30% per document but misses 26% of facts becomes the slowest sweep end to end.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: I replaced my frontier model with a faster cheaper one and my pipeline got slower — because rescue rate went up. Show me how to design a benchmark that measures true throughput including rescues, not just per-call latency, and how to use that benchmark to find the right model for my actual workload.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · CLAUDE AGENT SKILLS",
+            "command": "I replaced my frontier model with a faster cheaper one and my pipeline got slower — because rescue rate went up. Show me how to design a benchmark that measures true throughput including rescues, not just per-call latency, and how to use that benchmark to find the right model for my actual workload.",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "Why swapping in the 'fast' model made the whole pipeline slower",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T22:50:19",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 17.17,
+      "audio_file": "mp3/beat-YOURTURN.mp3"
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "Why swapping in the \"fast\" model made the whole pipeline slower",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why swapping in the \"fast\" model made the whole pipeline slower",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "healthcare-swapping-fast-model-made-whole"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T22:50:19",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for OUTRO"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 4.03,
+      "audio_file": "mp3/beat-OUTRO.mp3"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why swapping in the \"fast\" model made the whole pipeline slower",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Extraction-quality feedback loops in multi-document pipelines",
+            "segment": "Why swapping in the \"fast\" model made…",
+            "command": "Take what you learned from [Why swapping in the \"fast\" model made the whole pipeline slower] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why swapping in the \"fast\" model made the whole pipeline slower",
+            "slug": "healthcare-swapping-fast-model-made-whole"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

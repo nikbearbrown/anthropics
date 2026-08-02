@@ -1,0 +1,1038 @@
+{
+  "metadata": {
+    "slug": "claude-liam-vercel-refactor",
+    "title": "Refactor, Verified",
+    "topic": "Cleaning up a live Vercel site with Claude Code and Cowork — who owns the repo, who owns the browser, and the verification gate between them",
+    "purpose": "ai-explainer from the deep-research doc 'Using Claude Code and Cowork to Clean Up and Refactor a Vercel Website'",
+    "skill": "ai-explainer",
+    "channel": "claude-liam",
+    "persona": "Liam",
+    "folderLabel": "@NikBearBrown",
+    "greeting": "Annyeong, Liam",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude-liam",
+    "clock": "narration",
+    "audience": "practitioners and makers following the channel's Claude workflows",
+    "playlist": "Claude for webdev",
+    "source": "deep-research report (2026-07), verified claims logged in SOURCES.md",
+    "build": {
+      "at": "2026-07-22T20:43:13",
+      "cut": "master",
+      "filled": 23,
+      "of": 23,
+      "slates": [],
+      "skin_warnings": []
+    },
+    "channel_title": "@NikBearBrown",
+    "playlist_id": "PLEWaUA_znup4",
+    "playlist_short": null,
+    "description_blurb": "Claude Code changes the repository. Cowork inspects the browser. Vercel previews stage every result. A practical walkthrough of the division of labor — plan mode gates, runtime boundary mapping, the four-command gate (lint, type-check, test, build), and why --dangerously-skip-permissions belongs in a worktree, never on main.",
+    "hashtags": [
+      "ClaudeCode",
+      "Vercel",
+      "Nextjs",
+      "webdev",
+      "AIagents",
+      "Cowork",
+      "refactoring"
+    ],
+    "chapters": [
+      [
+        "B00",
+        "Intro"
+      ],
+      [
+        "B01",
+        "What Claude Code does"
+      ],
+      [
+        "B03",
+        "The boundary problem"
+      ],
+      [
+        "B04",
+        "Act II: The Map"
+      ],
+      [
+        "B06",
+        "Layer stack"
+      ],
+      [
+        "B10",
+        "Act III: The Gate"
+      ],
+      [
+        "B11",
+        "The four-command gate"
+      ],
+      [
+        "B12",
+        "local ≠ deployed"
+      ],
+      [
+        "B16",
+        "Cowork QA checklist"
+      ],
+      [
+        "B19",
+        "--dangerously-skip-permissions"
+      ],
+      [
+        "B20",
+        "Verdict"
+      ],
+      [
+        "B21",
+        "Your turn"
+      ]
+    ],
+    "design_version": "v1",
+    "voice": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "OPEN",
+      "narration_text": "Annyeong — this is Liam, in for Bear. Today's ask: a live Vercel site needs cleaning up. Who does it — Claude Code, or Cowork? That's the wrong question. The right question is which execution environment owns which half of the job. Get that split right and the refactor is boring, in the best way.",
+      "new_visual_element": "Cold open — composer ask, answered",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Annyeong, Liam",
+            "command": "my Vercel site is a mess — clean it up. Claude Code or Cowork?",
+            "topic": "CLAUDE CODE · COWORK · VERCEL",
+            "segment": "Refactor, Verified",
+            "runningText": "planning the split…",
+            "output": [
+              "Claude Code: owns the repository",
+              "Cowork: owns the browser and the errands",
+              "Vercel previews: stage the truth"
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 15.79
+    },
+    {
+      "beat_id": "B01",
+      "act": "I — The Split",
+      "narration_text": "Act one. The split. Claude Code lives where your repository lives: it reads the codebase, edits files, runs commands, and holds project memory in CLAUDE dot em-dee files that load every session.",
+      "new_visual_element": "Act card I + Code-side capability chips",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRChipGrid",
+          "props": {
+            "sparkLine": "Claude Code: repo-native.",
+            "items": [
+              "read codebase",
+              "edit files",
+              "run commands",
+              "CLAUDE.md memory",
+              "worktrees"
+            ],
+            "cols": 2,
+            "caption": "Act I — The Split"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 11.54
+    },
+    {
+      "beat_id": "B02",
+      "act": "I — The Split",
+      "narration_text": "Cowork is the opposite shape: a remote agent in an isolated environment. It keeps working after you close the laptop, reaches your files and browser through the desktop app, and speaks to Drive, SharePoint, and email through connectors. Outcome-oriented, not repo-centric.",
+      "new_visual_element": "Cowork-side capability chips",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRChipGrid",
+          "props": {
+            "sparkLine": "Cowork: remote + connected.",
+            "items": [
+              "runs remotely",
+              "keeps going",
+              "desktop bridge",
+              "connectors",
+              "artifacts"
+            ],
+            "cols": 2,
+            "caption": "Cowork — the other half"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 14.93
+    },
+    {
+      "beat_id": "B03",
+      "act": "I — The Split",
+      "narration_text": "One update to the old folk wisdom: the boundary is no longer code versus visual. Claude Code has a browser now — a preview pane in the desktop app, and Claude in Chrome for real click-through verification. Visual QA stopped being Cowork's exclusive territory.",
+      "new_visual_element": "The boundary softens — Code grows a browser",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRBoundaryShift",
+          "props": {
+            "oldLabel": "code vs visual",
+            "oldItems": [
+              "Claude Code → code edits only",
+              "Cowork → all visual QA"
+            ],
+            "newLabel": "repo truth vs browser truth",
+            "newItems": [
+              "Claude Code → code + preview pane + Chrome",
+              "Cowork → external browser + connectors"
+            ],
+            "sparkLine": "the boundary moved."
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 14.87
+    },
+    {
+      "beat_id": "B04",
+      "act": "II — The Map",
+      "narration_text": "Act two. Before anyone edits anything: the map. A Next.js app is full of boundaries that carry runtime meaning — and a cleanup that ignores them breaks things without an obvious diff.",
+      "new_visual_element": "Act card II",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRSegmentCard",
+          "props": {
+            "act": "II",
+            "title": "The Map",
+            "sub": "before anyone edits anything",
+            "sparkLine": "read the load-bearing walls."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 10.22
+    },
+    {
+      "beat_id": "B05",
+      "act": "II — The Map",
+      "narration_text": "The opening move is plan mode. Claude reads files and runs exploration commands but edits nothing until you approve the plan. Reconnaissance and execution get separated by a gate you control — no prompt gymnastics required.",
+      "new_visual_element": "Plan mode — read-only until approved",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRGateCard",
+          "props": {
+            "leftLabel": "EXPLORE (plan mode)",
+            "leftItems": [
+              "read files",
+              "run exploration commands",
+              "map boundaries",
+              "propose plan"
+            ],
+            "gateLabel": "human approval",
+            "rightLabel": "EDIT",
+            "rightItems": [
+              "implement approved changes",
+              "bounded scope",
+              "one phase at a time"
+            ],
+            "sparkLine": "reconnaissance before execution."
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 13.7
+    },
+    {
+      "beat_id": "B06",
+      "act": "II — The Map",
+      "narration_text": "The audit maps four layers: server versus client component boundaries. Edge versus Node runtimes. Redirects, rewrites, and the proxy file. And every place the code reads an environment variable. Those are the load-bearing walls.",
+      "new_visual_element": "The four-layer boundary map",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRLayerStack",
+          "props": {
+            "sparkLine": "the load-bearing walls.",
+            "layers": [
+              {
+                "title": "Server / Client Components",
+                "sub": "'use client' boundaries — crossing one changes runtime behavior"
+              },
+              {
+                "title": "Edge vs Node Runtimes",
+                "sub": "edge functions cannot import Node-only modules"
+              },
+              {
+                "title": "Routing Config + Proxy",
+                "sub": "redirects, rewrites, proxy.ts (was middleware.ts in Next 16)",
+                "accent": true
+              },
+              {
+                "title": "Environment Variables",
+                "sub": "server-only vs client-exposed env vars"
+              }
+            ],
+            "top": 118
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 12.71
+    },
+    {
+      "beat_id": "B07",
+      "act": "II — The Map",
+      "narration_text": "Here's the silent failure. One casual use-client on the wrong component, one Node-only import in an edge path, one fetch moved out of its caching layer — and behavior changes while the diff looks like housekeeping. Style-only refactors are how production breaks politely.",
+      "new_visual_element": "The invisible-diff failure mode",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRPredictCard",
+          "props": {
+            "sparkLine": "the polite break.",
+            "question": "this diff looks like pure housekeeping.",
+            "commit": "which runtime boundary does it cross?"
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 15.47
+    },
+    {
+      "beat_id": "B08",
+      "act": "II — The Map",
+      "narration_text": "And a 2026 wrinkle: in Next sixteen, middleware was renamed proxy, and next lint is gone entirely. An audit that greps for yesterday's filenames misses today's routing truth. Check proxy dot t-s, legacy middleware, the config rewrites, and vercel dot json.",
+      "new_visual_element": "Next 16 renames — audit both names",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRRenameCard",
+          "props": {
+            "renames": [
+              {
+                "old": "middleware.ts",
+                "new": "proxy.ts"
+              },
+              {
+                "old": "next lint",
+                "new": "eslint CLI"
+              }
+            ],
+            "auditNote": "grep for BOTH names — legacy files may still exist",
+            "sparkLine": "Next 16: audit both names."
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 15.89
+    },
+    {
+      "beat_id": "B09",
+      "act": "II — The Map",
+      "narration_text": "For big repos, scope is the safety feature: per-directory CLAUDE dot em-dee files, deny rules on generated code, and worktrees so each session gets its own branch-backed checkout. The agent only loads the conventions for the part of the tree it touches.",
+      "new_visual_element": "Scoping — per-directory memory + worktrees",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRSourceFlow",
+          "props": {
+            "sparkLine": "scope is safety.",
+            "sourceLabel": "repo tree",
+            "feeds": [
+              {
+                "label": "scoped CLAUDE.md",
+                "tint": "#D97757"
+              },
+              {
+                "label": "deny rules"
+              },
+              {
+                "label": "worktree checkout"
+              }
+            ],
+            "destApp": "agent session",
+            "destTitle": "only loads conventions for the touched subtree",
+            "arcCaption": "scoped to subtree"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 14.55
+    },
+    {
+      "beat_id": "B10",
+      "act": "III — The Gate",
+      "narration_text": "Act three. The gate. Every refactor phase ends the same way, and none of it is optional.",
+      "new_visual_element": "Act card III",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRSegmentCard",
+          "props": {
+            "act": "III",
+            "title": "The Gate",
+            "sub": "every refactor phase ends the same way",
+            "sparkLine": "none of it is optional."
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 5.44
+    },
+    {
+      "beat_id": "B11",
+      "act": "III — The Gate",
+      "narration_text": "Because next lint is gone, the gate has to be explicit — four commands, run in order: ESLint through the CLI. TypeScript with no-emit. The tests for the area you touched. And a full production build. A phase that hasn't passed all four hasn't happened.",
+      "new_visual_element": "The four-command verification gate",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "gate.sh",
+            "code": "pnpm exec eslint .\npnpm exec tsc --noEmit\npnpm test\npnpm exec next build",
+            "sparkLine": "four commands, not optional."
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 13.46
+    },
+    {
+      "beat_id": "B12",
+      "act": "III — The Gate",
+      "narration_text": "One more layer of honesty: local Next is not Vercel. If the refactor touches request-time behavior, pull the project's environment down with vercel pull, and rehearse with vercel dev. Environment drift is a bug you can subtract before it exists.",
+      "new_visual_element": "vercel pull / vercel dev — kill the drift",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRTwoColCard",
+          "props": {
+            "leftTitle": "local next dev",
+            "leftItems": [
+              "local Node env",
+              "no Vercel edge functions",
+              "mock env vars",
+              "no CDN behavior"
+            ],
+            "rightTitle": "vercel runtime",
+            "rightItems": [
+              "real edge middleware",
+              "real env vars",
+              "CDN + caching layer",
+              "actual deploy context"
+            ],
+            "bridgeNote": "vercel pull + vercel dev bridges the gap",
+            "sparkLine": "local ≠ deployed."
+          },
+          "rendered": {
+            "out": "media/B12.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B12.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 14.34
+    },
+    {
+      "beat_id": "B13",
+      "act": "IV — Preview First",
+      "narration_text": "Act four. Vercel already assumes the workflow you want: push a branch, get a preview deployment with its own URL. The platform stages every change in a live setting before production is ever at risk. Lean into that — never skip from local edits to main.",
+      "new_visual_element": "Act card IV + branch → preview URL flow",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRSourceFlow",
+          "props": {
+            "sparkLine": "preview-first is built in.",
+            "sourceLabel": "branch push",
+            "feeds": [
+              {
+                "label": "preview URL",
+                "tint": "#D97757"
+              },
+              {
+                "label": "deployment checks"
+              },
+              {
+                "label": "promote to main"
+              }
+            ],
+            "destApp": "production",
+            "destTitle": "never from local edits straight to main",
+            "arcCaption": "every branch gets a live URL"
+          },
+          "rendered": {
+            "out": "media/B13.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 14.06
+    },
+    {
+      "beat_id": "B14",
+      "act": "IV — Preview First",
+      "narration_text": "Add deployment checks so promotion has conditions, not vibes. If the refactor deserved an agent, it deserves a release gate stronger than merge-when-it-looks-okay.",
+      "new_visual_element": "Deployment checks — conditions, not vibes",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRGateCard",
+          "props": {
+            "leftLabel": "PREVIEW",
+            "leftItems": [
+              "preview URL deployed",
+              "real Vercel context",
+              "agents can inspect it"
+            ],
+            "gateLabel": "deployment checks",
+            "rightLabel": "PROMOTE",
+            "rightItems": [
+              "merge to main",
+              "production deployment",
+              "conditions — not vibes"
+            ],
+            "sparkLine": "conditions, not vibes."
+          },
+          "rendered": {
+            "out": "media/B14.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 9.58
+    },
+    {
+      "beat_id": "B15",
+      "act": "IV — Preview First",
+      "narration_text": "And the trap nobody budgets for: protected previews. If the preview URL sits behind authentication and you point an agent at it, the agent faithfully verifies your login wall. Give it a deliberate path in — a bypass built for automation — or the QA report is fiction.",
+      "new_visual_element": "The login-wall trap",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRPredictCard",
+          "props": {
+            "sparkLine": "verify what the agent can reach.",
+            "question": "Cowork QA report: all checks passed ✓",
+            "commit": "what page did the agent actually see?"
+          },
+          "rendered": {
+            "out": "media/B15.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 15.51
+    },
+    {
+      "beat_id": "B16",
+      "act": "V — Where Cowork Leads",
+      "narration_text": "Act five. Now Cowork earns its half. Hand it the production URL, the preview URL, and a bounded checklist of pages and flows. It clicks through both, collects the screenshots, and comes back with evidence — while your terminal session doesn't even need to be open.",
+      "new_visual_element": "Act card V + the QA handoff",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRChecklistCard",
+          "props": {
+            "title": "Cowork's QA checklist",
+            "items": [
+              "production URL",
+              "preview URL",
+              "flows to walk",
+              "pages to screenshot"
+            ],
+            "outputLabel": "evidence: screenshots + diffs → back to Claude Code as scoped task",
+            "sparkLine": "bounded checklist. evidence out."
+          },
+          "rendered": {
+            "out": "media/B16.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B16.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B16.mp3",
+      "actual_duration_s": 14.25
+    },
+    {
+      "beat_id": "B17",
+      "act": "V — Where Cowork Leads",
+      "narration_text": "When outside systems are involved, Cowork has a documented priority order: connectors first, browser second, screen interaction last. Design references in Drive or SharePoint come through connectors — not through brittle clicking. That errand never belonged in your git loop anyway.",
+      "new_visual_element": "Connectors-first priority order",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRLadderCard",
+          "props": {
+            "steps": [
+              {
+                "label": "Connectors",
+                "sub": "Drive, SharePoint, email — structured data, no brittle clicking",
+                "accent": true
+              },
+              {
+                "label": "Browser",
+                "sub": "real page navigation and screenshots via the desktop app"
+              },
+              {
+                "label": "Screen Interaction",
+                "sub": "last resort — pixel-level interaction when nothing else reaches"
+              }
+            ],
+            "sparkLine": "connectors first."
+          },
+          "rendered": {
+            "out": "media/B17.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B17.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B17.mp3",
+      "actual_duration_s": 15.42
+    },
+    {
+      "beat_id": "B18",
+      "act": "V — Where Cowork Leads",
+      "narration_text": "And the loop closes cleanly: when Cowork finds a regression, it doesn't fix code. It writes the finding, and the fix routes back to Claude Code as a scoped task on the same branch. Code changes the repository; Cowork gathers the evidence. Nobody freelances.",
+      "new_visual_element": "The regression routes back",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRCycleCard",
+          "props": {
+            "nodes": [
+              "Claude Code (edits)",
+              "Vercel preview",
+              "Cowork inspects",
+              "finding written"
+            ],
+            "centerNote": "nobody freelances",
+            "sparkLine": "the loop closes."
+          },
+          "rendered": {
+            "out": "media/B18.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B18.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B18.mp3",
+      "actual_duration_s": 14.68
+    },
+    {
+      "beat_id": "B19",
+      "act": "V — Where Cowork Leads",
+      "narration_text": "Last judgment call: dangerously-skip-permissions is exactly what it says. Reserve it for sandboxed, disposable environments — and even there, pair it with worktrees, throwaway branches, frequent commits, and a hard rule: never on main. The better the guardrails get, the less you should need the bypass.",
+      "new_visual_element": "The bypass, boxed in",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "VRDangerCard",
+          "props": {
+            "layers": [
+              "sandbox",
+              "worktree",
+              "throwaway branch",
+              "frequent commits"
+            ],
+            "dangerLabel": "--dangerously-skip-permissions",
+            "dangerNote": "never on main · the better the guardrails, the less you need this",
+            "sparkLine": "the bypass, contained."
+          },
+          "rendered": {
+            "out": "media/B19.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B19.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B19.mp3",
+      "actual_duration_s": 16.21
+    },
+    {
+      "beat_id": "B20",
+      "act": "CLOSE",
+      "narration_text": "Let's recap with Claude. Claude Code changes the repository — plan mode first, scoped memory, one bounded phase at a time. The four-command gate ends every phase, because next lint is gone and vibes are not a check. Vercel previews stage the result behind real URLs and real checks. And the browser — Code's own, or Cowork's — is the only witness that counts for what users actually see.",
+      "new_visual_element": "VERDICT recap",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Verdict",
+            "artifactHeading": "The division of labor",
+            "artifactLines": [
+              "Claude Code changes the repository.",
+              "Vercel previews stage the result.",
+              "The browser tells the truth — Code's or Cowork's.",
+              "Plan first · gate every phase · never touch main."
+            ]
+          },
+          "rendered": {
+            "out": "media/B20.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B20.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B20.mp3",
+      "actual_duration_s": 20.31
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Here's the prompt, word for word: You are in a git-tracked Next.js repo deployed on Vercel. Audit first, no edits — map the routing, server versus client boundaries, runtimes, proxy and rewrites, env vars, and data fetching. Then propose a phased refactor plan where every phase ends with lint, type-check, tests, and a production build. That audit-first clause is the leash, and the phase-gate clause is the seatbelt. Run it on your messiest repo and read the audit before you let it touch a file.",
+      "new_visual_element": "YOUR TURN — the kickoff prompt",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "You are in a git-tracked Next.js repo deployed on Vercel. Audit first, no edits — map routing, server vs client boundaries, runtimes, proxy/rewrites, env vars, and data fetching. Then propose a phased refactor plan where every phase ends with lint, type-check, tests, and a production build.",
+            "topic": "CLAUDE CODE · PLAN MODE",
+            "segment": "Audit Before Edits",
+            "runningText": "paste this into Claude…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B21.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B21.mp4",
+        "filled_by": "media",
+        "at": "2026-07-22T20:43:13"
+      },
+      "audio_file": "mp3/beat-B21.mp3",
+      "actual_duration_s": 26.67
+    },
+    {
+      "beat_id": "B22",
+      "act": "OUTRO",
+      "narration_text": "Refactor, Verified. Liam, in for Bear.",
+      "new_visual_element": "Title re-read outro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Refactor, Verified",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-vercel-refactor"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: subline-removed,title-fixed,mascotSeed-added"
+      },
+      "audio_file": "mp3/beat-B22.mp3",
+      "actual_duration_s": 3.16
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Refactor, Verified",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Cleaning up a live Vercel site with Claude Code and Cowork — who owns the repo, who owns the browser, and the verification gate between them",
+            "segment": "Refactor, Verified",
+            "command": "Take what you learned from [Refactor, Verified] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@claude-liam"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Refactor, Verified",
+            "slug": "claude-liam-vercel-refactor"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

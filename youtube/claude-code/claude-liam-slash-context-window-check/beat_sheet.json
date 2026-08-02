@@ -1,0 +1,391 @@
+{
+  "metadata": {
+    "slug": "slash-context-window-check",
+    "title": "/context Check: Read Your Window Before It Fills",
+    "topic": "CONTEXT WINDOW · CAPS",
+    "register": "Teardown",
+    "audience": "Claude",
+    "brand": "claude-liam",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "greeting": "Selamat, Liam",
+    "folderLabel": "@NikBearBrown",
+    "playlist": "Claude",
+    "description_blurb": "A grading session hit 78% context before the build started — treat the context window like a kitchen counter: check it, clear it between tasks, or move the heavy reading to a subagent.",
+    "hashtags": [
+      "ClaudeCode",
+      "Teachers",
+      "NikBearBrown",
+      "ContextWindow",
+      "SessionHygiene"
+    ],
+    "total_estimated_duration_seconds": 82,
+    "derived_from": "beat_sheet.json",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "_variant_todo": [
+      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
+      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
+      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
+      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
+    ],
+    "build": {
+      "at": "2026-07-16T06:35:21",
+      "cut": "master",
+      "filled": 0,
+      "of": 7,
+      "slates": [
+        "B00",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B06: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "design_version": "v1",
+    "voice": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "ASK",
+      "narration_text": "She ran /context mid-session. The bar showed 78% full. The grading tool she was building had used 30%. The other 48% was policy documents, LMS exports, and meeting notes she had pasted earlier to gather context. The build had not started. The window was already crowded. Quality degrades monotonically as the window fills. She had not checked the counter once. This is Liam, in for Bear.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam",
+            "topic": "CONTEXT WINDOW · CAPS",
+            "segment": "/context Check: Read Your Window Before It…",
+            "command": "What is: /context Check: Read Your Window Before It Fills?",
+            "runningText": "building the answer…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "ClaudeComposerAsk — cold open, /context command",
+      "remotion": {
+        "pattern": "ClaudeComposerAsk",
+        "props": {
+          "greeting": "Selamat, Liam",
+          "topic": "CONTEXT WINDOW · CAPS",
+          "segment": "Read Before Full",
+          "command": "/context",
+          "runningText": "reading window usage…",
+          "folderLabel": "@NikBearBrown"
+        }
+      },
+      "estimated_duration_s": 15,
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 21.7,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B01",
+      "act": "WHY-IT-DEGRADES",
+      "narration_text": "The context window is a fixed working surface. When it fills, Claude begins dropping earlier content — including constraints, examples, and instructions stated before the crowding happened. Liu 2025 shows quality degrades monotonically with window length, even with perfect retrieval. The conversation is not progress. Code on disk is progress. Instructions in CLAUDE.md are progress. Chat is disposable infrastructure.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "/context Check: Read Your Window Before It Fills",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "Why it degrades — fixed surface / constraints dropped / Liu 2025 / chat is disposable infrastructure",
+      "spark_line": "Chat is disposable infrastructure.",
+      "estimated_duration_s": 10,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 23.04,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "THREE-TOOLS",
+      "narration_text": "Three tools manage the window. /context: run it before any new task to see what is filling it. /clear: wipes the conversation; safe because durable rules live in CLAUDE.md, not the chat, and code on disk survives. /compact focus on X: summarizes conversation history down to a gist when the history still earns its place — mid-task, when the thread matters but the verbatim does not.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "callout-reveal",
+        "media": "media/B02.mp4",
+        "manim": {
+          "scene_class": "Scene_B02_ClaudeLiamSlash",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": "2026-07-25T10:05:41.886603"
+          }
+        }
+      },
+      "new_visual_element": "Three tools — /context see what fills / /clear wipe between tasks / /compact keep gist / CLAUDE.md survives /clear",
+      "spark_line": "Check. Clear. Compact.",
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 21.5,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-16T06:35:21",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "SUBAGENT-ALTERNATIVE",
+      "narration_text": "The structural fix for heavy reading is a subagent. Instead of pasting 25 student submissions into the main session, spawn a reader subagent: it reads in its own isolated context window and returns a three-section summary. The main session sees three paragraphs, not 25 submissions. The main session window stays available for the build. Run /context first; subagent when the reading is large.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "callout-reveal",
+        "media": "media/B03.mp4",
+        "manim": {
+          "scene_class": "Scene_B03_ClaudeLiamSlash",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": "2026-07-25T10:05:44.136092"
+          }
+        }
+      },
+      "new_visual_element": "Subagent alternative — reader in own window / main session sees summary only / window stays for build",
+      "spark_line": "Subagent reads. Main session builds.",
+      "estimated_duration_s": 13,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 21.63,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-16T06:35:21",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "VERDICT",
+      "narration_text": "Treat the context window like a kitchen counter. Check what is on it before you start cooking. Clear it between unrelated tasks. Move the heavy prep to a separate workspace — the subagent — when the main surface needs to stay clear. The window is your most limited resource in a Claude Code session. /context is the one command that tells you exactly how much you have left.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "stagger"
+      },
+      "new_visual_element": "Artifact view — kitchen counter / /context before every task / clear between / subagent for heavy reads",
+      "spark_line": "Check before you cook.",
+      "estimated_duration_s": 13,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 18.99,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-16T06:35:21",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "HANDOFF",
+      "narration_text": "Your turn. Paste this: you want to know when to run /context and what to do with the output before your Claude Code session degrades. Ask Claude to explain what the context window check shows, what the threshold is where you need to act, and what the three options are once you hit that threshold.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type-on",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · @NikBearBrown",
+            "segment": "/context Check: Read Your Window Before It Fills",
+            "command": "I want to know when to run /context in Claude Code and what to do with the output before my session degrades. Explain what the context window check shows, what the threshold is where I need to act, and what my three options are once I hit that threshold.",
+            "runningText": "paste your spec, CLAUDE.md, or build plan here…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "new_visual_element": "HANDOFF — context check + subagent reader prompt",
+      "estimated_duration_s": 9,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 6.81,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-16T06:35:21",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "OUTRO",
+      "narration_text": "If this keeps the build session from starting at 78%, subscribe. Liam, in for Bear.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "/context Check: Read Your Window Before It Fills",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-slash-context-window-check"
+          }
+        }
+      },
+      "new_visual_element": "ClaudeTitleOutro — /context Check.",
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 6.12,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: title-fixed,handle-fixed,mascotSeed-added"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "/context Check: Read Your Window Before It Fills",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CONTEXT WINDOW · CAPS",
+            "segment": "/context Check: Read Your Window Before It…",
+            "command": "Take what you learned from [/context Check: Read Your Window Before It Fills] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "/context Check: Read Your Window Before It Fills",
+            "slug": "slash-context-window-check"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

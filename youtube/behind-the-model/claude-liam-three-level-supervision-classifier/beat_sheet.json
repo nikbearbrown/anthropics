@@ -1,0 +1,519 @@
+{
+  "metadata": {
+    "title": "Three Levels of AI Supervision — The Sheridan-Verplank Framework",
+    "slug": "three-level-supervision-classifier",
+    "topic": "CONDUCTING AI — SUPERVISION LEVELS",
+    "register": "Teardown",
+    "voice": "am_onyx",
+    "palette": "claude",
+    "style_preset": "nikbearbrown",
+    "style": "cli",
+    "note": "CLI 10-beat spine: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT(manim) · B05 CHANGE · B06 slate · B07 SUMMARY · B08 NEXT STEPS · B09 outro.",
+    "total_estimated_duration_seconds": 118,
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "_variant_todo": [
+      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
+      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
+      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
+      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
+    ],
+    "build": {
+      "at": "2026-08-01T04:13:51",
+      "cut": "review",
+      "filled": 4,
+      "of": 11,
+      "slates": [
+        "B00",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "YOURTURN",
+        "B09"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "This is Liam, in for Bear. Nik Bear Brown. Build it with a CLI, then take it apart.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOpen",
+          "props": {
+            "topic": "CONDUCTING AI",
+            "lines": [
+              "Nik Bear Brown",
+              "Three Levels of AI Supervision"
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 5.48,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:51",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM",
+      "role_note": "why care — before the CLI",
+      "narration_text": "Not all AI use is the same. Copying a variable name with AI assistance is nothing like asking AI to propose a system architecture. But in practice, people apply the same supervision level to both — a quick glance, maybe a nod, and move on. Sheridan and Verplank catalogued ten levels of automation back in 1978. Applied to AI, three of them matter: copy-paste use, research-level use, and true collaboration. The question is whether your supervision level is calibrated to the usage level — or whether there is a dangerous gap.",
+      "visual_intent": "title card: supervision calibration as the core problem; Priya example — same interface, three different tasks, same supervision",
+      "shot": {
+        "type": "CARD",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B01.mp4",
+        "manim": {
+          "scene_class": "Scene_B01_ClaudeLiamThree",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": "2026-07-25T09:53:30.276483"
+          }
+        },
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "PROBLEM",
+            "items": [
+              {
+                "label": "copy-paste use",
+                "sub": "copy-paste use",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "research-level use",
+                "sub": "research-level use",
+                "icon": "BOX",
+                "cueFrame": 437
+              },
+              {
+                "label": "true collaboration. The question is whether your supervision",
+                "sub": "true collaboration. The question is whether your supervision level is calibrated to the usage level — or whether ther…",
+                "icon": "shield-alert",
+                "cueFrame": 850
+              }
+            ],
+            "dark": true
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 29.35,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:51"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "role_note": "terminal (Onda)",
+      "narration_text": "Ask for the classifier. In the terminal: claude — write a Python script that defines eight AI interaction descriptions, calls the Anthropic API to classify each as Level I, II, or III per the Sheridan-Verplank automation framework, and returns JSON with level, supervisory demand, verify time in minutes, and a gap flag that fires when verify exceeds two minutes and level is I or II. Use claude-3-5-haiku.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Write a Python script: define 8 AI interaction\ndescriptions; call Anthropic API to classify each as\nLevel I/II/III per Sheridan-Verplank automation framework;\nreturn JSON with level, supervisory_demand,\nverify_time_minutes, gap_flag. Use claude-3-5-haiku.\"",
+            "topic": "CONDUCTING AI — SUPERVISION LEVELS",
+            "segment": "SUPERVISION CLASSIFIER",
+            "runningText": "generating classifier…",
+            "greeting": "The ask,"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 15,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 23.68,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:51",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "role_note": "terminal (Onda)",
+      "narration_text": "Read it before trusting it. The gap flag is one line: verify time exceeds two minutes AND level is I or II. That condition catches the most dangerous case — high-consequence AI use paired with minimal supervision. It is not about effort; it is about mismatch.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownCodeBlock",
+          "props": {
+            "filename": "supervision_classifier.py",
+            "topic": "CONDUCTING AI — SUPERVISION LEVELS",
+            "segment": "SUPERVISION CLASSIFIER",
+            "code": "# supervision_classifier.py — Claude Code output\nimport anthropic, json\n\nclient = anthropic.Anthropic()\n\ndef classify_interaction(description):\n    resp = client.messages.create(\n        model='claude-3-5-haiku-20241022',\n        max_tokens=512,\n        messages=[{'role':'user','content':\n            f'Classify this AI interaction per Sheridan-Verplank '\n            f'framework (Level I/II/III): {description}'\n            f' Return JSON: level, supervisory_demand, verify_time_minutes'\n        }]\n    )\n    data = json.loads(resp.content[0].text)\n    # gap_flag = verify_time_minutes > 2 and level in [\"Level I\",\"Level II\"]\n    data['gap_flag'] = (\n        data['verify_time_minutes'] > 2 and\n        data['level'] in ['Level I','Level II']\n    )\n    return data"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 15,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 15.49,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:51",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT — run",
+      "role_note": "OPEN vox slot → Manim video",
+      "narration_text": "Run it. The visualization maps Priya's three interactions on a usage-level versus supervision-level grid. Interaction A — rename a variable — lands on the calibrated diagonal. That is fine. Interaction B — cite a market size — uses Level II capability but Level I supervision. Below the diagonal. Interaction C — propose an architecture — uses Level III capability with Level I supervision. Far below. Priya is using the same glance for decisions with very different stakes.",
+      "visual_intent": "Manim B04_SupervisionGrid: 2-axis grid, calibrated diagonal, danger corner, Priya's 3 dots below diagonal",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "B04_SupervisionGrid",
+          "file": "vox_scenes.py"
+        }
+      },
+      "estimated_duration_s": 17,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 26.75,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:51",
+        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE",
+      "role_note": "terminal — the REQUIRED revision",
+      "narration_text": "The classifier is flagging correctly but the output table is hard to read. Revise: add a column that names the supervisory demand explicitly, and color-code the gap flag.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"update supervision_classifier.py:\n  -> add supervisory_demand column to output table\n  -> mark gap_flag=True rows with [GAP] prefix\n  -> re-run with same 8 descriptions\"",
+            "topic": "CONDUCTING AI — SUPERVISION LEVELS",
+            "segment": "SUPERVISION CLASSIFIER",
+            "runningText": "updating…",
+            "greeting": "The change,"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 10.22,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:51",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B06",
+      "act": "OUTPUT — revised",
+      "role_note": "slate — fill with updated table or screen-rec",
+      "narration_text": "Re-run. The table now shows the supervisory demand label alongside the flag. Four of the eight interactions carry gap flags. That means four decisions made at AI speed are not being verified at the appropriate level.",
+      "visual_intent": "updated output table with supervisory_demand column and gap flag markers",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B06.mp4",
+        "manim": {
+          "scene_class": "Scene_B06_ClaudeLiamThree",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": "2026-07-25T09:53:32.418113"
+          }
+        }
+      },
+      "estimated_duration_s": 10,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 12.59,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:51"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B07",
+      "act": "SUMMARY",
+      "role_note": "lesson — one beat",
+      "narration_text": "The same chat interface carries Level I, II, and III interactions. What changes is the supervision level required — and whether the person using it knows that. Sheridan-Verplank gives a vocabulary for naming the gap. The gap flag is where that vocabulary bites.",
+      "visual_intent": "summary card: same interface — three different supervision requirements; the calibrated diagonal as the target",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B07.mp4",
+        "manim": {
+          "scene_class": "Scene_B07_ClaudeLiamThree",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": "2026-07-25T09:53:34.688368"
+          }
+        }
+      },
+      "estimated_duration_s": 11,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 15.68,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:51"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B08",
+      "act": "NEXT STEPS",
+      "role_note": "what to do next",
+      "narration_text": "Your move: run the classifier on your own last ten AI interactions. For any that come back Level III with less than two minutes of verification time, ask what you actually checked. That is the gap. And the gap is what this course is about closing.",
+      "visual_intent": "next-steps card: 1) classify your last 10 AI interactions, 2) audit verify time for Level III results",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B08.mp4",
+        "manim": {
+          "scene_class": "Scene_B08_ClaudeLiamThree",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": "2026-07-25T09:53:36.732575"
+          }
+        }
+      },
+      "estimated_duration_s": 10,
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 13.82,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:51"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you want to classify the supervision level in your AI workflow using the Sheridan-Verplank framework — from full human control to fully autonomous. Ask Claude to run the classification on your workflow: what level it currently sits at, what risks attach to that level, and what would need to change to move it toward more appropriate human control.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to classify the supervision level in my AI workflow using the Sheridan-Verplank framework, from full human control to fully autonomous. Run the classification on my workflow: what level does it currently sit at on the Sheridan-Verplank scale, what risks attach to operating at that level, and what would need to change to move it toward more appropriate human control for the task risk?",
+            "segment": "Three Levels of AI Supervision — The Sheridan-Verplank Framework",
+            "topic": "BEHIND THE MODEL · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your question, paper, or concept here…"
+          }
+        }
+      },
+      "engine": "kokoro",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:51",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      },
+      "audio_file": "mp3/beat-YOURTURN.mp3",
+      "actual_duration_s": 19.2
+    },
+    {
+      "beat_id": "B09",
+      "act": "OUTRO",
+      "narration_text": "Nik Bear Brown. Build it with a CLI. Then take it apart. At Nik Bear Brown, nikbearbrown dot com.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Three Levels of AI Supervision — The Sheridan-Verplank Framework",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-three-level-supervision-classifier"
+          }
+        }
+      },
+      "estimated_duration_s": 8,
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 6.51,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:51",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B09"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Three Levels of AI Supervision — The Sheridan-Verplank Framework",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CONDUCTING AI — SUPERVISION LEVELS",
+            "segment": "Three Levels of AI Supervision — The…",
+            "command": "Take what you learned from [Three Levels of AI Supervision — The Sheridan-Verplank Framework] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Three Levels of AI Supervision — The Sheridan-Verplank Framework",
+            "slug": "three-level-supervision-classifier"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

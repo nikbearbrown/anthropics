@@ -1,0 +1,461 @@
+# CAJAL figure candidates — cancer-nanomedicine (previz track)
+
+Mechanism/process figures mined from chapter text. These are blank, unannotated vector
+diagram targets — no baked text; previz owns every label. matte Claude palette palette, cream #F5F1E8 bg, 1pt
+strokes, no red-green, no 3D. ≤6–8 components per figure.
+
+Already built: **apoptosis** (Bcl-2/BH3), **endosomal-escape** (LNP→endosome→lysosome).
+
+---
+
+## 1. psma-theranostic-loop  — the image→treat→image cycle  (MC · cycle · Critical)
+*Source: reel `psma-theranostic-loop`, B04 / Chapter 7. Cyclical, return-to-start matters → cycle diagram.*
+
+**PASTE:** Draw a blank four-node cycle diagram as a flat vector schematic on a cream #F5F1E8 background. Four rounded rectangular nodes arranged in a clockwise loop: top node a scanner/PET gantry glyph, right node a syringe/vial (therapy) glyph, bottom node a second scanner glyph (response check), left node a small decision diamond. Connect the four nodes with single-headed curved arrows running clockwise to form a closed loop, and one return arrow from the decision node back to the top node. Keep all four nodes identical in size and evenly spaced on a circle. Uniform 1pt strokes, generous white space inside the loop, no shading. Leave every node and arrow blank — no text, numbers, or symbols inside.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg.
+- [C] four stages only: (1) Ga-68-PSMA PET imaging = patient selection; (2) Lu-177-PSMA therapy; (3) post-therapy imaging = response assessment; (4) response-confirmed decision → repeat.
+- [O] clockwise closed cycle; nodes on a circle; one back-arrow closes the loop; → progression.
+- [P] flat vector, matte Claude palette: imaging nodes rust #C15F3C, therapy node sage #A8C0B4, decision diamond periwinkle #B5B4D6, arrows warm-gray #7A7368. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: specific isotope chemistry, DOTATATE comparison, trial names, dose numbers, any patient/anatomy figure.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 2. protein-corona-vroman  — soft-then-hard corona buries the ligands  (MC · structural schematic · Critical)
+*Source: reel `protein-corona-overwrites`, B04 / Chapter 4. Three sequential adsorption stages → concentric-ring reveal.*
+
+**PASTE:** Draw a blank concentric-ring nanoparticle cross-section as a flat vector schematic on a cream #F5F1E8 background. A central filled circle (the core) with a ring of short outward-pointing hook shapes around it (surface ligands). Around that, a sparse dotted ring of small ovals (the soft corona). Around that, a dense continuous band of tightly packed protein blobs (the hard corona) that fully encircles and hides the hook layer. Three distinct concentric zones, evenly spaced, uniform 1pt strokes, flat fills, no shading. Leave everything unlabeled — no text, arrows, or numbers.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg.
+- [C] four entities only: core particle; surface targeting ligands (hooks); soft corona (loose, reversible — albumin); hard corona (tight, tenacious — higher-affinity proteins) burying ligands.
+- [O] concentric from center out: core → ligands → soft corona → hard corona; the hard band visually occludes the ligand layer (the "overwrite").
+- [P] flat vector, matte Claude palette: core rust #C15F3C, ligands sage #A8C0B4, soft corona light gray dots, hard corona Vermillion #D55E00 band. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: blood-vessel context, cells, the Vroman time axis, DLS readouts, apolipoprotein chemistry, any second "designed corona" particle.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 3. her2-bystander-panels  — trapped payload vs. diffusing payload  (MC · comparison · Important)
+*Source: reel `her2-low-bystander`, B04 / Chapter 5. Two-panel comparison sharing one layout → comparison panels.*
+
+**PASTE:** Draw two side-by-side blank comparison panels as a flat vector schematic on a cream #F5F1E8 background, divided by a thin vertical rule. Each panel shows the same scene: a central target cell with a Y-shaped antibody docked at its membrane and a small internal vesicle (lysosome) holding payload dots, plus two neighboring cells. Left panel: the payload dots stay confined inside the central cell's vesicle. Right panel: small payload dots spill out of the central cell and scatter into the two neighboring cells. Identical cell geometry and placement in both panels so only the payload distribution differs. Uniform 1pt strokes, flat fills, no shading, no labels — no text, numbers, or symbols.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, two equal panels.
+- [C] left = non-cleavable ADC: payload trapped in the entered cell only; right = cleavable ADC: membrane-permeable payload diffuses to neighbors (bystander). Same three cells each side.
+- [O] shared mirrored layout; only payload-dot spread differs between panels; diffusion implied by dot placement, not drawn as text.
+- [P] flat vector, matte Claude palette: antibody rust #C15F3C, target cell sage #A8C0B4, payload dots periwinkle #B5B4D6, neighbor cells warm-gray #7A7368. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: DAR numbers, linker chemistry, T-DM1/T-DXd names, DESTINY trial, receptor-count shading gradients, any third ADC.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 4. epr-delivery-funnel  — attrition from injected dose to delivered dose  (MC + PQ · sequence · Important)
+*Source: reel `epr-delivery-funnel`, B04 / Chapters 1, 2, 4. Sequential causal stages with shrinking quantity → funnel / stepped-attrition diagram.*
+
+**PASTE:** Draw a blank vertical funnel as a flat vector schematic on a white background: five stacked horizontal bands narrowing from a wide top to a very narrow bottom, like a downward-tapering staircase of decreasing width. Each band is a simple flat rectangle centered on a vertical axis, each noticeably narrower than the one above it, with a short single-headed arrow between each pair pointing downward. The bottom band is a thin sliver. Uniform 1pt strokes, flat fills, even vertical spacing, no shading. Leave every band blank — no text, numbers, percentages, or axis.
+- [S] single-column 89mm, 300 DPI, vector, white bg, portrait.
+- [C] five stages only, top to bottom: injected dose → still circulating after clearance → reaches tumor vasculature (EPR) → crosses interstitium → delivered to tumor cells. Widths encode the shrinking fraction; the bottom sliver is the dominant teaching point.
+- [O] vertical top→bottom progression; monotonic width decrease; → arrows between bands.
+- [P] flat vector, single-hue sequential ramp on ONE color (Blue #0072B2, lightening downward), bottom sliver Vermillion #D55E00 for emphasis; 1pt strokes. No baked text, no y-axis.
+- [E] exclude: exact percentages, IFP pressure sub-mechanism, Doxil/Abraxane cases, mouse-vs-human comparison, any nanoparticle cross-section.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 5. nanoparticle-size-ladder  — log-scale ruler from molecule to cell  (VG · structural schematic · Critical)
+*Source: Chapter 1 — "What Counts as Cancer Nanomedicine?" Figure 1.1.*
+
+**PASTE:** Draw a blank horizontal log-scale bar chart on a cream #F5F1E8 background: six horizontal bars of increasing length arranged top to bottom (shortest at top, longest at bottom), each bar a flat filled rectangle extending left to right along a shared baseline. One band spanning the fourth and fifth bar region is shaded differently as a highlighted zone. No tick marks, no numbers, no labels — blank bars only. Uniform 1pt strokes, flat fills, no shading.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, landscape.
+- [C] six entities only: water molecule (~0.3 nm), antibody/ADC (~10 nm), liposome (~100 nm), virus (~300 nm), red blood cell (~7000 nm), human cell (~50 000 nm); plus one reference band spanning the 10–200 nm therapeutic window.
+- [O] log x-axis (decades), bars ascending by size top to bottom; therapeutic window band as a shaded vertical stripe crossing the relevant bars.
+- [P] flat vector, matte Claude palette: liposome bar Sky Blue #56B4E9 (the anchor in the therapeutic window), therapeutic window band Bluish Green #009E73 at low opacity, remaining bars warm-gray #7A7368, baseline stroke neutral. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: tick labels, nm numerals, entity names, non-log axis, 3D effects, a second y-axis.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 6. tumor-transport-cross-section  — rim accumulation against outward IFP  (MC · mechanism cross-section · Critical)
+*Source: Chapter 2 — "Tumor Transport Barriers." Figure 2.1.*
+
+**PASTE:** Draw a blank layered cross-section schematic on a cream #F5F1E8 background reading left to right: at the far left, a tube with gaps (the leaky tumor vessel); just outside the tube, a dense cluster of small circles (particles piling up in a rim band); in the center, a fibrous mesh (the interstitial matrix) with several outward-pointing arrows; at the far right, a plain empty circle (the necrotic core). Keep all elements flat and geometric. Uniform 1pt strokes, flat fills, no shading, no labels — no text, numbers, or arrows labeled with words.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, landscape.
+- [C] five elements: leaky vessel with endothelial gaps; particle rim-band just outside the vessel; dense collagen/fibronectin matrix; outward IFP arrows (centrifugal); hypoxic/necrotic core (empty, particle-free).
+- [O] left→right spatial cross-section: vessel at left, core at right; outward arrows oppose inward particle movement; particle density fades toward core.
+- [P] flat vector, matte Claude palette: vessel rust #C15F3C, particles Blue #0072B2 (dense at rim, absent at core), IFP arrows Vermillion #D55E00 (blocking outward flow), matrix light gray, necrotic core neutral. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: pericytes, lymphatics, VEGF pathway, red blood cells, tumor cells, necrosis markers, distance numerals.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 7. four-barrier-delivery-chain  — sequential gates narrowing to cellular uptake  (MC · process flowchart · Critical)
+*Source: Chapter 2 — "Tumor Transport Barriers." Figure 2.2.*
+
+**PASTE:** Draw a blank horizontal four-stage flowchart on a cream #F5F1E8 background: four equal-width rectangular panels arranged left to right, connected by single-headed rightward arrows. Above the four panels, a horizontal bar that steps monotonically downward at each arrow — wide at left, narrow at right — representing dose remaining. Each panel and the step-down bar are blank flat fills. Uniform 1pt strokes, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, landscape.
+- [C] four stages: (1) vascular transport through tumor vessels; (2) extravasation through endothelial gap; (3) interstitial penetration through collagen matrix against outward IFP; (4) cellular endocytic uptake and payload release. Dose-remaining bar steps down at each stage.
+- [O] left→right progression; dose-bar above panels; arrows between stages; stage 3 emphasized as the binding constraint.
+- [P] flat vector, matte Claude palette: first stage panel rust #C15F3C, stages 2–4 Vermillion #D55E00 (each a loss step), dose bar Bluish Green #009E73 stepping down, arrows warm-gray #7A7368. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: IFP numeric values, nanoparticle cross-sections, pericytes, tumor-cell biology, upstream circulation details.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 8. nanocarrier-platform-trio  — liposome vs polymeric vs albumin cross-sections  (VG · structural schematic · Important)
+*Source: Chapter 3 — "Nanocarrier Platforms." Figure 3.1.*
+
+**PASTE:** Draw three blank circular cross-section schematics side by side on a cream #F5F1E8 background, all at equal outer diameter. Left circle: a hollow sphere bounded by a double-line ring membrane (bilayer), empty aqueous core with two small dots inside (hydrophilic drug) and two dots embedded in the membrane ring (hydrophobic drug). Center circle: a solid filled disc with small dots scattered throughout the interior (drug dispersed in polymer matrix). Right circle: an irregular blob-cluster outline (folded protein assembly) with dots nestled in shallow pockets at the surface. All three outer circles the same diameter. Uniform 1pt strokes, flat fills, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, three equal panels.
+- [C] three platforms: liposome (hollow bilayer vesicle, aqueous core, hydrophobic bilayer compartment), polymeric PLGA (solid matrix with dispersed drug), albumin-bound particle (folded protein blobs with hydrophobic drug pockets).
+- [O] three panels side by side at equal diameter; drug-location is the differentiating visual.
+- [P] flat vector, matte Claude palette: liposome bilayer Sky Blue #56B4E9 (anchor), drug dots Vermillion #D55E00 in all three panels for consistency, polymer matrix rust #C15F3C, albumin protein blobs warm-gray #7A7368. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: PEG chains, lipid-head geometry, PLGA chemical structure, size labels, route-of-admin, release arrows.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 9. platform-selection-tree  — drug defect → matched carrier  (VG · hierarchy/taxonomy · Important)
+*Source: Chapter 3 — "Nanocarrier Platforms." Figure 3.2.*
+
+**PASTE:** Draw a blank top-down decision tree on a white background: one root node at the top, branching into four leaf nodes below via single straight downward edges. The root node is a plain rectangle; each leaf node is a pair of horizontally adjacent rectangles (left = defect, right = matched platform), all flat and blank. Uniform 1pt strokes, flat fills, no text, no shading.
+- [S] single-column 89mm, 300 DPI, vector, white bg, portrait.
+- [C] root = "what is the drug's primary problem?"; four branches: (1) organ-specific toxicity → PEGylated liposome; (2) insoluble / toxic solvent → albumin-bound or polymeric matrix; (3) sustained release needed → PLGA matrix; (4) fixed-ratio co-delivery → co-encapsulating liposome.
+- [O] top-down hierarchy; one edge from root to each leaf; leaf pairs aligned horizontally.
+- [P] flat vector, Okabe-Ito: root node Blue #0072B2, branch 1 leaf Sky Blue #56B4E9, branch 2 Orange #E69F00, branch 3 Reddish Purple #CC79A7, branch 4 Bluish Green #009E73. No baked text.
+- [E] exclude: mechanism arrows within each leaf, approved-drug names, clinical data, pharmacokinetic curves.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 10. adc-anatomy-internalization  — three-part structure and five-step uptake sequence  (MC · mechanism cross-section · Critical)
+*Source: Chapter 5 — "Antibody-Drug Conjugates." Figure 5.1.*
+
+**PASTE:** Draw a blank two-panel schematic on a cream #F5F1E8 background. Left panel: a Y-shaped outline (the antibody) with small circle-shapes attached along its two heavy-chain arms via short line segments (linkers), and slightly larger circles at the end of each linker (payload warheads). Right panel: a horizontal five-step sequence of simple shapes connected by rightward arrows — a Y-shape at a flat cell-membrane bar, then the Y inside a closed oval (endosome), then the same oval with a dotted broken wall, then a small circle floating free in a plain rectangle (cytoplasm), then the circle touching a short horizontal line (intracellular target). Uniform 1pt strokes, flat fills, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, landscape.
+- [C] left panel: antibody (Y), linker (segment), payload warheads (circles). Right panel: five sequential steps — antigen binding → endocytosis → endosome acidification/cleavage → payload release into cytoplasm → payload at intracellular target.
+- [O] two-panel layout; left is structural anatomy, right is temporal sequence; arrows connect right-panel steps left→right.
+- [P] flat vector, matte Claude palette: antibody Sky Blue #56B4E9 (anchor), linkers rust #C15F3C, payload warheads sage #A8C0B4, endosome warm-gray #7A7368, cytoplasm release step periwinkle #B5B4D6. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: DAR numbers, amino-acid structures, specific drug names, receptor identity, non-lysosomal trafficking detail.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 11. nanoparticle-modality-hub  — one particle, five scanner spokes  (VG · systems diagram · Important)
+*Source: Chapter 6 — "Nano-Enabled Imaging." Figure 6.1.*
+
+**PASTE:** Draw a blank hub-and-spoke radial diagram on a cream #F5F1E8 background: one central circle (the nanoparticle) with five straight lines radiating outward at even angular spacing to five peripheral rounded rectangles (the scanner types). Each spoke terminates in one peripheral node. No arrows along the spokes — the lines are undirected connectors. All nodes are blank flat fills. Uniform 1pt strokes, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, square.
+- [C] hub = generic nanoparticle; five spokes to five modality-nodes: MRI (iron oxide/SPION), CT (gold/iodine), Fluorescence/Surgery (NIR dye), PET (radiolabel), Photoacoustic (gold nanorod). Six entities total — within the ≤8 limit.
+- [O] radial hub-and-spoke; five spokes evenly spaced; all peripheral nodes at equal radius from hub.
+- [P] flat vector, matte Claude palette: hub Blue #0072B2 (anchor), fluorescence/surgery node rust #C15F3C, PET node sage #A8C0B4, MRI node periwinkle #B5B4D6, CT node warm-gray #7A7368, photoacoustic node warm-gray #7A7368. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: scanner machine shapes, signal-waveform drawings, modality names, isotope chemistry, multimodal combination overlaps.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 12. biodistribution-decision-tree  — non-response splits into delivery vs payload failure  (MC · process flowchart · Critical)
+*Source: Chapter 6 — "Nano-Enabled Imaging." Figure 6.2.*
+
+**PASTE:** Draw a blank top-down binary decision tree on a cream #F5F1E8 background: a root rectangle at top, a single branch leading down to a diamond decision node, which splits into two child rectangles at the left (delivery failure branch) and right (delivery succeeded branch). The right child has a further split into two grandchild rectangles below it. Five nodes total, connected by downward arrows. All nodes blank flat fills. Uniform 1pt strokes, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, portrait.
+- [C] root = tumor does not respond; diamond = run biodistribution imaging; left branch = particles in liver/spleen → delivery failure → fix particle; right branch = particles in tumor → did payload release? → two children: no release (fix linker/trigger) and released but no response (payload/biology failure).
+- [O] top-down tree; diamond decision node as the branch point; left branch is the negative outcome, right branch leads to sub-diagnosis.
+- [P] flat vector, matte Claude palette: root node rust #C15F3C, diamond node warm-gray #7A7368, left (delivery-failure) subtree sage #A8C0B4, right (tumor-reached) subtree periwinkle #B5B4D6, grandchildren neutral. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: modality-specific imaging equipment, specific drug names, particle cross-sections, pharmacokinetic curves.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 13. beta-vs-alpha-emitter-range  — long sparse crossfire vs. short dense kill  (MC · comparison · Important)
+*Source: Chapter 7 — "Radioligand Theranostics." Figure 7.2.*
+
+**PASTE:** Draw two side-by-side comparison panels on a cream #F5F1E8 background separated by a thin vertical rule. Left panel: a cluster of small circles (cells) with one of them bearing a tiny labeled attachment; from that cell, a long dotted track line crosses several other circles before stopping. Right panel: the same cell cluster; from the attached cell, a very short dense track line — about one-fifth the length of the left panel's track — stops abruptly within one or two cell widths. Both tracks are horizontal lines of dots. No labels, no numbers, no arrows. Uniform 1pt strokes, flat fills, no shading.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, two equal panels.
+- [C] left panel = beta emitter (Lu-177): long sparse dotted track crossing 4–6 cell widths, showing crossfire range. Right panel = alpha emitter (Ac-225): short dense dotted track confined to 1–2 cell widths, showing precision.
+- [O] mirrored cell layout in both panels; track length is the single visual variable; cell circles arranged in a 3×3 grid for scale reference.
+- [P] flat vector, matte Claude palette: cells warm-gray #7A7368, attached radioligand node rust #C15F3C, beta track (sparse dots) sage #A8C0B4, alpha track (dense dots) periwinkle #B5B4D6. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: isotope chemical structures, decay equations, dose-rate numerals, anatomy, patient figure, LET equations.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 14. multiplicative-reproducibility-decline  — batch yield falls as integrated functions increase  (PQ · statistical/quantitative · Critical)
+*Source: Chapter 8 — "Multifunctional Theranostic Nanoparticles." Figure 8.1.*
+
+**PASTE:** Draw a blank vertical bar chart on a cream #F5F1E8 background: six upright rectangular bars arranged left to right in order, each bar shorter than the one before it (strictly descending heights), all sharing a single flat baseline at the bottom. A horizontal reference line sits at the height of the tallest bar. All bars blank flat fills, no tick marks, no numbers, no axis labels. Uniform 1pt strokes, no shading.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg.
+- [C] six bars representing whole-batch yield at 90% per-function reproducibility for 1 through 6 integrated functions: heights proportional to 90, 81, 73, 66, 59, 53 percent. Horizontal reference line at the single-function value (first bar height).
+- [O] bars left→right ordered by function count (1 to 6); y-axis starts at zero; heights monotonically descending; reference line spans full chart width.
+- [P] flat vector, matte Claude palette: first bar (1 function) rust #C15F3C, last bar (6 functions) sage #A8C0B4, intermediate bars warm-gray #7A7368, reference line Blue #0072B2 dashed. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: exact percentage values as text, function names, product names (Doxil/Abraxane), 95%-curve, x-axis tick labels.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 15. lnp-structure-and-escape  — four-component LNP plus pH-triggered endosomal escape  (MC · mechanism cross-section · Critical)
+*Source: Chapter 9 — "Nucleic Acid and Gene Delivery." Figure 9.2.*
+
+**PASTE:** Draw a two-panel schematic on a cream #F5F1E8 background. Left panel: a cutaway circle (the LNP) showing four concentric or layered zones — an innermost region (nucleic acid cargo), surrounded by three distinct shell layers (ionizable lipid, structural phospholipid, and a sparse outer ring of PEG-lipid bristles). Right panel: four stages in a horizontal left-to-right sequence connected by rightward arrows — stage 1: the LNP circle in an open plain rectangle (bloodstream); stage 2: the LNP inside a closed oval (endosome); stage 3: the oval's membrane shows jagged disruption and the LNP's innermost region is beginning to spill out; stage 4: the released cargo floating free outside the oval in the surrounding rectangle (cytosol). All shapes blank flat fills. Uniform 1pt strokes, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, landscape.
+- [C] left panel: four LNP components — ionizable lipid (largest shell zone), structural phospholipid, cholesterol filler, PEG-lipid coat, nucleic-acid core. Right panel: four steps — bloodstream (neutral lipid), endocytosis (endosome forms), acidification (lipid protonates), membrane disruption → cytosolic escape.
+- [O] two-panel: left = anatomy cutaway, right = temporal sequence left→right; arrows connect sequential steps.
+- [P] flat vector, matte Claude palette: ionizable lipid zone Blue #0072B2 (dominant), PEG-coat ring Sky Blue #56B4E9 (anchor), nucleic acid core rust #C15F3C, endosome membrane Vermillion #D55E00 at disruption stage, cytosol step neutral. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: pKa values, chemical structures, specific lipid names (MC3), RISC machinery, protein-corona interaction.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 16. pdt-triad-coincidence  — photosensitizer, light, and oxygen must all overlap  (MC · systems diagram · Critical)
+*Source: Chapter 10 — "Photodynamic and Photothermal Nanomedicine." Figure 10.1.*
+
+**PASTE:** Draw a blank three-circle Venn diagram on a cream #F5F1E8 background: three filled circles of equal size arranged so that all three overlap at the center, with a fourth distinct small circle placed outside all three, connected to the central overlap by a blocked (crossed) connector line. The three main circles are evenly distributed around the center. All circles blank flat fills. Uniform 1pt strokes, no shading, no labels. The blocking connector is a straight line with a perpendicular cross mark near the central overlap.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, square.
+- [C] three input circles: photosensitizer accumulated in tumor; light of correct wavelength delivered; molecular oxygen present in tissue. Central overlap zone = singlet oxygen / cell death (positive output). Fourth node = hypoxic tumor core (oxygen absent), blocked from the output by a crossed connector.
+- [O] three-circle Venn with strict coincidence center; blocking node outside the Venn, connected to center by a crossed line (not an arrow).
+- [P] flat vector, matte Claude palette: light circle Sky Blue #56B4E9 (anchor), oxygen circle warm-gray #7A7368, photosensitizer circle rust #C15F3C, central overlap Bluish Green #009E73 (positive output), hypoxic-block node and crossed connector sage #A8C0B4. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: fiber-optic equipment, tissue cross-section, wavelength numbers, singlet-oxygen chemical structure, depth penetration scale.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 17. characterization-cascade-pipeline  — seven gated parameters before a clinical claim  (MC · process flowchart · Critical)
+*Source: Chapter 11 — "Characterization, Manufacturing, and Regulatory Translation." Figure 11.1.*
+
+**PASTE:** Draw a blank top-down gated pipeline on a cream #F5F1E8 background: eight rectangles arranged vertically, each connected to the next by a downward single-headed arrow — the flow must pass through each gate before reaching the one below. A bracket spanning all eight stages runs along the left margin. All nodes blank flat fills. Uniform 1pt strokes, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, portrait.
+- [C] eight sequential gates: (1) size, (2) polydispersity index, (3) surface chemistry, (4) encapsulation efficiency, (5) release rate, (6) stability, (7) sterility, (8) clinical claim allowed. Bracket marks the full cascade as "batch equivalence evaluated across all."
+- [O] top-down cascade; each gate = one rectangle; arrows between gates enforce the ordering; bracket along left side spans all eight.
+- [P] flat vector, matte Claude palette: first two gates (size, PDI) rust #C15F3C, stability and sterility sage #A8C0B4, terminal "clinical claim" node periwinkle #B5B4D6, intermediate gates warm-gray #7A7368, bracket line neutral. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: specific threshold values, instrument names, PDI numerics, shelf-life numbers, GMP facility elements.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 18. translation-funnel-survivors  — preclinical designs → four gates → clinical survivors  (MC · process flowchart · Critical)
+*Source: Chapter 12 — "Clinical Strategy and the Gap Book." Figure 12.1.*
+
+**PASTE:** Draw a blank vertical narrowing funnel on a cream #F5F1E8 background: a wide rectangle at the top (the large preclinical pool), narrowing through four intermediate rectangular gates connected by downward arrows, ending in a narrow rectangle at the bottom (the survivors). At each of the two middle gates, a short horizontal arrow pointing left exits the funnel to a small struck-out circle (the discarded designs). All shapes blank flat fills. Uniform 1pt strokes, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, portrait.
+- [C] five levels: (1) wide top = thousands of preclinical designs; (2) gate = characterization/batch equivalence; (3) gate = measured tumor delivery (discard arrow exits here); (4) gate = patient selection by target (discard arrow exits here); (5) narrow bottom = clinical survivors (Doxil, Abraxane, T-DXd, radioligands, LNPs).
+- [O] vertical top-to-bottom narrowing; discard arrows exit at gate 3 and gate 4; funnel width shrinks at each gate.
+- [P] flat vector, matte Claude palette: top (preclinical pool) warm-gray #7A7368, gate 3 (delivery measurement) rust #C15F3C, gate 4 (patient selection) Blue #0072B2 (same — both are dominant loss points), discard circles Vermillion #D55E00 with crossed lines, survivor bottom sage #A8C0B4. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: drug names as text, specific trial names, arrows labeled with words, any clinical data or survival curves.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 19. loop-vs-line-clinical-strategy  — self-correcting image-treat-image cycle vs. dead-end all-comers line  (MC · comparison · Important)
+*Source: Chapter 12 — "Clinical Strategy and the Gap Book." Figure 12.2.*
+
+**PASTE:** Draw a two-part comparison schematic on a cream #F5F1E8 background, stacked vertically. Top half: a closed four-node cycle diagram — four rounded rectangles arranged at the corners of a square, connected by arrows that flow clockwise and return to the first node to close the loop. Bottom half: a linear sequence of four rectangles connected left to right by rightward arrows, the final arrow terminating at a small solid wall (dead-end marker) rather than connecting back. Both halves are blank flat fills. Uniform 1pt strokes, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, portrait.
+- [C] top = radioligand success loop: (1) imaging/PET scan; (2) patient selection (positive scan); (3) Lu-177 targeted therapy; (4) response imaging → arrow back to node 1. Bottom = failed program line: (1) elegant particle; (2) all-comers dosing; (3) response-only readout; (4) dead-end/uninterpretable result.
+- [O] top half = closed square cycle, bottom half = open left-to-right line with dead-end; both halves at equal width.
+- [P] flat vector, matte Claude palette: loop's imaging node Sky Blue #56B4E9 (anchor), loop's response/closing node Bluish Green #009E73; line's all-comers and response nodes rust #C15F3C, dead-end marker Vermillion stroke. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: patient figures, isotope labels, scanner machine shapes, survival curves, specific trial names.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 20. adc-dose-loss-funnel-bystander  — five-step ADC attrition with bystander branch at the terminus  (MC · process flowchart · Important)
+*Source: Chapter 5 — "Antibody-Drug Conjugates." Figure 5.3.*
+
+**PASTE:** Draw a blank left-to-right horizontal narrowing funnel on a cream #F5F1E8 background: five stacked bands (left=wide, right=narrow) connected by rightward arrows, with the rightmost narrow terminus splitting into two short branches — one angling upward and one angling downward — each ending in a small circle. All shapes blank flat fills. Uniform 1pt strokes, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, landscape.
+- [C] five stages: (1) injected dose; (2) circulation / linker stability loss; (3) antigen binding; (4) internalization; (5) payload escape and action. Terminal fork: upper branch = bystander kill (neighboring tumor cell), lower branch = normal-tissue toxicity.
+- [O] left→right narrowing funnel; five bands monotonically narrowing; fork at terminus splits bystander benefit from normal-tissue toxicity.
+- [P] flat vector, matte Claude palette: first band rust #C15F3C, intermediate loss bands sage #A8C0B4, terminal payload-action band neutral, bystander-benefit arm periwinkle #B5B4D6, toxicity arm warm-gray #7A7368. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: specific drug names (T-DM1/T-DXd), DAR numbers, linker chemistry, receptor identity, off-target organ anatomy.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 21. siRNA-lnp-dose-funnel  — systemic siRNA funnel with endosomal escape as the narrow neck  (MC · process flowchart · Critical)
+*Source: Chapter 9 — "Nucleic Acid and Gene Delivery." Figure 9.1.*
+
+**PASTE:** Draw a blank vertical funnel on a cream #F5F1E8 background: six stacked horizontal bands narrowing from a wide top to an extremely narrow neck at the fifth band, then widening very slightly for the sixth (acting) band. Each band is a centered flat rectangle; the fifth band is dramatically narrower than the fourth — it is the constriction. Short lateral arrows exit the funnel at each inter-band junction to indicate diverted dose. Uniform 1pt strokes, flat fills, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, portrait.
+- [C] six stages: (1) injected dose 100%; (2) survives nuclease/renal clearance; (3) extravasates into tumor (EPR); (4) cellular uptake by endocytosis; (5) endosomal escape (~1–2%, the sharpest constriction); (6) acts on target mRNA. Lateral arrows at each junction = diverted/lost dose.
+- [O] vertical top-to-bottom; each band centered; stage 5 visually the sharpest constriction; lateral diversion arrows exit both sides at each junction.
+- [P] flat vector, matte Claude palette: stages 1–3 warm-gray #7A7368, stage 4 Sky Blue #56B4E9 (cellular uptake anchor), stage 5 (escape) Blue #0072B2 (dominant, rate-limiting), stage 6 Bluish Green #009E73 (positive outcome). Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: RISC machinery, mRNA target molecule, ionizable lipid structure, specific drug names, EPR percentage values.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 22. vehicle-cargo-match-matrix  — four delivery vehicles vs. application fit  (VG · comparison · Important)
+*Source: Chapter 9 — "Nucleic Acid and Gene Delivery." Figure 9.3.*
+
+**PASTE:** Draw a blank two-column matrix on a cream #F5F1E8 background: four rows, each row containing two side-by-side rectangles of equal size. A thin vertical rule separates the two columns; thin horizontal rules separate the four rows. All rectangles blank flat fills. Uniform 1pt strokes, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, portrait.
+- [C] four rows (left column = vehicle, right column = application fit): row 1 = lipid nanoparticle / transient, scalable, re-dosable; row 2 = lentivirus / integrating, permanent (integration risk); row 3 = AAV / episomal, small ~4.7 kb payload limit; row 4 = adenovirus / large payload, highly immunogenic.
+- [O] two-column side-by-side matrix; each row pairs vehicle to fit; four rows stacked.
+- [P] flat vector, matte Claude palette: LNP row (row 1) fill Bluish Green #009E73 (favorable), lentivirus row Vermillion #D55E00 (integration risk negative), AAV row warm-gray #7A7368, adenovirus row Orange #E69F00 (immunogenicity caution). Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: virus capsid structures, protein-coat detail, vector genome maps, clinical trial names, immune pathway diagrams.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 23. pdt-vs-ptt-shared-ceiling  — two mechanisms, one inescapable light-penetration limit  (MC · comparison · Important)
+*Source: Chapter 10 — "Photodynamic and Photothermal Nanomedicine." Figure 10.3.*
+
+**PASTE:** Draw a two-column comparison schematic on a cream #F5F1E8 background separated by a thin vertical rule. Four rows of paired shapes, aligned horizontally. Rows 1–3 differ between columns; row 4 is a single shared horizontal bar spanning both columns (a shared-ceiling visual). All shapes blank flat fills. Uniform 1pt strokes, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, portrait.
+- [C] left column = PDT: (1) three-input convergence (photosensitizer + light + oxygen) producing singlet-oxygen output; (2) singlet oxygen / ROS output; (3) oxygen-dependent — fails in hypoxia marker. Right column = PTT: (1) gold nanorod + NIR input producing heat; (2) localized heat output; (3) oxygen-independent marker. Row 4 (shared) = light-penetration ceiling bar spanning both columns.
+- [O] two columns aligned by row; rows 1–3 contrast mechanisms; row 4 unifies under the shared physical limit.
+- [P] flat vector, matte Claude palette: mechanism-input row Sky Blue #56B4E9 (anchor), output row rust #C15F3C, oxygen-dependence row neutral for PTT / Vermillion for PDT (fails in hypoxia), shared-ceiling bar sage #A8C0B4. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: specific wavelength numbers, fiber-optic diagrams, depth-in-mm scale, tumor anatomy, AuroLase name.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 24. sizing-triangulation  — two methods must agree before a size claim is valid  (VG · systems diagram · Important)
+*Source: Chapter 11 — "Characterization, Manufacturing, and Regulatory Translation." Figure 11.2.*
+
+**PASTE:** Draw a blank convergence node-edge schematic on a cream #F5F1E8 background: two source rectangles at the upper left and upper right, each connected by a downward-pointing arrow to a central diamond node below them. The diamond connects by a further downward arrow to a green-fill target circle (verified size). A fourth small rectangle at lower-left is connected to the upper-left source by a short horizontal arrow, then a blocked connector (straight line with a perpendicular cross mark) points toward the central area — indicating that one method alone does not reach the verified circle. Uniform 1pt strokes, flat fills, no shading, no labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, square.
+- [C] four nodes: TEM/imaging source (upper left), DLS/light-scattering source (upper right), diamond convergence node (center), verified-size output (green circle below diamond). Single-method result (provisional) connected to TEM by a short lateral arrow, blocked from the verified output.
+- [O] two sources converging on a diamond; diamond pointing to positive output; single-method stub branching off TEM with a blocked connector to show "alone is insufficient."
+- [P] flat vector, matte Claude palette: TEM node Sky Blue #56B4E9 (anchor), DLS node rust #C15F3C, convergence diamond warm-gray #7A7368, verified-size circle sage #A8C0B4, single-method stub and blocking connector periwinkle #B5B4D6. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: diffractogram patterns, scattering intensity curves, micrograph images, specific particle types, nm numbers.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 25. nanoparticle-distribution-vs-molecule  — single-point identity vs. population spread  (VG · comparison · Important)
+*Source: Chapter 11 — "Characterization, Manufacturing, and Regulatory Translation." Figure 11.3.*
+
+**PASTE:** Draw two side-by-side panels on a cream #F5F1E8 background separated by a thin vertical rule. Left panel: a single thin vertical line standing at a point on a flat baseline — the small molecule as a precise single value. Right panel: a smooth bell-curve shape above a flat baseline — wider at one batch (narrow tall bell) and wider still at another (short flat bell), the two bells slightly overlapping — representing a nanoparticle population with batch-to-batch spread variation. All shapes are blank outline strokes or fills with no labels. Uniform 1pt strokes, no shading, no text.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, landscape.
+- [C] left = small molecule: one sharp peak at a defined point (binary identity — either the molecule or not). Right = nanoparticle: two bell-curve distributions, one narrow/tall (well-controlled batch) and one wide/flat (poorly controlled batch), plotted on the same x-axis to show that different spreads around the same mean are not the same product.
+- [O] two panels side-by-side; shared x-axis baseline; single spike vs. two bells is the visual contrast.
+- [P] flat vector, matte Claude palette: single-molecule spike rust #C15F3C, narrow-bell (well-controlled) sage #A8C0B4, wide-bell (poorly controlled) periwinkle #B5B4D6, baseline warm-gray #7A7368. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: molecular formulas, nm axis numbers, PDI values, any distribution statistics, particle cross-sections.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 26. epr-reliability-spectrum  — mouse models at high EPR, human tumors at variable/weak EPR  (VG · comparison · Important)
+*Source: Chapter 4 — "Targeting: EPR, Protein Corona, and Active Ligands."*
+
+**PASTE:** Draw a blank horizontal spectrum bar on a cream #F5F1E8 background: a wide flat rectangle spanning most of the panel width, shaded as a smooth gradient from a solid fill on the left end to a light stippled fill on the right end, representing a continuum from high/uniform to low/variable. Two small marker triangles sit on the bar — one near the left end, one near the right end. Two short vertical lines drop below the bar at those marker positions. No text, no numbers. Uniform 1pt strokes, no shading beyond the gradient fill of the bar.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg, landscape.
+- [C] spectrum bar: left end = high, uniform EPR (rodent tumor models); right end = variable, often weak EPR (human solid tumors). Left marker = preclinical peak; right marker = ~0.7% median injected dose in clinical context (marker position only — no numeric text).
+- [O] single horizontal bar; left-to-right gradient (solid to stippled); two markers positioned at left and right to anchor the endpoints.
+- [P] flat vector, matte Claude palette: bar gradient from Blue #0072B2 (solid/high, left) to light gray (stippled/variable, right), left marker rust #C15F3C, right marker sage #A8C0B4. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: percentage numerals, molecular diagrams, vasculature anatomy, tumor images, drug names.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## 27. light-penetration-depth-ceiling  — red and NIR light fall short of bulky-tumor depth  (PQ · statistical/quantitative · Important)
+*Source: Chapter 10 — "Photodynamic and Photothermal Nanomedicine." Figure 10.2.*
+
+**PASTE:** Draw a blank vertical bar chart on a cream #F5F1E8 background: three upright rectangular bars arranged left to right, sharing a single flat zero baseline. A horizontal reference line sits well above the tallest bar, spanning the full chart width. All bars and the reference line are blank flat fills. No tick marks, no numbers, no axis labels.
+- [S] single-column 89mm, 300 DPI, vector, cream #F5F1E8 bg.
+- [C] three bars representing effective treatment depth: red light (~630 nm) ≈ 3 mm, NIR light ≈ 6 mm, the deep-tumor target ≈ 15 mm. The reference line marks the bulky-tumor target depth so that both light bars visibly fall short.
+- [O] bars left→right in given order (red, NIR, target); y-axis starts at zero; reference line at the target-depth height; bars 1 and 2 are shorter than the reference line; bar 3 IS the reference line height (or it can be a separate line rather than a bar).
+- [P] flat vector, matte Claude palette: red-light bar rust #C15F3C, NIR bar Sky Blue #56B4E9 (anchor), target/reference line Vermillion #D55E00 (the ceiling they cannot reach), gap between NIR bar and line emphasized. Black #000000 outlines. No baked text. Flat matte, low saturation — no gradients, no gloss, no drop-shadows.
+- [E] exclude: wavelength numbers, tissue cross-section, absorption spectra, endoscope hardware, specific photosensitizer names.
+
+**NEGATIVE:** text labels, words, gibberish letters, titles, captions, decorative borders, realistic textures, drop shadows, gradient backgrounds, photographic elements, dual-headed arrows, hand-drawn styles, human figures, visual clutter, watermarks, red-green color combinations, rainbow color scales, 3D perspective distortion
+
+---
+
+## Scan summary
+
+| # | Slug | Chapter | Type | Priority |
+|---|---|---|---|---|
+| 1 | psma-theranostic-loop | Ch 7 (pre-existing) | cycle | Critical |
+| 2 | protein-corona-vroman | Ch 4 (pre-existing) | structural schematic | Critical |
+| 3 | her2-bystander-panels | Ch 5 (pre-existing) | comparison | Important |
+| 4 | epr-delivery-funnel | Ch 1/2/4 (pre-existing) | sequence | Important |
+| 5 | nanoparticle-size-ladder | Ch 1 | structural schematic | Critical |
+| 6 | tumor-transport-cross-section | Ch 2 | mechanism cross-section | Critical |
+| 7 | four-barrier-delivery-chain | Ch 2 | process flowchart | Critical |
+| 8 | nanocarrier-platform-trio | Ch 3 | structural schematic | Important |
+| 9 | platform-selection-tree | Ch 3 | hierarchy/taxonomy | Important |
+| 10 | adc-anatomy-internalization | Ch 5 | mechanism cross-section | Critical |
+| 11 | nanoparticle-modality-hub | Ch 6 | systems diagram | Important |
+| 12 | biodistribution-decision-tree | Ch 6 | process flowchart | Critical |
+| 13 | beta-vs-alpha-emitter-range | Ch 7 | comparison | Important |
+| 14 | multiplicative-reproducibility-decline | Ch 8 | statistical/quantitative | Critical |
+| 15 | lnp-structure-and-escape | Ch 9 | mechanism cross-section | Critical |
+| 16 | pdt-triad-coincidence | Ch 10 | systems diagram | Critical |
+| 17 | characterization-cascade-pipeline | Ch 11 | process flowchart | Critical |
+| 18 | translation-funnel-survivors | Ch 12 | process flowchart | Critical |
+| 19 | loop-vs-line-clinical-strategy | Ch 12 | comparison | Important |
+| 20 | adc-dose-loss-funnel-bystander | Ch 5 | process flowchart | Important |
+| 21 | siRNA-lnp-dose-funnel | Ch 9 | process flowchart | Critical |
+| 22 | vehicle-cargo-match-matrix | Ch 9 | comparison | Important |
+| 23 | pdt-vs-ptt-shared-ceiling | Ch 10 | comparison | Important |
+| 24 | sizing-triangulation | Ch 11 | systems diagram | Important |
+| 25 | nanoparticle-distribution-vs-molecule | Ch 11 | comparison | Important |
+| 26 | epr-reliability-spectrum | Ch 4 | comparison | Important |
+| 27 | light-penetration-depth-ceiling | Ch 10 | statistical/quantitative | Important |
+
+**Chapters scanned:** 00-introduction (placeholder — skipped), 01 through 12 (all 12 content chapters).
+**Skipped:** 00-frontmatter.md, 99-back-matter.md (per scan rules); 00-introduction.md (placeholder content only).
+**Pre-existing candidates preserved:** 1–4 (psma-theranostic-loop, protein-corona-vroman, her2-bystander-panels, epr-delivery-funnel).
+**New candidates added:** 23 (figures 5–27).
+**Total candidates:** 27 across 12 chapters.
+**Critical / Important split:** 14 Critical · 13 Important.
+**Chapters with no figure added:** Ch 8 (multiplicative-reproducibility-decline is the one figure; complex vs. simple design contrast is a conceptual schematic already covered by the funnel and platform figures). All chapters with rich mechanism content produced 1–3 candidates. Ch 8's second figure (complex vs simple balance) was judged redundant given figure 14 already captures the quantitative translation-penalty argument.
+
+---
+
+## Video candidates
+
+FIGURE psma-theranostic-loop — Status: VIDEO CANDIDATE · Criterion: 3 · Reason: a closed cycle in which the return to start is conceptually load-bearing — each iteration changes the conditions for the next, a relationship that a static loop diagram cannot express.
+FIGURE protein-corona-vroman — Status: STATIC SUFFICIENT · Criterion: — · Reason: the figure is a spatial cross-section or structural schematic whose value lies in inspecting all parts simultaneously.
+FIGURE her2-bystander-panels — Status: STATIC SUFFICIENT · Criterion: — · Reason: the figure is a simultaneous comparison of two or more states; motion would replace side-by-side display with a sequence that the chapter does not assert.
+FIGURE epr-delivery-funnel — Status: VIDEO CANDIDATE · Criterion: 2 · Reason: a sequence of causal steps: the student must witness each stage causing the next to understand the mechanism, not merely see the endpoints.
+FIGURE nanoparticle-size-ladder — Status: STATIC SUFFICIENT · Criterion: — · Reason: the figure is a spatial cross-section or structural schematic whose value lies in inspecting all parts simultaneously.
+FIGURE tumor-transport-cross-section — Status: STATIC SUFFICIENT · Criterion: — · Reason: the mechanism is fully carried by arrow direction and shape arrangement in one frame; motion would not add information a careful static figure does not already hold.
+FIGURE four-barrier-delivery-chain — Status: VIDEO CANDIDATE · Criterion: 2 · Reason: a sequence of causal steps: the student must witness each stage causing the next to understand the mechanism, not merely see the endpoints.
+FIGURE nanocarrier-platform-trio — Status: STATIC SUFFICIENT · Criterion: — · Reason: the figure is a spatial cross-section or structural schematic whose value lies in inspecting all parts simultaneously.
+FIGURE platform-selection-tree — Status: STATIC SUFFICIENT · Criterion: — · Reason: the concept is a classification or taxonomy with no temporal component; animation would impose a false sequence.
+FIGURE adc-anatomy-internalization — Status: VIDEO CANDIDATE · Criterion: 4 · Reason: the transformation is a molecular-scale conformational or binding event that occurs below the threshold of direct observation; motion is required to communicate that a change occurred and how.
+FIGURE nanoparticle-modality-hub — Status: STATIC SUFFICIENT · Criterion: — · Reason: the mechanism is fully carried by arrow direction and shape arrangement in one frame; motion would not add information a careful static figure does not already hold.
+FIGURE biodistribution-decision-tree — Status: VIDEO CANDIDATE · Criterion: 2 · Reason: a sequence of causal steps: the student must witness each stage causing the next to understand the mechanism, not merely see the endpoints.
+FIGURE beta-vs-alpha-emitter-range — Status: STATIC SUFFICIENT · Criterion: — · Reason: the figure is a simultaneous comparison of two or more states; motion would replace side-by-side display with a sequence that the chapter does not assert.
+FIGURE multiplicative-reproducibility-decline — Status: STATIC SUFFICIENT · Criterion: — · Reason: the value of the figure lies in comparing quantities simultaneously; animating bars or curves removes the measurement it exists to make.
+FIGURE lnp-structure-and-escape — Status: STATIC SUFFICIENT · Criterion: — · Reason: the mechanism is fully carried by arrow direction and shape arrangement in one frame; motion would not add information a careful static figure does not already hold.
+FIGURE pdt-triad-coincidence — Status: STATIC SUFFICIENT · Criterion: — · Reason: the mechanism is fully carried by arrow direction and shape arrangement in one frame; motion would not add information a careful static figure does not already hold.
+FIGURE characterization-cascade-pipeline — Status: VIDEO CANDIDATE · Criterion: 2 · Reason: a sequence of causal steps: the student must witness each stage causing the next to understand the mechanism, not merely see the endpoints.
+FIGURE translation-funnel-survivors — Status: VIDEO CANDIDATE · Criterion: 2 · Reason: a sequence of causal steps: the student must witness each stage causing the next to understand the mechanism, not merely see the endpoints.
+FIGURE loop-vs-line-clinical-strategy — Status: STATIC SUFFICIENT · Criterion: — · Reason: the figure is a simultaneous comparison of two or more states; motion would replace side-by-side display with a sequence that the chapter does not assert.
+FIGURE adc-dose-loss-funnel-bystander — Status: VIDEO CANDIDATE · Criterion: 2 · Reason: a sequence of causal steps: the student must witness each stage causing the next to understand the mechanism, not merely see the endpoints.
+FIGURE siRNA-lnp-dose-funnel — Status: VIDEO CANDIDATE · Criterion: 2 · Reason: a sequence of causal steps: the student must witness each stage causing the next to understand the mechanism, not merely see the endpoints.
+FIGURE vehicle-cargo-match-matrix — Status: STATIC SUFFICIENT · Criterion: — · Reason: the figure is a simultaneous comparison of two or more states; motion would replace side-by-side display with a sequence that the chapter does not assert.
+FIGURE pdt-vs-ptt-shared-ceiling — Status: STATIC SUFFICIENT · Criterion: — · Reason: the figure is a simultaneous comparison of two or more states; motion would replace side-by-side display with a sequence that the chapter does not assert.
+FIGURE sizing-triangulation — Status: STATIC SUFFICIENT · Criterion: — · Reason: the mechanism is fully carried by arrow direction and shape arrangement in one frame; motion would not add information a careful static figure does not already hold.
+FIGURE nanoparticle-distribution-vs-molecule — Status: STATIC SUFFICIENT · Criterion: — · Reason: the figure is a simultaneous comparison of two or more states; motion would replace side-by-side display with a sequence that the chapter does not assert.
+FIGURE epr-reliability-spectrum — Status: STATIC SUFFICIENT · Criterion: — · Reason: the figure is a simultaneous comparison of two or more states; motion would replace side-by-side display with a sequence that the chapter does not assert.
+FIGURE light-penetration-depth-ceiling — Status: STATIC SUFFICIENT · Criterion: — · Reason: the value of the figure lies in comparing quantities simultaneously; animating bars or curves removes the measurement it exists to make.
+
+**Chapter recommendation:** **psma-theranostic-loop** — highest-priority candidate (criterion 3); if produced, **four-barrier-delivery-chain**, **biodistribution-decision-tree**, **characterization-cascade-pipeline**, **translation-funnel-survivors**, **siRNA-lnp-dose-funnel**, **adc-anatomy-internalization**, **epr-delivery-funnel**, **adc-dose-loss-funnel-bystander** could fold in as supporting beats rather than separate videos.

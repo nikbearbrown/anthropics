@@ -1,0 +1,370 @@
+{
+  "slug": "Causal-Inference-ch06-weighting-methods",
+  "title": "Weighting Methods",
+  "series": "Causal Inference",
+  "source": "chapters/06-weighting-methods.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 6,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 13,
+      "section": "HOOK",
+      "label": "01 / 13 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "THE POLLSTER'S TRICK ",
+          false
+        ],
+        [
+          "FIXES CONFOUNDING.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> The math that corrects a survey's skewed sample is identical to the math that corrects for confounding in treatment studies.</div><p class=\"lead\">Both problems arise from unequal representation in your data. Both are solved by reweighting.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Here is a problem you have almost certainly encountered, even if you didn't frame it as causal inference. A newspaper conducts a survey of a thousand people in a city of one million. Sixty-three percent approve of the mayor. But the demographics alarm the intern: eighty percent of respondents are women, while the city is fifty-fifty. If men and women have different opinions—and they almost always do—the sample is skewed toward female views. The fix is obvious in hindsight. Count men more. Give each man a weight of 2.5, each woman 0.625, so the weighted totals return to fifty-fifty. Recompute approval. Publish that number. This is the Horvitz-Thompson estimator, published in 1952 by survey statisticians who had been doing it for decades. And here is what I want you to carry forward: the identical mathematical machinery that fixes a sampling problem fixes a confounding problem. When treated and untreated groups have different covariate distributions, we reweight them—giving some people higher weights—until the two groups look comparable. This entire chapter is unpacking what 'some people' means and what 'higher' should be.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 59.71
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 13,
+      "section": "THE STAKES",
+      "label": "02 / 13 · THE STAKES",
+      "dark": false,
+      "title": [
+        [
+          "MATCHING OR WEIGHTING? ",
+          false
+        ],
+        [
+          "YOU NEED BOTH.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Matching only</b><span>Discards unmatched units; loses information; intuitive comparisons</span></div><div class=\"cell-part hot\"><b>Weighting</b><span>Uses all data; handles continuous covariates; requires understanding of weights</span></div></div><p class=\"lead\">Every applied analyst uses both tools on the same dataset. The comparison between them is itself diagnostic.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Why does this chapter matter? Because every researcher who does observational causal inference uses both matching and weighting—often on the same data for comparison—yet understanding them deeply is crucial to applied work. A student who learns only matching will be genuinely puzzled by the causal inference literature, which is saturated with weighting methods. Conversely, a student who learns weighting by memorizing software defaults will get the wrong answer without recognizing it. The chapter asks you to develop judgment about when each tool is right. By the end, you'll explain in plain English why the inverse of the propensity score is the correct weight—not by reciting a formula, but by deriving it from the pollster's intuition. You'll compute and stabilize IPTW weights. You'll diagnose when weights become extreme and choose between truncation, trimming, and overlap adjustments. You'll recognize when doubly robust estimation adds value. And most critically, you'll defend your choice between matching and weighting for a given problem.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 51.73
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 13,
+      "section": "CONCEPT",
+      "label": "03 / 13 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "SAMPLE IS EIGHTY PERCENT WOMEN, ",
+          false
+        ],
+        [
+          "CITY IS FIFTY-FIFTY.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big on\">800</div><div class=\"cap\">Female respondents</div></div><div class=\"eq\">÷</div><div class=\"stat\"><div class=\"big\">500,000</div><div class=\"cap\">Female population</div></div><div class=\"eq\">=</div><div class=\"stat\"><div class=\"big on\">625</div><div class=\"cap\">Weight per woman</div></div></div><p class=\"lead\">Each person in your sample represents a different slice of the target population. The more oversampled your group, the lower your individual weight.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Start with simple numbers. You surveyed one thousand people in a city of one million. In a simple random sample, each respondent represents one thousand citizens—the city population divided by your sample size. But your sample is eighty percent female, twenty percent male, when the city is fifty-fifty. Among your eight hundred female respondents, each represents five hundred thousand female citizens divided by eight hundred, which equals six hundred twenty-five female citizens per respondent. Among your two hundred male respondents, each represents five hundred thousand male citizens divided by two hundred, which equals twenty-five hundred male citizens per respondent. Men are more valuable to the estimate because they are scarcer in your sample. Each male respondent stands in for more people. The weight you assign reflects how many people in the target population that respondent actually represents. More oversampled groups get lower weights; undersampled groups get higher weights. This is the fundamental intuition behind all weighting.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 54.21
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 13,
+      "section": "CONCEPT",
+      "label": "04 / 13 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "HORVITZ-THOMPSON: WEIGHT ",
+          false
+        ],
+        [
+          "IS ONE OVER SAMPLING PROBABILITY.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Sampling probability for women</b><span>800 respondents ÷ 500,000 female population = 0.0016</span></div><div class=\"wire\"><b>Weight for women</b><span>1 ÷ 0.0016 = 625</span></div><div class=\"wire\"><b>Sampling probability for men</b><span>200 respondents ÷ 500,000 male population = 0.0004</span></div><div class=\"wire\"><b>Weight for men</b><span>1 ÷ 0.0004 = 2,500</span></div></div><p class=\"lead\">Inverse probability reweighting was published in 1952, decades before epidemiologists began worrying about confounding in the modern sense.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The Horvitz-Thompson formalism reframes the weighting idea with mathematical precision. The weight assigned to each person is one divided by that person's probability of being sampled. A woman has a sampling probability of eight hundred divided by five hundred thousand, or 0.0016. Her weight is one divided by 0.0016, which equals six hundred twenty-five. A man has a sampling probability of two hundred divided by five hundred thousand, or 0.0004. His weight is one divided by 0.0004, which equals twenty-five hundred. Notice the pattern: people with low sampling probability—rare in your sample—get high weights. Those with high sampling probability—common in your sample—get low weights. This inverse relationship is the whole idea. The Horvitz-Thompson estimator was published in nineteen fifty-two by survey statisticians who had been refining this reasoning for decades. It predates by two decades the modern causal inference literature on confounding. Survey sampling and confounding adjustment are not separate problems. They are the same problem dressed in different vocabularies.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 62.85
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 13,
+      "section": "CONCEPT",
+      "label": "05 / 13 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "FROM SAMPLING SKEW ",
+          false
+        ],
+        [
+          "TO CONFOUNDING SKEW.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Polling problem</b><span>Sample is eighty percent women; target population is fifty-fifty</span></div><div class=\"cell-part hot\"><b>Confounding problem</b><span>Treated group differs in covariates; untreated differs; need comparability</span></div></div><p class=\"lead\">In both cases, your data is skewed away from the target population. Reweighting brings it back into balance.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Now the central leap: the same weighting machinery solves confounding. In a treatment study, you do not have a sampling problem in the technical sense. But you do have a skew problem. Treated and untreated groups have different covariate distributions. If treatment is not randomly assigned, the groups differ in ways that matter for the outcome. The treated group might be older, sicker, wealthier, or exposed to different environments. The untreated group has its own demographic and clinical profile. Just as the survey sample is skewed toward women, your treatment groups are skewed—toward different profiles of covariates and characteristics. You do not want an effect estimate that is pulled by the imbalance between groups. The solution is identical: reweight. Give some people higher weights so that after weighting, treated and untreated look comparable in their covariate distributions. Instead of sampling probability, you weight by the probability of receiving treatment given covariates—the propensity score. The math is identical. The language differs, but the problem and solution are one and the same.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 55.1
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 13,
+      "section": "CONCEPT",
+      "label": "06 / 13 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "PROPENSITY SCORE ",
+          false
+        ],
+        [
+          "IS TREATMENT PROBABILITY.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Person's covariates</span><span class=\"arw\">→</span><span class=\"chip on\">Logistic model</span><span class=\"arw\">→</span><span class=\"chip warn\">Pr(Treatment|Covariates)</span></div><p class=\"lead\">You fit a model predicting treatment assignment from observed covariates. That prediction is the propensity score. A summary of how likely that person was to be treated given their characteristics.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Before you can weight by inverse probability of treatment, you need the probability of treatment for each person. That is the propensity score. You fit a logistic regression or any classification model predicting treatment assignment from observed covariates. Each person gets a predicted probability: the odds they were treated, given their covariate values. That prediction is their propensity score. A person with covariates that strongly predict treatment gets a high propensity score. A person whose characteristics are rare among the treated gets a low propensity score. The propensity score is a summary statistic. It collapses the entire covariate profile into a single number: the probability of treatment. Why is that useful? Because instead of separately balancing on age, sex, employment status, health, income, and dozens of other covariates—which becomes intractable with many variables—you balance on a single summary. If propensity scores are balanced between treated and untreated, the full covariate distributions are balanced too.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 53.87
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 13,
+      "section": "CONCEPT",
+      "label": "07 / 13 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "IPTW: WEIGHT EQUALS ONE ",
+          false
+        ],
+        [
+          "OVER PROPENSITY SCORE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>For a treated person</b><span>Weight = 1 ÷ Pr(Treatment=1|Covariates)</span></div><div class=\"wire\"><b>For an untreated person</b><span>Weight = 1 ÷ Pr(Treatment=0|Covariates)</span></div><div class=\"wire\"><b>Why inverse</b><span>People rare in treated group get high weight; people common in treated group get low weight</span></div></div><p class=\"lead\">This is Inverse Probability of Treatment Weighting. It rebalances the groups so they are comparable on observed covariates.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Inverse Probability of Treatment Weighting—IPTW—applies the Horvitz-Thompson logic directly to treatment assignment. For a treated person, the weight is one divided by the propensity score: one over the probability of treatment given their covariates. For an untreated person, the weight is one divided by the probability of being untreated, which is one minus the propensity score. Think through the logic. A person in the treated group whose covariates are rare among the treated—someone unusual for a treated person—has a low propensity score. Their weight is large. They represent more people like them in the treated population. Conversely, a person in the treated group whose covariates are common among the treated has a high propensity score and a low weight. After applying these weights, treated and untreated groups have similar covariate distributions. The weighting has rebalanced the sample. Confounding bias from covariate imbalance is eliminated—assuming the back-door criterion holds and your propensity model is correct.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 52.67
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 13,
+      "section": "CONCEPT",
+      "label": "08 / 13 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "EXTREME WEIGHTS INFLATE ",
+          false
+        ],
+        [
+          "SAMPLING VARIANCE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> A person with a propensity score close to zero or one has a weight close to infinity, dominating the analysis.</div><p class=\"lead\">This happens when someone's covariates strongly predict treatment but they received the opposite. Choose between truncation, trimming, and overlap weights to diagnose and solve it.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Weighting has a hidden cost. If a person's propensity score is close to zero or one, their weight becomes extreme. Suppose an untreated person has a propensity score of 0.01—their covariates strongly predict treatment, but they were not treated. Their weight is one divided by 0.99, which is approximately 1.01: modest. But if their propensity score is 0.001, their weight becomes one divided by 0.999, which is approximately 1,000. A single person now dominates the untreated group's contribution to the estimate. Extreme weights inflate sampling variance and create unstable, unreliable results. This happens when someone's covariates create a strong prediction of treatment that was contradicted by their actual assignment. You have limited data about what it looks like to be untreated with covariates that strongly predict treatment. That person becomes informationally huge because they are rare. Three main solutions exist. Truncation sets weights above a threshold to that threshold. Trimming excludes units with extreme propensity scores entirely. Overlap weights modify the weight formula itself to target only the population where overlap exists. Each choice involves tradeoffs in bias and variance.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 69.25
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 13,
+      "section": "CONCEPT",
+      "label": "09 / 13 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "STABILIZED WEIGHTS REDUCE ",
+          false
+        ],
+        [
+          "VARIANCE WITHOUT BIAS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Raw IPTW</b><span>Weight = 1 ÷ Propensity score; can produce extreme values</span></div><div class=\"cell-part hot\"><b>Stabilized IPTW</b><span>Weight = Marginal Pr(Treatment) ÷ Propensity score; shrinks weights, maintains unbiasedness</span></div></div><p class=\"lead\">Stabilization multiplies the raw weight by the marginal probability of treatment. It reduces variance without introducing bias.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Before confronting extreme weights directly, there is a simpler tool: stabilization. Raw IPTW weights can be large, creating high variance in your estimates. Stabilized weights modify the formula slightly. Instead of one divided by the propensity score, use the marginal probability of treatment divided by the propensity score. If thirty percent of your sample was treated, the marginal probability is 0.3. For treated individuals, the stabilized weight is 0.3 divided by the propensity score. For untreated, it is 0.7 divided by the probability of being untreated. What does this achieve? The stabilized weights are smaller on average, which shrinks the effective sample size and reduces variance. Simultaneously, the estimator remains unbiased: the stabilization factor cancels out in expectation. You get less variable estimates without sacrificing the causal estimate's validity. Stabilization is almost always worth doing because IPTW is already unbiased, so reducing its variance is pure gain. You trade nothing to gain stability.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 56.68
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 13,
+      "section": "CONCEPT",
+      "label": "10 / 13 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "DOUBLY ROBUST ESTIMATION ",
+          false
+        ],
+        [
+          "COMBINES TWO MODELS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Model 1: Propensity</span><span class=\"arw\">→</span><span class=\"chip on\">Compute IPTW</span><span class=\"arw\">→</span><span class=\"chip\">Model 2: Outcome</span><span class=\"arw\">→</span><span class=\"chip warn\">Effect estimate</span></div><p class=\"lead\">If either model is correct, the estimate is unbiased. Both must be wrong in specific, correlated ways for bias to persist. This redundancy is where double robustness comes from.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "IPTW depends on getting the propensity score model right. If your propensity model is misspecified—omitting important confounders, using the wrong functional form—your weights are wrong, and bias creeps in. Doubly robust estimation hedges this risk. You fit two models: the propensity model, as before, to compute IPTW weights. Then you fit an outcome model predicting the outcome from treatment and covariates, just as you would in any regression adjustment. The effect estimate combines both. The doubly robust property is this: if either model is correct—propensity or outcome—the estimate is unbiased. You need both models to be wrong in specific, correlated ways for bias to survive. This redundancy shields you from single-model failures. Why not always use it? Because fitting an outcome model adds complexity and can increase bias-variance tradeoffs if done poorly. The double robustness is only as good as your modeling choices. But when you are unsure about propensity specification, the extra modeling burden may be worth the insurance.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 53.25
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 13,
+      "section": "SYNTHESIS",
+      "label": "11 / 13 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "WEIGHTING SOLVES BACK-DOOR ",
+          false
+        ],
+        [
+          "CONFOUNDING THROUGH BALANCE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Identify confounders</b><span>Use back-door criterion to list covariates that bias the treatment-outcome association</span></div><div class=\"wire\"><b>Estimate propensity</b><span>Model treatment probability as a function of those confounders</span></div><div class=\"wire\"><b>Compute IPTW</b><span>Weight individuals by the inverse of their treatment propensity</span></div><div class=\"wire\"><b>Compare groups</b><span>Weighted treated and untreated are now balanced on confounders</span></div></div><p class=\"lead\">The entire procedure is a formalization of the pollster's intuition: reweight until your groups look comparable on the observed covariates.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The complete weighting workflow connects all the concepts. Start by identifying confounders—covariates that open a back-door path from treatment to outcome. You do not need every covariate; you need the ones that create bias. Next, estimate a propensity model, predicting treatment from those confounders. The propensity score summarizes the full covariate profile into a single number. Compute IPTW weights using the propensity scores. For treated individuals, weight by one over their propensity. For untreated, weight by one over one minus their propensity. Apply these weights and estimate the treatment effect on the weighted sample. After weighting, treated and untreated groups have similar covariate distributions. They are comparable. The confounding bias from covariate imbalance is removed. This is back-door adjustment through rebalancing. It is logically identical to matching, but it uses all the data instead of discarding units without matches. The whole procedure is the pollster's trick scaled from sampling to causality.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 53.27
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 13,
+      "section": "THESIS",
+      "label": "12 / 13 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "WEIGHTING IS SURVEY SAMPLING ",
+          false
+        ],
+        [
+          "APPLIED TO CONFOUNDING.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">The <b>inverse probability weight</b> arises from the identical reasoning that survey statisticians use to correct oversampling—and that reasoning has been proven and refined since 1952.</div><p class=\"lead\">You are not learning an esoteric causal-inference technique. You are learning a classical tool from statistics that happens to solve a causal problem. Understanding this connection is the key to using IPTW with judgment instead of software defaults.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Here is the central claim of this chapter: weighting methods in causal inference are not separate from classical survey statistics. They are the same tool. The inverse probability weight you assign in treatment studies is mathematically and conceptually identical to the weight a survey statistician assigns to correct an oversampled group. Both arise from one fundamental idea: people in your sample represent different numbers of people in the target population, and your estimates should reflect that. Survey statisticians formalized this reasoning in the Horvitz-Thompson estimator in nineteen fifty-two. Epidemiologists and economists reinvented it decades later as Inverse Probability of Treatment Weighting. The same mathematical machinery, applied to different problems. This is not trivia. Understanding the connection means you are not memorizing a formula. You are applying a principle you already understand intuitively from polling and surveys. It means you can diagnose when weights are extreme because you understand that people with rare covariate-treatment combinations will dominate the estimate. It means you can choose between weighting and matching because you understand what each is doing. And it means you can read the applied literature, recognize these methods in different vocabularies, and apply them with judgment.",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 66.54
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "num": 13,
+      "total": 13,
+      "section": "CLOSE",
+      "label": "13 / 13 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "WEIGHTING, MATCHING, BACK-DOOR ",
+          false
+        ],
+        [
+          "ADJUSTMENT.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>IPTW</span><span>//</span><span>PROPENSITY SCORES</span><span>//</span><span>DOUBLY ROBUST</span></div><p class=\"sig\">Causal Inference · Chapter 6 · Weighting Methods</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "",
+          "audio_file": "audio/S13.mp3",
+          "actual_duration_s": 2.0
+        }
+      ]
+    }
+  ]
+}

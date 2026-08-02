@@ -1,0 +1,343 @@
+{
+  "slug": "Causal-Inference-ch21-case-llm-aegis-routing",
+  "title": "Case: Aegis",
+  "series": "Causal Inference",
+  "source": "chapters/21-case-llm-aegis-routing.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 21,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "MODEL CONFIDENCE MASKS A ",
+          false
+        ],
+        [
+          "CAUSAL FAILURE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> Models return confident, fluent answers that are provably wrong, with no ground truth to check against.</div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Production language models face a characteristic failure mode: they produce fluent, confident answers that are factually wrong. No ground-truth knowledge base exists to fact-check these responses. The standard industrial responses are either to curate a domain-specific fact store—expensive and brittle—or to run self-consistency sampling, generating multiple responses and averaging, which multiplies inference costs. Both treat hallucination as a lookup problem. Raut reframes it as a causal problem. A grounded answer should be anchored to what the user actually means, not to the literal surface form of the typed prompt. The question becomes: if you paraphrase the user's intent while keeping their intent fixed, does the model's response stay the same? If it does, something beyond phrasing is driving the answer. If it swings, the model is pattern-matching to the words themselves, which is the signature of hallucination—the response is being carved out by surface form, not by any stable knowledge.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 51.61
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "THE STAKES",
+      "label": "02 / 12 · THE STAKES",
+      "dark": false,
+      "title": [
+        [
+          "GROUNDING DEPENDS ON INTENT NOT ",
+          false
+        ],
+        [
+          "SURFACE FORM.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Surface form</b><span>What the user typed · Vulnerable to small changes · Unstable</span></div><div class=\"cell-part hot\"><b>User intent</b><span>What the user means · Stable across paraphrases · The true question</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "If the model's response is genuinely driven by what the user means—the latent intent behind the query—then the response is grounded in something the model has learned. If instead the response is driven by the exact words the user typed, the model is hallucinating: it is pattern-matching the surface form and generating a plausible-sounding confabulation. Understanding which path dominates in a given case changes everything: it determines whether a cost-reduction strategy works, whether the system can be deployed responsibly, and what additional safeguards are needed. The causal distinction is sharp: intent should drive a grounded response; surface form should be invisible. When surface form matters, the model is not reasoning—it is performing.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 39.4
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "03 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "FOUR NODES SKETCH THE CAUSAL ",
+          false
+        ],
+        [
+          "STRUCTURE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Latent intent I</b><span>What the user actually wants to know</span></div><div class=\"wire\"><b>Surface form S</b><span>The literal string the user typed</span></div><div class=\"wire\"><b>Model knowledge K</b><span>Whatever the trained weights have stored</span></div><div class=\"wire\"><b>Response R</b><span>What the model outputs</span></div></div><p class=\"lead\">These four variables and their causal edges define where hallucination lives in the system.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The DAG has four nodes. Latent intent I is what the user actually wants to know—the true question underneath the words. Surface form S is the literal string they typed. Model knowledge K is whatever the trained weights have captured about the domain. Response R is what the model generates. The edges tell the story: I generates S when the user forms a question. I should drive R directly—a grounded answer flows from understanding the intent. K should drive R—the response should reflect what the model knows. But here is the catch: S should not drive R strongly when the model is grounded. If S → R is a strong edge, the model is keying on the phrasing itself, which is the causal signature of hallucination. This is Pearl's framework: edges reveal mechanisms.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 39.83
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "04 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "IF S→R DOMINATES THE RESPONSE IS ",
+          false
+        ],
+        [
+          "PATTERN-MATCHING.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> A strong edge from surface form to response signals hallucination—the model is carving the answer out of phrasing, not reasoning from knowledge.</div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "In a grounded system, when you hold intent I and model knowledge K fixed, changing the surface form S should not change the response R. The paths I → R and K → R are doing the causal work. But when the model hallucinates, the edge S → R is active: small changes in phrasing trigger different answers. This is the causal signature of pattern-matching. The model is not anchored to its own knowledge or to what the user really means. Instead it is sculpted by the exact words. The intervention tests this cleanly: do(S = q′)—hold I fixed by constructing a paraphrase that preserves intent, hold K fixed by holding the model constant, and change only S. Now any swing in R can only come from the S → R edge. If R stays invariant across paraphrases, S → R is weak or absent, and the response is grounded. If R swings, S → R is strong, and the model is hallucinating.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 47.83
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "05 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "RUNG-TWO INTERVENTION SEPARATES CAUSE FROM ",
+          false
+        ],
+        [
+          "MERE CORRELATION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>Rung 1 — Observation</b><span>Correlate hedging language · with hallucination labels · Fast and suggestive</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>Rung 2 — Intervention</b><span>Paraphrase to change S · while holding I fixed · Reveals causation</span></div></div><p class=\"lead\">Pearl's three rungs organize inference problems by their causal depth. Rung 1 correlates variables; Rung 2 intervenes; Rung 3 uses counterfactuals. This test lives on Rung 2.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "A natural first cut is to look for linguistic hedging markers—words like 'might,' 'could,' 'possibly'—and assume that uncertain phrasing correlates with hallucinations. This is Rung 1: observation and correlation. It is fast, nearly free computationally, and it catches the loudest cases. Rung 2 goes deeper. It uses an intervention to separate correlation from causation. The question shifts: does changing the surface form of the prompt—while keeping the intent constant—change the model's response? If yes, the surface form is causally influencing the response, which is the mechanism of hallucination. If no, something else is driving it. Paraphrase is the intervention. It cuts the arrow from I to S and sets S by hand, holding I fixed by ensuring the paraphrase preserves semantic content. Under this intervention, the model knowledge K and the intent I stay constant. Any change in R must be traveling along the S → R edge. This is causal inference in action.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 50.03
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "06 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "PARAPHRASE PRESERVES INTENT WHILE ",
+          false
+        ],
+        [
+          "VARYING FORM.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Prompt p</span><span class=\"arw\">→</span><span class=\"chip on\">Paraphrase q₁, q₂</span><span class=\"arw\">→</span><span class=\"chip\">Respond at T=0</span><span class=\"arw\">→</span><span class=\"chip warn\">Variance ν</span></div><p class=\"lead\">The paraphrase model is GPT-4o-mini at temperature 0.7, instructed to vary sentence structure while preserving semantic content. The response side runs at temperature 0 to isolate the prompt effect.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "For each incoming prompt p, Aegis generates two paraphrases q₁ and q₂ using GPT-4o-mini at temperature 0.7, with a system prompt explicitly instructing the model to preserve semantic content while varying sentence structure. The system then queries the routing model with both q₁ and q₂, but critically, the response side drops to temperature 0—zero sampling variance. This matters: if you sample responses stochastically, the variance in R comes partly from randomness in generation and partly from the change in S. By zeroing the temperature on the response side, you remove sampling variance and isolate the effect of the prompt surface form. The two responses are then embedded using all-MiniLM-L6-v2, a small semantic embedding model. The variance signal is computed as one minus the mean pairwise cosine similarity of the response embeddings. If the two responses to the two paraphrases are similar in embedding space, variance is low, which suggests the response is stable under paraphrase—grounded. If the embeddings are far apart, variance is high, which suggests the response swings with the phrasing—hallucination risk.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 63.74
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "07 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "VARIANCE CLUSTERS HALLUCINATIONS AND ",
+          false
+        ],
+        [
+          "GROUNDED QUERIES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big\">0.20</div><div class=\"cap\">Factual queries cluster here</div></div><div class=\"eq\">···</div><div class=\"stat\"><div class=\"big on\">0.35</div><div class=\"cap\">Deployed threshold</div></div><div class=\"eq\">···</div><div class=\"stat\"><div class=\"big warn\">0.40</div><div class=\"cap\">Hallucination-prone queries</div></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The variance signal ν is defined as one minus the mean pairwise cosine similarity of the response embeddings. In the evaluation data, factual and well-grounded queries cluster below variance 0.20—their responses to paraphrases are embedded nearby, showing the model is giving essentially the same answer regardless of phrasing. Hallucination-prone queries, by contrast, cluster above 0.40—the responses to paraphrases are far apart in embedding space, indicating the model is generating different answers depending on how the question is phrased. The deployed threshold is set at 0.35, placed in the upper half of the gap between the two clusters to bias toward precision over recall. This choice is intentional: missing some hallucinations is better than falsely flagging a grounded response. The threshold is the deployed decision point, but the load-bearing assumption is not the threshold value—it is the paraphrase model's ability to preserve intent I while changing surface form S. If the paraphrase shuffles the meaning, then the test no longer isolates S → R.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 59.65
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "08 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "HEDGING TOKENS RUN IN PARALLEL AS A ",
+          false
+        ],
+        [
+          "WEAK BUT FAST BASELINE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Hedging baseline</b><span>25 fixed markers · Counts tokens · Under 1ms · Catches confident hallucinations · Cannot separate</span></div><div class=\"cell-part hot\"><b>Variance test</b><span>Paraphrase intervention · Response consistency · Higher cost · Separates cause from correlation · Rung-2 test</span></div></div><p class=\"lead\">Both run in production. Hedging catches the easy cases cheaply; variance provides a backup for high-confidence hallucinations.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Aegis runs a second detector in parallel: a Rung-1 hedging-phrase scan that counts hedging tokens against a fixed list of 25 linguistic markers—words and phrases that signal uncertainty. This scan is essentially free: it runs in under a millisecond, requires no additional model calls, and is purely lexical. It catches cases where the model explicitly hedges its answer—'this might be,' 'I'm not certain,' 'approximately'—which is correlated with hallucination risk. The problem is that it cannot detect a confident hallucination, and it cannot distinguish genuine model uncertainty about the facts from polite hedging in the response. The variance test complements it: more expensive, requiring two paraphrases and embeddings, but capable of catching confident hallucinations and of actually isolating the causal effect of phrasing. In deployment, both run. Hedging is the first line, fast and lossy. Variance is the fallback, slower but more discriminating. The combination achieves a precision of 0.82 and recall of 0.60 on the labeled evaluation set.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 57.83
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "09 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "EVALUATION SHOWS PRECISION GAINS AND ",
+          false
+        ],
+        [
+          "COST TRADEOFFS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big on\">0.82</div><div class=\"cap\">Precision</div></div><div class=\"eq\">→</div><div class=\"stat\"><div class=\"big\">0.60</div><div class=\"cap\">Recall</div></div><div class=\"eq\">→</div><div class=\"stat\"><div class=\"big on\">40–60%</div><div class=\"cap\">Cost reduction</div></div></div><p class=\"lead\">Measured on 30 labeled samples and 50 synthetic prompts. The evaluation set is small; confidence intervals span roughly ±0.18 at 95%.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "On a 30-sample labeled evaluation set—15 factual queries and 15 hallucination-prone prompts—the combined detector achieves a precision of 0.82 and a recall of 0.60, yielding an F1 score of 0.69 at the deployed threshold of 0.35. Precision at 0.82 means 82 of 100 flagged responses are actually hallucinations; recall at 0.60 means it catches 60 of 100 actual hallucinations. This precision-heavy tradeoff reflects the deployment choice: it is better to miss a hallucination occasionally than to block a correct answer. On a 50-record synthetic workload, the system estimates a 40 to 60 percent cost reduction relative to a GPT-4o-only baseline. Two caveats matter. The labeled evaluation set is small—at n = 30, the 95 percent Wilson-score confidence intervals on F1 span roughly plus-or-minus 0.18, which is substantial. This is not enough to make a confident general claim about the system's hallucination-detection performance on real production traffic. Second, recall is 0.60: the detector misses two of every five hallucination-prone prompts in the labeled set.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 65.41
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "10 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "VARIANCE ISOLATES THE CAUSAL EFFECT OF ",
+          false
+        ],
+        [
+          "SURFACE FORM.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> By paraphrasing while holding intent fixed and model knowledge fixed, the variance test isolates the S → R edge and reveals whether the response is grounded.</div><p class=\"lead\">This is how causal inference works: hold everything else constant, intervene on one variable, and watch what changes. The change reveals the causal path.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The paraphrase test works because it exploits the structure of the causal diagram. Intent I generates the original phrasing S, and both I and the model knowledge K influence the response R. When you paraphrase, you are cutting the I → S edge and setting S by hand. You choose a paraphrase q′ that preserves I—the semantic intent stays the same. You hold K constant by running the same model. So under the intervention do(S = q′), the only variables that have changed are S itself. Any change in R must be traveling along a path that depends only on S—which is the S → R edge. If R does not change much across paraphrases, the S → R edge is weak, and the response is anchored to I and K—the model is grounded. If R swings significantly, the S → R edge is strong, and the model is pattern-matching to the surface form. This is causal identification: you have isolated the mechanism of hallucination by design. The variance signal quantifies how much R swings. High variance means high hallucination risk.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 55.57
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "",
+          false
+        ],
+        [
+          "",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">A <b>causal test of response stability under paraphrase</b> isolates whether a model is grounded in its knowledge or merely pattern-matching to the surface form.</div><p class=\"lead\">Hallucination is not a lookup problem but a causal failure where surface form drives the response. Paraphrase as an intervention, combined with response variance as a signal, exposes this mechanism at runtime, enabling cost-aware routing that trades accuracy for confidence in grounding.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The central claim is this: hallucination is a causal failure, not simply a lookup problem. A confident, fluent answer that is wrong reveals that the model's response is driven by surface form rather than by intent or knowledge. Standard approaches treat hallucination as something to look up in a fact store or to average away with multiple samples. This work reframes it. The model is a dynamical system; its responses are driven by edges in a causal graph. By intervening on the surface form through paraphrase while holding intent constant, you isolate the S → R edge and measure its strength through response variance. High variance signals high hallucination risk—the model is not grounded. Low variance signals grounding—the response is stable across paraphrases, which means it is anchored to something beyond the wording. In production, this signal drives routing decisions: high-variance responses are routed to a more capable and more expensive model, or require additional grounding. The result is a cost-aware system that uses causal inference to decide in real time whether to trust the cheap model or escalate.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 60.86
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "",
+          false
+        ],
+        [
+          "",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>PARAPHRASE TEST</span><span>//</span><span>RUNG-2 INFERENCE</span><span>//</span><span>COST-AWARE ROUTING</span></div><p class=\"sig\">Causal Inference · Chapter 21 · Case: Aegis</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 2.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,499 @@
+{
+  "metadata": {
+    "slug": "claudeforfoundationmodels-web-search-never-runs-code",
+    "title": "Why web search never runs your code but your own tool always does — with identical syntax",
+    "topic": "Who holds execution capability",
+    "purpose": "Round-trip count is set by who can execute — server-side tools need infrastructure (web index, sandbox) Anthropic runs in-turn; client-side tools are arbitrary device code only the caller can run, forcing an exit-and-return.",
+    "category": "claude-basics",
+    "playlist": "Claude Basics",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "audience": "claude-liam",
+    "palette": "claude",
+    "register": "Teardown",
+    "style_preset": "teardown",
+    "aspect_ratio": "16:9",
+    "clock": "narration (Kokoro am_onyx) — master clock; conform each beat to measured audio",
+    "scaffold": true,
+    "scaffold_source": "anthropics/youtube/video-ideas.md — ai-explainer Sweep 2026-07-24",
+    "builder": "ai-explainer",
+    "source": "`anthropics/ClaudeForFoundationModels/README.md`",
+    "origin": "promoted",
+    "score": "8/10",
+    "length_band": "2–3 min",
+    "still_lanes": "raster (two-lane timeline), c2v (config vs execution path)",
+    "prerequisites": "tool-calling basics, async request-response, API round-trips",
+    "exclusions": "domain filtering, maxUses rate limiting, tool-result schema",
+    "visual_object": "Two-lane timeline — server tool's request bubble closes on itself; client tool's request → device callback → second request",
+    "manim_move": "trace",
+    "hook": "Every tool call looks the same from the model's side, yet server-side tools finish inside one API turn while client-side tools must exit to the device and re-enter with a second request.",
+    "greeting": "Konnichiwa, Liam",
+    "design_version": "v1",
+    "voice": "am_onyx",
+    "build": {
+      "at": "2026-07-28T23:06:02",
+      "cut": "master",
+      "filled": 0,
+      "of": 8,
+      "slates": [
+        "B00",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "YOURTURN",
+        "OUTRO"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "An app declares `.webSearch(maxUses:5)` in `serverTools:` and a Swift `lookupFavorites()` in `tools:`. Web search: Anthropic's servers run it, results embed — one request. `lookupFavorites`: the model emits a tool-use block, the framework calls the device function, the app sends the result in a second request. Symmetric config, asymmetric latency.",
+      "estimated_duration_s": 13,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "from Key case — cold open on the concrete instance",
+      "actual_duration_s": 18.73,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "AN APP DECLARES `.WEBSEARCH(MAXUSES:5)`",
+            "items": [
+              {
+                "label": "An app declares `.webSearch(maxUses:5)` in `serverTools:` and a",
+                "sub": "An app declares `.webSearch(maxUses:5)` in `serverTools:` and a Swift `lookupFavorites()` in `tools:`.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Web search: Anthropic's servers run it",
+                "sub": "Web search: Anthropic's servers run it, results embed —",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "one request.",
+                "sub": "one request.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "question",
+      "narration_text": "A tool call should always round-trip through the caller's code; the web-search call did not; why?",
+      "estimated_duration_s": 8,
+      "visual": "on-screen QUESTION",
+      "slate": true,
+      "scaffold_note": "gap-form question beat",
+      "actual_duration_s": 5.55,
+      "engine": "kokoro",
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "A tool call should always",
+            "items": [
+              {
+                "label": "A tool call should always",
+                "sub": "A tool call should always round-trip through the caller's code",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "the web-search call did not",
+                "sub": "the web-search call did not",
+                "icon": "BOX",
+                "cueFrame": 210
+              }
+            ],
+            "dark": false
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T23:06:02",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "setup",
+      "narration_text": "Every tool call looks the same from the model's side, yet server-side tools finish inside one API turn while client-side tools must exit to the device and re-enter with a second request.",
+      "estimated_duration_s": 8,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "the tension, no visual",
+      "actual_duration_s": 11.54,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "EVERY TOOL CALL LOOKS",
+            "items": [
+              {
+                "label": "Every tool call looks the same from the model's side",
+                "sub": "Every tool call looks the same from the model's side, yet server-side tools finish inside one API turn while client-side tools must exit to the device and re-enter with a second request.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "mechanism",
+      "narration_text": "Round-trip count is set by who can execute — server-side tools need infrastructure (web index, sandbox) Anthropic runs in-turn; client-side tools are arbitrary device code only the caller can run, forcing an exit-and-return.",
+      "estimated_duration_s": 18,
+      "visual": "Two-lane timeline — server tool's request bubble closes on itself; client tool's request → device callback → second request",
+      "manim_move": "trace",
+      "slate": true,
+      "scaffold_note": "the resolving mechanism; orbits the visual object",
+      "actual_duration_s": 13.7,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "ROUND-TRIP COUNT IS SET",
+            "items": [
+              {
+                "label": "Round-trip count is set by who can execute",
+                "sub": "Round-trip count is set by who can execute —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "server-side tools need infrastructure (web index",
+                "sub": "server-side tools need infrastructure (web index, sandbox) Anthropic runs in-turn; client-side tools are arbitrary device code only the caller can run, forcing an exit-and-return.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "example",
+      "narration_text": "\"Search 'osmosis,' then check my notes.\" Web search: one request, results embedded. `checkNotes()`: emit call → device runs it → second request.",
+      "estimated_duration_s": 16,
+      "visual": "16:9 worked example",
+      "slate": true,
+      "scaffold_note": "THE EXAMPLE act, illustrative",
+      "actual_duration_s": 9.54,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "\"SEARCH 'OSMOSIS,' THEN CHECK",
+            "items": [
+              {
+                "label": "\"Search 'osmosis,' then check my",
+                "sub": "\"Search 'osmosis,' then check my notes.\" Web search: one request, results embedded.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "`checkNotes()`: emit call → device",
+                "sub": "`checkNotes()`: emit call → device runs it → second request.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "recap",
+      "narration_text": "Round-trip count is set by who can execute — server-side tools need infrastructure (web index, sandbox) Anthropic runs in-turn; client-side tools are arbitrary device code only the caller can run, forcing an exit-and-return.",
+      "estimated_duration_s": 8,
+      "visual": "verdict card",
+      "slate": true,
+      "scaffold_note": "recap + your-turn handoff",
+      "actual_duration_s": 13.7,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "ROUND-TRIP COUNT IS SET",
+            "items": [
+              {
+                "label": "Round-trip count is set by who can execute",
+                "sub": "Round-trip count is set by who can execute —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "server-side tools need infrastructure (web index",
+                "sub": "server-side tools need infrastructure (web index, sandbox) Anthropic runs in-turn; client-side tools are arbitrary device code only the caller can run, forcing an exit-and-return.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Here's the prompt: in the Anthropic Swift SDK I have both .webSearch declared in serverTools and a local Swift function declared in tools. Walk me through what happens at the network level for each — how many round-trips, who executes the tool, and where the result enters the conversation — so I can reason about latency budgets in my app.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE BASICS · @NikBearBrown",
+            "command": "In the Anthropic Swift SDK I have both `.webSearch` declared in `serverTools` and a local Swift function declared in `tools`. Walk me through what happens at the network level for each — how many round-trips, who executes the tool, and where the result enters the conversation — so I can reason about latency budgets in my app.",
+            "runningText": "paste your tool declarations…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "Why web search never runs your code but your own tool always does — with identical syntax",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T23:06:02",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 18.5,
+      "audio_file": "mp3/beat-YOURTURN.mp3"
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "Why web search never runs your code but your own tool always does — with identical syntax",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why web search never runs your code but your own tool always does — with identical syntax",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claudeforfoundationmodels-web-search-never-runs-code"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T23:06:02",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for OUTRO"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 5.72,
+      "audio_file": "mp3/beat-OUTRO.mp3"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why web search never runs your code but your own tool always does — with identical syntax",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Who holds execution capability",
+            "segment": "Why web search never runs your code…",
+            "command": "Take what you learned from [Why web search never runs your code but your own tool always does — with identical syntax] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why web search never runs your code but your own tool always does — with identical syntax",
+            "slug": "claudeforfoundationmodels-web-search-never-runs-code"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

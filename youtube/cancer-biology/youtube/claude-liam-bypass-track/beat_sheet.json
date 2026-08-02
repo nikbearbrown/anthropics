@@ -1,0 +1,465 @@
+{
+  "metadata": {
+    "title": "Animate Bypass Signaling with Claude Code",
+    "slug": "bypass-track",
+    "topic": "CANCER BIOLOGY · CLAUDE CODE",
+    "register": "Teardown",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "palette": "claude",
+    "style": "cli",
+    "channel": "@NikBearBrown",
+    "note": "CLI video — REQUIRED spine: B00 cold open (ClaudeComposerAsk, ask answered) · B01 PROBLEM 1 · B02 PROBLEM 2 · B03 ASK (ClaudeComposerAsk) · B04 CODE (ClaudeCodeBeat) · B05 OUTPUT (Manim) · B06 CHANGE (ClaudeComposerAsk) · B07 OUTPUT (Manim) · B08 SUMMARY · B09 NEXT STEPS (ClaudeComposerAsk, 'Your turn.') · B10 OUTRO (ClaudeTitleOutro @NikBearBrown). Source plate: cancer-biology/illustrae/plates/15-bypass-track.svg",
+    "total_estimated_duration_seconds": 148,
+    "build": {
+      "at": "2026-07-25T10:10:44",
+      "cut": "master",
+      "filled": 3,
+      "of": 11,
+      "slates": [
+        "B00",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B09",
+        "B10"
+      ],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "role_note": "COLD OPEN LAW — open on the Claude UI, ask shown answered",
+      "narration_text": "Mbote, Liam. One Claude prompt. Bypass signaling — block the front door, the cell finds a side door to the same room.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Port the bypass-track plate from plates_gen.py p15() into Manim. Hub (GRAY) in center, output cluster (6 GREEN circles) at right. Receptor A (BLUE, upper-left) blocked by VERM plug on its arrow. Receptor B (ORANGE, lower-left) active, routes into same hub.\"",
+            "topic": "CANCER BIOLOGY · CLAUDE CODE",
+            "segment": "Animate Bypass Signaling",
+            "greeting": "Mbote, Liam",
+            "runningText": "building bypass circuit…",
+            "output": [
+              "scenes.py written",
+              "B05_BypassTrack ready",
+              "hub + A blocked + B active"
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 6.95,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:10:44",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM 1 — mechanism",
+      "role_note": "The mechanism before the build — convergent receptor topology",
+      "narration_text": "Targeted therapies block specific receptors. The assumption is that blocking the receptor blocks the signal. But cells have multiple receptor inputs that converge on the same hub — block one, and a second receptor activates and routes to the same node.",
+      "visual_intent": "Slate — topology diagram: two receptors, one hub, one output; block on receptor A; receptor B reroutes to hub; output unchanged; caption: convergence means upstream blocks don't stop the output",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "STD_B01_claude_liam_bypass_track",
+          "file": "scenes.py"
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim:STD_B01_claude_liam_bypass_track",
+        "at": "2026-07-25T10:10:44"
+      },
+      "actual_duration_s": 14.25
+    },
+    {
+      "beat_id": "B02",
+      "act": "PROBLEM 2 — stakes",
+      "role_note": "Stakes before the build — bypass resistance textbook case",
+      "narration_text": "MET amplification in EGFR-mutant lung cancer is the textbook case. Erlotinib blocks EGFR — receptor A — but the tumor amplifies MET — receptor B — which signals through the same downstream hub. The output, proliferation, is restored. Bypass resistance requires combination therapy hitting multiple inputs.",
+      "visual_intent": "Slate — EGFR/MET bypass diagram; erlotinib block on EGFR; MET arrow active to same hub; proliferation output restored; caption: bypass resistance — why one drug is never enough",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "STD_B02_claude_liam_bypass_track",
+          "file": "scenes.py"
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:STD_B02_claude_liam_bypass_track",
+        "at": "2026-07-25T10:10:44"
+      },
+      "actual_duration_s": 18.26
+    },
+    {
+      "beat_id": "B03",
+      "act": "ASK",
+      "role_note": "ClaudeComposerAsk — the REAL Claude Code prompt. SPARK-LINE LAW: greeting = 'The ask,'",
+      "narration_text": "The ask. Into Claude: port the bypass-track plate from plates underscore gen dot py p fifteen into Manim. Hub, GRAY, in center. Output cluster of six GREEN circles at right. Receptor A, BLUE, upper-left, blocked by a VERM plug and X-mark on its arrow. Receptor B, ORANGE, lower-left, initially faint then active, routes into the same hub. Animate: A blocked, B appears, B routes to hub, output activates.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Port the bypass-track plate from plates_gen.py p15() into Manim.\nHub (GRAY) in center, output cluster (6 GREEN circles) at right.\nReceptor A (BLUE, upper-left) blocked by VERM plug/X on its arrow.\nReceptor B (ORANGE, lower-left) active, routes into same hub.\nAnimate: A blocked, B appears, B routes to hub, output activates.\"",
+            "topic": "CANCER BIOLOGY · CLAUDE CODE",
+            "segment": "Animate Bypass Signaling",
+            "greeting": "The ask,",
+            "runningText": "porting bypass geometry…"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 16,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 21.8,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:10:44",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "CODE",
+      "role_note": "ClaudeCodeBeat — the ACTUAL B05_BypassTrack class, trimmed to what teaches",
+      "narration_text": "Read it. The hub is a RoundedRectangle at the origin — GRAY, one point seven by one point seven. Receptor A is BLUE at upper-left; its arrow gets a VERM plug block and an X-mark built from two crossing lines. Receptor B starts at opacity zero point two and fades to full — the drug doesn't suppress it, so it activates. The output cluster is six GREEN circles in a three-by-two grid. The choreography: block A, reveal B, grow the B-to-hub arrow, Flash the output.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "scenes.py — B05_BypassTrack",
+            "code": "# scenes.py — Claude Code output\nBLUE=\"#0072B2\"; GREEN=\"#009E73\"\nVERM=\"#D55E00\"; ORANGE=\"#E69F00\"; GRAY=\"#7c7c7c\"\n\nclass B05_BypassTrack(Scene):\n  def construct(self):\n    hub=RoundedRectangle(width=1.7,height=1.7,\n      corner_radius=0.22,color=GRAY,\n      fill_color=GRAY,fill_opacity=0.18,\n      stroke_width=3.2).move_to(ORIGIN)\n    recA=RoundedRectangle(width=1.9,height=1.1,\n      corner_radius=0.18,color=BLUE,\n      fill_color=BLUE,fill_opacity=0.16,\n      stroke_width=3).move_to([-4.5,2.0,0])\n    recB=RoundedRectangle(width=1.9,height=1.1,\n      corner_radius=0.18,color=ORANGE,\n      fill_color=ORANGE,fill_opacity=0.16,\n      stroke_width=3).set_opacity(0.2).move_to([-4.5,-2.0,0])\n    arrowA=Arrow([-3.55,1.8,0],[-0.85,0.5,0],color=GRAY)\n    plug=Rectangle(width=0.3,height=0.7,\n      color=VERM,fill_color=VERM,\n      fill_opacity=0.6).move_to([-2.1,1.1,0])\n    xmark=VGroup(\n      Line([-2.3,1.3,0],[-1.9,0.9,0],color=VERM,stroke_width=6),\n      Line([-2.3,0.9,0],[-1.9,1.3,0],color=VERM,stroke_width=6))\n    out=VGroup(*[Circle(radius=0.22,color=GREEN,\n      fill_color=GREEN,fill_opacity=0.82)\n      for _ in range(6)]).arrange_in_grid(2,3,buff=0.1)\n    out.move_to([4.5,0,0])\n    hubArrow=Arrow([0.85,0,0],[3.2,0,0],color=GRAY)\n    arrowB=Arrow([-3.55,-1.8,0],[-0.85,-0.5,0],color=ORANGE)\n    self.play(FadeIn(hub),FadeIn(recA),GrowArrow(arrowA))\n    self.play(FadeIn(plug),FadeIn(xmark))\n    self.play(recB.animate.set_opacity(1.0),GrowArrow(arrowB))\n    self.play(GrowArrow(hubArrow))\n    self.play(LaggedStart(*[FadeIn(c) for c in out],lag_ratio=0.12))\n    self.wait(0.8)",
+            "sparkLine": "Same hub, different door."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 20,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 24.58,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:10:44",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "OUTPUT — initial animation",
+      "role_note": "Manim render of B05_BypassTrack — watch the block then the bypass",
+      "narration_text": "Run it. Hub and receptor A appear. The A-to-hub arrow grows. Then the VERM block slides onto the arrow and the X-mark appears. Receptor B fades from faint to full — it was there the whole time, just not activated. The B-to-hub arrow grows in ORANGE. The hub-to-output arrow grows. Six GREEN circles flash in. The output is identical whether A is blocked or not — that is the topology.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "B05_BypassTrack",
+          "file": "scenes.py"
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 19.54,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:10:44",
+        "needs": "PIPELINE → render animated_graphics.py scene B05_*"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "CHANGE",
+      "role_note": "ClaudeComposerAsk — revision prompt. SPARK-LINE LAW: greeting = 'The change,'",
+      "narration_text": "The change. Revise: animate signal flow as a dot. An ORANGE dot travels from receptor B along the B-arrow into the hub. A GRAY dot travels from the hub to the output cluster. Output circles assemble one at a time — LaggedStart. Then Flash the block on A's arrow at the end as a reminder: A is still blocked, B routed around it.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Revise: animate signal flow as a dot. ORANGE dot travels from B along\nB-arrow into hub. GRAY dot travels from hub to output cluster. Output circles\nassemble one-at-a-time. Flash the block on A's arrow as reminder at the end.\"",
+            "topic": "CANCER BIOLOGY · CLAUDE CODE",
+            "segment": "Animate Bypass Signaling",
+            "greeting": "The change,",
+            "runningText": "adding signal flow dots…"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 18.15,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:10:44",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "OUTPUT — revised animation with signal flow",
+      "role_note": "Manim render of B07_BypassTrackFlow — dot animation + one-by-one output assembly",
+      "narration_text": "Watch the revision. The block is in place on A. Receptor B activates. An ORANGE dot travels from B through the B-arrow into the hub. A GRAY dot leaves the hub and arrives at the output cluster. The six output circles appear one by one. Then the block on A's arrow Flashes — VERM, vermillion — to remind you: A is still dead. B routed around it. The output doesn't know. The tumor doesn't care.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "B07_BypassTrackFlow",
+          "file": "scenes.py"
+        }
+      },
+      "estimated_duration_s": 15,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 20.29,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:10:44",
+        "needs": "PIPELINE → render animated_graphics.py scene B07_*"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "SUMMARY",
+      "role_note": "What we built and what the motion taught",
+      "narration_text": "Same hub, different front door. The animation showed the critical topology: convergence means blocking upstream doesn't block the outcome if any other input feeds the same node. Claude ported the plate geometry in one prompt and added the dot-flow signal animation in one revision. The pattern — convergent receptors, one hub, animated dot as signal — works for any bypass resistance mechanism.",
+      "visual_intent": "Slate — summary card: convergence topology; 'block upstream, not the hub'; dot-flow as teaching signal; 'strip this for any bypass resistance'",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "STD_B08_claude_liam_bypass_track",
+          "file": "scenes.py"
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B08.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim:STD_B08_claude_liam_bypass_track",
+        "at": "2026-07-25T10:10:44"
+      },
+      "actual_duration_s": 21.31
+    },
+    {
+      "beat_id": "B09",
+      "act": "NEXT STEPS",
+      "role_note": "HANDOFF LAW — suggested prompt typed in, read aloud AND discussed. greeting = 'Your turn.'",
+      "narration_text": "Your turn. Take this prompt into Claude: add a third receptor to the hub — call it receptor C, in GREEN — and show it being blocked simultaneously with receptor A, leaving only receptor B as the active input. Why run it? Because combination therapy is exactly this: dual-blockade of two convergent inputs, leaving only the rarest bypass route open. Animating three inputs shows the student why two drugs are not just two drugs — they are a topological constraint on which routes to the hub remain viable. If the hub itself is druggable, that fourth option closes the last door.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Add receptor C (GREEN, lower-left area) to the hub. Block both A and C\nwith VERM plugs simultaneously, leaving only B active.\nAnimate: A and C blocked together, B signal flows to hub, output activates.\nThis models dual-blockade leaving one bypass route.\"",
+            "topic": "CANCER BIOLOGY · CLAUDE CODE",
+            "segment": "Animate Bypass Signaling",
+            "greeting": "Your turn.",
+            "runningText": "paste this into Claude…"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 20,
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 30.23,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:10:44",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B09"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "OUTRO",
+      "role_note": "OUTRO LAW — restate the episode title",
+      "narration_text": "Animate Bypass Signaling with Claude Code. I'm Liam, in for Bear.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Animate Bypass Signaling with Claude Code.",
+            "handle": "@NikBearBrown",
+            "subline": "built with Claude, taken apart"
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 8,
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 4.59,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:10:44",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B10"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Animate Bypass Signaling with Claude Code",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CANCER BIOLOGY · CLAUDE CODE",
+            "segment": "Animate Bypass Signaling with Claude Code",
+            "command": "Take what you learned from [Animate Bypass Signaling with Claude Code] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Animate Bypass Signaling with Claude Code",
+            "slug": "bypass-track"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

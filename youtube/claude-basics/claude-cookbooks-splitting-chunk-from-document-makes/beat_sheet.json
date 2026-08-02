@@ -1,0 +1,493 @@
+{
+  "metadata": {
+    "slug": "claude-cookbooks-splitting-chunk-from-document-makes",
+    "title": "Why splitting a chunk from its document makes it retrieve for the wrong question",
+    "topic": "Context restored before embedding",
+    "purpose": "Generate a short document-level summary and prepend it to each chunk before embedding, so the vector carries both local content and its document context and resolves ambiguous token matches.",
+    "category": "claude-basics",
+    "playlist": "Claude Basics",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "audience": "claude-liam",
+    "palette": "claude",
+    "register": "Teardown",
+    "style_preset": "teardown",
+    "aspect_ratio": "16:9",
+    "clock": "narration (Kokoro am_onyx) — master clock; conform each beat to measured audio",
+    "scaffold": true,
+    "scaffold_source": "anthropics/youtube/video-ideas.md — ai-explainer Sweep 2026-07-24",
+    "builder": "ai-explainer",
+    "source": "`anthropics/claude-cookbooks/capabilities/contextual-embeddings/README.md`",
+    "origin": "promoted",
+    "score": "7/10",
+    "length_band": "2–3 min",
+    "still_lanes": "raster (precision matrix), c2v (context-prepend step)",
+    "prerequisites": "RAG basics, embeddings, BM25",
+    "exclusions": "chunking strategies, embedding-model comparisons, full-pipeline benchmarking",
+    "visual_object": "Side-by-side bare chunk vs context-prepended chunk with a hit/miss matrix across 10 queries",
+    "manim_move": "transform",
+    "hook": "A chunk cut from its source loses the surrounding facts that made it findable — so it surfaces for queries it has nothing to do with.",
+    "greeting": "Konnichiwa, Liam",
+    "design_version": "v1",
+    "voice": "am_onyx",
+    "build": {
+      "at": "2026-07-28T23:01:36",
+      "cut": "master",
+      "filled": 0,
+      "of": 8,
+      "slates": [
+        "B00",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "YOURTURN",
+        "OUTRO"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "A medical paper split into 20 chunks. Chunk 7: \"This treatment reduced mortality by 12%\" — no disease named. BM25 hands it to a \"diabetes mortality\" query on the word match. Prepend \"Context: hypertension study in elderly patients\" before embedding and it stops matching diabetes queries.",
+      "estimated_duration_s": 13,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "from Key case — cold open on the concrete instance",
+      "actual_duration_s": 17.88,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "A MEDICAL PAPER SPLIT",
+            "items": [
+              {
+                "label": "A medical paper split into",
+                "sub": "A medical paper split into 20 chunks.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Chunk 7: \"This treatment reduced",
+                "sub": "Chunk 7: \"This treatment reduced mortality by 12%\" —",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "no disease named.",
+                "sub": "no disease named.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "question",
+      "narration_text": "Context-augmented chunks should retrieve precisely for the right query; bare chunks did not; why?",
+      "estimated_duration_s": 8,
+      "visual": "on-screen QUESTION",
+      "slate": true,
+      "scaffold_note": "gap-form question beat",
+      "actual_duration_s": 5.87,
+      "engine": "kokoro",
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Context-augmented chunks should retrieve precisely",
+            "items": [
+              {
+                "label": "Context-augmented chunks should retrieve precisely for the right query",
+                "sub": "Context-augmented chunks should retrieve precisely for the right query",
+                "icon": "crosshair",
+                "cueFrame": 24
+              },
+              {
+                "label": "bare chunks did not",
+                "sub": "bare chunks did not",
+                "icon": "BOX",
+                "cueFrame": 210
+              }
+            ],
+            "dark": false
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T23:01:36",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "setup",
+      "narration_text": "A chunk cut from its source loses the surrounding facts that made it findable — so it surfaces for queries it has nothing to do with.",
+      "estimated_duration_s": 8,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "the tension, no visual",
+      "actual_duration_s": 7.77,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "A CHUNK CUT FROM",
+            "items": [
+              {
+                "label": "A chunk cut from its",
+                "sub": "A chunk cut from its source loses the surrounding facts that made it findable —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "so it surfaces for queries",
+                "sub": "so it surfaces for queries it has nothing to do with.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "mechanism",
+      "narration_text": "Generate a short document-level summary and prepend it to each chunk before embedding, so the vector carries both local content and its document context and resolves ambiguous token matches.",
+      "estimated_duration_s": 18,
+      "visual": "Side-by-side bare chunk vs context-prepended chunk with a hit/miss matrix across 10 queries",
+      "manim_move": "transform",
+      "slate": true,
+      "scaffold_note": "the resolving mechanism; orbits the visual object",
+      "actual_duration_s": 11.67,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "GENERATE A SHORT DOCUMENT-LEVEL",
+            "items": [
+              {
+                "label": "Generate a short document-level summary and prepend it",
+                "sub": "Generate a short document-level summary and prepend it to each chunk before embedding, so the vector carries both local content and its document context and resolves ambiguous token matches.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "example",
+      "narration_text": "\"mortality reduced 12%\" bare → matches cancer/diabetes/heart; with context → matches only hypertension. Precision 33% → 90%.",
+      "estimated_duration_s": 16,
+      "visual": "16:9 worked example",
+      "slate": true,
+      "scaffold_note": "THE EXAMPLE act, illustrative",
+      "actual_duration_s": 11.9,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "\"MORTALITY REDUCED 12%\" BARE",
+            "items": [
+              {
+                "label": "\"mortality reduced 12%\" bare →",
+                "sub": "\"mortality reduced 12%\" bare → matches cancer/diabetes/heart; with context → matches only hypertension.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Precision 33% → 90%.",
+                "sub": "Precision 33% → 90%.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "recap",
+      "narration_text": "Generate a short document-level summary and prepend it to each chunk before embedding, so the vector carries both local content and its document context and resolves ambiguous token matches.",
+      "estimated_duration_s": 8,
+      "visual": "verdict card",
+      "slate": true,
+      "scaffold_note": "recap + your-turn handoff",
+      "actual_duration_s": 11.67,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "GENERATE A SHORT DOCUMENT-LEVEL",
+            "items": [
+              {
+                "label": "Generate a short document-level summary and prepend it",
+                "sub": "Generate a short document-level summary and prepend it to each chunk before embedding, so the vector carries both local content and its document context and resolves ambiguous token matches.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Here's the prompt: I have a research paper being split into chunks for RAG. A chunk says 'This treatment reduced mortality by 12%' with no disease name in context. Show me how to prepend a context header to each chunk before embedding, what fields should be in that header, and how I'd verify the fix is actually preventing false matches on unrelated queries.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE BASICS · @NikBearBrown",
+            "command": "I have a research paper being split into chunks for RAG. A chunk says 'This treatment reduced mortality by 12%' with no disease name in context. Show me how to prepend a context header to each chunk before embedding, what fields should be in that header, and how I'd verify the fix is actually preventing false matches on unrelated queries.",
+            "runningText": "paste your chunking function…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "Why splitting a chunk from its document makes it retrieve for the wrong question",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T23:01:36",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 20.05,
+      "audio_file": "mp3/beat-YOURTURN.mp3"
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "Why splitting a chunk from its document makes it retrieve for the wrong question",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why splitting a chunk from its document makes it retrieve for the wrong question",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-cookbooks-splitting-chunk-from-document-makes"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T23:01:36",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for OUTRO"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 4.8,
+      "audio_file": "mp3/beat-OUTRO.mp3"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why splitting a chunk from its document makes it retrieve for the wrong question",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Context restored before embedding",
+            "segment": "Why splitting a chunk from its document…",
+            "command": "Take what you learned from [Why splitting a chunk from its document makes it retrieve for the wrong question] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why splitting a chunk from its document makes it retrieve for the wrong question",
+            "slug": "claude-cookbooks-splitting-chunk-from-document-makes"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

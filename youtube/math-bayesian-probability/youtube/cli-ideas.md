@@ -1,0 +1,113 @@
+# Math Bayesian Probability — CLI Video Ideas ("X with Claude")
+
+## Candidate 01 — "Prompt Claude to Solve the Medical Testing Problem: Bayes' Theorem Live"
+- Source: math-bayesian-probability/chapters/02-prompting-for-statistics.md + chapters/00-introduction.md
+- Lane: BUILD (Claude Code)
+- Hook: A patient tests positive for a rare disease. The test is 99% accurate. Most people — including many doctors — say the probability of disease is 99%. The correct answer depends on the base rate, and Claude will give the wrong interpretation unless prompted with precision.
+- The artifact: A screen-recording of the five-component prompt workflow — the viewer sees the bad prompt ("analyze this"), the wrong LLM output (misidentifying sensitivity as PPV), then the good prompt (data generating process + named quantity + mathematical steps required + plain-language interpretation + framework specification), then the correct output with Bayesian steps. A Manim panel animates the posterior changing across three prevalence values (0.001, 0.01, 0.1).
+- Prompt seed: `claude "A patient tested positive for a rare disease. Use Bayes' theorem to compute P(disease | positive test) — the posterior probability the patient has the disease. Parameters: disease prevalence P(disease)=0.001, test sensitivity P(positive|disease)=0.99, false positive rate P(positive|no disease)=0.01. Required: (1) write Bayes' theorem in symbolic form for this problem, (2) substitute numerical values, (3) compute the denominator using total probability, (4) report P(disease|positive) to 4 decimal places, (5) explain in plain language what the number means for a clinician — be explicit: is this the probability of disease given a positive test, or the probability of a positive test given disease?"`
+- Read / check: Verify Claude produces P(disease|positive) ≈ 0.090 (not 0.99) at prevalence=0.001. Confirm the plain-language interpretation correctly names this as PPV, not sensitivity. Check that the five-step structure in the prompt yields a five-step response — this is the verification that the prompt specification is working.
+- Human supplies: Nothing — fully synthetic medical testing scenario. The viewer is told: "replace prevalence=0.001 with the actual base rate for your clinical context."
+- Output medium: screen-recording mp4 (good prompt vs. bad prompt comparison) + Manim (animated posterior across three prevalence values)
+- The change: Rerun with prevalence=0.1 — show how the same test produces PPV ≈ 0.917 at higher prevalence, making base-rate dependence visceral. Ask Claude to explain why the posterior is so different despite the same test.
+- Teardown angle: The five-component prompt is not extra work — it is the minimum specification for a statistical task, because an underspecified prompt gets an underspecified answer that runs the wrong model fluently.
+- Exclusions: Full Bayesian network formalism, Monte Carlo estimation for posterior, debate over frequentist vs. Bayesian interpretation of this specific problem.
+- Score: 10/10
+
+## Candidate 02 — "Build a Bayesian Two-Group Comparison with Claude: Prior Sensitivity Analysis"
+- Source: math-bayesian-probability/chapters/04-comparing-two-groups.md + chapters/07-priors.md
+- Lane: BUILD (Claude Code)
+- Hook: Two statisticians look at the same clinical trial data. One says significant at p=0.038. The other says the posterior probability of a clinically meaningful effect is 0.41. Both used valid methods. The difference is the prior — one's was hidden, one's was explicit.
+- The artifact: A screen-recording of a Bayesian two-group comparison in Python (PyMC or scipy) running under three priors — flat (implicit frequentist equivalent), weakly informative (Normal(0, 10) on the difference), and informative (Normal(0, 2) based on two failed prior trials). Three posterior distributions plotted side by side as an animated Manim violin plot, with the 95% credible interval and P(δ > 3 mmHg) annotated for each.
+- Prompt seed: `claude "Implement a Bayesian two-group comparison in Python. Data: Group A (n=40, mean=72%, sd=8%), Group B (n=38, mean=76%, sd=8%). Three priors on the true difference δ = μ_B - μ_A: (1) Uniform/flat (implicit frequentist), (2) Normal(0, 10) weakly informative, (3) Normal(0, 2) informative based on failed prior trials. For each prior: compute the posterior distribution of δ, report the posterior mean, 95% credible interval, and P(δ > 4 points). Use scipy.stats for the conjugate Normal update. Show how each posterior differs. Compare to the frequentist result: t=2.21, p=0.03."`
+- Read / check: Verify the three posteriors visibly differ — the informative prior should pull the posterior toward zero compared to flat. Confirm P(δ > 4) is lower under the informative prior than the flat prior. Check that the frequentist result (p=0.03) is compared: "what the p-value answers vs. what the posterior answers."
+- Human supplies: Nothing — fully synthetic using the chapter's worked example data. Real deployment would use actual trial data.
+- Output medium: screen-recording mp4 (PyMC/scipy code running) + Manim (animated three-prior posterior violin plot)
+- The change: Ask Claude to perform a sensitivity analysis — "how much does the conclusion P(δ > 4) > 0.8 depend on the prior?" — showing the threshold of prior strength where the conclusion changes direction.
+- Teardown angle: "Prior-free" means "implicit flat prior" — and a flat prior on a drug with two failed trials is not neutrality; it is a specific assumption that assigns equal probability to all effect sizes, including implausible ones.
+- Exclusions: Full Bayesian computation with MCMC (Hamiltonian, NUTS), ROPE procedure for practical significance, comparison of Bayesian vs. frequentist power for sample size calculations.
+- Score: 9/10
+
+## Candidate 03 — "Run Bayesian Regression with Claude: The Prior Influence Check"
+- Source: math-bayesian-probability/chapters/05-regression-both-ways.md
+- Lane: BUILD (Claude Code)
+- Hook: Ask Claude for a Bayesian regression and it will probably use a flat prior without announcing it — because flat is the default and the output looks like any other regression. The prior influence check reveals whether the model is actually Bayesian.
+- The artifact: A screen-recording of Bayesian linear regression (PyMC or bambi) running on synthetic education data — then the prior influence check: rerun with a tighter prior on the slope, show the posterior shifting. A Manim animation comparing the posterior predictive distribution under the two priors, showing both the posterior for the regression coefficient and the posterior predictive for a new observation.
+- Prompt seed: `claude "Implement Bayesian linear regression in Python for predicting exam scores from study hours. Synthetic data: n=50, true slope=2.5, intercept=40, sigma=8. First run: Normal(0, 10) prior on slope. Second run: Normal(1, 1) prior on slope. For each: (1) fit the model, (2) report posterior mean and 95% credible interval on slope, (3) report posterior predictive interval for a new student with 10 study hours, (4) prior influence check: does the posterior shift between the two priors? If not, flag that the model may be ignoring the prior (flat prior bug). Use PyMC or scipy."`
+- Read / check: Verify the posterior slope shifts between the two priors (with n=50 the data should dominate, but there should be a detectable shift). Confirm the posterior predictive interval includes residual variance (not just CI for the conditional mean — the chapter explicitly warns about this confusion). Check that the prior influence check is labeled as a verification step, not just an extra output.
+- Human supplies: Real education data for non-synthetic results — the video uses synthetic. The viewer is instructed: "replace synthetic_data with your dataset — same verification steps apply."
+- Output medium: screen-recording mp4 (PyMC running, prior comparison appearing) + Manim (posterior distribution comparison under two priors)
+- The change: Add a prior predictive check — simulate data from the prior before fitting, verify the generated data looks plausible for the domain. This is the verification step that catches wildly wrong priors before the model sees data.
+- Teardown angle: A Bayesian model that doesn't change when you change the prior was using a flat prior all along — the prior influence check is the test that the model is actually doing Bayesian inference.
+- Exclusions: Full MCMC convergence diagnostics (trace plots, R-hat) beyond the brief mention, model comparison with LOO-CV, hierarchical regression.
+- Score: 9/10
+
+## Candidate 04 — "Animate Bayesian Updating with Claude: From Prior to Posterior"
+- Source: math-bayesian-probability/chapters/03-counting-and-estimating.md + chapters/07-priors.md
+- Lane: BUILD (Claude Code)
+- Hook: The prior encodes what you knew before. The likelihood encodes what the data says. The posterior is what you know now. Watch the Beta distribution update in real time as coin flips accumulate — and see the prior's influence shrink as data grows.
+- The artifact: An animated Manim Beta-Binomial update sequence — start with three priors (Beta(1,1) flat, Beta(5,5) weakly informative, Beta(10,1) strongly biased toward heads). Each flip adds a new observation, and all three posterior distributions animate together — showing convergence toward the true proportion as n grows, with the three posteriors eventually indistinguishable.
+- Prompt seed: `claude "Generate a Python/Manim animation of Bayesian updating with the Beta-Binomial conjugate model. True proportion: p=0.4. Three starting priors: Beta(1,1), Beta(5,5), Beta(10,1). Simulate 50 coin flips (p=0.4). For each flip, compute the updated posterior (Beta(α+k, β+n-k)) and animate all three posterior distributions simultaneously as the flip count grows from 0 to 50. Show the three posteriors starting different, converging toward each other, with the 95% credible interval narrowing. Annotate the posterior mode for each."`
+- Read / check: Verify all three posteriors are converging toward p=0.4 by n=50. Confirm the Beta(10,1) prior (biased toward heads) starts highest but is pulled down by data. Check that the credible interval visibly narrows as n grows — the uncertainty shrinking with data is the key visual lesson.
+- Human supplies: Nothing — fully synthetic simulation with a fixed random seed.
+- Output medium: Manim (animated triple-prior updating sequence)
+- The change: Add a "Goodhart" variant — run with a biased data-collection process (only heads are recorded) — showing how the posterior updates correctly given the data but incorrectly represents the true proportion if the data generating process is broken.
+- Teardown angle: The prior's influence is not arbitrary — it shrinks with data. But a flat prior is not neutral — it is a specific claim that all values of p are equally likely before any data. Watching all three converge makes the point that the prior matters most when data is scarce.
+- Exclusions: Full derivation of the conjugate Beta-Binomial update algebra, Bayesian model selection with priors on models, sequential Bayesian experimental design.
+- Score: 10/10
+
+## Candidate 05 — "Compare Frequentist and Bayesian Answers with Claude: The Same Question, Two Frameworks"
+- Source: math-bayesian-probability/chapters/01-the-same-question-two-answers.md + chapters/12-a-real-problem-both-ways.md
+- Lane: BUILD (Claude Code)
+- Hook: The frequentist CI and the Bayesian credible interval look identical numerically — but they mean completely different things. Ask Claude to explain both and you will see the most common confusion in applied statistics made visible.
+- The artifact: A screen-recording of the two-framework prompt on the same problem — a conversion rate test (10 successes in 100 trials). Claude produces: (1) a frequentist 95% CI using Wilson's method, (2) a Bayesian 95% credible interval with Beta(1,1) prior. Then an animated Manim comparison showing the interval values side by side with two labels: "Frequentist: 95% of intervals computed this way contain the true p" vs. "Bayesian: P(p in [lo, hi] | data) = 0.95."
+- Prompt seed: `claude "Solve the same statistical problem using both frameworks. Problem: 10 successes in 100 trials (conversion rate test). Framework 1 (Frequentist): (1) compute a 95% Wilson confidence interval for the true proportion, (2) report the interval, (3) write a correct plain-language interpretation — do not say 'there is a 95% probability the true rate is in this interval.' Framework 2 (Bayesian): (1) specify a Beta(1,1) prior, (2) compute the posterior Beta(11, 91), (3) report the 95% credible interval using the beta CDF, (4) write a correct plain-language interpretation — you MAY say 'P(p in interval | data) = 0.95.' Show both numbers and explain why the interpretation differs even if the numbers are similar."`
+- Read / check: Verify Claude's frequentist interpretation does NOT say "95% probability the true rate is in the interval." This is the confidence interval fallacy that the chapter explicitly warns about. Confirm the Bayesian interpretation correctly uses P(p | data) language. Check that both intervals are numerically close (~[0.05, 0.17]) — the similarity makes the interpretation difference more striking.
+- Human supplies: Nothing — fully synthetic using a standard conversion rate example.
+- Output medium: screen-recording mp4 (two-framework prompt and output) + Manim (animated side-by-side interval comparison with interpretation labels)
+- The change: Ask Claude to identify a situation where the two frameworks give numerically different intervals — showing that the similarity in this case is not universal, and when informative priors are used the posterior can diverge substantially from the frequentist CI.
+- Teardown angle: "95% CI" and "95% credible interval" look identical on a slide and mean completely different things — the interpretation is not a technicality; it is the entire content of the statistical claim.
+- Exclusions: Full decision-theoretic framework for choosing between frequentist and Bayesian, Bayesian hypothesis testing vs. frequentist NHST, objective Bayes debate.
+- Score: 10/10
+
+## Candidate 06 — "Simulate the Replication Crisis with Claude: Why Most Results Don't Replicate"
+- Source: math-bayesian-probability/chapters/04-comparing-two-groups.md (Ioannidis argument section)
+- Lane: BUILD (Claude Code)
+- Hook: Ioannidis 2005: "Why Most Published Research Findings Are False." The argument is a Bayesian one — before seeing the data, most hypotheses tested in a field are false. A p < 0.05 result in that context is probably a false positive. The simulation makes the math concrete.
+- The artifact: An animated Manim simulation of the "researcher degrees of freedom" replication crisis — a population of 1000 hypotheses tested, with prior probability of being true = 0.1 (most hypotheses are false). A bar chart animates: true positives, false positives, true negatives, false negatives. Then a PPV calculation (probability a significant result is true) at different prior probabilities and power levels — showing when "p < 0.05" is strong evidence and when it is weak.
+- Prompt seed: `claude "Simulate the Ioannidis 2005 argument. Setup: 1000 hypotheses tested. Prior probability any single hypothesis is true = 0.1. Statistical power = 0.8 (80% of true effects detected). False positive rate = 0.05. Compute: TP=80, FP=45, TN=855, FN=20. PPV = TP/(TP+FP) = 80/125 = 0.64. Show: (1) a 2x2 confusion matrix animating with these numbers, (2) PPV as a function of prior probability (plot PPV vs. prior_p for prior_p from 0.01 to 0.9), (3) at what prior probability does PPV drop below 0.5 (most significant results are false positives)? Animate all three."`
+- Read / check: Verify TP=80, FP=45 (0.05 × 900), PPV=0.64 match the Ioannidis calculation. Confirm the PPV curve shows the value dropping below 0.5 at low prior probability. Check that the animation makes clear this is a field-level argument, not a claim that any particular study is wrong.
+- Human supplies: Nothing — fully synthetic simulation using Ioannidis's original parameters.
+- Output medium: Manim (three-panel animated sequence: confusion matrix + PPV curve + threshold marker)
+- The change: Add a "pre-registration" panel — show how requiring pre-registration (eliminating researcher degrees of freedom) changes the effective prior probability, improving PPV without changing the significance threshold.
+- Teardown angle: The replication crisis is not about fraud — it is about running a significance test in a field where most hypotheses are false. The math is the Ioannidis argument; the Bayesian framing makes it transparent.
+- Exclusions: Full meta-science methodology, specific field-by-field replication rates, debate over p-value banning.
+- Score: 9/10
+
+## Candidate 07 — "Build a Hierarchical Model with Claude: Pooling vs. No Pooling"
+- Source: math-bayesian-probability/chapters/09-hierarchical-problems.md
+- Lane: BUILD (Claude Code)
+- Hook: Each school looks different in the data — but some schools have only 5 students tested. Complete pooling ignores the differences; no pooling trusts five-student samples. Partial pooling (the hierarchical model) does what a statistician would do: borrow strength from the group.
+- The artifact: A screen-recording of a hierarchical Bayesian model (PyMC) running on synthetic school-test-scores data — eight schools, varying sample sizes. Three outputs compared side by side in Manim: no-pooling estimates (each school independent), complete-pooling estimate (one overall mean), partial-pooling estimates (hierarchical model — schools with small n pulled toward the group mean).
+- Prompt seed: `claude "Implement a Bayesian hierarchical model for school test scores. 8 schools, varying n: [5, 5, 30, 30, 30, 30, 50, 50] students, true scores varying around a group mean of 70. Fit three models in Python: (1) No-pooling: independent Normal model per school, (2) Complete pooling: single Normal across all schools, (3) Partial pooling (hierarchical): μ_school ~ Normal(μ_group, τ), within-school Normal(μ_school, σ). Compare posterior means for each school across the three models. The two smallest schools (n=5) should show the most shrinkage in the hierarchical model toward the group mean. Use PyMC or scipy."`
+- Read / check: Verify the two n=5 schools show the most shrinkage in the hierarchical model (pulled toward ~70). Confirm the n=50 schools are barely shrunk (data dominates). Check that the comparison table shows all three estimates for each school side by side.
+- Human supplies: Nothing — fully synthetic with a fixed random seed. Real deployment would use actual school-level data.
+- Output medium: screen-recording mp4 (PyMC running) + Manim (animated three-model comparison showing shrinkage toward group mean)
+- The change: Add an "extreme prior" variant — set τ (between-school variance) very small (near-complete pooling) and very large (near-no pooling) — showing the hierarchical model as a continuous spectrum between the two extremes.
+- Teardown angle: Partial pooling is not a compromise between two wrong models — it is the correct answer to the question "how much does this small school's data tell us about this school specifically vs. about schools in general?"
+- Exclusions: Full MCMC convergence diagnostics, cross-validation for hierarchical models, Bayesian model comparison (DIC, WAIC) beyond a brief mention.
+- Score: 8/10
+
+## Candidate 08 — "Research the Confidence Interval Fallacy with Claude: What 95% Actually Means"
+- Source: math-bayesian-probability/chapters/03-counting-and-estimating.md (Common LLM Error section) + chapters/02-prompting-for-statistics.md
+- Lane: RESEARCH (Claude assistant)
+- Hook: LLMs routinely produce the confidence interval fallacy — "95% CI means there is a 95% probability the true rate is in this interval." This is wrong. This card researches the fallacy, documents how to catch it in LLM output, and builds the correction prompt.
+- The artifact: A sourced research brief — the confidence interval fallacy: (1) the correct frequentist definition (coverage guarantee on the procedure, not a probability statement about this interval), (2) why even statistics instructors make this mistake (Hoekstra et al. 2014), (3) three ways the fallacy appears in LLM output, (4) a diagnostic prompt that catches the fallacy, (5) the correct Bayesian alternative (credible interval) and when to use each.
+- Prompt seed: `claude "Research and document the confidence interval fallacy. Include: (1) the correct definition of a 95% frequentist confidence interval — the coverage guarantee interpretation (not a probability statement about this specific interval), (2) cite Hoekstra et al. 2014 on how widely the fallacy is held including among researchers, (3) three forms the fallacy takes in LLM output (list verbatim incorrect statements and their corrections), (4) a verification prompt: 'write a one-sentence interpretation of a 95% CI that does NOT use the word probability' — show how this catches the fallacy, (5) when a Bayesian credible interval is the better tool for answering 'what is the probability the parameter is in this range?'"`
+- Read / check: Verify the correct definition is stated as a "procedure guarantee" not a "this interval" probability. Confirm Hoekstra et al. 2014 is cited correctly (found that over 90% of researchers endorsed incorrect interpretations). Check that the three fallacy forms are verbatim wrong statements that could plausibly appear in LLM output — not generic "misinterpretations."
+- Human supplies: Access to Hoekstra et al. 2014 for citation verification — the paper title and Psychonomic Bulletin & Review journal should be checked. The video can show this verification step.
+- Output medium: screen-recording mp4 (Claude building the brief, then demonstrating the verification prompt catching a fallacy in its own prior output)
+- The change: Ask Claude to produce the fallacy deliberately ("write an incorrect interpretation of a CI") then self-correct — making the error and the correction explicit as a teaching tool.
+- Teardown angle: The confidence interval fallacy is not a technical error — it is a category mistake about what frequentist statistics can say, and it persists because the correct interpretation is harder to state fluently than the incorrect one.
+- Exclusions: Full philosophical debate over frequentist vs. Bayesian foundations, bootstrap confidence intervals, profile likelihood intervals.
+- Score: 9/10

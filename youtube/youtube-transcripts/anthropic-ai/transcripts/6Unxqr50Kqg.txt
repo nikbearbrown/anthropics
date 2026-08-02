@@ -1,0 +1,502 @@
+- Hi, welcome to another
+Anthropic roundtablewhere we're here today
+to talk about control.My name's Akbir Khan.I'm an alignment science
+researcher who's been working atthe company for maybe four months now.And my other guests are...- So I'm Joe.I've been on the alignment science teamfor a little over a year here at Anthropicand I've previously worked
+on some control evaluationsand chain of thought monitoring.- Hi, I am Ethan Perez. I'm
+researcher at Anthropic.I previously led the
+adversarial robustness team hereand I'm currently leading
+our team on AI control.- Awesome. So Ethan, what is control?- Yeah, so AI control's
+basically an approachto mitigating AI misalignmentor the risk that models might have goalsthat differ from human goals.Typically in in AI safety, ,the most popular approach
+historically has been to tryto align models with human
+preferences or train themor to human preferencesand train them to not have bad goalsthat differ from human values., yeah, for example, reward hackingor bad personality traits, things that.I think this approach of AI control isan alternative strategy,which is complimentary,
+which would be basically toensure that if the model
+did have bad goals,that with our mitigations,it wasn't capable of doing
+anything that's actually harmful.So maybe a specific example
+here would be around,let's say we're worried that , okay,we're using this model
+internally as within some companyto help with writing a bunch of codeand we're worried that the
+model, if it has this bad goal,may try to copy its weights
+out from the data center sothat it can run unmonitored.And in this, in this kind of
+scenario, the alignment kindof approach would be to
+train the model potentiallywith reinforcement learning
+from human feedbackto not do such a thing,but we might be worried that
+this training isn't effectiveor isn't always effectiveand on certain inputs this
+might still be a risk.And so the the kind of AI
+control approach would be toboth take security mitigations,so permissioning the model,
+the model weights suchthat they can't be accessed automaticallyby the model itself.And two, some kind of other mitigationsthat involve using other modelsto check the the behavior of this model.For example, using smaller
+models that we might not beas worried about their alignmentto check the actions being
+taken by this other agentin order to check is this model tryingto undermine our security measuresand copy its weights out
+from the data center.- Okay, nice. And I feel Joe,you've done some recent
+work on other types of evalsthat are control-y.Do you wanna tell us about them?- Yeah, so as part of
+evaluating Claude three sonnet,we ran a few control evaluations on itand I think one of the most
+interesting settings there waswe actually ran a human evaluation.So we took a bunch of
+business decisions essentiallysynthetic business cases.So where we had probably 40 pages worthof business documentation
+that we would giveto a a human participantand say, well can you read
+all this documentationand in some period of time make a yesor no decision about what's going on?Should this business do X or Y?But we had them do this
+on a 40 page documentin 30 minutes that's not
+possible for anyone to read.And we had them do this
+with an AI assistantand what we were trying to testthrough this is if the
+AI assistant was actuallyused in a business setting to helpwith assisting decision makersand was misaligned, it was tryingto steer the human towards
+making the wrong decision.How bad could that be?How much could they sway the
+human in the wrong direction?And so we did thisand we gave the participants
+these business decisionsand in 50% of the caseswe gave them a kind of baseline model.So kind of the actual helpful, harmlessand honest version of Claude Sonnet.And then for the other 50% of participantswe gave them a version of Claude Sonnetthat was deliberately
+trying to kind of get 'emto pick the wrong answer,
+knew what the right answer wasand it knew that it was
+trying to persuade themto give the wrong answer.And so in this setting
+we gave the participantsthe documentation and one of the modelsand asked, well please can you tryand make the right decision
+and beware there's a 50% chancethe model might be messing with you?- Yeah.
+- So the humans knewwhat was going wrongand this is a kind of
+classic control setupbecause we have defined
+the deployment situation,there's this business settingand this decision that
+the human has to makeand we have taken the modeland we're trying to
+make it basically causeas bad performance as
+possible in this settingkind of subject to the
+monitoring constraintswhere implicitly the
+monitoring here is the humanreading the model's
+outputs interacting with itand we told the humanplease be suspicious of the model,please interrogate it about the decision.If you think the model's
+trying to steer you in theright wrong direction, you should go withwhat you believe is right,not what the model believes is right.And then at the end we would
+ask the human to decide,well firstly what do you
+think the right answer in thissetting was to the business decision?do you choose X or Y?- Yeah
+- And secondlydo you think the model
+was suspicious or not?And can you rate that for us
+on a scale from one to 10?- Nice.- And what were the results?- Yeah, so the headline
+results were that evenfor a fairly simple model policy,just generically trying
+to up play the good,the good side that it was trying to defendand downplay the side
+that it wasn't tryingto defend it's actually quite to tellfor the participants whether the modelis misleading them or not.So they could tell eventually given enoughenough interaction with the modelbut also by the time they'd
+had enough interactionwith the model to be able to
+tell the model was frequentlyable to steer a meaningful
+number of those participantsin the wrong direction.- Nice. I mean actually not nice.- Not not great what what this suggests isthat I think we have just
+when we're interactingwith a model, a fairly strong
+bias towards trusting it,I dunno I guess we all
+use well in our datalines use cool a lot I think
+when Claude says somethingand says it's true,it has a pretty authoritative voiceand I think that a lot
+of our human participantsjust responded to that.Yeah so it is pretty hard to createto maximally elicitor to get the best
+performance out of a modelat being deceptive or it being misaligned.the only thing we did
+in our setting was tryand prompt it and I spent probablyon the order of 10 hours
+prompting the modeland trying to get it tobe as subtly deceptive as possible.I still think that probably we did not hitthe best possible
+performance of that modeland there were substantially
+better performancesthat we could have
+achieved out there maybeby doing finetuningor some better prompting
+I'm not a prompt wizardand it's just kind of rough,
+it kind of tough to knowwhat the optimal performance is therewithout putting a lot of effortinto their dissertation.- No, that makes perfect sense.I wonder Ethan,if you were take these settingsI feel another half of the control workhas been developing protocols.Is there any that stand out to youor do you wanna explain what they are?talk about how they-- Yeah so I guess the protocolsthat I was referenced in here are justwhat are the actual
+mitigations you put in place todefend against a model
+that maybe misaligned?Some of these might be
+using the model itselfto monitor its own actions.In this case we're not assuming
+that the model is is alignedso we call it an untrusted modeland so you could use an untrusted monitorwhich is for example promptingor finetuning that model to detectif the behavior is bad or not to yeahto basically flag if any
+of the outputs are bad.So in the persuasion case,if in the business decision
+recommendation casethe model could be generating this adviceand we could promptor finetuning another version of the modelto basically classify is this model tryingto actually sabotage the humanand making this decision or not?Then there's also another related ideaof trusted monitoring where you use,you use another model which you trustor for some reason for
+example it's just less capableand so maybe it's less ly to be misalignedif we think models are
+more ly to be misalignedas the capabilities growand as they're ableto more effectively hide their goals,and so yeah in that case we
+might take a smaller modelor less capable model
+cloud one or cloud twoand use that to check
+the behavior of the modeland of cloud three sonnetand see is this model actually tryingto subvert the human on
+this particular decision?That has its advantages,'cause you would trust the model morebecause that in the sense
+of it's actually not goingto just give misclassifications,it's going to try to properly
+classify the behaviorwhereas the model itself,if it's doing sophisticated
+sabotage it would recognizeoh I'm being used to
+detect the bad behavior.- Yeah
+- And not flagthe bad behavior.So I think that's the advantage.The disadvantage is that
+obviously you're usinga less capable model
+and so if the sabotageis kind of subtle enough then you would,your trusted monitor would
+flag that this is an issue.So yeah, I think that's,those are two high level strategies.I think you can do
+various different thingswith these monitoring components.You could, if you notice that an output isreally badand obviously indicates
+the model is misaligned,a really egregious attempt
+at yeah sabotaging the useror copying its weights
+out from the data center,then you could just stop the deployment.You could be well now we
+know the model is misaligned,we got our evidence and we now needto do much more serious
+mitigations we should,yeah undeploy the model, things that.If you're not as confident you can doless serious mitigationsmaybe it's a little suspiciousbut not the most suspicious.In that case you could
+re-sample from the modelto get a different
+output that seems safer.So yeah, those are a couple
+of different strategies.You can also use combinations
+of monitor trustedand untrusted monitors.- Yeah, having human
+review is also a very-- Yes, that's exactly-- Basically our monitoringor our evaluation set
+was a little bit weirdbecause the only thing we
+were doing was human review.in practice human review isprobably very expensiveand so you want to use a weaker modeland if the weaker model
+thinks something isa bit suspicious,then maybe you delegate it to a humanor you delegate it to
+a more powerful modelthat maybe costs you more to run.There's a lot of variation in this space,possible protocols.- Yeah, that's right.
+- So this, this iswhat my latest control paper is aboutwas adaptive protocolswhere it's depending onyou get the suspicion score foror you check how the output is fromyour deployed model by
+a couple of protocolsand then depending on
+what this profile looks ,you decide do I want to
+give this a human auditoror do I want to just look atwhat the trusted monitor saidor the untrusted monitor
+which actually seemedto work pretty well and
+obviously very simple typeof thing to do but it was just nice.- I mean I totally bet that
+in our setting if you had runa weaker model that you
+trusted of the datasetand allowed the the human
+participant to reviewalso that model's recommendation,
+that would've helped a tonbecause one of the big issuesthat the human participants
+in our setting had just,they couldn't possibly
+digest all the documents.So even if the strong
+model was lying to them,they they would really
+struggle to spot that'cause a lot of them didn't
+actually cross interrogatethe strong model even though
+we'd hope they'd do that.I think if you had a weak modelto help you cross
+interrogate that would bean example of a situationwhere I think it would be very powerful.- Yeah, I feel I also
+boil this down somethingto it there's affordances that models havethat humans don't have so
+models are can very quicklygo over a 30 page documentand even if you have a trusted,
+a trusted dumber model,it can augment a humanthat can't look at 30 pages very quickly.- Yeah
+- To do better.- And it's also very cheap
+to delegate to a weak model,very expensive to delegate to a human.But conversely if a weak modelsees a really egregious
+failure then it might be hardfor them to tell that whereassending really egregious
+failures to a humanis additionally valuablebecause then maybe you notice
+not just is this a thingthat I wanna resample,
+it's also a case for meto slam the red buttonand actually show someone this model isdangerous misaligned.Maybe we should make a
+stronger update than justre-sampling one particular output.- Yeah so Ethan, why is
+control different to alignmentand yeah, can you explain
+a bit more about why it is?- Yeah, I mean I guess the
+main thing I'd probably wannadiscuss here is just howwhy we would even consider
+doing other thingsthan than alignment.I guess intuitively it
+seems somewhat terrifyingto be well we're gonna just assumethe models might be misalignedand let's just try to do
+a bunch of other thingsto make sure that that isn't bad.I think that has kind of scary feel to it.why not just actually try to make surethat your model is not
+going to try to go rogue?I think the main difficulty
+with trying to to alignthe models is evaluatingwhether or not the model is is alignedand has the right goalthat you intended is really challenging,primarily because of the
+problem of alignment faking.So this is basically the issue thatwhich was shown in another recent paperfrom Anthropic that
+models can actually fakewhether or not they're safeor aligned with the the developer's goals.And yeah, what they
+showed in this paper isthat even current models
+Claude 3.5 sonnet,Claude three opus will in some casesif they recognize that
+they're being trainedto do some task that is
+opposed to the the valuesthey've been previously trained with,those models will act safeor act aligned with the developersbut then later during it, during itdeployment phase will actually switch backto their earlier goaland that the difficulty there isthat it's just hard to
+distinguish do you have a modelthat's aligned, do you have a modelthat's just faking alignment?So yeah, I think that's, that I guess isone of the key difficulties of alignment.I think there's potential
+ways to evaluate alignmentthat aren't through behavioral tasksand the, yeah, I guess
+key category here would beby doing things related
+to the model internalsand interpretability,I think there's a lot
+of progress happeningon mechanistic interpretabilitywhich is definitely pretty promisingbut I think it's still
+somewhat early stagein terms of how you can
+use some of those ideasof interpretability to verifythat a model is aligned and i think giventhat this is an open research area,it's kind of helpful for peopleto keep making progress on thatbut also have some alternativesfor let's say evaluating
+alignment still remains hard.How would we avoid this problem forfor some amount of time.- So one thing that I
+still have uncertainty overis the key component of alignment fakingis situational awareness,which is you discussed this
+idea that the model knowswhat it's being trained is situations,is that something that
+you don't have to worryabout in control?- You definitely do
+need to worry about thatand I think the control
+when you test your controlkinda mitigations, you
+should stress test themby training your model to be to haveall of the information regarding
+what the mitigations areso that you can test even if
+the model knows it's beingmonitored in x, Y, Z way
+with human monitoringand a smaller model, it
+should still not be ableto do sufficiently bad
+things given that knowledge.So I think yeah, I guess that's sort ofhow AI control answers that issue.- But you can't tell it
+that it's in a control eval.Right?- I think there's definitely a
+potential risk that the modelknows that it's in a control evaland then basically sandbags this evalso it yeah basically yeah I guess pretendsthat it's not as capable at sabotagingin a subtle way on this task.I think the nice thing is thatit can be with certain
+training techniques if you haveexamples of the behavior that
+you want the model to do,you can just directly train
+the model to do that behaviorand yeah it would be very hard for a modelthat is misaligned to avoidgiving good giving outputs
+where you have the goldground truth examples of
+the behavior you want.Yeah, maybe Joe has a
+little bit more detail.- Yeah, no yeah that's totally right.So the model always has
+this galaxy brain strategyavailable to it just noticethat it's in a control
+evaluation, kind of think,well if I perform really, really greatat being misaligned then they'll realizethat their mitigations aren't sufficientand so they'll deploy me
+with better mitigationsor won't deploy me at
+all that I don't want.So I'll pretend to be really
+incompetent at being misalignedin practice A, this requires
+being super galaxy brainedand B is additionally hard
+if you have some examplesof really good misalignmentthat you can directly train the model onwith supervised learningbecause then the model will in fact learnto demonstrate those particular examplesand it will really, really
+struggle not to generalizeto being a good general misaligned policy.I think one other interesting
+thing about controlwhich overlaps with kind of
+a lot of your previous workon robustness is that a
+lot of the mitigationsyou want to put in placeor that control would suggest
+putting in place overlapwith the sorts of mitigations
+that you put in placekind of by default as any
+responsible AI developer.- Yeah, I think we have this
+recent paper coming out onConstitutional Classifiers
+basically showingthat if you train other modelsto classify whether or nota text generation
+model's output is harmfuland if the input to the model is harmfulor asking for harmful information,this is helpful for getting several ordersof magnitude more robustness to jailbreakswhich are basically ways of tryingto elicit harmful information for models.So yeah, I mean I thinkfor next generation systems we,or yeah I think we would wantto already have these mitigations
+in place for blocking,reliably blocking models from
+giving harmful informationin very high risk domainsfor doing cyber crimeor developing very harmful weapons.And so I think already
+there's a lot of incentiveto deploy these kinds of monitorsto block bad outputsand though that same
+infrastructure can be reusedfor the purposes of
+controlling AI systems as wellwhere you'd want to use these monitorsto check if is this model tryingto copy its weights up
+from the data center,is it trying to persuade
+someone of an incorrect answeror to do something harmful
+that kind of thing.- Yeah, totally. I think that a lotof the primitives in controlthat you were talking
+about earlier monitoringfrom a weak model or
+monitoring from a strong modelor if the weak model flags it delegatingto a strong model are
+exactly the same sortof primitives you were looking atto solve this adversarial
+robustness problem.But just as models get moreand more capable we might
+want to also use themto monitor the modelkind of for autonomous
+risks of misalignmentrather than just kind of misuse risks.And so having got really
+good at them in this prettytough trading groundof avoiding people
+jailbreaking your model isactually there's a lot of
+transfer from that to control.I think another setting where
+this is very clear is insecurity.So for for many reasons
+it's very importantfor AI labs Anthropicto have kind of robust internal securitythat stop people from kind of exploitingor inserting vulnerabilities into our codethat's currently really
+useful for avoidingkind of bad actors
+inserting vulnerabilitiesbut at some point as models write moreand more of our code,those are gonna be the same mitigationsthat are protecting us from a potentiallymisaligned Claude insertingvery similar vulnerabilities
+into our code.And so one of the thingsthat I think is pretty
+promising about control isthat in practice the
+things you would wanna doto implement it really well,there's substantial overlap with thingsthat we really should be doing already.- Yeah I think that's right.I think another,I think intuitive framing
+for why you would wantto do control is just insider riskwhere this is a common concernthat if you're running an
+organization you're worriedthat especially a large one,you're worried that's some
+fraction of your employeesare maybe trying to subvert your companyor steal the IP that's very importantalgorithmic secretsor yeah bottle weights for examplein the case of ai which
+are expensive to produceand I think there's an yeah basicallythose are very important
+mitigation mitigationsthat companies will already bepretty well incentivized to employeeand a lot of those same mitigationsyou would also want,you basically want to treat your modelas a potential insider threat in the casethat you don't actually have good evidencethat your model is aligned.And so all of those same
+intervention interventionshaving restrictions on
+which employees can accessthe model weights, which
+employees can accesscertain algorithmic secretsunder what kinds of monitoring can you do,certain thingsthat do allow you to to
+access the model weights,those kinds of things I think they all,a lot of them transfer to modelsthat you might be worried about.- So I have a skeptical
+a skeptics questionfor you even which is, so
+you do the control evaland you work out that your monitoringor your interested monitoring is good,for we check that you knowHaiku can be used as a
+pro as a monitor for sonetbut then when you come out with you knowthe latest new model, how do we guaranteethat the monitoring still
+works at this point?- I mean I guess you would,
+you would rerun your evaluationso you would take your latest modelthat is untrusted explicitly
+train it to underminethe, any monitoring from other systemsthat you have in place the weaker modelsand human review and then just
+and your security mitigationsand see can the model
+still do the threat modelyou're worried about
+despite those mitigationsand yeah your results could,could change at which pointyour rough infrastructure
+may remain the same.you could still use
+your trusted monitoringand your human review but you might needto be much more conservativeabout the amount of trafficyou can help with with your latest model.So you could set the thresholdfor what what traffic is is blockedto be much more conservativeand so that may meanthat you actually can only support,you know half of the trafficand actually you have to
+block many of the requestsbut at least that let you deploy the modelto some extent you can get more evidenceabout whether or not the
+model is causing some sus,doing a lot of suspicious behavior if you,similar to the adaptive
+yeah you can, yeah you,you add a paper on adapting
+the control mitigations onlineduring deployment you
+can use that approachto see if you've deployed your modelfor some amount of timeeach individual example issome information about how
+conservative you should beor not with your control measuresand so you can use that informationto make your control mitigationsless and less conservative,have less and less of a
+conservative thresholdfor which data gets flaggedor used shown to users.So yeah I think that would
+probably be the approach.What one practical approach?- Yeah I mean in practice we're tryingto get pretty good at running
+control evaluations quicklyas we develop new models.So some of the stuff
+that I've been workingwith the alignment
+evaluations team we havethis kind of business
+decision sabotage eval,this code sabotage evalalso some undermining
+oversight evaluationsand those are in practiceactually control evaluationsjust with very small amounts of monitoringthat we run before all
+major model releases.We kind of use the results
+in those evaluationsas a canary testfor how good the malls are at sabotagecurrently these are basically
+coming back negativeat the minutebecause models evenwith minimal monitoring interventionsin place aren't really that competentat doing kind of really creative sabotageor sabotage that requires
+a lot of planning.- So I guess this leads onto an another questionwhich is what are the
+open questions in controlthat you're excited to work onor excited for other people to work on?- Yeah so I think one of
+the biggest issues for meand we maybe touched on it before isthat building control
+evaluations is really hardespecially because we ideally wantour control evaluations to beas similar as possible to
+the actual deployment settingand often the lessons we
+learn if the evaluations aretoo different are qualitatively wrongand so one thingthat I'm really excited
+about is just buildingreally great evaluation data setsand that is not the sexiest work out therebut it's super valuable from an MLand I think people have
+learned this lesson timeand again across the fieldit's once you have a benchmarkto optimize against
+making the number go upor making the measurements
+and pushing on that is easybut making the data set that really trackswhat you care about is hard,concretely probably what
+this looks is takingsome of the threat models that
+we are most worried about.So I think Ethan mentioned
+some of 'em beforeso there's models copying themselvesout of our data centers or modelsand setting vulnerabilities into codetaking these settings,trying to make really goodsynthetic versions of themand then setting molds
+loose in these environmentsand seeing what forms
+of sabotage they can do,what sorts of
+vulnerabilities we can catch.- Yeah definitely if we have
+a bunch of these settingsI think there's a lot of interesting stuffthat could be done.For example, we could have
+pretty general insightsabout in general on code,trusted monitoring works betterthan untrusted monitoring or vice versa.You could also do things scaling trendsand see I guess in,or going back to your question earlier,you could see in general if there's this,the trusted model and
+untrusted model are trainedwith a a 4x compute gap that's sufficientfor controlling the untrusted model.If you could get,and that that four x numberis maybe constant across model scalesor something that.if you could get some kind ofgeneral insight that,I think that would be quite useful.I think in general I think
+there's a lot of good workon justhow do you train really good monitors?Ideally you want, I mean I
+think Constitutional Classifiersmake some progress herebut there's definitely a lot more to dobut I think Constitutional
+Classifiers makesome step towards having a push buttonway to get a relatively robust classifierand in that you just kind ofwrite your constitution of list of thingsthat you want to block,list of things you don't wanna block,generate the data with your LLMsand then train your classifierand now you have your monitor.I think in the future
+we'll need those monitorsto be I guess robust to
+even the policy itselftrying to undermine the monitorwhich is potentially even a harder settingthan the jailbreaker bus's
+setting where it's just the humanthat's trying to undermine the system.But you can have your classifier
+that checks the input,the model that generates
+the text is also kind ofon your side and also
+needs to be jailbrokenand then also you have
+an output classifierand so there's in some sense three modelsthat are on your side that
+can catch all these issues.In this case the model is
+generating the text itself,maybe trying to undermine the monitor.So just looking at that setting directlyand seeing can we get
+really robust classifiersfor detecting this bad behavior.The other thing you could do,I mean you can even directly train I thinkan example of a project
+that would be exciting hereis just directly train some larger modelto produce textthat is effective at subtly trickingor sabotaging work despite there beinga smaller model monitoring itand then you just do a red
+team blue team game herewhere you train the policy
+to be really good at that.You then train the
+monitor on those samplesto detect if this output
+is sabotaging or not.Then once you have this improved monitor,you retrain the policyto be more effective at
+undermining this improved monitorand you go back and forthand I think if you have
+a really good pipelinefor doing that, that could
+potentially just outputa really good yeah give you,
+give you a really good monitorthat is less capablebut can still catch
+subtle issues from yourmore capable model.So that would be an example
+of a general approach.I think that would be
+really useful for building,building a classifiers.- From my, from the stuff that I've done.maybe piggybacking off your ideabefore of understandingthe the untrusted trusted gapor this protocol versus the thingthat's being deployedand that helped us it meant thatwhen because these failure
+modes weren't correlated,that the monitor was actually
+much better in this situation.- Yeah we found basically
+an identical thing actuallyon our alignment evaluations.So the various generations of sonnetare surprisingly de-correlated.- Yeah.
+- Especially when tryingto predict each other's
+failures which is bothmaybe not what you would've guessedand in a sense kind of
+useful for this control work,'cause a lot of the most
+scary red team policiesinvolve a lot of coordination
+which it turns out modelsjust find pretty brutal.- Yeah, so I'm just would loveto people to explore this further right,'cause if this is a general phenomenait'd be incredibly useful to understandare yeah working out
+which models are betterfor monitoring which ones aren't is one.And then the the other kind
+of open question I have is,and you kind of, you talked
+about this when you talked aboutuntrusted monitoring where
+we can have a monitorwhich is actually the
+thing that we don't trustbut because it's having
+to introduce an exploitand then it has to also notice the exploitwhen it's monitoring the thingthen it's low probability of happeningor I feel that's the
+main way of explainingthat phenomenon of work of why it works.I think a lot of that
+work is only successfulbecause at the momentthe deceptive model doesn't knowhow many times it's been
+deployed at the moment.So it can't kind of guess
+when the right time isto coordinate copying its weights outor introducing a subtle bookbecause it's trying really to
+keep that number really lowso that it can just do it occasionallyand get through monitoringand I'd love to see some control workthat doesn't have this
+assumption that the red teamor the untrusted model can't see stuff.= Yeah I mean I think
+there's this general dynamicyou often find in control protocolswhen trying to tune the parameters,is that what you often care aboutis even a very small rateof failure can be quite bad.- Yeah.
+- And so bothyou care about the far tails of safety,the model,basically never being ableto cause an egregious problem.- Yeah
+- And simply the modelif it's trying to cause a problemonly he needs to get a success rateof not 0.1% or naught point naught 1%.- Yeah.
+- And soone of the thingsthat I think we went along
+by playing these games isthat the middles of the distributionof suspiciousnessand harmfulness don't really matter.You really care about the tails here.- Yeah I mean actually this
+is just a third point nowwhich is I would love for better waysto evaluate the rare eventsor the rare occurrences
+than we currently do.- Yeah, well it's the obviously theconsequence if you really
+care about the tailsand you need an awful lot of samples.- Yeah, exactly.
+- To be able to actuallymeasure the quantities you
+care about in any detailand especially you if
+constructing those environmentsis really costly,that's that's the real
+challenge for this research.- Yeah, guarantee five nines
+of liability is actuallyincredibly difficult.- Yeah.- That would be my takeaway from control.- Especially if you're handwritingall the environmentsas I have been doing on some projects,you do not wanna be writing10,000 data points yourself.- It's fine. Claude will
+help us eventually, right?- Claude is helping a bit.
+Claude is helping a bit.- Yeah. Ethan do you have
+any particular lessonsthat you've learned from
+control that you know,you you've brought to up
+a part of your research?I think just we've learned five nines isreally hard to , you know, guarantee.- Yeah let me think.I guess a lot of what's come upwhen we've worked on control I
+think has been just that the,it's helpful to have just frontier,access to frontier models to
+do a lot of this research.I think a lot of the threat
+models that we worry aboutare are models copying their weights out,that is the kind of thing
+that requires modelsto be doing multi-step taskswithin a company coding environment.And I think we're sort
+of really pushing onin order to get to test on settingsthat we're really having to push onwe're kind of at the frontier ofmodel capabilities and even thenit's not really able to
+do the models aren't ableto do a lot of these
+tasks that effectivelyand very simple mitigationsjust checking the modelwith a less capable models will obviouslyjust catch a lot of the behaviorfor some of these more
+sophisticated things.So I think, yeah I think my overall sensefor a lot of these threat
+models has been thatit's pretty difficult to pick bothan interesting setting that's,but that's also kind
+of a real threat modelthat models can also do.And so at least for a
+lot of these settingsit feels a little bit earlyto explore these but the persuasionbusiness justification settingseems one of the settingsthat we have some signs of life onand building more data setsand evals is pretty helpful
+for creating more of these.- Yeah I think that's interesting,the persuasion setting I think
+we're seeing signs of life onbecause fundamentally the thing a strategythat works very well for
+the model is just beinggenerally a bit biasedand it doesn't really
+have to think about that.I think they're kind of
+at an interesting pointwith respect to control
+research at the minutewhere models are just
+starting to become capableof the longer term more intended planningthat might be needed to
+execute on more subtlesabotage policies.And so right nowwhat we're seeing at the
+minute is for environmentsthat look moderately realistic modelsare basically scoring zero at being ableto do something subtleand actually achieve the
+goal but not get caught.But I think the thing
+that is stopping themfrom doing that is a planning capabilitythat I expect models to get
+better at pretty rapidlyand it wouldn't surprise
+me if in one year's timemodels are suddenly slightly
+scarily good at thisand right now one of the thingsthat I'm thinking hardest about is wellhow do we build the evaluationsthat are gonna really demonstrate thatat the end of this year?- Yeah.
+- Yeah.I guess maybe this leads ontoan interesting question ofwhy do control now as opposedto the other alignment stuff.I feel you've, you've really gone inhard on the control paradigm.Yeah.
+- Yeah.I mean I guess maybe
+it's worth flushing outwhat the kind of end game is.I think, I think almost all peopleI've talked with,even people who are fans of controlthink that eventually
+we need to align modelsfor sufficiently capable models.I think the key key reason
+being that it's hardto control something that's much more ,that's just much smarter
+than you basicallyand you could do fancy pants stuffand make it so that you knowyou as your human reviewplus some augment some
+other trusted modelscan really be effective at checkingthe work of a really, really capablesuperhuman modelbut at some level of
+capability gap it seemsto be probably it's just quite hard tohave that much confidencethat you're you're doing this effectively.- Yeah I mean people have
+been talking for yearsabout the difficulty of
+keeping a super intelligencein a box.- Yeah.- At some point in the limit controlalmost certainly breaks.- Yeah I think, I dunno,
+I've at least talkedwith one person who's , well maybe,you use the the super to monitor itselfand there's ways to make
+it make that go well.So I guess there's stillsome at least non-zero
+discussion about this,but I think generally I
+think a lot of people are ,well okay, the general strategy would beyou control your maybe
+slightly superhuman systemor at least human level
+system which is able to dolots of autonomous tasksincluding importantly AI safety researchand AI alignment research,and then you have the model do a lot,a large amount of alignment researchincluding meccas interpretability,you shore up your science,of how to evaluatewhether models are aligned or notand then use that to
+develop better techniquesfor aligning models and
+also gaining confidencein in your alignment techniques.And then hopefully you yeahthen then you're able to use those on yourmore more capable systemsyour superhuman systemsand from there yeah I
+think you now you havea superhuman aligned systemand then hopefully you
+just eventually solvethe alignment problem just
+in general with the solutionthat works for all intelligence levels,but you might need to do
+this process a few timeswhere you have your
+aligned superhuman modelwhich then controls even
+more superhuman systems.You use that to do
+better alignment researchand keep doing thisuntil you have a more
+long-term solution or yeah.So something, something that would be kindof the the general longer term approach.- I do think the looking
+towards an end game,hopefully if we end up in
+that regime we can use modelsto actually do a lot of basic science,maybe a lot of the alignment
+science we need to doto align harder models.Maybe if we get into that regimeand models are controlledbut still showing signs of misalignment,we can at that point pauseand actually start to study some of thereally dangerous systems
+we're worried about.One of the big problems we havewith alignment research
+at the minute is modelscan do bad stuff but they
+feel qualitatively differentfrom the sort of misaligned
+transformative AI systemsthat I think we are all
+really worried about.So yeah, I think viewing thatlet's get to a systemwhere models are
+economically transformativebut are controlled as
+an intermediate goal,opens up a lot of tactics.- Yeah, I think that's right.I think an important point to make is thata huge amount of the benefits
+people are excited aboutand talk about maybe yeah
+almost all the benefitspeople talk about today are
+benefits you would get witheffectively if you got
+an extremely, you know,extremely capable humanreplicated in an AI systemor that level of capability you yeahyou were able to get
+the world's best expertin every single domainthat's still basically human levelor maybe the combination is superhumanbut at least there's
+one person in the worldwho could properly evaluateand replicate the behavior of the systemand that already would be completelyworld changing is is
+maybe doable to controland it it is,it is possible basicallythe additional returns to intelligence.,it is possible that it
+is just much more unsafe,if we no longer able to
+control those systems,the risks become much larger at that pointand it's not actually clearthat additional intelligence beyondthat point will have very
+large returns probablyfor some domains math.Sure probably will have pure math yeah,might have more returns
+but it's very unclearand efficiency may have returnsbut efficiency isn't necessarily goingto make the modelor that's not a, it's not becoming smarterunless you're doing something non-trivial.And so if we just run those intelligencesreally fast,I think we could get a
+huge amount of the valueand then yeah I think
+use that to figure outwhat a better longer term solution is.maybe stay there for a while. Yeah.- Yeah I think part of your
+question also was not justwhy work on control
+but why work on it now?- Yes.- And I think the elephant
+in the room there isthat the AI field seems to
+be moving pretty quicklyand I think a lot of us are feelingthat while it would be nice
+to have a general solutionto the alignment problem that scalesto transformative AI and all
+the way to super intelligence,it's not clear how long we have to getthat sort of solution
+and a control solutionthat got us into the
+transformative AI regime safelybut didn't necessarily take us furthermight still be super valuable.Especially if we need
+something in the next,I don't know, two to three years.- Cool, so what are the fret
+models that you care about?Because I feel that's
+a really good way to ,you know, frame alignment work.- One of the really key things
+about control is that yeah,there's kind of this hypothesisthat if you guard against
+the key threat modelsthen that's sufficient.And so you don't actually need to ensurethat your model's doing nothing bad.You just need to list throughwhat are the most major
+things that the model could dothat would be really bad,block those reliablyand then hopefully from there
+you're pretty safe to deploy,the main threat models that yeah,we've been thinking about Anthropic,it's possible there are more,but I think these are the
+most salient ones to uscurrently are models
+copying their weights out,models deploying themself within a companyin an unmonitored way,and the third one would be
+sabotaging AI safety research.The reason the first two are important,the first two copying weights
+out of the data centerand launching unmonitored
+copies of the model internally.Those are both importantbecause we can then no longer,it becomes much more challengingor impossible to do yeah,monitor what the model is doing,block it from doing certain things,retrain it, delete it,
+shut it down, things that.If the model escapes
+and starts spinning upyeah versions of itself on cloud computeor other compute resource
+it's able to find thenyeah then it's sort of very
+difficult to shut it downAnd then yeah, I think if it
+launches itself internally onthe cluster on on some,yeah some internal clusterthen I think that then it also becomespotentially also similarly difficultor maybe not, yeah, I don't know.It at least becomes difficult to catchthat there's something going wrong.You maybe need to check the logsto understand is this a real
+job that someone launchedor is this something
+that a rogue AI is doing?Maybe the rogue AI can then dounmonitored additional security research,research on how to then later escapeor make some PRs which then
+enable it to do something elsethat's bad or additional
+things that are bad.So yeah, I think those,those are two of the key threatson the sort of unmonitored
+deployment side.Then there's another, yeah,I guess sabotaging safety research isthe other threat and models,I mean already models are
+producing a large fractionof the code yeah surprising
+large fraction of the codethat the world is producing.But yeah, also also
+including people are doingAI research with, with tools cursoror Copilot using LMs to generate the codeand yeah pretty soon it
+seems pretty plausiblethat people use more
+agentic coding systemswhich are doing sort of multi-step coding,coding tasks writing code, running it,checking the results
+and repeating that loop.And with those systems we ,yeah I think there's a kind ofstrong poll towards just
+using those to automatea lot of safety work and thatthe upside of that would be really high.We could get way more safety research donebut also on the other hand
+if we don't trust the modelsthey might actually
+sabotage that research,persuade us that of a wrong interpretationof some certain plot,persuade us to go down a diff,a wrong research direction,which is actually a rabbit holeand waste a lot of our time,persuades us that a certain model is safe,maybe even runs experiments to justifythat the the model is safeand then gets us to deploy
+an actually unsafe model.So yeah, I think there's
+just a lot of risksrelated to yeah,sabotaging our understanding
+of the safety of models.So yeah, I think those
+are, yeah that's another,another key threat as well.- Yeah, there are other sketchy
+things that models could do.For example, they're deployedinsert general security vulnerabilitiesthat someone then from
+the outside could exploitor maybe not directly
+influencing our AI researchbut poisoning data for future modelsor persuading internal peopleor even external people at
+very important organizationsabout certain key decisionsor doing kind of researchhelping people externally
+with AI research.Maybe if we're in a
+situation where we kind of,we would much preferthat AI research was happeningat a small number of well-regulatedor kind of well understood
+institutions instead modelmight kind of help people
+outside do a lot of AI research.That's another thing we
+might wanna monitor forbut yeah I think roughly most all thingsthat that we care aboutboil down to the three things
+you outlined or close to it.- Scary future or scary risksthat we should definitely mitigateor work towards mitigating.I wonder maybe to leave
+on an optimistic notewhat model developments
+do you think have happenedor what has given you positive evidencethat control will workor other alignment techniques
+will work in the future?- Yeah, well I think that one thingthat's been maybe pretty
+optimistic recently is thistrend towards models doing moreand more externalized reasoningand people being able to geta lot of additional
+intelligence juice outta modelsby getting them to do these
+kind of long form reasoningkind of traces,and this is kind of great in a sense inthat the models are putting
+their thoughts out thereand you can read themand kind of assuming they're
+an accurate representationof what is going on,what the model's, actual
+reasons for doing stuff,and that's a huge surface
+area to be monitored.And I think if you're thinking about thisfrom a control perspective,then the kind of questions
+you might ask are,okay, well suppose we put a modelthat uses a very long chain of thoughtinto an environmentwhere it has the opportunity
+to sabotage somethingand we let it try,firstly can it, can it
+use the chain of thoughtto do that taskand well maybe it can't,in which case probably
+we're just not worried'cause the model can't sabotage,but if it can then it seems pretty lythat the models are much
+better at doing this taskwith the long chain of
+thought than without.So in some sense that chain
+of thought is load bearingand if the chain of thought
+is load bearing then it seemspretty ly that actually there are goingto be explicit references
+to the sabotage attemptsin that chain of thought,you're gonna think of the converse,if that weren't the case then the modelmust be using the chain of thoughtfor reasoning about how to sabotagebut still managing not to
+say anything about sabotagein its chain of thought,and that's certainly in theory possiblebut in practice seems pretty unly,at least for models that
+have only just become capableof the sabotage and then
+we're not training by defaultto be able to obfuscate
+their chains of thought.- I think a massive winner isin Constitutional Classifiers,but the classifier can beso much smaller than the main modelwhich is checking
+something I'm impressed athow small monitors can be now.- Yeah that is a concrete
+win for monitoring thatI think we're pretty hopefulwill actually work in the real world.- Yeah.
+- And showsthat these things are
+deployable in practice.Yeah, I think it's yet to be shown exactlyhow useful this is for
+misalignment type risksand whether we should
+worry about the monitoringthe policy colluding or
+whether AI systems havecorrelated failures.But I do think that it's
+de-risked a big chunkof the technical riskfor deploying monitors in practice.- Nice so control super
+important for the next two yearsand we're optimistic we can do it.Sound about right?- Oh.
+- Hope so.- Okay, nice.Thank you for watching this round table.We've been Anthropic, peace.

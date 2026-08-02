@@ -1,0 +1,113 @@
+# AI for Slides: A Practitioner's Guide — CLI Video Ideas ("X with Claude")
+
+## Candidate 01 — "Diagnose a Slideument: Run the Verbal-Channel Collision Detector"
+- Source: ai-for-slides-a-practitioners-guide/chapters/01-the-slideument-problem.md
+- Lane: BUILD (Claude Code)
+- Hook: Eighty-seven words of prose on a slide look complete from the author's seat. In the room, the speaker is a radio playing while the student reads. The verbal channel processes both on-screen text and narration — only one wins, and it is usually not the speaker.
+- The artifact: A Python script that reads a slide deck (as markdown or JSON), counts words-per-slide body text, checks whether the speaker notes field is populated, and classifies each slide as: ANCHOR (sparse body, notes populated), DOCUMENT (dense body, notes empty or stub), or SLIDEUMENT (dense body + dense notes — the worst case). Output: a per-slide classification table and a summary bar chart animated in D3.
+- Prompt seed: `claude "Read this slide deck markdown. For each slide: (1) count words in the body (title excluded), (2) check if the notes field is empty, stub ('...'), or populated (>20 words), (3) classify as ANCHOR (body ≤ 30 words + notes populated), DOCUMENT (body > 30 words + notes empty), or SLIDEUMENT (body > 30 words + notes populated — both channels loaded). Output as JSON: {slides: [{title, body_words, notes_words, classification}], summary: {anchor: N, document: N, slideument: N}}." < deck.md` then render D3 bar chart of classification counts.
+- Read / check: Verify SLIDEUMENT classification fires on a slide with 87 words in body and 50 words in notes; verify ANCHOR fires on a slide with 20 words in body and 80 words in notes; verify DOCUMENT fires on 87 words in body and empty notes; verify the D3 bar chart matches the JSON summary counts.
+- Human supplies: A slide deck markdown file with at least one slide of each type. Synthetic deck with planted examples is fully acceptable — the classification is illustrative.
+- Output medium: d3 (animated) — three-bar classification chart growing, with a slide-by-slide annotation strip below showing each classification.
+- The change: Take the worst SLIDEUMENT slide (most words in both body and notes) and repair it: move the prose to notes, reduce the body to a single assertion + one visual description. Re-run the classifier; show it flip from SLIDEUMENT to ANCHOR.
+- Teardown angle: The slideument is not a design failure — it is the absence of a decision. The dense version *looks* more finished. That is precisely the problem. The decision is whether this is a speaker's anchor or a study document, and it must be made before the first word is typed.
+- Exclusions: Multimedia learning theory lecture (Mayer's full experimental program), slide design aesthetics, tool-specific export workflows.
+- Score: 10/10
+
+## Candidate 02 — "Fix Visual Hierarchy: Build the Size-Contrast-Position Audit"
+- Source: ai-for-slides-a-practitioners-guide/chapters/02-no-clear-hierarchy.md
+- Lane: BUILD (Claude Code)
+- Hook: When the eye does not know where to land first, the slide has already failed. Hierarchy is not aesthetic — it is the sequence of attention the designer gives the reader. And the absence of hierarchy is not neutral; it is noise.
+- The artifact: A Python/Claude slide auditor that reads slide content (markdown) and checks three hierarchy signals: (1) size ratio — is the most important element at least 1.4x the font size of the secondary? (2) color contrast — does the primary claim have higher contrast than supporting text? (3) position — is the primary claim in the top-left quadrant (F-pattern reading start)? Output: per-slide hierarchy score (0-3 criteria met), with the worst-scoring slides flagged.
+- Prompt seed: `claude "Audit this slide for visual hierarchy using three criteria: (1) SIZE — is the headline at least 1.4x the body font size? (2) CONTRAST — is the headline higher contrast than body text (darker or bolder)? (3) POSITION — does the most important element appear in the first third of the slide (top or left)? For each criterion: PASS or FAIL with one-sentence reason. Overall hierarchy score: 0-3." < slide.md` then run across all slides.
+- Read / check: Verify that a slide with identical font sizes for headline and body fails criterion 1; verify that a slide where body text is bolder than the headline fails criterion 2; verify that a slide where the key chart appears bottom-right fails criterion 3; verify overall score is the count of passed criteria.
+- Human supplies: Slide deck markdown with at least two slides — one with clear hierarchy and one without. Synthetic acceptable.
+- Output medium: screen-recording mp4 — terminal running the audit across all slides, per-slide score table, then the repair of the worst-scoring slide.
+- The change: Repair the lowest-scoring slide (increase headline size to 1.4x, increase headline contrast, move key element to top-left); re-run the audit; show score jump from 0 to 3.
+- Teardown angle: Hierarchy is not something you see — it is something you feel in the reading sequence. A slide where everything competes for attention forces the reader to construct their own hierarchy. That is the teacher's job being outsourced to the student.
+- Exclusions: Full cognitive load theory lecture, Gestalt grouping principles beyond position, typography history.
+- Score: 9/10
+
+## Candidate 03 — "Detect Seductive Details and Remove Them with Claude"
+- Source: ai-for-slides-a-practitioners-guide/chapters/07-seductive-details.md
+- Lane: BUILD (Claude Code)
+- Hook: "If you removed this from the slide, would the student still learn what they need to learn?" The anecdote about Peter Mitchell winning the Nobel Prize in 1978 is interesting. It is not the learning outcome. It is a seductive detail — and John Sweller's cognitive load research shows it actively harms learning by consuming capacity the student needs for the actual mechanism.
+- The artifact: A Claude auditor that reads slide content and flags seductive details: elements that are interesting but not required for the learning outcome. The audit uses a two-question test: (1) if this element were removed, would the learning objective still be achievable? (2) is this element a decorative fact (a historical date, a celebrity name, an entertaining aside) rather than a structural component of the argument? Output: per-slide flagged elements with a SEDUCTIVE/STRUCTURAL label.
+- Prompt seed: `claude "Read this slide and its stated learning objective. Identify any elements that are seductive details — interesting but not required for the learning outcome. For each element, answer: (1) if removed, can the student still achieve the objective? (2) is this a decorative fact (historical date, celebrity anecdote, entertainment) rather than a structural component? Label each element SEDUCTIVE or STRUCTURAL. For SEDUCTIVE elements, propose a one-sentence replacement or deletion." < slide_with_objective.md`
+- Read / check: Verify "Peter Mitchell won the Nobel Prize in 1978" is flagged as SEDUCTIVE when the learning objective is "explain how ATP synthase uses the proton gradient"; verify "The proton gradient drives ATP synthase" is labeled STRUCTURAL; verify the replacement proposals are concrete (not just "remove this").
+- Human supplies: Slide content with a stated learning objective and at least one seductive detail. A real slide from a course the viewer teaches is ideal; synthetic with a planted seductive detail is acceptable.
+- Output medium: screen-recording mp4 — terminal running the audit, SEDUCTIVE/STRUCTURAL labels, then the viewer confirming or overriding one flag.
+- The change: Remove the top-flagged seductive detail from the slide; ask Claude to verify the learning objective is still achievable; confirm and note the word count reduction.
+- Teardown angle: Seductive details are not mistakes — they are features, for the wrong artifact. They belong in a lecture script, in conversation, in the study document. Not on the slide that is competing with the speaker's voice for the verbal channel.
+- Exclusions: Full cognitive load theory derivation, Sweller's worked example effect, multimedia learning theory history.
+- Score: 9/10
+
+## Candidate 04 — "Own Your DESIGN.md: Run the Transplant Test on Inherited Slide Defaults"
+- Source: ai-for-slides-a-practitioners-guide/chapters/11-owning-your-design-md.md
+- Lane: BUILD (Claude Code)
+- Hook: The DESIGN.md is the boundary between the work the AI tool does and the decisions you have made. When the file is unowned, the tool is making your design decisions. The accent color is #C8102E — Northeastern's red — even if you teach at a different institution. The body text is 28pt — sized for a 200-seat hall — even if your seminar room has 12 seats.
+- The artifact: A Claude-powered DESIGN.md audit that reads an inherited DESIGN.md and asks for each variable: (1) is this value calibrated to the owner's context (room size, institution, discipline) or is it an unexamined default? (2) the transplant test: does this value work unchanged for a 200-seat lecture hall? If yes and the owner's context is a seminar room, it is a default. Output: per-variable TRANSPLANT-FAIL/CONTEXT-SPECIFIC labels with a one-sentence rationale.
+- Prompt seed: `claude "Read this DESIGN.md. For each variable, run two tests: (1) TRANSPLANT TEST — would this value work unchanged in a 200-seat lecture hall? If yes and my context is [describe your context], flag as TRANSPLANT-FAIL (an inherited default not calibrated to me). (2) CONTEXT-SPECIFIC — did someone who knows my discipline, room, and institution make this choice? For each TRANSPLANT-FAIL variable, propose a revised value for my context: [describe: room size, institution brand, discipline type]." < DESIGN.md`
+- Read / check: Verify the 28pt body text flags as TRANSPLANT-FAIL in a 12-seat seminar context; verify the Northeastern red (#C8102E) flags as TRANSPLANT-FAIL for a non-Northeastern institution; verify the diagram-over-list default flags as TRANSPLANT-FAIL for a humanities course; verify the proposed replacements are specific values, not just "choose a value."
+- Human supplies: A DESIGN.md file (from the Brutalist system or any slide system the viewer uses). A real context description (room size, institution, discipline). The audit only works with a real context — synthetic is NOT acceptable; the mismatch is the lesson.
+- Output medium: screen-recording mp4 — terminal running the audit, per-variable label table, then one variable corrected (body text size changed from 28pt to a seminar-appropriate value) and the rationale saved as a comment.
+- The change: After correcting the body text size, run the transplant test again; verify it now passes as CONTEXT-SPECIFIC; note that ownership is the comment, not the value.
+- Teardown angle: Ownership means examining each variable against your context and arriving at a decision you can defend. The decision may be to keep the default. But it has to be a decision, not an inheritance.
+- Exclusions: Design token implementation in CSS/SCSS, full Salesforce Lightning Design System history, brand guide compliance details.
+- Score: 9/10
+
+## Candidate 05 — "Run the Diagnostic Checklist on a Full Deck with Claude"
+- Source: ai-for-slides-a-practitioners-guide/chapters/12-the-diagnostic-checklist.md
+- Lane: BUILD (Claude Code)
+- Hook: On October 30, 1935, the prototype Boeing Model 299 crashed during a demonstration flight because the gust locks were still engaged. The checklist was the response: not as a memory aid, but as a discipline that runs even when the pilot is confident. The slide deck's pre-flight check works the same way.
+- The artifact: A Python/Claude checklist runner that reads a slide deck and runs the diagnostic checklist: per-slide checks (is the headline a claim, not a topic label? is the body ≤ 30 words? does the visual form match the content type? is color encoding something?) and per-deck checks (is there a live-deck vs. study-artifact decision? does the deck have a consistent visual hierarchy? are seductive details concentrated in one section?). Output: a per-slide pass/fail matrix and a deck-level summary.
+- Prompt seed: `claude "Run the slide diagnostic checklist on this deck. Per-slide checks: (1) HEADLINE — is it a claim (states something) or a topic label (names something)? (2) WORD-COUNT — is the body ≤ 30 words? (3) VISUAL-FORM — does the chart/diagram type match the content relationship (comparison→bar, process→flow, part-whole→waffle)? (4) COLOR-WORK — is every color encoding something, or is any color decorative? Per-deck checks: (1) DECISION — is there evidence this was designed as a speaker's anchor or a study document (not both)? (2) HIERARCHY-CONSISTENCY — is the hierarchy system consistent across slides? Output as markdown checklist with PASS/FAIL per item." < deck.md`
+- Read / check: Verify a topic-label headline ("Oxidative Phosphorylation") fails the headline check; verify an assertion headline ("ATP Synthase Uses the Proton Gradient to Generate 32 ATP per Glucose") passes; verify that a pie chart for comparison data fails the visual-form check; verify the per-deck DECISION check fires when some slides are sparse (anchor) and others are dense (document).
+- Human supplies: A slide deck markdown with at least 5 slides, including at least one topic-label headline, one dense slide, and one visual-form mismatch. Synthetic acceptable.
+- Output medium: screen-recording mp4 — terminal running the checklist, per-slide matrix, then one failing slide repaired in real time.
+- The change: Repair the top three failures (convert one topic-label headline to a claim, reduce one dense slide to ≤ 30 words, replace the pie chart with a bar chart); re-run the checklist; show all three flip to PASS.
+- Teardown angle: The checklist does not replace judgment — it protects against the confident shortcut. The pilot who skips the preflight because everything looked fine on the walk-around is the author who publishes the slideument because it looks complete from the desk.
+- Exclusions: Boeing Model 299 history lecture, full Gawande Checklist Manifesto discussion, Bloom's taxonomy for slide design.
+- Score: 9/10
+
+## Candidate 06 — "Convert a Textbook Figure to a Slide: The Four Operations"
+- Source: ai-for-slides-a-practitioners-guide/chapters/06-the-textbook-figure-on-the-slide.md
+- Lane: BUILD (Claude Code)
+- Hook: A figure that works in a textbook fails on a slide — but not because it is ugly. The textbook figure was designed to be read in silence at 8 inches. The slide is projected at 60 feet and visible for 30 seconds. The four operations (remove legend, move labels inline, extract the one claim, annotate the one thing) are not editing. They are redesigning for a different medium.
+- The artifact: A Claude-powered figure converter that takes a textbook figure description (or embedded SVG) and applies the four operations: (1) remove the external legend and move labels inline, (2) reduce to the one comparison or one relationship the slide needs, (3) add a headline that states the single claim the figure supports, (4) annotate the one data point or region that is the lesson. Output: a specification for the slide-ready version, plus a D3 HTML rendering of the converted figure.
+- Prompt seed: `claude "Here is a textbook figure: [description of original figure with all its elements]. Convert it for slide use with four operations: (1) LABELS-INLINE — remove the external legend, move labels directly onto the data elements, (2) REDUCE — remove all data series except the one comparison the slide needs to make, (3) HEADLINE — write a headline that states the claim this figure supports (not a topic label), (4) ANNOTATE — add one callout pointing to the specific data point or region that is the lesson. Output: a specification for the slide-ready version AND a D3 v7 HTML rendering of the converted figure."` then verify all four operations appear in the output.
+- Read / check: Verify the external legend is absent in the D3 output; verify inline labels appear on data elements; verify the headline is a claim not a topic label; verify exactly one callout annotation appears; verify no more than 2 data series are present in the reduced version.
+- Human supplies: A textbook figure description from the viewer's subject area (description only — no copyrighted image). Synthetic description with planted failures acceptable.
+- Output medium: screen-recording mp4 — terminal running the converter, D3 HTML rendering opening in browser, before/after comparison described.
+- The change: Ask Claude to add back one removed data series "for completeness" — run the cognitive-load argument against the addition; show the distortion limit.
+- Teardown angle: The four operations are not simplification for simplification's sake. They are a medium change. The figure that works at 8 inches in silence does not work at 60 feet with a speaker competing for the verbal channel.
+- Exclusions: Full CAJAL figure specification system, Illustrator export workflow, full cognitive load theory.
+- Score: 8/10
+
+## Candidate 07 — "Rewrite Topic-Label Headlines as Claims with Claude"
+- Source: ai-for-slides-a-practitioners-guide/chapters/10-the-headline-that-says-nothing.md
+- Lane: BUILD (Claude Code)
+- Hook: "Oxidative Phosphorylation" says nothing. It names a topic. "ATP Synthase Uses the Proton Gradient to Generate 32 ATP per Glucose" is a claim — the sentence the speaker is about to say, the thing the student must leave the room knowing. Sweller and Lorch showed that assertion headlines improve retention. The headline is not a label. It is the lesson.
+- The artifact: A Claude headline rewriter that takes a set of topic-label headlines and rewrites each as an assertion headline: a sentence that states a claim, contains a verb, and names the specific insight the slide is building to. A Python script runs a simple test: "does this headline contain a finite verb?" PASS/FAIL per headline.
+- Prompt seed: `claude "Here are [N] slide headlines. For each, classify as TOPIC-LABEL (names a subject without making a claim) or ASSERTION (states a claim with a finite verb). For each TOPIC-LABEL, rewrite as an ASSERTION headline: one sentence, finite verb, names the specific insight. The assertion should be the thing the reader would write in their notes as the key takeaway." < headlines.txt` then `python3 -c "import subprocess, sys; headlines=open('assertions.txt').read().splitlines(); [print(f'PASS: {h}' if any(v in h.lower() for v in ['is','are','shows','enables','drives','increases','reduces','causes']) else f'FAIL: {h}') for h in headlines]"`
+- Read / check: Verify "Oxidative Phosphorylation" fails the verb check; verify "ATP Synthase Uses the Proton Gradient to Generate 32 ATP per Glucose" passes; verify the Claude rewrites contain finite verbs; verify the Python check does not false-flag noun phrases that happen to contain verb fragments.
+- Human supplies: A set of slide headlines from a real deck. Real headlines required — topic labels from a real course produce more instructive rewrites than synthetic placeholders. 5–10 headlines is sufficient.
+- Output medium: screen-recording mp4 — terminal running the classifier, PASS/FAIL output, then the Claude rewrite of the top 3 topic-label headlines.
+- The change: Take the worst TOPIC-LABEL headline (most abstract, no verb) and ask Claude to produce three assertion variants at different specificity levels; compare which one best matches the learning objective.
+- Teardown angle: The headline is not decoration. It is the one sentence the student must leave the room knowing. When it names a topic instead of making a claim, the student has to infer the lesson — and different students will infer different things.
+- Exclusions: Rhetorical theory of assertion, Bloom's taxonomy for headline-writing, typography of headline vs. body text.
+- Score: 8/10
+
+## Candidate 08 — "Detect Color Doing Nothing: Run the Encoding Test on Every Slide"
+- Source: ai-for-slides-a-practitioners-guide/chapters/05-color-is-doing-nothing-or-harm.md
+- Lane: BUILD (Claude Code)
+- Hook: Every color on the slide is either encoding something or competing with what is. A red headline is either marking the most important claim, or it is decorative — and if it is decorative, it is consuming a contrast budget the data series needed.
+- The artifact: A Claude slide auditor that reads slide content and for each use of color asks: (1) what is this color encoding? (2) if the answer is "nothing" or "aesthetics," is it interfering with any other color that IS encoding something? Output: per-color ENCODING/DECORATIVE label, plus an interference check (decorative color with same hue as an encoding color = HIGH RISK).
+- Prompt seed: `claude "Analyze the color usage in this slide description. For each named color element: (1) ENCODING — what data, hierarchy, or emphasis relationship does this color encode? (2) DECORATIVE — if the color is not encoding anything, name it decorative. (3) INTERFERENCE — does any decorative color share a hue family with an encoding color? If yes, flag HIGH RISK: the decorative use competes with the encoding use. Output as a per-element table: element, color, encoding/decorative, interference risk." < slide_description.md`
+- Read / check: Verify a red headline that marks "important" is labeled ENCODING (hierarchy); verify a blue background gradient is labeled DECORATIVE; verify if a blue background and blue data bars appear together, the INTERFERENCE flag fires as HIGH RISK; verify the table format is clean.
+- Human supplies: A slide description (not an image) with at least one encoding color and one decorative color that share a hue. Synthetic description with planted interference is acceptable.
+- Output medium: screen-recording mp4 — terminal running the audit, per-element table, HIGH RISK flag appearing, then the repair (replace decorative blue gradient with white/neutral background).
+- The change: Remove the decorative color (replace blue background with white), re-run the audit — show that the ENCODING blue (data bars) now has no interference competition, and the table shows all encoding uses as LOW RISK.
+- Teardown angle: Color doing nothing is not free. It consumes a channel the reader calibrates to — if blue means "data" in one context and "background" in another, blue no longer means anything. The encoding vocabulary collapses.
+- Exclusions: Full color theory (hue/saturation/lightness), preattentive attribute taxonomy, color-blindness simulation (covered in the infographics book).
+- Score: 8/10

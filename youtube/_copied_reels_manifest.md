@@ -1,0 +1,92 @@
+# Copied reels manifest (2026-07-24)
+
+Built reels under anthropics/ copied into best-match category **excluding all .mp3/.mp4 files**. Already-placed slugs skipped; non-Claude/no-match skipped.
+
+## Copied (4)
+
+- claude-plugins/claude-liam-agent-development
+- claude-mcp-connectors/claude-liam-mcp-integration
+- claude-plugins/claude-liam-plugin-settings
+- claude-plugins/claude-liam-plugin-structure
+
+## Skipped — already placed (79)
+
+- access-scaffolding-text-substitution
+- agent-decomposition-skills-vs-tools
+- agents-that-remember-memory-store
+- browser-coordinate-scaling
+- claude-liam-access
+- claude-liam-asana-api
+- claude-liam-bigquery-api
+- claude-liam-brand-guidelines
+- claude-liam-build-mcp-app
+- claude-liam-build-mcp-server
+- claude-liam-build-mcpb
+- claude-liam-building-plugins
+- claude-liam-canvas-design
+- claude-liam-cardputer-buddy
+- claude-liam-claude-api
+- claude-liam-claude-automation-recommender
+- claude-liam-claude-md-improver
+- claude-liam-claude-opus-4-5-migration
+- claude-liam-combining-plugins
+- claude-liam-command-development
+- claude-liam-config-guide
+- claude-liam-configure
+- claude-liam-confluence-api
+- claude-liam-data
+- claude-liam-datadog-api
+- claude-liam-debug-plugins
+- claude-liam-doc-coauthoring
+- claude-liam-docx
+- claude-liam-enterprise-search
+- claude-liam-example-command
+- claude-liam-example-skill
+- claude-liam-frontend-design
+- claude-liam-google-drive-api
+- claude-liam-grafana-api
+- claude-liam-graphing
+- claude-liam-hook-development
+- claude-liam-hubspot-api
+- claude-liam-installing-plugins
+- claude-liam-internal-comms
+- claude-liam-jira-api
+- claude-liam-legal-finance
+- claude-liam-linear-api
+- claude-liam-m5-onboard
+- claude-liam-marketing
+- claude-liam-math-olympiad
+- claude-liam-mcp-builder
+- claude-liam-notion-api
+- claude-liam-pagerduty-api
+- claude-liam-pdf
+- claude-liam-playground
+- claude-liam-pptx
+- claude-liam-product
+- claude-liam-productivity
+- claude-liam-project-artifact
+- claude-liam-redshift-api
+- claude-liam-research
+- claude-liam-sales
+- claude-liam-salesforce-api
+- claude-liam-sentry-api
+- claude-liam-skill-creator
+- claude-liam-skill-development
+- claude-liam-slack-gif-creator
+- claude-liam-support
+- claude-liam-troubleshooting
+- claude-liam-web-artifacts-builder
+- claude-liam-webapp-testing
+- claude-liam-what-plugins-are
+- claude-liam-writing-rules
+- claude-liam-xlsx
+- cra-progression-scaffold
+- dispatch-analysts-parallel-orchestration
+- eval-driven-six-agent-variants
+- feature-list-checkpoint-persistence
+- fluency-prerequisite-comprehension
+- macos-computer-use-coordinate-roundtrip
+- preserve-cognitive-demand-differentiation
+- rightmodel-pareto-frontier
+- screenshot-prompt-caching
+- stable-element-refs

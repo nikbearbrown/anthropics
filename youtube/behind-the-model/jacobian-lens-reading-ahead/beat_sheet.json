@@ -1,0 +1,849 @@
+{
+  "metadata": {
+    "slug": "jacobian-lens-reading-ahead",
+    "title": "Reading the Word Before It's Said",
+    "subtitle": "The Jacobian Lens and What a Layer Is Disposed to Say",
+    "channel": "claude-liam",
+    "persona": "Liam",
+    "folderLabel": "@NikBearBrown",
+    "audience": "Practitioners and makers following the channel's Claude workflows",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "palette": "claude",
+    "typography": {
+      "serif": "EB Garamond",
+      "ui": "system sans",
+      "mono": "SF Mono"
+    },
+    "source": "anthropics/jacobian-lens/walkthrough.ipynb",
+    "genre": "deep-explainer",
+    "one_idea": "Transporting a residual vector through the average input-output Jacobian of the layers above, before unembedding, decodes what the activation is disposed to make the model say.",
+    "duration_estimate_s": 360,
+    "lane_histogram_target": {
+      "VOX": "20-25%",
+      "MANIM": "25-40%",
+      "REMOTION": "30-45%",
+      "CARD": "remainder"
+    },
+    "topic": "BEHIND THE MODEL · INTERPRETABILITY",
+    "build": {
+      "at": "2026-07-28T21:40:37",
+      "cut": "master",
+      "filled": 0,
+      "of": 16,
+      "slates": [
+        "B00",
+        "B01",
+        "A10",
+        "A11",
+        "A20",
+        "A21",
+        "A30",
+        "A31",
+        "A40",
+        "A41",
+        "A50",
+        "A51",
+        "EX",
+        "VERDICT",
+        "YOURTURN",
+        "OUTRO"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    },
+    "design_version": "v1",
+    "voice_kokoro": "am_onyx"
+  },
+  "beats": [
+    {
+      "id": "B00",
+      "act": "COLD OPEN",
+      "lane": "REMOTION",
+      "scene": "ClaudeComposerAsk",
+      "narration": "Hey Claude — The logit lens returns noise at middle layers; the Jacobian lens reads clean concepts from the same activations. What is the extra transport buying?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "HEY CLAUDE — THE",
+            "items": [
+              {
+                "label": "Hey Claude —",
+                "sub": "Hey Claude —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "The logit lens returns noise",
+                "sub": "The logit lens returns noise at middle layers; the Jacobian lens reads clean concepts from the same activations.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "What is the extra transport",
+                "sub": "What is the extra transport buying?",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 12,
+      "engine": "kokoro",
+      "beat_id": "B00",
+      "narration_text": "Hey Claude — The logit lens returns noise at middle layers; the Jacobian lens reads clean concepts from the same activations. What is the extra transport buying?",
+      "actual_duration_s": 10.05,
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      }
+    },
+    {
+      "id": "B01",
+      "act": "COLD OPEN",
+      "lane": "CARD",
+      "scene": "key-case",
+      "narration": "On an ASCII face whose nose is ^, the Jacobian lens reads \"nose\" at that position — a word absent from the prompt.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "ON AN ASCII FACE",
+            "items": [
+              {
+                "label": "On an ASCII face whose",
+                "sub": "On an ASCII face whose nose is ^, the Jacobian lens reads \"nose\" at that position —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "a word absent from the",
+                "sub": "a word absent from the prompt.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 12,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      },
+      "engine": "kokoro",
+      "beat_id": "B01",
+      "narration_text": "On an ASCII face whose nose is ^, the Jacobian lens reads \"nose\" at that position — a word absent from the prompt.",
+      "actual_duration_s": 7.08,
+      "audio_file": "mp3/beat-B01.mp3"
+    },
+    {
+      "id": "A10",
+      "act": "ACT 1",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Logit lens vs Jacobian lens",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "LOGIT LENS VS JACOBIAN",
+            "items": [
+              {
+                "label": "Logit lens vs Jacobian lens",
+                "sub": "Logit lens vs Jacobian lens",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/A10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 4,
+      "engine": "kokoro",
+      "beat_id": "A10",
+      "narration_text": "Logit lens vs Jacobian lens",
+      "actual_duration_s": 3.07,
+      "audio_file": "mp3/beat-A10.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A10"
+      }
+    },
+    {
+      "id": "A11",
+      "act": "ACT 1",
+      "lane": "MANIM",
+      "scene": "body",
+      "narration": "[seed] Logit lens vs Jacobian lens: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "none",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "ACT 1",
+            "items": [
+              {
+                "label": "[seed] Logit lens vs Jacobian",
+                "sub": "[seed] Logit lens vs Jacobian lens: expand from the source with a concrete instance",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "keep one visual object on screen",
+                "sub": "keep one visual object on screen",
+                "icon": "BOX",
+                "cueFrame": 750
+              }
+            ],
+            "dark": true
+          }
+        }
+      },
+      "est_s": 26,
+      "engine": "kokoro",
+      "beat_id": "A11",
+      "narration_text": "[seed] Logit lens vs Jacobian lens: expand from the source with a concrete instance; keep one visual object on screen.",
+      "actual_duration_s": 7.98,
+      "audio_file": "mp3/beat-A11.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T21:40:37",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A11"
+      }
+    },
+    {
+      "id": "A20",
+      "act": "ACT 2",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Reading the unsaid",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "READING THE UNSAID",
+            "items": [
+              {
+                "label": "Reading the unsaid",
+                "sub": "Reading the unsaid",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/A20.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 4,
+      "engine": "kokoro",
+      "beat_id": "A20",
+      "narration_text": "Reading the unsaid",
+      "actual_duration_s": 1.43,
+      "audio_file": "mp3/beat-A20.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A20"
+      }
+    },
+    {
+      "id": "A21",
+      "act": "ACT 2",
+      "lane": "REMOTION",
+      "scene": "body",
+      "narration": "[seed] Reading the unsaid: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "[SEED] READING THE UNSAID:",
+            "items": [
+              {
+                "label": "[seed] Reading the unsaid: expand",
+                "sub": "[seed] Reading the unsaid: expand from the source with a concrete instance; keep one visual object on screen.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/A21.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 26,
+      "engine": "kokoro",
+      "beat_id": "A21",
+      "narration_text": "[seed] Reading the unsaid: expand from the source with a concrete instance; keep one visual object on screen.",
+      "actual_duration_s": 6.7,
+      "audio_file": "mp3/beat-A21.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A21"
+      }
+    },
+    {
+      "id": "A30",
+      "act": "ACT 3",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Two-hop facts surfacing early",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "TWO-HOP FACTS SURFACING EARLY",
+            "items": [
+              {
+                "label": "Two-hop facts surfacing early",
+                "sub": "Two-hop facts surfacing early",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/A30.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 4,
+      "engine": "kokoro",
+      "beat_id": "A30",
+      "narration_text": "Two-hop facts surfacing early",
+      "actual_duration_s": 2.39,
+      "audio_file": "mp3/beat-A30.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A30"
+      }
+    },
+    {
+      "id": "A31",
+      "act": "ACT 3",
+      "lane": "CARD",
+      "scene": "body",
+      "narration": "[seed] Two-hop facts surfacing early: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "[SEED] TWO-HOP FACTS SURFACING",
+            "items": [
+              {
+                "label": "[seed] Two-hop facts surfacing early:",
+                "sub": "[seed] Two-hop facts surfacing early: expand from the source with a concrete instance; keep one visual object on screen.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/A31.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 26,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A31"
+      },
+      "engine": "kokoro",
+      "beat_id": "A31",
+      "narration_text": "[seed] Two-hop facts surfacing early: expand from the source with a concrete instance; keep one visual object on screen.",
+      "actual_duration_s": 7.38,
+      "audio_file": "mp3/beat-A31.mp3"
+    },
+    {
+      "id": "A40",
+      "act": "ACT 4",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Causal swapping proves it's load-bearing",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "CAUSAL SWAPPING PROVES IT'S",
+            "items": [
+              {
+                "label": "Causal swapping proves it's load-bearing",
+                "sub": "Causal swapping proves it's load-bearing",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/A40.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 4,
+      "engine": "kokoro",
+      "beat_id": "A40",
+      "narration_text": "Causal swapping proves it's load-bearing",
+      "actual_duration_s": 2.84,
+      "audio_file": "mp3/beat-A40.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A40"
+      }
+    },
+    {
+      "id": "A41",
+      "act": "ACT 4",
+      "lane": "MANIM",
+      "scene": "body",
+      "narration": "[seed] Causal swapping proves it's load-bearing: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "[SEED] CAUSAL SWAPPING PROVES",
+            "items": [
+              {
+                "label": "[seed] Causal swapping proves it's",
+                "sub": "[seed] Causal swapping proves it's load-bearing: expand from the source with a concrete instance; keep one visual object on screen.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/A41.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 26,
+      "engine": "kokoro",
+      "beat_id": "A41",
+      "narration_text": "[seed] Causal swapping proves it's load-bearing: expand from the source with a concrete instance; keep one visual object on screen.",
+      "actual_duration_s": 7.77,
+      "audio_file": "mp3/beat-A41.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A41"
+      }
+    },
+    {
+      "id": "A50",
+      "act": "ACT 5",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Task interference and saturating steering",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "TASK INTERFERENCE AND SATURATING",
+            "items": [
+              {
+                "label": "Task interference and saturating steering",
+                "sub": "Task interference and saturating steering",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/A50.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 4,
+      "engine": "kokoro",
+      "beat_id": "A50",
+      "narration_text": "Task interference and saturating steering",
+      "actual_duration_s": 3.03,
+      "audio_file": "mp3/beat-A50.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A50"
+      }
+    },
+    {
+      "id": "A51",
+      "act": "ACT 5",
+      "lane": "REMOTION",
+      "scene": "body",
+      "narration": "[seed] Task interference and saturating steering: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "[SEED] TASK INTERFERENCE AND",
+            "items": [
+              {
+                "label": "[seed] Task interference and saturating steering: expand from",
+                "sub": "[seed] Task interference and saturating steering: expand from the source with a concrete instance; keep one visual object on screen.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/A51.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 26,
+      "engine": "kokoro",
+      "beat_id": "A51",
+      "narration_text": "[seed] Task interference and saturating steering: expand from the source with a concrete instance; keep one visual object on screen.",
+      "actual_duration_s": 7.91,
+      "audio_file": "mp3/beat-A51.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A51"
+      }
+    },
+    {
+      "id": "EX",
+      "act": "EXAMPLE",
+      "lane": "MANIM",
+      "scene": "worked-example",
+      "narration": "At the ^ position the logit lens top-5 is punctuation noise while the Jacobian lens top-5 is nose, face, point, tip, up; transplanting that vector into a blank face makes the model narrate a nose.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "AT THE ^ POSITION",
+            "items": [
+              {
+                "label": "At the ^ position the",
+                "sub": "At the ^ position the logit lens top-5 is punctuation noise while the Jacobian lens top-5 is nose, face, point, tip, up; transplanting that vector into a blank face makes the model narrate a nose.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/EX.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 28,
+      "engine": "kokoro",
+      "beat_id": "EX",
+      "narration_text": "At the ^ position the logit lens top-5 is punctuation noise while the Jacobian lens top-5 is nose, face, point, tip, up; transplanting that vector into a blank face makes the model narrate a nose.",
+      "actual_duration_s": 12.42,
+      "audio_file": "mp3/beat-EX.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for EX"
+      }
+    },
+    {
+      "id": "VERDICT",
+      "act": "CLOSE",
+      "lane": "REMOTION",
+      "scene": "ClaudeVerdictArtifact",
+      "narration": "Transporting a residual vector through the average input-output Jacobian of the layers above, before unembedding, decodes what the activation is disposed to make the model say.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "TRANSPORTING A RESIDUAL VECTOR",
+            "items": [
+              {
+                "label": "Transporting a residual vector through the average input-output",
+                "sub": "Transporting a residual vector through the average input-output Jacobian of the layers above, before unembedding, decodes what the activation is disposed to make the model say.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/VERDICT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 16,
+      "engine": "kokoro",
+      "beat_id": "VERDICT",
+      "narration_text": "Transporting a residual vector through the average input-output Jacobian of the layers above, before unembedding, decodes what the activation is disposed to make the model say.",
+      "actual_duration_s": 10.18,
+      "audio_file": "mp3/beat-VERDICT.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for VERDICT"
+      }
+    },
+    {
+      "id": "YOURTURN",
+      "act": "your-turn",
+      "lane": "REMOTION",
+      "scene": "ClaudeComposerAsk",
+      "narration": "Your turn. The logit lens returns noise at middle layers; the Jacobian lens reads clean concepts from the same activations. What is the extra transport buying?",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "none",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to understand the Jacobian lens finding: how do a language model's internal representations encode the next predicted token before it's generated? Explain what the Jacobian analysis reveals about planning inside a transformer — what 'reading ahead' means at the level of internal activations — and what this implies about whether language models are truly computing one token at a time or something more structured.",
+            "segment": "Reading the Word Before It's Said",
+            "topic": "BEHIND THE MODEL · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your question, paper, or concept here…"
+          }
+        }
+      },
+      "est_s": 14,
+      "narration_text": "Your turn. Paste this: you want to understand the Jacobian lens finding — how a language model's internal representations encode the next predicted token before it's generated. Ask Claude to explain what the Jacobian analysis reveals about planning inside a transformer — what 'reading ahead' means at the activation level — and what this implies about whether language models are truly one-token-at-a-time.",
+      "beat_id": "YOURTURN",
+      "engine": "kokoro",
+      "actual_duration_s": 21.5,
+      "audio_file": "mp3/beat-YOURTURN.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T21:40:37",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      }
+    },
+    {
+      "id": "OUTRO",
+      "act": "OUTRO",
+      "lane": "REMOTION",
+      "scene": "ClaudeTitleOutro",
+      "narration": "Reading the Word Before It's Said — The Jacobian Lens and What a Layer Is Disposed to Say",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "none",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Reading the Word Before It's Said",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "jacobian-lens-reading-ahead"
+          }
+        }
+      },
+      "est_s": 8,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T21:40:37",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for OUTRO"
+      },
+      "engine": "kokoro",
+      "beat_id": "OUTRO",
+      "narration_text": "Reading the Word Before It's Said — The Jacobian Lens and What a Layer Is Disposed to Say",
+      "actual_duration_s": 5.4,
+      "audio_file": "mp3/beat-OUTRO.mp3"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Reading the Word Before It's Said",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · BEHIND THE MODEL · INTERPRETABILITY",
+            "segment": "Reading the Word Before It's Said",
+            "command": "Take what you learned from [Reading the Word Before It's Said] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@claude-liam"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Reading the Word Before It's Said",
+            "slug": "jacobian-lens-reading-ahead"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,343 @@
+{
+  "slug": "Causal-Inference-ch20-case-counterfactuals-supply-chain",
+  "title": "Case: Supply Chain Collapse Predictor",
+  "series": "Causal Inference",
+  "source": "chapters/20-case-counterfactuals-supply-chain.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 20,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "OCTOBER IS RISKY. ",
+          false
+        ],
+        [
+          "BUT IS THE DIAGNOSIS CALENDAR OR CRISIS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>The problem:</b> A disruption model trained on logistics learns that October is dangerous. October is also high-demand season. The correlation is real. But when the model flags October at 80% risk, is it reading genuine operational stress or just the date?</div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "A model trained on 730 days of supply-chain records learns quickly that October is dangerous. October is indeed the month when shipment volumes peak and inventory thins—the correlates are real. But here is the confound: October is also high-demand season naturally, so the feature data rises in October whether the network is under genuine stress or simply doing its seasonal job. When the system raises a disruption flag in October with 80 percent confidence, is it responding to something genuinely happening—delays piling up, suppliers wavering, inventory dropping below safety thresholds—or is it reading the calendar? That is the single most important diagnostic question in supply-chain forecasting. The Supply Chain Collapse Predictor was built to ask it, and to answer it not by eyeballing the correlations but by intervention.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 44.86
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "THE STAKES",
+      "label": "02 / 12 · THE STAKES",
+      "dark": false,
+      "title": [
+        [
+          "WRONG DIAGNOSIS IS EXPENSIVE. ",
+          false
+        ],
+        [
+          "CONFUSING SEASONALITY WITH STRESS DESTROYS SIGNAL.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>If the model is tracking O</b><span>Real operational fragility · Early warning · Actionable intervention</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>If it's just tracking T</b><span>False alarms in October · Ignored in March · Wasted mitigation budget</span></div></div>\n<p class=\"lead\">The Supply Chain Collapse Predictor asks: how can we tell? The answer lies in counterfactual intervention on the model's input.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The cost of confusing seasonality with stress is operational and financial. If the model is truly tracking operational fragility—real suppliers under pressure, real port congestion, real weather impact—then a flag in October is an early warning system. The operations team can intervene: diversify suppliers, buffer inventory, expedite key shipments. That intervention prevents tens of thousands in losses. But if the 80 percent flag is merely the model learning that October is busy, the team has false alarms in October, missed signals in March, and wasted mitigation budget. The difference between a true positive and a seasonal artifact determines whether the model is trusted or ignored. That trust is not earned by accuracy on a holdout test; it is earned by proving the model reads the genuine causes, not the calendar.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 43.8
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "THE CAUSAL GRAPH",
+      "label": "03 / 12 · THE CAUSAL GRAPH",
+      "dark": false,
+      "title": [
+        [
+          "FIVE NODES IN TWO LAYERS. ",
+          false
+        ],
+        [
+          "ONE HIDDEN CONFOUNDER AT THE DATA LEVEL.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>T (Time-of-year)</b><span>Month, quarter, seasonal calendar; encodes demand cycles</span></div><div class=\"wire\"><b>O (Unobserved stress)</b><span>Supplier fragility, port congestion, weather impact—causes real disruptions</span></div><div class=\"wire\"><b>S (Observable signals)</b><span>Delays, inventory, lead times—the features the model ingests</span></div><div class=\"wire\"><b>Y (Realized disruption)</b><span>True operational breakdown; what we observe in the field</span></div><div class=\"wire\"><b>P̂ (Predicted probability)</b><span>Model output; the flagged risk the system reports</span></div></div>\n<p class=\"lead\">T and O both feed S. The model only sees S. That is the source of the confound.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The causal structure has five nodes. T represents time-of-year: month, quarter, the calendar. O is unobserved operational stress: supplier fragility, port disruptions, weather impact, and other real causes of breakdown. S is the observable signal layer: measured delays, inventory levels, lead times, demand index, transport stress, supplier reliability, and weather risk. These are the features the model ingests. Y is realized disruption—true operational breakdown, what happens in the field. P̂ is the model's predicted probability of disruption. The edges matter: T drives S because October naturally has higher shipments and thinner inventory. O also drives S, because real stress also raises delays and depletes inventory. S determines P̂ because the model maps features to probability. O causes Y because genuine stress causes genuine breakdowns. And T can directly cause Y because seasonal demand can produce disruptions even without underlying fragility. The confound sits at S.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 54.4
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "THE CONFOUND",
+      "label": "04 / 12 · THE CONFOUND",
+      "dark": false,
+      "title": [
+        [
+          "AT NODE S TWO CAUSES CONVERGE. ",
+          false
+        ],
+        [
+          "THE MODEL CANNOT DISTINGUISH THEM.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Seasonality (T→S)</b><span>October ships more inventory. Lead times stretch. Demand peaks. Features rise.</span></div><div class=\"cell-part hot\"><b>Operational stress (O→S)</b><span>A struck port delays shipments. Suppliers wobble. Weather hits. Features rise the same way.</span></div></div>\n<p class=\"lead\">A calm July with baseline shipment rates looks identical to a crisis October after the model normalizes for season—unless the model explicitly encodes T and learns to rely on it.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "At node S, two distinct upstream causes push the features in the same direction. A July with stable baseline shipments looks like a July with baseline delays and normal inventory. An October with high seasonal demand looks like an October under real operational stress: both show rising delays, falling inventory, stretched lead times, rising demand indices. From the model's vantage point, they are indistinguishable at the feature level. The model only sees S. It cannot see whether S rose because the calendar drove it up, or because genuine stress drove it up. Both upstream causes point to the same direction in the data. This is confounding: the model learns a strong association between certain feature configurations and disruption, but that association is attached to two conflicting causal pathways, one of which—the calendar—has nothing to do with genuine risk.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 45.63
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "THE INTERVENTION",
+      "label": "05 / 12 · THE INTERVENTION",
+      "dark": false,
+      "title": [
+        [
+          "REMOVE TIME FROM INPUT. ",
+          false
+        ],
+        [
+          "REFIT THE MODEL WITHOUT THE CALENDAR.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Original features</span><span class=\"arw\">→</span><span class=\"chip on\">Drop month and quarter</span><span class=\"arw\">→</span><span class=\"chip\">Refit model</span><span class=\"arw\">→</span><span class=\"chip warn\">Re-score same days</span></div>\n<p class=\"lead\">The counterfactual is what the model predicts when T is unavailable as an input, but everything else—the rolling averages of delay, inventory, demand index, transport stress, supplier reliability, weather, and lead time—remains intact.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Pearl's do-operator, applied to the model's input, means removing time-of-year information and refitting. The intervention drops month, quarter, and any explicit temporal encodings from the feature set. Every other input is held fixed: the seven-day rolling averages of delay, inventory, lead time, demand index, transport stress, weather risk, supplier reliability, plus the three-day velocity measures. The model is retrained on the same 730 days with the reduced feature set. It is then re-scored on those same days. The readout is the change in predictions: how many high-confidence flags survive, how far they shift, whether the isotonic calibration holds. This is a counterfactual question rather than a confounding-adjustment question. We are not estimating the effect of a treatment on an outcome. We are asking what the model would do under intervention on its own input.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 46.19
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "PREDICTION PERSISTENCE",
+      "label": "06 / 12 · PREDICTION PERSISTENCE",
+      "dark": false,
+      "title": [
+        [
+          "PREDICTIONS PERSIST OR COLLAPSE AFTER ABLATION. ",
+          false
+        ],
+        [
+          "THAT ANSWER TELLS THE DIAGNOSIS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>Predictions persist or shift slightly</b><span>Model relied on O · Seasonal noise filtered out · Diagnosis: real stress</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>Predictions collapse eighty percent to thirty</b><span>Model relied on T · Seasonal signal is the diagnosis itself · Diagnosis: false alarm</span></div></div>\n<p class=\"lead\">The persistence or collapse of a prediction under ablation is binary: the model either learned genuine stress or learned the calendar.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "If the high-confidence predictions persist after removing T—if days the original model flagged at 80 percent still trigger at 75 or 70 percent—the model was using the remaining features S in a way that does not depend on T being explicit. That means the model learned to read operational stress from the signals that survive ablation. The diagnosis is: real operational fragility. But if the high-confidence predictions collapse—if those 80 percent flags drop to 30 percent or below—the original predictions were carried by T, not by O working through S. The model was reading the calendar, not the crisis. The binary outcome is interpretable. The survival or collapse of a prediction under ablation tells the operator whether the model is trustworthy in that month and context.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 41.92
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "CALIBRATION BEHAVIOR",
+      "label": "07 / 12 · CALIBRATION BEHAVIOR",
+      "dark": false,
+      "title": [
+        [
+          "CALIBRATION SHIFTS UNDER ABLATION. ",
+          false
+        ],
+        [
+          "THAT REVEALS THE DIAGNOSIS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big on\">0.80</div><div class=\"cap\">BEFORE ABLATION</div></div><div class=\"eq\">→</div><div class=\"stat\"><div class=\"big\">0.30</div><div class=\"cap\">AFTER ABLATION</div></div><div class=\"eq\">→</div><div class=\"stat\"><div class=\"big warn\">COLLAPSE</div><div class=\"cap\">T WAS THE DRIVER</div></div></div>\n<p class=\"lead\">If the isotonic calibration of the probability estimate depends on T being present in the feature set, the probabilities themselves will drift when T is removed. Magnitude and direction of drift indicate whether the model's confidence was earned or inherited from seasonality.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Calibration is the alignment between predicted probability and observed frequency. An 80 percent prediction should see disruptions 80 times in 100 such cases. The isotonic calibration used in the Collapse Predictor adjusts the raw model scores to match observed frequencies in the training window. When T is removed, the raw scores change. The calibration mapping may not hold. If the predictions drop from 80 to 30 percent and the disruption rate among those dropped-probability days was indeed 30 percent, calibration preserved the honest relationship between probability and outcome—but the probabilities themselves were illusory because they depended on T. If the predictions drop and the disruption rate among them was 70 percent, the model depended heavily on T for calibration but not for ranking. Calibration behavior under ablation is a second diagnostic: it reveals whether T was a crutch for probability estimation or a foundation for causal reasoning.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 53.4
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "THE LIMITATION",
+      "label": "08 / 12 · THE LIMITATION",
+      "dark": false,
+      "title": [
+        [
+          "THE TEST IS BOUNDED. ",
+          false
+        ],
+        [
+          "ROLLING AVERAGES STILL ENCODE TIME.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>The limit:</b> Removing T at the input level does not remove T's information entirely. The seven-day rolling average of demand index is itself partly a function of time-of-year. If the model can re-learn seasonality from features that survive ablation, the ablation test understates the dependence on T. This is a feature-level diagnostic, not a representational one.</div>\n<p class=\"lead\">The test catches one side of the problem: whether the model is using explicit time encodings. It cannot prove the model never learned seasonality from the temporal structure in the other features.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The test is bounded, and that boundary must be named. Removing T at the input level does not remove T's information entirely. The seven-day rolling average of demand index is itself partly a function of time-of-year. High demand in October is different from high demand in March, even if both raise the demand-index feature by the same amount. If the model can re-learn seasonality from features that survive ablation—by learning the temporal structure of the demand indices, or the correlation of inventory drops with certain demand levels—the ablation test understates the dependence on T. This is a feature-level diagnostic, not a representational one. It bounds the problem from one side: if removing explicit time encodings does not matter, we know the model found another way to read seasonality. But if removing explicit time encodings does matter, we cannot conclude the model is free of all seasonality bias.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 48.9
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "RESULTS FRAMEWORK",
+      "label": "09 / 12 · RESULTS FRAMEWORK",
+      "dark": false,
+      "title": [
+        [
+          "WHAT DOES THE SYSTEM MEASURE. ",
+          false
+        ],
+        [
+          "DRIFT STABILITY AND DISRUPTION INJECTION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Adversarial validation (AUC)</b><span>Compares training and current distributions; near 0.5 is indistinguishable, above 0.75 indicates significant drift</span></div><div class=\"wire\"><b>Population Stability Index</b><span>Reported per feature; below 0.1 is stable, above 0.25 is a significant shift between reference and current window</span></div><div class=\"wire\"><b>Disruption injection</b><span>Synthetic stress events added to roughly 4 percent of days: delays multiply 2.5 to 5 times, inventory drops to 10 to 40 percent, supplier reliability falls to 30 to 60 percent</span></div></div>\n<p class=\"lead\">These measurements form the apparatus for observing what the model learns and how it drifts. The ablation test is wired as a capability, waiting to report which predictions dissolve under removal of month and quarter.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The system measures three things. Adversarial validation uses AUC to compare the training distribution and current distribution: a score near 0.5 means they are indistinguishable; above 0.75 indicates significant drift. Population Stability Index is reported per feature, comparing reference and current windows: below 0.1 is stable, above 0.25 is a significant shift. Disruption injection is synthetic: roughly 4 percent of days have injected risk events. Shipment delays multiply 2.5 to 5 times, inventory drops to 10 to 40 percent of normal, supplier reliability falls to 30 to 60 percent of baseline. These injections create visible operational stress so the model's response can be observed. The counterfactual confound test is described as a capability of the system. The README states that the test exists and that a prediction which dissolves under removal of month and quarter was never real evidence. The load-bearing measurement—the actual delta in predictions before and after ablation on the 730-day record—is where a published case would report the empirical result.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 62.61
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "10 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "THE PREDICTION EITHER PERSISTS OR COLLAPSES. ",
+          false
+        ],
+        [
+          "EACH OUTCOME IS ACTIONABLE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Prediction survives ablation</b><span>Take the flag seriously. The model is reading genuine operational signals. Investigate inventory, delays, supplier status in real time.</span></div><div class=\"cell-part hot\"><b>Prediction collapses under ablation</b><span>Treat the flag as a seasonal artifact. Suppress alerts in high-demand seasons unless other concurrent signals confirm stress. Invest in deseasoning features.</span></div></div>\n<p class=\"lead\">Counterfactual ablation allows the operations team to convert a diagnostic question into an actionable split: is this prediction worth trusting, or is it calendar noise.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "In production, the ablation test either validates or invalidates a prediction. If a flag in October persists when T is removed, the operations team has good reason to trust it. The model is reading genuine signals: inventory status, delay patterns, supplier health indices. The team can intervene with supplier diversification, inventory buffering, expedited shipment routes. If a flag collapses under ablation, treat it as a seasonal artifact. Suppress October alerts unless other concurrent signals—a struck port, a weather event, a supplier bankruptcy—confirm genuine stress. The binary outcome converts a diagnostic question into actionable guidance. Counterfactual ablation allows the system to tell the operator not just whether a prediction is accurate, but why it is making the prediction, and whether that why is trustworthy in the field.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 45.59
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "COUNTERFACTUAL ABLATION DIAGNOSES CONFOUNDS. ",
+          false
+        ],
+        [
+          "IT REVEALS WHETHER MODEL READS CALENDAR OR CRISIS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">The <b>central claim</b> is that removing time-of-year information from a trained model reveals whether its high-confidence predictions depend on seasonal patterns or genuine operational stress. This is a feature-level diagnostic—not a proof of representational independence, but a practical tool for deciding when a model's alarms merit intervention in the field.</div>\n<p class=\"lead\">Causal reasoning applied to model diagnostics asks not what is the effect of seasonality on predictions but what would this model do if the date were not in its input. The counterfactual intervention is on the algorithm, not the world. And that distinction is the discipline the chapter teaches: how to frame questions precisely enough that the answer is actionable, and how to respect the boundary between what you know about a model and what you know about the supply chain.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The central claim is that removing time-of-year information from a trained model reveals whether its high-confidence predictions depend on seasonal patterns or genuine operational stress. This is a feature-level diagnostic—not a proof of representational independence, but a practical tool for deciding when a model's alarms merit intervention in the field. Causal reasoning applied to model diagnostics asks not what is the effect of seasonality on predictions but what would this model do if the date were not in its input. The counterfactual intervention is on the algorithm, not the world. And that distinction—between a causal claim about the system and a claim about the field—is the discipline the chapter teaches: how to frame questions precisely enough that the answer is actionable, and how to respect the boundary between what you know about a model and what you know about the supply chain.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 47.87
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "",
+          false
+        ],
+        [
+          "",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>COUNTERFACTUAL</span><span>//</span><span>FEATURE ABLATION</span><span>//</span><span>CONFOUNDING</span></div><p class=\"sig\">Causal Inference · Chapter 20 · Case: Supply Chain Collapse Predictor</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 2.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,573 @@
+{
+  "metadata": {
+    "slug": "workflow-canvas",
+    "title": "Design a Personal Workflow Canvas with Claude",
+    "topic": "CLAUDE",
+    "voice": "am_onyx",
+    "style": "cli",
+    "palette": "claude",
+    "style_preset": "nikbearbrown",
+    "source": "claude/chapters/09-building-a-personal-claude-workflow.md",
+    "segment": "WORKFLOW CANVAS",
+    "ground": "#FFFFFF",
+    "total_estimated_duration_seconds": 113.0,
+    "note": "CLI video: 10-beat spine B00–B09. B04 is slate. No audio.",
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "register": "Teardown",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "_variant_todo": [
+      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
+      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
+      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
+      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
+    ],
+    "build": {
+      "at": "2026-07-16T05:50:51",
+      "cut": "master",
+      "filled": 5,
+      "of": 10,
+      "slates": [
+        "B01",
+        "B04",
+        "B06",
+        "B07",
+        "B08"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B09: palette=claude but the outro is 'NikBearBrownOutro' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "This is Liam, in for Bear. Nik Bear Brown. Build it with a CLI, then take it apart.",
+      "estimated_duration_s": 10.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOpen",
+          "props": {
+            "topic": "CLAUDE",
+            "lines": [
+              "Nik Bear Brown",
+              "Brutalist + Educational AI",
+              "Workflow Canvas",
+              "Fifteen Tasks",
+              "Four Buckets — Two Surprises"
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 5.48,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T05:50:51"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM",
+      "narration_text": "Fifteen tasks, four buckets, two surprises — the workflow canvas reveals which Claude surface you should have been using all along. Building a system around Claude is not about more automation — it is about making your delegation decisions repeatable and auditable.",
+      "estimated_duration_s": 12.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "FIFTEEN TASKS, FOUR BUCKETS",
+            "items": [
+              {
+                "label": "Fifteen tasks, four buckets, two",
+                "sub": "Fifteen tasks, four buckets, two surprises —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "the workflow canvas reveals which",
+                "sub": "the workflow canvas reveals which Claude surface you should have been using all along.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Building a system around Claude",
+                "sub": "Building a system around Claude is not about more automation —",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 14.46,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "narration_text": "Build workflow_canvas.py: an interactive CLI that prompts for ten fields — workstream, surface, allowed inputs, forbidden inputs, output artifact, constraints, human gate, memory scope, failure signal, improvement note. Refuse to save if human_gate is blank.",
+      "estimated_duration_s": 15.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Write workflow_canvas.py:\n  interactive CLI prompts for 10 fields:\n    workstream, surface, allowed_inputs,\n    forbidden_inputs, output_artifact,\n    constraints, human_gate, memory_scope,\n    failure_signal, improvement_note\n  validate: forbidden_inputs and human_gate\n  must be non-empty\n  write markdown: workflow-[name].md\n  REFUSE to save if human_gate is blank\"",
+            "topic": "CLAUDE",
+            "segment": "WORKFLOW CANVAS",
+            "runningText": "running analysis…",
+            "greeting": "The ask,"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 15.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T05:50:51"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "narration_text": "Check the code. The human gate field is validated before write — if it is blank, the save is refused with an error message. The output markdown matches the canvas template from chapter nine. The ten fields appear in a consistent order every time.",
+      "estimated_duration_s": 15.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownCodeBlock",
+          "props": {
+            "filename": "workflow_canvas.py",
+            "segment": "WORKFLOW CANVAS",
+            "topic": "CLAUDE",
+            "code": "# workflow_canvas.py — Claude Code output\nFIELDS = ['workstream','surface','allowed_inputs',\n          'forbidden_inputs','output_artifact',\n          'constraints','human_gate','memory_scope',\n          'failure_signal','improvement_note']\nREQUIRED = {'forbidden_inputs','human_gate'}\n\ndef prompt_canvas():\n    data = {}\n    for field in FIELDS:\n        val = input(f'{field}: ').strip()\n        data[field] = val\n    for req in REQUIRED:\n        if not data.get(req):\n            raise ValueError(\n              f'REFUSED: {req} must not be blank')\n    return data\n\n# writes workflow-[name].md from template"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 13.8,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T05:50:51"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT",
+      "narration_text": "Run it with the book's client-briefing example. Ten fields filled interactively. The markdown file writes: workstream, surface Claude Cowork, allowed inputs briefing notes folder, human gate — reviewer must approve before send. The canvas is now a repeatable artifact.",
+      "estimated_duration_s": 14.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "RUN IT WITH THE",
+            "items": [
+              {
+                "label": "Run it with the book's",
+                "sub": "Run it with the book's client-briefing example.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Ten fields filled interactively.",
+                "sub": "Ten fields filled interactively.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "The markdown file writes: workstream,",
+                "sub": "The markdown file writes: workstream, surface Claude Cowork, allowed inputs briefing notes folder, human gate —",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 15.19,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE",
+      "narration_text": "Add a retrospective flag. Load an existing workflow file and prompt for improvement notes after three runs — the canvas learns from use.",
+      "estimated_duration_s": 15.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"update workflow_canvas.py:\n  add --retrospective flag\n  loads existing workflow-[name].md\n  prompts for improvement_note\n  after 3 runs on that workflow\n  appends retrospective section to markdown\"",
+            "topic": "CLAUDE",
+            "segment": "WORKFLOW CANVAS",
+            "runningText": "updating canvas tool…",
+            "greeting": "The change,"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 8.15,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T05:50:51"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "OUTPUT — revised",
+      "narration_text": "Run the retrospective on the client-briefing canvas after three uses. The improvement note appends: the allowed-inputs field was too broad, the human gate needed a specific reviewer named. Two rounds of use, one structural improvement. The canvas audits itself.",
+      "estimated_duration_s": 10.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "RUN THE RETROSPECTIVE ON",
+            "items": [
+              {
+                "label": "Run the retrospective on the client-briefing canvas after three uses",
+                "sub": "Run the retrospective on the client-briefing canvas after three uses.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "The improvement note appends: the allowed-inputs field was too broad",
+                "sub": "The improvement note appends: the allowed-inputs field was too broad, the human gate needed a specific reviewer named.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Two rounds of use, one",
+                "sub": "Two rounds of use, one structural improvement.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 14.42,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "TEARDOWN",
+      "narration_text": "Building a system around Claude is not about more automation — it is about making your delegation decisions repeatable and auditable. The canvas forces both. Without it, every Claude session starts from scratch and leaves no record.",
+      "estimated_duration_s": 12.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "BUILDING A SYSTEM AROUND",
+            "items": [
+              {
+                "label": "Building a system around Claude",
+                "sub": "Building a system around Claude is not about more automation —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "it is about making your",
+                "sub": "it is about making your delegation decisions repeatable and auditable.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "The canvas forces both.",
+                "sub": "The canvas forces both.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 12.65,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B07"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "NEXT STEPS",
+      "narration_text": "Your move: run workflow_canvas.py for your highest-frequency Claude use case. Next reel: the process audit — a polished output is not evidence of a trustworthy workflow.",
+      "estimated_duration_s": 6.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "YOUR MOVE: RUN WORKFLOW_CANVAS.PY",
+            "items": [
+              {
+                "label": "Your move: run workflow_canvas.py for your highest-frequency Claude use case",
+                "sub": "Your move: run workflow_canvas.py for your highest-frequency Claude use case.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Next reel: the process audit",
+                "sub": "Next reel: the process audit —",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "a polished output is not",
+                "sub": "a polished output is not evidence of a trustworthy workflow.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 10.15,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B08"
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "lane": "REMOTION",
+      "scene": "ClaudeComposerAsk",
+      "narration_text": "Your turn. Paste this: you want to design a personal workflow canvas — a map of your recurring tasks that shows where Claude fits, where humans must stay, and where the handoffs between them happen. Ask Claude to show you the canvas structure: the five zones to map, how to place your current tasks in the right zone, and how the canvas changes over time as you automate more.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to design a personal workflow canvas — a map of my recurring tasks that shows where Claude fits, where humans must stay, and where the handoffs between them happen. Show me the canvas structure: the five zones to map (automate, assist, review, decide, delegate out), how to place my current tasks in the right zone, and how the canvas changes over time as I automate more of the assist zone.",
+            "segment": "Design a Personal Workflow Canvas with Claude",
+            "topic": "CLAUDE COWORK · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your task, workflow, or brief here…"
+          }
+        }
+      },
+      "est_s": 14
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "OUTRO",
+      "lane": "REMOTION",
+      "scene": "ClaudeTitleOutro",
+      "narration_text": "Design a Personal Workflow Canvas with Claude.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Design a Personal Workflow Canvas with Claude",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-workflow-canvas"
+          }
+        }
+      },
+      "est_s": 8,
+      "build": {
+        "status": "SLATE",
+        "note": "design-v1: remotion props added"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Design a Personal Workflow Canvas with Claude",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CLAUDE",
+            "segment": "Design a Personal Workflow Canvas with Claude",
+            "command": "Take what you learned from [Design a Personal Workflow Canvas with Claude] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Design a Personal Workflow Canvas with Claude",
+            "slug": "workflow-canvas"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

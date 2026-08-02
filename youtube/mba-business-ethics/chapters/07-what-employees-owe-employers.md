@@ -1,0 +1,205 @@
+# Chapter 7 — What Employees Owe Employers
+
+## TL;DR
+
+- In August of 2001, an Enron officer named Sherron Watkins finished reading a set of internal accounting documents and understood, for the first time clearly, that the company she worked for was hiding several billion...
+- The chapter moves through The duty of loyalty and what has happened to it, Daily conduct: what loyalty looks like on a Tuesday, The breaking point, The structure of the problem, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
+*Loyalty Is Not Silence.*
+
+In August of 2001, an Enron officer named Sherron Watkins finished reading a set of internal accounting documents and understood, for the first time clearly, that the company she worked for was hiding several billion dollars in losses inside off-balance-sheet entities her own department had helped construct. She wrote a memo to the chairman, Kenneth Lay, identifying the irregularities by name, naming the responsible parties, and predicting — accurately — that the company would "implode in a wave of accounting scandals." Lay convened a meeting. The meeting produced an investigation conducted by the same law firm that had structured the questioned transactions. The investigation concluded that the transactions were defensible.
+
+By December, Enron had filed for bankruptcy. Approximately sixty billion dollars in shareholder value evaporated. Tens of thousands of employees lost their jobs and their retirement savings. The CFO who structured the entities pleaded guilty and served prison time. The former CEO served twelve years. Watkins testified before Congress and became one of the most-cited examples of the modern American whistleblower.
+
+She also said, in subsequent interviews, that she would never again hold a job in corporate America. *The minute you speak truth to power and you're not heard*, she said, *your career is never the same again.*
+
+That sentence is the starting point for this chapter. It tells you that employees owe their employers a duty of loyalty — and it tells you, simultaneously, that the duty of loyalty is not the only thing an employee owes. Watkins owed Enron her honest service. She also owed something to the shareholders, to the employees whose retirement savings were about to disappear, to the public. When those two obligations collided, she had to choose. The chapter is about that structure — what the duties are, how they work, and what the choosing looks like when the duties come apart.
+
+![A two-column ledger layout](images/07-what-employees-owe-employers-fig-01.png)
+*Figure 7.1 — A two-column ledger layout*
+
+---
+
+## The duty of loyalty and what has happened to it
+
+Every employee in the United States operates, as a matter of common law, under a duty of loyal and faithful service to their employer. The doctrine derives from the law of agency: the employee is an agent of the employer, the employer is the principal, and the agent owes the principal honest and diligent service rendered in good faith. Concretely, this means: do not compete on the side during your employment, do not take bribes, do not leak confidential information, do not use the employer's authority for personal gain.
+
+The doctrine is settled. Its relationship to modern American employment is complicated.
+
+The management scholar Matthew Bidwell has described the modern employee's loyalty as having two halves. The first half is the agency doctrine itself — having the employer's interest at heart while at work, performing the role honestly, not harming the firm. The second half is something different: *staying*, the cultural practice of long tenure that Americans associated with the post-1945 corporate landscape — thirty-year careers at IBM, thirty years at Ford, the implicit compact that the firm would not discard you if you did not discard it. The first half remains a legal obligation. The second half has largely dissolved.
+
+Three structural shifts produced the dissolution, and it matters that all three were initiated by employers rather than employees.
+
+The first is *at-will employment*. Approximately eighty-five percent of U.S. private-sector workers can be terminated at any time without cause. The doctrine signals, clearly and legally, that the firm's own commitment to the employee is conditional. Employees responded in kind.
+
+The second is the shift from defined-benefit to defined-contribution retirement. From the 1940s through the 1970s, most large U.S. employers offered pension plans that rewarded long tenure mechanically — the monthly payment was calculated as a function of years of service and final salary, which meant every year you stayed the pension got better. Beginning in the 1980s, employers moved to 401(k) and 403(b) plans, in which the employee's retirement assets travel with them across jobs. The shift eliminated the financial reward for staying and gave the employee a reason to think of their career assets as portable.
+
+The third is the documented mobility norm. Glassdoor data show that job-changers earn roughly five percentage points higher annual salary increases than those who stay; workers under thirty-five now expect to change jobs frequently. The rational strategy, inside the labor market that the structural shifts created, is mobility.
+
+![A three-panel diagram tracing the erosion of long-tenure](images/07-what-employees-owe-employers-fig-02.png)
+*Figure 7.2 — A three-panel diagram tracing the erosion of long-tenure*
+
+The result is this: the legal duty — Bidwell's first half — is unchanged. The cultural texture of the relationship inside which the legal duty operates is entirely different. The firm asks for loyalty in the first-half sense while having systematically dismantled the conditions that made the second-half sense viable. Both sides know this. The relationship is honest about its own transactionality in a way that the language of "loyalty" obscures.
+
+What the firm can do to protect itself is a set of contractual clauses that operate after the employee leaves, and they are worth knowing precisely because employees encounter them as boilerplate — unsigned, as a practical matter, without comprehension.
+
+A *non-compete agreement* prohibits the departing employee from competing with the firm in a specified area for a specified period. About one in five U.S. private-sector workers is covered by one, including, until challenges from the New York and Illinois attorneys general, hourly sandwich-shop workers at Jimmy John's who were required to promise they would not work at any competitor sandwich operation within two miles of any Jimmy John's location in the country. California voided most post-employment non-competes outright in 2017. The FTC attempted a national ban and was struck down in court. The jurisdictional variation is large; the employee should know which state's law governs before signing.
+
+A *nondisclosure agreement* prohibits disclosure of the firm's confidential information — trade secrets, customer lists, technical specifications. Trade secrets are protected by secrecy itself, not by intellectual-property registration; the protection evaporates the moment the secret leaks. NDAs are widely enforceable.
+
+A *nonsolicitation clause* prohibits the departing employee from recruiting the firm's customers or colleagues to a new venture. More specifically targeted than non-competes, and correspondingly more reliably enforced.
+
+A *nondisparagement clause* prohibits public criticism of the firm after departure. Enforceability is contested, particularly where the clause would conflict with whistleblower-protection statutes or basic public-interest disclosure obligations.
+
+All four clauses share a structure: the firm protects a legitimate interest (trade secrets, customer relationships, brand reputation), and the enforcement regime is the question. The employee who signs without reading has agreed to terms whose consequences may materialize years later. The time to understand them is before signing, when they are theoretically negotiable, rather than after departure, when they are not.
+
+| Clause type | What it prohibits | Typical enforceability | Notable exceptions or failure cases |
+| --- | --- | --- | --- |
+| Non-compete (post-employment competition in defined area | period | A concrete checkpoint for applying the chapter concept. | The pattern becomes easy to misuse or overlook. |
+| uneven, highly state-dependent | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | The pattern becomes easy to misuse or overlook. |
+| Jimmy John's hourly-worker case | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | The pattern becomes easy to misuse or overlook. |
+| California void-outright rule | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | The pattern becomes easy to misuse or overlook. |
+| NDA (disclosure of confidential information | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | The pattern becomes easy to misuse or overlook. |
+| widely enforceable | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | The pattern becomes easy to misuse or overlook. |
+| protection evaporates if secret is publicly leaked | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | The pattern becomes easy to misuse or overlook. |
+| Nonsolicitation (recruiting firm's customers or colleagues | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | The pattern becomes easy to misuse or overlook. |
+| stronger than non-compete, more targeted harm | A specific, evidence-linked version that readers can verify. | A concrete checkpoint for applying the chapter concept. | The pattern becomes easy to misuse or overlook. |
+| Nondisparagement (public criticism of firm after departure | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | The pattern becomes easy to misuse or overlook. |
+| contested | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | The pattern becomes easy to misuse or overlook. |
+| may conflict with whistleblower statutes). Reader should notice that enforceability is not uniform across the four types | NDAs are the most reliably enforceable, non-competes the least, and the employee should verify state law before signing any of the four. | A concrete checkpoint for applying the chapter concept. | The pattern becomes easy to misuse or overlook. |
+
+---
+
+## Daily conduct: what loyalty looks like on a Tuesday
+
+In April 2009, two employees at a Domino's Pizza franchise in North Carolina recorded themselves spitting on pizza ingredients, inserting food into their nostrils, and otherwise contaminating products they claimed were about to be delivered to customers. They uploaded the video to YouTube. By the end of the day it had been viewed approximately one million times. By the end of the week, many millions. The food was, Domino's later confirmed, never delivered. The employees were fired and charged with felonies.
+
+Domino's stock price declined. Its reputation took about a year to substantially recover. The company eventually responded with a full product-line rebranding — the *Oh yes we did* campaign, an open admission that the prior product had been deficient. The rebranding worked. The observable financial damage from one prank by two employees lasted two full quarters on the company's financials.
+
+The Domino's case illustrates a fact about modern employment that the duty of loyalty in its classical form did not fully anticipate: in the social-media era, every employee is a possible spokesperson. What an employee does during work hours, what they post on evenings and weekends, what they say in a podcast — any of it can become, without warning, a public statement attributed to the firm. The duty of conduct has expanded, in operational practice, well past the firm's gates.
+
+This is not only a prohibitive duty — *don't do things that embarrass the firm*. It is also an affirmative one, and the affirmative version is called *internal marketing*, a concept the McDonald's executive Colin Mitchell introduced in a 2002 *Harvard Business Review* piece titled *Selling the Brand Inside*. Mitchell's argument was that a firm's most effective advertising is often the daily behavior of its own employees. When employees believe in and behave consistently with the firm's brand promise, that consistency reaches customers in ways no advertising budget can replicate. When they don't, the gap is visible — and in the social-media era, the gap circulates.
+
+The practical apparatus for translating the duty of conduct into specific behavioral expectations is the *code of conduct* — the written enumeration of what the firm expects. Most firms of meaningful size publish one. A typical code covers: compliance with applicable laws; conflicts of interest (requiring disclosure of financial or personal interests in transactions); care of company property; cybersecurity; social-media policy; and workplace respect. The Exxon Mobil Code of Conduct is the textbook-standard example of the genre. Codes are enforceable through disciplinary processes including termination, and they serve as litigation reference when the firm is defending a personnel action.
+
+The code of conduct also implies a coworker duty, and the most serious version of it is workplace violence. The National Institute for Occupational Safety and Health classifies workplace violence into four types: criminal-intent violence (traditional robbery), customer-on-employee violence, worker-on-worker violence, and personal-relationship violence that follows someone into the workplace. The worker-on-worker type — about fifteen percent of U.S. workplace homicides — is the one the duty of conduct most directly governs. The employee's role in prevention includes reporting warning signs when they are observed. A workplace culture in which warning signs are reported and addressed, rather than ignored or managed around, is a structural safety feature that no security apparatus replaces.
+
+The trade-off embedded in all of this is worth naming. The expansion of the loyalty duty into brand-ambassadorship — conducting yourself consistently with the firm's values at work, on social media, and in public — is real additional labor, and it is unpaid. The employee is asked to absorb behavior constraints that used to apply only within the workplace. The trade-off is reasonable when the firm has an authentic culture worth representing. It is not reasonable when the firm is asking for ambassadorship in exchange for terms — compensation, dignity, voice — it has not provided. The firms whose employees are willing ambassadors are typically the firms that have earned the ambassadorship by treating their employees the way Chapter 6 specified. The correlation is not accidental.
+
+---
+
+## The breaking point
+
+In April 1986, Ivan Boesky — a forty-nine-year-old arbitrageur whose firm had become one of the most successful merger-arbitrage operations on Wall Street — was confronted by the SEC with evidence that he had been trading on tipped non-public information about pending mergers. The tipper was Dennis Levine, an investment banker at Drexel Burnham Lambert, who had been routing payments to Boesky through a Swiss bank account. The Swiss account had been discovered through a routine audit of a foreign bank.
+
+Boesky settled and cooperated. The cooperation reached Michael Milken, the head of Drexel's high-yield-bond department, who had earned approximately five hundred and fifty million dollars in a single year at the firm's peak. Milken pleaded guilty to six felonies. His monetary penalties exceeded $1.1 billion. He served twenty-two months of a ten-year sentence and was banned for life from the securities industry. Drexel Burnham Lambert filed for bankruptcy in February 1990. Five thousand jobs ended.
+
+The mechanism Boesky and Levine exploited is called insider trading, and it is worth understanding precisely because the legal definition is broader than the lay reading suggests.
+
+Section 10(b)5 of the Securities Exchange Act of 1934 prohibits the use of *material non-public information* in securities transactions. The prohibition reaches far beyond company officers. It covers directors and employees, obviously. It also covers *temporary insiders* — investment bankers, lawyers, accountants, consultants who acquire non-public information through their professional roles — and the *tippees* of any of those parties. The landmark case, *SEC v. Texas Gulf Sulphur Co.* (1968), established that employees who knew of a major mineral discovery before public disclosure violated the law by trading on that knowledge. The logic extends wherever non-public information flows. The banker who knows that a deal is closing on Thursday and calls a friend on Wednesday is a tipper. The friend who trades is a tippee. Both are potentially liable.
+
+The Foreign Corrupt Practices Act extends a related prohibition internationally. Enacted in 1977 and substantially amended in 1988 and 1998, the FCPA prohibits U.S. persons, U.S.-incorporated firms, and foreign firms listed on U.S. exchanges from paying or offering anything of value to foreign government officials to obtain or retain business. The Act is enforced by both the SEC and the Department of Justice. Recent FCPA cases include the 2014 BHP Billiton settlement (a twenty-five-million-dollar fine for hospitality and event tickets at the 2008 Beijing Olympics), the 2014 GlaxoSmithKline case (twenty-five-million-dollar fine), and the 2017 Telia settlement ($965 million for bribery in Uzbekistan). The Act includes a narrow exception for facilitating payments — small sums for routine non-discretionary government services like visa processing — and an affirmative defense for payments lawful under the foreign country's written law, but the exceptions are narrow and the enforcement has been aggressive.
+
+The domestic version of the same prohibition extends to gifts. The U.S. federal government's gift-acceptance rules — under twenty dollars from any single source per occasion, under fifty dollars in aggregate per source per year, with categorical prohibitions for regulated sources — are widely adopted as a corporate benchmark. The point of a written gift policy is not to facilitate gift-giving. It is to make the line between acceptable hospitality and inappropriate exchange visible enough that employees can stay on the right side of it before the exchange happens, not after.
+
+Now return to the harder question: what happens when the employee discovers that the firm itself is on the wrong side of a line?
+
+The whistleblower's decision is the most consequential an employee can face. The legal regime is, by any honest accounting, inadequate to its stated purpose. There is no comprehensive federal whistleblower statute. About twenty federal statutes contain whistleblower-protection provisions — the Clean Air Act, OSHA, Sarbanes-Oxley (passed partly in response to Enron and WorldCom), Dodd-Frank — and each applies to a specific industry or type of violation. The protections are real; the patchwork is real too.
+
+The most consequential single mechanism for the employee who has exhausted internal remedies is the *False Claims Act* of 1863, passed to address fraud against the Union government during the Civil War. The Act's *qui tam* provision allows a private individual — the *relator* — to file a lawsuit on behalf of the government against a party that has submitted false claims for federal payment. If the government joins the case and the claims are confirmed, the relator receives between fifteen and thirty percent of the recovery. Bradley Birkenfeld received $104 million from the IRS in 2012 for his disclosures about UBS's systematic tax-evasion services for U.S. clients. John Kopchinski and nine other former Pfizer employees shared $102 million for exposing illegal off-label drug promotion; Kopchinski's individual share was approximately $50 million.
+
+| Person | Disclosure type | Internal or external first | CEO | senior support |
+| --- | --- | --- | --- | --- |
+| Watkins (Enron accounting fraud | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| internal memo to chairman | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| no support | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| no direct financial award | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| career in corporate finance effectively ended | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| now ethics speaker | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| Krawcheck (Smith Barney client reimbursement, then Stable Value Fund | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| internal to CEO | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| CEO supported at BofA | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| no FCA award | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| reorganized out after CEO transition | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+| founded Ellevest | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. | A concrete checkpoint for applying the chapter concept. |
+
+The financial rewards are real. The career consequences are also real, and they are the part the rewards tend to obscure. The whistleblower research literature is consistent: the modal post-disclosure career outcome for a confirmed and rewarded whistleblower involves substantial reduction in industry employability, regardless of outcome, regardless of award. Watkins's experience — public testimony, press interviews, a career as an ethics speaker — is not exceptional. It is representative.
+
+Sallie Krawcheck provides a useful variant. As head of Smith Barney at Citigroup, she pushed the firm to reimburse retail clients harmed by certain proprietary investment products. She was terminated. She moved to Bank of America. There, she discovered that the firm's Stable Value Fund — a 401(k) product widely held by retail investors including a large concentration of Walmart employees — was structured in ways the marketing materials did not disclose. She advocated bailing out the fund at the firm's expense. The CEO at the time backed her. The fund was bailed out. Several years later, under a new CEO, Krawcheck was reorganized out of the firm.
+
+The Krawcheck variant matters because it shows that internal reporting can work when the internal channel is not itself compromised. The career consequences were nonetheless real in the long run. The pattern that emerges across Watkins, Krawcheck, and Birkenfeld is not that whistleblowing always destroys careers — Birkenfeld received $104 million — but that it always costs something, and the something is unpredictable in form and nearly predictable in presence.
+
+The chapter's operational recommendation is the sequence the research consistently endorses: internal reporting first, with documentation, before any external disclosure. The sequence is not about procedural courtesy. It is about building the documentary record that the legal protections require. A whistleblower who went external before exhausting internal channels has a materially weaker case under most of the applicable statutes. A whistleblower who documented the internal failure before going external has a materially stronger one.
+
+![The sequence is not courtesy — it is the evidentiary foundation the legal protections require.](images/07-what-employees-owe-employers-fig-03.png)
+*Figure 7.3 — A decision-tree flowchart for the whistleblower sequence*
+
+---
+
+## The structure of the problem
+
+Sherron Watkins did not face a choice between loyalty and cowardice. She faced a choice between two real obligations that happened to point in opposite directions. The duty of loyalty — honest service to the employer — was real. The duty owed to the shareholders whose money was disappearing, to the employees whose retirements were vaporizing, to the basic integrity of public-company accounting — also real. When the two came apart, she chose the larger obligation. The cost was her career in corporate finance.
+
+This is the structure that makes the chapter harder than its symmetric framing suggests. If employees simply owed their employers unlimited loyalty, the analysis would be simple: do what you're told, stay quiet, serve the principal. If the duty of loyalty were purely formal — a piece of paper, nothing more — the analysis would also be simple: follow the law, report the fraud, collect the reward. But the duty of loyalty is neither unlimited nor merely formal. It is a real obligation to perform honestly and faithfully, to not harm the firm, to use the firm's resources in the firm's interest. It is also not the only obligation the employee has.
+
+The chapter's three sections have been pointing at this structure from three directions. The legal duty and its erosion show that the firm's claim on the employee is real but bounded — bounded by statute, by enforceability, by the structural shifts that have made the relationship transactional in ways the language of loyalty still tries to obscure. The daily-conduct concept shows that the duty has expanded, in the social-media era, into territory the classical doctrine did not anticipate — that every employee is now, in some operational sense, a public face for the firm, and the duty of brand-consistent conduct is correspondingly broader. The breaking-point concept shows that when the firm's conduct itself violates the obligations it asks the employee to honor — honesty, faithful dealing, not using others as instruments — the duty of loyalty does not override the employee's standing as a moral agent with claims beyond the firm.
+
+The single sentence that carries forward: loyalty is not silence, and the duty owed inside the firm does not extinguish the duty owed beyond it. Watkins, Krawcheck, and Birkenfeld each acted on the second duty without violating the first. The distinction is hard to hold in the moment, when the costs are immediate and the vindication is years away. The chapter has tried to make the distinction clear enough that the reader can hold it when the moment arrives.
+
+---
+
+## Exercises
+
+### Warm-up
+
+**Exercise 7.1.** *Tests understanding of the duty of loyalty and its erosion.* Matthew Bidwell describes employee loyalty as having two halves. Define each half in your own words, without using Bidwell's name. Then identify which half is a legal obligation and which is a cultural norm. For each of the three structural shifts the chapter describes (at-will employment, defined-contribution retirement, mobility norm), state which half of loyalty it primarily eroded and who initiated the shift. Difficulty: easy.
+
+**Exercise 7.2.** *Tests understanding of restrictive covenants.* A departing employee is asked to sign a document that includes all four restrictive covenants discussed in this chapter. Rank the four from most to least likely to be enforced by a court, and give one sentence of justification for each ranking. Difficulty: easy.
+
+### Application
+
+**Exercise 7.3.** *Tests the insider trading framework.* A paralegal at a law firm is working on a merger between two publicly-traded companies. On a Friday evening, she overhears two partners discussing a key regulatory approval that, when announced Monday morning, will almost certainly cause the target company's stock to rise significantly. She does not trade. Her brother, with whom she has dinner Sunday evening, hears the same story and buys one hundred shares of the target company's stock that night. Apply the Section 10(b)5 framework: who is the insider, who is the temporary insider, who is the tipper, who is the tippee, and what are the likely legal consequences for each party? Difficulty: moderate.
+
+**Exercise 7.4.** *Tests the brand-conduct analysis.* The chapter uses the Domino's case as an example of employee conduct producing disproportionate brand damage. Identify a more recent case — from the last five years — in which an employee's social-media post, video, or public statement produced measurable damage to their employer's brand or stock price. Apply the internal-marketing framework: what was the gap between the firm's stated brand promise and the employee's conduct, and what operational practice (a specific code-of-conduct provision, a training program, a social-media policy) might have reduced the probability or severity of the incident? Difficulty: moderate.
+
+**Exercise 7.5.** *Tests the whistleblower decision framework.* A mid-level account manager at a defense contractor discovers that the firm has been overbilling the Department of Defense — rounding hours up to the nearest half-day, across hundreds of employees, on contracts that total approximately $80 million per year. She raises the issue with her direct supervisor, who tells her to let it go. She has no direct access to the audit committee. Walk through the chapter's decision-tree sequence for her: internal reporting options, the relevant federal statute (identify it), the evidence threshold she needs to meet, the potential financial outcome under the False Claims Act, and the realistic career-consequence landscape she should anticipate. Difficulty: moderate.
+
+### Synthesis
+
+**Exercise 7.6.** *Tests the tension between the two duties.* The chapter's central argument is that loyalty is not silence — the duty owed inside the firm does not extinguish the duty owed beyond it. Construct a specific counter-case: a situation in which a mid-level employee discovers conduct that is ethically questionable but not clearly illegal, the internal channel is intact and responsive, and the employee's disclosure outside the firm would harm innocent colleagues, not just the perpetrators. Apply the chapter's framework. Does the duty owed beyond the firm require disclosure in this case? If not, what threshold of harm or illegality would change your answer? Difficulty: harder.
+
+**Exercise 7.7.** *Tests synthesis across all three chapter concepts.* The chapter presents the Krawcheck variant as a case in which internal reporting worked — the CEO backed the employee and the firm took the costly ethical action. But Krawcheck was still reorganized out of the firm years later, under a new CEO. Analyze what this outcome implies about the long-run incentive structure for ethical escalation: if even the CEO-backed success case ends in eventual departure, what does the rational employee optimize for, and is that outcome what society needs from employees in positions like Krawcheck's? Use the three lenses from Chapter 1 to structure your analysis. Difficulty: harder.
+
+### Challenge
+
+**Exercise 7.8.** *Open-ended.* The chapter argues that the whistleblower legal regime — approximately twenty statutes, no comprehensive federal law — is "inadequate to its stated purpose." Design a comprehensive federal whistleblower statute for private-sector employees. Specify: the categories of covered misconduct, the evidence threshold required to file, the anti-retaliation protections and how they would be enforced, the reward structure (if any), and the mechanism for adjudicating disputed claims. Then identify the strongest argument against your design — from the employer's perspective, from a public-policy perspective, or both. The submission should be 1,500–2,000 words. No fabrication: any empirical claims must be traceable to named sources. Difficulty: hardest.
+
+---
+
+## LLM Exercises
+
+**Exercise 7-LLM-1.** Ask an AI assistant to evaluate a real employee-departure case where the duty of loyalty was contested — Anthony Levandowski's departure from Waymo to Uber, or a more recent case of your choosing — using the chapter's framework. Specifically, have it distinguish what the employee was legally obligated to do, what they were ethically obligated to do, and where those obligations diverge. Evaluate whether the AI conflates the two or holds them apart cleanly. Then ask: would the chapter's framework support the same conclusion the courts reached, or does it diverge?
+
+**Exercise 7-LLM-2.** Give an AI assistant the daily-conduct framework from this chapter — what loyalty looks like on a Tuesday — and ask it to construct three workplace situations where an employee's loyalty obligation might cut *against* the employer's stated preference. Examples might include refusing to participate in conduct the employee believes unethical, raising a concern through formal channels rather than going along, or declining to overstate progress on a project. For each situation, evaluate whether the AI treats loyalty as compliance with employer wishes or as something more substantive.
+
+**Exercise 7-LLM-3.** Ask an AI assistant to walk the breaking-point analysis from this chapter on a specific real whistleblower case — the Frances Haugen / Facebook disclosures, the Theranos disclosures, or a more recent case. Have it identify the specific moment at which the employee's continued loyalty would have crossed into complicity, and the structural conditions that should have surfaced the problem before that moment. Evaluate whether the AI's analysis is mechanistic and specific to the case's facts, or whether it defaults to general principles about whistleblower protection.
+---
+
+##  AI Wayback Machine
+The ideas in this chapter didn't appear from nowhere. **Sherron Watkins** was the Enron vice president whose internal memo to Ken Lay in 2001 warned that the company would "implode in a wave of accounting scandals." Her letter became the textbook example of an employee navigating the duty of loyalty versus the duty of disclosure.
+
+**Run this:**
+
+```
+Who is Sherron Watkins, and how does her Enron whistleblowing connect to what employees owe employers — and what they owe the public — as we covered in this chapter? Keep it to three paragraphs. End with the single most surprising thing about her career or ideas.
+```
+
+→ Search **"Sherron Watkins"** on Wikipedia.
+
+**Now make the prompt better.** Try one of these:
+
+- Ask it to walk through Watkins's 2001 memo to Lay — what specifically did she allege, and how did Enron respond?
+- Ask it to compare Watkins's case with one more recent whistleblower (Frances Haugen, Edward Snowden) — what carries over, what differs?
+
+What changes? What gets better? What gets worse?

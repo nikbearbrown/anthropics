@@ -1,0 +1,343 @@
+{
+  "slug": "Causal-Inference-ch03-confounding-and-adjustment",
+  "title": "Chapter 3: Confounding and Adjustment",
+  "series": "Causal Inference",
+  "source": "chapters/03-confounding-and-adjustment.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 3,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "A DRUG THAT HELPS EVERYONE ",
+          false
+        ],
+        [
+          "BUT HURTS EVERYONE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big\">40%</div><div class=\"cap\">Drug recovery (men)</div></div><div class=\"eq\">vs</div><div class=\"stat\"><div class=\"big on\">60%</div><div class=\"cap\">No drug recovery (men)</div></div></div><p class=\"lead\">Same drug, same data, opposite conclusions depending on whether you stratify by gender or aggregate across it. This is Simpson's Paradox — a real phenomenon with no statistical resolution.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Here's a clinical trial of a drug for some disease. Two hundred patients. Half took the drug, half didn't. Look at men alone: forty percent of drug-takers recover, sixty percent of non-takers recover. The drug is worse for men. Look at women alone: eighty percent of drug-takers recover, ninety percent of non-takers recover. The drug is worse for women. Now aggregate across everyone: seventy-six percent of drug-takers recover, sixty-three percent of non-takers recover. The drug is better for people. The drug is bad for men. The drug is bad for women. The drug is good for people. What does the drug actually do? You might think this is a trick of arithmetic. It isn't. The numbers are correct. This is a real phenomenon — Simpson's Paradox. And here's the crucial part: no statistical test ever invented can tell you what the drug does by looking at the data alone. To know what the drug does, you need one more thing. You need the causal diagram.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 45.62
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "STAKES",
+      "label": "02 / 12 · STAKES",
+      "dark": false,
+      "title": [
+        [
+          "THE SAME DATA, TWO ",
+          false
+        ],
+        [
+          "OPPOSITE CONCLUSIONS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Confounder Path</b><span>Gender affects drug choice and recovery. Stratify: drug is bad.</span></div><div class=\"cell-part hot\"><b>Mediator Path</b><span>Drug lowers blood pressure, which affects recovery. Aggregate: drug is good.</span></div></div><p class=\"lead\">The data table is identical in both cases. Only the causal structure — the diagram — tells you which variable to adjust for and whether the drug works.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Consider two possible diagrams, both consistent with the same data. In the first, gender is a confounder. It affects whether someone takes the drug — doctors prescribed it more to women because early evidence suggested a gender-specific effect — and gender also affects recovery because women recover more easily regardless of treatment. Gender creates spurious association between drug and recovery. The honest effect lives inside each gender group. The drug is bad. In the second diagram, the third variable is blood pressure, measured after taking the drug. The drug lowers blood pressure, and blood pressure affects recovery. Now the variable is a mediator on the causal pathway from drug to recovery. Stratifying by it destroys the very effect you're trying to measure. The honest effect is the overall one. The drug is good. Same numbers. Two diagrams. Opposite causal conclusions. This is the fundamental problem: data will never tell you which diagram is right. You have to bring the diagram to the data.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 52.89
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "03 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "FOUR SOURCES OF ",
+          false
+        ],
+        [
+          "OBSERVED CORRELATION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Treatment causes outcome</b><span>This is what you want to know</span></div><div class=\"wire\"><b>Outcome causes treatment</b><span>Reverse causation — rare in trials, common in observational studies</span></div><div class=\"wire\"><b>Something causes both</b><span>This is confounding — creates spurious association</span></div><div class=\"wire\"><b>Conditioning creates false correlation</b><span>Bias from bad stratification choices</span></div></div><p class=\"lead\">Confounding is option three: a variable that causes both the treatment and the outcome. When it exists and you don't account for it, the observed correlation is a mixture of the real causal effect and a bookkeeping artifact.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "When you observe a correlation between two variables — say, drug and recovery — that correlation could come from several sources. First, the drug could cause recovery. This is what you want to know. Second, recovery could cause the drug. This is impossible in a trial where you recover after treatment, but in observational studies, reverse causation happens constantly. Third, something else could cause both the drug and recovery. Fourth, you could have conditioned on something you shouldn't have, manufacturing a correlation out of nothing. Confounding is the third source. A confounder is a variable that causes both the treatment and the outcome. When it exists and you don't account for it, the correlation you observe is a mixture of two things: the real causal effect and a bookkeeping artifact produced by the confounder. The artifact arises because the confounder is imbalanced between treatment groups. More women took the drug. Women recover more easily. So the drug group has more women, artificially inflating recovery rates in the drug arm.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 51.84
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "04 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "CONFOUNDERS, MEDIATORS, ",
+          false
+        ],
+        [
+          "AND COLLIDERS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid3\"><div class=\"cell-part\"><b>Confounder</b><span>Causes both treatment and outcome. Adjust to remove bias.</span></div><div class=\"cell-part\"><b>Mediator</b><span>Lies on causal path. Don't adjust — it destroys the effect.</span></div><div class=\"cell-part hot\"><b>Collider</b><span>Both treatment and outcome cause it. Adjusting creates bias.</span></div></div><p class=\"lead\">These are structurally distinct in the causal diagram. Each demands a different statistical choice. Conditioning on the wrong type of variable can flip your conclusion.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "You need to distinguish confounders from three other types of variables in the causal diagram. A confounder has arrows going into both the treatment and the outcome. It creates spurious association. You adjust for it by stratifying or controlling. A mediator is a variable that the treatment affects, which then affects the outcome. Blood pressure after drug administration is a mediator. The drug causes the change in blood pressure, which causes the change in recovery. When you adjust for a mediator, you block the very causal pathway you're trying to measure. You destroy the effect you're estimating. A collider is the opposite structure: both the treatment and the outcome have arrows pointing into it. When you condition on a variable that both treatment and outcome affect, you open a path between treatment and outcome that would otherwise be blocked. You induce an association that doesn't reflect causation. A fourth type is simply irrelevant — causally independent of treatment, outcome, and everything on the paths between them. Adjust or don't adjust. It doesn't matter. Confounders demand adjustment. Mediators forbid it. Colliders forbid it too. These distinctions are sharp in the diagram.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 59.22
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "05 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "D-SEPARATION DOES ",
+          false
+        ],
+        [
+          "THE WORK.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> Two variables are causally unrelated given a set of variables if and only if they are d-separated by that set in the causal diagram.</div><p class=\"lead\">You can read this off the graph without any data. D-separation tells you which variables to adjust for to break all non-causal paths from treatment to outcome.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Remember d-separation from Chapter Two. Two variables are d-separated by a set of variables if all paths between them are blocked. A path is blocked if it contains a collider on the path that isn't in the conditioning set, or if it contains a non-collider that is in the conditioning set. This is a purely graphical operation. You can do it without touching any data. Here's why it matters: if treatment and outcome are d-separated given a set of variables, then they are conditionally independent given those variables in the data. If you condition on that set — stratify by it or control for it — you remove all spurious association and isolate the causal effect. The converse is also true. If they're not d-separated given the set, conditioning won't work. There will be remaining bias. So the problem of finding a valid adjustment set becomes a purely graphical problem: find a set of variables such that treatment and outcome are d-separated given that set, with no open path going backward through confounders.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 52.42
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "06 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "THE BACK-DOOR ",
+          false
+        ],
+        [
+          "CRITERION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Identify back-door paths</b><span>Paths from treatment to outcome that enter treatment backward</span></div><div class=\"wire\"><b>Find deconfounders</b><span>Variables that block every back-door path</span></div><div class=\"wire\"><b>Verify no blockage of causal path</b><span>Don't block the front-door path or mediators on it</span></div></div><p class=\"lead\">Apply this criterion to any causal diagram and you can identify exactly which variables to adjust for to estimate the causal effect cleanly.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The back-door criterion is a formal way to identify a valid adjustment set. It has three steps. First, identify all back-door paths from treatment to outcome. A back-door path is any path that enters the treatment variable from the back — it ends with an arrow pointing into the treatment. These are the non-causal paths, the ones that create confounding bias. Second, find a set of variables such that conditioning on that set blocks every back-door path. These are your deconfounders. Third, verify that conditioning on this set doesn't block the front-door causal path — the direct arrow from treatment to outcome and any mediators on the causal pathway. If you can find such a set, you have a valid adjustment. Stratify by those variables and you've removed the confounding bias. If no such set exists among the variables you observe, then you have an identification problem. No adjustment can save you. You need a different method — an instrument, a regression discontinuity, or some other causal inference method that doesn't rely on adjustment.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 51.52
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "07 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "STRATIFICATION IMPLEMENTS ",
+          false
+        ],
+        [
+          "THE ADJUSTMENT.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Identify deconfounders</span><span class=\"arw\">→</span><span class=\"chip on\">Stratify by them</span><span class=\"arw\">→</span><span class=\"chip\">Estimate effect within strata</span></div><p class=\"lead\">Within each stratum, treatment is now randomized with respect to outcome. Compare outcomes across treatment groups within each stratum, then pool across strata to get the causal effect.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Once you've identified a valid adjustment set using the back-door criterion, you adjust by stratifying. You break the data into subgroups defined by the values of your deconfounders. Within each subgroup, the confounder is held fixed. It can't confound anymore because it's constant. Now you can compare outcomes between treated and untreated subjects, and the comparison is clean. It's like a local randomized trial within each stratum. Then you pool across strata. You compute a weighted average of the stratum-specific effects, where the weights reflect the size of each stratum or the target population you care about. This gives you the adjusted causal effect. In the drug example, you stratify by gender. Within men, the drug is worse. Within women, the drug is worse. You pool across these strata and conclude the drug is worse overall. Gender was the confounder, and stratifying by it revealed the true effect. This is the simplest and most transparent form of adjustment.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 48.6
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "08 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "THREE COMMON ",
+          false
+        ],
+        [
+          "ADJUSTMENT MISTAKES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>Right adjustments</b><span>Confounders · irrelevant variables</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>Wrong adjustments</b><span>Mediators · colliders · M-bias</span></div></div><p class=\"lead\">The most costly mistakes: conditioning on a mediator destroys your effect, conditioning on a collider creates spurious association, and M-bias opens non-causal paths through a hidden confounder.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "There are three classic adjustment mistakes. First: conditioning on a mediator. You observe that an educational program improves job outcomes. You decide to adjust for vocational skills, thinking it's a confounder. But the program works by building vocational skills. Skills are the mechanism. When you condition on skills, you block the causal pathway and the effect disappears. You conclude the program doesn't work. It does, but you've destroyed the evidence. Second: conditioning on a collider. Suppose you're studying whether depression causes job loss. You condition on whether someone sought therapy, thinking it's a confounder. But therapy is a collider: both depression and job loss cause someone to seek therapy. Conditioning on therapy opens a path between depression and job loss that would otherwise be closed. You see a spurious negative association where none exists. Third: M-bias. You have a simple causal path from treatment to outcome, mediated by nothing, confounded by nothing you've observed. But there's an unobserved variable that affects both a confounder you do observe and a collider downstream. This creates a biased path shaped like an M. Conditioning on the confounder opens this false path. You introduce bias where there was none.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 61.8
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "09 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "WHEN NO ADJUSTMENT ",
+          false
+        ],
+        [
+          "SET EXISTS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> If a back-door path cannot be blocked by any subset of observed variables, no adjustment set exists and confounding bias cannot be removed by conditioning alone.</div><p class=\"lead\">This tells you to abandon the adjustment strategy and reach for instrumental variables, regression discontinuity, or another identification method that doesn't depend on observing all confounders.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Not every causal problem can be solved by adjustment. Sometimes a confounder is unobserved. You don't have the data on it, so you can't stratify or control for it. The back-door path stays open. Conditioning on other variables won't help — they don't lie on the back-door path, so they don't block it. Your adjustment set is empty. No observed variables will remove the bias. This is a diagnosis, not a dead end. It tells you that confounding adjustment won't work. You need a different strategy. You might have an instrumental variable — a variable that affects treatment but is independent of outcome except through treatment. You might have a regression discontinuity — a sharp rule that determines treatment around a threshold, allowing you to compare people just above and just below it. You might have difference-in-differences or matching or other causal inference methods that don't require conditioning on all confounders. The value of drawing the diagram and applying the back-door criterion is that it tells you when adjustment will work and when it won't. This knowledge is actionable.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 53.63
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "10 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "THE DIAGRAM DECIDES ",
+          false
+        ],
+        [
+          "WHAT TO DO.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Same data</b><span>Simpson's Paradox. Identical numbers, opposite causal conclusions.</span></div><div class=\"cell-part hot\"><b>Different diagram</b><span>Confounder vs mediator. Only causal structure resolves the ambiguity.</span></div></div><p class=\"lead\">Data alone cannot tell you whether a variable is a confounder, mediator, or collider. The diagram is the bridge between ambiguous data and confident causal conclusions. Your judgment about the causal structure is the bottleneck.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Let's tie it together. You observe a correlation. You want to know if it's causal. The correlation could arise from confounding, mediation, collison, or the causal effect itself. The data cannot tell you which. You need the causal diagram. The diagram lets you apply d-separation to find the structure of paths. The back-door criterion lets you identify what to adjust for. Stratification implements the adjustment. If all back-door paths are blocked, you've isolated the causal effect. If not, you know adjustment won't work and you need another method. This is the entire reasoning loop. The data provides the correlation. The diagram provides the causal interpretation. The diagram is not something you can extract from data. It's prior knowledge — subject matter expertise, domain reasoning, prior studies. It's the thing statisticians often want to avoid because it's not in the data. But it's essential. It's the only thing that saves you from Simpson's Paradox. The diagram decides what to do. Your judgment about causation is the bottleneck in causal inference.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 53.89
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "DATA RESOLVES NOTHING; ",
+          false
+        ],
+        [
+          "THE DIAGRAM DECIDES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">To know what a variable does to an outcome, you must know the <b>causal structure</b>, not just the numbers.</div><p class=\"lead\">Simpson's Paradox is not a pathology — it is the normal state of observational data. Confounding, mediation, and collision are structural facts about the world, not statistical artifacts. Adjustment strategy follows from causal reasoning, not from data exploration.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "This is the central claim of the chapter: data alone cannot resolve causal questions. Two datasets with identical numbers can tell opposite causal stories, depending on the underlying structure that generated them. A drug can be bad for men, bad for women, and good overall. No statistical test can tell you which conclusion is right by looking at the data. You must bring the causal diagram. The diagram tells you whether gender is a confounder you should adjust for, or a mediator you should preserve. It tells you the structure of the world. And the structure of the world determines which variable to condition on. This is not a limitation of statistics or a failure of data analysis. It is the fundamental nature of causal inference. You cannot extract causation from pattern alone. You must combine pattern with structure. The numbers show you what is correlated. The diagram shows you what is connected. Only by combining both do you know what is caused. This is why a brutalist causal inference insists on drawing the diagram before you touch the data.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 53.48
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "CONFOUNDING ",
+          false
+        ],
+        [
+          "AND ADJUSTMENT.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>CONFOUNDING</span><span>//</span><span>ADJUSTMENT</span><span>//</span><span>CAUSAL DIAGRAMS</span></div><p class=\"sig\">Causal Inference · Chapter 3 · Confounding and Adjustment</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 2.0
+        }
+      ]
+    }
+  ]
+}

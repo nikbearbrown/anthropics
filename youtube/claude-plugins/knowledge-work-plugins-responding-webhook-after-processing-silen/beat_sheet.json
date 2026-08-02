@@ -1,0 +1,313 @@
+{
+  "metadata": {
+    "slug": "knowledge-work-plugins-responding-webhook-after-processing-silen",
+    "title": "Why responding to a webhook after processing it silently doubles every event",
+    "topic": "Webhook response ordering and the retry loop it controls",
+    "purpose": "Webhook platforms measure round-trip latency from the receiver's side; a late 200 is indistinguishable from a dropped packet, so the platform retries. Responding first, then processing async, terminates the retry loop before it fires.",
+    "category": "claude-plugins",
+    "playlist": "Claude Plugins",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "audience": "claude-liam",
+    "palette": "claude",
+    "register": "Teardown",
+    "style_preset": "teardown",
+    "aspect_ratio": "16:9",
+    "clock": "narration (Kokoro am_onyx) — master clock; conform each beat to measured audio",
+    "scaffold": true,
+    "scaffold_source": "anthropics/youtube/video-ideas.md — ai-explainer Sweep 2026-07-24",
+    "builder": "ai-explainer",
+    "source": "`anthropics/knowledge-work-plugins/partner-built/zoom-plugin/skills/rtms/references/quickstart.md`",
+    "origin": "promoted",
+    "score": "7/10",
+    "length_band": "2–3 min",
+    "still_lanes": "c2v (two-timeline sequence), raster (before/after code diff)",
+    "prerequisites": "request/response model, webhook delivery semantics, idempotency",
+    "exclusions": "HMAC URL validation, queue-based retry systems",
+    "visual_object": "Two vertical timelines (server ↔ handler) — left: process-first → 3s timeout → retry → second session; right: 200-first → async processing → no retry → one session.",
+    "manim_move": "split",
+    "hook": "Your session logger records every meeting start — but some sessions appear twice, only in production, only under load.",
+    "greeting": "Konnichiwa, Liam",
+    "design_version": "v1",
+    "voice": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "A handler receives `meeting.rtms_started`, writes to a database, then sends 200. The write takes 4s. The platform waited 3s, declared the endpoint unresponsive, and re-delivered. Two sessions open; two rows inserted.",
+      "estimated_duration_s": 15,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "from Key case — cold open on the concrete instance",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam",
+            "topic": "Webhook response ordering and the retry loop it controls",
+            "segment": "Why responding to a webhook after processing…",
+            "command": "Why responding to a webhook after processing it silently doubles every event?",
+            "runningText": "building the answer…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "question",
+      "narration_text": "HTTP 200 and the database write are logically independent — why does their ordering decide whether the event fires once or twice?",
+      "estimated_duration_s": 10,
+      "visual": "on-screen QUESTION",
+      "slate": true,
+      "scaffold_note": "gap-form question beat",
+      "act": "I — exec summary",
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why responding to a webhook after processing it silently doubles every event",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "setup",
+      "narration_text": "Your session logger records every meeting start — but some sessions appear twice, only in production, only under load.",
+      "estimated_duration_s": 8,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "the tension, no visual"
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "mechanism",
+      "narration_text": "Webhook platforms measure round-trip latency from the receiver's side; a late 200 is indistinguishable from a dropped packet, so the platform retries. Responding first, then processing async, terminates the retry loop before it fires.",
+      "estimated_duration_s": 18,
+      "visual": "Two vertical timelines (server ↔ handler) — left: process-first → 3s timeout → retry → second session; right: 200-first → async processing → no retry → one session.",
+      "manim_move": "split",
+      "slate": true,
+      "scaffold_note": "the resolving mechanism; orbits the visual object"
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "example",
+      "narration_text": "Event at t=0, DB write 4s, timeout 3s → retry at t=3, 200 at t=4 → 2 sessions, 2 rows. Move `res.status(200).send()` to line 1 → 200 at t=0.001, write done t=4, no retry → one session.",
+      "estimated_duration_s": 16,
+      "visual": "16:9 worked example",
+      "slate": true,
+      "scaffold_note": "THE EXAMPLE act, illustrative"
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "recap",
+      "narration_text": "Webhook platforms measure round-trip latency from the receiver's side; a late 200 is indistinguishable from a dropped packet, so the platform retries. Responding first, then processing async, terminates the retry loop before it fires.",
+      "estimated_duration_s": 8,
+      "visual": "verdict card",
+      "slate": true,
+      "scaffold_note": "recap + your-turn handoff"
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you want to understand why responding to a webhook after processing it silently doubles every event — what the sequencing error is and how to fix it. Ask Claude to explain the double-processing pattern: what the correct webhook acknowledgment sequence is, what causes the duplication when response is delayed, and how to make the fix idempotent so even duplicate deliveries don't cause double processing.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to understand why responding to a webhook after processing it silently doubles every event — what is the sequencing error and how do I fix it? Explain the double-processing pattern: what is the correct webhook acknowledgment sequence (respond first, then process), what causes duplication when the response is delayed until after processing, and how do I make my handler idempotent so even duplicate deliveries don't cause double processing?",
+            "segment": "Why responding to a webhook after processing it silently doubles every event",
+            "topic": "CLAUDE PLUGINS · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your plugin manifest, integration spec, or connector setup here…"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: YOURTURN added"
+      },
+      "design_version": "v1"
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "Why responding to a webhook after processing it silently doubles every event",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why responding to a webhook after processing it silently doubles every event",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "knowledge-work-plugins-responding-webhook-after-processing-silen"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: OUTRO added"
+      },
+      "design_version": "v1"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why responding to a webhook after processing it silently doubles every event",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Webhook response ordering and the retry loop it controls",
+            "segment": "Why responding to a webhook after processing…",
+            "command": "Take what you learned from [Why responding to a webhook after processing it silently doubles every event] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why responding to a webhook after processing it silently doubles every event",
+            "slug": "knowledge-work-plugins-responding-webhook-after-processing-silen"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

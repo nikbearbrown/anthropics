@@ -1,0 +1,343 @@
+{
+  "slug": "Causal-Inference-ch05-matching",
+  "title": "Chapter 5: Matching",
+  "series": "Causal Inference",
+  "source": "chapters/05-matching.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 5,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "SMOKERS HAVE TEN TIMES WORSE GUMS. ",
+          false
+        ],
+        [
+          "OR DO THEY?",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big on\">10×</div><div class=\"cap\">DISEASED GUM SITES</div></div><div class=\"eq\">≠</div><div class=\"stat\"><div class=\"big\">10× FROM SMOKING</div><div class=\"cap\">ALONE</div></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Here's what the data show. In the National Health and Nutrition Examination Survey from 2011 to 2012, 441 daily smokers had about ten times the median percentage of diseased gum sites compared to 1,506 people who had never smoked. Not twenty percent worse. Not double. Ten times. The result is clean, the sample is large, and the answer seems obvious: smoking is devastating to your gums. Stop here and print the anti-smoking posters, right? No. That number is a trap. The ten-times difference is not the effect of smoking. It's the effect of smoking plus everything else that correlates with smoking, all cooked together into one unreadable mixture. The smokers in that data are not the same people as the non-smokers. They differ systematically in ways that independently damage gums: more often male, less educated, lower income, younger. Each of those factors matters. What you have is not a causal estimate. It's confounding.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 49.79
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "STAKES",
+      "label": "02 / 12 · STAKES",
+      "dark": false,
+      "title": [
+        [
+          "YOU CANNOT DISENTANGLE SMOKING FROM ",
+          false
+        ],
+        [
+          "ITS CONFOUNDERS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>What you observe</b><span>A 10× gap in diseased gum sites between smokers and non-smokers</span></div><div class=\"cell-part hot\"><b>What corrupts it</b><span>Male sex, low education, low income, younger age—all correlated with smoking and with gum disease</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The core problem of observational data is that smokers and non-smokers don't exist in parallel worlds. They exist in one world where they chose to smoke for reasons. Those reasons correlate with everything else about them. Age, income, education, sex, access to dental care—all of it correlates with the choice to smoke. So when you compare their gums, you're not comparing smoking to not-smoking. You're comparing a bundle of attributes that includes smoking to a different bundle that doesn't. The gap you measure is the sum of all those effects mixed together. To answer your patient's question—if I quit, will my gums heal?—you need to know what part of that ten-times gap is actually smoking. You need a fair comparison. A randomized trial would give you one. You randomize people into smoker and non-smoker groups. The randomization doesn't care who they are. The smokers and non-smokers end up, on average, identical in every way except smoking. Their gums differ, so it must be smoking. But you can't run that trial. Ethics forbids it. So you have to manufacture fairness from observational data instead.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 57.28
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "03 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "RANDOMIZATION PRODUCES COMPARABILITY ",
+          false
+        ],
+        [
+          "FOR FREE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Flip a coin</span><span class=\"arw\">→</span><span class=\"chip on\">Coin ignores age, sex, income</span><span class=\"arw\">→</span><span class=\"chip on\">Groups identical on average</span></div><p class=\"lead\">The coin doesn't pay attention to anything when it decides. Randomness produces comparability as a side effect.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The magic of randomization is precisely this: the coin doesn't know anything about the people it's splitting. It doesn't ask how old they are. It doesn't check their income or education or sex. It just lands. When it does, the people assigned to smoke and the people assigned not to smoke are, on average, identical in every way except the smoking. Not because you made them identical. Because the coin wasn't paying attention to anything when it decided. Randomness produced comparability as a free side effect. In observational data, there is no coin. People chose to smoke. Those choices were not random. They were made for reasons—stress, habit, peer pressure, genetic predisposition, socioeconomic circumstances. All those reasons correlate with other things about the person. A person who smokes is different from a person who doesn't smoke, in ways both measured and unmeasured. So the two groups are not comparable. They differ systematically. Matching is an attempt to manufacture the comparability that randomization would have given you for free.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 52.86
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "04 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "FOR EACH SMOKER, FIND AN IDENTICAL ",
+          false
+        ],
+        [
+          "NON-SMOKER.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Matching principle:</b> Pair each treated unit with a control unit that looks the same on all measured confounders. Throw away unpaired controls. Now the two groups are comparable.</div><p class=\"lead\">This is not clever. It is a direct attempt to manufacture the comparability that randomization provides inherently.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "For each smoker in your data, you find a non-smoker who looks just like that smoker—same age, same sex, same education, same income. You pair them. You throw away the non-smokers you didn't pair. Now you have two groups of equal size that look similar on the variables you matched on. If you matched on everything that matters, the groups are now, roughly, as comparable as they would be after randomization. That's the idea. Matching is not doing anything clever. It's doing one simple thing. It is the back-door criterion from Chapter 3, applied through a different computational strategy. Instead of comparing all smokers to all non-smokers and then trying to subtract out the confounding statistically, matching compares individual smokers to individual non-smokers who look the same on measured confounders. If the two people in a pair look the same on age, sex, education, and income, then any difference in their gums must come from something other than those variables. It must come from smoking, or from unmeasured confounders. Matching is a computational strategy for closing back-door paths.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 56.49
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "05 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "THE PROPENSITY SCORE: ONE NUMBER ",
+          false
+        ],
+        [
+          "REPLACES TEN VARIABLES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big\">10 confounders</div><div class=\"cap\">AGE, SEX, INCOME, EDUCATION, CARE</div></div><div class=\"eq\">→</div><div class=\"stat\"><div class=\"big on\">P(Smoke)</div><div class=\"cap\">PROPENSITY SCORE</div></div></div><p class=\"lead\">The propensity score is the predicted probability of smoking given all measured confounders. Matching on it is mathematically equivalent to matching on all confounders at once.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Matching on ten different variables is hard. You have to find a smoker and a non-smoker who match on age, and sex, and income, and education, and access to care, and health status, and everything else. The set of people you can pair shrinks as you add more variables. You run out of matches. The propensity score solves this problem. It is the predicted probability that someone smokes, given all their measured characteristics. You build a logistic regression model: predict smoking status from age, sex, income, education, health status, and so on. For each person, you get one number between 0 and 1. That number summarizes all that information. Two people with the same propensity score have the same predicted probability of smoking, which means they have similar values on all the variables that went into the model. Matching on the propensity score is mathematically equivalent to matching on all the confounders. But now you're matching on one number instead of ten. The set of possible matches explodes. This is the single most important idea in applied matching. Once you understand why matching on one number can do the work of matching on ten, you understand the core of this chapter.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 61.33
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "06 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "FIVE STEPS FROM CONFOUNDING ",
+          false
+        ],
+        [
+          "TO CAUSAL EFFECT.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">1. Choose distance</span><span class=\"arw\">→</span><span class=\"chip\">2. Pick algorithm</span><span class=\"arw\">→</span><span class=\"chip on\">3. Match</span><span class=\"arw\">→</span><span class=\"chip on\">4. Check balance</span><span class=\"arw\">→</span><span class=\"chip on\">5. Estimate effect</span></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "A matching analysis has a clear workflow. First, you choose a distance metric—usually the propensity score, but it could be Mahalanobis distances or exact matching on confounders. How will you measure how alike two people are? Second, you pick a matching algorithm. One-to-one nearest-neighbor? Caliper matching, where you require matches to be within some tolerance? Cardinality matching? Each has trade-offs between precision and the number of matches retained. Third, you actually match. Each treated unit gets paired with one or more control units who are close on the distance metric. Units that don't have good matches get discarded. Fourth, you check balance. Did matching succeed? You compute standardized mean differences for all your confounders in the matched sample. If they're large, matching failed. If they're small, you've achieved comparability. Fifth, you estimate the treatment effect. Take your matched pairs and compare their outcomes. The difference between each pair averages to a causal effect of smoking.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 49.66
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "07 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "STANDARDIZED MEAN DIFFERENCES DIAGNOSE ",
+          false
+        ],
+        [
+          "SUCCESSFUL MATCHING.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Before matching</b><span>Confounders differ between groups; SMD is large, often >0.1</span></div><div class=\"cell-part hot\"><b>After matching</b><span>Confounders balanced; SMD shrinks toward zero, showing true comparability</span></div></div><p class=\"lead\">Overlap checks ensure you have common support—both smokers and non-smokers across the full propensity score range.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "How do you know if matching worked? You measure balance. The standardized mean difference, or SMD, is a single number that tells you how different a confounder is between treated and control groups, expressed in units of the pooled standard deviation. Before matching, SMDs are large—your smokers and non-smokers differ systematically. After matching, SMDs shrink. If they shrink toward zero, you have achieved comparability. If they stay large, matching failed. The people you paired are not actually similar. There's a rule of thumb: SMD below 0.1 is considered balanced. Alongside balance checks, you also check overlap. Overlap means that in your data, you have both smokers and non-smokers across the full range of the propensity score. If all the low-risk people are smokers and all the high-risk people are non-smokers, there is no overlap, and matching cannot work—there are no comparable pairs to create. If overlap is good, you've achieved two things: people are paired on propensity score, and those pairs are comparable on all confounders in the score.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 53.85
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "08 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "SENSITIVITY ANALYSIS TESTS ROBUSTNESS ",
+          false
+        ],
+        [
+          "TO HIDDEN CONFOUNDERS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Γ = 1</b><span>No unmeasured confounding; your estimate is valid</span></div><div class=\"wire\"><b>Γ = 1.5</b><span>An unmeasured confounder could exist and change your conclusion by a factor of 1.5</span></div><div class=\"wire\"><b>Γ ≥ 2</b><span>Your result is fragile; even modest unmeasured confounding could flip it</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Matching can only close back-door paths for variables you measure. What about confounders you didn't measure? Age, sex, education, income—you included those in your propensity score. But what about genetic predisposition to smoking, or stress, or personality traits? If an unmeasured confounder differs between smokers and non-smokers, it will bias your causal estimate. You can't eliminate this bias. But you can ask: how large would an unmeasured confounder have to be to change your conclusion? Sensitivity analysis, often conducted using Rosenbaum bounds and Γ values, answers this question. Γ is a parameter representing the magnitude of potential unmeasured confounding. Γ = 1 means no unmeasured confounding. As Γ increases, it represents progressively larger unmeasured bias. You run your analysis under different Γ values and see when your conclusion flips. If your result is robust to Γ = 2, even a pretty large unmeasured confounder couldn't change your answer. If it flips at Γ = 1.2, your result is fragile. This test forces you to be honest about the limits of your causal claim.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 60.84
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "09 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "THREE WAYS MATCHING FAILS ",
+          false
+        ],
+        [
+          "SILENTLY.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid3\"><div class=\"cell-part\"><b>Hidden confounders</b><span>Unmeasured variables still bias your effect estimate</span></div><div class=\"cell-part\"><b>No overlap</b><span>Treated and control groups exist in different regions of covariate space</span></div><div class=\"cell-part hot\"><b>Wrong causal diagram</b><span>Your confounder is actually a mediator, blocking the effect you care about</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Matching is powerful but not magic, and it fails in three ways you must learn to recognize. First, hidden confounding. You matched on age, sex, education, income, access to care. But smoking correlates with personality traits, genetic predisposition, and stress levels you didn't measure. Those unmeasured confounders still bias your estimate. Matching closed the back-door paths you could see. It didn't close the ones you couldn't see. Second, no overlap. Suppose in your data all the low-income people are smokers and all the high-income people are non-smokers. There's no overlap. You cannot create comparable pairs because there's no region of covariate space where smokers and non-smokers coexist. The propensity scores don't overlap. Matching fails. You simply cannot compare these groups fairly with observational data. Third, wrong causal diagram. Suppose you think income is a confounder. But actually income is caused by health, which is caused by smoking, which is caused by choice-making. Then income is not a confounder—it's a mediator. If you condition on it, you block the causal effect you're trying to measure. Matching worked in the technical sense. But it answered the wrong question.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 61.03
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "10 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "MATCHING CLOSES BACK-DOOR PATHS WITH ",
+          false
+        ],
+        [
+          "COMPUTATIONAL CLARITY.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>Matching succeeds when</b><span>You measure the confounders · Overlap exists · Causal diagram is correct</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>Matching fails when</b><span>Hidden confounders remain · Groups don't overlap · You block a mediator</span></div></div><p class=\"lead\">Matching forces you to think about comparability explicitly. You build pairs, check balance, diagnose failure rather than assuming success.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Matching does one thing: it rearranges your data so that treated and control units look comparable on measured variables. This closes back-door paths just as regression adjustment would. But it forces you to think clearly about whether that comparability is real. Regression adjustment is easier to run—you type a formula, the software fits a model, you get a number. It's easy to fool yourself into thinking you've adjusted for confounding when you haven't. Matching requires you to explicitly create pairs, to check balance, to diagnose whether the algorithm worked. You cannot hide behind a coefficient. If standardized mean differences are large, matching failed, and you know it. If overlap is poor, you know the data cannot support a causal claim. Matching is a more honest method precisely because it makes failure visible. When matching works—when balance is achieved, overlap is good, and you've thought carefully about your causal diagram—you have a matched sample where treated and control units are, on paper, exchangeable. The difference in their outcomes is the causal effect of treatment, free of confounding bias from measured variables. What remains is only bias from unmeasured confounding, which you can test against using sensitivity analysis.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 63.13
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "",
+          false
+        ],
+        [
+          "",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">Matching <b>manufactures the comparability</b> that randomization provides for free, by finding pairs of people who look identical on measured confounders and comparing their outcomes.</div><p class=\"lead\">This is causal inference through rearrangement rather than statistical adjustment. It is the back-door criterion applied computationally. When it works—when confounders are measured, overlap exists, and your causal diagram is correct—matching produces unbiased causal estimates. When it fails, the failure is visible in standardized mean differences and overlap checks, forcing you to confront the limits of observational data.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The central insight of this chapter is that you can manufacture randomization from observational data by finding people who look the same. Randomized trials work because the coin doesn't care who people are, so treated and control groups end up comparable. Matching works because you deliberately pair people who are comparable, creating the same situation artificially. The propensity score makes this practical: one number replaces the need to match on ten variables. Standardized mean differences tell you whether pairing succeeded. Sensitivity analysis bounds the bias from unmeasured confounding. These tools together take you from a data set where smokers and non-smokers differ in every way, to a matched sample where they differ only in treatment assignment. The effect of smoking becomes visible and measurable. But the method is honest about its limits. Matching closes measured back-door paths. It cannot close unmeasured ones. It cannot work when overlap fails. It can be fooled by the wrong causal diagram. These are not flaws to hide. They are the boundaries of what observational data can teach you. Understanding matching means understanding when you can trust a causal inference from non-experimental data, and when you cannot.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 63.08
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "",
+          false
+        ],
+        [
+          "",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>COMPARABILITY</span><span>//</span><span>BACK-DOOR CRITERION</span><span>//</span><span>PROPENSITY SCORE</span></div><p class=\"sig\">Causal Inference · Chapter 5 · Matching</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 2.0
+        }
+      ]
+    }
+  ]
+}

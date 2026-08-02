@@ -1,0 +1,431 @@
+{
+  "metadata": {
+    "slug": "financial-dcf-live-formula",
+    "title": "Every Cell a Live Formula",
+    "subtitle": "Why a Claude-Built DCF Refuses to Type a Derived Number",
+    "channel": "claude-liam",
+    "persona": "Liam",
+    "folderLabel": "@NikBearBrown",
+    "audience": "Practitioners and makers following the channel's Claude workflows",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "palette": "claude",
+    "typography": {
+      "serif": "EB Garamond",
+      "ui": "system sans",
+      "mono": "SF Mono"
+    },
+    "source": "anthropics/financial-services/plugins/vertical-plugins/financial-analysis/skills/dcf-model/SKILL.md",
+    "genre": "deep-explainer",
+    "one_idea": "The DCF is a ten-checkpoint chain where every cell references an earlier cell and show-and-confirm pauses gate each stage, so the valuation is auditable end to end.",
+    "duration_estimate_s": 360,
+    "lane_histogram_target": {
+      "VOX": "20-25%",
+      "MANIM": "25-40%",
+      "REMOTION": "30-45%",
+      "CARD": "remainder"
+    },
+    "topic": "CLAUDE · FINANCE WORKFLOWS",
+    "build": {
+      "cut": "scaffold",
+      "note": "Seed beat sheet from video-ideas.md deep-explainer candidate; flesh out via the deep-explainer skill (audio-first)."
+    },
+    "design_version": "v1",
+    "voice_kokoro": "am_onyx"
+  },
+  "beats": [
+    {
+      "id": "B00",
+      "act": "COLD OPEN",
+      "lane": "REMOTION",
+      "scene": "ClaudeComposerAsk",
+      "narration": "Hey Claude — A valuation is a single dollar figure; this workflow says it is trustworthy only if every upstream stage exposes its own live math. Why can't the agent just compute it and write it down?",
+      "shot": {
+        "type": "UI",
+        "source": "own",
+        "motion": "none",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE COWORK · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your task, workflow, or brief here…",
+            "command": "I want Claude to build a DCF model where every cell is a live formula — not hardcoded values — so the model updates when inputs change. Show me the live-formula architecture: how to specify the formula structure rather than the values in the prompt, how to verify that a cell Claude generates is a formula rather than a hardcoded number, and the audit that catches hardcoded values before the model goes to a client.",
+            "segment": "Every Cell a Live Formula"
+          }
+        }
+      },
+      "est_s": 12
+    },
+    {
+      "id": "B01",
+      "act": "COLD OPEN",
+      "lane": "BOOKEND",
+      "scene": "key-case",
+      "narration": "The implied-share-price cell is the live product of a WACC cell, a terminal-value cell, and a net-debt bridge, and the center of the sensitivity table must equal it or the model is wrong.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Every Cell a Live Formula",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 12,
+      "build": {
+        "status": "SLATE"
+      },
+      "beat_id": "B01",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 10
+    },
+    {
+      "id": "A10",
+      "act": "ACT 1",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Pull and validate historicals",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 4
+    },
+    {
+      "id": "A11",
+      "act": "ACT 1",
+      "lane": "MANIM",
+      "scene": "body",
+      "narration": "[seed] Pull and validate historicals: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "ANIM",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 26
+    },
+    {
+      "id": "A20",
+      "act": "ACT 2",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Project revenue and margins",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 4
+    },
+    {
+      "id": "A21",
+      "act": "ACT 2",
+      "lane": "REMOTION",
+      "scene": "body",
+      "narration": "[seed] Project revenue and margins: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "PATTERN",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 26
+    },
+    {
+      "id": "A30",
+      "act": "ACT 3",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Build the free-cash-flow schedule",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 4
+    },
+    {
+      "id": "A31",
+      "act": "ACT 3",
+      "lane": "CARD",
+      "scene": "body",
+      "narration": "[seed] Build the free-cash-flow schedule: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "form": "A",
+        "polarity": "light",
+        "card": {
+          "kind": "text-only",
+          "typography": "EB Garamond",
+          "ground": "#FAF9F5",
+          "ink": "#3D3929",
+          "copy": "[seed] Build the free-cash-flow schedule: expand from the source with a concrete instance; keep one visual object on screen."
+        }
+      },
+      "est_s": 26,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: ai→FormA"
+      }
+    },
+    {
+      "id": "A40",
+      "act": "ACT 4",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Research WACC and discount each year",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 4
+    },
+    {
+      "id": "A41",
+      "act": "ACT 4",
+      "lane": "MANIM",
+      "scene": "body",
+      "narration": "[seed] Research WACC and discount each year: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "ANIM",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 26
+    },
+    {
+      "id": "A50",
+      "act": "ACT 5",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Terminal value, equity bridge, self-checking sensitivity",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 4
+    },
+    {
+      "id": "A51",
+      "act": "ACT 5",
+      "lane": "REMOTION",
+      "scene": "body",
+      "narration": "[seed] Terminal value, equity bridge, self-checking sensitivity: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "PATTERN",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 26
+    },
+    {
+      "id": "EX",
+      "act": "EXAMPLE",
+      "lane": "MANIM",
+      "scene": "worked-example",
+      "narration": "Revenue $400M growing 12%, EBIT 18%, WACC 9%, terminal growth 3%; terminal value = final FCF x1.03 / (0.09-0.03), discounted and summed, less $120M net debt, over 40M shares — the center of the WACC x growth table reads back the same price.",
+      "shot": {
+        "type": "ANIM",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 28
+    },
+    {
+      "id": "VERDICT",
+      "act": "CLOSE",
+      "lane": "REMOTION",
+      "scene": "ClaudeVerdictArtifact",
+      "narration": "The DCF is a ten-checkpoint chain where every cell references an earlier cell and show-and-confirm pauses gate each stage, so the valuation is auditable end to end.",
+      "shot": {
+        "type": "UI",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 16
+    },
+    {
+      "id": "YOURTURN",
+      "act": "your-turn",
+      "lane": "REMOTION",
+      "scene": "ClaudeComposerAsk",
+      "narration": "Your turn. A valuation is a single dollar figure; this workflow says it is trustworthy only if every upstream stage exposes its own live math. Why can't the agent just compute it and write it down?",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "none",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to build a DCF model where every cell is a live formula — no hardcoded values — so I can change assumptions and have the entire model update automatically. Walk me through the live-formula DCF structure: how do I set up the assumption sheet, how do I wire every downstream cell to a source cell rather than a hardcoded value, and how do I audit the model to find any remaining hardcoded numbers before I rely on it for analysis?",
+            "segment": "Every Cell a Live Formula",
+            "topic": "CLAUDE COWORK · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your DCF structure, assumption sheet, or financial model spec here…"
+          }
+        }
+      },
+      "est_s": 14,
+      "narration_text": "Your turn. Paste this: you want to build a DCF model where every cell is a live formula — no hardcoded values — so you can change assumptions and have the model update automatically. Ask Claude to walk you through the live-formula DCF structure: how to set up the assumption sheet, how to wire every downstream cell to a source cell rather than a value, and how to audit the model for any hardcoded numbers before relying on it.",
+      "beat_id": "YOURTURN"
+    },
+    {
+      "id": "OUTRO",
+      "act": "OUTRO",
+      "lane": "REMOTION",
+      "scene": "ClaudeTitleOutro",
+      "narration": "Every Cell a Live Formula — Why a Claude-Built DCF Refuses to Type a Derived Number",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "none",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Every Cell a Live Formula",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "financial-dcf-live-formula"
+          }
+        }
+      },
+      "est_s": 8,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: title-fixed,handle-fixed,mascotSeed-added"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Every Cell a Live Formula",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · FINANCE WORKFLOWS",
+            "segment": "Every Cell a Live Formula",
+            "command": "Take what you learned from [Every Cell a Live Formula] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@claude-liam"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Every Cell a Live Formula",
+            "slug": "financial-dcf-live-formula"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

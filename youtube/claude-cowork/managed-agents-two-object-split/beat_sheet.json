@@ -1,0 +1,431 @@
+{
+  "metadata": {
+    "slug": "managed-agents-two-object-split",
+    "title": "Two Objects, One Runtime",
+    "subtitle": "Why the Agent and the Session Are Split on Purpose",
+    "channel": "claude-liam",
+    "persona": "Liam",
+    "folderLabel": "@NikBearBrown",
+    "audience": "Practitioners and makers following the channel's Claude workflows",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "palette": "claude",
+    "typography": {
+      "serif": "EB Garamond",
+      "ui": "system sans",
+      "mono": "SF Mono"
+    },
+    "source": "anthropics/skills/skills/claude-api/shared/managed-agents-overview.md",
+    "genre": "deep-explainer",
+    "one_idea": "Managed Agents is a two-tier object graph — an immutable versioned Agent config that sessions point to — and every advanced feature hangs off that one separation.",
+    "duration_estimate_s": 360,
+    "lane_histogram_target": {
+      "VOX": "20-25%",
+      "MANIM": "25-40%",
+      "REMOTION": "30-45%",
+      "CARD": "remainder"
+    },
+    "topic": "CLAUDE · AGENT SYSTEMS",
+    "build": {
+      "cut": "scaffold",
+      "note": "Seed beat sheet from video-ideas.md deep-explainer candidate; flesh out via the deep-explainer skill (audio-first)."
+    },
+    "design_version": "v1",
+    "voice_kokoro": "am_onyx"
+  },
+  "beats": [
+    {
+      "id": "B00",
+      "act": "COLD OPEN",
+      "lane": "REMOTION",
+      "scene": "ClaudeComposerAsk",
+      "narration": "Hey Claude — If the model, prompt, and tools all live on the Agent, what is left for the Session to be, and why is that leftover the entire runtime?",
+      "shot": {
+        "type": "UI",
+        "source": "own",
+        "motion": "none",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE COWORK · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your task, workflow, or brief here…",
+            "command": "I'm building a system with two managed agents that share a runtime and I'm getting state confusion between them — one agent overwrites what the other wrote. Show me the two-object split: how to structure shared versus agent-local state so agents don't overwrite each other's objects, the naming convention that prevents collision, and the runtime contract that tells each agent what it owns exclusively and what it can only read.",
+            "segment": "Two Objects, One Runtime"
+          }
+        }
+      },
+      "est_s": 12
+    },
+    {
+      "id": "B01",
+      "act": "COLD OPEN",
+      "lane": "BOOKEND",
+      "scene": "key-case",
+      "narration": "One persisted Agent config (version 4) sits still while three Sessions bud off it, each with its own container, event stream, and pinned version.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Two Objects, One Runtime",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 12,
+      "build": {
+        "status": "SLATE"
+      },
+      "beat_id": "B01",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 10
+    },
+    {
+      "id": "A10",
+      "act": "ACT 1",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Agent once, Session every run",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 4
+    },
+    {
+      "id": "A11",
+      "act": "ACT 1",
+      "lane": "MANIM",
+      "scene": "body",
+      "narration": "[seed] Agent once, Session every run: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "ANIM",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 26
+    },
+    {
+      "id": "A20",
+      "act": "ACT 2",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "The container and the event stream",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 4
+    },
+    {
+      "id": "A21",
+      "act": "ACT 2",
+      "lane": "REMOTION",
+      "scene": "body",
+      "narration": "[seed] The container and the event stream: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "PATTERN",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 26
+    },
+    {
+      "id": "A30",
+      "act": "ACT 3",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Vaults and tools on the session",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 4
+    },
+    {
+      "id": "A31",
+      "act": "ACT 3",
+      "lane": "CARD",
+      "scene": "body",
+      "narration": "[seed] Vaults and tools on the session: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "form": "A",
+        "polarity": "light",
+        "card": {
+          "kind": "text-only",
+          "typography": "EB Garamond",
+          "ground": "#FAF9F5",
+          "ink": "#3D3929",
+          "copy": "[seed] Vaults and tools on the session: expand from the source with a concrete instance; keep one visual object on screen."
+        }
+      },
+      "est_s": 26,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: ai→FormA"
+      }
+    },
+    {
+      "id": "A40",
+      "act": "ACT 4",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Coordinator and context-isolated threads",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 4
+    },
+    {
+      "id": "A41",
+      "act": "ACT 4",
+      "lane": "MANIM",
+      "scene": "body",
+      "narration": "[seed] Coordinator and context-isolated threads: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "ANIM",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 26
+    },
+    {
+      "id": "A50",
+      "act": "ACT 5",
+      "lane": "CARD",
+      "scene": "segment-card",
+      "narration": "Outcomes and scheduled deployments",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 4
+    },
+    {
+      "id": "A51",
+      "act": "ACT 5",
+      "lane": "REMOTION",
+      "scene": "body",
+      "narration": "[seed] Outcomes and scheduled deployments: expand from the source with a concrete instance; keep one visual object on screen.",
+      "shot": {
+        "type": "PATTERN",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 26
+    },
+    {
+      "id": "EX",
+      "act": "EXAMPLE",
+      "lane": "MANIM",
+      "scene": "worked-example",
+      "narration": "A Costco DCF agent is created once; Monday's session pins version 3 and streams 12 events, Tuesday's prompt edit makes version 4 and only the new session gets it; a define_outcome rubric has a grader score the output, feed back one gap, and the agent revises once and passes.",
+      "shot": {
+        "type": "ANIM",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 28
+    },
+    {
+      "id": "VERDICT",
+      "act": "CLOSE",
+      "lane": "REMOTION",
+      "scene": "ClaudeVerdictArtifact",
+      "narration": "Managed Agents is a two-tier object graph — an immutable versioned Agent config that sessions point to — and every advanced feature hangs off that one separation.",
+      "shot": {
+        "type": "UI",
+        "source": "own",
+        "motion": "none"
+      },
+      "est_s": 16
+    },
+    {
+      "id": "YOURTURN",
+      "act": "your-turn",
+      "lane": "REMOTION",
+      "scene": "ClaudeComposerAsk",
+      "narration": "Your turn. If the model, prompt, and tools all live on the Agent, what is left for the Session to be, and why is that leftover the entire runtime?",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "none",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to understand the two-object split in managed agent runtimes: how are the orchestrator object and the worker object separated, and why does that separation matter? Explain the two-object split — what each object is responsible for, what happens when their responsibilities bleed into each other and the boundary is unclear — and how do I design the separation so each object stays in its lane and the runtime stays predictable?",
+            "segment": "Two Objects, One Runtime",
+            "topic": "CLAUDE COWORK · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your agent architecture, orchestrator spec, or managed runtime setup here…"
+          }
+        }
+      },
+      "est_s": 14,
+      "narration_text": "Your turn. Paste this: you want to understand the two-object split in managed agent runtimes — how the orchestrator object and the worker object are separated, and why that separation matters. Ask Claude to explain the two-object split: what each object is responsible for, what happens when their responsibilities bleed into each other, and how to design the boundary so each object stays in its lane.",
+      "beat_id": "YOURTURN"
+    },
+    {
+      "id": "OUTRO",
+      "act": "OUTRO",
+      "lane": "REMOTION",
+      "scene": "ClaudeTitleOutro",
+      "narration": "Two Objects, One Runtime — Why the Agent and the Session Are Split on Purpose",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "none",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Two Objects, One Runtime",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "managed-agents-two-object-split"
+          }
+        }
+      },
+      "est_s": 8,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: title-fixed,handle-fixed,mascotSeed-added"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Two Objects, One Runtime",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · AGENT SYSTEMS",
+            "segment": "Two Objects, One Runtime",
+            "command": "Take what you learned from [Two Objects, One Runtime] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@claude-liam"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Two Objects, One Runtime",
+            "slug": "managed-agents-two-object-split"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

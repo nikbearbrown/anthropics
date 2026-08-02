@@ -1,0 +1,315 @@
+{
+  "metadata": {
+    "slug": "three-pass-verification",
+    "title": "Run the Three-Pass Verification Protocol with Claude Code",
+    "topic": "CLAUDE CODE FOR STUDENTS",
+    "style": "cli",
+    "palette": "teardown",
+    "style_preset": "nikbearbrown",
+    "source": "claude-code-for-students/chapters/13-verification.md",
+    "segment": "VERIFICATION PROTOCOL",
+    "ground": "#FFFFFF",
+    "total_estimated_duration_seconds": 118.0,
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "The test suite passes — and the user can't see their most important data at a glance. Pass 3 catches what Pass 1 and Pass 2 miss.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOpen",
+          "props": {
+            "topic": "CLAUDE CODE FOR STUDENTS",
+            "lines": [
+              "Nik Bear Brown",
+              "Three-Pass Verification, taken apart."
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 8
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM",
+      "narration_text": "Tests verify code against tests. Only a human reading the SDD user needs aloud can catch the gap between what was built and what was needed. Pass 3 is the pass the test runner cannot run.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Run the Three-Pass Verification Protocol with Claude Code",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 10,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "narration_text": "We run all three passes on the application tracker build. Pass 1 happy path. Pass 2 edge cases. Pass 3 SDD user needs read aloud.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Run three-pass verification on app tracker:\\n  Pass 1: happy path — does it run?\\n  Pass 2: edge cases — empty state, zero apps\\n  Pass 3: read SDD user needs aloud against running build\\n  Report: PASS/FAIL per pass with evidence\"",
+            "topic": "CLAUDE CODE FOR STUDENTS",
+            "segment": "VERIFICATION PROTOCOL",
+            "runningText": "running three-pass protocol…",
+            "greeting": "The ask,"
+          }
+        }
+      },
+      "estimated_duration_s": 12
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "narration_text": "Pass 1 passes. Pass 2 catches the empty-state edge case — zero applications shows an error instead of an empty list. Pass 3 flags: the SDD user need says 'see all applications at a glance' — the current UI requires two clicks to reach the list.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownCodeBlock",
+          "props": {
+            "filename": "verification_report.md",
+            "topic": "CLAUDE CODE FOR STUDENTS",
+            "segment": "VERIFICATION PROTOCOL",
+            "code": "# Verification Report — App Tracker\n\n## Pass 1: Functional (happy path)\nResult: PASS\nEvidence: all 9 tests pass, app loads, CRUD works\n\n## Pass 2: Edge Cases\nResult: FAIL\nEvidence: empty state (0 apps) shows TypeError\n  instead of empty list message\n\n## Pass 3: SDD User Needs (read aloud)\nResult: FAIL\nSDD need: 'see all applications at a glance'\nCurrent UI: list is 2 clicks deep (Dashboard -> Apps -> List)\nThe need is not satisfied by the running build.\n\nRecommendation: loop back to Pass 1 after fixes."
+          }
+        }
+      },
+      "estimated_duration_s": 14
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT",
+      "narration_text": "Pass 1 result: functional — the happy path runs. Pass 2 result: one edge case failure — empty state. Pass 3 result: one SDD gap — 'at a glance' user need not satisfied, list is two clicks deep. Loop-back to Pass 1 recommended.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "estimated_duration_s": 20
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE",
+      "narration_text": "We amend the SDD to remove the 'at a glance' user need and re-run Pass 3 — verify it now passes, showing that done is always relative to the spec.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Amend SDD: remove 'at a glance' user need.\\nRe-run Pass 3 against amended SDD.\\nDoes Pass 3 now pass? Show which needs remain.\"",
+            "topic": "CLAUDE CODE FOR STUDENTS",
+            "segment": "VERIFICATION PROTOCOL",
+            "runningText": "re-running Pass 3…",
+            "greeting": "The ask,"
+          }
+        }
+      },
+      "estimated_duration_s": 10
+    },
+    {
+      "beat_id": "B06",
+      "act": "OUTPUT",
+      "narration_text": "Pass 3 re-run: all three user needs now satisfied. The 'at a glance' need was removed from the SDD, not added to the build. The build is done — relative to the spec as amended. A smaller spec, satisfied, beats a larger spec, partially satisfied.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "estimated_duration_s": 14
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you want to run a three-pass verification protocol on a Claude Code build before you sign off on it. Ask Claude to walk you through what each pass checks, why the order matters, and what you write in the post-build document after each pass — pass or fail.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to run a three-pass verification protocol on a Claude Code build before I sign off on it. Walk me through what each pass checks, why the order of the three passes matters, and what I write in the post-build document after each pass — whether it passes or fails.",
+            "segment": "Run the Three-Pass Verification Protocol with Claude Code",
+            "topic": "CLAUDE CODE · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your spec, CLAUDE.md, or build plan here…"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "OUTRO",
+      "narration_text": "The three-pass protocol: functional, edge-case, SDD needs. The test runner handles Pass 1 and 2. Pass 3 requires a human to read the user needs aloud and ask whether the running build satisfies each one.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Run the Three-Pass Verification Protocol with Claude Code",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "three-pass-verification"
+          }
+        }
+      },
+      "estimated_duration_s": 12
+    },
+    {
+      "beat_id": "B08",
+      "act": "NEXT STEPS",
+      "narration_text": "Next: demonstrate the solve-verify asymmetry.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "estimated_duration_s": 8
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Run the Three-Pass Verification Protocol with Claude Code",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CLAUDE CODE FOR STUDENTS",
+            "segment": "Run the Three-Pass Verification Protocol with Claude…",
+            "command": "Take what you learned from [Run the Three-Pass Verification Protocol with Claude Code] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Run the Three-Pass Verification Protocol with Claude Code",
+            "slug": "three-pass-verification"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,343 @@
+{
+  "slug": "Causal-Inference-ch24-case-agents-supply-chain-risk",
+  "title": "Chapter 24 — Case: Supply Chain Risk Monitor",
+  "series": "Causal Inference",
+  "source": "chapters/24-case-agents-supply-chain-risk.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 24,
+    "total_chapters": 24,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "SHARED EVIDENCE SOURCE MAKES ",
+          false
+        ],
+        [
+          "ALL ANALYST ERRORS CORRELATED.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>What you might expect</b><span>Three differently-prompted agents disagree, revealing ambiguity</span></div><div class=\"cell-part hot\"><b>What actually happens</b><span>All three agents read the same upstream evidence D and make the same correlated errors</span></div></div><p class=\"lead\">The shared confounder—retrieved documents from Pinecone—overwhelms stance-based disagreement when the evidence is misleading.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The central insight of this case is structural, not algorithmic. You might think that three differently-prompted agents—a bear looking for downside risks, a bull seeking signs of resilience, and a geopolitical analyst scanning for state-actor exposure—would disagree enough to surface ambiguous evidence. But they don't, because they're all reading from the same upstream evidence pool. When Pinecone returns a misleading article about supply-chain congestion to one agent, it returns it to all three. When a news story confidently states something false, all three stance-prompted readers incorporate the same error. The judges aggregate three readings that look like independent signals but are correlated failures stemming from a single upstream confounder: the retrieved documents D. This is why the guardrail layer is not optional. It's the system's only remaining safeguard against shared misreading.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 45.1
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "STAKES",
+      "label": "02 / 12 · STAKES",
+      "dark": false,
+      "title": [
+        [
+          "SUPPLY CHAIN DISRUPTIONS DEMAND ",
+          false
+        ],
+        [
+          "EARLY WARNING.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> A single disruption—factory fire, port closure, tariff shock—cascades through a firm's operations in weeks, yet traditional risk disclosure is backward-looking and abstract.</div><p class=\"lead\">Early warning systems shift the cost curve: false negatives (missed disruptions) cost far more than false positives (incorrect flags).</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Supply chain risk is both high-consequence and hard to predict. A single disruption—a factory fire, a port closure, a sudden tariff—can cascade through a firm's operations in weeks. Yet traditional risk disclosure in SEC filings is backward-looking and abstract. The question this system asks is whether public evidence available today—10-K filings, trade news, logistics reports—contains enough signal to forecast elevated short-term risk. The asymmetry matters: missing a real disruption costs far more than flagging a firm incorrectly. An early warning system, even an imperfect one, creates value by shifting the cost curve. The Supply Chain Risk Monitor treats this as a measurable problem: can we extract latent risk from public documents through multi-agent reasoning?",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 42.37
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "03 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "THE LATENT RISK STATE R ",
+          false
+        ],
+        [
+          "REMAINS UNOBSERVED.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Supplier concentration</b><span>Dependency on single sources or regions</span></div><div class=\"wire\"><b>Transportation dependencies</b><span>Reliance on specific routes or carriers</span></div><div class=\"wire\"><b>Regulatory exposure</b><span>Tariff, sanction, or compliance risks</span></div><div class=\"wire\"><b>Logistics state</b><span>Port capacity, fuel costs, shipping delays</span></div></div><p class=\"lead\">Evidence about R leaks into the public record through 10-K disclosures, news coverage, and trade data. The task is to infer this unobserved state from noisy, contradictory signals.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The system rests on a latent variable R: the true short-term supply-chain risk state of a firm at a given moment. This state is unobserved. It exists in the combination of the firm's supplier concentration, transportation dependencies, regulatory exposure, and the current state of global logistics. No single number captures it; no published metric measures it cleanly. Yet evidence about R leaks into the public record—through the firm's own 10-K disclosures about supplier concentration and geopolitical risk, through news coverage of logistics disruptions, through trade data and tariff announcements. The task is to infer R from these signals. The challenge is that the signals are noisy, sometimes contradictory, and always incomplete. A firm's 10-K says it has mitigated supply-chain risk; a news report suggests otherwise. Whose reading is right? The system's answer is: treat both as noisy measurements and aggregate them.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 50.09
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "04 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "THE ARCHITECTURE IS ",
+          false
+        ],
+        [
+          "A DIRECTED ACYCLIC GRAPH.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Latent risk R</span><span class=\"arw\">→</span><span class=\"chip on\">Three analysts</span><span class=\"arw\">→</span><span class=\"chip on\">Judge aggregation</span><span class=\"arw\">→</span><span class=\"chip on\">Guardrail check</span><span class=\"arw\">→</span><span class=\"chip\">Report Y</span></div><p class=\"lead\">Three stance-conditioned estimates flow to a judge that aggregates them into a 0–100 risk score. The guardrail then checks citation grounding. Y is the guardrail's filtered version of the judge's output.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The measurement architecture is a directed acyclic graph. At the root sits R, the latent risk. Three analyst agents—each reading the same retrieved evidence D but prompted with a different stance—produce noisy estimates Ê_bear, Ê_bull, and Ê_geo. These flow to a judge node J, which aggregates them into a structured JSON object containing an integer risk score from 0 to 100, weighted by the judge's assessment of which analyst the evidence best supports. The judge's output then flows to a guardrail G, which performs citation grounding: it checks whether each claim in J's output maps to actual statements in retrieved documents, assigns a trust score, and flags potential hallucinations. The final reported value Y is G's filtered version of J. This architecture makes explicit what traditional single-agent scoring hides: the intermediate noisy readings and the assumptions about how they combine.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 52.5
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "05 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "RETRIEVED DOCUMENTS D CREATE ",
+          false
+        ],
+        [
+          "SHARED ERROR CORRELATION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>Independent errors</b><span>Would signal ambiguity · reveal true state</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>Correlated errors</b><span>All agents miss same signal · read same false claim</span></div></div><p class=\"lead\">When D contains a confident false claim, all three stance-prompted agents read it and incorporate it. Errors in the three estimates are therefore correlated through D, not independent given R.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Here is the central confounder: all three analysts draw from the same retrieved document set D. D is populated by querying Pinecone with the firm's name and supply-chain-related keywords, pulling from SEC EDGAR 10-K filings, a curated set of five RSS feeds covering trade and logistics, and NewsAPI headlines. When D contains an accurate signal about supply-chain risk, all three analysts read it. When D is missing a signal—because the news hasn't broken yet or because Pinecone ranked it below the cutoff—all three miss it. When D contains a false claim stated with high confidence, all three read it and incorporate it. The errors in Ê_bear, Ê_bull, and Ê_geo are therefore not independent given R. They are correlated through D. This is not a flaw in the design; it's a structural fact. Acknowledging it is the first step to defending against it.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 46.49
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "06 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "STANCE PROMPTING MANUFACTURES ",
+          false
+        ],
+        [
+          "CONDITIONAL DISAGREEMENT.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid3\"><div class=\"cell-part\"><b>Bear analyst</b><span>Downside signals: supplier concentration · geopolitical exposure · regulatory risk</span></div><div class=\"cell-part\"><b>Bull analyst</b><span>Resilience signals: diversification · hedging strategies · recovery history</span></div><div class=\"cell-part hot\"><b>Geopolitical analyst</b><span>State-actor exposure: tariffs · sanctions · trade policy shifts</span></div></div><p class=\"lead\">Each analyst highlights different aspects of the same evidence. The hypothesis is that genuine ambiguity will produce disagreement—but only if D itself contains ambiguous evidence, not misleading confidence.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The system attempts to manufacture conditional independence through stance prompting. The bear analyst is prompted to look for downside signals: supplier concentration, geopolitical exposure, transportation dependencies, regulatory risks. The bull analyst is prompted to look for resilience: diversification, hedging strategies, past recovery from disruption. The geopolitical analyst focuses on state-actor exposure: tariff changes, sanctions regimes, trade policy shifts. All three read the same evidence D, but they are asked to highlight different aspects. The hypothesis is that genuine ambiguity in the evidence will produce disagreement: where evidence is genuinely unclear, the bear and bull will reach different conclusions. But this rests on a subtle assumption: that ambiguity is distributed in the evidence itself, not created by D's upstream selection. If D has selected only documents supporting a false claim, no amount of stance prompting will produce disagreement. All three will agree that the claim is true.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 54.93
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "07 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "THE JUDGE AGGREGATES ",
+          false
+        ],
+        [
+          "THREE NOISY READINGS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Judge's task:</b> Read all three analyst outputs and retrieved documents, then produce a structured JSON object with a 0–100 risk score weighted by assessment of which analyst's reading the evidence best supports.</div><p class=\"lead\">The judge is itself a GPT-4o agent making a holistic interpretive judgment. Structured JSON output enables auditability and downstream code action.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The judge node reads all three stance-conditioned estimates and produces a single aggregated score. It doesn't just average them. Instead, it produces a structured JSON object that includes the risk_score from 0 to 100, weighted by the judge's assessment of which analyst's reading the evidence supports. The judge's job is interpretive: it must decide whether the bear's reading or the bull's reading is more compelling, and to what degree the geopolitical analyst's signals move the needle. This is not a formula; it's a reasoning task. The judge is itself a GPT-4o agent, reading the same documents and the three analyst outputs, making a holistic judgment. The judge's output is structured—JSON, not free text—so that downstream code can parse it, extract the risk score, and track which analysts most influenced the final judgment. This structure also makes the judge's reasoning auditable.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 47.64
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "08 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "THE GUARDRAIL GROUNDS ",
+          false
+        ],
+        [
+          "CLAIMS IN EVIDENCE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Citation grounding</b><span>Does each claim appear in retrieved documents?</span></div><div class=\"wire\"><b>Trust score</b><span>Aggregate confidence in judge's output</span></div><div class=\"wire\"><b>Hallucination flags</b><span>When central claims lack document support</span></div><div class=\"wire\"><b>Structured report</b><span>Dict output enables downstream action</span></div></div><p class=\"lead\">The guardrail is the falsifiability layer. It cannot prevent errors but can flag when the judge's output is ungrounded—the failure mode when all agents read the same misleading claim.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The guardrail performs a separate check on the judge's output. It takes each central claim in the JSON—say, 'supplier X is concentrated in region Y'—and queries the retrieved Pinecone documents to find supporting evidence. It scores citation grounding: does the claim appear in the documents, or is it an inference the judge made? It emits a structured dict with a trust score and hallucination flags. The guardrail is the system's falsifiability layer. It cannot prevent the judge from making errors, but it can flag when the judge's output is not grounded in retrieved evidence. This is crucial because hallucinations—confident false claims that sound plausible—are the failure mode when multiple agents read the same misleading evidence. The guardrail's report is structured, not free text, so downstream code can decide what to do with low-trust outputs or high hallucination-flag counts.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 45.7
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "09 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "THREE DOCUMENT STREAMS ",
+          false
+        ],
+        [
+          "FEED PINECONE RETRIEVAL.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid3\"><div class=\"cell-part\"><b>SEC EDGAR 10-K</b><span>Firm's own disclosures about suppliers · concentration · geopolitical risk</span></div><div class=\"cell-part\"><b>Curated RSS feeds</b><span>Trade · logistics · supply-chain expert coverage</span></div><div class=\"cell-part hot\"><b>NewsAPI headlines</b><span>Broad news flow covering disruptions · tariffs · policy shifts</span></div></div><p class=\"lead\">All embedded with text-embedding-3-small and stored in Pinecone. Citation grounding, not embedding fidelity, is the falsifiability lever. Assumption: signal diversity across sources flags most near-term risks.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The input pipeline feeds three document streams into a single retrieval system. SEC EDGAR 10-K filings supply the firm's own disclosures about supply-chain risk, supplier concentration, and geopolitical exposure. A curated set of five RSS feeds—targeting trade, logistics, and supply-chain coverage—provides ongoing news. NewsAPI supplies broader headline flow. All three are embedded using OpenAI's text-embedding-3-small model and stored in Pinecone for retrieval. The choice of embedding model is a cost decision: citation grounding is the falsifiability lever, not embedding fidelity. When the analyst agents query for supply-chain risk signals related to a given firm, Pinecone returns top-ranked documents from all three sources. The architect's assumption is that the combination of EDGAR (firm-reported), RSS (expert coverage), and NewsAPI (broad news) creates enough signal diversity to flag most near-term supply-chain risks. The next experiment will measure whether that assumption holds.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 57.49
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "10 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "CONDITIONAL INDEPENDENCE REQUIRES ",
+          false
+        ],
+        [
+          "CITATION FALSIFIABILITY.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>Stance prompting</b><span>Manufactures partial independence when evidence is ambiguous</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>Shared confounders</b><span>Overwhelm independence when evidence is misleading</span></div></div><p class=\"lead\">The identifying assumption is conditional independence: given R, the three analysts produce errors at least partially independent. But this breaks when D is unambiguous in a misleading direction. Guardrail citation grounding is the only remaining defense. Validation against held-out disruption events is the next experiment.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The identification strategy rests on two claims. First: stance-prompted agents reading shared evidence can produce partial conditional independence if the evidence is genuinely ambiguous about the underlying risk state. Second: when that assumption fails—when the shared evidence is misleading—citation grounding can catch the failure. These claims are not symmetric in strength. The first is a hope; the second is a safeguard. The identifying assumption is conditional independence: given R, the three analysts produce errors at least partially independent. Stance prompting is the lever supposed to create that independence. But it only works when evidence is ambiguous. When evidence is unambiguous in a misleading direction, all three agents will fail in the same way. Guardrail citation grounding is the only remaining defense. To ship this as a published case, assumptions would need validation against held-out data: historical disruption events labeled before the system sees the firm, hallucination-flag rates validated by hand, and analyst-disagreement variance checked for correlation with actual disruptions.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 59.58
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "MULTI-PERSPECTIVE ENSEMBLING ",
+          false
+        ],
+        [
+          "ESTIMATES LATENT RISK.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">Multi-agent <b>citation-grounded ensembling</b> can estimate latent short-term supply-chain risk despite shared upstream evidence confounders.</div><p class=\"lead\">Stance-prompted agents are not independent—their partial disagreement, filtered through falsifiability, surfaces signals a single agent would miss. Without citation grounding, the system is vulnerable to shared hallucinations. This architecture is measurable and can be validated against labeled disruption events.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The central claim is that multi-perspective ensembling with a citation-grounded guardrail can produce a calibrated estimate of latent short-term supply-chain risk despite confounding from shared upstream evidence. The claim is not that stance-prompted agents are fully independent—they are not. The claim is that their partial disagreement, filtered through citation grounding, surfaces real risk signals that a single agent would miss. The second connected claim is that falsifiability is structural, not optional: without citation grounding, the system is vulnerable to shared hallucinations. The third is that this architecture is measurable: we can run it end-to-end, produce a risk score, and validate it against labeled disruption events. None of those labels exist yet. But the framework is clear. The day-one scaffold is wired end-to-end, every named file builds and imports, the Postgres DDL applies cleanly, and the GitHub Actions deploy pipeline targets Cloud Run. What remains unmeasured is precision and recall against historical events, hallucination-flag rates, and analyst-disagreement variance. Those are the next experiments.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 60.27
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "",
+          false
+        ],
+        [
+          "",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>MULTI-AGENT RISK</span><span>//</span><span>CAUSAL INFERENCE</span><span>//</span><span>CITATION GROUNDING</span></div><p class=\"sig\">Causal Inference · Chapter 24 · Case: Supply Chain Risk Monitor</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 2.0
+        }
+      ]
+    }
+  ]
+}

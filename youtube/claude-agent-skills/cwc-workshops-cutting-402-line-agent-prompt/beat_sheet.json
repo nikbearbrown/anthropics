@@ -1,0 +1,475 @@
+{
+  "metadata": {
+    "slug": "cwc-workshops-cutting-402-line-agent-prompt",
+    "title": "Why cutting a 402-line agent prompt in half — while keeping every fact — makes it faster and better",
+    "topic": "Decomposing a monolith prompt into tools, skills, and code execution",
+    "purpose": "Tools, skills, and subagents trade cost for control; a monolith forces all knowledge into one window, while decomposition lets the agent load only what a task needs, keeping context lean and decisions focused.",
+    "category": "claude-agent-skills",
+    "playlist": "Claude Agent Skills",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "audience": "claude-liam",
+    "palette": "claude",
+    "register": "Teardown",
+    "style_preset": "teardown",
+    "aspect_ratio": "16:9",
+    "clock": "narration (Kokoro am_onyx) — master clock; conform each beat to measured audio",
+    "scaffold": true,
+    "scaffold_source": "anthropics/youtube/video-ideas.md — ai-explainer Sweep 2026-07-24",
+    "builder": "ai-explainer",
+    "source": "`anthropics/cwc-workshops/agent-decomposition/`",
+    "origin": "promoted",
+    "score": "8/10",
+    "length_band": "3–5 min",
+    "still_lanes": "raster (prompt-size bars + cost deltas)",
+    "prerequisites": "managed agents, skills, tool-call tracing",
+    "exclusions": "the full 12-tool API; eval-suite mechanics; how to author a skill",
+    "visual_object": "A decomposition tree — 402-line prompt splitting into a 15-line core + skill modules + tools, with latency/cost deltas at each branch.",
+    "manim_move": "split",
+    "hook": "A 402-line system prompt with 12 tools is slow and expensive; a 15-line prompt holding the same knowledge in skills runs faster and answers better.",
+    "greeting": "Konnichiwa, Liam",
+    "design_version": "v1",
+    "voice": "am_onyx",
+    "build": {
+      "at": "2026-07-28T22:41:47",
+      "cut": "master",
+      "filled": 0,
+      "of": 8,
+      "slates": [
+        "B00",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "YOURTURN",
+        "OUTRO"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "A daily low-stock sweep made 102 tool calls over 488 seconds; after splitting knowledge into on-demand skills and switching to code execution, the same task runs as 3 bash scripts in ~100 seconds — same correctness, far fewer tokens.",
+      "estimated_duration_s": 13,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "from Key case — cold open on the concrete instance",
+      "actual_duration_s": 15.87,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "A DAILY LOW-STOCK SWEEP",
+            "items": [
+              {
+                "label": "A daily low-stock sweep made",
+                "sub": "A daily low-stock sweep made 102 tool calls over 488 seconds; after splitting knowledge into on-demand skills and switching to code execution, the same task runs as 3 bash scripts in ~100 seconds —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "same correctness, far fewer tokens.",
+                "sub": "same correctness, far fewer tokens.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "question",
+      "narration_text": "Why does halving the prompt while keeping all the knowledge improve reasoning instead of degrading it?",
+      "estimated_duration_s": 8,
+      "visual": "on-screen QUESTION",
+      "slate": true,
+      "scaffold_note": "gap-form question beat",
+      "actual_duration_s": 5.65,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "WHY DOES HALVING THE",
+            "items": [
+              {
+                "label": "Why does halving the prompt",
+                "sub": "Why does halving the prompt while keeping all the knowledge improve reasoning instead of degrading it?",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "setup",
+      "narration_text": "A 402-line system prompt with 12 tools is slow and expensive; a 15-line prompt holding the same knowledge in skills runs faster and answers better.",
+      "estimated_duration_s": 8,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "the tension, no visual",
+      "actual_duration_s": 10.28,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "A 402-LINE SYSTEM PROMPT",
+            "items": [
+              {
+                "label": "A 402-line system prompt with 12 tools is slow and expensive",
+                "sub": "A 402-line system prompt with 12 tools is slow and expensive; a 15-line prompt holding the same knowledge in skills runs faster and answers better.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "mechanism",
+      "narration_text": "Tools, skills, and subagents trade cost for control; a monolith forces all knowledge into one window, while decomposition lets the agent load only what a task needs, keeping context lean and decisions focused.",
+      "estimated_duration_s": 18,
+      "visual": "A decomposition tree — 402-line prompt splitting into a 15-line core + skill modules + tools, with latency/cost deltas at each branch.",
+      "manim_move": "split",
+      "slate": true,
+      "scaffold_note": "the resolving mechanism; orbits the visual object",
+      "actual_duration_s": 12.69,
+      "engine": "kokoro",
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Tools, skills, and subagents trade",
+            "items": [
+              {
+                "label": "Tools, skills, and subagents trade",
+                "sub": "Tools, skills, and subagents trade cost for control",
+                "icon": "hand",
+                "cueFrame": 24
+              },
+              {
+                "label": "a monolith forces all knowledge",
+                "sub": "a monolith forces all knowledge into one window, while decomposition lets the agent load only what a task needs, keep…",
+                "icon": "crosshair",
+                "cueFrame": 510
+              }
+            ],
+            "dark": false
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T22:41:47",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "example",
+      "narration_text": "A 200-line reorder-policy skill is uploaded separately; the core shrinks to \"use reorder-policy skill to decide stock levels,\" loaded only on reorder tasks.",
+      "estimated_duration_s": 16,
+      "visual": "16:9 worked example",
+      "slate": true,
+      "scaffold_note": "THE EXAMPLE act, illustrative",
+      "actual_duration_s": 10.05,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "A 200-LINE REORDER-POLICY SKILL",
+            "items": [
+              {
+                "label": "A 200-line reorder-policy skill is uploaded separately",
+                "sub": "A 200-line reorder-policy skill is uploaded separately; the core shrinks to \"use reorder-policy skill to decide stock levels,\" loaded only on reorder tasks.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "recap",
+      "narration_text": "Tools, skills, and subagents trade cost for control; a monolith forces all knowledge into one window, while decomposition lets the agent load only what a task needs, keeping context lean and decisions focused.",
+      "estimated_duration_s": 8,
+      "visual": "verdict card",
+      "slate": true,
+      "scaffold_note": "recap + your-turn handoff",
+      "actual_duration_s": 12.69,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "TOOLS, SKILLS, AND SUBAGENTS",
+            "items": [
+              {
+                "label": "Tools, skills, and subagents trade",
+                "sub": "Tools, skills, and subagents trade cost for control; a monolith forces all knowledge into one window, while decomposition lets the agent load only what a task needs, keeping context lean and decisions focused.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: I have a 402-line agent prompt and the agent is slow and makes more mistakes than it should. Show me the splitting strategy — what moves to on-demand skills versus stays in the core prompt, and how I write a switch-case router that selects the right skill without reading all 402 lines every turn.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · CLAUDE AGENT SKILLS",
+            "command": "I have a 402-line agent prompt and the agent is slow and makes more mistakes than it should. Show me the splitting strategy — what moves to on-demand skills versus stays in the core prompt, and how I write a switch-case router that selects the right skill without reading all 402 lines every turn.",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "Why cutting a 402-line agent prompt in half — while keeping every fact — makes it faster and better",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T22:41:47",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 18.24,
+      "audio_file": "mp3/beat-YOURTURN.mp3"
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "Why cutting a 402-line agent prompt in half — while keeping every fact — makes it faster and better",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why cutting a 402-line agent prompt in half — while keeping every fact — makes it faster and better",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "cwc-workshops-cutting-402-line-agent-prompt"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T22:41:47",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for OUTRO"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 6.63,
+      "audio_file": "mp3/beat-OUTRO.mp3"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why cutting a 402-line agent prompt in half — while keeping every fact — makes it faster and better",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Decomposing a monolith prompt into tools, skills, and code execution",
+            "segment": "Why cutting a 402-line agent prompt in…",
+            "command": "Take what you learned from [Why cutting a 402-line agent prompt in half — while keeping every fact — makes it faster and better] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why cutting a 402-line agent prompt in half — while keeping every fact — makes it faster and better",
+            "slug": "cwc-workshops-cutting-402-line-agent-prompt"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "metadata": {
+    "slug": "claude-plugins-official-same-assistant-code-runs-discord",
+    "title": "Why the same assistant code runs on Discord, Telegram, and iMessage unchanged",
+    "topic": "MCP servers as platform adapters",
+    "purpose": "Each MCP server is a platform adapter that wraps its API in a standard toolset; missing capabilities are simply omitted. The assistant talks to the MCP server, never the platform. Switching platforms means swapping the server, not the assistant.",
+    "category": "claude-plugins",
+    "playlist": "Claude Plugins",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "audience": "claude-liam",
+    "palette": "claude",
+    "register": "Teardown",
+    "style_preset": "teardown",
+    "aspect_ratio": "16:9",
+    "clock": "narration (Kokoro am_onyx) — master clock; conform each beat to measured audio",
+    "scaffold": true,
+    "scaffold_source": "anthropics/youtube/video-ideas.md — ai-explainer Sweep 2026-07-24",
+    "builder": "ai-explainer",
+    "source": "`anthropics/claude-plugins-official/external_plugins/telegram/README.md`",
+    "origin": "promoted",
+    "score": "9/10",
+    "length_band": "3–5 min",
+    "still_lanes": "geo (three lanes), c2v (translation flow)",
+    "prerequisites": "MCP protocol, API abstraction, platform differences",
+    "exclusions": "why specific tools are missing; per-server implementation; full tool references",
+    "visual_object": "A three-lane diagram — platform APIs (left) → MCP servers translating (middle) → unified tools (right), arrows flowing left to right.",
+    "manim_move": "split",
+    "hook": "The same assistant calls `reply`, `react`, and `edit_message` on three platforms whose APIs are completely different.",
+    "greeting": "Konnichiwa, Liam",
+    "design_version": "v1",
+    "voice": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "Discord exposes `reply/react/edit/fetch_messages`; Telegram omits `fetch_messages` (no history); iMessage has `reply` and history but no reactions. Yet \"reply with this\" works identically on all three.",
+      "estimated_duration_s": 15,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "from Key case — cold open on the concrete instance",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam",
+            "topic": "MCP servers as platform adapters",
+            "segment": "Why the same assistant code runs on…",
+            "command": "Why the same assistant code runs on Discord, Telegram, and iMessage unchanged?",
+            "runningText": "building the answer…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "question",
+      "narration_text": "Platform APIs are fundamentally different — some have history, some don't — so how does one assistant work on all of them without a rewrite?",
+      "estimated_duration_s": 10,
+      "visual": "on-screen QUESTION",
+      "slate": true,
+      "scaffold_note": "gap-form question beat",
+      "act": "I — exec summary",
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why the same assistant code runs on Discord, Telegram, and iMessage unchanged",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "setup",
+      "narration_text": "The same assistant calls `reply`, `react`, and `edit_message` on three platforms whose APIs are completely different.",
+      "estimated_duration_s": 8,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "the tension, no visual"
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "mechanism",
+      "narration_text": "Each MCP server is a platform adapter that wraps its API in a standard toolset; missing capabilities are simply omitted. The assistant talks to the MCP server, never the platform. Switching platforms means swapping the server, not the assistant.",
+      "estimated_duration_s": 18,
+      "visual": "A three-lane diagram — platform APIs (left) → MCP servers translating (middle) → unified tools (right), arrows flowing left to right.",
+      "manim_move": "split",
+      "slate": true,
+      "scaffold_note": "the resolving mechanism; orbits the visual object"
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "example",
+      "narration_text": "`reply(text=\"got it\")` → Discord `POST /channels/{id}/messages`; Telegram `sendMessage`; iMessage `osascript … send`. Same code, three translations.",
+      "estimated_duration_s": 16,
+      "visual": "16:9 worked example",
+      "slate": true,
+      "scaffold_note": "THE EXAMPLE act, illustrative"
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "recap",
+      "narration_text": "Each MCP server is a platform adapter that wraps its API in a standard toolset; missing capabilities are simply omitted. The assistant talks to the MCP server, never the platform. Switching platforms means swapping the server, not the assistant.",
+      "estimated_duration_s": 8,
+      "visual": "verdict card",
+      "slate": true,
+      "scaffold_note": "recap + your-turn handoff"
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you want to understand why the same assistant code can run on Discord, Telegram, and iMessage unchanged — what the abstraction is that makes this possible. Ask Claude to explain the platform abstraction layer: what it normalizes across the three platforms, what it cannot normalize, and what you must handle per-platform even with a shared codebase.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to understand why the same assistant code can run on Discord, Telegram, and iMessage without changes — what abstraction makes this possible. Explain the platform abstraction layer: what does it normalize across the three platforms so the assistant code doesn't need to know which one it's on, what does it cannot normalize so the assistant still needs to handle, and what must I handle per-platform even with a shared codebase?",
+            "segment": "Why the same assistant code runs on Discord, Telegram, and iMessage unchanged",
+            "topic": "CLAUDE PLUGINS · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your plugin manifest, integration spec, or connector setup here…"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: YOURTURN added"
+      },
+      "design_version": "v1"
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "Why the same assistant code runs on Discord, Telegram, and iMessage unchanged",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why the same assistant code runs on Discord, Telegram, and iMessage unchanged",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-plugins-official-same-assistant-code-runs-discord"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: OUTRO added"
+      },
+      "design_version": "v1"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why the same assistant code runs on Discord, Telegram, and iMessage unchanged",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · MCP servers as platform adapters",
+            "segment": "Why the same assistant code runs on…",
+            "command": "Take what you learned from [Why the same assistant code runs on Discord, Telegram, and iMessage unchanged] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why the same assistant code runs on Discord, Telegram, and iMessage unchanged",
+            "slug": "claude-plugins-official-same-assistant-code-runs-discord"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

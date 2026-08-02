@@ -1,0 +1,313 @@
+{
+  "metadata": {
+    "slug": "skills-50-round-agent-survives-past",
+    "title": "Why a 50-round agent survives past its own memory limit",
+    "topic": "Compacting growing context in long agent sessions",
+    "purpose": "A compaction directive makes the model emit a summary block for removed content, then continue on the compressed context as if it had been there all along.",
+    "category": "claude-skills",
+    "playlist": "Claude Skills",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "audience": "claude-liam",
+    "palette": "claude",
+    "register": "Teardown",
+    "style_preset": "teardown",
+    "aspect_ratio": "16:9",
+    "clock": "narration (Kokoro am_onyx) — master clock; conform each beat to measured audio",
+    "scaffold": true,
+    "scaffold_source": "anthropics/youtube/video-ideas.md — ai-explainer Sweep 2026-07-24",
+    "builder": "ai-explainer",
+    "source": "`anthropics/skills/skills/claude-api/go/claude-api/README.md`",
+    "origin": "promoted",
+    "score": "8/10",
+    "length_band": "2–3 min",
+    "still_lanes": "c2v",
+    "prerequisites": "context window, token accumulation",
+    "exclusions": "other edit variants, cache/TTL interaction, billing for compaction tokens",
+    "visual_object": "A vertical stack of content blocks accumulating until a compaction boundary fires and collapses them into one summary block, with a token counter shown before and after.",
+    "manim_move": "collapse",
+    "hook": "Your agent has run 50 tool calls and the context window is nearly full — truncate and drop history, or compact and keep the gist?",
+    "greeting": "Konnichiwa, Liam",
+    "design_version": "v1",
+    "voice": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "A coding agent runs 50 rounds of tool calls across a 2-hour session; context approaches the token ceiling mid-task.",
+      "estimated_duration_s": 15,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "from Key case — cold open on the concrete instance",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam",
+            "topic": "Compacting growing context in long agent sessions",
+            "segment": "Why a 50-round agent survives past its…",
+            "command": "Why a 50-round agent survives past its own memory limit?",
+            "runningText": "building the answer…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "question",
+      "narration_text": "Context grows monotonically with every message and tool result — how does a long agent stay alive without losing the thread? Truncating drops information; unlimited accumulation breaks the model.",
+      "estimated_duration_s": 10,
+      "visual": "on-screen QUESTION",
+      "slate": true,
+      "scaffold_note": "gap-form question beat",
+      "act": "I — exec summary",
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why a 50-round agent survives past its own memory limit",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "setup",
+      "narration_text": "Your agent has run 50 tool calls and the context window is nearly full — truncate and drop history, or compact and keep the gist?",
+      "estimated_duration_s": 8,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "the tension, no visual"
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "mechanism",
+      "narration_text": "A compaction directive makes the model emit a summary block for removed content, then continue on the compressed context as if it had been there all along.",
+      "estimated_duration_s": 18,
+      "visual": "A vertical stack of content blocks accumulating until a compaction boundary fires and collapses them into one summary block, with a token counter shown before and after.",
+      "manim_move": "collapse",
+      "slate": true,
+      "scaffold_note": "the resolving mechanism; orbits the visual object"
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "example",
+      "narration_text": "50 rounds ≈ 40,000 tokens. Compaction fires at 80% capacity, compressing them into one ≈2,000-token summary. Round 51 begins with 3,000 tokens of live context instead of hitting the ceiling.",
+      "estimated_duration_s": 16,
+      "visual": "16:9 worked example",
+      "slate": true,
+      "scaffold_note": "THE EXAMPLE act, illustrative"
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "recap",
+      "narration_text": "A compaction directive makes the model emit a summary block for removed content, then continue on the compressed context as if it had been there all along.",
+      "estimated_duration_s": 8,
+      "visual": "verdict card",
+      "slate": true,
+      "scaffold_note": "recap + your-turn handoff"
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: I'm building a coding agent that runs for many rounds of tool calls. Walk me through the three options when context fills up — checkpoint, summarize, or restart — and what each one costs in terms of task continuity. Ask Claude to recommend one for a stateful file-editing agent.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · CLAUDE SKILLS",
+            "command": "I'm building a coding agent that runs for many rounds of tool calls. Walk me through the three options when context fills up — checkpoint, summarize, or restart — and what each one costs in terms of task continuity. Then recommend one for a stateful file-editing agent.",
+            "runningText": "paste your agent loop code…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "segment": "Why a 50-round agent survives past its own memory limit"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: YOURTURN added"
+      },
+      "design_version": "v1"
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "Why a 50-round agent survives past its own memory limit",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why a 50-round agent survives past its own memory limit",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "skills-50-round-agent-survives-past"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: OUTRO added"
+      },
+      "design_version": "v1"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why a 50-round agent survives past its own memory limit",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Compacting growing context in long agent sessions",
+            "segment": "Why a 50-round agent survives past its…",
+            "command": "Take what you learned from [Why a 50-round agent survives past its own memory limit] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why a 50-round agent survives past its own memory limit",
+            "slug": "skills-50-round-agent-survives-past"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

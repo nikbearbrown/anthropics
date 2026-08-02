@@ -1,0 +1,464 @@
+{
+  "metadata": {
+    "title": "Animate Protein-Level Loss with Claude Code",
+    "slug": "protein-level-loss",
+    "topic": "CANCER BIOLOGY · CLAUDE CODE",
+    "register": "Teardown",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "palette": "claude",
+    "style": "cli",
+    "channel": "@NikBearBrown",
+    "note": "CLI video — REQUIRED spine: B00 cold open (ClaudeComposerAsk, ask answered) · B01 PROBLEM 1 (what is being animated) · B02 PROBLEM 2 (why it matters) · B03 ASK (ClaudeComposerAsk — real prompt) · B04 CODE (ClaudeCodeBeat — actual class) · B05 OUTPUT (Manim) · B06 CHANGE (ClaudeComposerAsk — revision) · B07 OUTPUT (Manim) · B08 SUMMARY · B09 NEXT STEPS (ClaudeComposerAsk, 'Your turn.') · B10 OUTRO (ClaudeTitleOutro @NikBearBrown). Source plate: cancer-biology/illustrae/plates/18-protein-level-loss.svg",
+    "build": {
+      "at": "2026-07-25T10:30:58",
+      "cut": "master",
+      "filled": 3,
+      "of": 11,
+      "slates": [
+        "B00",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B09",
+        "B10"
+      ],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "role_note": "COLD OPEN LAW — open on the Claude UI, ask shown answered",
+      "narration_text": "Salam, Liam. One Claude prompt. An animated production-line failure — intact gene, intact mRNA, protein synthesised and then taken apart before it ever arrives.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Port the protein-level-loss plate from plates_gen.py p18() into Manim.\nProduction line: intact gene → mRNA (wavy) → SKY protein circle → 3 VERM tags\nattach → VERM arrow diverts protein into funnel/shredder → empty dashed slot\nat right (where protein should have arrived). Animate left to right.\"",
+            "topic": "CANCER BIOLOGY · CLAUDE CODE",
+            "segment": "Animate Protein-Level Loss",
+            "greeting": "Salam, Liam",
+            "runningText": "building protein-level-loss…",
+            "output": [
+              "scenes.py written",
+              "B05_ProteinLevelLoss ready",
+              "gene → mRNA → SKY protein → VERM funnel → empty slot"
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 10.07,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:30:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM 1 — what is being animated",
+      "role_note": "The mechanism before the build — what protein-level loss IS",
+      "narration_text": "Gene mutations are not the only way to silence a tumour suppressor. Sometimes the gene is intact, the mRNA is made, the protein is synthesised — and then it is tagged for destruction before it can do anything. This plate animates that production-line failure.",
+      "visual_intent": "Slate — production line: gene → mRNA → protein → tagged → shredder → empty slot at right (where protein should have arrived)",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "STD_B01_claude_liam_protein_level",
+          "file": "scenes.py"
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 14.93,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim:STD_B01_claude_liam_protein_level",
+        "at": "2026-07-25T10:30:58"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "PROBLEM 2 — why it matters",
+      "role_note": "Stakes before the build — HPV E6, p53 degradation, invisible to sequencing",
+      "narration_text": "HPV's E6 protein does exactly this to p53. It recruits an E3 ubiquitin ligase, tags p53 for proteasomal degradation, and the protein is gone within minutes. The gene looks normal in sequencing, the mRNA looks normal — only the protein level tells the story. It is why p53 pathway loss in HPV cancers is not detectable as a mutation.",
+      "visual_intent": "Slate — stat card: HPV E6 → E3 ligase → ubiquitin tags → proteasome; gene reads normal by sequencing; protein absent",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "STD_B02_claude_liam_protein_level",
+          "file": "scenes.py"
+        }
+      },
+      "estimated_duration_s": 16,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 21.53,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:STD_B02_claude_liam_protein_level",
+        "at": "2026-07-25T10:30:58"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "ASK",
+      "role_note": "ClaudeComposerAsk — the REAL Claude Code prompt. SPARK-LINE LAW: greeting = 'The ask,'",
+      "narration_text": "The ask. Into Claude: port the protein-level-loss plate from plates underscore gen dot py p18 into Manim. Production line: intact gene — a GRAY rounded rectangle with an INK tick — then an arrow to a wavy mRNA path in BLUE, then an arrow to a SKY protein circle. Three VERM tag-dots attach around the top of the circle. A VERM downward arrow diverts the protein into a VERM funnel-shredder below. And at the right — a dashed GRAY empty slot rectangle, no fill — where the protein should have arrived. Animate left to right.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Port the protein-level-loss plate from plates_gen.py p18() into Manim.\nProduction line: intact gene → mRNA (wavy) → SKY protein circle → 3 VERM tags\nattach → VERM arrow diverts protein into funnel/shredder → empty dashed slot\nat right (where protein should have arrived). Animate left to right.\"",
+            "topic": "CANCER BIOLOGY · CLAUDE CODE",
+            "segment": "Animate Protein-Level Loss",
+            "greeting": "The ask,",
+            "runningText": "porting geometry…"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 20,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 28.93,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:30:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "CODE",
+      "role_note": "ClaudeCodeBeat — the ACTUAL B05_ProteinLevelLoss class, trimmed to what teaches",
+      "narration_text": "Read it. The production line is five objects — gene rect, mRNA wavy approximation, protein circle, funnel trapezoid, empty slot — laid at x positions from minus five to plus five. The wavy mRNA uses three Arc objects stitched end to end to give the squiggle without an SVG import. The VERM tag-dots are three small solid circles placed by offset from the protein centre. The funnel is a Polygon with two wider points at top and two narrower at bottom — the hash lines are just three short Line objects drawn inside. The empty slot is a dashed Rectangle with no fill. The choreography is strictly left-to-right: gene in, arrow grows, mRNA in, arrow grows, protein in, then the three tags snap on with a LaggedStart. Then the diversion: the VERM arrow grows downward, the funnel fades in. Finally the dashed arrow grows toward the empty slot — interrupted, going nowhere.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "scenes.py — B05_ProteinLevelLoss",
+            "code": "# scenes.py — Claude Code output\nSKY=\"#56B4E9\"; BLUE=\"#0072B2\"; VERM=\"#D55E00\"; GRAY=\"#7c7c7c\"; INK=\"#333333\"\n\nclass B05_ProteinLevelLoss(Scene):\n  def construct(self):\n    gene=VGroup(\n      RoundedRectangle(width=1.5,height=0.5,corner_radius=0.1,\n        color=GRAY,fill_color=GRAY,fill_opacity=0.18,stroke_width=2.4\n      ).move_to([-5.5,0,0]),\n      Line([-5.5,-0.22,0],[-5.5,0.22,0],color=INK,stroke_width=3))\n    mrna_arc=VGroup(*[\n      Arc(radius=0.2,start_angle=PI if k%2==0 else 0,\n          angle=PI,color=BLUE,stroke_width=4\n      ).move_to([-3.0+k*0.4,0,0]) for k in range(4)])\n    protein=Circle(radius=0.6,color=SKY,\n      fill_color=SKY,fill_opacity=0.3,stroke_width=3).move_to([0,0,0])\n    tags=VGroup(*[Dot(radius=0.12,color=VERM).move_to(\n      [dx,dy,0]) for dx,dy in [(-0.5,0.52),(0.03,0.66),(0.57,0.52)]])\n    funnel=Polygon(\n      [-0.87,-1.7,0],[0.87,-1.7,0],[0.33,-2.5,0],[-0.33,-2.5,0],\n      color=VERM,fill_color=VERM,fill_opacity=0.22,stroke_width=3)\n    slot=DashedVMobject(Rectangle(width=2.2,height=1.0,\n      color=GRAY,stroke_width=3).move_to([4.0,0,0]),num_dashes=18)\n    self.play(FadeIn(gene),run_time=0.4)\n    self.play(GrowArrow(Arrow([-4.7,0,0],[-3.8,0,0],buff=0,color=GRAY)))\n    self.play(FadeIn(mrna_arc),run_time=0.4)\n    self.play(GrowArrow(Arrow([-2.2,0,0],[-1.0,0,0],buff=0,color=GRAY)))\n    self.play(FadeIn(protein),run_time=0.4)\n    self.play(LaggedStart(*[FadeIn(t) for t in tags],lag_ratio=0.25))\n    self.play(GrowArrow(Arrow([0,-0.65,0],[0,-1.6,0],buff=0,color=VERM)))\n    self.play(FadeIn(funnel),run_time=0.5)\n    self.play(GrowArrow(Arrow([1.0,0,0],[2.7,0,0],buff=0,color=GRAY,\n      stroke_width=2)))\n    self.play(FadeIn(slot),run_time=0.4); self.wait(0.8)",
+            "sparkLine": "Gene fine. Protein gone."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 22,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 47.98,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:30:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "OUTPUT — initial animation",
+      "role_note": "Manim render of B05_ProteinLevelLoss — watch the left-to-right production line and diversion",
+      "narration_text": "Run it. Watch left to right — gene in, arrow grows, mRNA squiggle in, arrow grows, protein circle in. Then the three VERM tags snap onto the protein top, one after another. Then the VERM arrow pulls downward, the funnel fades in below. Finally a gray dashed arrow grows toward the right — and stops at an empty slot. The protein never arrived. The brake was manufactured but never delivered.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "B05_ProteinLevelLoss",
+          "file": "scenes.py"
+        }
+      },
+      "estimated_duration_s": 16,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 20.74,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:30:58",
+        "needs": "PIPELINE → render animated_graphics.py scene B05_*"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "CHANGE",
+      "role_note": "ClaudeComposerAsk — revision prompt. SPARK-LINE LAW: greeting = 'The change,'",
+      "narration_text": "The change. Revise: after the tags attach, Flash them VERM to emphasise the tagging event. Then animate the protein position moving toward the funnel and FadeOut as it enters. The empty slot at right pulses with a succession of Indicate animations — it needs to look absent, not just empty. And keep the gene and mRNA bright throughout — the blueprint was fine.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Revise: after tags attach, Flash them VERM to emphasize tagging event.\nProtein moves toward funnel (animate position) then FadeOut as it enters.\nEmpty slot pulses (Indicate) to show the absence. Gene and mRNA stay bright\nthroughout — the blueprint was fine.\"",
+            "topic": "CANCER BIOLOGY · CLAUDE CODE",
+            "segment": "Animate Protein-Level Loss",
+            "greeting": "The change,",
+            "runningText": "adding tagging flash + protein diversion…"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 16,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 19.09,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:30:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "OUTPUT — revised animation with tagging emphasis",
+      "role_note": "Manim render of B07_ProteinLevelLossFocus — Flash tags, animate protein into funnel, Indicate empty slot",
+      "narration_text": "Watch the revision. The gene stays bright, the mRNA stays bright — the blueprint held. When the third tag snaps on, all three Flash VERM at once: that is the tagging event, the ubiquitin signature. Then the protein itself moves toward the funnel — you can see it pulled — and fades out as it enters. And the empty slot on the right pulses, over and over, calling attention to the absence. The brake was made. The brake was taken. This slot is where p53 should be.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "B07_ProteinLevelLossFocus",
+          "file": "scenes.py"
+        }
+      },
+      "estimated_duration_s": 16,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 22.53,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:30:58",
+        "needs": "PIPELINE → render animated_graphics.py scene B07_*"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "SUMMARY",
+      "role_note": "What we built and what the motion taught",
+      "narration_text": "The gene was fine. The mRNA was fine. The protein was made — and then taken apart. The animation made visible a loss mechanism that looks like nothing from the DNA sequence alone.",
+      "visual_intent": "Slate — summary card: gene intact · mRNA intact · protein degraded · sequencing cannot see this; 'animate the invisible loss'",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "STD_B08_claude_liam_protein_level",
+          "file": "scenes.py"
+        }
+      },
+      "estimated_duration_s": 10,
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 11.03,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim:STD_B08_claude_liam_protein_level",
+        "at": "2026-07-25T10:30:58"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "NEXT STEPS",
+      "role_note": "HANDOFF LAW — suggested prompt typed in, read aloud AND discussed. greeting = 'Your turn.'",
+      "narration_text": "Your turn. Take this prompt into Claude: animate the MDM2 feedback arm — p53 transcribes MDM2, MDM2 tags p53 for proteasomal degradation — as a loop off the p53 node in the relay scene. Why run it? Because now you have two routes to the same outcome: the E6 external hijack we just animated, and the MDM2 self-limiting loop that is endogenous. When you animate both you can show the difference between a normal auto-regulation and a viral subversion. The E6 loop has no counter-signal; the MDM2 loop does. That distinction is why p53 accumulates transiently after DNA damage but is held at near-zero in HPV-positive cells even without any mutation.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Add a feedback-loop scene: p53 transcribes MDM2 → MDM2 tags p53\nfor degradation → loop arrow back. Contrast with the E6 external hijack:\nno counter-signal, held near-zero even without mutation.\"",
+            "topic": "CANCER BIOLOGY · CLAUDE CODE",
+            "segment": "Animate Protein-Level Loss",
+            "greeting": "Your turn.",
+            "runningText": "paste this into Claude…"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 22,
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 40.68,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:30:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B09"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "OUTRO",
+      "role_note": "OUTRO LAW — restate the episode title",
+      "narration_text": "Animate Protein-Level Loss with Claude Code. I'm Liam, in for Bear.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Animate Protein-Level Loss with Claude Code.",
+            "handle": "@NikBearBrown",
+            "subline": "built with Claude, taken apart"
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 4.71,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T10:30:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B10"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Animate Protein-Level Loss with Claude Code",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CANCER BIOLOGY · CLAUDE CODE",
+            "segment": "Animate Protein-Level Loss with Claude Code",
+            "command": "Take what you learned from [Animate Protein-Level Loss with Claude Code] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Animate Protein-Level Loss with Claude Code",
+            "slug": "protein-level-loss"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,493 @@
+{
+  "metadata": {
+    "slug": "model-cards-re-reading-own-order-back",
+    "title": "Why re-reading your own order back to the user catches errors parsing never will",
+    "topic": "Confirmation as a synchronization barrier before irreversible actions",
+    "purpose": "Confirmation is a checkpoint where the agent's representation of the action must match the user's actual intent; the user's mind flags a mismatch the parser had no way to see, before the write is committed.",
+    "category": "behind-the-model",
+    "playlist": "Behind The Model",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "audience": "claude-liam",
+    "palette": "claude",
+    "register": "Teardown",
+    "style_preset": "teardown",
+    "aspect_ratio": "16:9",
+    "clock": "narration (Kokoro am_onyx) — master clock; conform each beat to measured audio",
+    "scaffold": true,
+    "scaffold_source": "anthropics/youtube/video-ideas.md — ai-explainer Sweep 2026-07-24",
+    "builder": "ai-explainer",
+    "source": "`anthropics/model-cards/claude-opus-4-5-20251101/tau2/airline_policy.md`",
+    "origin": "promoted",
+    "score": "8/10",
+    "length_band": "2–3 min",
+    "still_lanes": "c2v",
+    "prerequisites": "none",
+    "exclusions": "specific airline rules, payment processing internals",
+    "visual_object": "A timeline — hidden user intent → agent's parsed action → recited details → user scans/corrects → execute — with intent and parse drawn diverging, then snapping together at confirmation.",
+    "manim_move": "split",
+    "hook": "Before any database write, the agent must list every detail back and get an explicit \"yes\" — a step that looks redundant until it catches a mistake the parser accepted.",
+    "greeting": "Konnichiwa, Liam",
+    "design_version": "v1",
+    "voice": "am_onyx",
+    "build": {
+      "at": "2026-07-28T21:42:22",
+      "cut": "master",
+      "filled": 0,
+      "of": 8,
+      "slates": [
+        "B00",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "YOURTURN",
+        "OUTRO"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "The agent recites \"Cancel reservation ABC: refund $450 to credit card ••4567, 2 passengers, 5–7 days\"; the user stops it — \"I wanted a travel certificate, not a card refund\" — the agent re-lists corrected details and only then executes.",
+      "estimated_duration_s": 13,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "from Key case — cold open on the concrete instance",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 17.28,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THE AGENT RECITES \"CANCEL",
+            "items": [
+              {
+                "label": "The agent recites \"Cancel reservation ABC: refund $450 to credit card ••4567",
+                "sub": "The agent recites \"Cancel reservation ABC: refund $450 to credit card ••4567, 2 passengers, 5–7 days\"; the user stops it —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "\"I wanted a travel certificate,",
+                "sub": "\"I wanted a travel certificate, not a card refund\" —",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "the agent re-lists corrected details and only then executes",
+                "sub": "the agent re-lists corrected details and only then executes.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "question",
+      "narration_text": "The agent already parsed the request correctly by its own lights; why does forcing the user to re-affirm catch errors that would otherwise commit silently?",
+      "estimated_duration_s": 8,
+      "visual": "on-screen QUESTION",
+      "slate": true,
+      "scaffold_note": "gap-form question beat",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 8.7,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THE AGENT ALREADY PARSED",
+            "items": [
+              {
+                "label": "The agent already parsed the request correctly by its own lights",
+                "sub": "The agent already parsed the request correctly by its own lights; why does forcing the user to re-affirm catch errors that would otherwise commit silently?",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "setup",
+      "narration_text": "Before any database write, the agent must list every detail back and get an explicit \"yes\" — a step that looks redundant until it catches a mistake the parser accepted.",
+      "estimated_duration_s": 8,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "the tension, no visual",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 9.79,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "BEFORE ANY DATABASE WRITE",
+            "items": [
+              {
+                "label": "Before any database write, the",
+                "sub": "Before any database write, the agent must list every detail back and get an explicit \"yes\" —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "a step that looks redundant",
+                "sub": "a step that looks redundant until it catches a mistake the parser accepted.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "mechanism",
+      "narration_text": "Confirmation is a checkpoint where the agent's representation of the action must match the user's actual intent; the user's mind flags a mismatch the parser had no way to see, before the write is committed.",
+      "estimated_duration_s": 18,
+      "visual": "A timeline — hidden user intent → agent's parsed action → recited details → user scans/corrects → execute — with intent and parse drawn diverging, then snapping together at confirmation.",
+      "manim_move": "split",
+      "slate": true,
+      "scaffold_note": "the resolving mechanism; orbits the visual object",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 11.99,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "CONFIRMATION IS A CHECKPOINT",
+            "items": [
+              {
+                "label": "Confirmation is a checkpoint where",
+                "sub": "Confirmation is a checkpoint where the agent's representation of the action must match the user's actual intent; the user's mind flags a mismatch the parser had no way to see, before the write is committed.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "example",
+      "narration_text": "User asks for $30 insurance for 2 passengers; agent recites \"Insurance: $60 (2 × $30)\"; user: \"only one passenger\" — caught before payment commits.",
+      "estimated_duration_s": 16,
+      "visual": "16:9 worked example",
+      "slate": true,
+      "scaffold_note": "THE EXAMPLE act, illustrative",
+      "engine": "kokoro",
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "User asks for $30 insurance",
+            "items": [
+              {
+                "label": "User asks for $30 insurance",
+                "sub": "User asks for $30 insurance for 2 passengers",
+                "icon": "circle-check",
+                "cueFrame": 24
+              },
+              {
+                "label": "agent recites \"Insurance: $60 (2",
+                "sub": "agent recites \"Insurance: $60 (2 × $30)\"",
+                "icon": "BOX",
+                "cueFrame": 237
+              },
+              {
+                "label": "user: \"only one passenger\" —",
+                "sub": "user: \"only one passenger\" — caught before payment commits",
+                "icon": "circle-check",
+                "cueFrame": 450
+              }
+            ],
+            "dark": true
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 10.79,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T21:42:22",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "recap",
+      "narration_text": "Confirmation is a checkpoint where the agent's representation of the action must match the user's actual intent; the user's mind flags a mismatch the parser had no way to see, before the write is committed.",
+      "estimated_duration_s": 8,
+      "visual": "verdict card",
+      "slate": true,
+      "scaffold_note": "recap + your-turn handoff",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 11.99,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "CONFIRMATION IS A CHECKPOINT",
+            "items": [
+              {
+                "label": "Confirmation is a checkpoint where",
+                "sub": "Confirmation is a checkpoint where the agent's representation of the action must match the user's actual intent; the user's mind flags a mismatch the parser had no way to see, before the write is committed.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you want to add a confirmation step where the agent reads back what it's about to do before executing. Ask Claude for the recitation pattern — what the agent says, in what format, and what it waits for — and why a read-back catches parsing errors that a pre-execution check misses.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "BEHIND THE MODEL · @NikBearBrown",
+            "command": "I want to add a confirmation step to my agent that reads back what it's about to do before executing a destructive action. Show me the recitation pattern — what the agent says, in what format, and what it waits for before proceeding — and explain why a read-back catches parsing errors that a pre-execution check misses.",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "Why re-reading your own order back to the user catches errors parsing never will",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T21:42:22",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      },
+      "design_version": "v1",
+      "audio_file": "mp3/beat-YOURTURN.mp3",
+      "actual_duration_s": 16.02
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "Why re-reading your own order back to the user catches errors parsing never will",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why re-reading your own order back to the user catches errors parsing never will",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "model-cards-re-reading-own-order-back"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T21:42:22",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for OUTRO"
+      },
+      "design_version": "v1",
+      "audio_file": "mp3/beat-OUTRO.mp3",
+      "actual_duration_s": 4.74
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why re-reading your own order back to the user catches errors parsing never will",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Confirmation as a synchronization barrier before irreversible actions",
+            "segment": "Why re-reading your own order back to…",
+            "command": "Take what you learned from [Why re-reading your own order back to the user catches errors parsing never will] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why re-reading your own order back to the user catches errors parsing never will",
+            "slug": "model-cards-re-reading-own-order-back"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

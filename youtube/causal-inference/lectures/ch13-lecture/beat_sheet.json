@@ -1,0 +1,343 @@
+{
+  "slug": "Causal-Inference-ch13-llm-causal-variable-identification",
+  "title": "LLMs for Causal Variable Identification",
+  "series": "Causal Inference",
+  "source": "chapters/13-llm-causal-variable-identification.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 15,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "AN LLM THAT SOUNDS RIGHT ",
+          false
+        ],
+        [
+          "ISN'T CAUSALLY RIGHT.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Sounds Causally Correct</b><span>Reads like expert domain knowledge, cites plausible relationships, smooth writing</span></div><div class=\"cell-part hot\"><b>Actually Causally Correct</b><span>Requires causal validity; wrong arrows invalidate downstream inference</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The opening problem is deceptively simple. An LLM reads a data dictionary. It patterns over variable names and descriptions. It knows from its training data which variables typically appear together in text about healthcare, demographics, outcomes. It produces a causal graph that reads fluidly, cites plausible mechanisms, sounds like it could come from a causal inference textbook. The writing is smooth. The proposals feel authoritative. But sounding causally correct is not the same as being causally correct. Large language models are fundamentally distributional—they learn patterns in probability distributions over training data. They predict likely next tokens, likely co-occurring variables, likely relationships in English text. This is not causal reasoning. This is pattern recognition over correlations. The chapter begins here: a model that is brilliantly good at one task can fail completely at another, and the failure can be invisible to an untrained eye.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 51.43
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "STAKES",
+      "label": "02 / 12 · STAKES",
+      "dark": false,
+      "title": [
+        [
+          "THE FIRST STEP OF ",
+          false
+        ],
+        [
+          "CAUSAL MODELING BREAKS EVERYTHING.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Correct DAG</span><span class=\"arw\">→</span><span class=\"chip on\">Valid Estimates</span><span class=\"arw\">→</span><span class=\"chip\">Defensible Inference</span></div><p class=\"lead\">One wrong edge reverses the direction of causality and invalidates the entire analysis.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Why does this matter? Because the causal graph is the foundation. In Pearl's framework, which is the standard in applied causal inference, the DAG encodes your assumptions about which variables are causes, which are effects, which confound relationships you care about. Statistical estimators—matching, regression adjustment, propensity score weighting, inverse probability weighting—all flow from the graph. They assume the graph is right. If the graph is wrong, the estimates are wrong. An LLM that proposes a causal edge that does not actually exist, or reverses the direction of a real edge, or fails to include a confounder, produces a broken graph. Subsequent estimation will be garbage in, garbage out. Dr. Osei's task—building a DAG to estimate the effect of a post-discharge nursing intervention on readmission rates—is not a footnote or an optional step. It is where causal inference begins. Get it wrong, and everything downstream collapses.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 48.3
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "03 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "LARGE LANGUAGE MODELS ",
+          false
+        ],
+        [
+          "PREDICT THE NEXT TOKEN.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Distributional Learning</b><span>Models learn probability distributions over tokens in training data</span></div><div class=\"wire\"><b>Pattern Matching</b><span>When given context, predict likely continuations based on statistical regularities</span></div><div class=\"wire\"><b>No Causal Reasoning</b><span>Probability is not causation; correlation in text does not imply causal structure</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "To use LLMs responsibly in causal modeling, you need a clear picture of what happens when one reads a data dictionary. The mechanism is specific. An LLM does not 'understand' causality in the way a human expert does. It learns a distributional model—a high-dimensional map of which tokens, phrases, and concepts tend to co-occur in its training data. When it reads a variable description like 'LOS: Length of stay in days'—it uses that context to predict which words are likely to come next. Based on regularities in medical literature, hospital documentation, and causal inference papers, certain words become probable. Variables that typically co-occur with LOS in text about readmission—like age, diagnosis, comorbidity—appear plausible causes. But this is pattern matching over correlations, not reasoning about causal structure. The chapter emphasizes this repeatedly: the LLM is doing something narrow and domain-specific, regardless of how general-purpose it appears. Understanding this limitation is the key to using LLMs as tools rather than oracles.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 58.18
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "04 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "ON PEARL'S CAUSAL LADDER ",
+          false
+        ],
+        [
+          "LLMS ONLY REACH RUNG ONE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Rung 1: Observational</b><span>What is likely? Prediction from correlations in data</span></div><div class=\"wire\"><b>Rung 2: Interventional</b><span>What if I act? Causal effects under manipulation</span></div><div class=\"wire\"><b>Rung 3: Counterfactual</b><span>What if I had acted differently? Unobservable alternatives</span></div></div><p class=\"lead\">An LLM performing distributional learning operates entirely on Rung 1—predicting what is likely given training data, not what causes what.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Judea Pearl introduced a three-rung causal hierarchy as a framework for understanding what questions a system can answer. Rung 1 is observational: what is likely given observed data? LLMs excel at Rung 1—they predict probable next tokens and relationships. Rung 2 is interventional: what if we manipulate a variable? This is causal, asking about consequences of actions, not correlations. Rung 3 is counterfactual: what would have happened under different conditions? Rung 1 uses observed data. Rungs 2 and 3 require causal structure. The key insight: when an LLM reads a data dictionary and proposes a causal relationship, it operates on Rung 1, answering 'what is likely' from training data. To build an actual causal model, you must move to Rungs 2 and 3. That requires human expertise rooted in domain knowledge and causal reasoning.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 43.48
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "05 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "TWO HUNDRED FOURTEEN VARIABLES ",
+          false
+        ],
+        [
+          "AND FOUR DAYS TO DECIDE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big on\">214</div><div class=\"cap\">Variables in dictionary</div></div><div class=\"eq\">vs</div><div class=\"stat\"><div class=\"big warn\">4 days</div><div class=\"cap\">Available time</div></div></div><p class=\"lead\">Manual DAG construction takes weeks. Dr. Osei has a four-day grant deadline. This mismatch is where LLM tools become tempting—and where errors become dangerous.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The chapter opens with a real problem. Dr. Amara Osei is building a causal model of post-discharge interventions and hospital readmissions. Her dataset has 214 variables: patient demographics, diagnosis codes, lengths of stay, lab values, medications, discharge dispositions, payer types, physician specialties. Each needs a place in the DAG. She needs to decide which are confounders, mediators, colliders, and irrelevant. She needs to get the arrows right. If done carefully, this work takes three weeks—reviewing variable definitions, consulting clinical literature, interviewing domain experts, iterating on the graph structure. But her grant timeline gives her four days. This is the bottleneck in applied causal inference. The conceptual machinery is mature. The estimators are well-developed. What remains stubbornly manual is identifying variables and drawing arrows. LLMs offer a seductive promise: read the dictionary in minutes, propose a draft graph, accelerate the process. The promise is real. The danger is equally real.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 54.93
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "06 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "FOUR WAYS AN ",
+          false
+        ],
+        [
+          "LLM-BUILT DAG FAILS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Hallucinated Edges</b><span>LLM proposes causal relationships that do not actually exist</span></div><div class=\"wire\"><b>Reversed Directions</b><span>Causality runs effect → cause instead of cause → effect</span></div><div class=\"wire\"><b>Missing Confounders</b><span>Fails to identify common causes that open backdoor paths</span></div><div class=\"wire\"><b>Collider Conditioning</b><span>Conditions on a collider, opening a false spurious path</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The learning objective lists four structural failure modes that appear in LLM-proposed DAGs. First: hallucinated edges. The LLM invents causal relationships that sound plausible but do not actually exist. It read correlations in training data that do not reflect true causal structure. Second: reversed directions. A real causal relationship is drawn backwards—the effect points to the cause instead of the cause pointing to the effect. Third: missing confounders. The LLM fails to identify a shared cause that would create a backdoor path between treatment and outcome, violating the backdoor criterion. Fourth: collider conditioning. The LLM suggests adjusting for a variable that is actually a collider—a common effect—which opens a spurious association between its causes. Each failure mode breaks inference in a different way. Hallucinated edges create bias. Reversed edges reverse the direction of bias. Missing confounders leave backdoors open. Collider conditioning creates artificial associations. Detecting which mode occurred is essential to fixing the DAG.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 57.77
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "07 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "THREE QUESTIONS CATCH ",
+          false
+        ],
+        [
+          "MOST LLM ERRORS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Question 1</b><span>Does this edge make causal sense given domain knowledge?</span></div><div class=\"wire\"><b>Question 2</b><span>Is the direction correct, or is causality reversed?</span></div><div class=\"wire\"><b>Question 3</b><span>Are we missing a confounder that explains both variables?</span></div></div><p class=\"lead\">Apply these three questions at every proposed edge. Most hallucinated and reversed edges fail at least one of them.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The chapter teaches the Human Decision Node protocol—three diagnostic questions that allow a human expert to catch LLM errors. First: does this edge make causal sense given domain knowledge? An LLM might propose that discharge disposition affects length of stay, when clinically, length of stay precedes discharge planning. The expert recognizes this immediately. Second: is the direction correct? Many edges are real but point the wrong way. The protocol asks you to reverse-engineer the temporal sequence and causal logic. Third: are we missing a confounder? Some relationships are real but both variables are effects of a common cause. Age, for example, confounds many clinical relationships because it affects diagnoses, comorbidities, and outcomes simultaneously. These three questions are not sophisticated—they are straightforward applications of domain knowledge. But they are powerful. When applied systematically to every LLM-proposed edge, they catch hallucinated edges, reversed directions, and obvious confounders. They convert the LLM from an oracle into a first-pass proposal that a human expert must validate.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 60.46
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "08 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "FROM DATA DICTIONARY ",
+          false
+        ],
+        [
+          "TO VALIDATED CAUSAL GRAPH.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Extract Candidates</span><span class=\"arw\">→</span><span class=\"chip\">Propose Edges</span><span class=\"arw\">→</span><span class=\"chip\">Diagnose Failures</span><span class=\"arw\">→</span><span class=\"chip on\">Validate Graph</span><span class=\"arw\">→</span><span class=\"chip\">Finalize DAG</span></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The learning objective requires you to apply a five-stage pipeline that transforms a data dictionary into a validated causal graph. Stage 1: Extract candidate causal variables from the dictionary. Stage 2: Use an LLM to propose draft edges between candidates. Stage 3: Diagnose structural failure modes using the three-question Human Decision Node protocol. Stage 4: Validate the proposed graph—does it make causal sense, does it satisfy domain knowledge, are the backdoor and frontdoor criteria satisfied? Stage 5: Finalize the DAG. This pipeline is the responsible way to use LLMs in causal modeling. It leverages the LLM's speed and breadth—reading hundreds of variable descriptions and proposing relationships quickly. It then hands off to human expertise—a domain expert who applies causal reasoning, domain knowledge, and the diagnostic protocol to validate and correct the LLM's output. The pipeline prevents the temptation to treat the LLM's first output as a finished product. It acknowledges both the strengths of automation and the irreducible need for human judgment.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 60.99
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "CONCEPTS",
+      "label": "09 / 12 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "HUMAN JUDGMENT ENTERS ",
+          false
+        ],
+        [
+          "AT EVERY NODE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>LLM Strengths</b><span>Speed · Coverage · Pattern recognition · Consistency</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>LLM Weaknesses</b><span>No causal reasoning · No domain expertise · Distributional only · Hallucination</span></div></div><p class=\"lead\">The LLM accelerates the first pass. The human expert judges causal validity at every edge. Neither substitutes for the other.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "A defensible causal graph cannot be built by LLM alone or by human intuition alone. The LLM excels at reading a 214-variable data dictionary and proposing a first draft. It covers variables a single human might overlook. It maintains consistency across descriptions. It synthesizes patterns from training data about which variables typically co-occur in causal contexts. But it cannot reason about causation. It cannot bring domain expertise about clinical workflows, patient populations, or measurement procedures. It operates on Rung 1 of Pearl's hierarchy—observational prediction—not Rungs 2 and 3 where causal reasoning lives. The human expert brings what the LLM cannot: understanding of the clinical domain, temporal logic about what must precede what, knowledge of measurement timing and reliability, judgment about which correlations are meaningful and which are artifacts. The responsible workflow uses LLMs as a first-pass generator, then places human expertise at every decision node. The expert validates, corrects, and refines. This is slower than pure LLM automation, faster than pure manual construction, and more reliable than either alone.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 64.34
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "10 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "LLMS AMPLIFY THE FIRST STEP ",
+          false
+        ],
+        [
+          "HUMANS MUST DECIDE THE EDGES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key principle:</b> Use LLMs to accelerate variable extraction and edge proposal. Use human expertise to validate, diagnose, and correct. Neither step is optional.</div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The synthesis brings together the concepts into a single operational principle. LLMs solve the reading and proposal problem—they make it feasible to move from a 214-variable dictionary to a candidate DAG in hours instead of weeks. This is genuinely valuable. But they cannot solve the validation problem. Validating a causal graph requires understanding what causes what in the problem domain, recognizing temporal sequences, detecting missing confounders, and catching reversed edges. These are fundamentally human tasks rooted in expertise and judgment. The chapter teaches you to see LLM assistance not as replacement but as acceleration of a pipeline that has human judgment at critical nodes. You bring the model a data dictionary. The LLM produces a draft. You apply the three-question diagnostic protocol. You catch hallucinated edges, fix reversed directions, identify missing confounders. You iterate with domain experts. You produce a graph you can defend. This is the realistic promise of LLMs in causal inference: not automation, but acceleration. Not replacement of judgment, but amplification of human capability through better tools.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 62.06
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "LLMS AMPLIFY HUMAN EXPERTISE ",
+          false
+        ],
+        [
+          "BUT CANNOT REPLACE CAUSAL REASONING.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">LLMs amplify human expertise in building causal graphs, but cannot replace causal reasoning itself.</div><p class=\"lead\">An LLM that sounds causally correct is not causally correct. Trust requires understanding exactly where each tool succeeds and where human judgment must intervene.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The chapter thesis connects three core claims. First: large language models offer genuine value in accelerating causal variable identification—they read dictionaries faster, propose broader candidate sets, and reduce the weeks-long manual phase to days. Second: this value is real only when paired with human expertise deployed at validation nodes—the three-question protocol, domain knowledge, and causal reasoning that the LLM lacks. Third: blindly accepting LLM proposals as a finished causal graph breaks inference downstream. Distributional plausibility is not causal validity. The model that sounds most confident is not the model most likely to be right. This chapter teaches you to see through the surface authority of LLM output to the mechanism underneath—token prediction, pattern matching, Rung 1 reasoning—and to deploy human judgment exactly where it matters. You will build better, faster causal graphs by understanding both the power and the limits of these tools.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 51.41
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "END OF ",
+          false
+        ],
+        [
+          "CHAPTER 15.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>CAUSAL INFERENCE</span><span>//</span><span>LANGUAGE MODELS</span><span>//</span><span>VARIABLE IDENTIFICATION</span></div><p class=\"sig\">Causal Inference · Chapter 15 · LLMs for Causal Variable Identification</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "End of chapter.",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 1.34
+        }
+      ]
+    }
+  ]
+}

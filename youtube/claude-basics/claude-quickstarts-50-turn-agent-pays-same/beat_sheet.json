@@ -1,0 +1,511 @@
+{
+  "metadata": {
+    "slug": "claude-quickstarts-50-turn-agent-pays-same",
+    "title": "Why a 50-turn agent pays for the same screenshot 35 times unless it caches the pixels",
+    "topic": "Prompt caching for unchanged screens",
+    "purpose": "Hash the screenshot, mark it `cache_control={\"type\":\"ephemeral\"}` on first send; later identical turns return a cache hit — instant, zero new tokens — instead of reprocessing.",
+    "category": "claude-basics",
+    "playlist": "Claude Basics",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "audience": "claude-liam",
+    "palette": "claude",
+    "register": "Teardown",
+    "style_preset": "teardown",
+    "aspect_ratio": "16:9",
+    "clock": "narration (Kokoro am_onyx) — master clock; conform each beat to measured audio",
+    "scaffold": true,
+    "scaffold_source": "anthropics/youtube/video-ideas.md — ai-explainer Sweep 2026-07-24",
+    "builder": "ai-explainer",
+    "source": "`anthropics/claude-quickstarts/computer-use-best-practices/README.md`",
+    "origin": "promoted",
+    "score": "9/10",
+    "length_band": "3–5 min",
+    "still_lanes": "raster (filmstrip with per-turn token labels)",
+    "prerequisites": "tokens, LLM API calls, caching semantics",
+    "exclusions": "full caching protocol, cache eviction policies",
+    "visual_object": "A 50-cell filmstrip where repeated frames light green (cache hit) and only the 5 unique frames light red (tokenized)",
+    "manim_move": "accumulate",
+    "hook": "Every agent turn snaps a fresh screenshot, but the desktop rarely changed — re-tokenizing identical pixels burns tokens and latency for no new information.",
+    "greeting": "Konnichiwa, Liam",
+    "design_version": "v1",
+    "voice": "am_onyx",
+    "build": {
+      "at": "2026-07-28T23:02:37",
+      "cut": "master",
+      "filled": 0,
+      "of": 8,
+      "slates": [
+        "B00",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "YOURTURN",
+        "OUTRO"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "A 50-turn form-filling task revisits only 5 unique desktop states. Naive: 50 × 2,000 = 100,000 image tokens. With ephemeral cache_control on first sight of each state: 5 × 2,000 = 10,000 tokens; the other 45 turns are cache hits.",
+      "estimated_duration_s": 13,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "from Key case — cold open on the concrete instance",
+      "actual_duration_s": 20.07,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "A 50-TURN FORM-FILLING TASK",
+            "items": [
+              {
+                "label": "A 50-turn form-filling task revisits only 5 unique desktop states",
+                "sub": "A 50-turn form-filling task revisits only 5 unique desktop states.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Naive: 50 × 2,000 =",
+                "sub": "Naive: 50 × 2,000 = 100,000 image tokens.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "With ephemeral cache_control on first sight of each state: 5 × 2",
+                "sub": "With ephemeral cache_control on first sight of each state: 5 × 2,000 = 10,000 tokens; the other 45 turns are cache hits.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "question",
+      "narration_text": "If most screenshots in a long task are unchanged, why re-tokenize them instead of reusing the first?",
+      "estimated_duration_s": 8,
+      "visual": "on-screen QUESTION",
+      "slate": true,
+      "scaffold_note": "gap-form question beat",
+      "actual_duration_s": 6.44,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "IF MOST SCREENSHOTS IN",
+            "items": [
+              {
+                "label": "If most screenshots in a",
+                "sub": "If most screenshots in a long task are unchanged, why re-tokenize them instead of reusing the first?",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "setup",
+      "narration_text": "Every agent turn snaps a fresh screenshot, but the desktop rarely changed — re-tokenizing identical pixels burns tokens and latency for no new information.",
+      "estimated_duration_s": 8,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "the tension, no visual",
+      "actual_duration_s": 9.83,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "EVERY AGENT TURN SNAPS",
+            "items": [
+              {
+                "label": "Every agent turn snaps a",
+                "sub": "Every agent turn snaps a fresh screenshot, but the desktop rarely changed —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "re-tokenizing identical pixels burns tokens and latency for no new information",
+                "sub": "re-tokenizing identical pixels burns tokens and latency for no new information.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "mechanism",
+      "narration_text": "Hash the screenshot, mark it `cache_control={\"type\":\"ephemeral\"}` on first send; later identical turns return a cache hit — instant, zero new tokens — instead of reprocessing.",
+      "estimated_duration_s": 18,
+      "visual": "A 50-cell filmstrip where repeated frames light green (cache hit) and only the 5 unique frames light red (tokenized)",
+      "manim_move": "accumulate",
+      "slate": true,
+      "scaffold_note": "the resolving mechanism; orbits the visual object",
+      "actual_duration_s": 10.65,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "HASH THE SCREENSHOT, MARK",
+            "items": [
+              {
+                "label": "Hash the screenshot, mark it",
+                "sub": "Hash the screenshot, mark it `cache_control={\"type\":\"ephemeral\"}` on first send; later identical turns return a cache hit —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "instant, zero new tokens —",
+                "sub": "instant, zero new tokens —",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "instead of reprocessing.",
+                "sub": "instead of reprocessing.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "example",
+      "narration_text": "States A A A B B C C C A A… First visit to each = 2,000 tokens; every revisit = 0. Total 10,000 vs 100,000.",
+      "estimated_duration_s": 16,
+      "visual": "16:9 worked example",
+      "slate": true,
+      "scaffold_note": "THE EXAMPLE act, illustrative",
+      "actual_duration_s": 12.48,
+      "engine": "kokoro",
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "States A A A B",
+            "items": [
+              {
+                "label": "States A A A B",
+                "sub": "States A A A B B C C C A A… First visit to each = 2,000 tokens",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "every revisit = 0. Total",
+                "sub": "every revisit = 0. Total 10,000 vs 100,000",
+                "icon": "BOX",
+                "cueFrame": 450
+              }
+            ],
+            "dark": false
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T23:02:37",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "recap",
+      "narration_text": "Hash the screenshot, mark it `cache_control={\"type\":\"ephemeral\"}` on first send; later identical turns return a cache hit — instant, zero new tokens — instead of reprocessing.",
+      "estimated_duration_s": 8,
+      "visual": "verdict card",
+      "slate": true,
+      "scaffold_note": "recap + your-turn handoff",
+      "actual_duration_s": 10.65,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "HASH THE SCREENSHOT, MARK",
+            "items": [
+              {
+                "label": "Hash the screenshot, mark it",
+                "sub": "Hash the screenshot, mark it `cache_control={\"type\":\"ephemeral\"}` on first send; later identical turns return a cache hit —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "instant, zero new tokens —",
+                "sub": "instant, zero new tokens —",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "instead of reprocessing.",
+                "sub": "instead of reprocessing.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: I'm building a 50-turn computer-use agent that revisits the same 5 desktop states repeatedly. Show me exactly where to place cache_control on the screenshot messages so each unique state is only billed once, and write the code that detects a repeated state and routes to the cached version instead of sending the raw image again.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE BASICS · @NikBearBrown",
+            "command": "I'm building a 50-turn computer-use agent that revisits the same 5 desktop states repeatedly. Show me exactly where to place `cache_control` on the screenshot messages so each unique state is only billed once, and write the code that detects a repeated state and routes to the cached version instead of sending the raw image again.",
+            "runningText": "paste your agent loop code…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "Why a 50-turn agent pays for the same screenshot 35 times unless it caches the pixels",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T23:02:37",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 18.97,
+      "audio_file": "mp3/beat-YOURTURN.mp3"
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "Why a 50-turn agent pays for the same screenshot 35 times unless it caches the pixels",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why a 50-turn agent pays for the same screenshot 35 times unless it caches the pixels",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-quickstarts-50-turn-agent-pays-same"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T23:02:37",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for OUTRO"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 6.46,
+      "audio_file": "mp3/beat-OUTRO.mp3"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why a 50-turn agent pays for the same screenshot 35 times unless it caches the pixels",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Prompt caching for unchanged screens",
+            "segment": "Why a 50-turn agent pays for the…",
+            "command": "Take what you learned from [Why a 50-turn agent pays for the same screenshot 35 times unless it caches the pixels] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why a 50-turn agent pays for the same screenshot 35 times unless it caches the pixels",
+            "slug": "claude-quickstarts-50-turn-agent-pays-same"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

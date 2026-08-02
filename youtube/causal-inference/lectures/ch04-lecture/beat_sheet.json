@@ -1,0 +1,343 @@
+{
+  "slug": "Causal-Inference-ch04-randomization-and-its-limits",
+  "title": "Chapter 4: Randomization and Its Limits",
+  "series": "Causal Inference",
+  "source": "chapters/04-randomization-and-its-limits.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 4,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "RANDOMIZATION DELETES ",
+          false
+        ],
+        [
+          "CONFOUNDING ARROWS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">The <b>RCT solves confounding</b> not by measuring or correcting it, but by deleting the causal pathways into treatment.</div><p class=\"lead\">This surgical operation on the causal diagram is what separates the RCT from every observational method that follows.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Twenty-five hundred years ago, Daniel and three companions proposed an experiment to the Babylonian king's steward. They would eat vegetables for ten days while others ate meat, and whoever looked healthier would be judged the winner. By modern standards, this was astonishingly sophisticated: a treatment group, a control group, a pre-specified duration, an outcome measure, and a predetermined decision rule. But look at what it lacked. Daniel and his companions volunteered because they were religiously motivated, disciplined, and probably healthier than average. If they looked better after ten days, how much was the diet and how much was the type of person who volunteered for the diet? The trial cannot separate treatment effect from selection. This is the problem randomization solves. An RCT doesn't balance confounding or correct for it—it surgically deletes the arrows that point into the treatment variable. In this chapter, we examine exactly how that deletion works and where it fails.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 51.05
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "STAKES",
+      "label": "02 / 12 · STAKES",
+      "dark": false,
+      "title": [
+        [
+          "YOUR OBSERVATIONAL METHOD IS WORTHLESS ",
+          false
+        ],
+        [
+          "WITHOUT THIS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Key fact:</b> Every observational method in the rest of this book is trying to approximate what an RCT does by construction—matching, instrumental variables, weighting, counterfactual analysis.</div><p class=\"lead\">If you don't know what the RCT is doing, you cannot tell whether your observational surrogate is doing it well, badly, or at all.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Understanding randomized controlled trials is not optional for causal inference. It is the foundation. Every alternative method—matching that conditions on covariates, instrumental variables that find natural levers, weighting that balances distributions, counterfactual methods that model comparisons—all of them are attempting to approximate what an RCT accomplishes by construction. The RCT is the gold standard. It is the clearest tool we have for answering causal questions. When an RCT is available, it is the method of choice. Most of the time, it is not available. That is why the rest of this book exists. But before you can understand the alternatives, before you can evaluate whether a matching strategy or an instrumental variable actually works, you must understand exactly what the RCT does. You must know where it breaks. Otherwise, you are flying blind when you try to evaluate your observational surrogate.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 48.23
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "CONFOUNDING",
+      "label": "03 / 12 · CONFOUNDING",
+      "dark": false,
+      "title": [
+        [
+          "CONFOUNDING MIXES SELECTION WITH ",
+          false
+        ],
+        [
+          "TREATMENT EFFECT.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Observational Data</b><span>Many things cause who gets treatment—health status, motivation, resources, preferences</span></div><div class=\"cell-part hot\"><b>The Problem</b><span>Those same things cause the outcome, so you cannot separate treatment effect from selection bias</span></div></div><p class=\"lead\">In Daniel's trial, vegetable-eaters looked healthier. But they also self-selected and were probably healthier to begin with.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "In the real world, treatment assignment is not random. Patients with certain characteristics are more likely to receive treatment. In observational data, the causes of treatment assignment overlap with the causes of the outcome. A patient's health status, motivation, income, access to care, and preferences all influence whether they receive treatment. Those same factors influence health outcomes. This is confounding. It creates a back-door path from treatment to outcome that has nothing to do with the causal effect. Daniel's trial illustrates the problem perfectly. The four volunteers who chose vegetables were not a representative sample. They were religiously motivated, disciplined, and likely healthier than average. When they appeared healthier after ten days, you cannot determine how much of that was the vegetable diet and how much was the fact that healthier, more disciplined people self-selected into the diet group. The trial confounds the effect of the diet with the effect of who chose the diet.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 51.22
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "MECHANISM",
+      "label": "04 / 12 · MECHANISM",
+      "dark": false,
+      "title": [
+        [
+          "RANDOMIZATION PERFORMS CAUSAL DIAGRAM ",
+          false
+        ],
+        [
+          "SURGERY.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Statistical Framing</b><span>Randomization balances treatment and control groups on average, so differences in outcomes must be due to treatment</span></div><div class=\"wire\"><b>Structural Framing</b><span>Randomization is a surgical operation on the causal diagram that deletes every arrow pointing into the treatment variable</span></div></div><p class=\"lead\">The structural framing is stronger and reveals what is actually happening: the confounding pathways are not balanced, they are eliminated.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The standard argument for randomization is statistical: randomization balances the treatment and control groups on average, so any differences in outcomes must be due to the treatment. This framing is true but weak. It makes randomization sound like a convenient statistical property, something that works in expectation, with enough subjects, if the stars align. The structural framing is far stronger. Randomization is not a statistical fix. It is a surgical operation on the causal diagram. It deletes every arrow that points into the treatment variable. Not balances them. Not corrects for them. Deletes them. Think about what causes treatment assignment in observational data: patient health, motivation, socioeconomic status, provider preferences, access. All of these create arrows into the treatment node. Randomization severs every one of those arrows. The treatment variable is now independent of everything except the random assignment mechanism. That independence is not approximate. It is structural. It is absolute. In the RCT, there are no back-door paths from treatment to outcome because there are no pathways at all except the one you are testing.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 60.48
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "VALIDITY",
+      "label": "05 / 12 · VALIDITY",
+      "dark": false,
+      "title": [
+        [
+          "INTERNAL VALIDITY MEANS CAUSAL ",
+          false
+        ],
+        [
+          "CERTAINTY WITHIN.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>Internal Validity</b><span>certified by randomization · treatment differences cause outcome differences · applies to the trial population</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>External Validity</b><span>not certified by anything · results may not generalize · depends on whether trial subjects represent the target</span></div></div><p class=\"lead\">Randomization guarantees that differences in outcome between groups are caused by treatment. It does not guarantee that the results apply to you.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Randomization accomplishes internal validity: certainty that differences in outcomes between treatment and control groups are caused by the treatment. The causal arrow is clean. There are no confounders. Within the trial, the comparison is bulletproof. But randomization does not accomplish external validity. External validity is the question of whether the results apply beyond the trial: to a different population, a different setting, a different time, a different dosage, a different implementation. Nothing about the randomization process certifies external validity. You randomized patients in a clinical trial, but do the results apply to patients in the real world with comorbidities, polypharmacy, and inconsistent adherence? You randomized subjects in a laboratory, but do results apply to the field? You tested one drug formulation; does the result apply to a different formulation? The trial cannot answer those questions. A study can have perfect internal validity—the cleanest causal estimate within the trial—and zero external validity—complete irrelevance to the population you actually care about. This distinction is fundamental.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 58.47
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "LIMITS",
+      "label": "06 / 12 · LIMITS",
+      "dark": false,
+      "title": [
+        [
+          "EXTERNAL VALIDITY IS A SEPARATE ",
+          false
+        ],
+        [
+          "CAUSAL QUESTION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid3\"><div class=\"cell-part\"><b>Trial Population</b><span>The subjects randomized into the study</span></div><div class=\"cell-part\"><b>Target Population</b><span>The population you actually want to know about</span></div><div class=\"cell-part hot\"><b>Representation Gap</b><span>Are the trial subjects similar enough for results to generalize?</span></div></div><p class=\"lead\">Answering whether results generalize requires thinking about who participated and whether they are representative of your target.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "External validity concerns the gap between the trial population and the target population. The trial was run on one set of subjects in one setting at one time. The results apply cleanly to that exact scenario. But you want results for a different population, setting, or time. Are the trial subjects representative? Did the trial select systematically different kinds of people? In a clinical trial, patients often have to meet strict inclusion and exclusion criteria. They must be healthy enough to survive the intervention but sick enough to show a measurable benefit. They must be willing to be randomized, adherent to treatment, and follow-up-able. Real-world patients are messier. They are older, sicker, have more comorbidities, take more drugs, and are less adherent. The trial results may not apply. In a laboratory study of cognitive biases, subjects are usually college students or online crowdsourcing workers. Do the results apply to elderly individuals, children, or subjects with low literacy? External validity is a causal question about whether the mechanisms that operated in the trial also operate in the target population. It is not addressed by randomization.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 61.72
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "HISTORY",
+      "label": "07 / 12 · HISTORY",
+      "dark": false,
+      "title": [
+        [
+          "DANIEL'S EXPERIMENT HAD A FATAL ",
+          false
+        ],
+        [
+          "FLAW.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Vegetable Diet Proposed</span><span class=\"arw\">→</span><span class=\"chip on\">Volunteers Self-Select</span><span class=\"arw\">→</span><span class=\"chip warn\">Cannot Isolate Treatment Effect</span></div><p class=\"lead\">The subjects who volunteered for vegetables were motivated, disciplined, and probably healthier than average. When they looked better afterward, selection bias was confounded with treatment effect.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Daniel's trial was remarkable for 400 BCE. It had treatment and control groups, a pre-specified duration, objective outcomes, and a predetermined decision rule. But it was missing randomization, and that absence was fatal to causal inference. Daniel and his companions were not a random sample of captives. They were volunteers who proposed the experiment themselves because they had religious objections to eating non-kosher meat. Volunteers are not representative. They are self-selected on motivation, discipline, and values. Furthermore, they were probably healthier than average to begin with. The four men who proposed the diet were elite Jewish nobles—better fed, better cared for, probably healthier than ordinary captives. When they appeared healthier after ten days, the trial could not separate two stories. Story one: the vegetable diet is healthier. Story two: the healthiest, most motivated people ate vegetables, so of course they looked better. The trial cannot distinguish these stories because the assignment to diet was not random. It was based on the very characteristics—motivation, health, discipline—that themselves predict the outcome.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 59.54
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "DESIGN",
+      "label": "08 / 12 · DESIGN",
+      "dark": false,
+      "title": [
+        [
+          "BIAS CAN ENTER DESPITE RANDOMIZATION ",
+          false
+        ],
+        [
+          "IF DESIGN FAILS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Non-Compliance</b><span>Subjects randomized to treatment don't take it; subjects randomized to control seek it out anyway</span></div><div class=\"wire\"><b>Differential Attrition</b><span>Treatment and control groups have different rates of dropout or loss to follow-up</span></div><div class=\"wire\"><b>Contamination</b><span>Control group receives treatment; treatment group avoids or dilutes it</span></div></div><p class=\"lead\">Randomization deletes confounding from the causal diagram, but real trials are messy. Design failures can reintroduce bias.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Randomization as a structural principle is absolute: it deletes the arrows into treatment. But real trials are not abstract causal diagrams. They are human operations where things go wrong. Non-compliance is the most common failure. Subjects randomized to treatment may refuse it, may take it inconsistently, or may switch to a different treatment. Subjects randomized to control may demand treatment anyway, especially if the trial shows early benefits or if control is perceived as inferior. Differential attrition occurs when the treatment and control groups have different rates of dropout or loss to follow-up. If sicker subjects drop out of the treatment group at different rates than the control group, the comparison becomes contaminated. Contamination happens when the control group receives treatment outside the trial, or when the treatment group avoids treatment or uses a different dose. When these things happen, the actual treatment subjects receive is not determined by randomization. It is determined by their choices, health status, and access to treatments, reintroducing confounding. The RCT survives these problems better than observational methods, but only by analyzing the groups as randomized, not as treated.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 63.13
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "FRAMING",
+      "label": "09 / 12 · FRAMING",
+      "dark": false,
+      "title": [
+        [
+          "THE CAUSAL DIAGRAM FRAMING REVEALS ",
+          false
+        ],
+        [
+          "WHAT IS ACTUALLY HAPPENING.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big\">Statistical</div><div class=\"cap\">Balances Groups</div></div><div class=\"eq\">→</div><div class=\"stat\"><div class=\"big on\">Structural</div><div class=\"cap\">Deletes Pathways</div></div></div><p class=\"lead\">Thinking in terms of causal diagrams—nodes and arrows—makes visible what randomization actually accomplishes: the deletion of confounding pathways, not their statistical adjustment.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "There are two ways to think about randomization. The statistical framing says randomization balances the treatment and control groups on all covariates, observed and unobserved. This is true. On average, if you randomize enough subjects, the groups will be similar. Any differences in outcomes are due to treatment. But this framing obscures what is happening. It makes randomization sound like a trick—a convenient statistical property that happens to work if you have a large enough sample. The structural framing using causal diagrams is clearer and stronger. In an observational study, many variables cause who gets treatment. Those variables become nodes with arrows pointing into the treatment node. Those same variables cause the outcome, creating back-door paths from treatment to outcome. Confounding is a structural problem in the causal graph. Randomization solves it by deleting those arrows entirely. The treatment variable is no longer caused by health, motivation, or socioeconomic status. It is caused only by the randomization mechanism. This structural deletion is not approximate. It is not probabilistic. It is structural. Once you see the causal diagram, you see why randomization solves confounding: it rewrites the graph itself.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 65.09
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "10 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "EVERY OBSERVATIONAL METHOD TRIES TO ",
+          false
+        ],
+        [
+          "MIMIC RANDOMIZATION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid3\"><div class=\"cell-part\"><b>Matching</b><span>Condition on covariates to approximate randomization by restricting to comparable subgroups</span></div><div class=\"cell-part\"><b>Instrumental Variables</b><span>Find a natural lever that assigns treatment quasi-randomly to identify causal effects</span></div><div class=\"cell-part hot\"><b>The Goal</b><span>All methods attempt to delete or block back-door paths that RCTs delete by construction</span></div></div><p class=\"lead\">Matching conditions to approximate comparability. Instrumental variables find natural randomization. Weighting and counterfactual methods model the comparison explicitly. All are trying to accomplish what randomization does for free.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Why does the rest of this book exist? Because randomized controlled trials are rarely available. We cannot randomize people to smoke or to be poor or to experience trauma. We cannot run trials that would take decades. We cannot experiment on entire economies or ecosystems. In those cases, we must use observational data. But observational data has confounding. The causal arrows point into treatment from many places. Every observational method is an attempt to approximate what the RCT does by construction. Matching tries to create comparable groups by conditioning on covariates, approximating what randomization accomplishes automatically. Instrumental variables try to find a natural lever—a variable that assigns treatment quasi-randomly—and use that lever to identify causal effects. Weighting methods try to balance the distributions of covariates between treatment and control. Counterfactual methods try to model the comparison explicitly, using regression and structural assumptions. All of these are workarounds. They are all trying to delete or block the back-door paths that RCTs delete by construction. They all require assumptions about the causal structure that RCTs do not require. Understanding what the RCT does is how you evaluate whether the workaround succeeded.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 69.99
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "RCTS ARE ELEGANT AND POWERFUL ",
+          false
+        ],
+        [
+          "BUT ALMOST NEVER AVAILABLE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">The <b>cleanest tool for causal inference</b> is the RCT, which solves confounding by deleting the causal pathways into treatment. But the rest of this book exists because RCTs solve almost nothing in the real world.</div><p class=\"lead\">Understanding the RCT is how you understand what observational methods are trying to approximate, what they can accomplish, and where they fail. It is the gold standard against which all other methods are measured.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The randomized controlled trial is the cleanest tool we have for answering causal questions. It solves the confounding problem by a surgical operation on the causal diagram: it deletes every arrow pointing into the treatment variable. That deletion is absolute. Within the trial, the comparison is bulletproof. Confounding cannot happen because there are no causal pathways except the one you are testing. The RCT achieves internal validity: certainty about causation. But the RCT does not achieve external validity. It does not guarantee that results apply beyond the trial to the population you actually care about. And in the real world, RCTs are almost never available. We cannot randomize people to poverty, to smoking, to discrimination, to education policy. We cannot run trials that would take thirty years. We cannot experiment on entire societies. In those cases, the RCT is not an option. We must use observational data. Confounding returns. Back-door paths return. We must use matching, instrumental variables, weighting, or counterfactual methods. These methods are all trying to approximate what the RCT does by construction. Understanding the RCT is how you understand whether these methods succeeded or failed.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 65.51
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "",
+          false
+        ],
+        [
+          "",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>RANDOMIZATION</span><span>//</span><span>CONFOUNDING</span><span>//</span><span>INTERNAL VALIDITY</span></div><p class=\"sig\">Causal Inference · Chapter 4 · Randomization and Its Limits</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "You have now seen what randomization does: it rewrites the causal diagram by deleting the arrows that point into treatment. It eliminates confounding by construction, not by correction. You have seen its power—the RCT is the cleanest tool for causal inference—and its limits: it only guarantees internal validity, not external validity, and it is almost never available in the real world. You have learned why observational methods must exist. The rest of this book is about what you do when randomization is not an option. You will learn to think about confounding structurally, to use causal diagrams to reason about what variables to condition on, to find instrumental variables that create natural randomization, and to model counterfactuals explicitly. Each method is trying to approximate what the RCT does by construction. Now you know what you are trying to approximate.",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 44.65
+        }
+      ]
+    }
+  ]
+}

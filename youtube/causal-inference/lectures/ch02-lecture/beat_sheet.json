@@ -1,0 +1,370 @@
+{
+  "slug": "Causal-Inference-ch02-chapter-scope",
+  "title": "The Language of Causal Diagrams",
+  "series": "Causal Inference",
+  "source": "chapters/02-chapter-scope.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 2,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 13,
+      "section": "HOOK",
+      "label": "01 / 13 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "WRIGHT'S DIAGRAM IN 1920",
+          false
+        ],
+        [
+          "VINDICATED 60 YEARS LATER.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">1920 · Diagram drawn</span><span class=\"arw\">→</span><span class=\"chip warn\">Field mocks it</span><span class=\"arw\">→</span><span class=\"chip on\">Standard tool today</span></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Sewall Wright published the first causal diagram in 1920, studying the inheritance of coat colors in guinea pigs. The diagram was revolutionary—it captured causal structure in a visual form—but the statistics community of the time had no framework for understanding it and largely dismissed the work. For sixty years, causal diagrams remained outside mainstream statistical practice, even as Wright's fundamental insight remained correct. Eventually, beginning in the 1980s, researchers rediscovered these diagrams as a tool for reasoning about causation, and they have since become standard across epidemiology, economics, computer science, and experimental research. The diagram Wright drew is essentially the same tool used today. This chapter teaches you to read, interpret, and draw these diagrams. They are the language in which causal assumptions are expressed and causal questions answered.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 47.51
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 13,
+      "section": "THE STAKES",
+      "label": "02 / 13 · THE STAKES",
+      "dark": false,
+      "title": [
+        [
+          "WHAT CAUSAL DIAGRAMS",
+          false
+        ],
+        [
+          "LET YOU DO.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Read diagrams</b><span>Interpret visual causal structures</span></div><div class=\"wire\"><b>Draw diagrams</b><span>Translate verbal stories into structure</span></div><div class=\"wire\"><b>Trace paths</b><span>Find what's correlated and why</span></div><div class=\"wire\"><b>Block paths</b><span>Use d-separation to identify independence</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "After this chapter, you will have four concrete capabilities. First, you can read a causal diagram—interpret what it claims about how variables relate causally. Second, you can draw a causal diagram from a verbal description or story; you can translate words like 'X causes Y' and 'Z confounds the relationship' into visual form. Third, you can trace paths through a diagram to determine what variables are statistically associated, because association comes from paths. Fourth, you can identify which paths are blocked by a given conditioning set, which means identifying what variables are truly independent given what you condition on. These four capabilities are foundational. Everything in causal inference—identifying confounding, designing adjustment sets, reading results from experiments—depends on mastering them here.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 42.24
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 13,
+      "section": "CONCEPTS",
+      "label": "03 / 13 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "WHAT IS A CAUSAL",
+          false
+        ],
+        [
+          "DIAGRAM.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Nodes</b><span>Variables in your problem</span></div><div class=\"wire\"><b>Arrows</b><span>Direct causal effects from one variable to another</span></div><div class=\"wire\"><b>Absence</b><span>No arrow means no direct effect given others shown</span></div></div><p class=\"lead\">The diagram is a visual representation of assumptions about causal structure.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "A causal diagram has two elements: nodes and arrows. A node represents a variable—something you measure or observe in your problem. An arrow from A to B means that A has some direct causal effect on B, in the presence of the other variables shown in the diagram. Crucially, the absence of an arrow is equally informative. No arrow from A to B means that, given the other variables in the diagram, A has no direct causal effect on B. You are making an assumption every time you omit an arrow. The diagram is a structured statement of your causal assumptions. It says: these pairs of variables are directly causally connected, and these pairs are not. Drawing a diagram forces you to be explicit about what you think causation looks like in your problem.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 38.87
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 13,
+      "section": "CONCEPTS",
+      "label": "04 / 13 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "TRANSLATING STORIES",
+          false
+        ],
+        [
+          "INTO DIAGRAMS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Verbal story</b><span>Each claim about causation in the narrative</span></div><div class=\"cell-part hot\"><b>Causal diagram</b><span>Each claim becomes a node and arrow</span></div></div><p class=\"lead\">Every causal claim translates to an arrow. The diagram emerges from systematically writing down what causes what.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "To draw a causal diagram from a verbal story, you translate each causal claim into a node and arrow. Suppose you are studying the effect of smoking on cancer, and you know that smoking causes tar deposition in the lungs, and tar causes cancer. You have two causal pathways: smoking → tar → cancer. That is a chain. Or suppose you know that smoking and a genetic predisposition both cause lung cancer. You have a common cause: genetic predisposition confounds the smoking-cancer relationship. Or suppose you are studying hospital admission and know that two independent conditions—pneumonia and heart attack—each increase the likelihood of admission. Conditioning on admission induces a spurious association between pneumonia and heart attack, even though they are independent in the general population. That is a collider. Every causal story you encounter can be broken into these structures.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 47.89
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 13,
+      "section": "CONCEPTS",
+      "label": "05 / 13 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "IN A CHAIN",
+          false
+        ],
+        [
+          "EFFECTS FLOW THROUGH.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">A causes B</span><span class=\"arw\">→</span><span class=\"chip on\">B causes C</span><span class=\"arw\">→</span><span class=\"chip\">Information flows to C</span></div><p class=\"lead\">A has a causal effect on C through its effect on B. Blocking B stops the influence.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The simplest structure is a chain: A → B → C. A causes B, and B causes C, which means A has an indirect effect on C through B. Information flows from A to C along this path. If you could block B—prevent it from changing—then changes in A would no longer affect C. This is why chains matter: they explain how effects propagate. A classic chain is smoking → tar deposition → cancer. Another is education → income → health. Wherever you see a sequence of causal steps, you have a chain. In a chain, A and C are statistically associated because they are causally connected. If you want to estimate the effect of A on C, you generally do not want to condition on B, because B lies on the causal path and conditioning on it would block part of A's effect.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 41.22
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 13,
+      "section": "CONCEPTS",
+      "label": "06 / 13 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "A FORK HAS COMMON",
+          false
+        ],
+        [
+          "CAUSES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">B causes A</span><span class=\"arw\">←</span><span class=\"chip on\">Common cause B</span><span class=\"arw\">→</span><span class=\"chip\">B causes C</span></div><p class=\"lead\">A and C are correlated because they share a common cause. They are not causally connected, but confounded.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "A fork is a structure where two variables are caused by a common cause: A ← B → C. B causes both A and C. This means A and C are statistically associated, but not because either causes the other. They are associated because they share a cause. This is confounding. A classic example is ice cream sales and drowning deaths, both caused by warm weather. Another example is hospitalization and disease severity in observational data; severity causes both disease occurrence and the decision to hospitalize, confounding the relationship between presence of disease and hospitalization. In a fork, A and C are not causally connected, but they are statistically associated through the common cause B. If you want to estimate the true causal effect between A and C, you must condition on B to block the confounding path.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 42.99
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 13,
+      "section": "CONCEPTS",
+      "label": "07 / 13 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "A COLLIDER BLOCKS",
+          false
+        ],
+        [
+          "UNTIL YOU CONDITION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">A causes B</span><span class=\"arw\">→</span><span class=\"chip warn\">B is collider</span><span class=\"arw\">←</span><span class=\"chip\">C causes B</span></div><p class=\"lead\">A and C are independent. But conditioning on B induces a spurious correlation between them. This is collider bias.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "A collider is a structure where two independent variables both cause a third variable: A → B ← C. This is where intuition often fails. Even though A and C are causally independent—neither causes the other, and they have no common cause—they become statistically associated when you condition on B. This is collider bias, also known as selection bias or Berkson's paradox. Suppose A and C are two independent traits, and B is hospitalization. If both traits increase the risk of hospitalization, then among hospitalized patients, the traits are negatively correlated: patients tend to have either A or C but not both, because having either one is sufficient for hospitalization. In the general population, A and C are uncorrelated. But in the selected sample of hospitalized patients, they appear negatively correlated. This is the key insight: conditioning on a collider creates a spurious association.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 45.74
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 13,
+      "section": "CONCEPTS",
+      "label": "08 / 13 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "SELECTING ON COLLIDERS",
+          false
+        ],
+        [
+          "CREATES SPURIOUS ASSOCIATIONS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>General population</b><span>Attractiveness and niceness are independent</span></div><div class=\"cell-part hot\"><b>Your dating pool</b><span>They appear negatively correlated</span></div></div><p class=\"lead\">You date people with high total quality. The collider induces a spurious negative correlation among selected data.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Collider bias appears in everyday life through selection mechanisms. The most famous example is dating: if you date people on the basis of total attractiveness plus niceness, then in your dating pool, attractiveness and niceness will appear negatively correlated. You date either very attractive people who are not particularly nice, or very nice people who are not particularly attractive, because either high attractiveness or high niceness is sufficient to date them. But in the general population, attractiveness and niceness are independent. The collider is the decision to date someone; conditioning on that decision—restricting to your actual dating pool—induces the spurious negative correlation. Another example: elite universities admit students on the basis of achievement in either academics or athletics. In the general population, these are independent. But among admitted students, they are negatively correlated: top students who are not athletes, or top athletes who are not top students. The selection mechanism is the collider that creates the association.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 55.89
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 13,
+      "section": "CONCEPTS",
+      "label": "09 / 13 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "MULTIPLE PATHS CONNECT",
+          false
+        ],
+        [
+          "VARIABLES IN GRAPHS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Path</b><span>A sequence of arrows connecting two variables</span></div><div class=\"wire\"><b>Directed path</b><span>Following arrows all in one direction</span></div><div class=\"wire\"><b>Back-door path</b><span>A path with reversed arrows entering the cause</span></div><div class=\"wire\"><b>Front-door path</b><span>A path following arrows forward from cause</span></div></div><p class=\"lead\">Two variables can be connected through multiple distinct paths. Identifying and blocking these paths is central to causal inference.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Two variables can be connected by multiple paths simultaneously. A path is a sequence of arrows connecting two nodes. A directed path follows all arrows in the forward direction. A back-door path involves arrows pointing backward at the beginning, approaching the cause from the back. A front-door path follows arrows forward from a cause toward an effect. For instance, in a simple chain A → B → C, there is one directed path from A to C through B. But if there is also a common cause of A and C, there are now two paths: the direct chain A → B → C and a back-door path A ← (common cause) → C. Identifying and distinguishing these paths is essential to causal inference, because association between A and C can come through any of these paths, and blocking specific paths tells you which associations are causal.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 44.22
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 13,
+      "section": "CONCEPTS",
+      "label": "10 / 13 · CONCEPTS",
+      "dark": false,
+      "title": [
+        [
+          "D-SEPARATION IDENTIFIES",
+          false
+        ],
+        [
+          "TRUE INDEPENDENCE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>d-separation rule:</b> Two variables are independent when all paths between them are blocked by a set of conditioning variables.</div><p class=\"lead\">A path is blocked if you condition on any non-collider on the path, or if it contains an unconditioned collider. This gives you a precise rule for reading independence from diagrams.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The concept of d-separation gives you a rule for determining when two variables are statistically independent based on the diagram structure. Two variables are d-separated by a set of conditioning variables when all paths between them are blocked. A path is blocked in one of two ways: first, if you condition on any non-collider variable on the path, the path is blocked. Second, if the path contains a collider and you do not condition on that collider or any of its descendants, the path is blocked. In other words, colliders naturally block paths; conditioning on them opens paths. Non-colliders naturally allow paths; conditioning on them blocks paths. This simple rule lets you read independence directly from the diagram. It answers the question: given what I'm conditioning on, what variables are independent? Understanding d-separation is the technical foundation for everything that follows in causal inference.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 47.47
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 13,
+      "section": "SYNTHESIS",
+      "label": "11 / 13 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "DIAGRAM TOPOLOGY DETERMINES",
+          false
+        ],
+        [
+          "ALL ASSOCIATIONS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Chains and forks</b><span>Create associations between variables</span></div><div class=\"wire\"><b>Colliders</b><span>Block associations unless conditioned on</span></div><div class=\"wire\"><b>d-separation</b><span>Tells you which variables are truly independent</span></div><div class=\"wire\"><b>This determines</b><span>What adjustments you need to answer causal questions</span></div></div><p class=\"lead\">The diagram's shape—its paths and blocks—completely determines what associations exist in the data and which can be causal.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The three building blocks—chains, forks, and colliders—combine to create complex causal structures. Every association in your data comes from a path. Every path is either a chain, a fork, a collider, or a combination. The diagram's shape determines everything. If A and C are d-separated, they are conditionally independent and the association you see in data is entirely spurious. If A and C are not d-separated, they are conditionally dependent and the association comes from the paths that connect them. Some paths represent genuine causal effects, others represent confounding. To isolate causal effects, you must understand which paths carry causation and which carry confounding, and you must know which conditioning sets block confounding without blocking causal effects. The diagram reveals this structure completely. Once you can read a diagram, you can read the conditional independence relationships it encodes. These relationships determine everything about how to answer causal questions.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 51.78
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 13,
+      "section": "THESIS",
+      "label": "12 / 13 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "DIAGRAMS TRANSLATE ASSUMPTIONS",
+          false
+        ],
+        [
+          "INTO CAUSAL STRUCTURE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">Causal diagrams translate verbal assumptions about how the world works into a visual structure that reveals which variables are statistically associated and which are independent.</div><p class=\"lead\">This language lets you move from correlation to causation. By drawing assumptions explicitly, you separate what you know for certain from what you're assuming, making it possible to identify causal effects from data when it is possible, and to know when it isn't.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Causal diagrams are the language of causal reasoning. They translate the informal causal assumptions you hold about your problem into explicit structure. By drawing a diagram, you separate what you know for certain—the arrows you draw—from what you are assuming. You make your assumptions visible and testable. A diagram tells you, clearly and unambiguously, what associations should exist in the data given the causal structure you believe in. It tells you whether two variables should be independent or dependent, and under what conditions. It reveals confounding, selection bias, and causal paths. Decades of research in causal inference have confirmed that this language is sufficiently powerful to connect theory to data. Given a causal question, a causal diagram, and observational or experimental data, you can often determine whether the question is answerable and, if it is, how to answer it. This is not possible with correlation alone. The diagram bridges from assumption to data.",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 50.54
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "num": 13,
+      "total": 13,
+      "section": "CLOSE",
+      "label": "13 / 13 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "CHAPTER 2 LANGUAGE OF",
+          false
+        ],
+        [
+          "CAUSAL DIAGRAMS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>DIAGRAMS</span><span>//</span><span>D-SEPARATION</span><span>//</span><span>COLLIDERS</span></div><p class=\"sig\">Causal Inference · Chapter 2 · The Language of Causal Diagrams</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "",
+          "audio_file": "audio/S13.mp3",
+          "actual_duration_s": 2.0
+        }
+      ]
+    }
+  ]
+}

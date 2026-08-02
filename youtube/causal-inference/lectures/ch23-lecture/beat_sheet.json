@@ -1,0 +1,343 @@
+{
+  "slug": "Causal-Inference-ch23-case-dag-ghosttrack-spotify",
+  "title": "Chapter 23 — Case: GhostTrack",
+  "series": "Causal Inference",
+  "source": "chapters/23-case-dag-ghosttrack-spotify.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 23,
+    "total_chapters": 25,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "NO SINGLE FIELD DEFINES ",
+          false
+        ],
+        [
+          "GHOST ARTISTS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>The core problem:</b> Spotify has no field, flag, or audit trail that identifies fraudulent artists. The DOJ names three; Dagens Nyheter reports 656+. Yet there is no database to check.</div><p class=\"lead\">Detection must infer a hidden category from operational patterns, not from a direct label.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The DOJ indictment of September 2024 names three Spotify artists: Relaxing White Noise, Meditation Relax Club, and Calmo. Dagens Nyheter's investigation into Johan Röhr's Firefly Entertainment identifies nine pseudonyms publicly, out of a reported 656 or more. But here is the core problem: there is no single Spotify field, no licensing flag, no audit trail that lets you check. Spotify publishes no \"ghost artist\" label. There is no database you can query. The question forces a methodological pivot. If you cannot specify ghost artists directly, how do you detect them at all? The answer is not to find a single perfect signal, but instead to build seven independent operational measures—each noisy, each individually prone to false positives—and let their convergence on the same artists become the evidence. Convergence itself is the identification move.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 49.26
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "STAKES",
+      "label": "02 / 12 · STAKES",
+      "dark": false,
+      "title": [
+        [
+          "FRAUD DETECTION AT SCALE ",
+          false
+        ],
+        [
+          "MATTERS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Cost of fraud</b><span>Billions in diluted royalties · Artist-pool dilution · Enforcement gaps</span></div><div class=\"cell-part hot\"><b>Why this method generalizes</b><span>Detects any latent class · Applies to bots, shells, false claims · Scales beyond manual audits</span></div></div><p class=\"lead\">The stakes are enforcement, scale, and the broader problem of inferring hidden categories from observable patterns.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Streaming fraud costs the industry billions annually. Bulk-uploaded ghost catalogs dilute royalty pools, diverting payments from legitimate artists. The DOJ prosecution signals enforcement intent, but manual auditing does not scale to millions of artists. What makes this case methodologically important is that the detection framework generalizes. Any latent class—bot accounts on social media, shell companies in supply chains, fraudulent insurance claims—faces the same problem: no single diagnostic, but many noisy signals. Understanding how to infer hidden categories from their observable descendants is a problem that appears across policy, compliance, and investigative work. The stakes are not academic; they are practical and large.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 40.81
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "03 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "WHAT DOES IT MEAN ",
+          false
+        ],
+        [
+          "TO BE A GHOST.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Legitimate specialist</b><span>Narrow genre, consistent palette, verifiable history</span></div><div class=\"wire\"><b>Ghost artist</b><span>Bulk-uploaded, no recording history, no verifiable identity</span></div><div class=\"wire\"><b>The boundary</b><span>Blurs immediately—no single field captures authenticity</span></div></div><p class=\"lead\">The definitional crisis is why the paper exists. The category must be inferred from production patterns, not from a table cell.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The project opens by asking a deceptively simple question: what does it mean for an artist to be a ghost? Intuitively, you know it when you hear it—bulk-uploaded ambient tracks with no real recording history, no social presence, no verifiable creative identity. But the moment you try to formalize a definition, the boundary dissolves. A legitimate ambient specialist might choose a narrow palette. A ghost might hire session musicians. Spotify has no field for creative authenticity. This definitional crisis is the entire reason the paper exists. You cannot point to a single artist and say \"that one's a ghost\" by pointing to a table cell. The category must be inferred from the ensemble of production, licensing, and release patterns that cluster together. The paper's claim is that these patterns are real and detectable, even if the label itself is latent.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 44.14
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "04 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "MEASUREMENT MODEL ",
+          false
+        ],
+        [
+          "NOT TREATMENT.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Latent node G</b><span>\"This artist is a ghost\" — unobserved root</span></div><div class=\"wire\"><b>Seven descending signals</b><span>Each a noisy measure of G from a different mechanism</span></div><div class=\"wire\"><b>The key difference</b><span>No back-door paths, no counterfactual, only inference of a hidden class</span></div></div><p class=\"lead\">The arrows mean: if an artist is a ghost, this signal will show a certain pattern. Not the converse.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The causal diagram here is different from what you might expect. In a typical causal-inference problem, you estimate the effect of a treatment on an outcome by closing back-door paths and adjusting for confounders. This is a measurement model. A latent node G—\"this artist is a ghost\"—sits at the root. Seven observed signals descend from it. Each signal is noisy; each is an imperfect measure of the same hidden truth. The arrows do not mean: if a signal trips, the artist is a ghost. They mean: if an artist is actually a ghost, this signal will tend to show a certain pattern. The threat to identification is not unobserved confounding on a path; it is that the signals are not actually conditionally independent given G. If they measure the same artifact rather than different aspects of the same latent reality, convergence becomes correlation, and correlation is not identification.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 44.2
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "05 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "SEVEN INDEPENDENT ",
+          false
+        ],
+        [
+          "SIGNALS CONVERGE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>S1: Audio variance</b><span>Levene's test on per-artist feature distributions</span></div><div class=\"wire\"><b>S2: Release cadence</b><span>Shannon entropy over temporal and feature bins</span></div><div class=\"wire\"><b>S3: ISRC concentration</b><span>Count of unique registrants per catalog</span></div><div class=\"wire\"><b>S4: Catalog density</b><span>HHI on production-company shares</span></div><div class=\"wire\"><b>S5: Genre concentration</b><span>1 / genre_count simplicity metric</span></div><div class=\"wire\"><b>S6: Neighborhood radar</b><span>Bipartite graph degree plus density combined</span></div><div class=\"wire\"><b>S7: Cross-platform</b><span>YouTube views and iTunes presence discrepancy</span></div></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The seven signals are audio-feature variance, playlist entropy and release cadence, ISRC registrant concentration, catalog density measured by Herfindahl index on production companies, genre concentration, bipartite neighborhood signal radar combining density with graph degree, and cross-platform discrepancy measured through YouTube views and iTunes presence. Each descends from the ghost-artist hypothesis through a different operational pipeline. Audio variance asks: does this artist's catalog show the narrow production signatures of bulk-generation? ISRC concentration asks: how many distinct legal entities route the copyright claims? Release cadence asks: are tracks uploaded in clusters consistent with automation? Catalog density asks: how concentrated is the set of companies credited as producers? Genre concentration asks: how narrow is the genre profile? The radar combines neighborhood structure with density. Cross-platform discrepancy asks: if this artist is real, where are they elsewhere online? Seven independent causal pathways from the same latent root.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 57.43
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "06 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "EACH SIGNAL ALONE ",
+          false
+        ],
+        [
+          "PRODUCES FALSE POSITIVES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan die\"><b>Individual signal failures</b><span>Audio variance fails on specialists · ISRC fails on DistroKid users · Release cadence flags automators · Density fails on clearinghouses · Genre fails on focused artists</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan surv\"><b>Convergence of all seven</b><span>Multiple false-positive machines pointing to the same artists · Harder to dismiss as coincidence · Each signal strengthens the others</span></div></div><p class=\"lead\">No single measure can specify the ghost-artist class. But seven imperfect signals, when they all agree, constitute identification.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Each signal alone is unreliable. Audio variance cannot distinguish a ghost from a legitimate ambient specialist who has chosen a narrow palette and has stuck with it. ISRC concentration fails on indie artists using DistroKid, who all route through a single registrant by design. Release cadence could reflect algorithm-driven playlist-stacking strategies by legitimate artists. Catalog density fails on prolific classical composers whose rights are clearinghouse-managed through a single entity. Genre concentration fails on artists with a genuine stylistic focus. Each individual signal produces false positives. The neighborhood radar can rank an indie artist identically to a ghost. Cross-platform discrepancy flags emerging artists who simply have not yet broken through. None of these signals, taken alone, can specify the ghost-artist class. But the union of seven false-positive machines, when they all point to the same artists, is harder to dismiss as coincidence. That is where the identifying assumption—conditional independence given G—must hold.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 58.01
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "07 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "THE IDENTIFYING ",
+          false
+        ],
+        [
+          "ASSUMPTION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>Conditional independence:</b> Once you condition on whether an artist is actually a ghost, the noise in Signal 1 is independent of the noise in Signal 4, Signal 5, and all others.</div><p class=\"lead\">The mechanisms are genuinely different. Each signal routes through its own causal pathway to G. The assumption is strong, largely unverifiable, and does fail on real data.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The identifying assumption is conditional independence: once you condition on whether an artist is actually a ghost, the noise in Signal 1 should be independent of the noise in Signal 4, independent of the noise in Signal 5, and so on. The mechanisms are genuinely different. Audio variance comes from how many distinct sound profiles appear in a catalog. ISRC HHI comes from how many distinct legal entities the copyright routes through. Release cadence comes from upload timing patterns. Playlist entropy comes from the diversity of playlist features. If the assumption holds, joint agreement on the same artists is not mere coincidence; it is what you would expect when several independent measurement instruments are all sampling from the same latent state. This assumption is strong and largely unverifiable. It can fail if two signals pick up the same artifact of data construction, or if the signals are actually competing measures of a different latent variable. The paper surfaces one such failure in the proxy-data collinearity diagnostic.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 56.0
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "08 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "CONVERGENCE IS ",
+          false
+        ],
+        [
+          "THE FINDING.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Imperfect signal 1</span><span class=\"arw\">→</span><span class=\"chip\">Imperfect signal 2</span><span class=\"arw\">→</span><span class=\"chip on\">Joint convergence on G</span><span class=\"arw\">→</span><span class=\"chip\">Identification</span></div><p class=\"lead\">Think of it like triangulation in physics: each tool has noise and bias, but three independent tools pointing to the same location constitute evidence of something real.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The identifying move is not back-door adjustment or instrumental-variable reasoning. There is no treatment, no counterfactual to estimate. It is closer to latent-class identification through pattern convergence. Build several imperfect operationalizations of the ghost-artist concept. Where they agree, that agreement itself is the identification. Think of it like triangulation in physics: each measurement tool has noise and bias, but if three independent tools all point to the same location, you have found something real. The framework here says: if audio variance, ISRC concentration, release cadence, catalog density, genre concentration, neighborhood radar, and cross-platform discrepancy all rank the same set of artists as high-suspicion, the joint convergence is evidence that you have identified a real underlying class, not an artifact of any single measure. Convergence—the intersection of seven imperfect signals—is the finding. It is also the most the data can claim.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 51.88
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "09 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "GHOST ARTISTS SHOW ",
+          false
+        ],
+        [
+          "DISTINCT SIGNATURES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stat-row\"><div class=\"stat\"><div class=\"big on\">U = 90.0</div><div class=\"cap\">Mann-Whitney test</div></div><div class=\"eq\">→</div><div class=\"stat\"><div class=\"big\">p = 0.0026</div><div class=\"cap\">ISRC concentration</div></div><div class=\"eq\">→</div><div class=\"stat\"><div class=\"big\">r = 1.000</div><div class=\"cap\">Effect size</div></div></div><p class=\"lead\">Ghost artists route catalogs through far fewer distinct legal entities than organic artists. The effect is strong and highly significant on ground-truth data.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "On the confirmed-ghost ISRC data, Mann-Whitney testing shows that ghost HHI is significantly higher than organic HHI, U = 90.0, p = 0.0026, rank-biserial r = 1.000. This means the distribution of copyright-registrant concentration is shifted toward the high end for ghosts. The effect is not marginal. In plain language, ghost artists route their catalogs through far fewer distinct legal entities than organic artists do. An indie artist using DistroKid might have ten tracks routed through ten different registrants if they worked with different session musicians or labels. A ghost artist uploading 600 tracks in bulk uses one registrant, or two, or three. The signal works on the ground-truth data. On the 114K-track Kaggle proxy, the differences are measurable but smaller in effect size, reflecting the noisier operational measures available without direct ISRC access. The convergence of all seven signals strengthens each individual signal's claim.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 57.96
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "CONCEPT",
+      "label": "10 / 12 · CONCEPT",
+      "dark": false,
+      "title": [
+        [
+          "THE COLLINEARITY ",
+          false
+        ],
+        [
+          "DIAGNOSTIC.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Where the assumption breaks</b><span>S5 (genre concentration) and S2 (release cadence) are collinear on proxy data</span></div><div class=\"cell-part hot\"><b>What this means</b><span>Incremental AUC = 0.0000 · Same artifact picked up twice · Conditional independence fails visibly</span></div></div><p class=\"lead\">Careful empirical work surfaces where the framework's central assumption breaks. When two signals measure the same data-construction artifact, convergence becomes correlation.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The paper surfaces one critical place where the conditional-independence assumption breaks. The S5 sign-flip diagnostic found that on the Kaggle proxy data, genre concentration and playlist entropy are collinear. When both are added to a logistic model, the incremental AUC contribution of genre concentration is 0.0000. The signals should be conditionally independent given G; instead they are picking up the same pattern through the same artifact of how the proxy dataset was constructed. This failure does not invalidate the framework; it identifies a place where the framework's central assumption visibly collapses on the available data. A careful empirical strategy surfaces these breaks. The collinearity suggests that proxy-data results on Signals 2 and 5 should be interpreted with caution and that ground-truth ISRC data is essential for robust convergence claims.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 50.13
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "CONVERGENCE OF ",
+          false
+        ],
+        [
+          "INDEPENDENT SIGNALS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">When no single field can identify a latent class, <b>convergence of multiple independent signals</b> is the identifying strategy.</div><p class=\"lead\">Ghost artists leave fingerprints across production, licensing, release timing, and cross-platform presence because they are produced by a different operational pipeline. This is inference of a hidden category from its observable descendants, not causal-effect estimation. The identifying assumption is conditional independence; when that assumption holds, convergence is identification.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The thesis that threads through this case is that when no single field or audit trail can identify a latent class, convergence of multiple independent signals—each operating through a different causal mechanism—is the identifying strategy. Ghost artists leave fingerprints across production, licensing, release timing, and cross-platform presence because they are produced by a different operational pipeline. No one fingerprint is diagnostic. Their joint presence is. This is not a causal-effect estimate; it is inference of a hidden category from its observable descendants. The identifying assumption is conditional independence: the noise in each signal is uncorrelated with the noise in the others, given the latent class. When that assumption holds, convergence is identification. When it breaks—as in the collinearity diagnostic—careful empirical work surfaces the break and bounds the claim. Convergence works because it forces multiple independent mechanisms to agree.",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 51.18
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "CONVERGENCE OF ",
+          false
+        ],
+        [
+          "INDEPENDENT SIGNALS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>GHOST ARTISTS</span><span>//</span><span>SIGNAL CONVERGENCE</span><span>//</span><span>MEASUREMENT MODEL</span></div><p class=\"sig\">Causal Inference · Chapter 23 · Case: GhostTrack</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 2.0
+        }
+      ]
+    }
+  ]
+}

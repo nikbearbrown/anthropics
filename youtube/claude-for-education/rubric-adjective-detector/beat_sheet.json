@@ -1,0 +1,335 @@
+{
+  "metadata": {
+    "slug": "rubric-adjective-detector",
+    "title": "Build a Rubric Adjective Detector with Claude",
+    "topic": "CLAUDE FOR EDUCATION",
+    "voice": "am_onyx",
+    "style": "cli",
+    "palette": "teardown",
+    "style_preset": "nikbearbrown",
+    "source": "claude-for-education-a-practitioners-guide/chapters/07-rubrics-exemplars-and-criteria.md",
+    "segment": "RUBRIC AUDIT",
+    "ground": "#FFFFFF",
+    "total_estimated_duration_seconds": 113.0,
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "Nik Bear Brown. Brutalist and Educational AI. Build it with Claude — then take it apart.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOpen",
+          "props": {
+            "topic": "CLAUDE FOR EDUCATION",
+            "lines": [
+              "Nik Bear Brown",
+              "Brutalist + Educational AI",
+              "Rubric Adjective Detector",
+              "Observable vs Vague Criteria",
+              "Build with Claude CLI"
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 10.0
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM",
+      "narration_text": "The rubrics most teachers use are written in a language Claude can game perfectly — because the criteria are aesthetic adjectives, not observable behaviors. 'Demonstrates strong analytical thinking' is not a criterion. It is a verdict. A student reading it learns nothing about what to change.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Build a Rubric Adjective Detector with Claude",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "visual_intent": "Slate: rubric cell showing 'Analysis: Good. Demonstrates strong analytical thinking.' Amber highlight on the quality adjective. No CLI yet — this is the problem.",
+      "estimated_duration_s": 10,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "narration_text": "Pipe the rubric into Claude. Ask it to classify each criterion as observable — can be verified without evaluator judgment — or vague, which requires taste. For each vague criterion, rewrite it as a specific, observable behavior.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Read this rubric and classify each criterion: observable (can be verified without evaluator judgment) or vague (requires taste/interpretation). For each vague criterion, rewrite it as a specific, observable behavior a student can demonstrate and an evaluator can check. Format: ORIGINAL | TYPE | REWRITTEN.\" < rubric.md",
+            "topic": "CLAUDE FOR EDUCATION",
+            "segment": "RUBRIC AUDIT",
+            "runningText": "running rubric audit…",
+            "greeting": "The ask,"
+          }
+        }
+      },
+      "estimated_duration_s": 15.0
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "narration_text": "Read the Python script before trusting it. It pipes rubric.md to Claude, parses the three-column output — original, type, rewritten — and prints a formatted diff. Vague criteria on the left in amber, observable rewrites on the right.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownCodeBlock",
+          "props": {
+            "filename": "rubric_audit.py",
+            "segment": "RUBRIC AUDIT",
+            "topic": "CLAUDE FOR EDUCATION",
+            "code": "import subprocess, sys\nfrom pathlib import Path\n\ndef audit_rubric(rubric_file):\n    prompt = (\n        \"Classify each criterion: observable or vague.\\n\"\n        \"For each vague, rewrite as observable behavior.\\n\"\n        \"Format: ORIGINAL | TYPE | REWRITTEN\"\n    )\n    text = Path(rubric_file).read_text()\n    result = subprocess.run(\n        [\"claude\", prompt],\n        input=text, capture_output=True, text=True\n    )\n    for line in result.stdout.splitlines():\n        parts = line.split(\" | \")\n        if len(parts) == 3:\n            orig, typ, rewrite = parts\n            tag = \"[VAGUE]\" if \"vague\" in typ.lower() else \"[OK]\"\n            print(f\"{tag} {orig}\\n  -> {rewrite}\\n\")"
+          }
+        }
+      },
+      "estimated_duration_s": 15.0
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT",
+      "narration_text": "The output shows the classification. 'Demonstrates sophisticated analysis' — vague. Rewrite: 'Each body paragraph connects at least one piece of evidence directly to the paragraph's claim. The explanation interprets the evidence — it does not restate it.' That is observable. A student can self-assess before submitting.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "visual_intent": "Slate: two-column before/after. Left: 'Demonstrates sophisticated analysis' in amber. Right: the observable rewrite in clean black text. Label below: 'can self-assess before submitting'.",
+      "estimated_duration_s": 14.0
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE",
+      "narration_text": "The change: pipe the rewritten observable rubric back through Claude and ask it to produce a top-scoring student submission. Run both the vague rubric and the observable rubric through the same prompt — and compare the submissions.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Here is a rubric. Write a student essay that would score at the top performance level on every criterion. Be precise about which rubric language you are satisfying.\" < rewritten_rubric.md",
+            "topic": "CLAUDE FOR EDUCATION",
+            "segment": "RUBRIC AUDIT",
+            "runningText": "generating top-score submission…",
+            "greeting": "The ask,"
+          }
+        }
+      },
+      "estimated_duration_s": 15.0
+    },
+    {
+      "beat_id": "B06",
+      "act": "OUTPUT",
+      "narration_text": "The vague rubric produces an essay that sounds insightful — 'demonstrates sophisticated analysis of the author's purpose.' The observable rubric produces an essay that actually contains what the criterion demands: a claim in the first paragraph, two supporting examples with citations, interpretation that does not restate the evidence. The vague rubric didn't fail because Claude misunderstood it. It succeeded because Claude understood it perfectly.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "visual_intent": "Slate: side-by-side submissions. Vague rubric output: generic academic prose. Observable rubric output: specific structural elements highlighted — claim statement, two examples, non-restating interpretation.",
+      "estimated_duration_s": 10.0
+    },
+    {
+      "beat_id": "B07",
+      "act": "SUMMARY",
+      "narration_text": "Vague rubric criteria don't fail because they are unclear to humans. They fail because they are too clear to AI. A model knows exactly how to produce output that sounds insightful without being insightful. Observable criteria close that gap — not by making the rubric harder, but by making it specific enough to mean something.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "visual_intent": "Slate: teardown summary. 'Vague = AI-gameable. Observable = verifiable.' The distinction stated once, clean.",
+      "estimated_duration_s": 12.0
+    },
+    {
+      "beat_id": "B08",
+      "act": "NEXT STEPS",
+      "narration_text": "Next: Audit a Prompt for Cognitive Labor Transfer — see which cognitive operations in your instructional prompt are being done by the student and which are being done by Claude.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "visual_intent": "Slate: next reel teaser. 'cognitive-labor-audit' slug. Brief description of the next topic.",
+      "estimated_duration_s": 6.0
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you want to build a rubric adjective detector — a tool that finds vague quality adjectives in a rubric and flags them as ungraded. Ask Claude to run the detector on a rubric you paste in: which adjectives are doing grading work without defining a standard, what a student cannot figure out from them, and how to replace each one with an observable criterion.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to build a rubric adjective detector that finds vague quality adjectives and flags them as ungraded. Run the detector on a rubric I paste in: which adjectives are doing grading work without defining an observable standard (words like 'clear,' 'appropriate,' 'thorough'), what a student cannot figure out from each flagged term, and how to replace each one with a criterion a student could actually verify before submitting?",
+            "segment": "Build a Rubric Adjective Detector with Claude",
+            "topic": "CLAUDE FOR EDUCATION · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your course materials, rubric, or learning objective here…"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "OUTRO",
+      "narration_text": "Nik Bear Brown. Brutalist and Educational AI. At NikBearBrown, nikbearbrown dot com.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Build a Rubric Adjective Detector with Claude",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "rubric-adjective-detector"
+          }
+        }
+      },
+      "estimated_duration_s": 8.0
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Build a Rubric Adjective Detector with Claude",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CLAUDE FOR EDUCATION",
+            "segment": "Build a Rubric Adjective Detector with Claude",
+            "command": "Take what you learned from [Build a Rubric Adjective Detector with Claude] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Build a Rubric Adjective Detector with Claude",
+            "slug": "rubric-adjective-detector"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

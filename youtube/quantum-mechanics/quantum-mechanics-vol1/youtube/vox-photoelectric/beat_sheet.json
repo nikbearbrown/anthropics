@@ -1,0 +1,968 @@
+{
+  "metadata": {
+    "slug": "vox-photoelectric",
+    "title": "Why a Blinding Red Lamp Releases Fewer Electrons Than a Dim UV Torch",
+    "topic": "QUANTUM MECHANICS · THE THRESHOLD",
+    "brand": "claude",
+    "audience": "Claude",
+    "channel": "claude-medhavy",
+    "palette": "claude",
+    "register": "Wonder",
+    "voice": "Medhavy",
+    "voice_env": "ELEVENLABS_VOICE_MEDHAVY",
+    "engine": "kokoro",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "color_semantics": "claude: INK #3D3929 all text; SPARK #D97757 the one accent. Content: TEAL = photon above threshold / electron ejected; CRIMSON = photon below threshold / no electron",
+    "greeting": "Hola, Medhavy",
+    "greeting_note": "hello lexicon: Spanish. Medhavy 1-word budget. Wagwan is Bear-only.",
+    "source": "quantum-mechanics-vol1/chapters/01-why-classical-physics-failed.md",
+    "note": "Refactored to Claude cut, claude-medhavy channel (claude-refactor skill). B00 = ClaudeComposerAsk cold open (Wonder register, new audio). ASK micro-beats inserted before each Manim/GRAPHIC beat (B01a, B03a, B04a, B05a, B06a, B07a, B08a). B11 = HANDOFF, B12 = ClaudeTitleOutro replacing OutroSeries/OutroCTA. Inner beats B02–B10 narration and media untouched.",
+    "refactored_from": "vox-editorial",
+    "new_audio_needed": [
+      "B00",
+      "B11",
+      "B12"
+    ],
+    "audio_note": "All existing inner-beat mp3s were generated with ElevenLabs NBB voice. Must regenerate ALL with kokoro af_kore for Medhavy: python3 runtime/scripts/generate_audio.py quantum-mechanics-vol1/youtube/vox-photoelectric",
+    "total_estimated_duration_seconds": 244.0,
+    "voice_kokoro": "af_kore",
+    "build": {
+      "at": "2026-07-25T11:54:29",
+      "cut": "master",
+      "filled": 5,
+      "of": 20,
+      "slates": [
+        "YTV01",
+        "B00",
+        "B01a",
+        "B03",
+        "B03a",
+        "B04",
+        "B04a",
+        "B05a",
+        "B06a",
+        "B07a",
+        "B08a",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01a: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B03a: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B04a: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B05a: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B06a: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B07a: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B08a: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "YTV01: palette=claude but the cold open is 'ClaudeVerdictArtifact' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "YTV01",
+      "act": "VERDICT",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.5,
+      "narration_text": "Let's recap with Claude. Three facts break classical theory: a sharp frequency threshold, instant emission, and electron energy set by frequency rather than intensity. Einstein's fix is that light arrives as photons, each carrying energy h times nu, and one photon strikes one electron. Kinetic energy equals h-nu minus the work function phi; below threshold that value is negative, so no electron escapes. Photons cannot pool their energy, so a blinding red lamp fails while a dim ultraviolet source ejects electrons immediately.",
+      "shot": {
+        "type": "CARD",
+        "source": "remotion",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/ClaudeVerdictArtifact",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Photons hit one electron each",
+            "artifactHeading": "What the body demonstrated",
+            "artifactLines": [
+              "Three facts break classical theory: a sharp frequency threshold, instant emission, and electron energy set by frequency rather than intensity.",
+              "Einstein's fix is that light arrives as photons, each carrying energy h times nu, and one photon strikes one electron.",
+              "Kinetic energy equals h-nu minus the work function phi; below threshold that value is negative, so no electron escapes.",
+              "Photons cannot pool their energy, so a blinding red lamp fails while a dim ultraviolet source ejects electrons immediately."
+            ]
+          },
+          "rendered": {
+            "out": "media/YTV01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 22,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YTV01"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "ASK",
+      "narration_text": "The sodium numbers floored me — green at 2.27 eV giving zero electrons from a 10,000-watt lamp while a single 4.13 eV UV photon ejects one, because photons cannot pool their energy. I want to work the math myself. Help me: (1) convert a given wavelength to photon energy in eV so I can test it against the 2.28 eV work function; (2) compute the ejected electron's kinetic energy just above threshold; (3) show why doubling the intensity changes the electron count but never their energy.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "type-on",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "QUANTUM MECHANICS · THE THRESHOLD",
+            "segment": "Why a Blinding Red Lamp Releases Fewer Electrons Than a Dim UV Torch",
+            "command": "The sodium numbers floored me — green at 2.27 eV giving zero electrons from a 10,000-watt lamp while a single 4.13 eV UV photon ejects one, because photons cannot pool their energy. I want to work the math myself. Help me: (1) convert a given wavelength to photon energy in eV so I can test it against the 2.28 eV work function; (2) compute the ejected electron's kinetic energy just above threshold; (3) show why doubling the intensity changes the electron count but never their energy.",
+            "runningText": "checking the work function…",
+            "folderLabel": "@Medhavy"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 15.34,
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      }
+    },
+    {
+      "beat_id": "B01a",
+      "act": "ASK-MICRO",
+      "narration_text": "",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "",
+            "topic": "QUANTUM MECHANICS · THE THRESHOLD",
+            "segment": "Why a Blinding Red Lamp Releases Fewer Electrons Than a Dim UV Torch",
+            "command": "claude \"write a Manim scene: three experimental facts of the photoelectric effect — threshold frequency cutoff, instant emission above threshold, kinetic energy set by frequency not intensity\"",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@Medhavy"
+          },
+          "rendered": {
+            "out": "media/B01a.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 2,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01a"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "t_start": 9.0,
+      "estimated_duration_s": 10.0,
+      "narration_text": "Three experimental facts. One: below a threshold frequency, no electrons — ever, at any intensity. Two: above threshold, electrons emerge immediately, with no time delay. Three: the kinetic energy of each electron depends only on the frequency, not the intensity.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare",
+        "remotion": {
+          "pattern": "DoodleScene",
+          "props": {
+            "items": [],
+            "title": "three facts classical waves cannot explain",
+            "caption": "threshold · instant · frequency sets energy",
+            "eyebrow": "quantum mechanics",
+            "durationS": 17.49,
+            "seed": 42
+          },
+          "provenance": "doodle-skill"
+        }
+      },
+      "graphic": {
+        "manim": "B02_ThreeFacts"
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 17.49,
+      "doodle": {
+        "title": "three facts classical waves cannot explain",
+        "caption": "threshold · instant · frequency sets energy",
+        "eyebrow": "quantum mechanics",
+        "icons": [],
+        "seed": 42
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-25T11:54:29"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "t_start": 19.0,
+      "estimated_duration_s": 9.0,
+      "narration_text": "Classical wave theory says energy is delivered uniformly across the surface. Crank up the intensity and eventually any frequency should free an electron. So why is there a sharp threshold? Why does a dim UV source work when a blinding red lamp fails?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold"
+      },
+      "card": {
+        "kind": "question",
+        "copy": "Classical waves: more intensity = more energy.\nBelow threshold: zero electrons at any intensity.\nWhy?",
+        "sub": "QUANTUM MECHANICS"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 16.26,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B03.mp4)",
+        "suggested": "suggested prompt: Classical wave theory says energy is delivered uniformly across the surface. Crank up the intensity and eventually any frequency should free an electron. So why"
+      }
+    },
+    {
+      "beat_id": "B03a",
+      "act": "ASK-MICRO",
+      "narration_text": "",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "",
+            "topic": "QUANTUM MECHANICS · THE THRESHOLD",
+            "segment": "Why a Blinding Red Lamp Releases Fewer Electrons Than a Dim UV Torch",
+            "command": "claude \"write a Manim scene: light as discrete photon packets each carrying h times nu, one photon strikes one electron, if energy below work function phi the electron cannot escape\"",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@Medhavy"
+          },
+          "rendered": {
+            "out": "media/B03a.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 2,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03a"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "t_start": 28.0,
+      "estimated_duration_s": 10.0,
+      "narration_text": "Einstein's 1905 answer: light energy is not spread continuously. It arrives as discrete packets — photons — each carrying exactly h times nu. One photon hits one electron. If that photon's energy is less than the work function phi, the electron cannot escape, period.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "graphic": {
+        "manim": "B04_PhotonPackets"
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 18.56,
+      "doodle": {
+        "icons": [
+          {
+            "terms": "circle dot ball",
+            "label": "photon",
+            "accent": false,
+            "xPct": 28,
+            "yPct": 38,
+            "widthPct": 18,
+            "mode": "drawon"
+          },
+          {
+            "terms": "rectangle slab block",
+            "label": "metal surface",
+            "accent": false,
+            "xPct": 50,
+            "yPct": 66,
+            "widthPct": 30,
+            "mode": "popin"
+          },
+          {
+            "terms": "particle electron",
+            "label": "electron",
+            "accent": true,
+            "xPct": 72,
+            "yPct": 38,
+            "widthPct": 18,
+            "mode": "popin"
+          }
+        ],
+        "caption": "one photon, one electron",
+        "eyebrow": "quantum mechanics",
+        "seed": 43
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+      }
+    },
+    {
+      "beat_id": "B04a",
+      "act": "ASK-MICRO",
+      "narration_text": "",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "",
+            "topic": "QUANTUM MECHANICS · THE THRESHOLD",
+            "segment": "Why a Blinding Red Lamp Releases Fewer Electrons Than a Dim UV Torch",
+            "command": "claude \"write a Manim scene: Einstein photoelectric equation KE = hν − φ, plot kinetic energy vs photon frequency showing the threshold cutoff and slope h\"",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@Medhavy"
+          },
+          "rendered": {
+            "out": "media/B04a.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 2,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04a"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "t_start": 38.0,
+      "estimated_duration_s": 10.0,
+      "narration_text": "The equation is kinetic energy equals h-nu minus phi. Above threshold: the electron escapes with kinetic energy proportional to how far above threshold you are. Below threshold: h-nu minus phi is negative — and there is no such thing as negative kinetic energy. No escape.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare",
+        "remotion": {
+          "pattern": "DoodleChart",
+          "props": {
+            "kind": "line",
+            "title": "Einstein photoelectric equation",
+            "data": [
+              {
+                "label": "3×10¹⁴",
+                "value": 0.0
+              },
+              {
+                "label": "ν₀ (Na)",
+                "value": 0.0
+              },
+              {
+                "label": "7×10¹⁴",
+                "value": 0.62
+              },
+              {
+                "label": "9×10¹⁴",
+                "value": 1.44
+              },
+              {
+                "label": "11×10¹⁴",
+                "value": 2.27
+              }
+            ],
+            "unit": " eV",
+            "accentIndex": 1,
+            "yMax": 2.5,
+            "caption": "KE = h·ν − Φ  ·  slope = h",
+            "durationS": 18.11
+          },
+          "provenance": "doodle-skill",
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B05_EinsteinEquation"
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 18.11,
+      "doodle": {
+        "chart": {
+          "kind": "line",
+          "title": "Einstein photoelectric equation",
+          "data": [
+            {
+              "label": "3×10¹⁴",
+              "value": 0.0
+            },
+            {
+              "label": "ν₀ (Na)",
+              "value": 0.0
+            },
+            {
+              "label": "7×10¹⁴",
+              "value": 0.62
+            },
+            {
+              "label": "9×10¹⁴",
+              "value": 1.44
+            },
+            {
+              "label": "11×10¹⁴",
+              "value": 2.27
+            }
+          ],
+          "unit": " eV",
+          "accentIndex": 1,
+          "yMax": 2.5
+        },
+        "caption": "KE = h·ν − Φ  ·  slope = h"
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-25T11:54:29"
+      }
+    },
+    {
+      "beat_id": "B05a",
+      "act": "ASK-MICRO",
+      "narration_text": "",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "",
+            "topic": "QUANTUM MECHANICS · THE THRESHOLD",
+            "segment": "Why a Blinding Red Lamp Releases Fewer Electrons Than a Dim UV Torch",
+            "command": "claude \"write a Manim scene: sodium photoelectric worked example — 546 nm green at 2.27 eV vs 300 nm UV at 4.13 eV, work function 2.28 eV, show which wavelength ejects electrons\"",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@Medhavy"
+          },
+          "rendered": {
+            "out": "media/B05a.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 2,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05a"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "t_start": 48.0,
+      "estimated_duration_s": 11.0,
+      "narration_text": "For sodium, the work function is 2.28 electron volts. Green light at 546 nanometers carries 2.27 electron volts per photon — one hundredth of a volt below threshold. Result: zero electrons from a ten-thousand-watt lamp. A UV photon at 300 nanometers carries 4.13 electron volts — nearly two volts above threshold. Each photon ejects one electron.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare",
+        "remotion": {
+          "pattern": "DoodleChart",
+          "props": {
+            "kind": "bar",
+            "title": "sodium photoelectric effect",
+            "data": [
+              {
+                "label": "green 546 nm",
+                "value": 2.27
+              },
+              {
+                "label": "threshold",
+                "value": 2.28
+              },
+              {
+                "label": "UV 300 nm",
+                "value": 4.13
+              }
+            ],
+            "unit": " eV",
+            "accentIndex": 2,
+            "yMax": 5.0,
+            "caption": "Φ = 2.28 eV  ·  UV ejects electrons, green cannot",
+            "durationS": 21.06
+          },
+          "provenance": "doodle-skill",
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B06_SodiumExample"
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 21.06,
+      "doodle": {
+        "chart": {
+          "kind": "bar",
+          "title": "sodium photoelectric effect",
+          "data": [
+            {
+              "label": "green 546 nm",
+              "value": 2.27
+            },
+            {
+              "label": "threshold",
+              "value": 2.28
+            },
+            {
+              "label": "UV 300 nm",
+              "value": 4.13
+            }
+          ],
+          "unit": " eV",
+          "accentIndex": 2,
+          "yMax": 5.0
+        },
+        "caption": "Φ = 2.28 eV  ·  UV ejects electrons, green cannot"
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-25T11:54:29"
+      }
+    },
+    {
+      "beat_id": "B06a",
+      "act": "ASK-MICRO",
+      "narration_text": "",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "",
+            "topic": "QUANTUM MECHANICS · THE THRESHOLD",
+            "segment": "Why a Blinding Red Lamp Releases Fewer Electrons Than a Dim UV Torch",
+            "command": "claude \"write a Manim scene: photons cannot pool energy — multiple sub-threshold red photons arrive one by one, each bounces off the electron, none can free it\"",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@Medhavy"
+          },
+          "rendered": {
+            "out": "media/B06a.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 2,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B06a"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "t_start": 59.0,
+      "estimated_duration_s": 10.0,
+      "narration_text": "The key point: photons cannot pool their energy. A thousand red photons arriving one after another cannot combine to free one electron the way that waves could. Each photon acts alone, and a sub-threshold photon fails alone.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare",
+        "remotion": {
+          "pattern": "DoodleScene",
+          "props": {
+            "items": [
+              {
+                "label": "1000 red photons",
+                "accent": false,
+                "mode": "drawon",
+                "svg": "<?xml version=\"1.0\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\"\n \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n<svg version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\"\n width=\"2000.000000pt\" height=\"2000.000000pt\" viewBox=\"0 0 2000.000000 2000.000000\"\n preserveAspectRatio=\"xMidYMid meet\">\n<metadata>\nCreated by potrace 1.16, written by Peter Selinger 2001-2019\n</metadata>\n<g transform=\"translate(0.000000,2000.000000) scale(0.100000,-0.100000)\"\nfill=\"#000000\" stroke=\"none\">\n<path d=\"M8259 14840 c-24 -23 -30 -37 -27 -62 3 -29 7 -33 34 -36 39 -4 94\n39 94 72 0 26 -29 56 -54 56 -10 0 -31 -13 -47 -30z M7196 14248 c-30 -41\n-319 -496 -341 -538 -17 -34 -13 -50 14 -50 17 0 105 120 267 364 l79 119 7\n-234 c7 -230 18 -336 40 -384 12 -27 140 -116 233 -163 33 -16 115 -53 182\n-82 109 -46 142 -70 97 -70 -8 0 -118 -25 -244 -55 -127 -31 -253 -59 -280\n-62 l-50 -6 -2 -316 -3 -316 -46 70 c-25 39 -72 119 -105 179 -63 116 -144\n216 -175 216 -10 0 -19 -4 -19 -10 0 -5 -21 -10 -46 -10 -57 0 -227 -37 -433\n-96 -86 -24 -159 -44 -163 -44 -4 0 51 59 122 131 182 185 210 223 212 290 2\n78 -31 166 -143 387 -54 105 -97 192 -96 192 1 0 67 -23 147 -51 246 -86 379\n-116 395 -89 15 24 -29 44 -276 124 -142 47 -274 92 -293 101 -19 9 -45 15\n-58 13 -50 -7 -27 -66 199 -504 l89 -171 -209 -219 c-227 -238 -240 -254 -231\n-277 14 -37 47 -32 424 72 266 73 335 94 355 111 16 14 25 -1 125 -201 122\n-244 197 -339 267 -339 32 0 47 12 55 46 11 43 -27 524 -49 636 -5 27 -4 29\n19 23 36 -9 168 11 368 56 96 21 208 42 248 46 83 7 105 19 105 57 0 58 -80\n106 -343 205 -246 92 -301 116 -311 132 -15 28 -29 209 -35 459 -4 140 -11\n263 -16 273 -14 28 -54 21 -82 -15z M9936 12914 c-52 -53 -23 -138 47 -138 51\n0 87 35 87 85 0 75 -80 106 -134 53z M9355 12074 c-21 -22 -16 -42 17 -67 23\n-17 31 -19 53 -9 30 14 34 51 7 75 -24 21 -56 22 -77 1z M6361 11984 c-26 -33\n-26 -39 -1 -64 23 -23 29 -24 64 -10 38 14 51 46 31 76 -22 33 -67 33 -94 -2z\nM12146 11748 c-8 -29 -33 -125 -56 -213 -22 -88 -46 -175 -51 -193 l-11 -34\n-87 84 c-85 83 -161 148 -233 202 -34 25 -39 26 -44 11 -5 -13 34 -58 155\n-179 l163 -163 -214 -73 c-249 -85 -248 -85 -248 -110 0 -32 40 -25 251 41\n107 34 202 64 211 66 16 5 17 2 3 -43 -42 -144 -95 -352 -95 -376 0 -47 27\n-33 48 25 11 28 36 113 56 187 21 74 42 150 47 168 l11 33 162 -158 c204 -199\n266 -243 266 -188 0 7 -83 98 -185 203 l-185 190 163 57 c221 77 347 137 347\n164 0 12 -6 21 -13 21 -7 0 -127 -38 -267 -85 -140 -47 -255 -85 -256 -85 -1\n0 7 35 18 78 35 136 88 376 88 400 0 43 -29 24 -44 -30z M10262 11767 c-13\n-15 -72 -175 -72 -194 0 -7 7 -13 16 -13 9 0 26 24 42 60 15 32 30 59 33 60 3\n0 11 -22 18 -49 14 -57 39 -97 52 -84 9 9 -21 163 -41 211 -11 24 -32 29 -48\n9z M10059 11570 c-92 -21 -99 -25 -99 -55 0 -27 93 -111 149 -134 23 -10 30\n-18 25 -30 -38 -89 -74 -198 -72 -215 8 -54 97 -11 185 89 l48 54 91 -90 c95\n-95 126 -108 132 -60 5 30 -88 251 -105 251 -22 0 -23 -18 -4 -80 11 -36 14\n-57 8 -52 -71 55 -111 82 -126 82 -9 0 -43 -27 -76 -60 -32 -33 -60 -58 -62\n-56 -2 2 6 32 17 67 l21 65 -70 73 c-39 41 -71 77 -71 81 0 3 28 17 62 31 39\n15 64 31 66 42 4 21 -15 21 -119 -3z M10418 11563 c-33 -5 -57 -30 -37 -38 8\n-2 43 -6 79 -7 l65 -3 -63 -49 c-59 -47 -78 -76 -48 -76 8 0 55 27 106 60 82\n54 91 63 88 88 -3 27 -4 27 -83 28 -44 1 -92 -1 -107 -3z M12989 10879 c-53\n-57 -35 -145 37 -175 44 -18 86 -9 121 28 22 23 28 39 28 74 0 39 -5 50 -33\n75 -26 23 -42 29 -78 29 -39 0 -51 -5 -75 -31z M10268 10809 c-38 -21 -11 -74\n34 -67 26 3 37 41 18 64 -14 16 -28 17 -52 3z M7629 10152 c-49 -40 -15 -122\n50 -122 42 0 71 26 71 64 0 63 -71 98 -121 58z M11153 9909 c-101 -29 -113\n-178 -17 -224 52 -25 101 -15 142 30 83 89 -6 227 -125 194z M8173 9661 c-24\n-28 -220 -450 -291 -626 -33 -82 -75 -196 -92 -253 -27 -85 -35 -100 -47 -91\n-21 18 -319 4 -558 -26 -110 -13 -270 -32 -355 -41 -170 -18 -200 -29 -200\n-72 0 -36 19 -53 155 -137 61 -38 196 -126 302 -197 234 -155 351 -223 423\n-245 30 -9 56 -18 58 -19 2 -1 -55 -179 -127 -396 -193 -583 -205 -648 -124\n-648 39 0 528 342 802 561 l114 91 116 -79 c211 -143 513 -367 603 -446 79\n-69 90 -76 109 -66 19 10 21 17 16 68 -6 67 -168 639 -227 801 -58 159 -57\n150 -9 184 23 16 130 102 238 191 248 205 406 324 482 365 68 36 82 56 53 77\n-15 12 -48 13 -174 8 -162 -7 -706 -41 -823 -51 -76 -7 -106 -26 -85 -51 15\n-18 101 -15 618 17 168 11 311 20 319 20 7 0 -44 -42 -115 -93 -214 -154 -501\n-384 -563 -450 -15 -17 -22 -33 -18 -47 3 -11 1 -23 -4 -26 -5 -3 -9 -18 -9\n-34 0 -43 133 -567 184 -725 l44 -136 -42 36 c-110 95 -362 294 -456 359 -106\n75 -235 146 -264 146 -27 0 -123 -63 -491 -324 -192 -136 -351 -243 -353 -238\n-3 9 54 172 183 522 112 305 121 396 38 413 -42 9 -166 87 -429 273 -132 93\n-265 185 -297 204 -31 19 -57 37 -57 40 0 3 64 14 143 23 473 56 727 88 760\n96 29 7 37 6 37 -5 0 -25 28 -15 38 14 12 34 226 515 325 730 41 90 77 160 80\n155 8 -14 124 -457 187 -719 34 -139 67 -260 74 -270 8 -11 19 -15 31 -10 15\n5 17 14 11 59 -14 104 -59 304 -113 501 -31 111 -77 280 -102 377 -25 97 -52\n183 -60 192 -18 22 -37 21 -58 -2z M9442 9450 c-27 -11 -51 -62 -44 -96 6 -32\n48 -64 84 -64 38 0 78 40 78 79 0 43 -9 60 -41 76 -32 17 -44 18 -77 5z M9536\n6889 c-50 -39 -20 -109 47 -109 42 0 67 26 67 68 0 57 -64 80 -114 41z M12535\n6748 c-46 -40 -32 -118 22 -118 31 0 79 25 87 45 29 75 -47 126 -109 73z\nM13127 6683 c-19 -19 -4 -119 74 -491 28 -134 50 -245 48 -247 -2 -2 -152 41\n-333 96 -180 54 -332 96 -337 93 -19 -11 -7 -25 49 -53 68 -34 343 -143 494\n-196 l108 -38 -183 -186 c-222 -228 -281 -296 -273 -316 3 -8 13 -15 21 -15 9\n0 120 100 246 223 127 122 234 223 239 225 4 1 10 -17 14 -40 32 -205 122\n-534 161 -594 20 -31 53 -32 60 -1 3 12 -21 159 -54 327 -32 168 -57 307 -55\n309 2 2 101 -31 220 -73 234 -83 289 -95 289 -61 0 26 -184 120 -370 189 -72\n27 -133 52 -137 55 -5 4 100 112 232 240 271 263 299 294 280 316 -10 12 -16\n13 -39 1 -35 -19 -161 -129 -356 -314 -88 -83 -162 -148 -166 -144 -4 4 -14\n41 -24 82 -30 126 -155 582 -166 602 -10 18 -30 24 -42 11z M9363 6292 c-29\n-4 -73 -57 -73 -86 0 -40 37 -76 76 -76 46 0 70 14 89 50 33 64 -17 124 -92\n112z\"/>\n</g>\n</svg>\n",
+                "xPct": 27,
+                "yPct": 38,
+                "widthPct": 20
+              },
+              {
+                "label": "cannot pool",
+                "accent": true,
+                "mode": "popin",
+                "svg": "<?xml version=\"1.0\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\"\n \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n<svg version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\"\n width=\"2000.000000pt\" height=\"2000.000000pt\" viewBox=\"0 0 2000.000000 2000.000000\"\n preserveAspectRatio=\"xMidYMid meet\">\n<metadata>\nCreated by potrace 1.16, written by Peter Selinger 2001-2019\n</metadata>\n<g transform=\"translate(0.000000,2000.000000) scale(0.100000,-0.100000)\"\nfill=\"#000000\" stroke=\"none\">\n<path d=\"M10610 15669 c-1103 -36 -2376 -222 -2926 -429 -347 -130 -496 -276\n-561 -549 -21 -91 -29 -568 -14 -861 40 -768 122 -1314 221 -1475 22 -35 56\n-53 71 -38 10 10 -1 293 -31 848 -47 861 -55 1299 -26 1454 31 173 110 272\n281 355 445 218 1579 408 2780 467 335 16 889 8 982 -15 139 -34 215 -113 327\n-341 184 -374 252 -650 341 -1385 50 -421 86 -564 164 -652 75 -86 187 -92\n207 -12 4 14 -4 58 -19 107 -55 176 -75 287 -122 657 -80 625 -180 1000 -366\n1371 -116 234 -223 361 -351 423 -100 47 -200 66 -418 76 -203 10 -201 10\n-540 -1z M10788 15080 c-36 -22 -20 -48 70 -114 157 -115 261 -239 315 -376\n36 -92 47 -160 56 -360 13 -258 43 -344 116 -326 31 8 51 37 83 124 34 91 43\n325 18 452 -54 266 -239 488 -480 576 -78 28 -155 38 -178 24z M11389 13604\nc-22 -24 -24 -33 -24 -132 0 -91 4 -117 25 -170 32 -81 60 -109 97 -96 39 14\n56 70 57 189 0 55 -5 120 -12 144 -26 86 -94 117 -143 65z M13365 13163 c-402\n-19 -749 -73 -799 -123 -18 -17 -19 -22 -6 -34 12 -11 115 -16 550 -25 579\n-12 745 -20 1030 -51 555 -61 775 -161 950 -431 164 -253 277 -674 365 -1349\n32 -255 151 -1373 170 -1608 50 -612 -22 -862 -301 -1048 -287 -191 -768 -312\n-1704 -429 -321 -40 -412 -56 -479 -86 -115 -50 -135 -125 -47 -172 93 -50\n567 -15 1141 83 757 129 1167 286 1407 538 126 133 196 279 235 492 23 126 23\n495 -1 740 -24 252 -122 1140 -152 1375 -122 976 -288 1486 -576 1773 -226\n227 -517 317 -1138 352 -159 9 -494 11 -645 3z M6880 12643 c-14 -2 -151 -29\n-305 -59 -824 -162 -1468 -338 -1865 -509 -225 -97 -383 -213 -472 -346 -115\n-174 -148 -399 -128 -889 18 -456 96 -1827 125 -2215 61 -795 151 -1155 352\n-1406 103 -129 281 -244 473 -304 268 -83 674 -97 1185 -40 505 57 1264 193\n1402 250 39 17 45 49 11 59 -107 29 -382 16 -1038 -49 -582 -57 -773 -69\n-1005 -62 -296 9 -520 58 -674 149 -182 107 -303 319 -369 643 -65 318 -95\n663 -172 1975 -56 974 -63 1133 -57 1330 8 278 42 386 151 495 215 214 824\n410 2006 645 245 49 471 98 502 110 37 13 69 35 93 61 31 35 36 46 33 82 -2\n34 -9 45 -37 64 -29 19 -46 23 -110 22 -42 -1 -87 -4 -101 -6z M5135 8746\nc-59 -89 -44 -299 33 -469 102 -225 309 -397 552 -458 152 -39 372 -15 441 47\n40 36 15 93 -53 122 -15 6 -92 25 -171 41 -166 35 -221 52 -297 92 -170 90\n-303 265 -410 539 -18 47 -38 91 -43 98 -15 19 -35 14 -52 -12z M6795 8149\nc-76 -15 -210 -83 -240 -123 -34 -45 -34 -90 2 -113 70 -46 338 5 422 81 100\n91 -15 188 -184 155z M12918 7570 c-36 -21 -40 -72 -43 -484 -5 -690 -52\n-1084 -174 -1456 -132 -398 -252 -518 -632 -634 -600 -181 -2531 -464 -2953\n-431 -214 16 -293 66 -418 260 -157 244 -228 494 -418 1475 -165 852 -176 896\n-240 954 -49 44 -103 49 -145 14 -48 -42 -50 -94 -10 -278 9 -41 54 -277 101\n-525 134 -712 233 -1155 300 -1355 46 -137 127 -302 202 -415 205 -307 385\n-387 831 -371 752 28 2404 287 2913 457 365 122 541 295 683 673 77 207 136\n474 172 771 25 215 25 828 0 995 -29 193 -73 327 -116 350 -24 12 -31 12 -53\n0z\"/>\n</g>\n</svg>\n",
+                "xPct": 27,
+                "yPct": 62,
+                "widthPct": 14
+              },
+              {
+                "label": "1 UV photon",
+                "accent": false,
+                "mode": "drawon",
+                "svg": "<?xml version=\"1.0\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\"\n \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n<svg version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\"\n width=\"2000.000000pt\" height=\"2000.000000pt\" viewBox=\"0 0 2000.000000 2000.000000\"\n preserveAspectRatio=\"xMidYMid meet\">\n<metadata>\nCreated by potrace 1.16, written by Peter Selinger 2001-2019\n</metadata>\n<g transform=\"translate(0.000000,2000.000000) scale(0.100000,-0.100000)\"\nfill=\"#000000\" stroke=\"none\">\n<path d=\"M9230 16089 c-196 -9 -534 -42 -713 -69 -172 -26 -544 -109 -766\n-171 -543 -150 -1285 -571 -1866 -1059 -980 -824 -1627 -1862 -1919 -3080\n-278 -1158 -214 -2501 175 -3672 482 -1450 1403 -2493 2849 -3223 947 -478\n1997 -781 3035 -877 215 -20 789 -17 1000 6 922 97 1740 412 2525 971 1163\n831 2025 2059 2425 3454 345 1206 274 2455 -211 3679 -542 1367 -1467 2478\n-2612 3136 -442 254 -926 440 -1552 596 -109 27 -181 40 -212 38 -37 -2 -49 1\n-58 15 -14 24 -136 80 -215 101 -187 47 -551 117 -681 131 -327 33 -804 43\n-1204 24z m620 -269 c316 -14 643 -46 975 -96 151 -22 353 -35 411 -26 52 9\n52 9 68 -24 19 -40 35 -49 229 -123 209 -81 671 -269 825 -337 662 -293 1198\n-658 1697 -1158 580 -582 1050 -1307 1370 -2116 376 -952 493 -1881 354 -2810\n-89 -591 -272 -1156 -560 -1731 -316 -631 -691 -1146 -1200 -1644 -208 -204\n-351 -327 -561 -485 -743 -560 -1523 -887 -2368 -994 -464 -59 -1038 -45\n-1575 39 -1141 178 -2333 637 -3189 1230 -1038 719 -1714 1711 -2046 3002\n-130 502 -197 1007 -207 1553 -23 1238 276 2322 904 3277 349 531 843 1048\n1393 1455 430 318 955 607 1320 726 207 67 271 83 567 137 621 113 1071 148\n1593 125z\"/>\n</g>\n</svg>\n",
+                "xPct": 73,
+                "yPct": 38,
+                "widthPct": 18
+              }
+            ],
+            "title": "",
+            "caption": "photons cannot pool their energy",
+            "eyebrow": "quantum mechanics",
+            "durationS": 15.55,
+            "seed": 47
+          },
+          "provenance": "doodle-skill",
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B07_PhotonsCannotPool"
+      },
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 15.55,
+      "doodle": {
+        "icons": [
+          {
+            "terms": "dots cluster group many",
+            "label": "1000 red photons",
+            "accent": false,
+            "xPct": 27,
+            "yPct": 38,
+            "widthPct": 20,
+            "mode": "drawon"
+          },
+          {
+            "terms": "cross x block stop",
+            "label": "cannot pool",
+            "accent": true,
+            "xPct": 27,
+            "yPct": 62,
+            "widthPct": 14,
+            "mode": "popin"
+          },
+          {
+            "terms": "circle dot single",
+            "label": "1 UV photon",
+            "accent": false,
+            "xPct": 73,
+            "yPct": 38,
+            "widthPct": 18,
+            "mode": "drawon"
+          }
+        ],
+        "caption": "photons cannot pool their energy",
+        "eyebrow": "quantum mechanics",
+        "seed": 47
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-07-25T11:54:29"
+      }
+    },
+    {
+      "beat_id": "B07a",
+      "act": "ASK-MICRO",
+      "narration_text": "",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "",
+            "topic": "QUANTUM MECHANICS · THE THRESHOLD",
+            "segment": "Why a Blinding Red Lamp Releases Fewer Electrons Than a Dim UV Torch",
+            "command": "claude \"write a Manim scene: intensity vs frequency are independent axes in the photoelectric effect — intensity sets photon count rate, frequency sets energy per photon\"",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@Medhavy"
+          },
+          "rendered": {
+            "out": "media/B07a.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 2,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B07a"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "t_start": 69.0,
+      "estimated_duration_s": 10.0,
+      "narration_text": "Intensity controls only how many photons arrive per second — the rate. Above threshold: more photons means more electrons, but the same kinetic energy per electron. Intensity is a count; frequency is the energy. They are independent.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare",
+        "remotion": {
+          "pattern": "DoodleScene",
+          "props": {
+            "items": [
+              {
+                "label": "intensity = count",
+                "accent": false,
+                "mode": "drawon",
+                "svg": "<?xml version=\"1.0\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\"\n \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n<svg version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\"\n width=\"2000.000000pt\" height=\"2000.000000pt\" viewBox=\"0 0 2000.000000 2000.000000\"\n preserveAspectRatio=\"xMidYMid meet\">\n<metadata>\nCreated by potrace 1.16, written by Peter Selinger 2001-2019\n</metadata>\n<g transform=\"translate(0.000000,2000.000000) scale(0.100000,-0.100000)\"\nfill=\"#000000\" stroke=\"none\">\n<path d=\"M10584 14216 c-40 -18 -72 -59 -80 -105 -4 -20 0 -102 10 -186 14\n-116 20 -277 27 -707 4 -307 10 -561 12 -565 4 -6 -17 -442 -23 -491 0 -2\n-179 -1 -397 3 -414 7 -1058 -2 -2548 -35 -484 -11 -1229 -26 -1655 -35 -1327\n-26 -1946 -45 -2085 -65 -33 -4 -86 -20 -117 -34 -98 -43 -93 -17 -92 -556 0\n-267 8 -618 18 -825 22 -487 35 -931 38 -1280 2 -411 14 -766 33 -1010 31\n-414 44 -437 260 -464 181 -23 2031 -51 2925 -44 818 6 1594 27 2545 69 187 8\n530 17 763 21 l422 6 -1 -24 c-4 -197 -23 -399 -58 -619 -22 -140 -47 -325\n-56 -410 -21 -201 -49 -438 -79 -675 -18 -143 -22 -208 -17 -265 10 -92 20\n-112 67 -135 59 -28 98 -10 214 100 286 270 506 438 1275 970 733 507 969 681\n1695 1246 634 493 916 702 1520 1129 712 502 1043 766 1094 873 9 19 16 49 16\n67 0 17 11 48 25 68 29 42 33 98 10 141 -35 68 -99 110 -795 526 -1031 616\n-1489 923 -2803 1882 -1001 731 -1347 978 -1668 1190 -374 247 -425 271 -495\n239z m450 -510 c329 -219 662 -459 1601 -1156 1371 -1018 1837 -1333 2985\n-2019 223 -134 415 -249 428 -257 23 -15 22 -15 -50 -76 -174 -145 -399 -311\n-898 -663 -679 -478 -916 -656 -1625 -1215 -687 -542 -901 -703 -1555 -1170\n-606 -433 -854 -620 -1057 -797 -41 -36 -77 -63 -80 -60 -2 3 7 88 21 189 56\n399 146 1336 146 1518 0 107 -47 162 -160 182 -127 24 -920 14 -1685 -20\n-1236 -56 -1631 -68 -2580 -82 -1286 -18 -1944 -30 -2239 -41 -158 -5 -290 -9\n-291 -7 -8 9 -27 623 -35 1163 -10 668 -17 861 -55 1600 -13 264 -29 584 -35\n710 -6 127 -13 255 -17 286 l-5 55 83 -10 c54 -7 533 -10 1349 -10 1171 0\n1925 9 3030 35 239 5 876 14 1415 19 632 6 993 13 1016 19 19 6 48 24 64 40\nl28 30 -2 863 c-1 475 -4 896 -8 936 -3 39 -2 72 2 72 4 0 98 -60 209 -134z\"/>\n</g>\n</svg>\n",
+                "xPct": 27,
+                "yPct": 40,
+                "widthPct": 22
+              },
+              {
+                "label": "frequency = energy",
+                "accent": true,
+                "mode": "drawon",
+                "svg": "<?xml version=\"1.0\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\"\n \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n<svg version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\"\n width=\"2000.000000pt\" height=\"2000.000000pt\" viewBox=\"0 0 2000.000000 2000.000000\"\n preserveAspectRatio=\"xMidYMid meet\">\n<metadata>\nCreated by potrace 1.16, written by Peter Selinger 2001-2019\n</metadata>\n<g transform=\"translate(0.000000,2000.000000) scale(0.100000,-0.100000)\"\nfill=\"#000000\" stroke=\"none\">\n<path d=\"M7870 15259 c-32 -13 -78 -56 -95 -90 -13 -24 -18 -54 -45 -271 -6\n-46 -24 -173 -40 -283 -50 -346 -83 -658 -160 -1523 -22 -250 -58 -605 -80\n-790 -128 -1096 -197 -1902 -207 -2402 -8 -431 12 -571 97 -679 67 -85 173\n-130 895 -381 209 -73 508 -180 665 -237 397 -146 713 -258 803 -284 42 -13\n77 -28 77 -35 0 -6 -18 -101 -39 -210 -108 -546 -269 -1598 -335 -2199 -53\n-474 -83 -886 -72 -987 15 -143 107 -203 223 -147 105 51 334 342 1349 1714\n983 1328 1333 1828 1659 2370 148 247 205 359 205 407 0 80 -115 166 -419 312\n-281 135 -543 249 -961 416 -195 78 -436 180 -535 225 -170 79 -622 299 -631\n308 -2 2 16 48 42 103 134 288 403 951 671 1654 434 1139 661 1891 667 2205 1\n97 -20 145 -82 189 -41 29 -44 29 -189 32 -252 5 -558 52 -1420 218 -270 53\n-709 136 -974 186 -491 93 -711 136 -854 171 -86 20 -175 24 -215 8z m433\n-424 c289 -60 1907 -361 2167 -404 282 -46 430 -66 620 -82 74 -6 136 -12 137\n-13 6 -5 -92 -362 -152 -554 -191 -615 -676 -1920 -955 -2567 -175 -405 -340\n-828 -340 -871 0 -54 43 -114 102 -142 23 -11 166 -79 316 -151 348 -167 516\n-241 1046 -463 519 -217 787 -324 921 -368 55 -18 103 -35 107 -39 12 -10\n-377 -612 -695 -1076 -83 -121 -318 -461 -522 -755 -764 -1100 -1138 -1660\n-1395 -2092 -36 -59 -66 -106 -67 -104 -2 1 10 65 26 142 33 152 319 1642 406\n2109 91 491 155 895 155 975 -1 88 -73 168 -213 234 -83 39 -267 99 -479 157\n-81 21 -246 77 -367 124 -220 85 -491 177 -1066 365 -170 56 -337 114 -371\n129 -75 35 -74 30 -74 297 0 596 139 2108 360 3904 85 692 116 962 125 1105 9\n132 15 175 26 175 6 0 88 -16 182 -35z\"/>\n</g>\n</svg>\n",
+                "xPct": 73,
+                "yPct": 40,
+                "widthPct": 22
+              }
+            ],
+            "title": "",
+            "caption": "intensity sets count  ·  frequency sets energy",
+            "eyebrow": "quantum mechanics",
+            "durationS": 15.94,
+            "seed": 48
+          },
+          "provenance": "doodle-skill",
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "graphic": {
+        "manim": "B08_IntensityVsFrequency"
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 15.94,
+      "doodle": {
+        "icons": [
+          {
+            "terms": "shapes arrow",
+            "label": "intensity = count",
+            "accent": false,
+            "xPct": 27,
+            "yPct": 40,
+            "widthPct": 22,
+            "mode": "drawon"
+          },
+          {
+            "terms": "lightning bolt nostalgia",
+            "label": "frequency = energy",
+            "accent": true,
+            "xPct": 73,
+            "yPct": 40,
+            "widthPct": 22,
+            "mode": "drawon"
+          }
+        ],
+        "caption": "intensity sets count  ·  frequency sets energy",
+        "eyebrow": "quantum mechanics",
+        "seed": 48
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-07-25T11:54:29"
+      }
+    },
+    {
+      "beat_id": "B08a",
+      "act": "ASK-MICRO",
+      "narration_text": "",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "",
+            "topic": "QUANTUM MECHANICS · THE THRESHOLD",
+            "segment": "Why a Blinding Red Lamp Releases Fewer Electrons Than a Dim UV Torch",
+            "command": "claude \"write a Manim scene: Millikan's stopping potential experiment confirming Einstein's equation — plot stopping voltage vs frequency for sodium, lithium, potassium, showing linear slope equal to h\"",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@Medhavy"
+          },
+          "rendered": {
+            "out": "media/B08a.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 2,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B08a"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "t_start": 79.0,
+      "estimated_duration_s": 9.0,
+      "narration_text": "Millikan tried for years to disprove this. His precise measurements of the stopping potential for sodium, lithium, and potassium confirmed Einstein's equation exactly. He gave the Nobel Committee his h measurement and his personal disbelief. Einstein won the 1921 Nobel Prize specifically for this paper.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "graphic": {
+        "manim": "B09_MillikanConfirm"
+      },
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 19.03,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → render animated_graphics.py scene B09_*"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "t_start": 88.0,
+      "estimated_duration_s": 9.0,
+      "narration_text": "One photon. One electron. Threshold frequency determines escape. Intensity determines count, not energy. Red lamp: sub-threshold photons, zero electrons. UV torch: above threshold, immediate emission.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold"
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "KE = hν − φ. Below threshold: no electrons ever.\nIntensity = count, not energy.\nOne photon acts alone.",
+        "sub": "QUANTUM MECHANICS"
+      },
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 14.74,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: One photon. One electron. Threshold frequency determines escape. Intensity determines count, not energy. Red lamp: sub-threshold photons, zero electrons. UV tor"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "HANDOFF",
+      "narration_text": "Your turn. Take any metal — copper, gold, silver. Ask Claude to find the work function, calculate which wavelengths free electrons, and show you the threshold.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "type-on",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "QUANTUM MECHANICS · THE THRESHOLD",
+            "segment": "Why a Blinding Red Lamp Releases Fewer Electrons Than a Dim UV Torch",
+            "command": "for copper (work function 4.7 eV), calculate which visible wavelengths free electrons and which cannot, then plot KE vs frequency and mark the threshold",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@Medhavy"
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 9,
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 10.45,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B11"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "OUTRO",
+      "narration_text": "Why a Blinding Red Lamp Releases Fewer Electrons Than a Dim UV Torch",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why a Blinding Red Lamp Releases Fewer Electrons Than a Dim UV Torch",
+            "handle": "@Medhavy",
+            "subline": "subscribe · one photon, one electron"
+          },
+          "rendered": {
+            "out": "media/B12.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 2.79,
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-25T11:54:29",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B12"
+      }
+    }
+  ]
+}

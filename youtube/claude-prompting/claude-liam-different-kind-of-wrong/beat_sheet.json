@@ -1,0 +1,1191 @@
+{
+  "metadata": {
+    "slug": "claude-liam-different-kind-of-wrong",
+    "title": "When Change Just Produces a Different Kind of Wrong",
+    "topic": "Detecting whether a change to an agentic/prompting system genuinely helped or just relocated the failure mode",
+    "purpose": "Teach the epistemics of change in AI systems: a fix reshapes the error surface, it doesn't erase it. Paired-not-aggregate, severity-weighted, judge-audited, cause-not-symptom, append-to-the-ledger.",
+    "audience": "Claude",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "palette": "claude",
+    "typography": {
+      "serif": "Tiempos/EB Garamond",
+      "ui": "system sans",
+      "mono": "SF Mono"
+    },
+    "register": "Teardown",
+    "aspect": "16:9",
+    "clock": "narration",
+    "style_preset": "claude",
+    "source": "Bear's research prompt — How to Tell When a Change Helps vs. Just Produces a Different Kind of Wrong",
+    "notes": "Kokoro am_onyx, free (IN-FOR-BEAR LAW). GATE P before any ElevenLabs swap. Deep-explainer: 7 acts, 33 body beats, VOX 21% / MANIM 27% / REMOTION 42% / CARD 9%. Vox runs R0 (B07-B08) and R1 (B28-B30). Never publish.",
+    "design_version": "v1",
+    "voice_kokoro": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 15,
+      "narration_text": "Hey — this is Liam, in for Bear. Here's what I typed into Claude: I changed a prompt to fix a bug, and it stopped. So did I fix it — or did I just move it somewhere I'm not looking? Turns out that question has a real answer.",
+      "new_visual_element": "Claude composer — the ask, answered",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam",
+            "topic": "Detecting whether a change to an agentic/prompting system genuinely helped or just relocated the failure mode",
+            "segment": "When Change Just Produces a Different Kind…",
+            "command": "When Change Just Produces a Different Kind of Wrong?",
+            "runningText": "building the answer…",
+            "output": [],
+            "folderLabel": "@claude-liam"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "remotion": "ClaudeComposerAsk",
+      "greeting": "Hola, Liam",
+      "folderLabel": "@NikBearBrown",
+      "props": {
+        "greeting": "Hola, Liam",
+        "command": "I changed a prompt to stop my agent hallucinating tool calls. How do I know the change actually helped — and didn't just trade that failure for a worse one I'm not testing for?",
+        "segment": "The Error Surface",
+        "runningText": "reasoning about the error surface…",
+        "output": [
+          "Every change reshapes the error surface — it doesn't erase it.",
+          "Act One: the error surface."
+        ]
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "ACT I — The Error Surface",
+      "estimated_duration_s": 10,
+      "narration_text": "Every system that can fail has an error surface — the whole set of ways it goes wrong. Change a prompt, a tool schema, a retrieval step, and you're not sliding from wrong to right on a dial. You're reshaping that surface.",
+      "new_visual_element": "Deforming error-surface heightmap",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "When Change Just Produces a Different Kind of Wrong",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "remotion": "ClaudeConceptC3",
+      "sparkline": "The Error Surface",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "error surface",
+          "mechanic": "A 3D-ish heightmap terrain of failure; as a change lands, one peak flattens and a new one rises elsewhere — reshaped, not removed.",
+          "colors": [
+            "#3D3929",
+            "#D97757",
+            "#F2F0E9"
+          ]
+        }
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ACT I — The Error Surface",
+      "estimated_duration_s": 14,
+      "narration_text": "Press one failure mode down and a different one routinely bulges up somewhere else. The trouble: most iteration loops check exactly one thing — did the bug I was staring at stop happening.",
+      "new_visual_element": "Surface cross-section: one bump pressed, neighbor rises",
+      "shot": {
+        "type": "MOTION-GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B02_SurfaceSeesaw",
+        "engine": "manim",
+        "production_viz": {
+          "label": "push-down / pop-up",
+          "mechanic": "2D cross-section of the surface; a finger presses one bump down and the adjacent bump rises by the same area. Labels: 'fixed' / 'new'.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "ACT I — The Error Surface",
+      "estimated_duration_s": 13,
+      "narration_text": "Economists named this — Goodhart's Law: when a measure becomes a target, it stops being a good measure. Optimize the symptom you can see, and you quietly degrade the thing you can't.",
+      "new_visual_element": "Charles Goodhart portrait (archival)",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.42
+        ]
+      },
+      "prompt": "pantry/B03-goodhart.png — archival portrait of economist Charles Goodhart. Tier 3: archival photo first; the photograph's rights govern. Vox-treated: desat ~80%, Claude cream stage, grain, terracotta underline on 'a measure becomes a target'.",
+      "graphic": {
+        "production_viz": {
+          "label": "Goodhart's Law",
+          "mechanic": "Ken Burns push toward the face; terracotta hand-drawn underline draws on under the key clause.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "ACT I — The Error Surface",
+      "estimated_duration_s": 18,
+      "narration_text": "It's Goodhart's Law wearing a hoodie — and it's an ordinary regression bug: the fix that closes one ticket and silently opens another. One difference: a compiler fails the same way every time. A model's failure space is open-ended, stochastic, and only shows under the right inputs.",
+      "new_visual_element": "Deterministic clean-repeat vs stochastic scatter",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "deckPattern:divergence",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "deterministic vs stochastic",
+          "mechanic": "Split screen: left, identical input → identical output repeated (clean); right, identical input → a scatter of outputs. Divergence pattern.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "ACT II — Define Helped First",
+      "estimated_duration_s": 9,
+      "narration_text": "So before you touch anything, you write down what 'helped' would even mean — because you cannot detect a shift you never specified.",
+      "new_visual_element": "Pipeline: define → measure → compare → judge → ledger",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "SourceFlow",
+      "sparkline": "Define 'Helped' First",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "the loop",
+          "mechanic": "Five-node flow lights its first node: define → measure → compare → judge → ledger. Reused as a recurring spine across acts.",
+          "colors": [
+            "#3D3929",
+            "#D97757",
+            "#F2F0E9"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "ACT II — Define Helped First",
+      "estimated_duration_s": 15,
+      "narration_text": "Start with an error taxonomy — the named ways this system fails. Not 'wrong answers.' Categories: hallucinated tool call, premature stop, over-verification loop, ignored constraint, format drift, right answer for the wrong reason, silent scope creep.",
+      "new_visual_element": "Isotype grid of labeled failure categories",
+      "shot": {
+        "type": "MOTION-GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B06_TaxonomyGrid",
+        "engine": "manim",
+        "production_viz": {
+          "label": "error taxonomy",
+          "mechanic": "Seven labeled isotype cells populate one by one, each with a small glyph: hallucinated tool call, premature stop, over-verification loop, ignored constraint, format drift, right-answer/wrong-reason, silent scope creep.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "ACT II — Define Helped First",
+      "estimated_duration_s": 14,
+      "narration_text": "Then a held-out eval set — thirty to a hundred cases, stratified across those categories. Here's the trap: if your set is only the cases you already know are broken, you'll only ever see improvement. Never regression.",
+      "new_visual_element": "Specimen/card-catalog, tight on one card",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.62,
+          0.42
+        ],
+        "vox_run": "R0",
+        "handoff": {
+          "camera": {
+            "x": 0.62,
+            "y": 0.42,
+            "scale": 1.9
+          },
+          "objects": [
+            {
+              "id": "one-card",
+              "x": 0.62,
+              "y": 0.42,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        }
+      },
+      "prompt": "pantry/B07-specimen.png (Tier 1) — a card-catalog / specimen index tray; wide, high-res so the tight 1.9x hold is sharp. Same plate as B08 (this is run R0). Terracotta ring on the single focused card.",
+      "graphic": {
+        "production_viz": {
+          "label": "held-out set (detail)",
+          "mechanic": "Ken Burns tight on ONE index card; ring highlights it. Handoff to B08's pull-back.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "ACT II — Define Helped First",
+      "estimated_duration_s": 15,
+      "narration_text": "Score per category, not one pass-fail: did each case fail the same way, a new way, or not at all? Store it as a versioned file next to the prompt — so eval drift shows up in a diff, same as prompt drift.",
+      "new_visual_element": "Pull back to the whole stratified tray",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "vox_run": "R0"
+      },
+      "prompt": "pantry/B07-specimen.png (same plate as B07) — camera pulls back from the one card to the whole stratified tray, cases grouped by category. Last beat of run R0 (no handoff).",
+      "graphic": {
+        "production_viz": {
+          "label": "held-out set (whole)",
+          "mechanic": "Continuous pull-back from B07's card to the full tray; category groupings become visible.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "ACT II — Define Helped First",
+      "estimated_duration_s": 15,
+      "narration_text": "And the discipline that makes it all work: for every fix, before you run it, write down what you think it might break. That one field makes you look for the thing you predicted — not just the thing you hoped for.",
+      "new_visual_element": "YAML case card, regression_risk line lit",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "remotion": "ClaudeConceptC3",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "regression_risk",
+          "mechanic": "A small eval-case YAML card types out; the `regression_risk:` line highlights terracotta. Fields: id, category, expected_behavior, known_failure_mode, regression_risk.",
+          "colors": [
+            "#3D3929",
+            "#D97757",
+            "#F2F0E9"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "ACT III — One Draw Is Noise",
+      "estimated_duration_s": 17,
+      "narration_text": "Now the part everyone skips. Model outputs are sampled, not fixed — even at temperature zero, with tools and multi-turn state, the variance is real. One before-and-after on one example tells you almost nothing. It could be luck.",
+      "new_visual_element": "One input → scattered outputs",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "deckPattern:scale",
+      "sparkline": "One Draw Is Noise",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "sampled, not fixed",
+          "mechanic": "A single input token fires repeatedly into a spreading scatter of different outputs; a lone 'before/after' pair is highlighted then swamped by the spread.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "ACT III — One Draw Is Noise",
+      "estimated_duration_s": 8,
+      "narration_text": "So run each case five to ten times, before and after. Compare distributions — not single draws.",
+      "new_visual_element": "Two pass-rate distributions, before vs after",
+      "shot": {
+        "type": "MOTION-GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B11_TwoDistributions",
+        "engine": "manim",
+        "production_viz": {
+          "label": "distributions",
+          "mechanic": "Two overlaid histograms of per-case pass rate (before / after) build up from repeated trials.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "ACT III — One Draw Is Noise",
+      "estimated_duration_s": 16,
+      "narration_text": "And compare them paired — same case, before versus after — not as averages. A system that fixes twenty cases and breaks fifteen different ones shows the same net plus-five as one that fixes twenty and breaks nothing. Same headline. Opposite reality.",
+      "new_visual_element": "Two rivers both netting +5, one churning with cross-flow",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "deckPattern:divergence",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "paired, not net",
+          "mechanic": "Two Sankey-ish flows both ending at net +5: the top flows straight (20 up, 0 down); the bottom churns (20 up-crossings AND 15 down-crossings). Same endpoint, visibly different traffic.",
+          "colors": [
+            "#3D3929",
+            "#D97757",
+            "#A44A32"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "ACT III — One Draw Is Noise",
+      "estimated_duration_s": 15,
+      "narration_text": "The honest tool has a name — McNemar's test — built for exactly this: paired yes/no outcomes on the same items. It looks only at the cases that flipped. And when few flip, it tells you the truth you don't want: not enough evidence yet.",
+      "new_visual_element": "2x2 contingency table, discordant cells lit",
+      "shot": {
+        "type": "MOTION-GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B13_McNemarMatrix",
+        "engine": "manim",
+        "production_viz": {
+          "label": "McNemar 2x2",
+          "mechanic": "A 2x2 table (before pass/fail x after pass/fail); the two off-diagonal 'discordant' cells highlight; the concordant cells dim. A small 'n discordant is small → low power' note.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "ACT III — One Draw Is Noise",
+      "estimated_duration_s": 14,
+      "narration_text": "The cases that flipped pass-to-fail? That's not noise to wave off. That's your different kind of wrong, showing up on camera. Investigate those before you ship — not the aggregate that's smiling at you.",
+      "new_visual_element": "Results list; newly_failing rows pulled out and ringed",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "remotion": "ClaudeConceptC3",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "newly_failing",
+          "mechanic": "A per-case results list; the rows that went pass→fail lift out and ring terracotta; a big green aggregate '+8%' sits above, ignored.",
+          "colors": [
+            "#3D3929",
+            "#D97757",
+            "#F2F0E9"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "ACT IV — Severity-Blind",
+      "estimated_duration_s": 3,
+      "narration_text": "",
+      "new_visual_element": "Segment card — Act IV",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "ClaudeSegmentCard",
+      "props": {
+        "title": "The Score Is Severity-Blind",
+        "kicker": "Act IV"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "ACT IV — Severity-Blind",
+      "estimated_duration_s": 16,
+      "narration_text": "A pass rate climbing seventy to seventy-eight tells you nothing alone. Watch: format drift falls twelve percent to two — good. But hallucinated tool calls climb ten to eighteen. Net score up. And you just traded a cosmetic typo for a call that can delete data.",
+      "new_visual_element": "format_drift shrinks, hallucinated_tool_call grows",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "deckPattern:scale",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "the trade",
+          "mechanic": "Two category bars animate before→after: format_drift 12→2 (shrinks), hallucinated_tool_call 10→18 (grows). Bars sized by magnitude; the growing one flashes 'can delete data'.",
+          "colors": [
+            "#3D3929",
+            "#D97757",
+            "#A44A32"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B17",
+      "act": "ACT IV — Severity-Blind",
+      "estimated_duration_s": 15,
+      "narration_text": "That's the crux. Aggregate metrics are severity-blind — a formatting nit and a destructive tool call count the same. So weight each category by cost-of-failure and track the weighted error surface, not the raw count.",
+      "new_visual_element": "Categories re-sized by severity weight",
+      "shot": {
+        "type": "MOTION-GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B17_SeverityWeighting",
+        "engine": "manim",
+        "production_viz": {
+          "label": "weight by cost",
+          "mechanic": "Equal-count bars re-scale as a severity weight multiplies each; the 'destructive' category balloons, the 'cosmetic' one shrinks; a weighted total redraws — nonlinear-severity idea, no invented formula shown.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B18",
+      "act": "ACT IV — Severity-Blind",
+      "estimated_duration_s": 13,
+      "narration_text": "One catch: the thing labeling which category a failure belongs to is often another model — a judge. And a judge is a prompted system with its own error surface. Which is the next problem.",
+      "new_visual_element": "Judge-model box with a small warning ring (bridge to Act V)",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "ClaudeConceptC3",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "the judge appears",
+          "mechanic": "A 'judge model' box slides in to stamp category labels; a small terracotta warning ring pulses on it — hands off visually to Act V.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B19",
+      "act": "ACT V — The Judge Is a System Too",
+      "estimated_duration_s": 15,
+      "narration_text": "Iterate against the same eval set over and over and two things rot quietly. First, the prompt overfits — it learns your fifty cases' exact wording instead of the underlying failure. Gains that don't generalize.",
+      "new_visual_element": "Panel-of-judges / bench (archival)",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.45
+        ]
+      },
+      "sparkline": "The Judge Is a System Too",
+      "prompt": "pantry/B19-panel.png (Tier 1–2) — a panel/bench of judges, or a row of adjudicators. Vox-treated; serif spark line 'The Judge Is a System Too'.",
+      "graphic": {
+        "production_viz": {
+          "label": "the judge",
+          "mechanic": "Ken Burns across a bench/panel; slow push.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B20",
+      "act": "ACT V — The Judge Is a System Too",
+      "estimated_duration_s": 14,
+      "narration_text": "Second, the judge overfits. If a model grades your outputs and you tune to please it, you optimize for what it likes — length, hedging, authoritative-sounding phrasing — instead of the task actually getting done.",
+      "new_visual_element": "Two diverging paths: task-success vs judge-pleasing",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "deckPattern:branch",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "pleasing the judge",
+          "mechanic": "A path forks: 'task success' (narrow, honest) vs 'judge-pleasing' (wide, decorated — length/hedge/authority icons). Tuning drifts toward the wrong branch.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B21",
+      "act": "ACT V — The Judge Is a System Too",
+      "estimated_duration_s": 13,
+      "narration_text": "And these biases are documented, not folklore. Position bias: the order you list candidates changes the winner. Verbosity bias. Authority bias, and sycophancy — a polite hedge can swing a grader all by itself.",
+      "new_visual_element": "Bias chips lighting up",
+      "shot": {
+        "type": "MOTION-GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B21_JudgeBiases",
+        "engine": "manim",
+        "production_viz": {
+          "label": "documented biases",
+          "mechanic": "Chips light one by one: position/order, verbosity, apology, authority-phrasing. On 'position', two candidates swap order and the winner flips.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B22",
+      "act": "ACT V — The Judge Is a System Too",
+      "estimated_duration_s": 16,
+      "narration_text": "So you build guards: a frozen canary set you never look at until the end; paraphrased inputs, so a fix has to generalize to count; randomized candidate order; and a panel of judges, not one — a panel cancels a single model's blind spot.",
+      "new_visual_element": "Canary vault + paraphrase + panel-of-N assembling",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "SourceFlow",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "the guards",
+          "mechanic": "Four guards assemble: a locked 'canary' vault, a paraphrase transform on an input, an order-shuffler, and a panel of N judges voting (single judge's blind spot greyed out).",
+          "colors": [
+            "#3D3929",
+            "#D97757",
+            "#F2F0E9"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B23",
+      "act": "ACT V — The Judge Is a System Too",
+      "estimated_duration_s": 11,
+      "narration_text": "And track why a case now passes. If it's a narrow keyword patch that happens to satisfy the grader, flag it — narrow-fix debt — even when it currently scores green.",
+      "new_visual_element": "A passing case tagged narrow-fix debt",
+      "shot": {
+        "type": "MOTION-GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B23_NarrowFixDebt",
+        "engine": "manim",
+        "production_viz": {
+          "label": "narrow-fix debt",
+          "mechanic": "A green 'PASS' case flips over to reveal a narrow keyword-match underneath; a terracotta 'narrow-fix debt' tag stamps on despite the green.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B24",
+      "act": "ACT VI — Symptom or Cause",
+      "estimated_duration_s": 3,
+      "narration_text": "",
+      "new_visual_element": "Segment card — Act VI",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "ClaudeSegmentCard",
+      "props": {
+        "title": "Symptom or Cause",
+        "kicker": "Act VI"
+      }
+    },
+    {
+      "beat_id": "B25",
+      "act": "ACT VI — Symptom or Cause",
+      "estimated_duration_s": 17,
+      "narration_text": "Here's the one that gets everybody. An agent gives a hedgy, unhelpful answer and you want it to stop. But that one symptom has at least three causes: retrieval returned weak evidence and it correctly hedged; the prompt over-rewards caution; or it never looked at the evidence it had and hedged on reflex.",
+      "new_visual_element": "One symptom → three labeled cause-branches",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "deckPattern:branch",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "one symptom, three causes",
+          "mechanic": "A single 'hedgy answer' node branches into three causes: weak-evidence (correct hedge), over-cautious prompt, didn't-look reflex.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B26",
+      "act": "ACT VI — Symptom or Cause",
+      "estimated_duration_s": 17,
+      "narration_text": "So you write 'don't hedge, be confident.' It suppresses the symptom for all three. But it's only right for cause two. For one and three you just built a new failure — confident, wrong answers — which are worse than a hedgy answer pointing the right way.",
+      "new_visual_element": "One fix on all three branches; two turn red confident-wrong",
+      "shot": {
+        "type": "MOTION-GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B26_ConfidentWrong",
+        "engine": "manim",
+        "production_viz": {
+          "label": "the misfire",
+          "mechanic": "The 'be confident' fix drops onto all three branches; branch 2 turns green (correct), branches 1 and 3 turn red and relabel 'confident + wrong'.",
+          "colors": [
+            "#3D3929",
+            "#D97757",
+            "#A44A32"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B27",
+      "act": "ACT VI — Symptom or Cause",
+      "estimated_duration_s": 15,
+      "narration_text": "That's the most common different-kind-of-wrong in agent tuning: trading calibrated uncertainty for false confidence, because false confidence scores better on a lazy rubric. The fix is cheap — write a one-line causal hypothesis before you change anything.",
+      "new_visual_element": "Dial swinging calibrated → false confidence",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "ClaudeConceptC3",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "calibrated → false confidence",
+          "mechanic": "A calibration dial swings from 'calibrated' to 'false confidence'; a terracotta warning zone at the far end; a small 'causal hypothesis:' field types in as the cheap guard.",
+          "colors": [
+            "#3D3929",
+            "#D97757",
+            "#A44A32"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B28",
+      "act": "ACT VII — The Ledger",
+      "estimated_duration_s": 13,
+      "narration_text": "The last move is stolen straight from software, because it's the same problem. Every bug you fix becomes a permanent test case. Added to the suite. Never removed.",
+      "new_visual_element": "Archival regression log / punch-card, tight on one record",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.6,
+          0.4
+        ],
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.6,
+            "y": 0.4,
+            "scale": 2.0
+          },
+          "objects": [
+            {
+              "id": "one-record",
+              "x": 0.6,
+              "y": 0.4,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        }
+      },
+      "sparkline": "The Ledger",
+      "prompt": "pantry/B28-ledger.png (Tier 1–2) — a wide, high-res archival software-testing artifact: a regression log, punch-card stack, or bug ledger. Same plate across R1 (B28/B29/B30), must survive the 2.0x zoom. Spark 'The Ledger'.",
+      "graphic": {
+        "production_viz": {
+          "label": "one record",
+          "mechanic": "Ken Burns tight (2.0x) on a single logged test record; handoff to B29 pull-back.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B29",
+      "act": "ACT VII — The Ledger",
+      "estimated_duration_s": 11,
+      "narration_text": "So a case that flips from failing to passing — then quietly regresses six versions later — gets caught, because the case is still there, still running.",
+      "new_visual_element": "Pull back to the whole append-only ledger",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.5,
+            "y": 0.5,
+            "scale": 1.0
+          },
+          "objects": [
+            {
+              "id": "ledger",
+              "x": 0.5,
+              "y": 0.5,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        }
+      },
+      "prompt": "pantry/B28-ledger.png (same plate) — pull back from the one record to the full append-only ledger; rows stack, none deleted. Middle beat of R1.",
+      "graphic": {
+        "production_viz": {
+          "label": "the whole ledger",
+          "mechanic": "Continuous pull-back to the full ledger; a terracotta 'regressed' marker blinks on a row that had gone green.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B30",
+      "act": "ACT VII — The Ledger",
+      "estimated_duration_s": 13,
+      "narration_text": "Version the suite alongside the prompt and you can bisect a regression the way git bisect finds the bad commit — narrow it to the two versions it appeared between.",
+      "new_visual_element": "Pan along a version history; two adjacent versions ring terracotta",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "pan",
+        "focus": [
+          0.74,
+          0.5
+        ],
+        "vox_run": "R1"
+      },
+      "prompt": "pantry/B28-ledger.png (same plate) — pan right to a version timeline; bisect narrows to two adjacent versions, ringed terracotta. Last beat of R1 (no handoff).",
+      "graphic": {
+        "production_viz": {
+          "label": "bisect",
+          "mechanic": "Pan to a version rail; a bisect halves the range twice and lands on two adjacent versions, ringed.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B31",
+      "act": "ACT VII — The Ledger",
+      "estimated_duration_s": 14,
+      "narration_text": "And none of this is vibes derived from first principles. Behavioral testing — CheckList. Static benchmarks getting overfit — Dynabench. Multi-metric reporting so trade-offs stay visible — HELM. Panels of judges — PoLL. The pattern has receipts.",
+      "new_visual_element": "Named works as citation chips",
+      "shot": {
+        "type": "MOTION-GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B31_Receipts",
+        "engine": "manim",
+        "production_viz": {
+          "label": "the receipts",
+          "mechanic": "Four citation chips drop in with their one-line point: CheckList (behavioral), Dynabench (overfit), HELM (multi-metric), PoLL (panel). Each re-verified at Gate F.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B32",
+      "act": "ACT VII — The Ledger",
+      "estimated_duration_s": 15,
+      "narration_text": "One last check, before you even run the comparison: ask whether a prompt edit is the right lever at all. Sometimes the honest fix is a different model, a guardrail, or a system-design change — not one more instruction bolted on.",
+      "new_visual_element": "Lever menu — prompt / model / guardrail / design",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "ClaudeConceptC3",
+      "graphic": {
+        "engine": "remotion",
+        "production_viz": {
+          "label": "the right lever",
+          "mechanic": "Four levers — prompt / model / guardrail / system-design; the hand reaches past 'prompt' (not auto-selected) to weigh the others.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ]
+        }
+      }
+    },
+    {
+      "beat_id": "B32S",
+      "act": "ACT VII — The Ledger",
+      "estimated_duration_s": 4,
+      "narration_text": "",
+      "new_visual_element": "Sources card",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "ClaudeSourcesCard",
+      "props": {
+        "title": "Sources",
+        "lines": [
+          "Goodhart (1975)",
+          "CheckList",
+          "Dynabench",
+          "HELM",
+          "McNemar / NIST",
+          "PoLL",
+          "Anthropic & OpenAI eval guidance"
+        ]
+      }
+    },
+    {
+      "beat_id": "B33",
+      "act": "CLOSING",
+      "estimated_duration_s": 18,
+      "lead_silence_s": 0.5,
+      "narration_text": "Let's recap with Claude. A change reshapes the error surface — it doesn't erase it. Name your failure taxonomy and a stratified held-out set before you touch the prompt. Compare paired runs, not aggregate scores. Weight failures by severity. Remember the judge is a system too. Fix the cause, not the symptom. And keep an append-only ledger — so a change that helps can't quietly stop helping.",
+      "new_visual_element": "Verdict recap card",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "ClaudeVerdictArtifact",
+      "props": {
+        "artifactLines": [
+          "A change reshapes the error surface — it doesn't erase it.",
+          "Name the taxonomy and a stratified held-out set first.",
+          "Compare paired runs, not aggregate scores.",
+          "Weight failures by severity; watch the shape.",
+          "The judge is a system too — canary, paraphrase, panel.",
+          "Fix the cause, not the symptom.",
+          "Keep an append-only ledger."
+        ]
+      }
+    },
+    {
+      "beat_id": "B34",
+      "act": "CLOSING",
+      "estimated_duration_s": 34,
+      "narration_text": "Your turn. Here's one to run on your own work. Paste this into Claude: I changed a prompt in my agent to fix one failure mode, and I have before-and-after results on a held-out eval set — per case, with failure categories. Walk me through, in order: one, the paired diff — which cases flipped pass-to-fail, not just the net pass rate; two, whether any newly-failing case is a new or higher-severity category than the one I fixed; and three, which of my newly-passing cases might be narrow pattern-matches that wouldn't survive a paraphrase. Be skeptical by default. That third question is the one that'll surprise you — run it and count how many of your wins don't survive a reworded input.",
+      "new_visual_element": "Composer — your-turn prompt typed in",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type"
+      },
+      "remotion": "ClaudeComposerAsk",
+      "props": {
+        "greeting": "Your turn.",
+        "runningText": "paste this into Claude…",
+        "command": "I changed a prompt in my agent to fix one failure mode, and I have before-and-after results on a held-out eval set — per case, with failure categories. Walk me through, in order: (1) the paired diff — which cases flipped pass-to-fail, not just the net pass rate; (2) whether any newly-failing case is a new or higher-severity category than the one I fixed; and (3) which of my newly-passing cases might be narrow pattern-matches that wouldn't survive a paraphrase. Be skeptical by default.",
+        "folderLabel": "@NikBearBrown"
+      }
+    },
+    {
+      "beat_id": "B35",
+      "act": "CLOSING",
+      "estimated_duration_s": 8,
+      "narration_text": "When change just produces a different kind of wrong. Liam, in for Bear.",
+      "new_visual_element": "Title-restate outro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static"
+      },
+      "remotion": "ClaudeTitleOutro",
+      "props": {
+        "title": "When Change Just Produces a Different Kind of Wrong",
+        "handle": "@NikBearBrown"
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. I changed a prompt to stop my agent hallucinating tool calls. How do I know the change actually helped — and didn't just trade that failure for a worse one I'm not testing for?",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · CLAUDE PROMPTING",
+            "command": "I changed a prompt to stop my agent hallucinating tool calls. How do I know the change actually helped — and didn't just trade that failure for a worse one I'm not testing for?",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "When Change Just Produces a Different Kind of Wrong",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: YOURTURN added"
+      },
+      "design_version": "v1"
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "When Change Just Produces a Different Kind of Wrong",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "When Change Just Produces a Different Kind of Wrong",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-different-kind-of-wrong"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: OUTRO added"
+      },
+      "design_version": "v1"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "When Change Just Produces a Different Kind of Wrong",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Detecting whether a change to an agentic/prompting system genuinely helped or just relocated the failure mode",
+            "segment": "When Change Just Produces a Different Kind…",
+            "command": "Take what you learned from [When Change Just Produces a Different Kind of Wrong] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@claude-liam"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "When Change Just Produces a Different Kind of Wrong",
+            "slug": "claude-liam-different-kind-of-wrong"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

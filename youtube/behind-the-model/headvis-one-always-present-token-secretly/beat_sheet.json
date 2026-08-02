@@ -1,0 +1,487 @@
+{
+  "metadata": {
+    "slug": "headvis-one-always-present-token-secretly",
+    "title": "Why one always-present token secretly hijacks every attention statistic",
+    "topic": "The BOS token as an attention sink that corrupts aggregate metrics",
+    "purpose": "When no key is strongly preferred, softmax must still spend its probability somewhere; the ever-present, semantically-neutral BOS token becomes the low-resistance sink where heads park leftover attention — so any max-reduction that includes it reports the sink, not the structure.",
+    "category": "behind-the-model",
+    "playlist": "Behind The Model",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "audience": "claude-liam",
+    "palette": "claude",
+    "register": "Teardown",
+    "style_preset": "teardown",
+    "aspect_ratio": "16:9",
+    "clock": "narration (Kokoro am_onyx) — master clock; conform each beat to measured audio",
+    "scaffold": true,
+    "scaffold_source": "anthropics/youtube/video-ideas.md — ai-explainer Sweep 2026-07-24",
+    "builder": "ai-explainer",
+    "source": "`anthropics/headvis/README.md`",
+    "origin": "promoted",
+    "score": "9/10",
+    "length_band": "2–3 min",
+    "still_lanes": "raster",
+    "prerequisites": "softmax, attention weights, max-reduction",
+    "exclusions": "StreamingLLM/KV-cache uses of sinks, why BOS acquires this during training",
+    "visual_object": "An attention heatmap with column 0 glowing across every row; mask it and diverse real patterns light up in the remaining columns.",
+    "manim_move": "collapse",
+    "hook": "Including a single structural token in your aggregation makes every meaningful attention pattern invisible.",
+    "greeting": "Konnichiwa, Liam",
+    "design_version": "v1",
+    "voice": "am_onyx",
+    "build": {
+      "at": "2026-07-28T21:37:27",
+      "cut": "master",
+      "filled": 0,
+      "of": 8,
+      "slates": [
+        "B00",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "YOURTURN",
+        "OUTRO"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "For head 3, layer 4, scanning 50k sequences, the max-attention position is token 0 with weight > 0.55 in 91% of cases; the real verb→subject dependency only appears once position 0 is excluded from the max.",
+      "estimated_duration_s": 13,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "from Key case — cold open on the concrete instance",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 15.47,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "FOR HEAD 3, LAYER",
+            "items": [
+              {
+                "label": "For head 3, layer 4,",
+                "sub": "For head 3, layer 4, scanning 50k sequences, the max-attention position is token 0 with weight > 0.55 in 91% of cases; the real verb→subject dependency only appears once position 0 is excluded from the max.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "question",
+      "narration_text": "Softmax forces attention to sum to 1 regardless of content; why should one specific position consistently absorb the plurality of the mass across thousands of diverse inputs?",
+      "estimated_duration_s": 8,
+      "visual": "on-screen QUESTION",
+      "slate": true,
+      "scaffold_note": "gap-form question beat",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 10.92,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "SOFTMAX FORCES ATTENTION TO",
+            "items": [
+              {
+                "label": "Softmax forces attention to sum to 1 regardless of content",
+                "sub": "Softmax forces attention to sum to 1 regardless of content; why should one specific position consistently absorb the plurality of the mass across thousands of diverse inputs?",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "setup",
+      "narration_text": "Including a single structural token in your aggregation makes every meaningful attention pattern invisible.",
+      "estimated_duration_s": 8,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "the tension, no visual",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 6.49,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "INCLUDING A SINGLE STRUCTURAL",
+            "items": [
+              {
+                "label": "Including a single structural token in your aggregation",
+                "sub": "Including a single structural token in your aggregation makes every meaningful attention pattern invisible.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "mechanism",
+      "narration_text": "When no key is strongly preferred, softmax must still spend its probability somewhere; the ever-present, semantically-neutral BOS token becomes the low-resistance sink where heads park leftover attention — so any max-reduction that includes it reports the sink, not the structure.",
+      "estimated_duration_s": 18,
+      "visual": "An attention heatmap with column 0 glowing across every row; mask it and diverse real patterns light up in the remaining columns.",
+      "manim_move": "collapse",
+      "slate": true,
+      "scaffold_note": "the resolving mechanism; orbits the visual object",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 15.38,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "WHEN NO KEY IS",
+            "items": [
+              {
+                "label": "When no key is strongly",
+                "sub": "When no key is strongly preferred, softmax must still spend its probability somewhere; the ever-present, semantically-neutral BOS token becomes the low-resistance sink where heads park leftover attention —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "so any max-reduction that includes",
+                "sub": "so any max-reduction that includes it reports the sink, not the structure.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "example",
+      "narration_text": "For \"sat\" in [\"BOS\",\"The\",\"cat\",\"sat\",…] weights are [0.58,0.04,0.12,0.09,…]; position 0 wins the max in 94% of 1000 sequences; after exclusion, \"sat\"→\"cat\" wins 68%.",
+      "estimated_duration_s": 16,
+      "visual": "16:9 worked example",
+      "slate": true,
+      "scaffold_note": "THE EXAMPLE act, illustrative",
+      "engine": "kokoro",
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "For \"sat\" in [\"BOS\",\"The\",\"cat\",\"sat\",…] weights",
+            "items": [
+              {
+                "label": "For \"sat\" in [\"BOS\",\"The\",\"cat\",\"sat\",…] weights are [0",
+                "sub": "For \"sat\" in [\"BOS\",\"The\",\"cat\",\"sat\",…] weights are [0.58,0.04,0.12,0.09,…]",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "position 0 wins the max",
+                "sub": "position 0 wins the max in 94% of 1000 sequences",
+                "icon": "clipboard-list",
+                "cueFrame": 237
+              },
+              {
+                "label": "after exclusion, \"sat\"→\"cat\" wins 68%",
+                "sub": "after exclusion, \"sat\"→\"cat\" wins 68%",
+                "icon": "BOX",
+                "cueFrame": 450
+              }
+            ],
+            "dark": true
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 14.91,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T21:37:27",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "recap",
+      "narration_text": "When no key is strongly preferred, softmax must still spend its probability somewhere; the ever-present, semantically-neutral BOS token becomes the low-resistance sink where heads park leftover attention — so any max-reduction that includes it reports the sink, not the structure.",
+      "estimated_duration_s": 8,
+      "visual": "verdict card",
+      "slate": true,
+      "scaffold_note": "recap + your-turn handoff",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 15.38,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "WHEN NO KEY IS",
+            "items": [
+              {
+                "label": "When no key is strongly",
+                "sub": "When no key is strongly preferred, softmax must still spend its probability somewhere; the ever-present, semantically-neutral BOS token becomes the low-resistance sink where heads park leftover attention —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "so any max-reduction that includes",
+                "sub": "so any max-reduction that includes it reports the sink, not the structure.",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you're investigating transformer attention and token 0 keeps dominating the max-attention position. Ask Claude to explain what token 0 is typically doing — delimiter, start token, or routing sink — and how to distinguish a genuine attention signal from a head that's parking weight on the separator.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "BEHIND THE MODEL · @NikBearBrown",
+            "command": "I'm investigating attention head behavior in a transformer and I keep seeing token 0 dominate the max-attention position across heads and layers. Explain what token 0 is typically doing — delimiter, start token, or routing artifact — and show me how to distinguish a genuinely informative attention head from one that's just routing through a sink token.",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "Why one always-present token secretly hijacks every attention statistic",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T21:37:27",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      },
+      "design_version": "v1",
+      "audio_file": "mp3/beat-YOURTURN.mp3",
+      "actual_duration_s": 17.88
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "Why one always-present token secretly hijacks every attention statistic",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why one always-present token secretly hijacks every attention statistic",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "headvis-one-always-present-token-secretly"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T21:37:27",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for OUTRO"
+      },
+      "design_version": "v1",
+      "audio_file": "mp3/beat-OUTRO.mp3",
+      "actual_duration_s": 5.06
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why one always-present token secretly hijacks every attention statistic",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · The BOS token as an attention sink that corrupts aggregate metrics",
+            "segment": "Why one always-present token secretly hijacks every…",
+            "command": "Take what you learned from [Why one always-present token secretly hijacks every attention statistic] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why one always-present token secretly hijacks every attention statistic",
+            "slug": "headvis-one-always-present-token-secretly"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,481 @@
+{
+  "metadata": {
+    "slug": "claude-quickstarts-waiting-each-result-before-next",
+    "title": "Why waiting for each result before the next click wastes time the agent knew it didn't need",
+    "topic": "Batching predictable tool calls",
+    "purpose": "Batch tool calls let the model emit an ordered action list in one response; a single-action turn gets a BATCH_REMINDER appended, nudging it to batch next time.",
+    "category": "claude-agent-skills",
+    "playlist": "Claude Agent Skills",
+    "channel": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "audience": "claude-liam",
+    "palette": "claude",
+    "register": "Teardown",
+    "style_preset": "teardown",
+    "aspect_ratio": "16:9",
+    "clock": "narration (Kokoro am_onyx) — master clock; conform each beat to measured audio",
+    "scaffold": true,
+    "scaffold_source": "anthropics/youtube/video-ideas.md — ai-explainer Sweep 2026-07-24",
+    "builder": "ai-explainer",
+    "source": "`anthropics/claude-quickstarts/computer-use-best-practices/README.md`",
+    "origin": "promoted",
+    "score": "8/10",
+    "length_band": "2–3 min",
+    "still_lanes": "geo (timeline comparison), c2v (batch list structure)",
+    "prerequisites": "API round trips, latency basics, tool-use loop",
+    "exclusions": "context compaction, prompt caching, trajectory recording",
+    "visual_object": "Two timelines — \"Sequential\" (alternating request/wait bars) vs \"Batched\" (one request bar, then three results together)",
+    "manim_move": "collapse",
+    "hook": "When the model can already predict a whole sequence will succeed, pausing for each API result before sending the next command spends time for nothing.",
+    "greeting": "Konnichiwa, Liam",
+    "design_version": "v1",
+    "voice": "am_onyx",
+    "build": {
+      "at": "2026-07-28T22:38:58",
+      "cut": "master",
+      "filled": 0,
+      "of": 8,
+      "slates": [
+        "B00",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "YOURTURN",
+        "OUTRO"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "beat_type": "cold_open",
+      "narration_text": "\"Open Terminal, type `ls`, press Enter.\" Sequential: 3 round trips × 5s = 15s, each waiting on the prior result. Batched via `computer_batch`: one request emits all three actions, the harness runs them locally, results return together — 5s total.",
+      "estimated_duration_s": 13,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "from Key case — cold open on the concrete instance",
+      "actual_duration_s": 15.4,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "\"OPEN TERMINAL, TYPE `LS`",
+            "items": [
+              {
+                "label": "\"Open Terminal, type `ls`, press",
+                "sub": "\"Open Terminal, type `ls`, press Enter.\" Sequential: 3 round trips × 5s = 15s, each waiting on the prior result.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Batched via `computer_batch`: one request emits all three actions",
+                "sub": "Batched via `computer_batch`: one request emits all three actions, the harness runs them locally, results return together —",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "5s total.",
+                "sub": "5s total.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "beat_type": "question",
+      "narration_text": "If the model knows open → type → Enter will all succeed in order, why wait for each result before sending the next?",
+      "estimated_duration_s": 8,
+      "visual": "on-screen QUESTION",
+      "slate": true,
+      "scaffold_note": "gap-form question beat",
+      "actual_duration_s": 7.3,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "IF THE MODEL KNOWS",
+            "items": [
+              {
+                "label": "If the model knows open",
+                "sub": "If the model knows open → type → Enter will all succeed in order, why wait for each result before sending the next?",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B02",
+      "beat_type": "setup",
+      "narration_text": "When the model can already predict a whole sequence will succeed, pausing for each API result before sending the next command spends time for nothing.",
+      "estimated_duration_s": 8,
+      "visual": "",
+      "slate": true,
+      "scaffold_note": "the tension, no visual",
+      "actual_duration_s": 8.66,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "WHEN THE MODEL CAN",
+            "items": [
+              {
+                "label": "When the model can already",
+                "sub": "When the model can already predict a whole sequence will succeed, pausing for each API result before sending the next command spends time for nothing.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "beat_type": "mechanism",
+      "narration_text": "Batch tool calls let the model emit an ordered action list in one response; a single-action turn gets a BATCH_REMINDER appended, nudging it to batch next time.",
+      "estimated_duration_s": 18,
+      "visual": "Two timelines — \"Sequential\" (alternating request/wait bars) vs \"Batched\" (one request bar, then three results together)",
+      "manim_move": "collapse",
+      "slate": true,
+      "scaffold_note": "the resolving mechanism; orbits the visual object",
+      "actual_duration_s": 9.54,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "BATCH TOOL CALLS LET",
+            "items": [
+              {
+                "label": "Batch tool calls let the",
+                "sub": "Batch tool calls let the model emit an ordered action list in one response; a single-action turn gets a BATCH_REMINDER appended, nudging it to batch next time.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B04",
+      "beat_type": "example",
+      "narration_text": "3-step seq: 15s → 5s (67% saved); a 10-step sequence saves ~45s.",
+      "estimated_duration_s": 16,
+      "visual": "16:9 worked example",
+      "slate": true,
+      "scaffold_note": "THE EXAMPLE act, illustrative",
+      "actual_duration_s": 7.3,
+      "engine": "kokoro",
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "3-step seq: 15s → 5s",
+            "items": [
+              {
+                "label": "3-step seq: 15s → 5s",
+                "sub": "3-step seq: 15s → 5s (67% saved)",
+                "icon": "clipboard-list",
+                "cueFrame": 24
+              },
+              {
+                "label": "a 10-step sequence saves ~45s",
+                "sub": "a 10-step sequence saves ~45s",
+                "icon": "clipboard-list",
+                "cueFrame": 450
+              }
+            ],
+            "dark": false
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T22:38:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "beat_type": "recap",
+      "narration_text": "Batch tool calls let the model emit an ordered action list in one response; a single-action turn gets a BATCH_REMINDER appended, nudging it to batch next time.",
+      "estimated_duration_s": 8,
+      "visual": "verdict card",
+      "slate": true,
+      "scaffold_note": "recap + your-turn handoff",
+      "actual_duration_s": 9.54,
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "BATCH TOOL CALLS LET",
+            "items": [
+              {
+                "label": "Batch tool calls let the",
+                "sub": "Batch tool calls let the model emit an ordered action list in one response; a single-action turn gets a BATCH_REMINDER appended, nudging it to batch next time.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: I'm automating browser interactions and I'm waiting for each action result before issuing the next click. Show me which actions are safe to batch in one turn versus which require waiting on the result, and give me the decision rule I should apply at each step in the sequence.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · CLAUDE AGENT SKILLS",
+            "command": "I'm automating browser interactions and I'm waiting for each action result before issuing the next click. Show me which actions are safe to batch in one turn versus which require waiting on the result, and give me the decision rule I should apply at each step in the sequence.",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "Why waiting for each result before the next click wastes time the agent knew it didn't need",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T22:38:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 15.74,
+      "audio_file": "mp3/beat-YOURTURN.mp3"
+    },
+    {
+      "beat_id": "OUTRO",
+      "act": "outro",
+      "narration_text": "Why waiting for each result before the next click wastes time the agent knew it didn't need",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why waiting for each result before the next click wastes time the agent knew it didn't need",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-quickstarts-waiting-each-result-before-next"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T22:38:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for OUTRO"
+      },
+      "design_version": "v1",
+      "actual_duration_s": 5.27,
+      "audio_file": "mp3/beat-OUTRO.mp3"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why waiting for each result before the next click wastes time the agent knew it didn't need",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Batching predictable tool calls",
+            "segment": "Why waiting for each result before the…",
+            "command": "Take what you learned from [Why waiting for each result before the next click wastes time the agent knew it didn't need] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why waiting for each result before the next click wastes time the agent knew it didn't need",
+            "slug": "claude-quickstarts-waiting-each-result-before-next"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

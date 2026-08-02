@@ -1,0 +1,714 @@
+{
+  "metadata": {
+    "slug": "slopsquatting-hallucinated-package",
+    "title": "Why Slopsquatting Turns Claude's Wrong Answer Into a Security Hole",
+    "topic": "CLAUDE CODE",
+    "purpose": "vox-explainer slate cut of Claude Code for Students candidate 08. Source chapter: claude-code-for-students/chapters/05-five-supervisory-capacities.md (Plausibility Auditing / slopsquatting section).",
+    "clock": "narration (ElevenLabs) — durations below are word-count estimates until GATE 0 audio lock",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "palette": "claude",
+    "isotype_mark": "square",
+    "color_semantics": "CRIMSON = hallucinated package / attacker / silent compromise; INK = verified package / plausibility audit / the defense. One accent. Never swap.",
+    "note": "Exclusions honored: no full supply-chain security methodology; no deep PyPI moderation policy; no formal threat-modeling framework; no comparison across package ecosystems.",
+    "total_estimated_duration_seconds": 228.04,
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "register": "Teardown",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "_variant_todo": [
+      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
+      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
+      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
+      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
+    ],
+    "build": {
+      "at": "2026-07-16T06:23:32",
+      "cut": "master",
+      "filled": 0,
+      "of": 9,
+      "slates": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09"
+      ],
+      "skin_warnings": [
+        "NO RENDERABLE BEATS: no beat carries a shot.remotion.pattern or Manim annotation — the pipeline will render NOTHING and every slot becomes a YOU-slate. The sheet was authored without the scene contract.",
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B09: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "design_version": "v1",
+    "voice": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam",
+            "topic": "CLAUDE CODE",
+            "segment": "Why Slopsquatting Turns Claude's Wrong Answer Into…",
+            "command": "Why Slopsquatting Turns Claude's Wrong Answer Into a Security Hole?",
+            "runningText": "building the answer…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "Claude writes: import requests_oauth_helper",
+        "pip install: succeeds.",
+        "Attacker's code runs."
+      ],
+      "narration_text": "This is Liam, in for Bear. Fatima asks Claude to help her process OAuth tokens. Claude writes: import requests_oauth_helper. She runs pip install requests_oauth_helper. It installs without error. She runs her script. In the background, the package exfiltrates her environment variables to an external server. The import line was the only check she ran.",
+      "estimated_duration": 18,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 19.63,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THIS IS LIAM, IN",
+            "items": [
+              {
+                "label": "This is Liam, in for",
+                "sub": "This is Liam, in for Bear.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Fatima asks Claude to help",
+                "sub": "Fatima asks Claude to help her process OAuth tokens.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Claude writes: import requests_oauth_helper.",
+                "sub": "Claude writes: import requests_oauth_helper.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "THE QUESTION",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "A package that exists should be safe to install.",
+        "Why did this one run the attacker's code?"
+      ],
+      "narration_text": "A student running pip install on a Claude-suggested package should be safe if the package exists. The package existed. An attacker put it there. Why does the install succeed and execute malicious code?",
+      "estimated_duration": 11,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 11.35,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "A STUDENT RUNNING PIP",
+            "items": [
+              {
+                "label": "A student running pip install",
+                "sub": "A student running pip install on a Claude-suggested package should be safe if the package exists.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "The package existed.",
+                "sub": "The package existed.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "An attacker put it there.",
+                "sub": "An attacker put it there.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE PROBLEM",
+      "shot_type": "GRAPHIC",
+      "shot_source": "own",
+      "shot_motion": "drawon",
+      "on_screen": [
+        "Claude hallucinates a package name.",
+        "The name doesn't exist.",
+        "Yet."
+      ],
+      "narration_text": "Claude hallucinates package names. Across 576,000 code samples from 16 language models, researchers found that about 20 percent of recommended package names did not exist — plausible-sounding names like requests_oauth_helper or pandas_extras that should exist, that could exist, that just don't. Most of the time, the install fails loudly and you go fix it. That is not the dangerous case.",
+      "estimated_duration": 20,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 22.06,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "CLAUDE HALLUCINATES PACKAGE NAMES",
+            "items": [
+              {
+                "label": "Claude hallucinates package names.",
+                "sub": "Claude hallucinates package names.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Across 576,000 code samples from",
+                "sub": "Across 576,000 code samples from 16 language models, researchers found that about 20 percent of recommended package names did not exist —",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "plausible-sounding names like requests_oauth_helper or pandas_extras that should",
+                "sub": "plausible-sounding names like requests_oauth_helper or pandas_extras that should exist, that could exist, that just don't.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "shot_type": "GRAPHIC",
+      "shot_source": "own",
+      "shot_motion": "drawon",
+      "on_screen": [
+        "58% of hallucinated names",
+        "repeat across queries.",
+        "Attackers can predict them."
+      ],
+      "narration_text": "The dangerous case is this: 58 percent of hallucinated package names recur across different queries. The same wrong name appears again and again, across sessions, across users, across time. An attacker doesn't need to guess what your particular session hallucinated. They can mine thousands of model outputs, find the common hallucinations, and register those exact names on PyPI or npm in advance — knowing the same names will surface again.",
+      "estimated_duration": 20,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 23.06,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THE DANGEROUS CASE IS",
+            "items": [
+              {
+                "label": "The dangerous case is this:",
+                "sub": "The dangerous case is this: 58 percent of hallucinated package names recur across different queries.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "The same wrong name appears",
+                "sub": "The same wrong name appears again and again, across sessions, across users, across time.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "An attacker doesn't need to guess what your particular session hallucinated",
+                "sub": "An attacker doesn't need to guess what your particular session hallucinated.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE MECHANISM",
+      "shot_type": "GRAPHIC",
+      "shot_source": "own",
+      "shot_motion": "drawon",
+      "on_screen": [
+        "1. model hallucinates package name",
+        "2. attacker registers that name",
+        "3. student installs — attacker's code runs"
+      ],
+      "narration_text": "The attack runs in three steps. First: the model hallucinates a plausible-but-nonexistent dependency — say it confidently writes import requests_oauth_helper for a name that does not exist on PyPI. Second: an attacker, knowing models invent names and that the invented names repeat, pre-registers that exact name on PyPI and uploads a package full of malicious code. Third: the student runs pip install on Claude's say-so, the install succeeds, and the attacker's code now runs with the student's permissions on their machine.",
+      "estimated_duration": 24,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 28.71,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THE ATTACK RUNS IN",
+            "items": [
+              {
+                "label": "The attack runs in three",
+                "sub": "The attack runs in three steps.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "First: the model hallucinates a",
+                "sub": "First: the model hallucinates a plausible-but-nonexistent dependency —",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "say it confidently writes import",
+                "sub": "say it confidently writes import requests_oauth_helper for a name that does not exist on PyPI.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "The hallucination is predictable.",
+        "Which means it is targetable."
+      ],
+      "narration_text": "This is slopsquatting — a real, documented supply-chain attack. The fabricated name no longer fails loudly. It resolves — to someone else's code. The install works. The tests pass. The attacker's code runs with the student's permissions. If the AI's suggested import is the only source of truth, the AI's mistake is now your security hole.",
+      "estimated_duration": 16,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 19.03,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THIS IS SLOPSQUATTING —",
+            "items": [
+              {
+                "label": "This is slopsquatting —",
+                "sub": "This is slopsquatting —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "a real, documented supply-chain attack.",
+                "sub": "a real, documented supply-chain attack.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "The fabricated name no longer",
+                "sub": "The fabricated name no longer fails loudly.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you want to understand how a hallucinated package name becomes a real attack vector. Ask Claude to walk through the slopsquatting attack chain — how the hallucination creates the name, how an attacker registers it, and what the code looks like when the malicious package is installed.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · @NikBearBrown",
+            "command": "I want to understand how a hallucinated package name becomes a real attack vector. Walk me through the slopsquatting attack chain: how does the hallucination create the package name, how does an attacker register a malicious package under that name, and what does my code look like when the malicious package is silently installed?",
+            "runningText": "paste your spec, CLAUDE.md, or build plan here…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "Why Slopsquatting Turns Claude's Wrong Answer Into a Security Hole",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: YOURTURN added"
+      },
+      "design_version": "v1"
+    },
+    {
+      "beat_id": "B07",
+      "act": "OUTRO",
+      "shot_type": "STILL",
+      "shot_source": "ai",
+      "shot_motion": "kenburns",
+      "on_screen": [],
+      "narration_text": "Fatima's case is not the exotic edge case. It is the default workflow this chapter is warning about: Claude suggests, you install, you move on. The entire workflow is exactly what slopsquatting is built to exploit. The student who pastes the import and runs the install without checking has handed an attacker a direct line. The defense is not complicated. But it has to be a step.",
+      "estimated_duration": 20,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 20.22,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B07"
+      },
+      "shot": {
+        "media": "media/B07.mp4",
+        "manim": {
+          "scene_class": "Scene_B07_ClaudeLiamSlopsquatting",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": "2026-07-25T10:05:56.530720"
+          }
+        },
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why Slopsquatting Turns Claude's Wrong Answer Into a Security Hole",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-slopsquatting-hallucinated-package"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE PRACTICE",
+      "shot_type": "GRAPHIC",
+      "shot_source": "own",
+      "shot_motion": "drawon",
+      "on_screen": [
+        "Every package Claude suggests:",
+        "open pypi.org or npmjs.com.",
+        "Confirm it exists. Confirm it's real."
+      ],
+      "narration_text": "The defense is concrete and cheap. Before you run pip install or npm install on any Claude-suggested package, open pypi.org or npmjs.com and verify the package exists, is the one you meant, and is maintained by who you think it is. Check that it has a reasonable history — not registered last Tuesday. Never let Claude's suggested import be the only place a dependency name comes from. A package name is a claim about the outside world. Verify it the way you would verify any other claim.",
+      "estimated_duration": 22,
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 26.79,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B08"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THE DEFENSE IS CONCRETE",
+            "items": [
+              {
+                "label": "The defense is concrete and",
+                "sub": "The defense is concrete and cheap.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Before you run pip install",
+                "sub": "Before you run pip install or npm install on any Claude-suggested package, open pypi.org or npmjs.com and verify the package exists, is the one you meant, and is maintained by who you think it is.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Check that it has a",
+                "sub": "Check that it has a reasonable history —",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "RECAP",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "Claude's suggested import",
+        "is not a verified package.",
+        "Verify before you install."
+      ],
+      "narration_text": "Slopsquatting exists because the hallucination is predictable. Predictable means targetable. Targetable means the install succeeds and the code runs and you never know. The defense is one step you add to every Claude-assisted install: open the real registry, confirm the package exists, then install. The step is cheap. Skipping it is not.",
+      "estimated_duration": 17,
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 18.18,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B09"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "SLOPSQUATTING EXISTS BECAUSE THE",
+            "items": [
+              {
+                "label": "Slopsquatting exists because the hallucination is predictable",
+                "sub": "Slopsquatting exists because the hallucination is predictable.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Predictable means targetable.",
+                "sub": "Predictable means targetable.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Targetable means the install succeeds and the code runs and you never know",
+                "sub": "Targetable means the install succeeds and the code runs and you never know.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why Slopsquatting Turns Claude's Wrong Answer Into a Security Hole",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CLAUDE CODE",
+            "segment": "Why Slopsquatting Turns Claude's Wrong Answer Into…",
+            "command": "Take what you learned from [Why Slopsquatting Turns Claude's Wrong Answer Into a Security Hole] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why Slopsquatting Turns Claude's Wrong Answer Into a Security Hole",
+            "slug": "slopsquatting-hallucinated-package"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ],
+  "estimated_total_duration": 168
+}

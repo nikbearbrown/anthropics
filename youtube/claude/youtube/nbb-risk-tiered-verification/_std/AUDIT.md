@@ -1,0 +1,28 @@
+# AUDIT — nbb-risk-tiered-verification
+_Generated 2026-07-25T10:12:57_
+
+## Beat Classification
+
+| Beat | Narration | Visual | Class | Fix |
+|------|-----------|--------|-------|-----|
+| NBB00 | I want to build verification_gate.py so my review stops be | remotion:ClaudeComposerAsk | EXEMPT | leave as-is (bookend) |
+| B00 | Nik Bear Brown. Build it with a CLI, then take it apart. | remotion:NikBearBrownOpen | EXEMPT | leave as-is (bookend) |
+| B01 | Reading Claude's output is not reviewing it. The verificat | slate:slate | SHOWS | leave as-is (SHOWS) |
+| B02 | Build verification_gate.py: takes output type and risk lev | remotion:NikBearBrownTerminalAsk | EXEMPT | leave as-is (bookend) |
+| B03 | Check the code. Citation always includes 'open the source' | remotion:NikBearBrownCodeBlock | EXEMPT | leave as-is (bookend) |
+| B04 | Run it on three combinations: citation at strict — four st | slate:slate | SHOWS | leave as-is (SHOWS) |
+| B05 | Add a log flag that exports the completed checklist with t | remotion:NikBearBrownTerminalAsk | EXEMPT | leave as-is (bookend) |
+| B06 | Run with the log flag. The markdown file writes: output ty | slate:slate | SHOWS | leave as-is (SHOWS) |
+| B07 | The human gate is not distrust — it is the design of your  | slate:slate | SHOWS | leave as-is (SHOWS) |
+| B08 | Your move: run your next Claude output through the matrix  | slate:slate | SHOWS | leave as-is (SHOWS) |
+| NBB01 | Let's recap with Claude. Here's what the body just demonst | remotion:ClaudeVerdictArtifact | EXEMPT | leave as-is (bookend) |
+| NBB02 | Take this prompt, run it on your own — pick any cancer typ | remotion:ClaudeComposerAsk | EXEMPT | leave as-is (bookend) |
+| NBB03 | Build a Risk-Tiered Verification Checklist with Claude | remotion:ClaudeTitleOutro | EXEMPT | leave as-is (bookend) |
+
+## TELLS → SHOWS Upgrades
+
+(none)
+
+## QC
+
+No TELLS found — video already compliant.

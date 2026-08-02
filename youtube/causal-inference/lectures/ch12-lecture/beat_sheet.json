@@ -1,0 +1,343 @@
+{
+  "slug": "Causal-Inference-ch12-specification_bottleneck",
+  "title": "Chapter 12: The Specification Bottleneck",
+  "series": "Causal Inference",
+  "source": "chapters/12-specification_bottleneck.md",
+  "accent": "#ea580c",
+  "fps": 24,
+  "clock": "real",
+  "metadata": {
+    "chapter": 12,
+    "total_chapters": 21,
+    "playlist": "Causal Inference",
+    "palette": "brutalist",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx"
+  },
+  "segments": [
+    {
+      "id": "S01",
+      "num": 1,
+      "total": 12,
+      "section": "HOOK",
+      "label": "01 / 12 · HOOK",
+      "dark": false,
+      "title": [
+        [
+          "TEXTBOOKS TEACH ESTIMATION, NOT HOW TO BUILD THE ",
+          false
+        ],
+        [
+          "CAUSAL GRAPH.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>Textbook Coverage</b><span>Estimation chapters · long · detailed · worked examples</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>DAG Building</b><span>Short · gestural · \"consult domain experts\"</span></div></div><p class=\"lead\">Open any causal inference textbook. The estimation methods receive exhaustive treatment while the chapter on building the DAG is reduced to a wish: consult experts. The hard step is forgotten.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Every standard causal inference textbook follows the same pattern. Estimation methods receive exhaustive treatment: propensity score matching, inverse probability weighting, instrumental variables, difference-in-differences—all worked through with examples, code, and theoretical guarantees. But the specification of the causal graph itself? It gets a chapter that reads like a wish list. The advice is invariably the same: consult domain experts. As if bringing people into a room and asking them to draw arrows on a whiteboard constitutes a methodology. This chapter addresses what those textbooks leave undone. The Ericsson fire of March 2000 shows us why this matters. When lightning struck a Philips semiconductor plant supplying both Nokia and Ericsson, both lost their chip supply overnight. Nokia had mapped its dependencies and activated backups within days. Ericsson had not documented its supply chain formally, despite knowing the risk informally. The causal structure was simple: single-source supplier led directly to production halt. But without formal structure, without a DAG sitting in someone's document, the contingency plan did not exist. Ericsson lost four hundred million dollars in revenue and exited the mobile phone market within a year. The failure was not in estimation. It was in specification.",
+          "audio_file": "audio/S01.mp3",
+          "actual_duration_s": 67.99
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "num": 2,
+      "total": 12,
+      "section": "THE STAKES",
+      "label": "02 / 12 · THE STAKES",
+      "dark": false,
+      "title": [
+        [
+          "EVERY METHOD IN THIS BOOK ASSUMES A CORRECT CAUSAL ",
+          false
+        ],
+        [
+          "GRAPH.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>If DAG is correct</b><span>Matching · Weighting · IV · All methods work</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>If DAG is wrong</b><span>Every downstream estimate is biased · All methods fail</span></div></div><p class=\"lead\">Specification is the binding constraint in causal inference, not estimation. Garbage in, garbage out. The right method applied to the wrong graph produces confidence in a lie.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The binding constraint in causal inference is not estimation—it is specification. Every method taught in this book rests on a single foundational assumption: that you have written down the correct causal graph. Propensity score matching, inverse probability weighting, instrumental variables, difference-in-differences, stratification—none of these work if the DAG is wrong. If you omit a confounder, your adjustment set is incomplete, and bias remains. If you include a collider, you introduce bias where none existed. If you misspecify the direction of an edge, you adjust in the wrong direction. The estimation method becomes irrelevant when the graph is wrong. This is why DAG specification comes before everything else. You cannot estimate a causal effect correctly if you have not specified which variables matter and how they relate to each other. Every method in matching, weighting, and instrumental variables assumes you have already solved the problem this chapter addresses. That is where this chapter belongs—not because it is foundational to the theory, but because you can only understand what a causal graph needs to provide once you have grappled with how the methods use it.",
+          "audio_file": "audio/S02.mp3",
+          "actual_duration_s": 59.18
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "num": 3,
+      "total": 12,
+      "section": "VARIABLE DISCOVERY",
+      "label": "03 / 12 · VARIABLE DISCOVERY",
+      "dark": false,
+      "title": [
+        [
+          "NODES EXIST IN THE WORLD BUT NOT IN FORMAL ",
+          false
+        ],
+        [
+          "STRUCTURES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid2\"><div class=\"cell-part\"><b>Informal Knowledge</b><span>Everyone at Ericsson knew the Philips plant was a single point of failure</span></div><div class=\"cell-part hot\"><b>Formal Structure</b><span>Nobody documented it as a node in a causal graph triggering contingency plans</span></div></div><p class=\"lead\">Ericsson's failure was a variable discovery failure: the relevant causal node existed in collective knowledge but not in any documented structure.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The first failure mode is variable discovery. The relevant node exists in the world and in people's heads—everyone knew the Ericsson supply chain had a single point of failure—but it was never extracted into a formal structure. Knowledge remained tacit, distributed across engineers and managers. When the Philips plant caught fire, there was no formal contingency plan because there was no formal causal structure that would have triggered its creation. This is not a knowledge problem. It is a documentation and structure problem. Ericsson engineers understood the causal relationship: single-source supplier leads to catastrophic dependency. But that understanding lived in conversation and email, not in a diagram or a decision tree. If anyone had run even a basic variable discovery exercise—systematically asking what are the single points of failure in our supply chain—the node single-source supplier would have appeared, the edge to production halt would have been drawn, and the contingency plan would have existed before the crisis. The cost of that structural failure was four hundred million dollars in lost revenue and exit from the mobile phone market. Variable discovery failure is the simplest failure mode, yet it is the most expensive because it makes invisible what should be visible.",
+          "audio_file": "audio/S03.mp3",
+          "actual_duration_s": 65.15
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "num": 4,
+      "total": 12,
+      "section": "CONFOUNDER SEPARATION",
+      "label": "04 / 12 · CONFOUNDER SEPARATION",
+      "dark": false,
+      "title": [
+        [
+          "MULTIPLE PATHWAYS ARE CONFUSED WITH A SINGLE ",
+          false
+        ],
+        [
+          "CAUSE.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Demand Surges</b><span>Directly increase port congestion—the obvious edge</span></div><div class=\"wire\"><b>Labor Shortages</b><span>Reduce port throughput independently of demand</span></div><div class=\"wire\"><b>Pandemic Rerouting</b><span>Create congestion at alternate ports, unrelated to demand</span></div></div><p class=\"lead\">All three pathways are correlated with demand surges but not caused by them. Without structured elicitation, the causal structure remained confused and interventions targeted the wrong causes.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The second failure mode is confounder separation. When COVID-19 disrupted global supply chains in 2020 and 2021, the naive causal analysis was direct: demand surges caused port congestion caused delivery delays. That is the edge everyone drew and the story that made intuitive sense. But the actual causal structure was far more complex. Labor shortages reduced port throughput independently of demand. Pandemic vessel rerouting created congestion at alternate ports. Inventory depletion forced emergency shipping that further clogged the system. Each pathway contributed to delays, but they were entangled with demand surges—correlated with them but not caused by them in any simple way. Without a structured elicitation to separate these pathways, the causal structure remained confused. Policymakers and supply chain managers targeted the wrong cause. You cannot fix port labor shortages by telling companies to order less. You cannot reduce pandemic vessel rerouting by reducing demand. The naive edge oversimplified a confounded system. Confounder separation failure happens when multiple causal pathways exist but are lumped into a single arrow pointing from the same treatment to the same outcome. The cost is paid in interventions aimed at the wrong variables.",
+          "audio_file": "audio/S04.mp3",
+          "actual_duration_s": 69.12
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "num": 5,
+      "total": 12,
+      "section": "UNIVERSAL FAILURE",
+      "label": "05 / 12 · UNIVERSAL FAILURE",
+      "dark": false,
+      "title": [
+        [
+          "THE FAILURE MODE IS UNIVERSAL ACROSS DOMAINS AND ",
+          false
+        ],
+        [
+          "SCALES.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"grid3\"><div class=\"cell-part\"><b>Supply Chain</b><span>Single-source supplier → catastrophic dependency</span></div><div class=\"cell-part\"><b>Nonprofits</b><span>Single funding source → organizational fragility</span></div><div class=\"cell-part hot\"><b>Clinical Trials</b><span>Confounded treatment pathways → wrong interventions</span></div></div><p class=\"lead\">Across every domain—nonprofits, clinical medicine, policy, supply chains—the same causal structure failure produces the same cost. Causal structure unknown or undocumented, cost paid in dollars or delayed treatments.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The pattern repeats across domains. This is not a supply chain problem. Replace the single-source supplier with a single funding source and you have the same fragility in nonprofit operations. Replace the confounded port congestion pathways with confounded treatment pathways and you have the same misattribution problem in clinical trials. In medicine, patients often receive multiple interventions simultaneously. A trial might test a drug plus counseling plus a monitoring regime. If the DAG does not separate the causal pathways from each drug, counseling, and monitoring, the analysis will confound their effects. You cannot know which intervention drove improvement. In policy, governments implementing economic stimulus often misidentify which causal channel drove investment. Did companies hire because demand increased, or because stimulus reduced financing costs, or because wage subsidies lowered hiring costs? These are distinct causal mechanisms. Without a specified DAG separating them, policy evaluation conflates the pathways. The failure mode is universal. Across supply chains, nonprofits, clinical medicine, and policy, the cost of specification failure is paid in dollars lost, treatments delayed, and interventions misdirected. The causal structure must be made visible and correct.",
+          "audio_file": "audio/S05.mp3",
+          "actual_duration_s": 67.73
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "num": 6,
+      "total": 12,
+      "section": "LLM AS TOOL",
+      "label": "06 / 12 · LLM AS TOOL",
+      "dark": false,
+      "title": [
+        [
+          "LLMS CANNOT REASON CAUSALLY BUT CAN SCAFFOLD ",
+          false
+        ],
+        [
+          "ELICITATION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"balance\"><div class=\"pan surv\"><b>What LLM Contributes</b><span>Structure · Completeness checking · Memory of choices</span></div><div class=\"fulcrum\">⇔</div><div class=\"pan die\"><b>What LLM Cannot Do</b><span>Make causal judgments · Validate edge direction · Infer true confounders</span></div></div><p class=\"lead\">An LLM is a coaching agent, not a causal reasoner. It helps organize what experts already know but cannot determine what they should know.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "This chapter builds on the finding from Chapter 11: large language models are unreliable when asked to propose or validate causal relationships. That finding does not change. We are building on it. An LLM cannot tell you whether treatment causes outcome or outcome confounds treatment. It cannot judge the direction of a causal edge given conflicting evidence. It cannot infer confounders outside the expert's domain of knowledge. But an LLM can contribute something real to the specification process: structure, completeness, and memory. It can organize variables that an expert mentions into a systematic form. It can ask questions designed to ensure completeness: which variables affect both treatment and outcome? Which variables are affected by treatment but not causally relevant to the outcome? It can track the choices an expert makes and flag contradictions. It can maintain the growing structure as new insights emerge. The five-phase elicitation method is designed to leverage what LLMs do well—scaffolding, prompting, memory—while keeping what matters most in human hands: the causal judgment about each edge. The expert decides whether an edge exists and what direction it points. The LLM structures that decision.",
+          "audio_file": "audio/S06.mp3",
+          "actual_duration_s": 64.47
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "num": 7,
+      "total": 12,
+      "section": "FIVE-PHASE METHOD",
+      "label": "07 / 12 · FIVE-PHASE METHOD",
+      "dark": false,
+      "title": [
+        [
+          "EACH PHASE DETERMINES A SPECIFIC FORMAL PROPERTY OF ",
+          false
+        ],
+        [
+          "THE DAG.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Phase 1: Nodes</b><span>Identify all variables the expert considers causally relevant</span></div><div class=\"wire\"><b>Phase 2: Parents</b><span>For each node, specify what causes it</span></div><div class=\"wire\"><b>Phase 3: Paths</b><span>Trace the causal pathways from treatment to outcome</span></div><div class=\"wire\"><b>Phase 4: Confounders</b><span>Identify variables affecting both treatment and outcome</span></div><div class=\"wire\"><b>Phase 5: Validation</b><span>Audit the structure against raw expert statements for errors</span></div></div><p class=\"lead\">Skipping any phase has downstream consequences. A DAG is incomplete if it lacks nodes, parents, paths, or validated confounders.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The five-phase Socratic elicitation method structures the conversation between expert and LLM coaching agent. Each phase determines a specific formal property of the directed acyclic graph. Phase one identifies all nodes—the variables the expert considers causally relevant to the treatment and outcome of interest. Phase two specifies parents for each node: what causes each variable? This builds the edge set. Phase three traces causal pathways explicitly: what are all the routes from treatment to outcome through the network? This surfaces confounding pathways that the expert may not have named directly. Phase four asks directly about confounders: which variables affect both treatment and outcome through paths other than the main pathway of interest? Phase five is validation—the human decision node—where the expert audits each extracted edge against the raw statements they made to catch extraction errors. Skipping phase one means variables exist but are not represented. Skipping phase two means parents are unclear and the graph has missing edges. Skipping phase three means causal pathways are implicit and confounding is invisible. Skipping phase four means confounders are not surfaced systematically. Skipping phase five means errors in extraction go unnoticed. Each phase builds on the prior one and enables the next. Systematic elicitation prevents the specification failures that casual conversation allows.",
+          "audio_file": "audio/S07.mp3",
+          "actual_duration_s": 75.24
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "num": 8,
+      "total": 12,
+      "section": "HUMAN DECISION NODE",
+      "label": "08 / 12 · HUMAN DECISION NODE",
+      "dark": false,
+      "title": [
+        [
+          "THE EXPERT AUDITS EXTRACTED EDGES AGAINST RAW ",
+          false
+        ],
+        [
+          "STATEMENTS.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"stack\"><div class=\"wire\"><b>Collapsed Mediation</b><span>LLM merges distinct pathways through intermediate variables into one edge</span></div><div class=\"wire\"><b>Direction Inference</b><span>LLM guesses the direction of an edge based on correlation or context</span></div><div class=\"wire\"><b>Scope Shift</b><span>LLM generalizes a specific causal claim beyond what the expert intended</span></div></div><p class=\"lead\">The human decision node is where human causal judgment re-enters the process. Three extraction errors can occur, and only the expert can catch them.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "After extraction, the expert faces the human decision node: a systematic audit of each extracted edge against the raw statement that produced it. Three extraction failure modes can occur, and catching them requires human causal judgment. Collapsed mediation happens when the LLM merges distinct causal pathways into a single edge. An expert says treatment affects outcome through mechanism A and also through mechanism B. The LLM extracts a single edge from treatment to outcome, losing the intermediate nodes and merging the pathways. Direction inference occurs when the LLM guesses the direction of an edge based on context or statistical correlation rather than the expert's explicit statement. An expert describes a correlation, and the LLM infers direction. An expert describes two variables that tend to occur together, and the LLM chooses a direction. The expert must validate that the direction matches their causal claim. Scope shift happens when the LLM generalizes a specific causal claim. An expert describes a relationship in a particular context—for a specific population, time period, or treatment intensity—and the LLM extracts it as a universal relationship without qualification. The human decision node is where these errors are caught. The expert holds the extracted DAG against their raw statements and flags discrepancies. This is where the method keeps causal judgment in human hands while letting the LLM handle structure and completeness.",
+          "audio_file": "audio/S08.mp3",
+          "actual_duration_s": 80.75
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "num": 9,
+      "total": 12,
+      "section": "OBSERVATIONAL HORIZON",
+      "label": "09 / 12 · OBSERVATIONAL HORIZON",
+      "dark": false,
+      "title": [
+        [
+          "VARIABLES OUTSIDE THE EXPERT'S DOMAIN REMAIN UNKNOWN AND ",
+          false
+        ],
+        [
+          "UNMEASURED.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"callout\"><b>The observational horizon problem:</b> The five-phase method cannot surface confounders that the expert does not know exist, or variables in domains outside the expert's knowledge.</div><p class=\"lead\">A single expert's understanding has boundaries. Confounders may exist in adjacent domains—unmeasurable in the expert's data, unknown to their expertise. The resulting DAG is locally valid but globally incomplete.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The five-phase method has a boundary. It cannot surface variables outside the expert's domain of knowledge. This is the observational horizon problem. Consider a clinical trial of a treatment for a behavioral health outcome. The physician expert specifies nodes: treatment, outcome, patient demographics, comorbidities, adherence, health literacy. The LLM systematically elicits confounders within that domain. But unobserved confounding exists at the intersection of medicine and sociology. Neighborhood social cohesion affects both treatment adherence and outcome, but it is outside the physician's routine data and outside the scope of questions the physician was asked to consider. The expert does not know what they do not know. When COVID disrupted supply chains, port congestion reflected not just demand and labor shortage but also geopolitical decisions about vessel routing that supply chain managers did not track. The causal variable existed but was invisible to the expert's typical domain of observation. A single-expert elicitation cannot surface these cross-domain confounders. The resulting DAG is locally valid within the expert's domain but globally incomplete. The implication is sobering: a DAG built from one expert is a DAG built from one perspective. Multiple experts from different domains may reveal confounders that a single expert cannot see. The method produces transparency about what is included and what is assumed, but it does not eliminate the boundary of a single expert's observational horizon.",
+          "audio_file": "audio/S09.mp3",
+          "actual_duration_s": 84.16
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "num": 10,
+      "total": 12,
+      "section": "SYNTHESIS",
+      "label": "10 / 12 · SYNTHESIS",
+      "dark": false,
+      "title": [
+        [
+          "SPECIFICATION PRECEDES ALL ESTIMATION BECAUSE THE DAG IS THE ",
+          false
+        ],
+        [
+          "FOUNDATION.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"flow\"><span class=\"chip\">Expert Knowledge</span><span class=\"arw\">→</span><span class=\"chip on\">Five-Phase Elicitation</span><span class=\"arw\">→</span><span class=\"chip\">Formal DAG</span><span class=\"arw\">→</span><span class=\"chip\">Adjustment Set</span><span class=\"arw\">→</span><span class=\"chip\">Estimation Method</span></div><p class=\"lead\">The DAG specifies what must be measured and adjusted. The estimation method can only produce an unbiased estimate if the adjustment set is correct, and the adjustment set can only be correct if the DAG is correct.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "Causal inference is a sequence. It begins with expert knowledge and ends with an estimate. In the middle lies the DAG—the formal specification of causal relationships. The five-phase elicitation method bridges expert knowledge and formal structure. It extracts what the expert knows, organizes it into a DAG, and validates the result against the expert's original statements. Only then does estimation become possible. The DAG specifies what variables must be in the adjustment set. The backdoor criterion tells you: an adjustment set is valid if it blocks all confounding paths while not creating new bias through colliders. But the backdoor criterion cannot tell you what variables exist or how they are connected. That is what the DAG must provide. Once the DAG is correct, the estimation method—matching, weighting, instrumental variables, whatever you choose—can produce an unbiased estimate of the causal effect. But if the DAG is wrong, no estimation method can save you. This is why specification comes before estimation in this book and in any causal analysis that aims to be correct. The method taught in this chapter ensures that specification is systematic, documented, audited, and transparent about its boundaries. It keeps human judgment in the place where it matters most: deciding what is causally related to what.",
+          "audio_file": "audio/S10.mp3",
+          "actual_duration_s": 69.01
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "num": 11,
+      "total": 12,
+      "section": "THESIS",
+      "label": "11 / 12 · THESIS",
+      "dark": false,
+      "title": [
+        [
+          "DAG SPECIFICATION IS THE BOTTLENECK, NOT ESTIMATION, AND DEMANDS ",
+          false
+        ],
+        [
+          "SYSTEMATIC METHOD.",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"thesis\">The <b>binding constraint in causal inference is specification, not estimation</b>—and specification demands systematic elicitation, not wishes.</div><p class=\"lead\">The textbooks are backwards. We spend pages on estimation methods and paragraphs on DAG building. We should spend pages on specification because it is the hard thing nobody talks about. Ericsson knew it, informally. They paid four hundred million dollars to learn that informal knowledge without formal structure does not trigger action. The method in this chapter ensures that specification is visible, documented, audited, and anchored in what domain experts actually know and claim. Causal inference begins when the DAG is correct.</p>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "The thesis is this: the binding constraint in causal inference is not estimation. It is specification. We have spent chapters teaching you to match, to weight, to use instrumental variables, to synthesize across studies. Those methods are valuable only because they assume you have a correct causal graph. Without that graph, they produce confident nonsense. Specification is the hard step nobody talks about because it cannot be reduced to an algorithm. You cannot push a button and generate a DAG. You must elicit from domain experts what they know about causal relationships. You must organize that knowledge into a formal structure. You must audit the structure for errors. You must acknowledge the boundaries of what a single expert can know. But lack of algorithm does not mean lack of method. This chapter teaches a systematic approach to specification. The five-phase Socratic elicitation uses an LLM as a coaching agent—to structure, to check for completeness, to maintain memory—while keeping the causal judgment in human hands. This method is teachable, auditable, and transparent about its limitations. It is how textbooks should approach DAG specification: not as a wish, but as work. Ericsson lost four hundred million dollars because formal specification did not exist until after the crisis. How many decisions in your domain rest on causal graphs that exist only informally?",
+          "audio_file": "audio/S11.mp3",
+          "actual_duration_s": 71.62
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "num": 12,
+      "total": 12,
+      "section": "CLOSE",
+      "label": "12 / 12 · CLOSE",
+      "dark": true,
+      "title": [
+        [
+          "",
+          false
+        ],
+        [
+          "",
+          true
+        ]
+      ],
+      "body_html": "<div class=\"close\"><div class=\"close-tags\"><span>SPECIFICATION</span><span>//</span><span>DAG ELICITATION</span><span>//</span><span>CAUSAL STRUCTURE</span></div><p class=\"sig\">Causal Inference · Chapter 12 · The Specification Bottleneck</p></div>",
+      "beats": [
+        {
+          "type": "analytic",
+          "text": "You have now seen why textbooks get it backwards. Estimation methods are long because they have mathematical structure that can be explained, proven, and tested on data. Specification is short because it has been treated as intuition rather than method. This chapter inverts that priority. The five-phase Socratic elicitation is a method. It is systematic, auditable, and transparent about what it can and cannot do. It leverages the structure and memory of LLMs while keeping causal judgment in human hands. It produces a documented DAG, not an implicit mental model. That DAG is the foundation for every method that follows. The observational horizon problem reminds you that no DAG is perfect. But a documented DAG with acknowledged boundaries is far better than an implicit DAG with invisible errors. You now understand why Ericsson failed and how systematic specification prevents that failure. You can elicit a causal structure from a domain expert using the five phases. You can audit that structure for the three extraction errors. You can recognize when the method reaches its boundary and acknowledge the variables it cannot surface. Most importantly, you know that specification is the bottleneck and where you must place your effort if your causal analysis is to be true.",
+          "audio_file": "audio/S12.mp3",
+          "actual_duration_s": 67.2
+        }
+      ]
+    }
+  ]
+}

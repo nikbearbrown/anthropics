@@ -1,0 +1,259 @@
+- I think like every facetof producing softwareI think will be kind of changedto use AI in some way.- Very excited to have you guys out today.Looking forward to this
+conversation for a while.As you know, I'm Alex.I lead our Claude Relations
+here at Anthropic.- I'm Lukas, I work on
+agentic systems at Cursor.- I'm Aman.I'm one of the founders and I work on MLand retrieval at Cursor.- My name's Jacob Jackson,I work on ML at Cursor.- I'm very, very excited
+for this conversationand to talk a little bit about Cursor,what you guys are buildingand also how you're using Claude.It's been a big year for Cursor,pretty obvious to anyonethat's been following
+along the AI industry.You guys have scaled now to
+over $300 million revenuein just over a year.Pretty crazy millions of developersare now using Cursor.What's changed in your opinionand how is today in the versionof Cursor today different
+than it was a year ago?- Yeah, I think there a few
+big things that have changed.I mean there's always been
+this massive overhang in,given the current level
+of the language models,how much you can do with themand I think Cursor was probablyone of the first companies
+at least in codingto be able to close that gap a bitwith a number of different features.And then in turn,you've also seen these models get much,much better at codingand I think 3.5 Sonnet was likethe first clear example of thisor this kind of step function
+better in programming.And so before then,Cursor is really useful at things liketab completion, right,
+predicting your next edit.And that alone was,you know, growing fairly quicklyand then editing within single files.But we did seethat when you kind of mix the intelligenceof a model like 3.5
+Sonnet with a few otherkind of custom models we use for retrievaland then applying the edits
+made by this larger model,you now have the abilityto do kind of multi file edits.I think that was kind of the step functionthat resulted in mass adoption of Cursorand since then it's been a mixof the models getting
+better than us tryingto under the hood get betterand better with like how far
+we can push these models.- And was that a natural progression,something that kind of just aroseor did you guys notice when 3.5 Sonnetthat first one came outthat, holy cow, now we can allof a sudden do all these different thingsthat weren't possible before?What did that kind of look like?- It did feel somewhat gradual.Like there are these
+steps in model quality,but you saw hints of it with you know,the prior state of the art model.In fact, we've been notoriously badat taste testing thesemodels just because you know,the way we use them is very differentthan when you put itout into the world to
+see how others use it.But there are just hintsof over time each kind of new modelthat came out was betterand better at being able to reason,do more agentic types of codingand then it's a lot of tinkeringand trying lots of
+things, seeing what works,seeing what fails.Yeah, I think Sonnet was
+probably the first onewhere we were able to make the multi-filekinda interaction really work well.And since then there's been a numberof step functions including
+like tool use, right?And then you can actuallyhave these models act likereal agents within the editor.- Hmm, I see.So the progression of the new models,new capabilities over time kind of allowsfor further tinkering, exploring,which then rolls back
+into your product in somedegree and allows you
+to build new features.- Yeah.- That's interestingand kind of parlays into
+this next question I wantto hit at which is I've heard many storiesof how your team is using
+Cursor to build Cursor,it's in this like self-improvingrecursive feedback loop.First off, maybe you can diveinto a little bit of howthat looks and on a day-to-day,what does that look like within Cursorsyou guys are working onbuilding new features?- Yeah, I think it very much dependson the individual likeyeah use cases for each employeeand I think it also very
+much depends on what partof the product you might be working onand what kind of stage that part is in.So I think for like initiallylaying out some code base,some new feature, it's very, very usefulto just like use the Agent
+feature to kind of getthat started and then to maybe usethe thinking modelsto like look at individual
+box that you might be facingand then for making
+like very precise edits,I think that's,it's a lot of tap alsoand then when initially getting
+started with a code basethat one might not be too
+knowledgeable about thatusing kind of the QA
+features a lot using a lotof search and I think
+that's also somethingthat Claude 3.7and 3.5 also has been excelling atdoing research in a code baseand figuring out how certainthings interact with each other.- I see, so using these featuresto explore your code bases makesthe process easier then youlearn as you're using these featuresthat oh there's a deficiency in this area,we should go work on that.- Yeah, easier I think Cursor'sit's very much driven bykind of solving our own problemsand kind of figuring outwhere we struggle solving problemsand making Cursor betterand then yeah, figuring
+out what we can do thereand then experimenting a lot.We very much have this philosophyof like everybody can just try thingsand try adding new features to the productand then see internally how they are usedand what kind of feedback they gather.- Do you think there on maybeof a more meta level there's an advantageto being your own best
+customer internally?- I think 100%.I think that's how we're ableto move really quickly
+in building new featuresand then throwing away things
+that clearly don't workbecause we can be really
+honest to ourselvesof whether we find it usefuland then not have to ship it
+out to users, kind of trackhow people use it before decidingto go ahead with a featureand I think it just speeds
+up the iteration loopfor for building features.Yeah, going back to overall
+how we use AI to program,it feels like, I mean there's a lotof diversity within the companyand how different people use it.I think it differs first in likethe kind of work you're doing.So, you know, there are a
+number of people that willfor example, be working in piecesof the code base they're
+really familiar with, right?And at that point when you
+have it all in your head,it's often faster for youto kind of convey intent justby kind of typing codeand then for that Tab is reallyuseful 'cause kind of speeds you up there.But then when you're in placeswhere you're less familiaror you need to write out a lot of code,you can kind offload a lot of thatand often some of the reasoningto these models and then, you know,as you got to placeswhere you're really unfamiliarwith Lukas is describingand you're kind of coming
+into a new code base,it's just there's this
+massive step functionthat you get from using these modelsand what we kind of see is over timeas the models get better isand as Cursor gets betterusing these models you do a betterand better job of when you're morein flowing when you havemore knowledge of the code base.- So there's a variationin when a feature is mostapplicable to like your use caseand it kinda is like almosta spectrum to some degree.- Yeah like the spectrum on one end is Tabfor when you're completely in controland you know what you're doingthen it goes to Command Kwhere you're editing
+a single given region,maybe a whole fileand then at the other end you have Agentwhich is quite good for, you know,editing multiple filesand then at the very end you getkind of have this background agentwhich we've been working onand that can be useful for
+basically doing entire prs.- You guys just released a previewof background agent.What is background agent?- I think it's clearthat the models are getting betterand better at doing end-to-end tasksbut they're not quite at 100%and I think it'll take a whileto get to 100%.So the way you speed up developers,right, is you let them dothese things in parallel but as opposedto kind of letting it just goin the background then spin up a PRthat you look at in
+GitHub if it's only 90%of the way there you wantto go in and then take controland do the rest of it and
+then you want to use you know,the features of Cursor
+in order to do that.So really being able to quicklymove between the backgroundand the foreground is really importantand I think like, you know,we're in the early innings of this featureand I can imagine that there
+are lots of interesting waysof being able to operate
+for example on threeor four changes at the same timeand then quickly kind of
+popping them to the backgroundand then moving them into the foreground.It'll be interesting
+to see how this changeshow people use Cursor and just likedevelop the software in general.- I mean we see background
+agents basicallyas a new primitive that we can use in likeso many different places
+and the current wayof exposing it is quite straightforwardwhere you can just get a promptand push it to the backgroundand then it independently
+iterates on that.But there can be like
+many more integrationshow these things can be spawned offand I think there's a lot of productthat you want can make from that.- So is this taking your code baseand putting it in a virtual machineor what exactly is that
+transfer that's happening?- Exactly, yeah.
+- Okay.- We have small enough
+independent environmentsthat have all the developer
+environment utilitiesalready installedand then the agent can use thoseand it has all the VS code extensionsthat are availableand through that it can get et cetera.- I know we're kind of
+witnessing this trendof asynchronous tasks,background tasks across many
+different things from codingto like research, in your view,what does that look likeas this progresses to where
+we might have thousandsof these agents potentially going offand you could see like whole teamsof agents attacking a problem
+all in the background.What does that future look like?- I think the next bottleneck you'll runinto is verification of software,verification of code,models getting really,really good at generating writing lotsof code but let's say developers spend,I'll throwout some random-ish numbers,but 30% of their time writing codeor 30% of their time reviewing code,70% of their time writing code.If you completely solve
+writing code you still haven'treally sped up software engineeringby more than a factor of three.Yeah, so I think we're goingto need to figure out howto make it easier for
+people to review codeand how to be confidentthat the agent's making the changesthat are not just correct,
+'cause correct canbe vague, right?It may just be in the thing you specified,it was under specified enoughthat it actually did like
+the best that was possiblefor even you know, the best
+human programmers to dobut what it actuallywhat you had in your mind's eyeand so making the process for you much,much better I think will be
+really, really important.And it's somethingthat we're really interested in as well.- Any early ideas there
+on what that looks like?- I think there are a few floatingaround from various people at the company.One that Michael, our CEO who really,really likes is the ideaof operating in a differentrepresentation of the code base.So maybe it looks like pseudo codeand if you can represent changesin this really concise wayand you have guaranteesthat it maps cleanlyonto the actual changes madein the real software,that should shorten the
+time of verification a ton.But that's one possible route.I think, so like the
+reason why quote unquotevibe coding works oftenis because the processof verification is like really easysince all it is justkind of playing with the software, right?You make a change and you actually playwith whatever software you've built.I think it's just gonna be
+really hard to do for realproduction code basesand cracking that problem
+is really important.- That's a good question
+around the differencebetween like a standalone
+thing they might be vibe codingversus a production code
+base that has millionsand millions of lines of files.How do you guys see the differencebetween those two in yourmind and where are we at in termsof like working within
+them with current models?- I think that's something
+we've thought about a lotwith background agentbecause something that's really simpleand obviously should be very easywith these models is
+I have this test here,the test is currently failing,can you fix the code so that it passesand it's like okay how
+do we make that happen?Well the model needs to
+be able to run the testand if you have a very simple repository,that's very simple,but when you start gettingto these larger enterprise code bases,it can be complexto get the dependencies set up properly sothat the model can run the tests.But this is something we've thought aboutwith background agent a lot ishow do you make this
+process straightforwardfor the developer to
+create this environmentwhere the agent can run the testand then make it repeatable
+so you can snapshot itand you can quickly update itwhen your code state changesand this unlocks the ability to, you know,spin off a VM in the background,have the model make experiments, you know,and some of them will make it passand some of them won't.And then eventually you
+as the developer only haveto worry about the case where it succeededand there's just a lot
+of infrastructure thereand a lot of user experiencethat is important to get right.- Mm hmm, mm hmm.- Yeah. And then I think there are otherfundamental problems.So one way is you get the model to tryto pass the test, right?That's how you can kind
+of guarantee maybe,some sort of correctness.But with these large code bases,you're often dealingwith things that almost
+look like their own languagewhere they have these kind of DSLswithin some languagesand everything is done
+in this particular wayand it's really sprawled out
+across millions of files,which is hundreds of millionsof tokens potentially maybe more.We've done a number of thingsto make this much better,which include training retrieval modelsand then integrating other
+sources of context as well.For example, you can imagine there's a lotof richness in the recent changesthat you've made,when editing your code
+it kind of indicateswhat you're working towards.There could be richness in the changesthat other people on your teamhave made in your code base,especially recently and
+using those as hints.But I do think it's still
+this really hard fundamentalproblem of you know,just giving the model accessto really good retrieval
+feels insufficientfor having the model really
+understand the code base.I think it's a problemwe're really interested in solving.- Mm hmm.Probably through some combinationof like memory plus long context and.- Yeah.
+- Other things.- I think memory is one interestingapproach people have takento get the model to kind of learnfrom your usage of itbut it also feels like, you know,it's a small boost in performanceand it feels fairly primitive relativeto like where we need to
+be in order to get thingsthat are excellent at large code bases.- Yeah and large code basis,it's not only just aboutgetting the test to passbut it also is about
+doing it the right way.Like looking at the existing codeand making that match the new codeand bringing it into the correct structureand kind of using all
+the guidelines correctlyand like we've been trying
+very hard to kind of makethat happen through Cursor rules,through integrating different
+types of context, et cetera.- Hmm.
+- Yeah, like I could writea deep bounce function fromscratch and just use that and
+that would make the test passbut that's not the right way to do it.You should use one of the DeBouncesand maybe there's threeor four DeBounce functions
+used across the code base.How do you know what
+the right one is to use?Maybe the only reason
+like someone knows isbecause they message someone onSlack that this is how you do it.And so I think yeah it
+gets really, really hardto solve these problemswith extremely large code bases.- That's interesting.So there's also kind of an elementto the org knowledge that lives outsideof the code base itselfand that like plays a major
+factor sometimes in someof these decisions,especially as you're operating on-- Yeah.
+- Large code bases.- I don't think that's
+the bottleneck todaybut I think if you solve,like if you made models like perfectand kind of knowing the code base,- Yeah.- I think you'll immediately,
+like you'll maybe get like a5x maybe 10x improvementbut you can't get farther than thatbecause now it's
+completely bottlenecked by,how much does it know these thingsthat are never ever explicitly mentionedor shown in like the PRsand the actual state of the code.- Mm hmm.- And then there also
+just outside concernsfrom the business side
+from sales, et cetera.And those kind of haveto be brought into
+Cursor to make that work.- Right.So some future version of Cursor then hasto plug into many more systems-- Yeah.
+- And things.- To be clear I think like, you know,that's like still some ways a way forthat to be like really, reallycritical relative to the other things.I think we have a long ways
+to go still on just usingthe interactions users have like detailsof their code baseand commits made in orderto make Cursor much better.- One interesting thing I've startedto notice at least with
+like webpages and content,is people trying to now think about howto optimize the pagefor an LLM reading and browsing it.Do you think we're gonna
+see something similar maybewith code and in that code could transformhow it usually is writtenand what it looks like if you're writingfor primarily human reviewersand humans working within
+a code base to models?- I think that's totally the case already.I mean API design is
+already adjusting suchthat LMS are more comfortable with that.For example, changing not onlythe version number internalbut making it like very
+visible to the modelthat this is a new version
+of some software justto make sure that the
+API is used correctly.And I think that the same also holds,for like normal code basisand internal libraries as wellwhere like structuring the code in a waywhere one doesn't have to
+go through like end levelof interactions but maybe
+just through two levelsof interaction makes, yeah,LLM models betterat working with that code base.- Right.- But I think ultimately the principlesof clean software are notthat different when you want itto be read by people and by models.You know, when you are tryingto write clean code you want to,you know, not repeat yourself,not make things more complicated
+than they need to be.And that is just important for modelsas it is for people.And I think taste in codeand what's a clean solutionthat's not more complicated than it needsto be is actually gonna
+become even more importantas these models get betterbecause it will be easier
+to write more and more codeand so it'll be moreand more important to
+structure it in a tasteful way.- That's a really good point on taste.Taste is kind of this thingthat I feel like maybe
+some people are bornwith more taste than others,but generally you kind of
+develop taste through experienceand learning what works
+and seeing failuresand seeing successes.In a world where we're
+having AI write moreand more of our code,there's been real pushback againstsome that say, oh you're
+gonna make programmers lazyor you're not gonna give
+juniors a chance to learnwhat it actually looks liketo work within a large code
+base and do all these things.How do you think about balancingthis sort of automationor assistance in this casewith also preserving the
+core engineering skillsthat maybe a software
+engineer has to go through,those like trials and tribulations?- I think these tools are
+very good educationallyas well and they can help you
+become a great programmer.You know, if you have a questionabout how something works,if you want some concept explained to you,now you can just,you know, press command Land ask Claude, you know, what is this?How does it work? Can
+you explain it to me?And I think that's very valuable.It does make it easier to write more codeand do more stuff and
+that can result in higherand lower quality code being out there.That is true, but I think
+in general it's a very,very powerful tool that
+will raise the bar.- I think quality comes
+very much from iteratingquickly, making mistakes,figuring out why certain things fail.And I think models vastly acceleratethis iteration processand can actually through
+that make you learn morequickly what works and what doesn't.So I think in the long term,it's a super helpful tool fordevelopers just getting
+started and working on biggerand bigger projectsand figuring out what
+works and what doesn't.- Yeah, I think it'll be
+really interesting to seehow programming evolves.I think you'll still for
+a very long time needto have the engineers that
+know the details right,can go into the weeds.I wonder how much you'll
+start to see peoplethat are now learning
+programming who don't know manyof the details but can
+still be fairly effective.I think today you still doneed to know a lot of the details.I think over time you might have a classof software engineers
+that need to know very fewof like the low level detailsand it still operate at a higher leveland maybe it looks a lot
+more like kind of thinkingthrough like the taste is like morein kind of UX taste, right?Like let's say you're tryingto build something like a notion, right?At the end of the day,I don't think you can offloadthat entire thing to the language model.You need to kind of describe like,okay when I do this typeof interaction then I expect itto pop up in this particular way, right?Maybe you don't have to get to the detailsof writing pure software that does that,but still describing those interactions,describing the waythis thing roughly works.That is a form of programming.- Switching gears a little
+bit on the topic of models,so we just recently,by the time this video comes out,Claude Opus 4and Claude Sonnet 4 will
+be out into the world.Love to hear your guys'
+thoughts on the new modelsand how you're starting to think aboutintegrating them within Cursor.- I mean we've really
+enjoyed the new models.I think we were pretty shocked
+trying out the new Sonnetbecause I think 3.7 is a fantastic model.It was better at agentic coatingbut everyone knew it kind
+of had these deficits right,where it would maybe be a little bittoo overeager-
+- Like to do a lot.- Yeah it did.Would like to changethe test sometimes,that they passed.
+- Yeah, yeah.- We found that Sonnet
+4 has effectively fixedall those, it is much betterand then the intelligencehas also been a big step upwhere you know, you've seen other modelsthat are kind of steps up in intelligence,maybe not as like strong asagentic coding but like you know,O3 is an exampleand we found it goes toe-to-toe withthat despite being you know,a much cheaper model.And so we're extremely excited for Opusbecause we think it'll be a fantasticagent to use in the background.- Yeah, that's awesome
+to hear the test writingand overeagerness thingsare things that we were tryingto tackle pretty intensely
+with these modelsand concept of like
+reward hacking in whichthe models will find some wayto basically take a shortcutto get to the final reward in rl.So we've done a lot of
+work to cut that down.I think we cut it downto like 80% in these new models.- I'm really curious to hearhow did 3.5 Sonnet come about,'cause that felt like
+the first kind of punchof like this is like a really good codingmodel for Anthropic.- How did it come about?We trained it.Just, it was good.Yeah, I think we have always
+known for a while that,I mean probably since the
+genesis of the companythat we've wanted to make
+models really good at coding,it just seems importantfor everything else that you do,especially as you make more models.3.5 Sonnet was,I wouldn't, I mean I think 3-Opuswas a really good coding modelas well, especially for its time.But 3.5 Sonnet was the first timethat we really put a
+strong dedicated effortto, hey, let's get these
+models good at coding,but not just specifically coding,this sort of longer horizon
+coding where it's havingto do these things like
+you're mentioning earlierin the conversationaround making edits on different files,going off and like taking a command here,calling a tool and then goingand making a change somewhere else.That was the first model in whichwe could kind of put all
+these things togetherand I think it just turned out really welland kind of set the stage for whatour future models would be.- And how do you guys thinkabout code versus other areaswhere you want Sonnet to excel?- Yeah- And Opus to excel.- I mean code is one of the primary areas,but I think it's not the only area.I think there is a good amount of transferthat you see from models
+getting really good at codeto them just getting betterat reasoning over taking manyactions and working in
+this sort of agentic way.And that carryoveris pretty nice as you're dealingwith applications that might mix in codebut also have to go retrieve
+knowledge from otherplaces or do research.Generally we're about just
+pushing the frontier as muchas we can with our models.Of course there is like
+considerations that we makearound safety and making surethat the models are in linewith what you as a user wantand also what we believe
+the model should be doing.But generally we want to keep pushingthe limits of what these models can doand kind of show developers
+in the world this iswhat models are capable of.So things like computer use,when we unveiled that back in October,that was like another
+direction in which we're reallypushing forward in termsof how can a model be goodat actually navigating somethingthat is a primarily a
+human interface, right?So it's not in the world of like APIsor tool calls or anything like that.It's literally just lookingat an image as a human wouldand then having to directan action onto that screen.There's also a strong partto how we think about
+these models character,as it's known now, Amanda Askellis one of our lead
+researchers on this effort,kind of crafting Claude's characterand we put a lot of thoughtand consideration into what Claudeshould feel like and sound likeand what does it mean for an AIto play a really prominent
+role in somebody's life.Not as just a coding agent,but as kind of like their
+confidant in a senseand an entitythat you're gonna be spendinga lot of time talking to.So that's also really factoredinto all the decisions wemake around these models
+and how we train 'em.- How does Anthropic
+as a whole think aboutwhere things are going bothin terms of software engineeringand then in terms of like research,like in terms of how muchlike these models will augment, replace,do a lot of this work?- Yeah, it can speak personally here.So personally I thinkthat we're not gonna be replacing,as we've been talked about earlier,there's just like so
+much more you can do nowthat you have like modelsthat can do all this, you know,nuts and bolts like typingof the code basically for you.I see this with myself too.Like I studied computer science in collegeand did software engineeringand now I feel like I'm at the pointwhere the models are like betterat producing code than I am,like if I were to just like thinkabout doing like a leadcode problem or anything like that,where it's like a contained environmentand the model has to write code,it's gonna like beat meand yet I feel like I
+can do more than ever.I can make prototypes of anything.I can like spin up demos super,super fast if I wanna like
+show off a new concept.It's felt very empowering
+in that sense than liketaking away or dismissive
+of what I've been doing.And it is similar to
+where I feel like justbecause I have that knowledgeof software engineering from the past,I can actually exploit it much betterand I can use the model,I can push it fartherthan if I just still didn't have anyidea about what code is.Maybe on that getting more into likethe sort of fun future speculation I wantto ask like maybe a practical
+question in a few years we cancome back to this one and
+see how we turned out.January 1st, 2027,so what is that a little
+less than two years from now?What percentage of codedo you think will be AI generatedand following that, what
+does the day in the lifeof somebody that's
+considering themselves adeveloper now look like?- I think it's similar to going back to,let's say before I was born,but you know, 1995and asking a lawyer in
+the future what percentageof legal documents will be
+word processor generatedand the answer is 100%or you know, close to 100%in that AI will be involved in almost allof the code that gets written.But still your role as a lawyeror as a developer in understandingwhat the code needs to doand having tasteand guiding what is done
+with the software is goingto be more important than ever.- I mean already at Cursorit's probably 90% plus,but that's because a large fractionof it is using more higher
+level features like Agent.- Yeah.
+- And Command K and whatnot.But then a lot of it is you're typingand then Tab will as you typedo 70% of that.
+- Right.- So in the cases where
+you're actually going inand doing it manually yourself,Tab is still doing most of those changes,- Right, so the actual
+letters typed is like a very,very low percent.
+- Yeah.But I think like every facetof producing software I
+think will be kind of changedto use AI in some way.
+- Do you think we ever getto a world in which you basicallyhave software on demand?What does that look like?- I think you're goingto see people building software,people in organizational
+functions, building softwarewho are not previously building software.You know, like people in saleswho would not have built their own toolsbefore will now be building, for example,dashboards to track
+what's important to them.And going back to how tastebecomes more important
+than ever, you know,now you can build the dashboard,but you still need to decidewhat metrics the dashboard is gonna show.It doesn't prevent you
+from having to decide that.I think you're going
+to see many more peoplebuilding their own software,but it will be bottlenecked
+on having a unique thingthat you want to do with the softwarethat isn't properly
+served by existing needs.- One example I like to
+tell people is we've a guy,our comms team who's actuallybeen like shipping bug fixes to Claude.ai,which is just like absolutely insane.Like he's in a completely
+different part of the org,he's not touching product at alland yet he pops in with like a PRand he's like asking for a stampand you're like, what are you doing?And it's like, yeah, he's
+using, you know, Claude codeor some coding tool with Claudehas the base model thereto like fix bugs in a
+production code base.I think that's amazing as well.And it ties back into
+this like general, hey,if you have taste, if
+you have good intuitions,like you're just gonna
+be able to do a lot.That's kind of how I see the
+world keeping progressing.I think things will changeand like roles will look
+much different in five years,10 years, but generallylike I'm very much in favor of like,if you can do more with these things,like that's generally always
+gonna be a good thing.- Yeah, I feel like there are a lotof interesting paths that this could take.One is just completelyon the fly on demand softwarewhere I am using my own version some appand just like as I use it, you know,this interaction I don't really likeand it just changes for methat's one kind of crazy
+future you could imaginewhere it's not even you
+kind of actively doing it,but just based on your
+interactions with it,the software, whatever you're using,changes to kind of fit you.That's like a cool potential path forwardwhere I don't know if everyonein the world is going to wantto like, I don't know if the
+total size of like peoplewho want to kind of
+build their own softwareis like that large.
+- Right.- But I think the peoplewho could benefit from softwarethat kind of fits their needsis potentially the entire world.- All right, maybe one last thing to justkind of close this off here.For all the people watching this,if you're a talented engineer out there,and you're thinking about
+making your next moveor you wanna get more
+involved in the industryand you're trying to
+decide between maybe goingto a larger company or joining moreof a faster pace startup
+like a Cursor or Anthropic,what would you tell
+someone in those shoes?- Yeah, I think startups havean advantage these days likewith Anthropic and with Cursorand getting like really
+excellent talent in a waythat like when you're at a bigger company,a lot of people, you know,
+a lot of the best peoplein the world find that
+less exciting, right?And some people do,and certainly like large companies havegreat people, but the density ofthat talent tends to be much lower.And I get a startup,you can get this really high talentdensity and that makes it
+really enjoyable to workwith a bunch of other
+excellent colleagues.You can work on really
+impactful things in thisincredibly small team, right?Building a product that kind of,and building models that change the waythat the world writes software.And you can be a one of like,you know, tens, hundreds,or thousands of people working onthat and that's really cool.- Yeah.That's great.Well thank you guys.This has been awesome conversation.- Thank you.
+- Thank you.
