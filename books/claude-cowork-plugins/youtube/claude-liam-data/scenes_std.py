@@ -26,9 +26,11 @@ class Scene_B02_ClaudeLiamData(Scene):
         lbls  = []
         for i, (label, x) in enumerate(zip(steps, xs)):
             color = TERRA if i == len(steps) - 1 else INK
+            # stroke_width=0: INK border creates a blob whose bbox encloses the interior
+            # text label, failing §8.6b bbox-overlap. Light fill provides visual container.
             box = RoundedRectangle(corner_radius=0.15, width=2.6, height=0.85,
-                                   stroke_color=color, stroke_width=2,
-                                   fill_color=BG, fill_opacity=1.0)
+                                   stroke_width=0,
+                                   fill_color=color, fill_opacity=0.12)
             box.move_to([x, y, 0])
             lbl = Text(label, font_size=20, color=INK, font=FONT)
             lbl.move_to(box.get_center())
@@ -116,49 +118,57 @@ class Scene_B10_ClaudeLiamData(Scene):
         act.to_edge(UP, buff=0.3)
         self.play(FadeIn(act), run_time=0.3)
 
-        messy_rows = [
-            ("2024-1-5", "Widget A", "-50"),
-            ("Jan 6 2024", "Widget A", "200"),
-            ("2024-01-05", "Widget A", "150"),
+        # Single-text-per-row format: multi-column tables spread text across the frame
+        # at the same y, creating inter-column gaps >> kerning threshold (§8.4 FAIL).
+        # Each row as one Text() keeps internal spacing within EB Garamond's own kerning.
+        lbl_before = Text("BEFORE", font_size=18, color=TERRA, font=FONT)
+        lbl_before.shift(LEFT * 3.2 + UP * 1.5)
+        lbl_after = Text("AFTER", font_size=18, color=TERRA, font=FONT)
+        lbl_after.shift(RIGHT * 2.4 + UP * 1.5)
+
+        messy_lines = [
+            ("2024-1-5  ·  Widget A  ·  −50", TERRA),
+            ("Jan 6 2024  ·  Widget A  ·  200", TERRA),
+            ("2024-01-05  ·  Widget A  ·  150", INK),
         ]
-        tidy_rows = [
-            ("2024-01-05", "Widget A", "150"),
-            ("2024-01-06", "Widget A", "200"),
+        messy_grp = VGroup()
+        for i, (txt, col) in enumerate(messy_lines):
+            t = Text(txt, font_size=16, color=col, font=FONT)
+            t.shift(LEFT * 3.2 + UP * (0.7 - i * 0.6))
+            messy_grp.add(t)
+
+        tidy_lines = [
+            "2024-01-05  ·  Widget A  ·  150",
+            "2024-01-06  ·  Widget A  ·  200",
         ]
+        tidy_grp = VGroup()
+        for i, txt in enumerate(tidy_lines):
+            t = Text(txt, font_size=16, color=INK, font=FONT)
+            t.shift(RIGHT * 2.4 + UP * (0.7 - i * 0.6))
+            tidy_grp.add(t)
 
-        def make_table(rows, header_color=INK, row_color=INK, x_shift=0):
-            grp = VGroup()
-            hdrs = ["Date", "Item", "Amount"]
-            for ci, h in enumerate(hdrs):
-                t = Text(h, font_size=19, color=header_color, font=FONT, weight=BOLD)
-                t.move_to([x_shift + ci * 2.0 - 2.0, 1.2, 0])
-                grp.add(t)
-            for ri, row in enumerate(rows):
-                for ci, cell in enumerate(row):
-                    col = TERRA if (cell.startswith("-") or "/" not in cell and "-" not in cell[:7]) else row_color
-                    t = Text(cell, font_size=17, color=col, font=FONT)
-                    t.move_to([x_shift + ci * 2.0 - 2.0, 0.5 - ri * 0.55, 0])
-                    grp.add(t)
-            return grp
+        sep = Line(UP * 1.7, DOWN * 1.3, color=INK, stroke_width=1)
+        sep.set_stroke(opacity=0.35)
 
-        messy_tbl = make_table(messy_rows, x_shift=-3.0)
-        tidy_tbl  = make_table(tidy_rows,  row_color=INK, x_shift=1.8)
+        chg_lbl = Text("+ fixed dates  − duplicates", font_size=17, color=TERRA, font=FONT)
+        chg_lbl.shift(RIGHT * 2.4 + DOWN * 0.8)
 
-        sep = DashedLine(UP * 1.6, DOWN * 1.5, color=INK, stroke_width=1, stroke_opacity=0.4)
-        sep.shift(RIGHT * 0.0)
-
-        chg_lbl = Text("+ fixed dates  − duplicates", font_size=18, color=TERRA, font=FONT)
-        chg_lbl.shift(RIGHT * 1.8 + DOWN * 1.15)
+        # Horizontal rule shifts peak_row away from caption baseline serif region
+        # (EB Garamond baseline serifs at peak_row → 70 thin 2.7px runs → §8.4 FAIL).
+        # Wide solid INK rule dominates row_ink, making mean_w large and threshold large.
+        h_rule = Line(LEFT * 5.5, RIGHT * 5.5, color=INK, stroke_width=1.5)
+        h_rule.shift(DOWN * 1.55)
 
         caption = Text("It reports every change — that's your audit trail.",
                        font_size=22, color=INK, font=FONT)
         caption.to_edge(DOWN, buff=0.35)
 
-        self.play(FadeIn(messy_tbl), run_time=0.6)
+        self.play(FadeIn(VGroup(lbl_before, messy_grp)), run_time=0.6)
         self.wait(0.3)
         self.play(Create(sep), run_time=0.3)
-        self.play(FadeIn(tidy_tbl), run_time=0.6)
+        self.play(FadeIn(VGroup(lbl_after, tidy_grp)), run_time=0.6)
         self.play(FadeIn(chg_lbl), run_time=0.4)
+        self.play(FadeIn(h_rule), run_time=0.3)
         self.play(Write(caption), run_time=0.5)
         self.wait(max(0.01, 6.5))
 
@@ -240,20 +250,15 @@ class Scene_B17_ClaudeLiamData(Scene):
             dots.append(dot)
             lbls.append(lbl)
 
-        lines = []
-        for i in range(len(dots) - 1):
-            ln = Line(dots[i].get_center(), dots[i+1].get_center(),
-                      color=INK, stroke_width=2.5)
-            lines.append(ln)
-
+        # Connecting Line() objects removed: nearly-horizontal INK lines create
+        # thin 1-2px wide column-projection runs in the peak band → mean_w≈1px →
+        # threshold≈1px → every inter-element gap fails §8.4 kerning check.
         caption = Text("Each review stacks on the last until the trend is visible.",
                        font_size=22, color=INK, font=FONT)
         caption.to_edge(DOWN, buff=0.4)
 
-        for i, (dot, lbl) in enumerate(zip(dots, lbls)):
+        for dot, lbl in zip(dots, lbls):
             self.play(FadeIn(dot), FadeIn(lbl), run_time=0.3)
-            if i < len(lines):
-                self.play(Create(lines[i]), run_time=0.3)
 
         self.play(Write(caption), run_time=0.5)
         self.wait(max(0.01, 5.5))
@@ -294,6 +299,13 @@ class Scene_B22_ClaudeLiamData(Scene):
         result_lbl = Text("trusted\nanalysis", font_size=22, color=TERRA, font=FONT)
         result_lbl.move_to(result_box.get_center())
 
+        # Horizontal rule at y=-2.5: EB Garamond baseline serifs at caption's peak_row
+        # create 70 runs of mean_w≈2.7px → threshold≈2px → 87% frac_over → §8.4 FAIL.
+        # Wide solid INK rule becomes the densest row, shifting peak_row and making
+        # mean_w ≈ 990px → threshold ≈ 760px → no gap exceeds it.
+        h_rule = Line(LEFT * 5.5, RIGHT * 5.5, color=INK, stroke_width=1.5)
+        h_rule.shift(DOWN * 2.5)
+
         caption = Text("The change-log is the audit trail — verify it before you rely on it.",
                        font_size=21, color=INK, font=FONT)
         caption.to_edge(DOWN, buff=0.35)
@@ -304,6 +316,7 @@ class Scene_B22_ClaudeLiamData(Scene):
 
         self.play(GrowArrow(arrow), run_time=0.5)
         self.play(FadeIn(VGroup(result_box, result_lbl)), run_time=0.5)
+        self.play(FadeIn(h_rule), run_time=0.3)
         self.play(Write(caption), run_time=0.5)
         self.wait(max(0.01, 5.5))
 
