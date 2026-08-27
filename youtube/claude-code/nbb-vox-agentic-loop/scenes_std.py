@@ -33,13 +33,13 @@ class Scene_B01_NbbVoxAgentic(Scene):
             self.play(Write(line1), run_time=0.5)
 
         if "Claude starts writing":
-            line2 = Text("Claude starts writing", font_size=28, color="#2A1A0E", font=font)
+            line2 = Text("Claude starts writing", font_size=36, color="#2A1A0E", font=font)
             line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
             line2.shift(DOWN * 0.6)
             self.play(Write(line2), run_time=0.4)
 
         if "A file is already modified before the teacher finishes readi":
-            line3 = Text("A file is already modified before the teacher finishes readi", font_size=22, color="#2A1A0E", font=font)
+            line3 = Text("A file is already modified before the teacher finishes readi", font_size=36, color="#2A1A0E", font=font)
             line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
             line3.shift(DOWN * 1.4)
             self.play(FadeIn(line3), run_time=0.3)
@@ -78,13 +78,13 @@ class Scene_B02_NbbVoxAgentic(Scene):
             self.play(Write(line1), run_time=0.5)
 
         if "You read it":
-            line2 = Text("You read it", font_size=28, color="#2A1A0E", font=font)
+            line2 = Text("You read it", font_size=36, color="#2A1A0E", font=font)
             line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
             line2.shift(DOWN * 0.6)
             self.play(Write(line2), run_time=0.4)
 
         if "You decide":
-            line3 = Text("You decide", font_size=22, color="#2A1A0E", font=font)
+            line3 = Text("You decide", font_size=36, color="#2A1A0E", font=font)
             line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
             line3.shift(DOWN * 1.4)
             self.play(FadeIn(line3), run_time=0.3)
@@ -131,16 +131,18 @@ class Scene_B03_NbbVoxAgentic(Scene):
                          color="#C8102E", fill_color="#C8102E", fill_opacity=0.85, stroke_width=0)
         bar2.move_to([pt2[0], (pt2[1]+origin[1])/2, 0])
 
-        lbl1 = Text("The agentic loop: Claude gathers context - reads your files,"[:30], font_size=20, color="#2A1A0E", font=font)
+        lbl1 = Text("The agentic loop: Claude gathers context - reads your files,"[:30], font_size=36, color="#2A1A0E", font=font)
+        lbl1.scale(min(1.0, 3.0 / max(0.1, lbl1.width)))
         lbl1.next_to(ax.c2p(1, 0), DOWN, buff=0.2)
-        lbl2 = Text("Then acts: edits a file, runs a command, calls an API"[:30] if "Then acts: edits a file, runs a command, calls an API" else "Comparison", font_size=20, color="#2A1A0E", font=font)
+        lbl2 = Text("Then acts: edits a file, runs a command, calls an API"[:30] if "Then acts: edits a file, runs a command, calls an API" else "Comparison", font_size=36, color="#2A1A0E", font=font)
+        lbl2.scale(min(1.0, 3.0 / max(0.1, lbl2.width)))
         lbl2.next_to(ax.c2p(2, 0), DOWN, buff=0.2)
 
         self.play(GrowFromEdge(bar1, DOWN), Write(lbl1), run_time=0.6)
         self.play(GrowFromEdge(bar2, DOWN), Write(lbl2), run_time=0.6)
 
         if "Then verifies - checks what happened":
-            note = Text("Then verifies - checks what happened"[:60], font_size=22, color="#2A1A0E", font=font)
+            note = Text("Then verifies - checks what happened"[:60], font_size=36, color="#2A1A0E", font=font)
             note.to_edge(DOWN, buff=0.4)
             self.play(Write(note), run_time=0.5)
 
@@ -154,7 +156,7 @@ class Scene_B05_NbbVoxAgentic(Scene):
         font = "EB Garamond"
 
         if "":
-            act = Text("", font_size=24, color="#2A1A0E", font=font)
+            act = Text("", font_size=36, color="#2A1A0E", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
@@ -170,11 +172,11 @@ class Scene_B05_NbbVoxAgentic(Scene):
         for i, lbl in enumerate(stages):
             angle = np.pi / 2 - 2 * np.pi * i / n
             pos = np.array([radius * np.cos(angle), radius * np.sin(angle), 0])
-            circle = Circle(radius=0.55, color=colors[i % 2], stroke_width=2.5,
+            circle = Circle(radius=0.9, color=colors[i % 2], stroke_width=2.5,
                             fill_color="#FFFFFF", fill_opacity=1)
             circle.move_to(pos)
-            txt = Text(lbl[:20], font_size=18, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, 0.9 / max(0.1, txt.width)))
+            txt = Text(lbl[:20], font_size=36, color="#2A1A0E", font=font)
+            txt.scale(min(1.0, 1.6 / max(0.1, txt.width)))
             txt.move_to(circle)
             grp = VGroup(circle, txt)
             nodes.append((grp, pos))
@@ -199,7 +201,7 @@ class Scene_B06_NbbVoxAgentic(Scene):
 
         # Act label at top
         if "":
-            act = Text("", font_size=24, color="#2A1A0E", font=font, slant=NORMAL)
+            act = Text("", font_size=36, color="#2A1A0E", font=font, slant=NORMAL)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
@@ -217,11 +219,11 @@ class Scene_B06_NbbVoxAgentic(Scene):
         arrows = VGroup()
         box_mobs = []
         for i, lbl in enumerate(labels_text):
-            box = RoundedRectangle(width=spacing * 0.85, height=1.6,
+            box = RoundedRectangle(width=spacing * 0.85, height=2.2,
                                    color="#2A1A0E", stroke_width=2,
                                    fill_color="#FFFFFF", fill_opacity=1)
             box.move_to(RIGHT * (start_x + i * spacing))
-            txt = Text(lbl, font_size=20, color="#2A1A0E", font=font)
+            txt = Text(lbl, font_size=36, color="#2A1A0E", font=font)
             txt.scale(min(1.0, (spacing * 0.8 - 0.3) / max(0.1, txt.width)))
             txt.move_to(box)
             grp = VGroup(box, txt)
@@ -249,7 +251,7 @@ class Scene_B07_NbbVoxAgentic(Scene):
         font = "EB Garamond"
 
         if "":
-            act = Text("", font_size=24, color="#2A1A0E", font=font)
+            act = Text("", font_size=36, color="#2A1A0E", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
@@ -265,11 +267,11 @@ class Scene_B07_NbbVoxAgentic(Scene):
         for i, lbl in enumerate(stages):
             angle = np.pi / 2 - 2 * np.pi * i / n
             pos = np.array([radius * np.cos(angle), radius * np.sin(angle), 0])
-            circle = Circle(radius=0.55, color=colors[i % 2], stroke_width=2.5,
+            circle = Circle(radius=0.9, color=colors[i % 2], stroke_width=2.5,
                             fill_color="#FFFFFF", fill_opacity=1)
             circle.move_to(pos)
-            txt = Text(lbl[:20], font_size=18, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, 0.9 / max(0.1, txt.width)))
+            txt = Text(lbl[:20], font_size=36, color="#2A1A0E", font=font)
+            txt.scale(min(1.0, 1.6 / max(0.1, txt.width)))
             txt.move_to(circle)
             grp = VGroup(circle, txt)
             nodes.append((grp, pos))
@@ -310,13 +312,13 @@ class Scene_B08_NbbVoxAgentic(Scene):
             self.play(Write(line1), run_time=0.5)
 
         if "Claude reads the project, proposes: create contact":
-            line2 = Text("Claude reads the project, proposes: create contact", font_size=28, color="#2A1A0E", font=font)
+            line2 = Text("Claude reads the project, proposes: create contact", font_size=36, color="#2A1A0E", font=font)
             line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
             line2.shift(DOWN * 0.6)
             self.play(Write(line2), run_time=0.4)
 
         if "html here, add a nav entry here, no new dependencies":
-            line3 = Text("html here, add a nav entry here, no new dependencies", font_size=22, color="#2A1A0E", font=font)
+            line3 = Text("html here, add a nav entry here, no new dependencies", font_size=36, color="#2A1A0E", font=font)
             line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
             line3.shift(DOWN * 1.4)
             self.play(FadeIn(line3), run_time=0.3)
@@ -338,7 +340,7 @@ class Scene_B09_NbbVoxAgentic(Scene):
         font = "EB Garamond"
 
         if "":
-            act = Text("", font_size=24, color="#2A1A0E", font=font)
+            act = Text("", font_size=36, color="#2A1A0E", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
@@ -354,11 +356,11 @@ class Scene_B09_NbbVoxAgentic(Scene):
         for i, lbl in enumerate(stages):
             angle = np.pi / 2 - 2 * np.pi * i / n
             pos = np.array([radius * np.cos(angle), radius * np.sin(angle), 0])
-            circle = Circle(radius=0.55, color=colors[i % 2], stroke_width=2.5,
+            circle = Circle(radius=0.9, color=colors[i % 2], stroke_width=2.5,
                             fill_color="#FFFFFF", fill_opacity=1)
             circle.move_to(pos)
-            txt = Text(lbl[:20], font_size=18, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, 0.9 / max(0.1, txt.width)))
+            txt = Text(lbl[:20], font_size=36, color="#2A1A0E", font=font)
+            txt.scale(min(1.0, 1.6 / max(0.1, txt.width)))
             txt.move_to(circle)
             grp = VGroup(circle, txt)
             nodes.append((grp, pos))
@@ -407,16 +409,18 @@ class Scene_B10_NbbVoxAgentic(Scene):
                          color="#C8102E", fill_color="#C8102E", fill_opacity=0.85, stroke_width=0)
         bar2.move_to([pt2[0], (pt2[1]+origin[1])/2, 0])
 
-        lbl1 = Text("The practical move: use plan mode for any first session on a"[:30], font_size=20, color="#2A1A0E", font=font)
+        lbl1 = Text("The practical move: use plan mode for any first session on a"[:30], font_size=36, color="#2A1A0E", font=font)
+        lbl1.scale(min(1.0, 3.0 / max(0.1, lbl1.width)))
         lbl1.next_to(ax.c2p(1, 0), DOWN, buff=0.2)
-        lbl2 = Text("Press Shift+Tab twice"[:30] if "Press Shift+Tab twice" else "Comparison", font_size=20, color="#2A1A0E", font=font)
+        lbl2 = Text("Press Shift+Tab twice"[:30] if "Press Shift+Tab twice" else "Comparison", font_size=36, color="#2A1A0E", font=font)
+        lbl2.scale(min(1.0, 3.0 / max(0.1, lbl2.width)))
         lbl2.next_to(ax.c2p(2, 0), DOWN, buff=0.2)
 
         self.play(GrowFromEdge(bar1, DOWN), Write(lbl1), run_time=0.6)
         self.play(GrowFromEdge(bar2, DOWN), Write(lbl2), run_time=0.6)
 
         if "Read the plan":
-            note = Text("Read the plan"[:60], font_size=22, color="#2A1A0E", font=font)
+            note = Text("Read the plan"[:60], font_size=36, color="#2A1A0E", font=font)
             note.to_edge(DOWN, buff=0.4)
             self.play(Write(note), run_time=0.5)
 
@@ -430,7 +434,7 @@ class Scene_B11_NbbVoxAgentic(Scene):
         font = "EB Garamond"
 
         if "":
-            act = Text("", font_size=24, color="#2A1A0E", font=font)
+            act = Text("", font_size=36, color="#2A1A0E", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
@@ -446,11 +450,11 @@ class Scene_B11_NbbVoxAgentic(Scene):
         for i, lbl in enumerate(stages):
             angle = np.pi / 2 - 2 * np.pi * i / n
             pos = np.array([radius * np.cos(angle), radius * np.sin(angle), 0])
-            circle = Circle(radius=0.55, color=colors[i % 2], stroke_width=2.5,
+            circle = Circle(radius=0.9, color=colors[i % 2], stroke_width=2.5,
                             fill_color="#FFFFFF", fill_opacity=1)
             circle.move_to(pos)
-            txt = Text(lbl[:20], font_size=18, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, 0.9 / max(0.1, txt.width)))
+            txt = Text(lbl[:20], font_size=36, color="#2A1A0E", font=font)
+            txt.scale(min(1.0, 1.6 / max(0.1, txt.width)))
             txt.move_to(circle)
             grp = VGroup(circle, txt)
             nodes.append((grp, pos))
@@ -474,7 +478,7 @@ class Scene_B12_NbbVoxAgentic(Scene):
         font = "EB Garamond"
 
         if "":
-            act = Text("", font_size=24, color="#2A1A0E", font=font)
+            act = Text("", font_size=36, color="#2A1A0E", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
@@ -490,11 +494,11 @@ class Scene_B12_NbbVoxAgentic(Scene):
         for i, lbl in enumerate(stages):
             angle = np.pi / 2 - 2 * np.pi * i / n
             pos = np.array([radius * np.cos(angle), radius * np.sin(angle), 0])
-            circle = Circle(radius=0.55, color=colors[i % 2], stroke_width=2.5,
+            circle = Circle(radius=0.9, color=colors[i % 2], stroke_width=2.5,
                             fill_color="#FFFFFF", fill_opacity=1)
             circle.move_to(pos)
-            txt = Text(lbl[:20], font_size=18, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, 0.9 / max(0.1, txt.width)))
+            txt = Text(lbl[:20], font_size=36, color="#2A1A0E", font=font)
+            txt.scale(min(1.0, 1.6 / max(0.1, txt.width)))
             txt.move_to(circle)
             grp = VGroup(circle, txt)
             nodes.append((grp, pos))

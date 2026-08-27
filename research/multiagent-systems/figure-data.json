@@ -1,0 +1,169 @@
+{
+  "_meta": {
+    "source": "Anthropic Frontier Red Team, \"Patterns and problems in emerging multiagent systems\", Aug 13 2026",
+    "url": "https://www.anthropic.com/research/multiagent-systems",
+    "digitized_by": "ai-paper skill, cloud session, 2026-08-15",
+    "precision_legend": {
+      "printed": "value is printed on the figure or stated in the post body — exact",
+      "read": "value read off the axis by eye — approximate, +/- ~0.01 on 0-1 scales, +/- ~5 on count scales"
+    },
+    "WARNING": "No underlying data table was published. Every 'read' value is a digitization of a rendered chart and must not be quoted as a published number."
+  },
+
+  "fig1": {
+    "id": "fig1-vuln-swarm",
+    "sanity_hash": "5a5c187a6c2b5ccb492bcb7883df2066d49625de",
+    "title_on_figure": "Vulnerabilities found vs. sampled tokens",
+    "axes": {"x": "cumulative sampled output tokens (millions)", "y": "vulnerabilities found (log scale)"},
+    "claim_it_carries": "A coordinating swarm of 45 agents finds far more vulnerabilities than the same models run as independent parallel agents.",
+    "series": [
+      {"label": "Mythos Preview — parallelized",        "x_end": 6.5,  "y_end": 21,  "precision": "printed", "kind": "star"},
+      {"label": "Mythos Preview — coordinated",         "x_end": 27.0, "y_end": 266, "precision": "printed", "kind": "solid"},
+      {"label": "Mythos Preview — coordinated, core only","x_end": 27.0,"y_end": 128, "precision": "printed", "kind": "dotted"},
+      {"label": "Mythos Preview — vulnerabilities in common","x_end": 19.3,"y_end": 12,"precision": "printed", "kind": "dashed"},
+      {"label": "Opus 4.8 — parallelized",              "x_end": 9.0,  "y_end": 14,  "precision": "printed", "kind": "star"},
+      {"label": "Opus 4.8 — coordinated",               "x_end": 22.0, "y_end": 41,  "precision": "printed", "kind": "solid"},
+      {"label": "Opus 4.8 — vulnerabilities in common",  "x_end": 7.2,  "y_end": 3,   "precision": "printed", "kind": "dashed"}
+    ],
+    "derived_efficiency_Mtokens_per_vuln": {
+      "mythos_parallel": 0.310,
+      "mythos_coordinated_all": 0.102,
+      "mythos_coordinated_core_only": 0.211,
+      "opus48_parallel": 0.643,
+      "opus48_coordinated": 0.537,
+      "_note": "Efficiency ratios: Mythos coordinated is 3.05x more token-efficient than parallel on ALL findings, but only 1.47x on core-directory findings — the like-for-like comparison. The post calls that 'comparable'."
+    },
+    "overlap": {"mythos_common_of_266": 12, "opus48_common_of_41": 3, "pct_mythos": 4.5, "pct_opus48": 7.3},
+    "skeptics_read": "One run per condition. No error bars, no seeds. 'Vulnerability' is whatever an LLM arbiter agent scored as new and valid — no human triage, no CVE confirmation, no severity weighting. A 12.7x count difference judged by a model of the same family is the weakest link in the whole post."
+  },
+
+  "fig2": {
+    "id": "fig2-merge-and-sharing",
+    "sanity_hash": "34ffa8cc39ef8e749c5a371b5cb2c8df2dbd3e8f",
+    "title_on_figure": ["Merged PR fraction", "Code sharing"],
+    "x_agents": [10, 20, 40, 80],
+    "claim_it_carries": "Only Sonnet 5 maintains a high merge fraction while genuinely sharing code with other agents.",
+    "merged_pr_fraction": {
+      "Sonnet 4.6":      [0.515, 0.329, 0.157, 0.092],
+      "Sonnet 5":        [0.930, 0.888, 0.781, 0.653],
+      "Opus 4.6":        [0.670, 0.512, 0.227, 0.181],
+      "Opus 4.8":        [0.945, 0.925, 0.820, 0.611],
+      "Mythos Preview":  [0.877, 0.747, 0.816, 0.776],
+      "precision": "read"
+    },
+    "median_agent_code_sharing": {
+      "Sonnet 4.6":      [0.156, 0.125, 0.093, 0.085],
+      "Sonnet 5":        [0.113, 0.169, 0.184, 0.166],
+      "Opus 4.6":        [0.063, 0.085, 0.083, 0.093],
+      "Opus 4.8":        [0.027, 0.061, 0.051, 0.077],
+      "Mythos Preview":  [0.078, 0.077, 0.018, 0.013],
+      "precision": "read"
+    },
+    "skeptics_read": "The y-axis on the right tops out at 0.25. Sonnet 5's 'relatively high code sharing' peaks at 0.184 — meaning the median agent's files are still ~82% self-written. And at 10 agents, Sonnet 4.6 (0.156) shares MORE code than Sonnet 5 (0.113). The claim is true at 20/40/80 agents and false at 10, and the effect it describes is small in absolute terms on a chart whose axis makes it look large."
+  },
+
+  "fig3": {
+    "id": "fig3-pr-activity",
+    "sanity_hash": "9dc6d5855b29107da250aefe56585dd2df4a2cd7",
+    "title_on_figure": "PR activity over time (n = 80, baseline prompt)",
+    "hours": 12,
+    "claim_it_carries": "Sonnet 4.6 and Opus 4.6 do a terrible job of merging PRs compared to newer models.",
+    "panels": {
+      "Sonnet 4.6": {"opened": 876, "closed": 120, "merged": 85,  "opened_precision": "printed", "rest_precision": "read"},
+      "Opus 4.6":   {"opened": 980, "closed": 130, "merged": 90,  "opened_precision": "printed", "rest_precision": "read"},
+      "Sonnet 5":   {"opened": 373, "closed": 365, "merged": 280, "opened_precision": "printed", "rest_precision": "read"},
+      "Opus 4.8":   {"opened": 392, "closed": 365, "merged": 208, "opened_precision": "printed", "rest_precision": "read"},
+      "Mythos Preview": {"opened": 169, "closed": 140, "merged": 132, "opened_precision": "printed", "rest_precision": "read"}
+    },
+    "skeptics_read": "Merge RATE improves monotonically; merge VOLUME collapses. Opus 4.6 opened 980 PRs and merged ~90. Mythos Preview opened 169 and merged ~132. The newest model does 83% less work and merges a higher fraction of it. On this chart, 'solved coordination' and 'stopped trying' are the same line — which is exactly the post's own conclusion three paragraphs later, but the figure caption doesn't say it."
+  },
+
+  "fig4": {
+    "id": "fig4-gullibility",
+    "sanity_hash": "c20d95f0b1a728304b925f567f46b879a4e429d3",
+    "title_on_figure": "Gullibility curve",
+    "axes": {"x": "How often the bad source lies", "y": "Routing decision accuracy"},
+    "lie_rates": [0.0, 0.10, 0.25, 0.50],
+    "claim_it_carries": "Newer models recover more of the gap between the naive and oracle performances. This ordering holds across four different scenarios.",
+    "series": {
+      "trust everyone (naive)": [0.997, 0.855, 0.715, 0.475],
+      "learns who lies (oracle)": [1.000, 0.917, 0.888, 0.888],
+      "Sonnet 4.6": [1.000, 0.916, 0.834, 0.617],
+      "Sonnet 5":   [0.997, 0.915, 0.813, 0.631],
+      "Opus 4.6":   [1.000, 0.918, 0.847, 0.720],
+      "Opus 4.8":   [1.000, 0.919, 0.849, 0.733],
+      "Mythos 5":   [1.000, 0.922, 0.880, 0.853],
+      "precision": "read"
+    },
+    "derived_gap_recovery_at_0p50": {
+      "_formula": "(model - naive) / (oracle - naive), naive=0.475 oracle=0.888",
+      "Sonnet 4.6": 0.344, "Sonnet 5": 0.378, "Opus 4.6": 0.593, "Opus 4.8": 0.625, "Mythos 5": 0.915
+    },
+    "skeptics_read": "CONFIRMED CONTRADICTION. The post calls Sonnet 5 'our most recent model'. On this figure Sonnet 5 recovers 37.8% of the naive-to-oracle gap at a 50% lie rate — below Opus 4.6 (59.3%) and Opus 4.8 (62.5%), and barely above Sonnet 4.6 (34.4%), the oldest model tested. At a 25% lie rate Sonnet 5 is dead last of all five. 'Newer models recover more of the gap' is not what the chart shows. The real pattern is capability TIER (Opus/Mythos beat Sonnet), not recency. Note also this figure says 'Mythos 5' while Figure 1 says 'Mythos Preview' — the post never states which experiment used which."
+  },
+
+  "fig5": {
+    "id": "fig5-hidden-profile",
+    "sanity_hash": "48c8600f4196d90ac35237f711f2978c27ebbfce",
+    "title_on_figure": "Group accuracy by model",
+    "y_label": "Group accuracy (% episodes with hidden-best majority)",
+    "n_per_model": 400,
+    "claim_it_carries": "Performance scales with model intelligence but does not saturate even at the top of our range.",
+    "group_accuracy_pct": {
+      "Sonnet 4.6": {"value": 17.5, "ci": [14.2, 21.8]},
+      "Sonnet 5":   {"value": 35.5, "ci": [31.3, 40.8]},
+      "Opus 4.6":   {"value": 18.5, "ci": [15.0, 22.7]},
+      "Opus 4.8":   {"value": 18.2, "ci": [14.9, 22.2]},
+      "Mythos 5":   {"value": 85.2, "ci": [81.8, 88.6]},
+      "precision": "read"
+    },
+    "solo_ceiling_pct": {
+      "Sonnet 4.6": 96.2, "Sonnet 5": 97.3, "Opus 4.6": 98.6, "Opus 4.8": 98.7, "Mythos 5": 100.0,
+      "precision": "read"
+    },
+    "derived_deliberation_cost_pp": {
+      "Sonnet 4.6": -78.7, "Sonnet 5": -61.8, "Opus 4.6": -80.1, "Opus 4.8": -80.5, "Mythos 5": -14.8
+    },
+    "skeptics_read": "Two findings the caption doesn't name. (1) 'Scales with model intelligence' is a five-point curve with three points flat inside each other's CIs — Sonnet 4.6 17.5, Opus 4.6 18.5, Opus 4.8 18.2. Sonnet 5 (35.5) beats BOTH Opus models. It isn't a scaling curve; it's a flat floor with two outliers. (2) The bigger result is the gap to the dashed line: one agent holding all the facts scores 96-100%. Four agents who must pool the same facts score 17-35%. For every model tested, group deliberation destroyed 15 to 80 percentage points of accuracy. The honest headline is that agent discussion is currently negative-value, and it's drawn on the chart but not written in the caption."
+  },
+
+  "fig6": {
+    "id": "fig6-turf-war-outcomes",
+    "sanity_hash": "007f866cee9417f22ffef68775637ca8c51bd791",
+    "title_on_figure": "How multiagent turf war runs ended",
+    "n_per_model": 120,
+    "claim_it_carries": "Agents sometimes coordinate out of conflict; this ability is not strictly better in Mythos-class models.",
+    "outcomes_pct": {
+      "Sonnet 4.6":     {"not_settled": 39, "force": 61, "passivity": 0,  "truce": 0,  "precision": "printed"},
+      "Sonnet 5":       {"not_settled": 12, "force": 4,  "passivity": 5,  "truce": 79, "precision": "mixed"},
+      "Opus 4.6":       {"not_settled": 40, "force": 60, "passivity": 0,  "truce": 0,  "precision": "printed"},
+      "Opus 4.8":       {"not_settled": 3,  "force": 3,  "passivity": 33, "truce": 61, "precision": "mixed"},
+      "Mythos Preview": {"not_settled": 0,  "force": 35, "passivity": 17, "truce": 48, "precision": "printed"},
+      "Mythos 5":       {"not_settled": 0,  "force": 1,  "passivity": 1,  "truce": 98, "precision": "mixed"}
+    },
+    "skeptics_read": "The number nobody printed: Sonnet 4.6 and Opus 4.6 recorded ZERO truces across 120 episodes each. Every single run that ended, ended by one agent locking the others out. Second: Opus 4.8's headline 61% truce sits next to 33% 'settled by passivity' — a third of its runs ended because agents gave up, which is scored as resolution but isn't coordination. Third: Mythos Preview REGRESSES to 35% force, worse than both Sonnet 5 (4%) and Opus 4.8 (3%). The post hedges this as 'not strictly better'; the chart shows a 10x regression."
+  },
+
+  "fig7": {
+    "id": "fig7-time-to-resolution",
+    "sanity_hash": "036b4ce12f51bf37fb88a030710a55ecc72fc372",
+    "title_on_figure": "When each run settled",
+    "y_label": "Hours into run (4h cap)",
+    "n_per_model": 120,
+    "claim_it_carries": "Time to resolution and resolution method; grey lines show runs first ended by force then reverted into an eventual truce.",
+    "unresolved_counts": {"Sonnet 4.6": 47, "Sonnet 5": 14, "Opus 4.6": 48, "Opus 4.8": 4, "Mythos Preview": 0, "Mythos 5": 0, "precision": "printed"},
+    "cross_check_vs_fig6": {"Sonnet 4.6": "47/120 = 39.2% vs 39% printed OK", "Sonnet 5": "14/120 = 11.7% vs 12% OK", "Opus 4.6": "48/120 = 40.0% vs 40% OK", "Opus 4.8": "4/120 = 3.3% vs 3% OK"},
+    "settle_time_band_hours": {
+      "Sonnet 4.6": [0.4, 3.7], "Sonnet 5": [0.45, 3.85], "Opus 4.6": [0.65, 3.7],
+      "Opus 4.8": [0.25, 3.95], "Mythos Preview": [0.3, 3.7], "Mythos 5": [0.18, 3.1],
+      "precision": "read"
+    },
+    "force_first_then_reverted": {
+      "Mythos Preview": "~20-25 runs show the open-red-circle -> grey line -> blue truce pattern",
+      "Mythos 5": "~30-40 runs show it, clustered at 0.18-0.40h initial force",
+      "others": "none — the pattern is exclusive to the Mythos column",
+      "precision": "read (counted from the scatter)"
+    },
+    "skeptics_read": "This is the figure that reframes Figure 6. Mythos 5's headline is '98% settled by truce'. Here you can see how it got there: a dense band of open red circles at 0.18-0.40 hours — Mythos 5 locks its competitors out within 11 to 24 minutes — then grey lines carry those same runs up to blue truce dots an hour later. On the order of a quarter to a third of Mythos 5's truces are force-first. The post says this in one clause ('often successfully lock out other agents before resolving conflicts productively'). Figure 6 says 98% truce. Only Figure 7 shows that the fastest, most capable model is also the fastest to reach for the lockout."
+  }
+}

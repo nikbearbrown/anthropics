@@ -8,7 +8,7 @@ CREAM   = "#F2F0E9"
 INK     = "#3D3929"
 SPARK   = "#D97757"
 INK_DIM = "#8A8575"
-SANS    = "SF Pro Display"
+SANS    = "EB Garamond"
 
 config.background_color = CREAM
 config.pixel_width  = 1920
@@ -29,7 +29,7 @@ class B03Doodle(Scene):
     """Reveal doodle — You are the business (9.11s)"""
     def construct(self):
         headline = 'You are the business'
-        body     = 'This matters most when you are the business. The solo operator wears e'
+        body     = 'This matters most when you are the business.'
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
         b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
@@ -44,24 +44,23 @@ class B03Doodle(Scene):
 class B04Doodle(Scene):
     """Reveal doodle — Lift it out (8.81s)"""
     def construct(self):
-        headline = 'Lift it out'
-        body     = 'The expertise lives in one head. A custom plugin draws it out and make'
+        body     = 'The expertise lives in one head. A custom plugin draws it out.'
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
-        h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
+        h = ink_text("Lift it out", 46, BOLD).move_to(UP*1.1)
         b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
-        spark = ink_text('Lift it out', 26, color=INK_DIM).to_edge(DOWN, buff=0.6)
+        spark = ink_text('Lift it out', 30, color=INK_DIM).to_edge(DOWN, buff=0.6)
         self.play(Write(h), run_time=1.0)
         self.play(Create(line), run_time=0.5)
         self.play(Write(b), run_time=0.9)
         self.play(FadeIn(spark), run_time=0.4)
-        self.wait(5.3)
+        self.wait(6.0)
 
 
 class B08Doodle(Scene):
     """Reveal doodle — Expertise, written down (12.27s)"""
     def construct(self):
         headline = 'Expertise, written down'
-        body     = 'Skills are the expertise itself — your proposal structure, your pricin'
+        body     = 'Skills are the expertise itself — your proposal structure, encoded.'
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
         b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
@@ -77,7 +76,7 @@ class B13Doodle(Scene):
     """Reveal doodle — Describe it aloud (12.39s)"""
     def construct(self):
         headline = 'Describe it aloud'
-        body     = 'You describe the workflow in plain language. When I sign a new client,'
+        body     = 'You describe the workflow in plain language.'
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
         b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
@@ -93,7 +92,7 @@ class B18Doodle(Scene):
     """Reveal doodle — Hand this off (11.03s)"""
     def construct(self):
         headline = 'Hand this off'
-        body     = 'That last phrase — I just wish I could hand this off — is usually a pl'
+        body     = 'That last phrase — I just wish I could hand this off — is telling.'
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
         b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
@@ -109,7 +108,7 @@ class B23Doodle(Scene):
     """Reveal doodle — Expertise, shared (10.86s)"""
     def construct(self):
         headline = 'Expertise, shared'
-        body     = "That's the quiet upside of a file-based tool. The way you've refined a"
+        body     = "That's the quiet upside of a file-based tool."
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
         b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)

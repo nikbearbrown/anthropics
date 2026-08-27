@@ -30,23 +30,12 @@
       "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
     ],
     "build": {
-      "at": "2026-07-16T06:30:52",
+      "at": "2026-08-10T03:43:35",
       "cut": "master",
-      "filled": 0,
-      "of": 7,
-      "slates": [
-        "B00",
-        "B01",
-        "B02",
-        "B03",
-        "B04",
-        "B05",
-        "B06"
-      ],
-      "skin_warnings": [
-        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
-        "B06: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
-      ]
+      "filled": 10,
+      "of": 10,
+      "slates": [],
+      "skin_warnings": []
     },
     "design_version": "v1",
     "voice": "am_onyx"
@@ -92,7 +81,10 @@
       "audio_file": "mp3/beat-B00.mp3",
       "actual_duration_s": 19.35,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:43:35"
       },
       "lane": "BOOKEND",
       "voice": "am_onyx",
@@ -107,29 +99,28 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CCSession",
           "props": {
-            "title": "Hook vs. CLAUDE.md: Cannot, Not Do Not",
-            "items": [
+            "title": "claude-code",
+            "mode": "default",
+            "blocks": [
               {
-                "label": "Key point one",
-                "sub": "",
-                "icon": "target",
-                "cueFrame": 20
+                "type": "prompt",
+                "text": "Claude weighted the NEVER instruction against the prompt's pull — 'summarize student performance' — and the prompt won. …",
+                "cue": 0,
+                "typeDuration": 60
               },
               {
-                "label": "Key point two",
-                "sub": "",
-                "icon": "list-checks",
-                "cueFrame": 55
-              },
-              {
-                "label": "Key point three",
-                "sub": "",
-                "icon": "zap",
-                "cueFrame": 90
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "~3s"
               }
-            ]
+            ],
+            "cues": [
+              0,
+              35
+            ],
+            "mascot": "auto"
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -143,9 +134,12 @@
       "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 16.79,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:43:35"
       },
-      "lane": "BOOKEND",
+      "lane": "LANE_A",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx"
@@ -160,7 +154,7 @@
         "motion": "callout-reveal",
         "media": "media/B02.mp4",
         "manim": {
-          "scene_class": "Scene_B02_ClaudeLiamHook",
+          "scene_class": "B02_ClaudeLiamHook",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B02.mp4",
@@ -174,11 +168,10 @@
       "audio_file": "mp3/beat-B02.mp3",
       "actual_duration_s": 19.43,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:30:52",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:B02_ClaudeLiamHook",
+        "at": "2026-08-10T03:43:35"
       }
     },
     {
@@ -191,7 +184,7 @@
         "motion": "callout-reveal",
         "media": "media/B03.mp4",
         "manim": {
-          "scene_class": "Scene_B03_ClaudeLiamHook",
+          "scene_class": "B03_ClaudeLiamHook",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B03.mp4",
@@ -205,11 +198,10 @@
       "audio_file": "mp3/beat-B03.mp3",
       "actual_duration_s": 15.64,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:30:52",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim:B03_ClaudeLiamHook",
+        "at": "2026-08-10T03:43:35"
       }
     },
     {
@@ -219,7 +211,53 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "stagger"
+        "motion": "stagger",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "claude-code · grading-tool",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "text",
+                "text": "Two layers: CLAUDE.md (advisory) + Hook (deterministic)"
+              },
+              {
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "0m 14s"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "CLAUDE.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": ".claude/hooks/hooks.json",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "CLAUDE.md = teacher's values. Hook = cannot, not do not."
+              }
+            ],
+            "mascot": "off",
+            "cues": [
+              0,
+              20,
+              40,
+              60,
+              90
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
       },
       "new_visual_element": "Artifact view — CLAUDE.md layer + hook layer, two distinct enforcement levels",
       "spark_line": "Two layers. Different laws.",
@@ -227,11 +265,10 @@
       "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 16.53,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:30:52",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:43:35"
       }
     },
     {
@@ -252,19 +289,22 @@
             "runningText": "paste your spec, CLAUDE.md, or build plan here…",
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Claude Sonnet"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
           }
         }
       },
       "new_visual_element": "HANDOFF — hook script builder prompt",
       "estimated_duration_s": 9,
       "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 6.23,
+      "actual_duration_s": 17.26,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:30:52",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:43:35"
       }
     },
     {
@@ -275,11 +315,32 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "ClaudeTitleOutro",
+          "pattern": "CCSession",
           "props": {
-            "title": "Hook vs. CLAUDE.md: Cannot, Not Do Not",
-            "handle": "@NikBearBrown",
-            "mascotSeed": "claude-liam-hook-advisory-vs-deterministic"
+            "title": "claude-code",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "If this turns your advisory rule into a hard constraint, subscribe. Liam, in for Bear.",
+                "cue": 0,
+                "typeDuration": 60
+              },
+              {
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "~3s"
+              }
+            ],
+            "cues": [
+              0,
+              35
+            ],
+            "mascot": "auto"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
           }
         }
       },
@@ -288,10 +349,12 @@
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 5.72,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "note": "design-v1: title-fixed,handle-fixed,mascotSeed-added"
-      }
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:43:35"
+      },
+      "lane": "LANE_A"
     },
     {
       "beat_id": "BVDT",
@@ -309,11 +372,12 @@
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Hook vs. CLAUDE.md: Cannot, Not Do Not",
-            "artifactHeading": "Key findings",
+            "artifactHeading": "Hook: Advisory vs Deterministic",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "CLAUDE.md sets intent — Claude weighs it against prompts",
+              "PreToolUse hook enforces — NEVER cannot be overridden",
+              "Hook: tool + input → allow/deny/ask — shell script",
+              "Two layers: CLAUDE.md for context · hook for hard stop"
             ]
           },
           "rendered": {
@@ -323,8 +387,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:43:35"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BHTF",
@@ -356,8 +424,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:43:35"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BOUT",
@@ -375,7 +447,8 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "Hook vs. CLAUDE.md: Cannot, Not Do Not",
-            "slug": "hook-advisory-vs-deterministic"
+            "slug": "hook-advisory-vs-deterministic",
+            "handle": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -384,8 +457,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:43:35"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

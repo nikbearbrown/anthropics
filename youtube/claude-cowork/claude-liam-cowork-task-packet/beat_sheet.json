@@ -30,23 +30,12 @@
       "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
     ],
     "build": {
-      "at": "2026-07-16T05:29:03",
+      "at": "2026-08-10T04:07:14",
       "cut": "master",
-      "filled": 0,
-      "of": 7,
-      "slates": [
-        "B00",
-        "B01",
-        "B02",
-        "B03",
-        "B04",
-        "B05",
-        "B06"
-      ],
-      "skin_warnings": [
-        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
-        "B06: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
-      ]
+      "filled": 10,
+      "of": 10,
+      "slates": [],
+      "skin_warnings": []
     },
     "design_version": "v1",
     "voice": "am_onyx"
@@ -92,7 +81,10 @@
       "audio_file": "mp3/beat-B00.mp3",
       "actual_duration_s": 19.43,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:07:14"
       },
       "lane": "BOOKEND",
       "voice": "am_onyx",
@@ -107,28 +99,42 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CoworkTaskView",
           "props": {
-            "title": "The Cowork Task Packet: Five Fields, One Scope",
-            "items": [
+            "blocks": [
               {
-                "label": "Key point one",
-                "sub": "",
-                "icon": "target",
-                "cueFrame": 20
+                "type": "prompt",
+                "text": "The task packet has five fields. Inputs named: the specific files or folders Cowork may read. Folder…"
               },
               {
-                "label": "Key point two",
-                "sub": "",
-                "icon": "list-checks",
-                "cueFrame": 55
-              },
-              {
-                "label": "Key point three",
-                "sub": "",
-                "icon": "zap",
-                "cueFrame": 90
+                "type": "review",
+                "items": [
+                  {
+                    "title": "The task packet has five fields.",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  },
+                  {
+                    "title": "Inputs named: the specific files or folders Cowork may read.",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  },
+                  {
+                    "title": "Folder access limited: the explicit paths — not broader than needed.",
+                    "badge": "Warning",
+                    "badgeTone": "warn"
+                  },
+                  {
+                    "title": "Forbidden actions: no sending, no sharing, no accessing paths not listed.",
+                    "badge": "Warning",
+                    "badgeTone": "warn"
+                  }
+                ]
               }
+            ],
+            "cues": [
+              0,
+              18
             ]
           },
           "rendered": {
@@ -143,9 +149,12 @@
       "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 22.12,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:07:14"
       },
-      "lane": "BOOKEND",
+      "lane": "LANE_A",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx"
@@ -160,7 +169,7 @@
         "motion": "callout-reveal",
         "media": "media/B02.mp4",
         "manim": {
-          "scene_class": "Scene_B02_ClaudeLiamCowork",
+          "scene_class": "B02_ClaudeLiamCowork",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B02.mp4",
@@ -174,11 +183,10 @@
       "audio_file": "mp3/beat-B02.mp3",
       "actual_duration_s": 23.49,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T05:29:03",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:B02_ClaudeLiamCowork",
+        "at": "2026-08-10T04:07:14"
       }
     },
     {
@@ -191,7 +199,7 @@
         "motion": "callout-reveal",
         "media": "media/B03.mp4",
         "manim": {
-          "scene_class": "Scene_B03_ClaudeLiamCowork",
+          "scene_class": "B03_ClaudeLiamCowork",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B03.mp4",
@@ -205,11 +213,10 @@
       "audio_file": "mp3/beat-B03.mp3",
       "actual_duration_s": 22.12,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T05:29:03",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim:B03_ClaudeLiamCowork",
+        "at": "2026-08-10T04:07:14"
       }
     },
     {
@@ -219,7 +226,47 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "stagger"
+        "motion": "stagger",
+        "remotion": {
+          "pattern": "CoworkTaskView",
+          "props": {
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "A Cowork task without a written packet is guessing in both directions"
+              },
+              {
+                "type": "review",
+                "items": [
+                  {
+                    "title": "Cowork guesses what to read",
+                    "badge": "Problem",
+                    "badgeTone": "fail"
+                  },
+                  {
+                    "title": "You guess whether output is correct",
+                    "badge": "Problem",
+                    "badgeTone": "fail"
+                  },
+                  {
+                    "title": "Written packet eliminates both guesses",
+                    "badge": "Fix",
+                    "badgeTone": "pass"
+                  }
+                ]
+              }
+            ],
+            "cues": [
+              0,
+              18,
+              35
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
       },
       "new_visual_element": "Artifact view — packet = named inputs / bounded access / stated criteria / checkable output",
       "spark_line": "Packet costs three minutes.",
@@ -227,11 +274,10 @@
       "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 21.8,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T05:29:03",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:07:14"
       }
     },
     {
@@ -241,7 +287,20 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "type-on"
+        "motion": "type-on",
+        "remotion": {
+          "pattern": "CoworkComposer",
+          "props": {
+            "typedText": "Read the twelve meeting notes in /weekly-notes, produce a status table, stop if any note is missing",
+            "heading": "Write your next task as a packet.",
+            "subline": "Five fields: inputs named, folder limited, output format, verification criteria, stop conditions.",
+            "hint": "Paste this into Claude to build your first task packet."
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
       },
       "new_visual_element": "HANDOFF — task packet builder prompt",
       "remotion": {
@@ -259,36 +318,11 @@
       "audio_file": "mp3/beat-B05.mp3",
       "actual_duration_s": 3.54,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T05:29:03",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:07:14"
       }
-    },
-    {
-      "beat_id": "YOURTURN",
-      "act": "your-turn",
-      "lane": "REMOTION",
-      "scene": "ClaudeComposerAsk",
-      "narration_text": "Your turn. Paste this: you want to build a Claude Cowork task packet — a structured brief that gives Claude exactly what it needs to complete a task without scope creep. Ask Claude to show you the five fields, what goes in each one, and how the packet prevents the two most common failure modes: Claude doing too much or doing the wrong thing.",
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeComposerAsk",
-          "props": {
-            "greeting": "Your turn.",
-            "command": "I want to build a Claude Cowork task packet — a structured brief that gives Claude exactly what it needs to complete a task without scope creep. Show me the five fields, what goes in each one, and how the packet prevents the two most common failure modes: Claude expanding scope beyond the task and Claude completing the wrong task confidently.",
-            "segment": "The Cowork Task Packet: Five Fields, One Scope",
-            "topic": "CLAUDE COWORK · @NikBearBrown",
-            "folderLabel": "@NikBearBrown",
-            "modelLabel": "Claude Sonnet",
-            "runningText": "paste your task, workflow, or brief here…"
-          }
-        }
-      },
-      "est_s": 14
     },
     {
       "beat_id": "B06",
@@ -299,11 +333,27 @@
         "source": "own",
         "motion": "fade",
         "remotion": {
-          "pattern": "ClaudeTitleOutro",
+          "pattern": "CoworkTaskView",
           "props": {
-            "title": "The Cowork Task Packet: Five Fields, One Scope",
-            "handle": "@NikBearBrown",
-            "mascotSeed": "claude-liam-cowork-task-packet"
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "If this stops a guessed scope from producing a wrong report, subscribe. Liam, in for Bear."
+              },
+              {
+                "type": "toolline",
+                "text": "If this stops a guessed scope from producing a wrong report, subscribe. Liam, in",
+                "spinner": false
+              }
+            ],
+            "cues": [
+              0,
+              20
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
           }
         }
       },
@@ -312,9 +362,10 @@
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 5.61,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "note": "design-v1: title-fixed,handle-fixed,mascotSeed-added"
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:07:14"
       }
     },
     {
@@ -333,11 +384,12 @@
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "The Cowork Task Packet: Five Fields, One Scope",
-            "artifactHeading": "Key findings",
+            "artifactHeading": "Cowork Task Packet",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "5 fields: inputs · scope · output path · stop · verify",
+              "Packet = first paragraph of the task prompt",
+              "Verify criteria belong in the packet, not post-run",
+              "No packet = guessing scope in both directions"
             ]
           },
           "rendered": {
@@ -347,8 +399,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:07:14"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BHTF",
@@ -366,12 +422,12 @@
           "pattern": "ClaudeComposerAsk",
           "props": {
             "greeting": "Your turn.",
-            "topic": "YOUR TURN · TASK PACKETS · CAPS",
-            "segment": "The Cowork Task Packet: Five Fields, One…",
-            "command": "Take what you learned from [The Cowork Task Packet: Five Fields, One Scope] and apply it to your own work. What's one thing you'll try first?",
-            "runningText": "paste this into Claude and run it on your own work…",
-            "output": [],
-            "folderLabel": "@NikBearBrown"
+            "command": "I want to build a Claude Cowork task packet — a structured brief that gives Claude exactly what it needs to complete a task without scope creep. Show me the five fields, what goes in each one, and how the packet prevents the two most common failure modes: Claude expanding scope beyond the task and Claude completing the wrong task confidently.",
+            "segment": "The Cowork Task Packet: Five Fields, One Scope",
+            "topic": "CLAUDE COWORK · @NikBearBrown · YOUR TURN",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your task, workflow, or brief here…"
           },
           "rendered": {
             "out": "media/BHTF.mp4",
@@ -380,8 +436,13 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:07:14"
+      },
+      "actual_duration_s": 20.0,
+      "narration": ""
     },
     {
       "beat_id": "BOUT",
@@ -399,7 +460,8 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "The Cowork Task Packet: Five Fields, One Scope",
-            "slug": "cowork-task-packet"
+            "slug": "cowork-task-packet",
+            "handle": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -408,8 +470,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:07:14"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

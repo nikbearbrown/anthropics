@@ -15,21 +15,12 @@
     "engine": "kokoro",
     "voice_kokoro": "am_onyx",
     "build": {
-      "at": "2026-07-21T00:00:00",
-      "cut": "gate-p",
-      "filled": 0,
-      "of": 9,
-      "slates": [
-        "B01",
-        "B02",
-        "B03",
-        "B04",
-        "B05",
-        "B06",
-        "B07",
-        "B08",
-        "B09"
-      ]
+      "at": "2026-08-10T03:51:22",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": []
     },
     "design_version": "v1",
     "voice": "am_onyx"
@@ -65,8 +56,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
+      },
+      "actual_duration_s": 15.0
     },
     {
       "beat_id": "B01",
@@ -83,16 +78,24 @@
           "props": {
             "ask": "Write a LinkedIn post in my voice.",
             "answer_preview": "Claude already knows your tone, your rules, your goals — because it read your files first.",
-            "command": "What if you never had to type a long prompt again?"
+            "command": "What if you never had to type a long prompt again?",
+            "greeting": "Konnichiwa. This is Liam"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
           }
         }
       },
       "new_visual_element": "[COMPOSER] cold open ask + Liam sign-in",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null
-      }
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
+      },
+      "actual_duration_s": 10.67,
+      "audio_file": "mp3/beat-B01.mp3"
     },
     {
       "beat_id": "B02",
@@ -100,9 +103,25 @@
       "estimated_duration_s": 9.0,
       "narration_text": "Claude Cowork connects to a folder on your computer. You save text files in that folder — your style, your rules, your goals. Claude reads them automatically before every session. The files are the prompt. Forever. No more 500-word instruction blocks every time you start a chat.",
       "shot": {
-        "type": "CARD",
+        "type": "REMOTION",
         "source": "own",
-        "motion": "hold"
+        "motion": "hold",
+        "remotion": {
+          "pattern": "CoworkComposer",
+          "props": {
+            "typedText": "Always read about-me, leave the rest alone",
+            "heading": "Files are the prompt.",
+            "subline": "Save style, rules, and goals as .md files. Claude reads them before every session.",
+            "chips": {
+              "scope": "Work",
+              "mode": "Research"
+            }
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
       },
       "card": {
         "kind": "spark",
@@ -113,10 +132,13 @@
       },
       "new_visual_element": "[SPARK] Cowork core concept",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null
-      }
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
+      },
+      "actual_duration_s": 15.13,
+      "audio_file": "mp3/beat-B02.mp3"
     },
     {
       "beat_id": "B03",
@@ -124,9 +146,55 @@
       "estimated_duration_s": 10.0,
       "narration_text": "The Cowork folder structure: three subfolders. About-me — three files: about-me, anti-ai-writing-style, my-company. Claude-output — you never touch this; it's where Claude stores its work. Templates — you never touch this either; it's where your favourite work formats live. Set up Global Instructions to tell Claude: always read about-me, leave the rest alone.",
       "shot": {
-        "type": "ILLUSTRATION",
+        "type": "REMOTION",
         "source": "own",
-        "motion": "drawon"
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CoworkSideRail",
+          "props": {
+            "folders": [
+              {
+                "label": "Claude Cowork",
+                "depth": 0,
+                "open": true
+              },
+              {
+                "label": "about-me",
+                "depth": 1,
+                "open": true,
+                "hi": true
+              },
+              {
+                "label": "about-me.md",
+                "depth": 2,
+                "fileMeta": "edit me"
+              },
+              {
+                "label": "anti-ai-writing-style.md",
+                "depth": 2
+              },
+              {
+                "label": "my-company.md",
+                "depth": 2
+              },
+              {
+                "label": "claude-output",
+                "depth": 1,
+                "open": false
+              },
+              {
+                "label": "templates",
+                "depth": 1,
+                "open": false
+              }
+            ],
+            "contextNote": "Global Instructions: always read about-me"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
       },
       "illustration": {
         "concept": "Claude Cowork folder tree with three subfolders and their contents",
@@ -134,10 +202,13 @@
       },
       "new_visual_element": "[ILLUSTRATION] Cowork folder structure",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null
-      }
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
+      },
+      "actual_duration_s": 18.56,
+      "audio_file": "mp3/beat-B03.mp3"
     },
     {
       "beat_id": "B04",
@@ -145,9 +216,54 @@
       "estimated_duration_s": 9.0,
       "narration_text": "The problem: managing .md files is genuinely annoying. You double-click one, it opens a geeky text editor full of hashtags and asterisks. Hard to read. Hard to edit. Most people set up Cowork once, then never touch their files again. So the context goes stale.",
       "shot": {
-        "type": "CARD",
+        "type": "REMOTION",
         "source": "own",
-        "motion": "hold"
+        "motion": "hold",
+        "remotion": {
+          "pattern": "CoworkTaskView",
+          "props": {
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Open about-me.md"
+              },
+              {
+                "type": "toolline",
+                "text": "Opens a text editor full of hashtags and asterisks",
+                "spinner": false
+              },
+              {
+                "type": "review",
+                "items": [
+                  {
+                    "title": "Hard to read — raw markdown",
+                    "badge": "Problem",
+                    "badgeTone": "warn"
+                  },
+                  {
+                    "title": "Hard to edit — most skip updates",
+                    "badge": "Problem",
+                    "badgeTone": "warn"
+                  },
+                  {
+                    "title": "Context goes stale → generic output",
+                    "badge": "Problem",
+                    "badgeTone": "fail"
+                  }
+                ]
+              }
+            ],
+            "cues": [
+              0,
+              18,
+              35
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
       },
       "card": {
         "kind": "spark",
@@ -158,10 +274,13 @@
       },
       "new_visual_element": "[SPARK] the stale-context problem",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null
-      }
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
+      },
+      "actual_duration_s": 14.76,
+      "audio_file": "mp3/beat-B04.mp3"
     },
     {
       "beat_id": "B05",
@@ -169,9 +288,22 @@
       "estimated_duration_s": 10.0,
       "narration_text": "The fix is Obsidian. It's free. You point it at your Cowork folder and it turns every file into a beautifully rendered document — headers, bold, bullet points. A sidebar to navigate. Search across everything. You click a file, edit it right there. It saves back to the same folder Cowork reads. One edit in Obsidian, Claude knows instantly.",
       "shot": {
-        "type": "CARD",
+        "type": "REMOTION",
         "source": "own",
-        "motion": "hold"
+        "motion": "hold",
+        "remotion": {
+          "pattern": "CoworkComposer",
+          "props": {
+            "typedText": "Open folder as vault → point at Cowork folder",
+            "heading": "Obsidian. It's free.",
+            "subline": "Every .md file becomes a clean, editable doc. Edit → Claude knows immediately.",
+            "hint": "One edit in Obsidian, Claude knows instantly."
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
       },
       "card": {
         "kind": "spark",
@@ -182,10 +314,13 @@
       },
       "new_visual_element": "[SPARK] Obsidian as the fix",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null
-      }
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
+      },
+      "actual_duration_s": 18.24,
+      "audio_file": "mp3/beat-B05.mp3"
     },
     {
       "beat_id": "B06",
@@ -193,9 +328,62 @@
       "estimated_duration_s": 12.0,
       "narration_text": "Why Obsidian and not the others? Notion: cloud-based, stores everything in its own database, you'd have to re-import every time Cowork updates a file. Google Docs: not .md files, constant conversion back and forth. VS Code: for developers. GitHub: requires git, commits, pushes. Obsidian wins because it reads your existing folder directly. No import. No sync. No hidden metadata injected. Your .md files stay exactly as Cowork expects them.",
       "shot": {
-        "type": "ILLUSTRATION",
+        "type": "REMOTION",
         "source": "own",
-        "motion": "drawon"
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CoworkTaskView",
+          "props": {
+            "blocks": [
+              {
+                "type": "section",
+                "text": "Why Obsidian wins"
+              },
+              {
+                "type": "review",
+                "items": [
+                  {
+                    "title": "Notion",
+                    "badge": "Cloud DB — re-import every time",
+                    "badgeTone": "fail"
+                  },
+                  {
+                    "title": "Google Docs",
+                    "badge": "Not .md — constant conversion",
+                    "badgeTone": "fail"
+                  },
+                  {
+                    "title": "VS Code",
+                    "badge": "For developers",
+                    "badgeTone": "warn"
+                  },
+                  {
+                    "title": "GitHub",
+                    "badge": "Requires git commits",
+                    "badgeTone": "warn"
+                  },
+                  {
+                    "title": "Obsidian",
+                    "badge": "Reads folder directly — no import",
+                    "badgeTone": "pass"
+                  }
+                ]
+              }
+            ],
+            "cues": [
+              0,
+              10,
+              22,
+              34,
+              46,
+              60
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
       },
       "illustration": {
         "concept": "Tool comparison: why each alternative fails vs why Obsidian wins",
@@ -203,10 +391,13 @@
       },
       "new_visual_element": "[ILLUSTRATION] Obsidian vs alternatives comparison",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null
-      }
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
+      },
+      "actual_duration_s": 23.82,
+      "audio_file": "mp3/beat-B06.mp3"
     },
     {
       "beat_id": "B07",
@@ -214,9 +405,51 @@
       "estimated_duration_s": 10.0,
       "narration_text": "The daily workflow is two apps, one folder. Open Obsidian to browse, search, read, and edit your files. Open Cowork to build new work and generate outputs. Both look at the same folder. Always in sync. Obsidian is where you update the brain. Cowork is where you build. You can also add a Skills folder — one file per repeated task, each callable with a slash command.",
       "shot": {
-        "type": "CARD",
+        "type": "REMOTION",
         "source": "own",
-        "motion": "hold"
+        "motion": "hold",
+        "remotion": {
+          "pattern": "CoworkTaskView",
+          "props": {
+            "blocks": [
+              {
+                "type": "section",
+                "text": "Two apps. One folder."
+              },
+              {
+                "type": "toolline",
+                "text": "Obsidian — update the brain (browse, search, edit)",
+                "spinner": false
+              },
+              {
+                "type": "toolline",
+                "text": "Cowork — build (generate, output)",
+                "spinner": false
+              },
+              {
+                "type": "toolline",
+                "text": "Same folder. Always in sync.",
+                "spinner": false
+              },
+              {
+                "type": "toolline",
+                "text": "Skills subfolder → slash-command workflows",
+                "spinner": false
+              }
+            ],
+            "cues": [
+              0,
+              14,
+              28,
+              40,
+              52
+            ]
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
       },
       "card": {
         "kind": "spark",
@@ -227,10 +460,13 @@
       },
       "new_visual_element": "[SPARK] daily two-app workflow",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null
-      }
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
+      },
+      "actual_duration_s": 19.22,
+      "audio_file": "mp3/beat-B07.mp3"
     },
     {
       "beat_id": "B08",
@@ -238,9 +474,22 @@
       "estimated_duration_s": 10.0,
       "narration_text": "Your turn. Download Obsidian from obsidian.md — it's free. Click 'Open folder as a vault.' Point it at your Cowork folder. Open your about-me file. Change one line. Open a new Cowork session. Watch Claude reflect the change.",
       "shot": {
-        "type": "CARD",
+        "type": "REMOTION",
         "source": "own",
-        "motion": "hold"
+        "motion": "hold",
+        "remotion": {
+          "pattern": "CoworkComposer",
+          "props": {
+            "typedText": "Open folder as vault → point at Cowork → change one line in about-me",
+            "heading": "Your turn. Download Obsidian.",
+            "subline": "obsidian.md — free. Open folder as vault. Watch the change land in Cowork.",
+            "hint": "Change one line in about-me. Open Cowork. Watch Claude reflect the change."
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
       },
       "card": {
         "kind": "handoff",
@@ -250,10 +499,13 @@
       },
       "new_visual_element": "[HANDOFF] your-turn card",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null
-      }
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
+      },
+      "actual_duration_s": 12.86,
+      "audio_file": "mp3/beat-B08.mp3"
     },
     {
       "beat_id": "B09",
@@ -261,9 +513,40 @@
       "estimated_duration_s": 11.0,
       "narration_text": "Stop prompting. Let the files do the prompting. Your Second Brain, for free. This is Liam, in for Bear.",
       "shot": {
-        "type": "CARD",
+        "type": "REMOTION",
         "source": "own",
-        "motion": "hold"
+        "motion": "hold",
+        "remotion": {
+          "pattern": "CoworkTaskView",
+          "props": {
+            "blocks": [
+              {
+                "type": "toolline",
+                "text": "Stop prompting.",
+                "spinner": false
+              },
+              {
+                "type": "toolline",
+                "text": "Let the files do the prompting.",
+                "spinner": false
+              },
+              {
+                "type": "toolline",
+                "text": "Your Second Brain. For free.",
+                "spinner": false
+              }
+            ],
+            "cues": [
+              0,
+              20,
+              40
+            ]
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
       },
       "card": {
         "kind": "outro",
@@ -273,66 +556,13 @@
       },
       "new_visual_element": "[OUTRO] episode title poster",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null
-      }
-    },
-    {
-      "beat_id": "YOURTURN",
-      "act": "your-turn",
-      "narration_text": "Your turn. Paste this: you spend too much time re-explaining context to Claude at the start of every session. Ask Claude to show you the file-based prompting approach: what files to build so Claude loads context from them rather than from your prompt, how to structure a CLAUDE.md or context file that makes the session start immediately productive, and which context should be in files versus which still belongs in the prompt.",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "estimated_duration_s": 12,
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeComposerAsk",
-          "props": {
-            "greeting": "Your turn.",
-            "topic": "CLAUDE · CLAUDE COWORK",
-            "command": "I spend too much time re-explaining context to Claude at the start of every session — same background, same constraints, same preferences every time. Show me the file-based prompting approach: what files to build so Claude loads context from them rather than from my prompt, how to structure a CLAUDE.md or context file that makes the session start immediately productive, and which context should be in files versus which still belongs in the task prompt.",
-            "runningText": "paste this into Claude…",
-            "folderLabel": "@NikBearBrown",
-            "modelLabel": "Claude Sonnet",
-            "segment": "Let the Files Do the Prompting"
-          }
-        }
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
       },
-      "build": {
-        "status": "SLATE",
-        "src": null,
-        "note": "design-v1: YOURTURN added"
-      },
-      "design_version": "v1"
-    },
-    {
-      "beat_id": "OUTRO",
-      "act": "outro",
-      "narration_text": "Let the Files Do the Prompting",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "estimated_duration_s": 6,
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeTitleOutro",
-          "props": {
-            "title": "Let the Files Do the Prompting",
-            "handle": "@NikBearBrown",
-            "mascotSeed": "claude-liam-stop-prompting-claude"
-          }
-        }
-      },
-      "build": {
-        "status": "SLATE",
-        "src": null,
-        "note": "design-v1: OUTRO added"
-      },
-      "design_version": "v1"
+      "actual_duration_s": 6.17,
+      "audio_file": "mp3/beat-B09.mp3"
     },
     {
       "beat_id": "BVDT",
@@ -350,11 +580,12 @@
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Let the Files Do the Prompting",
-            "artifactHeading": "Key findings",
+            "artifactHeading": "Stop Prompting · Let Files Prompt",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "Cowork reads context files — no retyping the same prompt",
+              "Three subfolders: About-me · Workflows · Templates",
+              "Obsidian turns .md files into a readable Second Brain",
+              "Two apps, one folder: Obsidian edits · Cowork builds"
             ]
           },
           "rendered": {
@@ -364,8 +595,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BHTF",
@@ -383,12 +618,12 @@
           "pattern": "ClaudeComposerAsk",
           "props": {
             "greeting": "Your turn.",
-            "topic": "YOUR TURN · CLAUDE COWORK",
-            "segment": "Let the Files Do the Prompting",
-            "command": "Take what you learned from [Let the Files Do the Prompting] and apply it to your own work. What's one thing you'll try first?",
-            "runningText": "paste this into Claude and run it on your own work…",
-            "output": [],
-            "folderLabel": "@NikBearBrown"
+            "topic": "CLAUDE · CLAUDE COWORK · YOUR TURN",
+            "command": "I spend too much time re-explaining context to Claude at the start of every session — same background, same constraints, same preferences every time. Show me the file-based prompting approach: what files to build so Claude loads context from them rather than from my prompt, how to structure a CLAUDE.md or context file that makes the session start immediately productive, and which context should be in files versus which still belongs in the task prompt.",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "segment": "Let the Files Do the Prompting"
           },
           "rendered": {
             "out": "media/BHTF.mp4",
@@ -397,8 +632,13 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
+      },
+      "actual_duration_s": 20.0,
+      "narration": ""
     },
     {
       "beat_id": "BOUT",
@@ -416,7 +656,8 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "Let the Files Do the Prompting",
-            "slug": "stop-prompting-claude"
+            "slug": "stop-prompting-claude",
+            "handle": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -425,8 +666,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:51:22"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

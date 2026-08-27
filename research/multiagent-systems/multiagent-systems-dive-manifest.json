@@ -1,0 +1,141 @@
+{
+  "dive": {
+    "paper": "Patterns and problems in emerging multiagent systems",
+    "authors": "Anthropic Frontier Red Team",
+    "published": "2026-08-13",
+    "url": "https://www.anthropic.com/research/multiagent-systems",
+    "paper_type": "industry research blog post — no methods section, no data release, no preprint",
+    "read": "multiagent-systems-skeptical-read.md",
+    "data": "figure-data.json",
+    "built": "2026-08-15",
+    "built_by": "ai-paper skill, deep-dive mode, Cowork cloud session",
+    "verdict_one_line": "Trust the direction, don't quote the numbers — two figures say something different from the sentence printed next to them."
+  },
+
+  "figures": [
+    {
+      "fig_id": "fig1",
+      "source_asset": "5a5c187a6c2b5ccb492bcb7883df2066d49625de-2000x1200.webp",
+      "cdn": "https://cdn.sanity.io/images/4zrzovbb/website/5a5c187a6c2b5ccb492bcb7883df2066d49625de-2000x1200.png",
+      "claim_it_carries": "A coordinating 45-agent swarm finds 12.7x more vulnerabilities than independent parallel agents.",
+      "audit_verdict": "PARTLY SUPPORTED — unequal token budget (27M vs 6.5M) and unequal search scope; the post's own core-only line puts the like-for-like gain at ~1.5x.",
+      "output_clip": "pantry/clips/fig1-vuln-swarm.mp4",
+      "used_in_beats": ["mas-coordination B07", "mas-coordination B08", "mas-coordination B09"]
+    },
+    {
+      "fig_id": "fig2",
+      "source_asset": "34ffa8cc39ef8e749c5a371b5cb2c8df2dbd3e8f-1999x707.webp",
+      "claim_it_carries": "Only Sonnet 5 maintains a high merge fraction while genuinely sharing code.",
+      "audit_verdict": "PARTLY SUPPORTED — true at 20/40/80 agents, false at 10; and the right panel's axis is cropped to 0.25, so a peak of 0.184 reads as large. The median agent still writes 82% of its own files alone.",
+      "output_clip": "pantry/clips/fig2-merge-and-sharing.mp4",
+      "used_in_beats": ["mas-coordination B18", "mas-coordination B19"]
+    },
+    {
+      "fig_id": "fig3",
+      "source_asset": "9dc6d5855b29107da250aefe56585dd2df4a2cd7-2000x1120.webp",
+      "claim_it_carries": "Older models merge PRs far worse than newer models.",
+      "audit_verdict": "SUPPORTED for merge RATE; silent on merge VOLUME collapsing 83% (980 opened -> 169). The post concedes the point in prose three paragraphs later.",
+      "output_clip": "pantry/clips/fig3-pr-activity.mp4",
+      "used_in_beats": ["mas-coordination B22", "mas-coordination B23"]
+    },
+    {
+      "fig_id": "fig4",
+      "source_asset": "c20d95f0b1a728304b925f567f46b879a4e429d3-2000x1200.webp",
+      "claim_it_carries": "\"Newer models recover more of the gap between the naive and oracle performances. This ordering holds across four different scenarios.\"",
+      "audit_verdict": "CONTRADICTED BY ITS OWN DATA — Sonnet 5, called 'our most recent model', recovers 37.8% of the gap at a 0.50 lie rate, below Opus 4.6 (59.3%) and Opus 4.8 (62.5%), and is last of five at 0.25. The real ordering is capability tier, not recency. Also labels its top line 'Mythos 5' where Fig 1 labels its top line 'Mythos Preview'.",
+      "output_clip": "pantry/clips/fig4-gullibility.mp4",
+      "used_in_beats": ["mas-epistemics B07", "mas-epistemics B08", "mas-epistemics B09", "mas-epistemics B10"]
+    },
+    {
+      "fig_id": "fig5",
+      "source_asset": "48c8600f4196d90ac35237f711f2978c27ebbfce-1999x1233.webp",
+      "claim_it_carries": "\"Performance scales with model intelligence but does not saturate even at the top of our range.\"",
+      "audit_verdict": "WEAK AS STATED, STRONGER THAN STATED IN FACT — three of five bars sit inside each other's CIs, so it is a flat floor with two outliers, not a scaling curve. But the dashed solo ceilings show the real result: group deliberation cost every model 15 to 80 percentage points versus one agent with the same facts. That result is drawn and never written.",
+      "output_clip": "pantry/clips/fig5-hidden-profile.mp4",
+      "used_in_beats": ["mas-epistemics B17", "mas-epistemics B18", "mas-epistemics B19", "mas-epistemics B20", "mas-short-verdict B03", "mas-short-verdict B04", "mas-short-verdict B05"]
+    },
+    {
+      "fig_id": "fig6",
+      "source_asset": "007f866cee9417f22ffef68775637ca8c51bd791-2000x1200.webp",
+      "claim_it_carries": "Agents sometimes coordinate out of conflict; this ability is not strictly better in Mythos-class models.",
+      "audit_verdict": "SUPPORTED AND UNDERSOLD — the unprinted number is that Sonnet 4.6 and Opus 4.6 recorded ZERO truces across 120 episodes each. Also: Opus 4.8's 61% truce sits beside 33% 'settled by passivity' (agents giving up, scored as resolution), and Mythos Preview regresses to 35% force, 10x worse than Sonnet 5 or Opus 4.8.",
+      "output_clip": "pantry/clips/fig6-turf-war-outcomes.mp4",
+      "used_in_beats": ["mas-turf-war B10", "mas-turf-war B11", "mas-turf-war B12", "mas-turf-war B13", "mas-turf-war B14"]
+    },
+    {
+      "fig_id": "fig7",
+      "source_asset": "036b4ce12f51bf37fb88a030710a55ecc72fc372-2000x1200.webp",
+      "claim_it_carries": "Time to resolution and method; grey lines mark runs first settled by force then reverted.",
+      "audit_verdict": "SUPPORTED, AND IT REFRAMES FIG 6 — Mythos 5's headline 98% truce is reached via a dense band of force-first lockouts at 0.18-0.40 h, chained up to truce dots an hour later. Roughly a third of its truces begin as a lockout inside the first 25 minutes.",
+      "output_clip": "pantry/clips/fig7-time-to-resolution.mp4",
+      "used_in_beats": ["mas-turf-war B17", "mas-turf-war B18", "mas-turf-war B19"],
+      "reconstruction_note": "The animated scatter reconstructs point positions from the published marginals (n=120, unresolved counts, Fig 6 outcome mix, settle-time band). Distribution shape is faithful; individual dots are NOT the paper's dots. Stated on screen in the clip and flagged in the read."
+    }
+  ],
+
+  "videos_drawn_from": {
+    "count": 0,
+    "note": "The paper's folder contains seven figure images and one saved page. No video assets exist, so no stills or clips were extracted from folder video. Nothing was invented to fill the gap."
+  },
+
+  "pantry": {
+    "policy": "PANTRY-FIRST, strictly applied. Priority order was (1) real assets, (2) self-rendered motion graphics, (3) genAI. Tier 3 was never reached.",
+    "genai_beats": 0,
+    "genai_justification": "None needed. Every non-drawn beat is a real artifact: the post's own published figures, or verbatim excerpts of its own prose.",
+    "real_artifacts": [
+      {"kind": "published figure", "count": 7, "path": "research/multiagent-systems/*.webp",
+       "credit": "Anthropic Frontier Red Team, 13 Aug 2026 — reproduced for criticism"},
+      {"kind": "prose excerpt", "count": 7, "path": "pantry/post/*.png",
+       "assets": ["hero", "claim-newer-models", "claim-scales", "claim-comparable", "claim-lockout", "quote-collusion", "quote-camouflage"],
+       "method": "Rendered from the archived page HTML with headless Chromium, clipped to the target element.",
+       "credit": "Verbatim text from the archived page, reproduced for criticism. The page's stylesheet was not archived, so excerpts are typeset in the house serif on the house highlighter wash — WORDING IS UNALTERED. Must be captioned as excerpts, never as screenshots of the live site."}
+    ],
+    "self_rendered": [
+      {"kind": "animated figure", "count": 7, "path": "pantry/clips/*.mp4",
+       "spec": "silent, native 3840x2160, 30fps, h264 crf16, 13s each",
+       "tool": "matplotlib + ffmpeg (no repo Manim/Remotion available in the cloud sandbox)",
+       "note": "Born at 4K — never upscaled. Audit annotation burned in. Topaz pass is a final/post step only."}
+    ]
+  },
+
+  "skills": [
+    {"skill": "ai-paper", "produced": "the skeptical read, the figure digitization, this manifest", "gate": "n/a — complete"},
+    {"skill": "deep-explainer", "produced": "3 long beat sheets (mas-coordination, mas-epistemics, mas-turf-war) + 1 short on the same chassis",
+     "gate": "STOPPED AT GATE P — no audio generated, no spend. actual_duration_s and audio_file are null on every beat.",
+     "note": "Beat sheets were authored to the repo schema (brutalist-art/runtime/schema/beat_sheet.schema.json). They were NOT executed — the toolkit lives on the user's Mac and this session ran in the cloud sandbox."},
+    {"skill": "your-turn", "produced": "the closing block on all four reels — verdict recap -> YOUR TURN prompt (relevant, read in full) -> title restate", "gate": "n/a"},
+    {"skill": "kerning (GATE T)", "produced": "nothing yet", "gate": "OWED — type-lock has not been run; required before any review cut"},
+    {"skill": "graphs / figures / plates", "produced": "nothing", "gate": "n/a — not invoked; figure animation was done as a self-contained render because the repo pipeline is not reachable from this sandbox"},
+    {"skill": "post / youtube-publisher", "produced": "nothing", "gate": "NOT INVOKED. Nothing is staged, nothing is uploadable. Publishing requires the post skill staging a 4K master into books/youtube/TOPOST/ with a staged.json entry — a separate human step."}
+  ],
+
+  "design_compliance": {
+    "palette": "teardown — white ground #FFFFFF, ink #2A1A0E, ONE accent crimson #C8102E, slate #545454, highlighter wash #F6D8DC",
+    "dataviz_palette": "Okabe-Ito categorical (DESIGN.md law: 3+ series)",
+    "deviation": "#F0E442 (yellow) skipped — fails legibility on the white ground. Series otherwise assigned in listed order.",
+    "type": "Montserrat display / EB Garamond serif captions / Liberation Mono for data numbers (PT Mono unavailable in the sandbox — substitute logged)",
+    "type_floor": "14pt @1080 == 37px @4K == 27pt at dpi 100. Smallest type used is 27pt. GATE T still owed on the assembled reels.",
+    "doodle": "NONE. No style_preset 'doodle', no DoodleScene, no DoodleChart, no doodle provenance in any of the four beat sheets."
+  },
+
+  "known_deviations": [
+    "Vox share is 21% / 14% / 15% / 14% across the four reels; deep-explainer's guideline is 20-25%. The cap is real-asset supply — this folder holds seven figures and one page. Raising the share would mean generating stills, which the pantry-first law forbids. Not raised.",
+    "Long runtimes are 5m50s-6m52s estimated, at the short end of deep-explainer's 5-10 minute band. Real durations will shift once audio is measured.",
+    "Figure animations were rendered outside the repo pipeline (matplotlib, not Manim/Remotion) because the toolkit is on the user's Mac and this session is sandboxed. They are drop-in pantry MP4s, not pipeline-native scenes."
+  ],
+
+  "web_sources": [
+    {"title": "Calvano, Calzolari, Denicolo & Pastorello — Artificial Intelligence, Algorithmic Pricing, and Collusion (AER 2020)", "url": "https://www.aeaweb.org/articles?id=10.1257%2Faer.20190623", "role": "ancestry for the Bertrand collusion result; not cited by the post"},
+    {"title": "Den Boer, Meylahn & Schinkel — Algorithmic collusion: Genuine or spurious?", "url": "https://www.sciencedirect.com/science/article/abs/pii/S0167718723000541", "role": "the strongest live counter to the collusion section's design"},
+    {"title": "Stasser & Titus — Pooling of Unshared Information in Group Decision Making (1985)", "url": "https://www.semanticscholar.org/paper/Pooling-of-Unshared-Information-in-Group-Decision-Stasser-Titus/673fdc80c19777643a08c5ee4e7d76eaf8b53808", "role": "the hidden-profile paradigm, correctly credited by the post"},
+    {"title": "Twenty-Five Years of Hidden Profiles in Group Decision Making: A Meta-Analysis", "url": "https://www.researchgate.net/publication/51624107_Twenty-Five_Years_of_Hidden_Profiles_in_Group_Decision_Making_A_Meta-Analysis", "role": "the human baseline the post gestures at"},
+    {"title": "Hidden profile — overview", "url": "https://en.wikipedia.org/wiki/Hidden_profile", "role": "paradigm reference"},
+    {"title": "Anthropic — Project Deal", "url": "https://www.anthropic.com/features/project-deal", "role": "internal ancestry, cited by the post"},
+    {"title": "Anthropic — Project Glasswing initial update", "url": "https://www.anthropic.com/research/glasswing-initial-update", "role": "internal ancestry, cited by the post"}
+  ],
+
+  "forward_citations": {
+    "count": 0,
+    "note": "Published 2026-08-13, two days before this read. No replications, rebuttals, or independent scrutiny exist. No dataset, code, environment spec, or preprint was released. This is the single strongest reason to hold every number loosely."
+  }
+}

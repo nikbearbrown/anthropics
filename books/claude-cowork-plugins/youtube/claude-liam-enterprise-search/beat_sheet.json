@@ -34,20 +34,11 @@
     "voice_kokoro": "am_onyx",
     "topic": "CLAUDE · COWORK PLUGINS",
     "build": {
-      "at": "2026-07-23T16:21:03",
-      "cut": "review",
-      "filled": 25,
-      "of": 33,
-      "slates": [
-        "B02",
-        "B04",
-        "B08",
-        "B10",
-        "B16",
-        "B18",
-        "B19",
-        "B22"
-      ],
+      "at": "2026-08-26T21:05:57",
+      "cut": "master",
+      "filled": 36,
+      "of": 36,
+      "slates": [],
       "skin_warnings": []
     }
   },
@@ -100,7 +91,7 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -137,7 +128,7 @@
         "status": "VIDEO",
         "src": "media/C01.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -171,7 +162,7 @@
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -203,12 +194,12 @@
         }
       },
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-23T16:21:03",
-        "needs": "PIPELINE → render animated_graphics.py scene B02_*"
-      }
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-26T21:05:57"
+      },
+      "actual_duration_s": 14.5
     },
     {
       "act": "ACT I",
@@ -235,7 +226,7 @@
         "status": "MANIM",
         "src": "manim/B03.mp4",
         "filled_by": "manim:B03Doodle",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       },
       "engine": "manim"
     },
@@ -273,7 +264,7 @@
         "status": "VIDEO",
         "src": "media/C02.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -306,16 +297,16 @@
         }
       },
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-23T16:21:03",
-        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
-      }
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-26T21:05:57"
+      },
+      "actual_duration_s": 14.5
     },
     {
       "act": "ACT II",
-      "lane": "REMOTION",
+      "lane": "MANIM",
       "scene": "illustration/search-inside-document",
       "narration_text": "Enterprise search reads inside the documents. It matches your question against the actual words on the page, not the label on the folder. Ask what's in the file, and it looks at what's in the file.",
       "show": "The same 'Q3-notes' file opens; the query now lands on a sentence deep inside it — a terracotta highlight on the matching line.",
@@ -323,10 +314,10 @@
       "beat_id": "B05",
       "estimated_duration_s": 12.4,
       "shot": {
-        "type": "REMOTION",
+        "type": "MANIM",
         "source": "own",
         "remotion": {
-          "pattern": "SlateCard",
+          "pattern": "FormACard",
           "props": {
             "label": "It reads inside.",
             "beatId": "B05",
@@ -353,7 +344,7 @@
         "status": "VIDEO",
         "src": "media/B05.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -394,18 +385,15 @@
         "status": "VIDEO",
         "src": "media/B06.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
       "act": "ACT II",
       "lane": "REMOTION",
-      "scene": "code-block",
+      "scene": "ClaudeComposerAsk",
       "narration_text": "In practice it's a plain question. No query syntax, no boolean operators. You type the thing you half-remember, and the plugin does the reaching.",
-      "show": "Onda code-block: a composer line typing a natural-language question, not a search string.",
-      "props": {
-        "code": "\"Where did we write down why we chose one processor over another?\""
-      },
+      "show": "Composer: a natural-language question typed plainly, not a search string.",
       "spark_line": "Ask, don't query.",
       "beat_id": "B07",
       "estimated_duration_s": 8.3,
@@ -413,11 +401,17 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "ClaudeCodeBeat",
+          "pattern": "ClaudeComposerAsk",
           "props": {
-            "title": "Cowork",
-            "code": "\"Where did we write down why we chose one processor over another?\"",
-            "sparkLine": "Ask, don't query."
+            "command": "Where did we write down why we chose one processor over another?",
+            "topic": "CLAUDE · COWORK PLUGINS",
+            "segment": "Claude, Finding It",
+            "greeting": "Ask, don't query.",
+            "runningText": "searching your sources…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High",
+            "output": []
           },
           "rendered": {
             "out": "media/B07.mp4",
@@ -431,7 +425,7 @@
         "status": "VIDEO",
         "src": "media/B07.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -468,7 +462,7 @@
         "status": "VIDEO",
         "src": "media/C03.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -500,16 +494,16 @@
         }
       },
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-23T16:21:03",
-        "needs": "PIPELINE → render animated_graphics.py scene B08_*"
-      }
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-26T21:05:57"
+      },
+      "actual_duration_s": 11.7
     },
     {
       "act": "ACT III",
-      "lane": "REMOTION",
+      "lane": "MANIM",
       "scene": "illustration/context-injection",
       "narration_text": "It goes one step further. When the plugin finds the relevant document, it can pull that content straight into the conversation. Ask Claude about your pricing strategy, and it retrieves your own pricing analysis and reasons from it.",
       "show": "A found document slides into an active conversation panel and becomes part of the context — injection, not just a link.",
@@ -517,10 +511,10 @@
       "beat_id": "B09",
       "estimated_duration_s": 13.1,
       "shot": {
-        "type": "REMOTION",
+        "type": "MANIM",
         "source": "own",
         "remotion": {
-          "pattern": "SlateCard",
+          "pattern": "FormACard",
           "props": {
             "label": "Pulled into context.",
             "beatId": "B09",
@@ -547,7 +541,7 @@
         "status": "VIDEO",
         "src": "media/B09.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -579,12 +573,12 @@
         }
       },
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-23T16:21:03",
-        "needs": "PIPELINE → render animated_graphics.py scene B10_*"
-      }
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "media",
+        "at": "2026-08-26T21:05:57"
+      },
+      "actual_duration_s": 10.7
     },
     {
       "act": "ACT IV",
@@ -620,7 +614,7 @@
         "status": "VIDEO",
         "src": "media/C04.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -656,7 +650,7 @@
               "No contradictions"
             ],
             "sparkLine": "Five plain asks.",
-            "cols": null
+            "cols": 3
           },
           "rendered": {
             "out": "media/B11.mp4",
@@ -670,18 +664,15 @@
         "status": "VIDEO",
         "src": "media/B11.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
       "act": "ACT IV",
       "lane": "REMOTION",
-      "scene": "code-block",
+      "scene": "ClaudeComposerAsk",
       "narration_text": "Institutional memory first. How did we decide to use Stripe instead of PayPal — and what was the reasoning? If anyone wrote it down, even casually in meeting notes, the plugin surfaces the why, not just the what.",
-      "show": "Onda code-block: the decision-recall question typed plainly at the composer.",
-      "props": {
-        "code": "\"How did we decide on Stripe over PayPal, and why?\""
-      },
+      "show": "Composer: the decision-recall question typed plainly.",
       "spark_line": "Why did we decide?",
       "beat_id": "B12",
       "estimated_duration_s": 13.1,
@@ -689,11 +680,17 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "ClaudeCodeBeat",
+          "pattern": "ClaudeComposerAsk",
           "props": {
-            "title": "Cowork",
-            "code": "\"How did we decide on Stripe over PayPal, and why?\"",
-            "sparkLine": "Why did we decide?"
+            "command": "How did we decide on Stripe over PayPal, and why?",
+            "topic": "CLAUDE · COWORK PLUGINS",
+            "segment": "Claude, Finding It",
+            "greeting": "Why did we decide?",
+            "runningText": "searching your sources…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High",
+            "output": []
           },
           "rendered": {
             "out": "media/B12.mp4",
@@ -707,7 +704,7 @@
         "status": "VIDEO",
         "src": "media/B12.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -735,7 +732,7 @@
         "status": "MANIM",
         "src": "manim/B13.mp4",
         "filled_by": "manim:B13Doodle",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       },
       "engine": "manim"
     },
@@ -764,19 +761,16 @@
         "status": "MANIM",
         "src": "manim/B14.mp4",
         "filled_by": "manim:B14Doodle",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       },
       "engine": "manim"
     },
     {
       "act": "ACT IV",
       "lane": "REMOTION",
-      "scene": "code-block",
+      "scene": "ClaudeComposerAsk",
       "narration_text": "Policy lookup. What's our standard cancellation policy for consulting engagements? If it's written down anywhere, you get the answer — invoicing terms, workflow, communication standards, whatever you've committed to on paper.",
-      "show": "Onda code-block: the policy question typed plainly at the composer.",
-      "props": {
-        "code": "\"What's our standard cancellation policy for consulting work?\""
-      },
+      "show": "Composer: the policy question typed plainly.",
       "spark_line": "What's our policy?",
       "beat_id": "B15",
       "estimated_duration_s": 10.7,
@@ -784,11 +778,17 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "ClaudeCodeBeat",
+          "pattern": "ClaudeComposerAsk",
           "props": {
-            "title": "Cowork",
-            "code": "\"What's our standard cancellation policy for consulting work?\"",
-            "sparkLine": "What's our policy?"
+            "command": "What's our standard cancellation policy for consulting work?",
+            "topic": "CLAUDE · COWORK PLUGINS",
+            "segment": "Claude, Finding It",
+            "greeting": "What's our policy?",
+            "runningText": "searching your sources…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High",
+            "output": []
           },
           "rendered": {
             "out": "media/B15.mp4",
@@ -802,7 +802,7 @@
         "status": "VIDEO",
         "src": "media/B15.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -839,12 +839,12 @@
         }
       },
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-23T16:21:03",
-        "needs": "PIPELINE → render animated_graphics.py scene B16_*"
-      }
+        "status": "VIDEO",
+        "src": "media/B16.mp4",
+        "filled_by": "media",
+        "at": "2026-08-26T21:05:57"
+      },
+      "actual_duration_s": 12.4
     },
     {
       "act": "ACT IV",
@@ -871,7 +871,7 @@
         "status": "MANIM",
         "src": "manim/B17.mp4",
         "filled_by": "manim:B17Doodle",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       },
       "engine": "manim"
     },
@@ -909,7 +909,7 @@
         "status": "VIDEO",
         "src": "media/C05.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -941,12 +941,12 @@
         }
       },
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-23T16:21:03",
-        "needs": "PIPELINE → render animated_graphics.py scene B18_*"
-      }
+        "status": "VIDEO",
+        "src": "media/B18.mp4",
+        "filled_by": "media",
+        "at": "2026-08-26T21:05:57"
+      },
+      "actual_duration_s": 13.4
     },
     {
       "act": "ACT V",
@@ -977,12 +977,12 @@
         }
       },
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-23T16:21:03",
-        "needs": "PIPELINE → render animated_graphics.py scene B19_*"
-      }
+        "status": "VIDEO",
+        "src": "media/B19.mp4",
+        "filled_by": "media",
+        "at": "2026-08-26T21:05:57"
+      },
+      "actual_duration_s": 14.5
     },
     {
       "act": "ACT V",
@@ -1009,7 +1009,7 @@
         "status": "MANIM",
         "src": "manim/B20.mp4",
         "filled_by": "manim:B20Doodle",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       },
       "engine": "manim"
     },
@@ -1047,7 +1047,7 @@
         "status": "VIDEO",
         "src": "media/C06.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -1081,7 +1081,7 @@
               "Document decisions"
             ],
             "sparkLine": "Four small habits.",
-            "cols": null
+            "cols": 3
           },
           "rendered": {
             "out": "media/B21.mp4",
@@ -1095,7 +1095,7 @@
         "status": "VIDEO",
         "src": "media/B21.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -1127,12 +1127,12 @@
         }
       },
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-23T16:21:03",
-        "needs": "PIPELINE → render animated_graphics.py scene B22_*"
-      }
+        "status": "VIDEO",
+        "src": "media/B22.mp4",
+        "filled_by": "media",
+        "at": "2026-08-26T21:05:57"
+      },
+      "actual_duration_s": 12.8
     },
     {
       "act": "ACT VI",
@@ -1159,7 +1159,7 @@
         "status": "MANIM",
         "src": "manim/B23.mp4",
         "filled_by": "manim:B23Doodle",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       },
       "engine": "manim"
     },
@@ -1175,7 +1175,7 @@
           "Searches content across all your sources at once",
           "Pulls your own documents into the conversation",
           "Bounded strictly by your existing access — nothing new",
-          "Rewards documenting decisions as you go"
+          "Document decisions now — they compound"
         ]
       },
       "spark_line": "The verdict.",
@@ -1194,7 +1194,7 @@
               "Searches content across all your sources at once",
               "Pulls your own documents into the conversation",
               "Bounded strictly by your existing access — nothing new",
-              "Rewards documenting decisions as you go"
+              "Document decisions now — they compound"
             ]
           },
           "rendered": {
@@ -1209,7 +1209,7 @@
         "status": "VIDEO",
         "src": "media/V01.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -1252,7 +1252,7 @@
         "status": "VIDEO",
         "src": "media/H01.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
@@ -1290,14 +1290,14 @@
         "status": "VIDEO",
         "src": "media/O01.mp4",
         "filled_by": "media",
-        "at": "2026-07-23T16:21:03"
+        "at": "2026-08-26T21:05:57"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict recap",
       "lane": "BOOKEND",
-      "narration_text": "",
+      "narration_text": "Enterprise search doesn't give you new access — it gives you faster reach over the access you already hold. Knowledge buried in a drive, a wiki, a thread is now one question away. Five workflows unlock that: institutional memory, client context, policy lookup, meeting prep, contradiction checks. And the return compounds: the more you document as you decide, the more it can find.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
@@ -1311,9 +1311,11 @@
             "artifactTitle": "Claude, Finding It",
             "artifactHeading": "Key findings",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "Knowledge doesn't vanish — it gets buried in drives, wikis, threads",
+              "Content search reads inside files; filename search never could",
+              "Five workflows: memory, context, policy, prep, no-contradictions",
+              "Bounded by your existing access — faster reach, not new permissions",
+              "Document decisions now: yesterday's choice becomes tomorrow's source"
             ]
           },
           "rendered": {
@@ -1323,8 +1325,13 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-26T21:05:57"
+      },
+      "actual_duration_s": 19.71,
+      "audio_file": "mp3/beat-BVDT.mp3"
     },
     {
       "beat_id": "BHTF",
@@ -1347,7 +1354,7 @@
             "command": "Take what you learned from [Claude, Finding It] and apply it to your own work. What's one thing you'll try first?",
             "runningText": "paste this into Claude and run it on your own work…",
             "output": [],
-            "folderLabel": "@claude-liam"
+            "folderLabel": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/BHTF.mp4",
@@ -1356,8 +1363,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-26T21:05:57"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BOUT",
@@ -1384,8 +1395,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-26T21:05:57"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

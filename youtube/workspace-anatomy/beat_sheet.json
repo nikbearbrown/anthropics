@@ -1,0 +1,515 @@
+{
+  "metadata": {
+    "slug": "workspace-anatomy",
+    "book": "anthropics",
+    "title": "The Anatomy",
+    "topic": "Transformer Circuits · July 2026",
+    "purpose": "Show the workspace has a physical structure — a middle-layer band, a ~25-slot budget, and a top-1% broadcast network — and flag the one anatomy a brain has that this doesn't.",
+    "clock": "narration",
+    "register": "teardown",
+    "style_preset": "claude",
+    "channel": "claude-liam",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "skill": "deep-explainer",
+    "gate": "GATE P — moot (Kokoro free); audio not yet generated",
+    "series": "The Workspace Papers",
+    "series_episode": "E03",
+    "source_url": "transformer-circuits.pub/2026/workspace/",
+    "corpus_path": "books/arxiv/transformer-circuits.pub/",
+    "estimated_runtime_s": 238.0,
+    "aspect_ratio": "16:9",
+    "palette": "claude",
+    "build": {
+      "at": "2026-08-24T15:43:12",
+      "cut": "master",
+      "filled": 15,
+      "of": 15,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold-open",
+      "narration_text": "",
+      "estimated_duration_s": 7.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "command": "If the J-space is really a workspace, it should have an anatomy: live in specific layers, hold limited content, and plug into broadcast hardware. Map it — layers, capacity, hubs — and flag every place the anatomy differs from a brain's.",
+            "topic": "WORKSPACE · ANATOMY",
+            "segment": "E03: The Anatomy",
+            "greeting": "The ask,",
+            "runningText": "composer types the ask — no narration",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "composer types the ask",
+      "t_start": 0.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "title",
+      "narration_text": "A workspace that lived everywhere and held everything wouldn't be a workspace. So the paper maps three structural properties: where it lives, how much it holds, and what wiring it plugs into.",
+      "estimated_duration_s": 14.0,
+      "actual_duration_s": 10.28,
+      "audio_file": "mp3/beat-B01.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "lines": [
+              "The Anatomy",
+              "Transformer Circuits · July 2026"
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "title card — FormACard",
+      "motion_claim": "FormACard spring-reveals each line sequentially; title line fades in first, subtitle second — two distinct visual states during the dwell.",
+      "t_start": 7.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "property-location",
+      "narration_text": "Property one: location. Compare the lens directions layer to layer, and the model splits into three regions. Early layers — call them sensory — parsing what was said. Late layers — motor — spelling out what to say. And a wide middle band where the workspace lives.",
+      "estimated_duration_s": 19.0,
+      "actual_duration_s": 14.04,
+      "audio_file": "mp3/beat-B02.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B02_ThreeRegions",
+        "description": "rebuild Fig 27: numbered layer stack; top third shaded terracotta (motor), middle third shaded lighter (workspace), bottom third shaded faintest (sensory); region labels; CKA similarity heat strip running beside the stack"
+      },
+      "new_visual_element": "layer stack with three regions — sensory / workspace / motor; CKA strip",
+      "t_start": 21.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "band-boundaries",
+      "narration_text": "The boundaries aren't drawn by hand. Prediction accuracy, readout stability, occupancy — every statistic elbows at the same two depths. For Sonnet, roughly layers thirty-eight to ninety-two. Below the band, the lens reads static. Above it, it reads the answer.",
+      "estimated_duration_s": 17.0,
+      "actual_duration_s": 14.46,
+      "audio_file": "mp3/beat-B03.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B03_BandSignatures",
+        "description": "rebuild Fig 28 a-panel idea: horizontal axis = layer index 0–120; one curve rises from near zero at L0, elbows up sharply at ~L38, rises through band, elbows again at ~L92; two vertical dashed lines mark the band boundaries labeled 'L38' and 'L92'; curve labeled 'prediction accuracy / readout signal'"
+      },
+      "new_visual_element": "band boundary curve with two elbow points at L38 and L92",
+      "t_start": 40.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "ignition",
+      "narration_text": "Feed it a deliberately ambiguous input — a token that's half one concept, half another — and the early layers carry the mixture. The middle layers don't. They pick a winner, prompt by prompt. In the brain that all-or-none snap is called ignition. In the J-space, the snap is there —",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": 14.61,
+      "audio_file": "mp3/beat-B04.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B04_Ignition",
+        "description": "rebuild Fig 29 design: left column shows mixed activation in early layers (two concept labels overlapping, equal weight); right column shows middle-layer bimodal split — one prompt snaps to concept A, another to concept B; a vertical dashed line marks the snap boundary labeled 'workspace entry'; no mixture possible after the line"
+      },
+      "new_visual_element": "ambiguous-input bimodal snap at workspace entry — two prompt outcomes diverge",
+      "t_start": 57.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "ignition-hedge",
+      "narration_text": "— and the authors immediately hedge it, in print: it is unclear whether this mirrors the brain's sharp, competitive ignition. Bimodal, yes. The same mechanism, unknown. Keep that chip; episode seven needs it.",
+      "estimated_duration_s": 13.0,
+      "actual_duration_s": 12.25,
+      "audio_file": "mp3/beat-B05.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "title": "J-space ignition = brain ignition?",
+            "chips": [
+              "NOT DETERMINABLE",
+              "Bimodal: confirmed in J-space",
+              "Sharp competitive snap: unknown",
+              "§9.1 author hedge — in print"
+            ],
+            "sparkLine": "Keep this chip. Episode seven needs it.",
+            "cols": 2
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "chip-grid: NOT DETERMINABLE tier + four-chip evidence label",
+      "t_start": 77.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "property-capacity",
+      "narration_text": "Property two: capacity. Ask how many lens directions it takes to reconstruct the activations, and the answer is near zero through the sensory layers, then a plateau around twenty-five items in the median case. And all of it together carries less than ten percent of the activation variance. The workspace is a thin, privileged slice — most of what the model computes never enters it.",
+      "estimated_duration_s": 25.0,
+      "actual_duration_s": 19.69,
+      "audio_file": "mp3/beat-B06.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B06_Occupancy",
+        "description": "rebuild Fig 30 two-panel: LEFT — occupancy curve near zero through sensory layers, plateaus at ~25 in the workspace band, annotated '~25 median'; RIGHT — excess variance explained bar capped under 10%, labeled '<10% of activation variance'; both panels share x-axis labeled 'layer'"
+      },
+      "new_visual_element": "two-panel: occupancy plateau ~25 | excess variance < 10%",
+      "t_start": 90.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "capacity-wrinkle",
+      "narration_text": "Here's the wrinkle that saves the number from being a headline. Read the model an eighty-word list of animals, and the workspace seems to hold all eighty — including animals it hasn't read yet. It isn't holding the list. It's holding the category, and the category predicts the rest. Capacity is real; counting items is the wrong way to measure it.",
+      "estimated_duration_s": 24.0,
+      "actual_duration_s": 17.51,
+      "audio_file": "mp3/beat-B07.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B07_ListOverflow",
+        "description": "rebuild Fig 31 punchline: a vertical scroll of animal names streams in from top; workspace readout panel beside it fills with animal names including some shown dashed (unread words that appear because the category predicts them); label 'read so far' on solid names, 'category prediction' on dashed names; capacity bar stays at ~25"
+      },
+      "skeptic_caption": "'~25 slots' measures sparse reconstruction — not remembered items.",
+      "new_visual_element": "80-word animal list: readout includes dashed unread animals — category, not list",
+      "t_start": 115.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "displacement",
+      "narration_text": "Make the list unrelated words instead, and you see genuine displacement — new items shove old ones out. Limited capacity, competitive entry. That's the workspace behavior the theory ordered.",
+      "estimated_duration_s": 12.0,
+      "actual_duration_s": 11.11,
+      "audio_file": "mp3/beat-B08.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B08_Displacement",
+        "description": "a slot grid of 25 boxes; unrelated words stream in one at a time; each new arrival pushes an existing word out (old word fades, new word slides in); displacement counter ticks up; label 'unrelated list — genuine displacement'"
+      },
+      "new_visual_element": "25-slot grid: new unrelated words displace old ones — limited capacity confirmed",
+      "t_start": 139.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "property-wiring",
+      "narration_text": "Property three: the wiring. The model's own weights treat lens directions as a favored format — MLPs amplify them more than matched controls, and a top one percent of attention heads in the band read and write them so preferentially the paper names them broadcast heads. Knock out those heads and workspace function drops in ways five seeds of random, layer-matched heads can't reproduce.",
+      "estimated_duration_s": 25.0,
+      "actual_duration_s": 20.5,
+      "audio_file": "mp3/beat-B09.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B09_BroadcastHubs",
+        "description": "rebuild Fig 32/34 logic: three-part build: PART 1 — two bars showing MLP amplification of J-space-aligned vs control directions, J-space bar taller; PART 2 — layer stack with top-1% broadcast heads highlighted in terracotta; PART 3 — ablation bar chart: workspace-function score with broadcast heads knocked out vs five seeds of random layer-matched heads, broadcast-ablation bar clearly lower"
+      },
+      "new_visual_element": "MLP amplification bars → broadcast heads highlighted → ablation comparison",
+      "t_start": 151.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "multitask",
+      "narration_text": "And when you force multitasking — copy this sentence, while thinking about two other things — the contents time-share. Held concepts coexist; active computation evicts. A budget, being spent.",
+      "estimated_duration_s": 12.0,
+      "actual_duration_s": 10.94,
+      "audio_file": "mp3/beat-B10.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B10_Multitask",
+        "description": "rebuild Fig 73a: two concept labels (CONCEPT A, CONCEPT B) in a workspace band; horizontal token timeline along x-axis; readout slots toggle between concepts across tokens — A at token 1, B at token 2, A again at 3 — showing time-sharing; label 'held: coexist' for background concepts, 'active: evicts' for the foreground toggle"
+      },
+      "new_visual_element": "two concepts time-sharing across tokens in the workspace band",
+      "t_start": 176.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "anatomy-summary",
+      "narration_text": "Three for three on structure: a band, a budget, a bus. And one loud disanalogy the paper owns: brains broadcast through recurrent loops. A transformer's forward pass has none. Depth might substitute for time. Might.",
+      "estimated_duration_s": 15.0,
+      "actual_duration_s": 12.54,
+      "audio_file": "mp3/beat-B11.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "pattern": "threshold",
+            "title": "Anatomy vs GWT prediction",
+            "note": "Band ✓   Budget ✓   Broadcast bus ✓   Recurrence ✗",
+            "sparkLine": "Depth might substitute for time. Might."
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "threshold card: three anatomy claims pass GWT; recurrence fails",
+      "t_start": 188.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "media",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "verdict",
+      "narration_text": "The verdict, all five lines. The workspace lives in a middle band, roughly layers thirty-eight to ninety-two. Its budget is about twenty-five sparse slots carrying under ten percent of the variance. The eighty-word list shows it holds categories, not items. The broadcast heads are real and ablation-proven. And it has no recurrence — the one piece of anatomy every brain theory assumed.",
+      "estimated_duration_s": 25.0,
+      "actual_duration_s": 19.97,
+      "audio_file": "mp3/beat-B12.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "The Anatomy — verdict",
+            "artifactHeading": "The Anatomy — verdict",
+            "artifactLines": [
+              "Workspace lives in a middle band — roughly layers 38 to 92.",
+              "Budget: ~25 sparse slots, under 10% of variance.",
+              "The 80-word list trick: it holds categories, not items.",
+              "Top-1% broadcast heads are real, ablation-proven.",
+              "No recurrence — the one anatomy a brain has and this doesn't."
+            ]
+          },
+          "rendered": {
+            "out": "media/B12.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "verdict artifact — five lines",
+      "t_start": 203.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B12.mp4",
+        "filled_by": "media",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "your-turn",
+      "narration_text": "Your turn. Ask for the experiment that separates holding a list from holding the idea that generates it — and what a human would do on the same test.",
+      "estimated_duration_s": 13.0,
+      "actual_duration_s": 8.53,
+      "audio_file": "mp3/beat-B13.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "command": "The paper measures workspace capacity as ~25 sparse-reconstruction slots, then shows an 80-word category list 'fits.' Design a memory experiment that separates holding items from holding a category that generates them — and predict what a human would do on the same test.",
+            "topic": "WORKSPACE · ANATOMY — YOUR TURN",
+            "segment": "YOUR TURN",
+            "greeting": "Your turn.",
+            "runningText": "runnable prompt, read in full",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B13.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "your-turn composer prompt",
+      "t_start": 228.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-08-24T15:43:12"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "outro",
+      "narration_text": "The anatomy. Next: what the lens is for — reading a model's mind before it acts.",
+      "estimated_duration_s": 7.0,
+      "actual_duration_s": 5.08,
+      "audio_file": "mp3/beat-B14.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "title": "The Anatomy",
+            "slug": "workspace-anatomy",
+            "handle": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B14.mp4",
+            "at": ""
+          }
+        }
+      },
+      "tail_silence_s": 1.0,
+      "new_visual_element": "title restate outro",
+      "t_start": 241.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-08-24T15:43:12"
+      }
+    }
+  ]
+}

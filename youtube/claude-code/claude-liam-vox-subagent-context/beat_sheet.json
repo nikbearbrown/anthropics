@@ -5,7 +5,7 @@
     "topic": "CLAUDE CODE FOR TEACHERS",
     "source": "claude-code-for-teachers/chapters/10-subagents.md",
     "purpose": "vox-explainer slate cut of Claude Code for Teachers candidate 07. The mechanism: inline research reads all its source documents into the main context window, displacing build work; a subagent runs in its own isolated context and returns only a summary, leaving the main session's build context untouched.",
-    "clock": "narration (ElevenLabs) — durations below are word-count estimates until GATE 0 audio lock",
+    "clock": "narration (Kokoro (VOICE-LOCK)) — durations below are word-count estimates until GATE 0 audio lock",
     "aspect_ratio": "16:9",
     "style_preset": "vox-editorial",
     "color_semantics": "TEAL = subagent / isolated context / build preserved; CRIMSON = inline research / context bloated / build displaced; never swap mid-film",
@@ -25,25 +25,12 @@
       "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
     ],
     "build": {
-      "at": "2026-07-16T06:45:42",
+      "at": "2026-08-10T04:12:35",
       "cut": "master",
-      "filled": 0,
-      "of": 9,
-      "slates": [
-        "B01",
-        "B02",
-        "B03",
-        "B04",
-        "B05",
-        "B06",
-        "B07",
-        "B08",
-        "B09"
-      ],
-      "skin_warnings": [
-        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
-        "B09: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
-      ]
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": []
     },
     "design_version": "v1",
     "voice": "am_onyx"
@@ -79,8 +66,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:12:35"
+      },
+      "actual_duration_s": 15.0
     },
     {
       "beat_id": "B01",
@@ -88,33 +79,32 @@
       "estimated_duration_s": 9.0,
       "narration_text": "This is Liam, in for Bear. The grading-tool session has been running for an hour. Thirty percent context used. The teacher needs to investigate the late-submission policy. They ask Claude — in the same session — to read the policy docs. The session hits seventy-eight percent context. Twenty-two percent remains.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CCSession",
           "props": {
-            "title": "THIS IS LIAM, IN",
-            "items": [
+            "title": "claude-code",
+            "mode": "default",
+            "blocks": [
               {
-                "label": "This is Liam, in for",
-                "sub": "This is Liam, in for Bear.",
-                "icon": "BOX",
-                "cueFrame": 0
+                "type": "prompt",
+                "text": "This is Liam, in for Bear. The grading-tool session has been running for an hour. Thirty percent context used. The teach…",
+                "cue": 0,
+                "typeDuration": 60
               },
               {
-                "label": "The grading-tool session has been",
-                "sub": "The grading-tool session has been running for an hour.",
-                "icon": "BOX",
-                "cueFrame": 24
-              },
-              {
-                "label": "Thirty percent context used.",
-                "sub": "Thirty percent context used.",
-                "icon": "BOX",
-                "cueFrame": 48
+                "type": "tool",
+                "name": "Read",
+                "arg": "file",
+                "state": "done"
               }
-            ]
+            ],
+            "cues": [
+              0,
+              35
+            ],
+            "mascot": "auto"
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -131,11 +121,10 @@
       "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 16.43,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-29T03:41:30",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:12:35"
       }
     },
     {
@@ -149,7 +138,7 @@
         "motion": "drawon",
         "media": "media/B02.mp4",
         "manim": {
-          "scene_class": "Scene_B02_ClaudeLiamVox",
+          "scene_class": "B02_ClaudeLiamVox",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B02.mp4",
@@ -172,11 +161,10 @@
       "audio_file": "mp3/beat-B02.mp3",
       "actual_duration_s": 18.11,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:45:42",
-        "needs": "PIPELINE → render animated_graphics.py scene B02_*"
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:B02_ClaudeLiamVox",
+        "at": "2026-08-10T04:12:35"
       }
     },
     {
@@ -185,33 +173,31 @@
       "estimated_duration_s": 9.0,
       "narration_text": "Here is the question. Adding a research task to a productive session should extend the session's usefulness. Here is the session where a ten-minute research task left only twenty-two percent of the context window for the remaining build work. Why?",
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CCSession",
           "props": {
-            "title": "HERE IS THE QUESTION",
-            "items": [
+            "title": "claude-code",
+            "mode": "default",
+            "blocks": [
               {
-                "label": "Here is the question.",
-                "sub": "Here is the question.",
-                "icon": "BOX",
-                "cueFrame": 0
+                "type": "prompt",
+                "text": "Here is the question. Adding a research task to a productive session should extend the session's usefulness. Here is the…",
+                "cue": 0,
+                "typeDuration": 60
               },
               {
-                "label": "Adding a research task to a productive session",
-                "sub": "Adding a research task to a productive session should extend the session's usefulness.",
-                "icon": "BOX",
-                "cueFrame": 24
-              },
-              {
-                "label": "Here is the session where",
-                "sub": "Here is the session where a ten-minute research task left only twenty-two percent of the context window for the remaining build work.",
-                "icon": "BOX",
-                "cueFrame": 48
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "~3s"
               }
-            ]
+            ],
+            "cues": [
+              0,
+              35
+            ],
+            "mascot": "auto"
           },
           "rendered": {
             "out": "media/B03.mp4",
@@ -227,11 +213,10 @@
       "audio_file": "mp3/beat-B03.mp3",
       "actual_duration_s": 13.03,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-29T03:41:30",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:12:35"
       }
     },
     {
@@ -245,7 +230,7 @@
         "motion": "drawon",
         "media": "media/B04.mp4",
         "manim": {
-          "scene_class": "Scene_B04_ClaudeLiamVox",
+          "scene_class": "B04_ClaudeLiamVox",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B04.mp4",
@@ -268,11 +253,10 @@
       "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 20.39,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:45:42",
-        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim:B04_ClaudeLiamVox",
+        "at": "2026-08-10T04:12:35"
       }
     },
     {
@@ -286,7 +270,7 @@
         "motion": "drawon",
         "media": "media/B05.mp4",
         "manim": {
-          "scene_class": "Scene_B05_ClaudeLiamVox",
+          "scene_class": "B05_ClaudeLiamVox",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B05.mp4",
@@ -309,11 +293,10 @@
       "audio_file": "mp3/beat-B05.mp3",
       "actual_duration_s": 20.52,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:45:42",
-        "needs": "PIPELINE → render animated_graphics.py scene B05_*"
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim:B05_ClaudeLiamVox",
+        "at": "2026-08-10T04:12:35"
       }
     },
     {
@@ -327,7 +310,7 @@
         "motion": "drawon",
         "media": "media/B06.mp4",
         "manim": {
-          "scene_class": "Scene_B06_ClaudeLiamVox",
+          "scene_class": "B06_ClaudeLiamVox",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B06.mp4",
@@ -350,42 +333,11 @@
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 17.26,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:45:42",
-        "needs": "PIPELINE → render animated_graphics.py scene B06_*"
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim:B06_ClaudeLiamVox",
+        "at": "2026-08-10T04:12:35"
       }
-    },
-    {
-      "beat_id": "YOURTURN",
-      "act": "your-turn",
-      "narration_text": "Your turn. Paste this: you want to understand why using a subagent with isolated context is more efficient than one large session. Ask Claude to explain the subagent context isolation benefit — why giving each subagent its own clean window saves more context than it costs — and show you the prompt structure that implements it.",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "estimated_duration_s": 12,
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeComposerAsk",
-          "props": {
-            "greeting": "Your turn.",
-            "topic": "CLAUDE CODE · @NikBearBrown",
-            "command": "I want to understand why using a Claude Code subagent with isolated context is more efficient than running everything in one session. Explain the subagent context isolation benefit: why does giving each subagent its own clean window save more context than it costs — and show me the prompt structure that implements subagent context isolation correctly.",
-            "runningText": "paste your spec, CLAUDE.md, or build plan here…",
-            "folderLabel": "@NikBearBrown",
-            "segment": "Why One Subagent Query Saved 48% of the Context Window",
-            "modelLabel": "Claude Sonnet"
-          }
-        }
-      },
-      "build": {
-        "status": "SLATE",
-        "src": null,
-        "note": "design-v1: YOURTURN added"
-      },
-      "design_version": "v1"
     },
     {
       "beat_id": "B07",
@@ -405,11 +357,32 @@
           "copy": "Here is where this bites in the classroom. The teacher's grading tool processes twenty-five submissions. Without subagent: Claude reads all twenty-five into the main session. The session degrades. The last five students get shallower analysis than the first five. With a pattern-analyzer subagent: all twenty-five are read in the subagent's window. The main session gets a structured pattern report. The session quality is uniform across all twenty-five."
         },
         "remotion": {
-          "pattern": "ClaudeTitleOutro",
+          "pattern": "CCSession",
           "props": {
-            "title": "Why One Subagent Query Saved 48% of the Context Window",
-            "handle": "@NikBearBrown",
-            "mascotSeed": "claude-liam-vox-subagent-context"
+            "title": "claude-code",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Here is where this bites in the classroom. The teacher's grading tool processes twenty-five submissions. Without subagen…",
+                "cue": 0,
+                "typeDuration": 60
+              },
+              {
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "~3s"
+              }
+            ],
+            "cues": [
+              0,
+              35
+            ],
+            "mascot": "auto"
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
           }
         }
       },
@@ -419,9 +392,10 @@
       "audio_file": "mp3/beat-B07.mp3",
       "actual_duration_s": 23.19,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "note": "design-v1: ai→FormA"
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:12:35"
       },
       "act": "OUTRO"
     },
@@ -436,7 +410,7 @@
         "motion": "drawon",
         "media": "media/B08.mp4",
         "manim": {
-          "scene_class": "Scene_B08_ClaudeLiamVox",
+          "scene_class": "B08_ClaudeLiamVox",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B08.mp4",
@@ -458,11 +432,10 @@
       "audio_file": "mp3/beat-B08.mp3",
       "actual_duration_s": 19.14,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:45:42",
-        "needs": "PIPELINE → render animated_graphics.py scene B08_*"
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim:B08_ClaudeLiamVox",
+        "at": "2026-08-10T04:12:35"
       }
     },
     {
@@ -471,33 +444,31 @@
       "estimated_duration_s": 10.0,
       "narration_text": "Research fills context. The subagent takes the fill. The main session keeps the build.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CCSession",
           "props": {
-            "title": "RESEARCH FILLS CONTEXT. THE",
-            "items": [
+            "title": "claude-code",
+            "mode": "default",
+            "blocks": [
               {
-                "label": "Research fills context.",
-                "sub": "Research fills context.",
-                "icon": "BOX",
-                "cueFrame": 0
+                "type": "prompt",
+                "text": "Research fills context. The subagent takes the fill. The main session keeps the build.",
+                "cue": 0,
+                "typeDuration": 60
               },
               {
-                "label": "The subagent takes the fill.",
-                "sub": "The subagent takes the fill.",
-                "icon": "BOX",
-                "cueFrame": 24
-              },
-              {
-                "label": "The main session keeps the build",
-                "sub": "The main session keeps the build.",
-                "icon": "BOX",
-                "cueFrame": 48
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "~3s"
               }
-            ]
+            ],
+            "cues": [
+              0,
+              35
+            ],
+            "mascot": "auto"
           },
           "rendered": {
             "out": "media/B09.mp4",
@@ -514,11 +485,10 @@
       "audio_file": "mp3/beat-B09.mp3",
       "actual_duration_s": 5.48,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-29T03:41:30",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B09"
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:12:35"
       }
     },
     {
@@ -537,11 +507,12 @@
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Why One Subagent Query Saved 48% of the Context Window",
-            "artifactHeading": "Key findings",
+            "artifactHeading": "Subagent Context Isolation",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "Context window = session working memory — reads stay",
+              "Without subagent: research pushes main session to 78% used",
+              "Subagent: isolated window — fills its own, not the main",
+              "Heuristic: task reads more than main needs → subagent task"
             ]
           },
           "rendered": {
@@ -551,8 +522,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:12:35"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BHTF",
@@ -570,12 +545,12 @@
           "pattern": "ClaudeComposerAsk",
           "props": {
             "greeting": "Your turn.",
-            "topic": "YOUR TURN · CLAUDE CODE FOR TEACHERS",
-            "segment": "Why One Subagent Query Saved 48% of…",
-            "command": "Take what you learned from [Why One Subagent Query Saved 48% of the Context Window] and apply it to your own work. What's one thing you'll try first?",
-            "runningText": "paste this into Claude and run it on your own work…",
-            "output": [],
-            "folderLabel": "@NikBearBrown"
+            "topic": "CLAUDE CODE · @NikBearBrown · YOUR TURN",
+            "command": "I want to understand why using a Claude Code subagent with isolated context is more efficient than running everything in one session. Explain the subagent context isolation benefit: why does giving each subagent its own clean window save more context than it costs — and show me the prompt structure that implements subagent context isolation correctly.",
+            "runningText": "paste your spec, CLAUDE.md, or build plan here…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "Why One Subagent Query Saved 48% of the Context Window",
+            "modelLabel": "Claude Sonnet"
           },
           "rendered": {
             "out": "media/BHTF.mp4",
@@ -584,8 +559,13 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:12:35"
+      },
+      "actual_duration_s": 20.0,
+      "narration": ""
     },
     {
       "beat_id": "BOUT",
@@ -603,7 +583,8 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "Why One Subagent Query Saved 48% of the Context Window",
-            "slug": "vox-subagent-context"
+            "slug": "vox-subagent-context",
+            "handle": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -612,8 +593,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:12:35"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

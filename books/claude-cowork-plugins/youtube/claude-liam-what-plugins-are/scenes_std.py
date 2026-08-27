@@ -15,8 +15,8 @@ class Scene_B02_ClaudeLiamWhat(Scene):
         self.camera.background_color = "#F2F0E9"
         font = "EB Garamond"
 
-        if "ACT I":
-            act = Text("ACT I", font_size=24, color="#3D3929", font=font)
+        if "ACT  I":
+            act = Text("ACT  I", font_size=24, color="#3D3929", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
@@ -26,14 +26,14 @@ class Scene_B02_ClaudeLiamWhat(Scene):
         self.play(Create(spark), run_time=0.2)
 
         # Primary concept text
-        if "A plugin makes Claude the accountant - or the [...]":
-            line1 = Text("A plugin makes Claude the accountant - or the [...]", font_size=36, color="#3D3929", font=font)
+        if "Broad & shallow":
+            line1 = Text("Broad & shallow", font_size=36, color="#3D3929", font=font)
             line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
             line1.shift(UP * 0.3)
             self.play(Write(line1), run_time=0.5)
 
-        if "It trades a mile of shallow knowledge for a well that [...]":
-            line2 = Text("It trades a mile of shallow knowledge for a well that [...]", font_size=28, color="#3D3929", font=font)
+        if "Deep specialist":
+            line2 = Text("Deep specialist", font_size=28, color="#3D3929", font=font)
             line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
             line2.shift(DOWN * 0.6)
             self.play(Write(line2), run_time=0.4)
@@ -45,8 +45,8 @@ class Scene_B02_ClaudeLiamWhat(Scene):
             self.play(FadeIn(line3), run_time=0.3)
 
         # Terracotta underline on key term
-        if "A plugin makes Claude the accountant - or the [...]":
-            uline = Line(LEFT * min(4.0, len("A plugin makes Claude the accountant - or the [...]") * 0.18), RIGHT * min(4.0, len("A plugin makes Claude the accountant - or the [...]") * 0.18),
+        if "Deep specialist":
+            uline = Line(LEFT * min(4.0, len("Deep specialist") * 0.18), RIGHT * min(4.0, len("Deep specialist") * 0.18),
                          color="#D97757", stroke_width=2)
             uline.shift(UP * 0.1)
             self.play(Create(uline), run_time=0.3)
@@ -60,8 +60,8 @@ class Scene_B04_ClaudeLiamWhat(Scene):
         self.camera.background_color = "#F2F0E9"
         font = "EB Garamond"
 
-        if "ACT II":
-            act = Text("ACT II", font_size=24, color="#3D3929", font=font)
+        if "ACT  II":
+            act = Text("ACT  II", font_size=24, color="#3D3929", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
@@ -71,27 +71,27 @@ class Scene_B04_ClaudeLiamWhat(Scene):
         self.play(Create(spark), run_time=0.2)
 
         # Primary concept text
-        if "Skills are the expertise - methodical frameworks, not [...]":
-            line1 = Text("Skills are the expertise - methodical frameworks, not [...]", font_size=36, color="#3D3929", font=font)
+        if "Skills":
+            line1 = Text("Skills", font_size=36, color="#3D3929", font=font)
             line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
             line1.shift(UP * 0.3)
             self.play(Write(line1), run_time=0.5)
 
-        if "They switch on automatically when they\'re relevant":
-            line2 = Text("They switch on automatically when they\'re relevant", font_size=28, color="#3D3929", font=font)
+        if "Auto-activate":
+            line2 = Text("Auto-activate", font_size=28, color="#3D3929", font=font)
             line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
             line2.shift(DOWN * 0.6)
             self.play(Write(line2), run_time=0.4)
 
-        if "Ask a marketing question with marketing installed, and [...]":
-            line3 = Text("Ask a marketing question with marketing installed, and [...]", font_size=22, color="#3D3929", font=font)
+        if "On relevant asks":
+            line3 = Text("On relevant asks", font_size=22, color="#3D3929", font=font)
             line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
             line3.shift(DOWN * 1.4)
             self.play(FadeIn(line3), run_time=0.3)
 
         # Terracotta underline on key term
-        if "Skills are the expertise - methodical frameworks, not [...]":
-            uline = Line(LEFT * min(4.0, len("Skills are the expertise - methodical frameworks, not [...]") * 0.18), RIGHT * min(4.0, len("Skills are the expertise - methodical frameworks, not [...]") * 0.18),
+        if "Skills":
+            uline = Line(LEFT * min(4.0, len("Skills") * 0.18), RIGHT * min(4.0, len("Skills") * 0.18),
                          color="#D97757", stroke_width=2)
             uline.shift(UP * 0.1)
             self.play(Create(uline), run_time=0.3)
@@ -106,14 +106,14 @@ class Scene_B07_ClaudeLiamWhat(Scene):
         font = "EB Garamond"
 
         # Act label at top
-        if "ACT II":
-            act = Text("ACT II", font_size=24, color="#3D3929", font=font, slant=NORMAL)
+        if "ACT  II":
+            act = Text("ACT  II", font_size=24, color="#3D3929", font=font, slant=NORMAL)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
         # Build pipeline boxes that reveal left-to-right
         stages = []
-        labels_text = [t for t in ["Subagents are the autonomy", "Ask finance to build a model, and it quietly [...]", ""] if t]
+        labels_text = [t for t in ["Request", "Coordinate", "Deliver"] if t]
         if not labels_text:
             labels_text = ["Input", "Process", "Output"]
 
@@ -156,12 +156,12 @@ class Scene_B09_ClaudeLiamWhat(Scene):
         self.camera.background_color = "#F2F0E9"
         font = "EB Garamond"
 
-        if "ACT III":
-            act = Text("ACT III", font_size=24, color="#3D3929", font=font)
+        if "ACT  III":
+            act = Text("ACT  III", font_size=24, color="#3D3929", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
-        layers_text = [t for t in ["Without plugins, Claude knows sales in the abstract, [...]", "Broad knowledge, shallow for any real job", "With a plugin, that general knowledge becomes [...]"] if t]
+        layers_text = [t for t in ["General knowledge", "Broad, not deep", "Contextual capability"] if t]
         if not layers_text:
             layers_text = ["Layer 1", "Layer 2", "Layer 3"]
 
@@ -192,8 +192,8 @@ class Scene_B13_ClaudeLiamWhat(Scene):
         self.camera.background_color = "#F2F0E9"
         font = "EB Garamond"
 
-        if "ACT IV":
-            act = Text("ACT IV", font_size=24, color="#3D3929", font=font)
+        if "ACT  IV":
+            act = Text("ACT  IV", font_size=24, color="#3D3929", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
@@ -203,27 +203,27 @@ class Scene_B13_ClaudeLiamWhat(Scene):
         self.play(Create(spark), run_time=0.2)
 
         # Primary concept text
-        if "Anthropic released these as open source":
-            line1 = Text("Anthropic released these as open source", font_size=36, color="#3D3929", font=font)
+        if "Open source":
+            line1 = Text("Open source", font_size=36, color="#3D3929", font=font)
             line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
             line1.shift(UP * 0.3)
             self.play(Write(line1), run_time=0.5)
 
-        if "For you that mostly means free - no charge beyond your [...]":
-            line2 = Text("For you that mostly means free - no charge beyond your [...]", font_size=28, color="#3D3929", font=font)
+        if "Free to use":
+            line2 = Text("Free to use", font_size=28, color="#3D3929", font=font)
             line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
             line2.shift(DOWN * 0.6)
             self.play(Write(line2), run_time=0.4)
 
-        if "But open buys three more things: transparency instead [...]":
-            line3 = Text("But open buys three more things: transparency instead [...]", font_size=22, color="#3D3929", font=font)
+        if "Customizable":
+            line3 = Text("Customizable", font_size=22, color="#3D3929", font=font)
             line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
             line3.shift(DOWN * 1.4)
             self.play(FadeIn(line3), run_time=0.3)
 
         # Terracotta underline on key term
-        if "Anthropic released these as open source":
-            uline = Line(LEFT * min(4.0, len("Anthropic released these as open source") * 0.18), RIGHT * min(4.0, len("Anthropic released these as open source") * 0.18),
+        if "Open source":
+            uline = Line(LEFT * min(4.0, len("Open source") * 0.18), RIGHT * min(4.0, len("Open source") * 0.18),
                          color="#D97757", stroke_width=2)
             uline.shift(UP * 0.1)
             self.play(Create(uline), run_time=0.3)
@@ -238,14 +238,14 @@ class Scene_B14_ClaudeLiamWhat(Scene):
         font = "EB Garamond"
 
         # Act label at top
-        if "ACT IV":
-            act = Text("ACT IV", font_size=24, color="#3D3929", font=font, slant=NORMAL)
+        if "ACT  IV":
+            act = Text("ACT  IV", font_size=24, color="#3D3929", font=font, slant=NORMAL)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
         # Build pipeline boxes that reveal left-to-right
         stages = []
-        labels_text = [t for t in ["Out of the box, the sales plugin is useful", "Configured with your process, your qualifying [...]", "Customization is the next chapter - but it\'s where the [...]"] if t]
+        labels_text = [t for t in ["Stock install", "Your process", "Optimized"] if t]
         if not labels_text:
             labels_text = ["Input", "Process", "Output"]
 
@@ -288,12 +288,12 @@ class Scene_B17_ClaudeLiamWhat(Scene):
         self.camera.background_color = "#F2F0E9"
         font = "EB Garamond"
 
-        if "ACT VI":
-            act = Text("ACT VI", font_size=24, color="#3D3929", font=font)
+        if "ACT  VI":
+            act = Text("ACT  VI", font_size=24, color="#3D3929", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
-        layers_text = [t for t in ["You don\'t need the whole catalog; most people run two [...]", "Start with your primary function - whatever you spend [...]", "Add your biggest bottleneck - the thing you know you [...]"] if t]
+        layers_text = [t for t in ["Primary function", "Key bottleneck", "Productivity base"] if t]
         if not layers_text:
             layers_text = ["Layer 1", "Layer 2", "Layer 3"]
 

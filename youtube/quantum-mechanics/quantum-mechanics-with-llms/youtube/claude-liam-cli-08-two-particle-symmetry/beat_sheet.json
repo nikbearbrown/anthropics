@@ -42,10 +42,7 @@
       "lane": "BOOKEND",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
-      "build": {
-        "status": "SLATE"
-      }
+      "voice_kokoro": "am_onyx"
     },
     {
       "beat_id": "B01",
@@ -60,20 +57,20 @@
             "title": "Two-Particle Quantum Statistics with Claude",
             "items": [
               {
-                "label": "Key point one",
-                "sub": "",
+                "label": "3-panel heatmap: Boson · Fermion · Distinguishable",
+                "sub": "One prompt. Single-file HTML, all physics in the browser.",
                 "icon": "target",
                 "cueFrame": 20
               },
               {
-                "label": "Key point two",
-                "sub": "",
+                "label": "Bosonic bunching ratio = 2.0",
+                "sub": "P_sym / P_dist doubles on the x₁ = x₂ diagonal.",
                 "icon": "list-checks",
                 "cueFrame": 55
               },
               {
-                "label": "Key point three",
-                "sub": "",
+                "label": "Pauli node: P_anti = 0 on diagonal",
+                "sub": "Fermionic exclusion — zero probability where x₁ = x₂.",
                 "icon": "zap",
                 "cueFrame": 90
               }
@@ -91,20 +88,30 @@
       "lane": "BOOKEND",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
-      "build": {
-        "status": "SLATE"
-      }
+      "voice_kokoro": "am_onyx"
     },
     {
       "beat_id": "B02",
       "act": "ASK",
       "narration_text": "Here is the prompt.",
       "shot": {
-        "type": "remotion",
-        "source": "ClaudeComposerAsk",
-        "props": {
-          "prompt": "Build me an interactive D3 simulation of boson/fermion/distinguishable 3-panel heatmap. Use D3 version 7 from CDN. Single-file HTML, all physics computed in-browser JavaScript. Add at least one slider or control. Teardown palette: background #FFFFFF, ink #2A1A0E, accent #C8102E."
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam",
+            "topic": "CLAUDE · TWO-PARTICLE QUANTUM STATISTICS",
+            "segment": "Two-Particle Quantum Statistics with Claude",
+            "command": "Build me an interactive D3 simulation of boson/fermion/distinguishable 3-panel heatmap. Use D3 v7 from CDN. Single-file HTML, all physics in-browser. Teardown palette: #FFFFFF, #2A1A0E, #C8102E.",
+            "runningText": "building the answer…",
+            "output": [],
+            "folderLabel": "@claude-liam"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
         }
       },
       "estimated_duration_s": 5.0,
@@ -116,7 +123,7 @@
       "act": "CODE",
       "narration_text": "Claude returns a single-file HTML. D3 version 7. All the physics runs in the browser. No server. No build step.",
       "shot": {
-        "type": "slate"
+        "type": "SLATE"
       },
       "estimated_duration_s": 5.0,
       "audio_file": "mp3/beat-B03.mp3",
@@ -125,10 +132,17 @@
     {
       "beat_id": "B04",
       "act": "OUTPUT",
-      "narration_text": "Here is the baseline — the simulation at rest. Boson/Fermion/Distinguishable 3-panel heatmap.",
+      "narration_text": "Here is the ratio view — bosonic bunching in red, Pauli exclusion node in dark. Two controls: the mode toggle and the heatmap click.",
       "shot": {
-        "type": "video",
-        "source": "media/B04.mp4"
+        "type": "SCREEN",
+        "source": "capture",
+        "motion": "static"
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/ratio-view.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T21:48:38"
       },
       "estimated_duration_s": 6.0,
       "audio_file": "mp3/beat-B04.mp3",
@@ -139,7 +153,7 @@
       "act": "CHANGE",
       "narration_text": "Now interact with the control — drag the slider, click the toggle. Watch the physics respond.",
       "shot": {
-        "type": "slate"
+        "type": "SLATE"
       },
       "estimated_duration_s": 5.0,
       "audio_file": "mp3/beat-B05.mp3",
@@ -150,8 +164,15 @@
       "act": "OUTPUT",
       "narration_text": "The simulation updates in real time. bosonic bunching ratio=2. Exactly as the equations predict.",
       "shot": {
-        "type": "video",
-        "source": "media/B06.mp4"
+        "type": "SCREEN",
+        "source": "capture",
+        "motion": "static"
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/inspector.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T21:48:38"
       },
       "estimated_duration_s": 8.0,
       "audio_file": "mp3/beat-B06.mp3",
@@ -162,7 +183,7 @@
       "act": "SUMMARY",
       "narration_text": "One prompt. A live quantum mechanics demonstration. Boson/Fermion/Distinguishable 3-panel heatmap. Bear reviews these in the morning and ships the ones that pass.",
       "shot": {
-        "type": "slate"
+        "type": "SLATE"
       },
       "estimated_duration_s": 7.0,
       "audio_file": "mp3/beat-B07.mp3",
@@ -173,11 +194,23 @@
       "act": "NEXT STEPS",
       "narration_text": "Your turn. Extend this 08 two particle symmetry simulation. Add a second control that changes [parameter]. Show how it affects the result.",
       "shot": {
-        "type": "remotion",
-        "source": "ClaudeComposerAsk",
-        "props": {
-          "prompt": "Extend this 08 two particle symmetry simulation. Add a second control that changes [parameter]. Show how it affects the result.",
-          "greeting": "Your turn."
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLI · CLAUDE",
+            "segment": "Two-Particle Quantum Statistics with Claude",
+            "command": "Extend this 08 two particle symmetry simulation. Add a second control that changes [parameter]. Show how it affects the result.",
+            "runningText": "thinking…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
         }
       },
       "estimated_duration_s": 6.0,
@@ -197,13 +230,12 @@
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
-            "artifactTitle": "Two-Particle Quantum Statistics with Cla",
-            "artifactHeading": "CLAUDE LIAM CLI 08 TWO PARTICL: WHAT IT BUILDS",
+            "artifactTitle": "Two-Particle Quantum Statistics",
+            "artifactHeading": "TWO-PARTICLE SYMMETRY: WHAT IT BUILDS",
             "artifactLines": [
-              "Quantum mechanics is full of non-obvious results.",
-              "Claude returns a single-file HTML.",
-              "Now interact with the control — drag the slider, click the toggle.",
-              "One prompt."
+              "Bosonic bunching: P_sym / P_dist = 2.0 on the x₁=x₂ diagonal",
+              "Pauli exclusion node: P_anti = 0 exactly where x₁ = x₂",
+              "Ratio mode shows the quantum departure from classical — computed, not asserted"
             ]
           },
           "rendered": {
@@ -254,7 +286,7 @@
           "props": {
             "title": "Two-Particle Quantum Statistics with Claude",
             "handle": "@NikBearBrown",
-            "subline": "Today's: Boson/Fermion/Distinguishable 3-panel heatmap."
+            "subline": ""
           },
           "rendered": {
             "out": "media/B09.mp4",
@@ -289,9 +321,6 @@
             "at": ""
           }
         }
-      },
-      "build": {
-        "status": "SLATE"
       }
     }
   ]

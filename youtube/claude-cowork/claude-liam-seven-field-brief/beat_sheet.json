@@ -30,24 +30,12 @@
       "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
     ],
     "build": {
-      "at": "2026-07-16T06:57:36",
+      "at": "2026-08-10T04:02:29",
       "cut": "master",
-      "filled": 0,
-      "of": 8,
-      "slates": [
-        "B00",
-        "B01",
-        "B02",
-        "B03",
-        "B04",
-        "B05",
-        "B06",
-        "B07"
-      ],
-      "skin_warnings": [
-        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
-        "B07: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
-      ]
+      "filled": 11,
+      "of": 11,
+      "slates": [],
+      "skin_warnings": []
     },
     "design_version": "v1",
     "voice": "am_onyx"
@@ -93,7 +81,10 @@
       "audio_file": "mp3/beat-B00.mp3",
       "actual_duration_s": 14.91,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:02:29"
       },
       "lane": "BOOKEND",
       "voice": "am_onyx",
@@ -108,28 +99,42 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CoworkTaskView",
           "props": {
-            "title": "Seven Fields That Make a Task Brief",
-            "items": [
+            "blocks": [
               {
-                "label": "Key point one",
-                "sub": "",
-                "icon": "target",
-                "cueFrame": 20
+                "type": "prompt",
+                "text": "Marcus's brief said 'summarize Q3 reports into a board document.' No year range. No specification of…"
               },
               {
-                "label": "Key point two",
-                "sub": "",
-                "icon": "list-checks",
-                "cueFrame": 55
-              },
-              {
-                "label": "Key point three",
-                "sub": "",
-                "icon": "zap",
-                "cueFrame": 90
+                "type": "review",
+                "items": [
+                  {
+                    "title": "Marcus's brief said 'summarize Q3 reports into a board document.' No year range.",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  },
+                  {
+                    "title": "No specification of which financial data was in scope.",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  },
+                  {
+                    "title": "No indication that the three pilot sites ran on different tracking systems.",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  },
+                  {
+                    "title": "Cowork summarized what it found, presented it as complete, and the board document was wron",
+                    "badge": "Warning",
+                    "badgeTone": "warn"
+                  }
+                ]
               }
+            ],
+            "cues": [
+              0,
+              18
             ]
           },
           "rendered": {
@@ -144,9 +149,12 @@
       "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 19.86,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:02:29"
       },
-      "lane": "BOOKEND",
+      "lane": "LANE_A",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx"
@@ -161,7 +169,7 @@
         "motion": "callout-reveal",
         "media": "media/B02.mp4",
         "manim": {
-          "scene_class": "Scene_B02_ClaudeLiamSeven",
+          "scene_class": "B02_ClaudeLiamSeven",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B02.mp4",
@@ -175,11 +183,10 @@
       "audio_file": "mp3/beat-B02.mp3",
       "actual_duration_s": 18.92,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:57:36",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:B02_ClaudeLiamSeven",
+        "at": "2026-08-10T04:02:29"
       }
     },
     {
@@ -192,7 +199,7 @@
         "motion": "callout-reveal",
         "media": "media/B03.mp4",
         "manim": {
-          "scene_class": "Scene_B03_ClaudeLiamSeven",
+          "scene_class": "B03_ClaudeLiamSeven",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B03.mp4",
@@ -206,11 +213,10 @@
       "audio_file": "mp3/beat-B03.mp3",
       "actual_duration_s": 16.66,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:57:36",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim:B03_ClaudeLiamSeven",
+        "at": "2026-08-10T04:02:29"
       }
     },
     {
@@ -223,7 +229,7 @@
         "motion": "callout-reveal",
         "media": "media/B04.mp4",
         "manim": {
-          "scene_class": "Scene_B04_ClaudeLiamSeven",
+          "scene_class": "B04_ClaudeLiamSeven",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B04.mp4",
@@ -237,11 +243,10 @@
       "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 15.66,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:57:36",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim:B04_ClaudeLiamSeven",
+        "at": "2026-08-10T04:02:29"
       }
     },
     {
@@ -251,7 +256,67 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "stagger"
+        "motion": "stagger",
+        "remotion": {
+          "pattern": "CoworkTaskView",
+          "props": {
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Could a stranger read this brief and know exactly what Cowork may do?"
+              },
+              {
+                "type": "review",
+                "items": [
+                  {
+                    "title": "Objective — outcome, not process",
+                    "badge": "Field 1",
+                    "badgeTone": "pass"
+                  },
+                  {
+                    "title": "Sources allowed",
+                    "badge": "Field 2",
+                    "badgeTone": "pass"
+                  },
+                  {
+                    "title": "Forbidden data",
+                    "badge": "Field 3",
+                    "badgeTone": "pass"
+                  },
+                  {
+                    "title": "Output format",
+                    "badge": "Field 4",
+                    "badgeTone": "pass"
+                  },
+                  {
+                    "title": "Decision rules — flag conflicts, never resolve",
+                    "badge": "Field 5",
+                    "badgeTone": "pass"
+                  },
+                  {
+                    "title": "Verification criteria",
+                    "badge": "Field 6",
+                    "badgeTone": "pass"
+                  },
+                  {
+                    "title": "Stop conditions — missing source = pause",
+                    "badge": "Field 7",
+                    "badgeTone": "pass"
+                  }
+                ]
+              }
+            ],
+            "cues": [
+              0,
+              18,
+              30
+            ]
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
       },
       "new_visual_element": "Artifact view — completed seven-field brief template",
       "spark_line": "Missing fields = bad output.",
@@ -259,11 +324,10 @@
       "audio_file": "mp3/beat-B05.mp3",
       "actual_duration_s": 18.07,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:57:36",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:02:29"
       }
     },
     {
@@ -273,7 +337,20 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "type-on"
+        "motion": "type-on",
+        "remotion": {
+          "pattern": "CoworkComposer",
+          "props": {
+            "typedText": "Help me write a seven-field Cowork task brief for this task: [describe your task]",
+            "heading": "Build your brief first.",
+            "subline": "Fill in: objective, sources, forbidden data, output format, decision rules, verification, stop conditions.",
+            "hint": "Paste this into Claude before your next Cowork task."
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
       },
       "new_visual_element": "HANDOFF — brief builder prompt",
       "remotion": {
@@ -291,36 +368,11 @@
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 6.49,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:57:36",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:02:29"
       }
-    },
-    {
-      "beat_id": "YOURTURN",
-      "act": "your-turn",
-      "lane": "REMOTION",
-      "scene": "ClaudeComposerAsk",
-      "narration_text": "Your turn. Paste this: you want to build a standard task brief format for your team's Claude workflows so everyone gives Claude the same quality input. Ask Claude to show you the seven-field brief: what each field is, why each one is necessary rather than optional, and which field is most commonly omitted — causing the most common failure mode in team Claude workflows.",
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeComposerAsk",
-          "props": {
-            "greeting": "Your turn.",
-            "command": "I want to build a standard task brief format for my team's Claude workflows so everyone gives Claude the same quality input. Show me the seven-field brief: what each field is (task, context, output format, constraints, audience, examples, success criteria), why each one is necessary rather than optional, and which field is most commonly omitted and causes the most common team workflow failure.",
-            "segment": "Seven Fields That Make a Task Brief",
-            "topic": "CLAUDE COWORK · @NikBearBrown",
-            "folderLabel": "@NikBearBrown",
-            "modelLabel": "Claude Sonnet",
-            "runningText": "paste your task, workflow, or brief here…"
-          }
-        }
-      },
-      "est_s": 14
     },
     {
       "beat_id": "B07",
@@ -331,11 +383,27 @@
         "source": "own",
         "motion": "fade",
         "remotion": {
-          "pattern": "ClaudeTitleOutro",
+          "pattern": "CoworkTaskView",
           "props": {
-            "title": "Seven Fields That Make a Task Brief",
-            "handle": "@NikBearBrown",
-            "mascotSeed": "claude-liam-seven-field-brief"
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "If this turns your next crash into a fixable spec, subscribe. Liam, in for Bear."
+              },
+              {
+                "type": "toolline",
+                "text": "If this turns your next crash into a fixable spec, subscribe. Liam, in for Bear.",
+                "spinner": false
+              }
+            ],
+            "cues": [
+              0,
+              20
+            ]
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
           }
         }
       },
@@ -344,9 +412,10 @@
       "audio_file": "mp3/beat-B07.mp3",
       "actual_duration_s": 5.33,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "note": "design-v1: title-fixed,handle-fixed,mascotSeed-added"
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:02:29"
       }
     },
     {
@@ -365,11 +434,12 @@
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Seven Fields That Make a Task Brief",
-            "artifactHeading": "Key findings",
+            "artifactHeading": "The Seven-Field Brief",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "Field 1: objective — outcome, not process",
+              "Field 5: decision rules — what to do when sources conflict",
+              "Field 7: stop conditions — missing file, bad number",
+              "Test: could a stranger know what Cowork may NOT do?"
             ]
           },
           "rendered": {
@@ -379,8 +449,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:02:29"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BHTF",
@@ -398,12 +472,12 @@
           "pattern": "ClaudeComposerAsk",
           "props": {
             "greeting": "Your turn.",
-            "topic": "YOUR TURN · TASK BRIEFS · COWORK",
+            "command": "I want to build a standard task brief format for my team's Claude workflows so everyone gives Claude the same quality input. Show me the seven-field brief: what each field is (task, context, output format, constraints, audience, examples, success criteria), why each one is necessary rather than optional, and which field is most commonly omitted and causes the most common team workflow failure.",
             "segment": "Seven Fields That Make a Task Brief",
-            "command": "Take what you learned from [Seven Fields That Make a Task Brief] and apply it to your own work. What's one thing you'll try first?",
-            "runningText": "paste this into Claude and run it on your own work…",
-            "output": [],
-            "folderLabel": "@NikBearBrown"
+            "topic": "CLAUDE COWORK · @NikBearBrown · YOUR TURN",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your task, workflow, or brief here…"
           },
           "rendered": {
             "out": "media/BHTF.mp4",
@@ -412,8 +486,13 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:02:29"
+      },
+      "actual_duration_s": 20.0,
+      "narration": ""
     },
     {
       "beat_id": "BOUT",
@@ -431,7 +510,8 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "Seven Fields That Make a Task Brief",
-            "slug": "seven-field-brief"
+            "slug": "seven-field-brief",
+            "handle": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -440,8 +520,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:02:29"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

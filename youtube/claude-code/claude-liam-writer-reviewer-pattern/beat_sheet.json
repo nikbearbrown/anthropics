@@ -30,23 +30,12 @@
       "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
     ],
     "build": {
-      "at": "2026-07-16T06:46:10",
+      "at": "2026-08-10T03:03:16",
       "cut": "master",
-      "filled": 0,
-      "of": 7,
-      "slates": [
-        "B00",
-        "B01",
-        "B02",
-        "B03",
-        "B04",
-        "B05",
-        "B06"
-      ],
-      "skin_warnings": [
-        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
-        "B06: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
-      ]
+      "filled": 10,
+      "of": 10,
+      "slates": [],
+      "skin_warnings": []
     },
     "design_version": "v1",
     "voice": "am_onyx"
@@ -92,7 +81,10 @@
       "audio_file": "mp3/beat-B00.mp3",
       "actual_duration_s": 20.07,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:03:16"
       },
       "lane": "BOOKEND",
       "voice": "am_onyx",
@@ -107,29 +99,29 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CCSession",
           "props": {
-            "title": "Writer/Reviewer: Same Model, Clean Context",
-            "items": [
+            "title": "claude-code",
+            "mode": "default",
+            "blocks": [
               {
-                "label": "Key point one",
-                "sub": "",
-                "icon": "target",
-                "cueFrame": 20
+                "type": "prompt",
+                "text": "Same-context review is the most common subagent failure to notice. The reviewer is the writer. It re-reads the code in t…",
+                "cue": 0,
+                "typeDuration": 60
               },
               {
-                "label": "Key point two",
-                "sub": "",
-                "icon": "list-checks",
-                "cueFrame": 55
-              },
-              {
-                "label": "Key point three",
-                "sub": "",
-                "icon": "zap",
-                "cueFrame": 90
+                "type": "tool",
+                "name": "Read",
+                "arg": "file",
+                "state": "done"
               }
-            ]
+            ],
+            "cues": [
+              0,
+              35
+            ],
+            "mascot": "auto"
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -143,9 +135,12 @@
       "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 21.25,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:03:16"
       },
-      "lane": "BOOKEND",
+      "lane": "LANE_A",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx"
@@ -160,7 +155,7 @@
         "motion": "callout-reveal",
         "media": "media/B02.mp4",
         "manim": {
-          "scene_class": "Scene_B02_ClaudeLiamWriter",
+          "scene_class": "B02_ClaudeLiamWriter",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B02.mp4",
@@ -174,11 +169,10 @@
       "audio_file": "mp3/beat-B02.mp3",
       "actual_duration_s": 22.1,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:46:10",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:B02_ClaudeLiamWriter",
+        "at": "2026-08-10T03:03:16"
       }
     },
     {
@@ -191,7 +185,7 @@
         "motion": "callout-reveal",
         "media": "media/B03.mp4",
         "manim": {
-          "scene_class": "Scene_B03_ClaudeLiamWriter",
+          "scene_class": "B03_ClaudeLiamWriter",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B03.mp4",
@@ -205,11 +199,10 @@
       "audio_file": "mp3/beat-B03.mp3",
       "actual_duration_s": 25.86,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:46:10",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim:B03_ClaudeLiamWriter",
+        "at": "2026-08-10T03:03:16"
       }
     },
     {
@@ -219,7 +212,51 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "stagger"
+        "motion": "stagger",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "claude-code · writer-reviewer",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "text",
+                "text": "Writer/Reviewer: not distrust — context pollution"
+              },
+              {
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "0m 18s"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "claude --context=clean review.md",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Reviewer session: own context window, own system prompt"
+              },
+              {
+                "type": "text",
+                "text": "Catches assumptions the writer's context made invisible"
+              }
+            ],
+            "mascot": "auto",
+            "cues": [
+              0,
+              20,
+              40,
+              70,
+              90
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
       },
       "new_visual_element": "Artifact view — same model / different context / reviewer finds what writer cannot",
       "spark_line": "Same model. Empty context.",
@@ -227,11 +264,10 @@
       "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 20.2,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:46:10",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:03:16"
       }
     },
     {
@@ -252,19 +288,22 @@
             "runningText": "paste your spec, CLAUDE.md, or build plan here…",
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Claude Sonnet"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
           }
         }
       },
       "new_visual_element": "HANDOFF — reviewer subagent prompt",
       "estimated_duration_s": 9,
       "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 4.1,
+      "actual_duration_s": 18.15,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:46:10",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:03:16"
       }
     },
     {
@@ -275,11 +314,32 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "ClaudeTitleOutro",
+          "pattern": "CCSession",
           "props": {
-            "title": "Writer/Reviewer: Same Model, Clean Context",
-            "handle": "@NikBearBrown",
-            "mascotSeed": "claude-liam-writer-reviewer-pattern"
+            "title": "claude-code",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "If this catches the error the writer's context made invisible, subscribe. Liam, in for Bear.",
+                "cue": 0,
+                "typeDuration": 60
+              },
+              {
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "~3s"
+              }
+            ],
+            "cues": [
+              0,
+              35
+            ],
+            "mascot": "auto"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
           }
         }
       },
@@ -288,10 +348,12 @@
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 6.04,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "note": "design-v1: title-fixed,handle-fixed,mascotSeed-added"
-      }
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:03:16"
+      },
+      "lane": "LANE_A"
     },
     {
       "beat_id": "BVDT",
@@ -309,11 +371,12 @@
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Writer/Reviewer: Same Model, Clean Context",
-            "artifactHeading": "Key findings",
+            "artifactHeading": "Writer / Reviewer Pattern",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "Same-context review: reviewer inherits writer assumptions",
+              "Subagent = isolated context + own prompt + own tools",
+              "Reviewer subagent catches input-assumption failures",
+              "Not distrust — context pollution is the problem"
             ]
           },
           "rendered": {
@@ -323,8 +386,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:03:16"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BHTF",
@@ -356,8 +423,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:03:16"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BOUT",
@@ -375,7 +446,8 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "Writer/Reviewer: Same Model, Clean Context",
-            "slug": "writer-reviewer-pattern"
+            "slug": "writer-reviewer-pattern",
+            "handle": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -384,8 +456,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T03:03:16"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

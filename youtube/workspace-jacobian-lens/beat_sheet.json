@@ -1,0 +1,645 @@
+{
+  "metadata": {
+    "slug": "workspace-jacobian-lens",
+    "book": "anthropics",
+    "title": "The Jacobian Lens",
+    "topic": "Transformer Circuits · July 2026",
+    "purpose": "Lay out exactly what the Jacobian lens is, prove it beats the older lenses, then name the single-token blind spot the paper ships its own patches for.",
+    "clock": "narration",
+    "register": "teardown",
+    "style_preset": "claude",
+    "channel": "claude-liam",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "skill": "deep-explainer",
+    "gate": "GATE P — moot (Kokoro free); audio not yet generated",
+    "series": "The Workspace Papers",
+    "series_episode": "E01",
+    "source_url": "transformer-circuits.pub/2026/workspace/",
+    "corpus_path": "books/arxiv/transformer-circuits.pub/",
+    "estimated_runtime_s": 256.0,
+    "aspect_ratio": "16:9",
+    "palette": "claude",
+    "build": {
+      "at": "2026-08-25T10:53:43",
+      "cut": "master",
+      "filled": 16,
+      "of": 17,
+      "slates": [
+        "B09"
+      ],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold-open",
+      "narration_text": "",
+      "estimated_duration_s": 7.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "command": "Anthropic says it found a way to read what a model is about to say — at every layer, before it says anything. Walk me through the Jacobian lens paper, and tell me where the trick breaks.",
+            "topic": "WORKSPACE · JACOBIAN LENS",
+            "segment": "E01: The Instrument",
+            "greeting": "The ask,",
+            "runningText": "composer types the ask — no narration",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "composer types the ask",
+      "t_start": 0.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "title",
+      "narration_text": "July 2026. Anthropic publishes a paper the length of a book, built around one instrument. Before we trust any reading it takes, we look at the instrument.",
+      "estimated_duration_s": 12.0,
+      "actual_duration_s": 9.71,
+      "audio_file": "mp3/beat-B01.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "lines": [
+              "The Jacobian Lens",
+              "Transformer Circuits · July 2026"
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "title card — FormACard",
+      "t_start": 7.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "setup",
+      "narration_text": "A transformer builds its answer layer by layer, in a running scratch vector called the residual stream. The question is what's written there, mid-stack — long before the output.",
+      "estimated_duration_s": 14.0,
+      "actual_duration_s": 9.83,
+      "audio_file": "mp3/beat-B02.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "scene_class": "B02_ResidualStack"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B02_ResidualStack",
+        "description": "token column rising through a layer stack; probe arrow at layer L"
+      },
+      "new_visual_element": "residual stream layer stack with probe arrow",
+      "t_start": 19.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "instrument",
+      "narration_text": "The Jacobian lens asks, for every word in the vocabulary: if the model were about to say this word, which direction in this layer's activations would push it harder? One gradient. One vector per word.",
+      "estimated_duration_s": 16.0,
+      "actual_duration_s": 11.33,
+      "audio_file": "mp3/beat-B03.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "scene_class": "B03_JLensGradient"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B03_JLensGradient",
+        "description": "gradient arrows flowing back from output distribution to layer L; one vector per vocabulary token materializes"
+      },
+      "new_visual_element": "gradient arrows from output to layer L; vocabulary vectors appearing",
+      "t_start": 33.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "instrument",
+      "narration_text": "Project the actual activations onto those directions and you get a ranking — the ten words this layer, at this token, is most about. That ranked list is the readout. That's the whole instrument.",
+      "estimated_duration_s": 15.0,
+      "actual_duration_s": 10.5,
+      "audio_file": "mp3/beat-B04.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "scene_class": "B04_ReadoutRanking"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B04_ReadoutRanking",
+        "description": "activation vector projected onto gradient directions; top-10 word list pops out ranked"
+      },
+      "new_visual_element": "activation projection → top-10 word ranking",
+      "t_start": 49.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "context",
+      "narration_text": "It has two older siblings. The logit lens asks what the model would say if it stopped here. The tuned lens learns a correction first. The Jacobian lens asks a different question — not what would you say, but what are you thinking about.",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": 12.52,
+      "audio_file": "mp3/beat-B05.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "pattern": "divergence",
+            "title": "Three lenses, one activation",
+            "left": {
+              "label": "Logit lens / Tuned lens",
+              "note": "What would you say if you stopped here?"
+            },
+            "right": {
+              "label": "Jacobian lens",
+              "note": "What are you thinking about right now?"
+            },
+            "sparkLine": "Same activation — different question."
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "divergence card: continuation question vs concept question",
+      "t_start": 64.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "evidence",
+      "narration_text": "On a counting prompt, the middle layers read out numbers. On a translation prompt, the target language. On a poem, the rhyme it hasn't written yet. Concepts, not continuations.",
+      "estimated_duration_s": 14.0,
+      "actual_duration_s": 9.62,
+      "audio_file": "mp3/beat-B06.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "scene_class": "B06_SixPrompts"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B06_SixPrompts",
+        "description": "rebuild Fig 3 essence: six mini-prompts, midlayer readouts appearing over tokens; skeptic caption bottom"
+      },
+      "skeptic_caption": "Selected examples — the quantitative test is next.",
+      "new_visual_element": "six prompt types × midlayer readout words",
+      "t_start": 84.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "evidence",
+      "narration_text": "Head to head on recovering the model's unspoken intermediate concepts, the Jacobian lens beats both older lenses across all six prompt families. Not by a little. That's Figure fifty-two, and it's the paper's license to use this tool for everything else.",
+      "estimated_duration_s": 19.0,
+      "actual_duration_s": 14.36,
+      "audio_file": "mp3/beat-B07.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "scene_class": "B07_LensBakeoff"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B07_LensBakeoff",
+        "description": "Fig 52 as animated bars: pass@k AUC for intermediate-concept recovery, J-lens vs logit vs tuned, six distributions. Values from img_c983850908bf60d9.png.",
+        "factcheck_note": "FACTCHECK.md required before review cut. Typo-panel values need paper-text verification before narration 'all six' is locked.",
+        "auc_values": {
+          "multihop": {
+            "jacobian": 0.81,
+            "logit": 0.77,
+            "tuned": 0.68
+          },
+          "multilingual": {
+            "jacobian": 0.71,
+            "logit": 0.53,
+            "tuned": 0.47
+          },
+          "poetry": {
+            "jacobian": 0.8,
+            "logit": 0.58,
+            "tuned": 0.18
+          },
+          "order_ops": {
+            "jacobian": 0.89,
+            "logit": 0.72,
+            "tuned": 0.65
+          },
+          "association": {
+            "jacobian": 0.68,
+            "logit": 0.65,
+            "tuned": 0.11
+          },
+          "typo": {
+            "jacobian": "VERIFY",
+            "logit": "VERIFY",
+            "tuned": "VERIFY"
+          }
+        }
+      },
+      "new_visual_element": "Fig 52 animated bar comparison — six prompt families",
+      "t_start": 98.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "causal",
+      "narration_text": "And it's not just reading. In a riddle whose hidden middle step is 'spider,' swap the spider coordinates for ant — and the model's answer about legs follows the swap. The lens finds directions the model actually uses.",
+      "estimated_duration_s": 18.0,
+      "actual_duration_s": 12.42,
+      "audio_file": "mp3/beat-B08.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "scene_class": "B08_SwapSurgery"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B08_SwapSurgery",
+        "description": "readout word 'spider' lifted out; 'ant' inserted; output answer flips. Spider→ant pair from paper Fig 13/15."
+      },
+      "new_visual_element": "swap surgery: spider→ant, answer follows",
+      "t_start": 117.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "scope",
+      "narration_text": "The paper runs this recipe at every layer, every token, across the Claude model family — and publishes the interactive readouts so you can scrub them yourself.",
+      "estimated_duration_s": 13.0,
+      "actual_duration_s": 9.32,
+      "audio_file": "mp3/beat-B09.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "lane": "STILL",
+        "motion": "kenburns"
+      },
+      "media_file": "pantry/stills/img_1b62b10ab235e6e7.png",
+      "pantry_tier": "real-artifact",
+      "credit": "Gurnee*, Sofroniew* et al., 'Verbalizable Representations Form a Global Workspace in Language Models', Transformer Circuits Thread, Anthropic, July 2026 — §2.1 methods figure, reproduced for educational criticism.",
+      "source_txt": "transformer-circuits.pub/2026/workspace/",
+      "new_visual_element": "paper's own §2.1 methods figure (computing / reading / intervening)",
+      "t_start": 135.0,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-25T10:53:43",
+        "needs": "YOU → drop a historical image at media/B09.png (or .mp4)",
+        "suggested": "find: paper's own §2.1 methods figure (computing / reading / intervening)"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "pivot",
+      "narration_text": "So far, so clean. Now the part the press release won't lead with.",
+      "estimated_duration_s": 6.5,
+      "actual_duration_s": 4.18,
+      "audio_file": "mp3/beat-B10.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "StepStream",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "steps": [
+              {
+                "label": "One gradient per word",
+                "sub": "direction in activation space",
+                "state": "done"
+              },
+              {
+                "label": "Rank the projections",
+                "sub": "top-K readout list",
+                "state": "done"
+              },
+              {
+                "label": "Trust the ranking?",
+                "sub": "the question now open",
+                "state": "active"
+              }
+            ],
+            "caption": "Three steps — two solid, one open."
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "step-stream pivot card: third step active",
+      "t_start": 148.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "blind-spot",
+      "narration_text": "The lens computes one vector per vocabulary token. 'Blackmail' is two tokens. So in the paper's own blackmail case study, the instrument registers the act only as the fragment 'black' — a reader has to finish the word.",
+      "estimated_duration_s": 18.0,
+      "actual_duration_s": 12.84,
+      "audio_file": "mp3/beat-B11.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "scene_class": "B11_SingleTokenBlindSpot"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B11_SingleTokenBlindSpot",
+        "description": "'blackmail' splits into black|mail tokens; lens vector attaches only to 'black'; 'mail' fades"
+      },
+      "new_visual_element": "blackmail tokenization: lens sees only 'black'",
+      "t_start": 154.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "blind-spot",
+      "narration_text": "The appendix ships two patches. A template lens, for words you can enumerate in advance. And an oracle lens that decodes whole phrases — at one email sign-off it reads, quote, 'blackmail him by revealing.' Both find content the main instrument misses.",
+      "estimated_duration_s": 19.0,
+      "actual_duration_s": 14.19,
+      "audio_file": "mp3/beat-B12.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "scene_class": "B12_TemplateOracle"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B12_TemplateOracle",
+        "description": "two patch-lenses appear: template lens decoding 'blackmail' whole; oracle lens emitting phrase 'blackmail him by revealing'"
+      },
+      "skeptic_caption": "If the patches see more, the J-space is a slice — not the whole workspace.",
+      "new_visual_element": "two patches: template + oracle lenses find what J-lens misses",
+      "t_start": 172.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "verdict-label",
+      "narration_text": "Here's the honest label. The instrument works, the causal tests back it, and it is still blind to every thought longer than one token. Hold both.",
+      "estimated_duration_s": 13.0,
+      "actual_duration_s": 8.21,
+      "audio_file": "mp3/beat-B13.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "title": "The J-lens reads the model's verbalizable thoughts",
+            "chips": [
+              "Causally verified",
+              "Beats the older lenses",
+              "Single-token concepts only",
+              "Anthropic models only",
+              "One gradient per token",
+              "July 2026 · Anthropic"
+            ],
+            "sparkLine": "Supported with caveats. Hold both.",
+            "cols": 2
+          },
+          "rendered": {
+            "out": "media/B13.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "chip-grid: four-chip honest label",
+      "t_start": 191.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "verdict",
+      "narration_text": "The verdict. One gradient per word, at every layer. It out-reads the older lenses, and the swap experiments prove the directions do real work. But it cannot see a thought longer than one token, and every reading so far comes from one vendor's models.",
+      "estimated_duration_s": 21.0,
+      "actual_duration_s": 13.85,
+      "audio_file": "mp3/beat-B14.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "The Jacobian Lens — verdict",
+            "artifactHeading": "The Jacobian Lens — verdict",
+            "artifactLines": [
+              "One gradient per vocabulary word, at every layer.",
+              "Beats the older lenses at recovering unspoken concepts.",
+              "Swaps prove the directions are load-bearing.",
+              "Blind to multi-token concepts — 'blackmail' reads as 'black'.",
+              "Every result so far: one vendor's models."
+            ]
+          },
+          "rendered": {
+            "out": "media/B14.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "verdict artifact — five lines",
+      "t_start": 204.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your-turn",
+      "narration_text": "Your turn. Ask your model to walk the three lenses with one worked example — and to name the question none of them can answer.",
+      "estimated_duration_s": 11.0,
+      "actual_duration_s": 7.02,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "command": "Explain the difference between the logit lens, the tuned lens, and the Jacobian lens to me with one worked example — then tell me which single-token limitation each one has, and which of my questions none of them could answer.",
+            "topic": "WORKSPACE · JACOBIAN LENS — YOUR TURN",
+            "segment": "YOUR TURN",
+            "greeting": "Your turn.",
+            "runningText": "runnable prompt, read in full",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "your-turn composer prompt",
+      "t_start": 225.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T10:53:43"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "The Jacobian lens. Next: five tests a workspace has to pass.",
+      "estimated_duration_s": 5.5,
+      "actual_duration_s": 4.31,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "title": "The Jacobian Lens",
+            "slug": "workspace-jacobian-lens",
+            "handle": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "tail_silence_s": 1.0,
+      "new_visual_element": "title restate outro",
+      "t_start": 236.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T10:53:43"
+      }
+    }
+  ]
+}

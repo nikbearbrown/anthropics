@@ -26,30 +26,28 @@ class Scene_B02_ClaudeLiamProductivity(Scene):
         self.play(Create(spark), run_time=0.2)
 
         # Primary concept text
-        if "Here\'s the shape of the difference":
-            line1 = Text("Here\'s the shape of the difference", font_size=36, color="#3D3929", font=font)
+        if True:
+            line1 = Text("The shape of the difference", font_size=36, color="#3D3929", font=font)
             line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
             line1.shift(UP * 0.3)
             self.play(Write(line1), run_time=0.5)
 
-        if "A domain plugin points outward - deep into one field [...]":
-            line2 = Text("A domain plugin points outward - deep into one field [...]", font_size=28, color="#3D3929", font=font)
+        if True:
+            line2 = Text("Domain plugin: outward, into one field", font_size=28, color="#3D3929", font=font)
             line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
             line2.shift(DOWN * 0.6)
             self.play(Write(line2), run_time=0.4)
 
-        if "Productivity points inward - at the day you work through":
-            line3 = Text("Productivity points inward - at the day you work through", font_size=22, color="#3D3929", font=font)
+        if True:
+            line3 = Text("Productivity: inward, at the day you work through", font_size=22, color="#3D3929", font=font)
             line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
             line3.shift(DOWN * 1.4)
             self.play(FadeIn(line3), run_time=0.3)
 
         # Terracotta underline on key term
-        if "Here\'s the shape of the difference":
-            uline = Line(LEFT * min(4.0, len("Here\'s the shape of the difference") * 0.18), RIGHT * min(4.0, len("Here\'s the shape of the difference") * 0.18),
-                         color="#D97757", stroke_width=2)
-            uline.shift(UP * 0.1)
-            self.play(Create(uline), run_time=0.3)
+        uline = Line(LEFT * 2.8, RIGHT * 2.8, color="#D97757", stroke_width=2)
+        uline.next_to(line1, DOWN, buff=0.05)
+        self.play(Create(uline), run_time=0.3)
 
         self.wait(max(0.01, 9.40))
 
@@ -234,7 +232,7 @@ class Scene_B09_ClaudeLiamProductivity(Scene):
         if "One optional add-on: your calendar":
             uline = Line(LEFT * min(4.0, len("One optional add-on: your calendar") * 0.18), RIGHT * min(4.0, len("One optional add-on: your calendar") * 0.18),
                          color="#D97757", stroke_width=2)
-            uline.shift(UP * 0.1)
+            uline.next_to(line1, DOWN, buff=0.02)
             self.play(Create(uline), run_time=0.3)
 
         self.wait(max(0.01, 11.80))
@@ -455,21 +453,22 @@ class Scene_B19_ClaudeLiamProductivity(Scene):
         for i, lbl in enumerate(stages):
             angle = np.pi / 2 - 2 * np.pi * i / n
             pos = np.array([radius * np.cos(angle), radius * np.sin(angle), 0])
-            circle = Circle(radius=0.55, color=colors[i % 2], stroke_width=2.5,
+            circle = Circle(radius=0.55, color="#3D3929", stroke_width=2.5,
                             fill_color="#F2F0E9", fill_opacity=1)
             circle.move_to(pos)
-            txt = Text(lbl[:20], font_size=18, color="#3D3929", font=font)
+            txt = Text(lbl[:20], font_size=22, color="#3D3929", font=font)
             txt.scale(min(1.0, 0.9 / max(0.1, txt.width)))
             txt.move_to(circle)
             grp = VGroup(circle, txt)
             nodes.append((grp, pos))
             self.play(FadeIn(grp), run_time=0.4)
 
-        # Draw curved arrows between nodes
+        # Draw curved arrows between nodes — first arrow terracotta, rest ink
         for i in range(n):
             start_pos = nodes[i][1]
             end_pos = nodes[(i + 1) % n][1]
-            arr = CurvedArrow(start_pos, end_pos, color="#D97757", stroke_width=2.5,
+            arrow_color = "#D97757" if i == 0 else "#3D3929"
+            arr = CurvedArrow(start_pos, end_pos, color=arrow_color, stroke_width=2.5,
                               angle=-np.pi / 6)
             self.play(Create(arr), run_time=0.4)
 
@@ -499,24 +498,22 @@ class Scene_B22_ClaudeLiamProductivity(Scene):
             line1.shift(UP * 0.3)
             self.play(Write(line1), run_time=0.5)
 
-        if "You swap specialists in and out as the work changes - [...]":
-            line2 = Text("You swap specialists in and out as the work changes - [...]", font_size=28, color="#3D3929", font=font)
+        if True:
+            line2 = Text("You swap specialists as the work changes", font_size=28, color="#3D3929", font=font)
             line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
             line2.shift(DOWN * 0.6)
             self.play(Write(line2), run_time=0.4)
 
-        if "It\'s the one you never turn off":
-            line3 = Text("It\'s the one you never turn off", font_size=22, color="#3D3929", font=font)
+        if True:
+            line3 = Text("The base holds. The one you never turn off.", font_size=22, color="#3D3929", font=font)
             line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
             line3.shift(DOWN * 1.4)
             self.play(FadeIn(line3), run_time=0.3)
 
         # Terracotta underline on key term
-        if "That\'s why it stays on":
-            uline = Line(LEFT * min(4.0, len("That\'s why it stays on") * 0.18), RIGHT * min(4.0, len("That\'s why it stays on") * 0.18),
-                         color="#D97757", stroke_width=2)
-            uline.shift(UP * 0.1)
-            self.play(Create(uline), run_time=0.3)
+        uline = Line(LEFT * 2.0, RIGHT * 2.0, color="#D97757", stroke_width=2)
+        uline.next_to(line1, DOWN, buff=0.05)
+        self.play(Create(uline), run_time=0.3)
 
         self.wait(max(0.01, 10.40))
 

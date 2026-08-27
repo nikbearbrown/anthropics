@@ -30,23 +30,12 @@
       "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
     ],
     "build": {
-      "at": "2026-07-16T06:35:21",
+      "at": "2026-08-10T04:13:41",
       "cut": "master",
-      "filled": 0,
-      "of": 7,
-      "slates": [
-        "B00",
-        "B01",
-        "B02",
-        "B03",
-        "B04",
-        "B05",
-        "B06"
-      ],
-      "skin_warnings": [
-        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
-        "B06: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
-      ]
+      "filled": 10,
+      "of": 10,
+      "slates": [],
+      "skin_warnings": []
     },
     "design_version": "v1",
     "voice": "am_onyx"
@@ -92,7 +81,10 @@
       "audio_file": "mp3/beat-B00.mp3",
       "actual_duration_s": 21.7,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:13:41"
       },
       "lane": "BOOKEND",
       "voice": "am_onyx",
@@ -107,29 +99,28 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CCSession",
           "props": {
-            "title": "/context Check: Read Your Window Before It Fills",
-            "items": [
+            "title": "claude-code",
+            "mode": "default",
+            "blocks": [
               {
-                "label": "Key point one",
-                "sub": "",
-                "icon": "target",
-                "cueFrame": 20
+                "type": "prompt",
+                "text": "The context window is a fixed working surface. When it fills, Claude begins dropping earlier content — including constra…",
+                "cue": 0,
+                "typeDuration": 60
               },
               {
-                "label": "Key point two",
-                "sub": "",
-                "icon": "list-checks",
-                "cueFrame": 55
-              },
-              {
-                "label": "Key point three",
-                "sub": "",
-                "icon": "zap",
-                "cueFrame": 90
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "~3s"
               }
-            ]
+            ],
+            "cues": [
+              0,
+              35
+            ],
+            "mascot": "auto"
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -143,9 +134,12 @@
       "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 23.04,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:13:41"
       },
-      "lane": "BOOKEND",
+      "lane": "LANE_A",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx"
@@ -160,7 +154,7 @@
         "motion": "callout-reveal",
         "media": "media/B02.mp4",
         "manim": {
-          "scene_class": "Scene_B02_ClaudeLiamSlash",
+          "scene_class": "B02_ClaudeLiamSlash",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B02.mp4",
@@ -174,11 +168,10 @@
       "audio_file": "mp3/beat-B02.mp3",
       "actual_duration_s": 21.5,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:35:21",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:B02_ClaudeLiamSlash",
+        "at": "2026-08-10T04:13:41"
       }
     },
     {
@@ -191,7 +184,7 @@
         "motion": "callout-reveal",
         "media": "media/B03.mp4",
         "manim": {
-          "scene_class": "Scene_B03_ClaudeLiamSlash",
+          "scene_class": "B03_ClaudeLiamSlash",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B03.mp4",
@@ -205,11 +198,10 @@
       "audio_file": "mp3/beat-B03.mp3",
       "actual_duration_s": 21.63,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:35:21",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim:B03_ClaudeLiamSlash",
+        "at": "2026-08-10T04:13:41"
       }
     },
     {
@@ -219,7 +211,51 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "stagger"
+        "motion": "stagger",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "claude-code",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Context window = kitchen counter — check it before cooking",
+                "cue": 0,
+                "typeDuration": 60
+              },
+              {
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "0m 6s"
+              },
+              {
+                "type": "text",
+                "text": "/context — check before any new task"
+              },
+              {
+                "type": "text",
+                "text": "/clear — wipes conversation; durable rules stay in CLAUDE.md"
+              },
+              {
+                "type": "text",
+                "text": "Subagent — move heavy reading out of main session"
+              }
+            ],
+            "mascot": "off",
+            "cues": [
+              0,
+              30,
+              50,
+              65,
+              80
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
       },
       "new_visual_element": "Artifact view — kitchen counter / /context before every task / clear between / subagent for heavy reads",
       "spark_line": "Check before you cook.",
@@ -227,11 +263,10 @@
       "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 18.99,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:35:21",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:13:41"
       }
     },
     {
@@ -252,19 +287,22 @@
             "runningText": "paste your spec, CLAUDE.md, or build plan here…",
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Claude Sonnet"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
           }
         }
       },
       "new_visual_element": "HANDOFF — context check + subagent reader prompt",
       "estimated_duration_s": 9,
       "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 6.81,
+      "actual_duration_s": 15.47,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:35:21",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:13:41"
       }
     },
     {
@@ -275,11 +313,32 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "ClaudeTitleOutro",
+          "pattern": "CCSession",
           "props": {
-            "title": "/context Check: Read Your Window Before It Fills",
-            "handle": "@NikBearBrown",
-            "mascotSeed": "claude-liam-slash-context-window-check"
+            "title": "claude-code",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "If this keeps the build session from starting at 78%, subscribe. Liam, in for Bear.",
+                "cue": 0,
+                "typeDuration": 60
+              },
+              {
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "~3s"
+              }
+            ],
+            "cues": [
+              0,
+              35
+            ],
+            "mascot": "auto"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
           }
         }
       },
@@ -288,10 +347,12 @@
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 6.12,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "note": "design-v1: title-fixed,handle-fixed,mascotSeed-added"
-      }
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:13:41"
+      },
+      "lane": "LANE_A"
     },
     {
       "beat_id": "BVDT",
@@ -309,11 +370,12 @@
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "/context Check: Read Your Window Before It Fills",
-            "artifactHeading": "Key findings",
+            "artifactHeading": "/context, /clear, /compact",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "/context: see what fills the window before new task",
+              "/clear: wipes history · /compact: keeps decisions",
+              "/compact: preserves decisions, drops raw content",
+              "Heavy reading → subagent, not main session"
             ]
           },
           "rendered": {
@@ -323,8 +385,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:13:41"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BHTF",
@@ -356,8 +422,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:13:41"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BOUT",
@@ -375,7 +445,8 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "/context Check: Read Your Window Before It Fills",
-            "slug": "slash-context-window-check"
+            "slug": "slash-context-window-check",
+            "handle": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -384,8 +455,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:13:41"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

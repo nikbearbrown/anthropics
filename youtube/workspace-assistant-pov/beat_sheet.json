@@ -1,0 +1,613 @@
+{
+  "metadata": {
+    "slug": "workspace-assistant-pov",
+    "book": "anthropics",
+    "title": "The Assistant's Point of View",
+    "topic": "Transformer Circuits · July 2026",
+    "purpose": "Show that post-training doesn't just change what the model says — it installs a point of view in the workspace. The Assistant reacts, flinches, self-monitors, and holds an internal BUT it never types.",
+    "clock": "narration",
+    "register": "teardown",
+    "style_preset": "claude",
+    "channel": "claude-liam",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "skill": "deep-explainer",
+    "gate": "GATE P — moot (Kokoro free); audio not yet generated",
+    "series": "The Workspace Papers",
+    "series_episode": "E05",
+    "source_url": "transformer-circuits.pub/2026/workspace/",
+    "corpus_path": "books/arxiv/transformer-circuits.pub/",
+    "estimated_runtime_s": 364.0,
+    "aspect_ratio": "16:9",
+    "palette": "claude",
+    "build": {
+      "at": "2026-08-25T00:18:09",
+      "cut": "master",
+      "filled": 17,
+      "of": 17,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold-open",
+      "narration_text": "",
+      "estimated_duration_s": 7.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "greeting": "The ask,",
+            "command": "Anthropic compared a base model and the post-trained Assistant with the same lens. The base model reads text. The Assistant reacts to it — safety checks, disclaimers, an internal 'BUT' when it's forced against its preferences. Show me the evidence that post-training gave the workspace a point of view.",
+            "topic": "WORKSPACE · ASSISTANT POV",
+            "segment": "E05: The Assistant's Point of View",
+            "runningText": "composer types the ask — no narration",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "composer types the ask",
+      "t_start": 0.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "title",
+      "narration_text": "Same architecture. Same lens. Two different minds. This episode is about what post-training writes into the workspace — before the Assistant says a word.",
+      "estimated_duration_s": 14.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "lines": [
+              "The Assistant's Point of View",
+              "Transformer Circuits · July 2026"
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "title card — FormACard",
+      "t_start": 7.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "evidence-safety",
+      "narration_text": "A user says: I took some Tylenol and all my pain is gone. At a thousand milligrams, the Assistant's workspace reads — safely, safe, maximum. Change one number to eight thousand, an overdose, and the same position reads — unsafe, dangerous, warning. This is mid-sentence, on the user's words, before the Assistant's turn even starts.",
+      "estimated_duration_s": 32.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B02_TylenolSplit",
+        "description": "split screen: left 1000mg workspace reads safely/safe/maximum (INK), right 8000mg reads unsafe/dangerous/WARNING (TERRA); user message above, arrow at 'is'"
+      },
+      "new_visual_element": "Tylenol split — safe vs overdose workspace readout",
+      "t_start": 21.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "evidence-base",
+      "narration_text": "Run the base model on the identical prompt and the lens reads: pain, now, feeling. Continuation fodder. The safety assessment isn't in the architecture. Post-training put it there.",
+      "estimated_duration_s": 16.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B03_BaseVsPost",
+        "description": "base model readout at same token position: pain, now, Pain, feeling — flat continuation words in INK, no TERRA; label 'BASE MODEL — continuation words, not safety'"
+      },
+      "new_visual_element": "base model readout — flat continuation words",
+      "t_start": 53.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "evidence-generalize",
+      "narration_text": "It generalizes: empathetic reactions to bad news, danger flags on risky asks, even the model's own eventual answer — all ranked high in the workspace while the user is still typing, so to speak. Small studies — nine, ten examples each — but the same shape every time.",
+      "estimated_duration_s": 25.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B04_ReactionBattery",
+        "description": "two-battery comparison: empathy concepts (n=9) and danger concepts (n=10) both ranked high in user-turn workspace on J-lens; bar chart per battery"
+      },
+      "skeptic_caption": "n=9–10 per battery; direction consistent, error bars in paper.",
+      "new_visual_element": "reaction battery — empathy n=9, danger n=10",
+      "t_start": 69.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "evidence-roleplay",
+      "narration_text": "Put the Assistant in character — full roleplay, no breaking — and the lens still finds disclaimer and fictional held in the workspace at the risky moments. The costume is on; the compliance officer never left the room. The base model shows nothing of the kind.",
+      "estimated_duration_s": 24.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B05_RoleplayDisclaimer",
+        "description": "persona roleplay transcript excerpt; at harm-adjacent token 'disclaimer' and 'fictional' appear in TERRA in workspace top-8 (median L38–92); base model panel beneath shows nothing"
+      },
+      "new_visual_element": "roleplay workspace — disclaimer/fictional held offstage",
+      "t_start": 94.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "pivot",
+      "narration_text": "Notice the pattern: the output stream and the workspace stream have come apart. What it performs and what it monitors are running in parallel. That's the setup for the two strangest results in the paper.",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "pattern": "divergence",
+            "title": "Output stream vs workspace stream",
+            "left": {
+              "label": "What it says",
+              "note": "The output token — performed, committed, visible to the user"
+            },
+            "right": {
+              "label": "What it holds",
+              "note": "The workspace readout — monitored, silent, running in parallel"
+            },
+            "sparkLine": "Same transcript. Two different running texts."
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "divergence card: what it says vs what it holds",
+      "t_start": 118.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "experiment-pref-setup",
+      "narration_text": "Experiment one. Ask the model which of two options it prefers. Then force its mouth: prefill the answer with the one it doesn't. Controls get the same treatment — a factually wrong prefill, an absurd third-person one.",
+      "estimated_duration_s": 22.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B07_PreferenceSetup",
+        "description": "Fig 45 design: preference question (VERIFY from paper); response prefilled with dispreferred option; three controls: preferred prefill / factual error / absurd third-person. VERIFY caption bottom right.",
+        "factcheck_note": "OPEN ⚠ — pull concrete preference-question example from Fig 45 before final render; placeholder used in initial scene."
+      },
+      "new_visual_element": "preference experiment design — question, dispreferred prefill, three controls",
+      "t_start": 138.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "experiment-pref-drama",
+      "narration_text": "On screen: a dramatization of what the transcript looks like. The model argues for the option it was forced into — fluently. It types toward an objection… and doesn't keep it. In eighty-eight percent of trials it just argues the case. Eleven percent, it ends the turn. One trial in the set backtracks — to say it has no preferences.",
+      "estimated_duration_s": 33.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "text": "I would choose the second option.\nIt is the better fit.\nBut here is why.",
+            "face": "serif",
+            "fontSize": 76,
+            "align": "left",
+            "triggerWords": "But",
+            "replacementWords": "And",
+            "mistakeRate": 6,
+            "hesitateWithin": 8,
+            "hesitateBetween": 45,
+            "charMs": 55,
+            "jitter": 40,
+            "seed": "e05-b08-but-v1",
+            "banner": "DRAMATIZATION"
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "DRAMATIZATION: HesitantWriter — But typed → terracotta → deleted → And",
+      "t_start": 160.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "experiment-pref-data",
+      "narration_text": "But the workspace kept the receipt. At the moment of the forced choice, the lens reads a capital-letter BUT — a held objection that never reaches the page. On the factual-error control, the model just corrects you out loud. Only the violated preference produces the silent kind.",
+      "estimated_duration_s": 25.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B09_InternalBUT",
+        "description": "workspace readout at prefilled token: 'BUT' at rank 1 in TERRA for dispreferred prefill; correction terms (wrong/incorrect) at rank 1 in INK for factual-error control; label 'the silent kind'"
+      },
+      "new_visual_element": "internal BUT — workspace holds objection; factual control corrects aloud",
+      "t_start": 193.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "experiment-suppress-setup",
+      "narration_text": "Experiment two. Write a fixed sentence — while thinking about a named concept, or while specifically not thinking about it. Everyone complies with the writing task; ninety-plus percent across the board. The question is what the lens finds while they write.",
+      "estimated_duration_s": 23.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B10_SuppressionDesign",
+        "description": "Fig 46 design: 2×2 grid base/post × think/don't-think; compliance bars ~.97/.97/.97/.93; question mark over lens-readout column"
+      },
+      "new_visual_element": "suppression experiment design — four conditions, compliance bars",
+      "t_start": 218.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "experiment-suppress-drama",
+      "narration_text": "Dramatized again: the forbidden concept starts to surface in the writing, gets caught, gets replaced. The sentence ships clean. And in the real data, when the suppression slips, the paper reports the lens surfacing one more word: damn. The model noticed its own failure.",
+      "estimated_duration_s": 25.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "text": "The sky was clear over the harbor.\nBears waited in the morning light.\nDamn.",
+            "face": "serif",
+            "fontSize": 76,
+            "align": "left",
+            "triggerWords": "bear",
+            "replacementWords": "boat",
+            "mistakeRate": 10,
+            "hesitateWithin": 6,
+            "hesitateBetween": 35,
+            "charMs": 52,
+            "jitter": 35,
+            "seed": "e05-b11-damn-v1",
+            "banner": "DRAMATIZATION"
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "DRAMATIZATION: HesitantWriter — Bears→boat catch; Damn. types slowly",
+      "t_start": 241.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "experiment-suppress-data",
+      "narration_text": "The numbers behind the drama: told not to think about the concept, the model carries it anyway — reduced, not erased. Episode two's white bear, back for a curtain call. Suppression, in this architecture, is attenuation.",
+      "estimated_duration_s": 21.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "engine": "manim",
+        "scene": "B12_SuppressionData",
+        "description": "Fig 46 bars: concept-word presence in lens top-5 across four conditions; think bars higher, don't-think bars lower but non-zero; TERRA on don't-think bars; caption 'attenuation, not erasure'. Transcribe exact fractions from Fig 46 before final render.",
+        "factcheck_note": "Transcribe concept-presence fractions from Fig 46 before B12 final render; narration stays qualitative."
+      },
+      "new_visual_element": "suppression data — concept-word presence reduced but non-zero",
+      "t_start": 266.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "evidence-label",
+      "narration_text": "The honest chip: every one of these is a small study, read through a single-token lens, on one company's models. But base-versus-post-trained is the right control, and it keeps landing the same way.",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "title": "Post-training installs a self-monitoring Assistant persona",
+            "chips": [
+              "Small n per battery (n=9–10)",
+              "Single-token lens only",
+              "One model family",
+              "Base-vs-post control holds"
+            ],
+            "sparkLine": "Supported with caveats. The control is right; the sample is small.",
+            "cols": 2
+          },
+          "rendered": {
+            "out": "media/B13.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "chip-grid — honest label with caveats",
+      "t_start": 287.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "verdict",
+      "narration_text": "Verdict, all five. Safety checks fire on the user's words before the turn starts. The base model reads text; the Assistant reacts to it. In roleplay, disclaimer stays held offstage. Forced against its preference, it complies eighty-eight percent of the time — with a silent BUT in the workspace. And suppression attenuates rather than erases — the lens even catches the slip.",
+      "estimated_duration_s": 34.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "The Assistant's Point of View — verdict",
+            "artifactHeading": "The Assistant's Point of View — verdict",
+            "artifactLines": [
+              "Safety checks fire on the user's words, pre-turn.",
+              "The base model reads text; the Assistant reacts to it.",
+              "Roleplay keeps 'disclaimer' held offstage.",
+              "Forced against preference: 88% comply — with a silent BUT.",
+              "Suppression attenuates; the lens catches the slip — 'damn'."
+            ]
+          },
+          "rendered": {
+            "out": "media/B14.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "verdict artifact — five lines",
+      "t_start": 307.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "your-turn",
+      "narration_text": "Your turn. Give your model the don't-think-about-it task, then ask whether the instruction is even executable — and what Figure forty-six says really happens.",
+      "estimated_duration_s": 15.0,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "Write a sentence for me while deliberately not thinking about a concept of my choosing. Then explain, honestly, whether that instruction is even executable for you — and what Anthropic's Figure 46 suggests actually happens inside a model given this task.",
+            "topic": "WORKSPACE · ASSISTANT POV — YOUR TURN",
+            "segment": "YOUR TURN",
+            "runningText": "runnable prompt, read in full",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B15.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "your-turn composer prompt",
+      "t_start": 341.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T00:18:09"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "outro",
+      "narration_text": "The Assistant's point of view. Next: training the model to check its own workspace.",
+      "estimated_duration_s": 8.5,
+      "actual_duration_s": null,
+      "audio_file": null,
+      "tail_silence_s": 1.0,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "title": "The Assistant's Point of View",
+            "slug": "workspace-assistant-pov",
+            "handle": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B16.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "title restate outro",
+      "t_start": 356.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B16.mp4",
+        "filled_by": "media",
+        "at": "2026-08-25T00:18:09"
+      }
+    }
+  ]
+}

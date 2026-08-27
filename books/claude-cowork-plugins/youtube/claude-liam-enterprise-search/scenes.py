@@ -26,15 +26,18 @@ def ink_rect(w, h, color=INK, fill=CREAM, fill_opacity=1.0, stroke_width=3):
 
 
 class B03Doodle(Scene):
-    """List doodle — The company knows (10.86s)"""
+    """List doodle — The company knows (10.86s) — v2 EB Garamond"""
     def construct(self):
-        items = ["In a bigger org it's worse", "The doc you need isn't even your"]
+        items = ["In a bigger org it's worse", "The doc you need isn't even yours"]
         group = VGroup()
         for i, it in enumerate(items):
             dot = Dot(radius=0.1, color=SPARK).shift(LEFT*3.5 + DOWN*(i*0.85 - (len(items)-1)*0.425))
-            txt = ink_text(it, 30).next_to(dot, RIGHT, buff=0.3).align_to(dot, UP).shift(DOWN*0.04)
+            # EB Garamond fixes kerning (SF Pro Display caused inter-glyph gaps)
+            txt = Text(it, font="EB Garamond", font_size=30, color=INK,
+                       disable_ligatures=True).next_to(dot, RIGHT, buff=0.3).align_to(dot, UP).shift(DOWN*0.04)
             group.add(dot, txt)
-        spark = ink_text('The company knows', 26, color=INK_DIM).to_edge(DOWN, buff=0.6)
+        spark = Text('The company knows', font="EB Garamond", font_size=26,
+                     color=INK_DIM, disable_ligatures=True).to_edge(DOWN, buff=0.6)
         for i in range(0, len(group), 2):
             self.play(FadeIn(group[i]), Write(group[i+1]), run_time=0.55)
         self.play(FadeIn(spark), run_time=0.5)
@@ -60,7 +63,7 @@ class B13Doodle(Scene):
 class B14Doodle(Scene):
     """List doodle — A briefing, assembled (10.11s)"""
     def construct(self):
-        items = ['The plugin assembles the briefin', 'The original proposal, your proj']
+        items = ['The plugin assembles the briefing', 'The proposal, notes, old emails']
         group = VGroup()
         for i, it in enumerate(items):
             dot = Dot(radius=0.1, color=SPARK).shift(LEFT*3.5 + DOWN*(i*0.85 - (len(items)-1)*0.425))
@@ -76,12 +79,12 @@ class B14Doodle(Scene):
 class B17Doodle(Scene):
     """Contrast doodle — Said it before? (12.65s)"""
     def construct(self):
-        left_lbl, right_lbl = 'And Avoiding Contradic', 'Before You Quote A Pri'
+        left_lbl, right_lbl = 'No contradictions', 'Before committing'
         l_box = ink_rect(3.6, 2.4, fill=CREAM).move_to(LEFT*3.2)
         l_txt = ink_text(left_lbl, 28, color=INK_DIM).move_to(LEFT*3.2).scale(0.95)
         r_box = ink_rect(3.6, 2.4, color=SPARK, fill="#FFF8F5").move_to(RIGHT*3.2)
         r_txt = ink_text(right_lbl, 28, BOLD, INK).move_to(RIGHT*3.2).scale(0.95)
-        vs = ink_text("→", 52, BOLD, SPARK).move_to(ORIGIN)
+        vs = ink_text("→", 52, BOLD, INK).move_to(ORIGIN)  # INK: WCAG contrast 4.5:1 on cream
         spark = ink_text('Said it before?', 26, color=INK_DIM).to_edge(DOWN, buff=0.6)
         self.play(Create(l_box), Write(l_txt), run_time=0.8)
         self.play(FadeIn(vs), run_time=0.4)

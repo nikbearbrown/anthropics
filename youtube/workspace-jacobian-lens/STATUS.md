@@ -1,0 +1,23 @@
+# STATUS — workspace-jacobian-lens
+
+16/17 beats filled. Derived from beat_sheet.json — edit the sheet, not this file.
+
+| beat | status | fill method | who | slot | suggested prompt / search |
+|---|---|---|---|---|---|
+| B00 | ✅ filled | remotion | pipeline | `media/B00.mp4` |  |
+| B01 | ✅ filled | remotion | pipeline | `media/B01.mp4` |  |
+| B02 | ✅ filled | manim | pipeline | `manim/B02.mp4` |  |
+| B03 | ✅ filled | manim | pipeline | `manim/B03.mp4` |  |
+| B04 | ✅ filled | manim | pipeline | `manim/B04.mp4` |  |
+| B05 | ✅ filled | remotion | pipeline | `media/B05.mp4` |  |
+| B06 | ✅ filled | manim | pipeline | `manim/B06.mp4` |  |
+| B07 | ✅ filled | manim | pipeline | `manim/B07.mp4` |  |
+| B08 | ✅ filled | manim | pipeline | `manim/B08.mp4` |  |
+| B09 | ⬜ needs-fill | historical-image | human | `media/B09.png (or .mp4)` | find: paper's own §2.1 methods figure (computing / reading / intervening) |
+| B10 | ✅ filled | remotion | pipeline | `media/B10.mp4` |  |
+| B11 | ✅ filled | manim | pipeline | `manim/B11.mp4` |  |
+| B12 | ✅ filled | manim | pipeline | `manim/B12.mp4` |  |
+| B13 | ✅ filled | remotion | pipeline | `media/B13.mp4` |  |
+| B14 | ✅ filled | remotion | pipeline | `media/B14.mp4` |  |
+| BHTF | ✅ filled | remotion | pipeline | `media/BHTF.mp4` |  |
+| BOUT | ✅ filled | remotion | pipeline | `media/BOUT.mp4` |  |

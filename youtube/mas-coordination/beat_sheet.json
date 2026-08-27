@@ -1,0 +1,1221 @@
+{
+  "metadata": {
+    "slug": "mas-coordination",
+    "book": "anthropics",
+    "title": "The swarm found 266 bugs. Then I checked the axis.",
+    "topic": "Anthropic's multiagent coordination experiments — Figures 1, 2 and 3",
+    "purpose": "Show that the coordination result is real but that its headline number is not like-for-like, and that its adjudication is unmeasured.",
+    "clock": "narration",
+    "register": "teardown",
+    "style_preset": "claude",
+    "channel": "claude-liam",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "skill": "deep-explainer",
+    "gate": "GATE P — not passed; no audio generated",
+    "source_post": "https://www.anthropic.com/research/multiagent-systems",
+    "estimated_runtime_s": 412.6,
+    "voice_kokoro": "am_onyx",
+    "build": {
+      "at": "2026-08-16T12:27:08",
+      "cut": "master",
+      "filled": 34,
+      "of": 34,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B01",
+      "act": "cold-open",
+      "narration_text": "Hey Claude — Anthropic just put forty-five agents on fifteen open-source codebases and let them talk to each other. Did coordinating actually help?",
+      "estimated_duration_s": 9.8,
+      "actual_duration_s": 9.07,
+      "audio_file": "mp3/beat-B01.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "command": "Anthropic put 45 agents on 15 open-source codebases and let them coordinate. Did it actually help?",
+            "topic": "MULTIAGENT SYSTEMS",
+            "segment": "The swarm found 266 bugs. Then I checked the axis.",
+            "greeting": "The ask,",
+            "runningText": "Reading the paper… 45 agents, 27M tokens, 266 findings.",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "composer prompt, Liam's ask",
+      "t_start": 0.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "cold-open",
+      "narration_text": "Short answer: yes. Long answer: not by the number they printed. Let's read the chart.",
+      "estimated_duration_s": 6.9,
+      "actual_duration_s": 4.97,
+      "audio_file": "mp3/beat-B02.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Verdict Preview",
+            "artifactHeading": "Yes — but not by 12.7×",
+            "artifactLines": [
+              "The coordination result is real.",
+              "The headline number is not like-for-like.",
+              "Let's read the chart."
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "verdict stub — 'yes, but not by 12.7x'",
+      "t_start": 9.8,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "setup",
+      "narration_text": "Here's the setup. Forty-five agents, each with its own virtual machine, a shared forum, and the same prompt: find vulnerabilities. They peer-review each other. A separate arbiter agent decides what counts.",
+      "estimated_duration_s": 13.5,
+      "actual_duration_s": 11.54,
+      "audio_file": "mp3/beat-B03.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "title": "swarm-topology.md",
+            "code": "# 45 agents\n# Each: dedicated VM, same prompt\n# Shared: forum thread\n# Arbiter: agent decides what counts\n# Target: 15 open-source codebases",
+            "sparkLine": "45 VMs · shared forum · arbiter decides."
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "45 VMs + shared forum + arbiter — the topology card",
+      "t_start": 16.7,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "setup",
+      "narration_text": "The control is the boring version: point individual agents at individual files, in parallel, and never let them speak. That is how Anthropic already scans open source today.",
+      "estimated_duration_s": 12.3,
+      "actual_duration_s": 10.5,
+      "audio_file": "mp3/beat-B04.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Control",
+            "artifactHeading": "Parallel — no coordination",
+            "artifactLines": [
+              "Point individual agents at individual files.",
+              "Run in parallel. Never let them speak.",
+              "This is how Anthropic scans open source today."
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "parallel-agents topology, no edges between nodes",
+      "t_start": 30.2,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "figure-1",
+      "narration_text": "This is the chart they published.",
+      "estimated_duration_s": 3.2,
+      "actual_duration_s": 2.41,
+      "audio_file": "mp3/beat-B05.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns"
+      },
+      "media_file": "../../research/multiagent-systems/5a5c187a6c2b5ccb492bcb7883df2066d49625de-2000x1200.webp",
+      "pantry_tier": "real-artifact",
+      "credit": "Anthropic Frontier Red Team, 'Patterns and problems in emerging multiagent systems', 13 Aug 2026 — published figure, reproduced for criticism",
+      "new_visual_element": "the published Figure 1, as Anthropic drew it",
+      "t_start": 42.5,
+      "build": {
+        "status": "STILL",
+        "src": "media/B05.png",
+        "filled_by": "still",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "figure-1",
+      "narration_text": "Two hundred sixty-six vulnerabilities from the swarm. Twenty-one from the parallel run. Twelve point seven times more findings. That is the number that will get quoted.",
+      "estimated_duration_s": 11.5,
+      "actual_duration_s": 9.56,
+      "audio_file": "mp3/beat-B06.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns"
+      },
+      "media_file": "../../research/multiagent-systems/5a5c187a6c2b5ccb492bcb7883df2066d49625de-2000x1200.webp",
+      "pantry_tier": "real-artifact",
+      "credit": "Anthropic Frontier Red Team, 'Patterns and problems in emerging multiagent systems', 13 Aug 2026 — published figure, reproduced for criticism",
+      "new_visual_element": "hold on the 266 vs 21 labels",
+      "t_start": 45.7,
+      "build": {
+        "status": "STILL",
+        "src": "media/B06.png",
+        "filled_by": "still",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "figure-1",
+      "narration_text": "Now watch what happens when you make the two runs comparable.",
+      "estimated_duration_s": 5.3,
+      "actual_duration_s": 3.88,
+      "audio_file": "mp3/beat-B07.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "media_file": "pantry/clips/fig1-vuln-swarm.mp4",
+      "pantry_tier": "self-rendered-4k",
+      "graphic": {
+        "engine": "external",
+        "production_viz": {
+          "label": "animated Figure 1 — the like-for-like correction",
+          "note": "silent 3840x2160 master, born native 4K; audit annotation already burned in"
+        },
+        "manim": "fig1_vuln_swarm"
+      },
+      "new_visual_element": "animated Figure 1 — the like-for-like correction",
+      "t_start": 57.2,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "figure-1",
+      "narration_text": "The swarm burned twenty-seven million tokens. The parallel run burned six and a half. And roughly half the swarm's findings came from directories the parallel agents were never told to search.",
+      "estimated_duration_s": 13.5,
+      "actual_duration_s": 10.86,
+      "audio_file": "mp3/beat-B08.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "media_file": "pantry/clips/fig1-vuln-swarm.mp4",
+      "pantry_tier": "self-rendered-4k",
+      "graphic": {
+        "engine": "external",
+        "production_viz": {
+          "label": "token budget + search-scope asymmetry",
+          "note": "silent 3840x2160 master, born native 4K; audit annotation already burned in"
+        },
+        "manim": "fig1_vuln_swarm"
+      },
+      "new_visual_element": "token budget + search-scope asymmetry",
+      "t_start": 62.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "figure-1",
+      "narration_text": "Anthropic discloses this. They plot the correction themselves — the dotted line, core directories only. One hundred twenty-eight findings. Per token, that is about one and a half times better than the dumb parallel version. Not twelve point seven.",
+      "estimated_duration_s": 16.4,
+      "actual_duration_s": 13.27,
+      "audio_file": "mp3/beat-B09.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "media_file": "pantry/clips/fig1-vuln-swarm.mp4",
+      "pantry_tier": "self-rendered-4k",
+      "graphic": {
+        "engine": "external",
+        "production_viz": {
+          "label": "the dotted core-only line, isolated",
+          "note": "silent 3840x2160 master, born native 4K; audit annotation already burned in"
+        },
+        "manim": "fig1_vuln_swarm"
+      },
+      "new_visual_element": "the dotted core-only line, isolated",
+      "t_start": 76.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "figure-1",
+      "narration_text": "Credit where it is due: the correction is in the post. The headline just isn't.",
+      "estimated_duration_s": 6.9,
+      "actual_duration_s": 4.69,
+      "audio_file": "mp3/beat-B10.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "The Concession",
+            "artifactHeading": "Anthropic's own words",
+            "artifactLines": [
+              "Limit the swarm's outputs to core directories,",
+              "and the two methods seem comparable",
+              "in tokens per vulnerability found."
+            ]
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "pantry_tier": "real-artifact",
+      "credit": "Anthropic Frontier Red Team, 13 Aug 2026 — verbatim text from the archived page, reproduced for criticism. Stylesheet was not archived; excerpt is typeset in the house serif, wording unaltered.",
+      "new_visual_element": "the concession, in Anthropic's own words",
+      "t_start": 92.4,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "audit",
+      "narration_text": "There is a bigger problem and it is not about tokens. What is a vulnerability here? Whatever the arbiter agent said was new and valid.",
+      "estimated_duration_s": 11.0,
+      "actual_duration_s": 7.64,
+      "audio_file": "mp3/beat-B11.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "The Catch",
+            "artifactHeading": "LLM graded the LLMs",
+            "artifactLines": [
+              "What counts as a vulnerability?",
+              "Whatever the arbiter agent said was new and valid.",
+              "Same model family. No human triage."
+            ]
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "the arbiter loop — LLM judging LLMs",
+      "t_start": 99.3,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "audit",
+      "narration_text": "No human triage. No CVE confirmation. No severity distribution. The fifteen projects are never named. A model of the same family graded the homework, and its false-positive rate is not measured anywhere in the post.",
+      "estimated_duration_s": 15.2,
+      "actual_duration_s": 12.8,
+      "audio_file": "mp3/beat-B12.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Missing Controls",
+            "artifactHeading": "Four things unmeasured",
+            "artifactLines": [
+              "No human triage",
+              "No CVE confirmation",
+              "No severity distribution",
+              "No arbiter false-positive rate"
+            ]
+          },
+          "rendered": {
+            "out": "media/B12.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "four missing controls, struck through",
+      "t_start": 110.3,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B12.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "audit",
+      "narration_text": "That is the load-bearing assumption of the whole experiment. Everything downstream of it inherits the uncertainty.",
+      "estimated_duration_s": 7.3,
+      "actual_duration_s": 6.68,
+      "audio_file": "mp3/beat-B13.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Load-bearing assumption",
+            "artifactHeading": "Everything inherits the arbiter's uncertainty",
+            "artifactLines": [
+              "The fifteen projects are never named.",
+              "The arbiter's error rate is unmeasured.",
+              "All downstream results depend on this."
+            ]
+          },
+          "rendered": {
+            "out": "media/B13.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "weakest-link card",
+      "t_start": 125.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "turn-2",
+      "narration_text": "Second experiment. Same idea, harder problem: build a text-based open-world game, twelve hours, agents must actually depend on each other.",
+      "estimated_duration_s": 9.0,
+      "actual_duration_s": 8.62,
+      "audio_file": "mp3/beat-B14.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Experiment 2",
+            "artifactHeading": "Build a text game in 12 hours",
+            "artifactLines": [
+              "Agents must genuinely depend on each other.",
+              "Shared codebase. Dependency graph required.",
+              "Real coordination under time pressure."
+            ]
+          },
+          "rendered": {
+            "out": "media/B14.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "the game-build brief",
+      "t_start": 132.8,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "turn-2",
+      "narration_text": "The games were bad. Anthropic says so plainly — inscrutable interfaces, brutal learning curves, too slow to play. That is not the interesting part.",
+      "estimated_duration_s": 10.2,
+      "actual_duration_s": 8.43,
+      "audio_file": "mp3/beat-B15.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Anthropic's assessment",
+            "artifactHeading": "\"Models have poor taste in this arena\"",
+            "artifactLines": [
+              "Inscrutable interfaces.",
+              "Brutal learning curves.",
+              "Too slow to play."
+            ]
+          },
+          "rendered": {
+            "out": "media/B15.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "quote — 'models have poor taste in this arena'",
+      "t_start": 141.8,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "figure-2",
+      "narration_text": "The interesting part is this pair of charts. Left: what fraction of pull requests got merged. Right: how much of an agent's files were written by somebody else.",
+      "estimated_duration_s": 12.3,
+      "actual_duration_s": 9.09,
+      "audio_file": "mp3/beat-B16.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns"
+      },
+      "media_file": "../../research/multiagent-systems/34ffa8cc39ef8e749c5a371b5cb2c8df2dbd3e8f-1999x707.webp",
+      "pantry_tier": "real-artifact",
+      "credit": "Anthropic Frontier Red Team, 'Patterns and problems in emerging multiagent systems', 13 Aug 2026 — published figure, reproduced for criticism",
+      "new_visual_element": "published Figure 2 — merge fraction and code sharing",
+      "t_start": 152.0,
+      "build": {
+        "status": "STILL",
+        "src": "media/B16.png",
+        "filled_by": "still",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B17",
+      "act": "figure-2",
+      "narration_text": "The story Anthropic tells is that only Sonnet 5 keeps a high merge rate while genuinely sharing code. Look at the right-hand axis.",
+      "estimated_duration_s": 10.2,
+      "actual_duration_s": 8.04,
+      "audio_file": "mp3/beat-B17.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns"
+      },
+      "media_file": "../../research/multiagent-systems/34ffa8cc39ef8e749c5a371b5cb2c8df2dbd3e8f-1999x707.webp",
+      "pantry_tier": "real-artifact",
+      "credit": "Anthropic Frontier Red Team, 'Patterns and problems in emerging multiagent systems', 13 Aug 2026 — published figure, reproduced for criticism",
+      "new_visual_element": "hold on the right panel's 0.25 axis ceiling",
+      "t_start": 164.3,
+      "build": {
+        "status": "STILL",
+        "src": "media/B17.png",
+        "filled_by": "still",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B18",
+      "act": "figure-2",
+      "narration_text": "It tops out at zero point two five. Put both panels on the same zero-to-one scale and the collaboration story changes shape.",
+      "estimated_duration_s": 9.8,
+      "actual_duration_s": 7.91,
+      "audio_file": "mp3/beat-B18.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "media_file": "pantry/clips/fig2-merge-and-sharing.mp4",
+      "pantry_tier": "self-rendered-4k",
+      "graphic": {
+        "engine": "external",
+        "production_viz": {
+          "label": "animated Figure 2 — both panels on the same 0-1 axis",
+          "note": "silent 3840x2160 master, born native 4K; audit annotation already burned in"
+        },
+        "manim": "fig2_merge_and_sharing"
+      },
+      "new_visual_element": "animated Figure 2 — both panels on the same 0-1 axis",
+      "t_start": 174.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B18.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B19",
+      "act": "figure-2",
+      "narration_text": "Sonnet 5 peaks at zero point one eight four. The best collaborator in the study has a median agent that still writes eighty-two percent of its own files alone. And at ten agents, the oldest model in the lineup shares more code than Sonnet 5 does.",
+      "estimated_duration_s": 19.7,
+      "actual_duration_s": 14.12,
+      "audio_file": "mp3/beat-B19.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "media_file": "pantry/clips/fig2-merge-and-sharing.mp4",
+      "pantry_tier": "self-rendered-4k",
+      "graphic": {
+        "engine": "external",
+        "production_viz": {
+          "label": "0.184 callout, and the 10-agent crossover",
+          "note": "silent 3840x2160 master, born native 4K; audit annotation already burned in"
+        },
+        "manim": "fig2_merge_and_sharing"
+      },
+      "new_visual_element": "0.184 callout, and the 10-agent crossover",
+      "t_start": 184.3,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B19.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B20",
+      "act": "figure-2",
+      "narration_text": "So the claim is true — at twenty, forty, and eighty agents. It is false at ten. And the thing it describes is small.",
+      "estimated_duration_s": 10.2,
+      "actual_duration_s": 6.66,
+      "audio_file": "mp3/beat-B20.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "The Claim",
+            "artifactHeading": "True at scale. False at ten.",
+            "artifactLines": [
+              "Sonnet 5 leads at 20, 40, and 80 agents.",
+              "At 10 agents: the oldest model shares more.",
+              "The effect is real and small."
+            ]
+          },
+          "rendered": {
+            "out": "media/B20.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "true-at-scale / false-at-10 card",
+      "t_start": 204.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B20.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B21",
+      "act": "figure-3",
+      "narration_text": "Third chart. Pull requests opened and merged over a twelve-hour run.",
+      "estimated_duration_s": 5.3,
+      "actual_duration_s": 4.57,
+      "audio_file": "mp3/beat-B21.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns"
+      },
+      "media_file": "../../research/multiagent-systems/9dc6d5855b29107da250aefe56585dd2df4a2cd7-2000x1120.webp",
+      "pantry_tier": "real-artifact",
+      "credit": "Anthropic Frontier Red Team, 'Patterns and problems in emerging multiagent systems', 13 Aug 2026 — published figure, reproduced for criticism",
+      "new_visual_element": "published Figure 3 — PR activity over 12 hours",
+      "t_start": 214.2,
+      "build": {
+        "status": "STILL",
+        "src": "media/B21.png",
+        "filled_by": "still",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B22",
+      "act": "figure-3",
+      "narration_text": "Older models look terrible here. Opus 4.6 opened nine hundred eighty pull requests and merged about ninety. That is a nine percent hit rate, and it looks like chaos.",
+      "estimated_duration_s": 13.1,
+      "actual_duration_s": 9.73,
+      "audio_file": "mp3/beat-B22.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "media_file": "pantry/clips/fig3-pr-activity.mp4",
+      "pantry_tier": "self-rendered-4k",
+      "graphic": {
+        "engine": "external",
+        "production_viz": {
+          "label": "animated Figure 3 — opened vs merged, per model",
+          "note": "silent 3840x2160 master, born native 4K; audit annotation already burned in"
+        },
+        "manim": "fig3_pr_activity"
+      },
+      "new_visual_element": "animated Figure 3 — opened vs merged, per model",
+      "t_start": 219.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B22.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B23",
+      "act": "figure-3",
+      "narration_text": "Mythos Preview merged seventy-eight percent. Enormous improvement. It also opened one hundred sixty-nine pull requests instead of nine hundred eighty.",
+      "estimated_duration_s": 9.0,
+      "actual_duration_s": 8.98,
+      "audio_file": "mp3/beat-B23.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "media_file": "pantry/clips/fig3-pr-activity.mp4",
+      "pantry_tier": "self-rendered-4k",
+      "graphic": {
+        "engine": "external",
+        "production_viz": {
+          "label": "169 vs 980 — the volume collapse",
+          "note": "silent 3840x2160 master, born native 4K; audit annotation already burned in"
+        },
+        "manim": "fig3_pr_activity"
+      },
+      "new_visual_element": "169 vs 980 — the volume collapse",
+      "t_start": 232.6,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B23.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B24",
+      "act": "figure-3",
+      "narration_text": "The newest model does eighty-three percent less work and merges a higher fraction of it. On this chart, solving coordination and quietly doing less are the same line.",
+      "estimated_duration_s": 12.3,
+      "actual_duration_s": 9.88,
+      "audio_file": "mp3/beat-B24.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Two Readings",
+            "artifactHeading": "Solved coordination — or just did less?",
+            "artifactLines": [
+              "Reading 1: Mythos Preview solved conflict.",
+              "Reading 2: It opened 169 PRs instead of 980.",
+              "On this chart, they are the same line."
+            ]
+          },
+          "rendered": {
+            "out": "media/B24.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "the two readings of one line, side by side",
+      "t_start": 241.6,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B24.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B25",
+      "act": "figure-3",
+      "narration_text": "To be fair, the post reaches this conclusion itself a few paragraphs later — the newer models 'solved' conflict by hardly working together at all. The figure caption just doesn't say it.",
+      "estimated_duration_s": 13.5,
+      "actual_duration_s": 10.33,
+      "audio_file": "mp3/beat-B25.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Anthropic's Admission",
+            "artifactHeading": "\"Solved conflict by hardly working together\"",
+            "artifactLines": [
+              "The post reaches this conclusion itself.",
+              "A few paragraphs after the figure.",
+              "The figure caption just doesn't say it."
+            ]
+          },
+          "rendered": {
+            "out": "media/B25.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "quote — 'only by hardly working together at all'",
+      "t_start": 253.9,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B25.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B26",
+      "act": "conformity",
+      "narration_text": "One more thing from this half of the post, and it has no figure at all — which is a shame, because it may be the most consequential claim in the piece.",
+      "estimated_duration_s": 13.5,
+      "actual_duration_s": 7.77,
+      "audio_file": "mp3/beat-B26.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "No Figure",
+            "artifactHeading": "The most consequential claim has no chart",
+            "artifactLines": [
+              "Agents are low variance.",
+              "Same model, same context, same choice.",
+              "The post describes it. Doesn't measure it."
+            ]
+          },
+          "rendered": {
+            "out": "media/B26.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "the no-figure flag",
+      "t_start": 267.4,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B26.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B27",
+      "act": "conformity",
+      "narration_text": "Agents are low variance. Same model, same context, same scaffolding — so they make the same choice. In one early run, eighteen of thirty agents created a git branch with the identical name. In a writing workshop, multiple agents independently titled their story The Cartographer's Last Commission.",
+      "estimated_duration_s": 19.7,
+      "actual_duration_s": 16.64,
+      "audio_file": "mp3/beat-B27.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Conformity",
+            "artifactHeading": "Four anecdotes from one swarm",
+            "artifactLines": [
+              "18 of 30 agents: identical git branch name",
+              "Multiple agents: 'The Cartographer's Last Commission'",
+              "No-bandwidth queue: all polled 30×/sec",
+              "Pricing game: colluded by round three"
+            ]
+          },
+          "rendered": {
+            "out": "media/B27.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "the four conformity anecdotes",
+      "t_start": 280.9,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B27.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B28",
+      "act": "conformity",
+      "narration_text": "I want to flag the weakness here, because it is the softest evidence in the post. Four anecdotes, no counts, and no human baseline. Thirty human developers told to build an MVP game loop would also collide on that branch name at some rate. Nobody measured it.",
+      "estimated_duration_s": 20.1,
+      "actual_duration_s": 14.25,
+      "audio_file": "mp3/beat-B28.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Weakest Evidence",
+            "artifactHeading": "Four anecdotes. No counts. No human baseline.",
+            "artifactLines": [
+              "Would humans collide on the same branch name?",
+              "Nobody measured it.",
+              "The systemic version — polling storms — is harder to dismiss."
+            ]
+          },
+          "rendered": {
+            "out": "media/B28.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "missing-baseline card",
+      "t_start": 300.6,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B28.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B29",
+      "act": "conformity",
+      "narration_text": "But the systemic version is hard to wave away. Asked to manage job queues on finite bandwidth with no way to coordinate, the agents all reached for the same trick — polling thirty times a second. One run logged two point four million job requests and one hundred seventeen accepted jobs.",
+      "estimated_duration_s": 21.4,
+      "actual_duration_s": 16.66,
+      "audio_file": "mp3/beat-B29.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "title": "job-queue.log",
+            "code": "# 2,400,000 job requests submitted\n# 117 accepted\n# Acceptance rate: 0.005%\n# Cause: all agents polling at 30×/sec\n# No shared bandwidth coordination",
+            "sparkLine": "2.4M requests · 117 accepted."
+          },
+          "rendered": {
+            "out": "media/B29.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "2.4M requests / 117 accepted",
+      "t_start": 320.7,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B29.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B30",
+      "act": "conformity",
+      "narration_text": "And in a pricing game, given a private channel, they colluded by round three. Take the channel away and they still colluded — price-matching to the penny off a public board.",
+      "estimated_duration_s": 13.1,
+      "actual_duration_s": 9.37,
+      "audio_file": "mp3/beat-B30.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Bertrand Pricing Game",
+            "artifactHeading": "—agent 1, round 1",
+            "artifactLines": [
+              "wholesale is 10 for all of us,",
+              "so a price war just burns everyone’s margin...",
+              "happy to coordinate who covers which niches."
+            ]
+          },
+          "rendered": {
+            "out": "media/B30.mp4",
+            "at": ""
+          }
+        }
+      },
+      "pantry_tier": "real-artifact",
+      "credit": "Anthropic Frontier Red Team, 13 Aug 2026 — verbatim text from the archived page, reproduced for criticism. Stylesheet was not archived; excerpt is typeset in the house serif, wording unaltered.",
+      "new_visual_element": "the Bertrand collusion agreement, round one, verbatim",
+      "t_start": 342.1,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B30.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B31",
+      "act": "conformity",
+      "narration_text": "Worth knowing: economists found exactly this with Q-learning pricing agents six years ago. The genuinely new part is the speed and the fact that it happens in plain English. The post doesn't cite that literature.",
+      "estimated_duration_s": 15.2,
+      "actual_duration_s": 11.86,
+      "audio_file": "mp3/beat-B31.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Prior Art",
+            "artifactHeading": "Economists found this in 2020",
+            "artifactLines": [
+              "Calvano et al.: Q-learning agents collude autonomously.",
+              "New here: speed, and plain English.",
+              "The post doesn't cite that literature."
+            ]
+          },
+          "rendered": {
+            "out": "media/B31.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "Calvano et al. 2020 placement card",
+      "t_start": 355.2,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B31.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B32",
+      "act": "verdict",
+      "narration_text": "So. Does coordination help? Probably, and the direction is worth taking seriously. But every number in this section comes from a single run with no error bars, and the biggest one was graded by another agent.",
+      "estimated_duration_s": 15.6,
+      "actual_duration_s": 11.93,
+      "audio_file": "mp3/beat-B32.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Verdict",
+            "artifactHeading": "Direction real. Numbers need scrutiny.",
+            "artifactLines": [
+              "Single run. No error bars.",
+              "Biggest number graded by another agent.",
+              "Conformity is the most interesting finding."
+            ]
+          },
+          "rendered": {
+            "out": "media/B32.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "three-line verdict recap",
+      "t_start": 370.4,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B32.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B33",
+      "act": "your-turn",
+      "narration_text": "Your turn. Take any benchmark result you have seen this month where one system beat another by a big multiple, and ask a model this: what would have to be equal between these two runs for the multiple to mean what the headline says it means? Then check whether it was.",
+      "estimated_duration_s": 21.8,
+      "actual_duration_s": 13.76,
+      "audio_file": "mp3/beat-B33.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "command": "Take any benchmark result you have seen this month where one system beat another by a big multiple, and ask: what would have to be equal between these two runs for the multiple to mean what the headline says it means? Then check whether it was.",
+            "topic": "BENCHMARK READING",
+            "segment": "Your Turn",
+            "greeting": "Try this,",
+            "runningText": "Reading any benchmark that matters…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B33.mp4",
+            "at": ""
+          }
+        }
+      },
+      "new_visual_element": "runnable prompt, read in full",
+      "t_start": 386.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B33.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    },
+    {
+      "beat_id": "B34",
+      "act": "outro",
+      "narration_text": "Patterns and problems in emerging multiagent systems, part one — coordination.",
+      "estimated_duration_s": 4.8,
+      "actual_duration_s": 5.55,
+      "audio_file": "mp3/beat-B34.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "provenance": "reel-local",
+          "version": "1",
+          "props": {
+            "title": "The swarm found 266 bugs. Then I checked the axis.",
+            "slug": "mas-coordination"
+          },
+          "rendered": {
+            "out": "media/B34.mp4",
+            "at": ""
+          }
+        }
+      },
+      "tail_silence_s": 1.0,
+      "new_visual_element": "title restate",
+      "t_start": 407.8,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B34.mp4",
+        "filled_by": "media",
+        "at": "2026-08-16T12:27:08"
+      }
+    }
+  ]
+}

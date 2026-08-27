@@ -1,0 +1,169 @@
+#!/usr/bin/env bash
+# filmloop.sh — 24/7 unattended film factory.
+#
+# One Claude Code session cannot run for days: it fills its context and stops. So the
+# loop lives in the shell and Claude is invoked ONCE PER REEL with a fresh context.
+# All state is on disk, so a crash, a reboot, or a killed session resumes exactly where
+# it stopped.
+#
+#   ./filmloop.sh              run forever
+#   ./filmloop.sh --once       one reel, then exit (use this first)
+#   ./filmloop.sh --dry        pick a reel and print what would run, invoke nothing
+#
+set -uo pipefail
+
+ROOT="${FILMLOOP_ROOT:-$(pwd)}"
+STATE="$ROOT/.filmloop"
+QUEUE="$STATE/queue.json"
+LOG="$STATE/filmloop.log"
+PROMPT="$ROOT/FILMLOOP-PROMPT.md"
+MODEL="${FILMLOOP_MODEL:-}"
+MAX_ATTEMPTS=2
+COOLDOWN=20                 # seconds between reels
+MIN_FREE_GB=20              # refuse to render below this
+CONSEC_FAIL_STOP=3          # halt on a systemic bug rather than burning a night
+
+ONCE=0; DRY=0
+for a in "$@"; do
+  case "$a" in
+    --once) ONCE=1 ;;
+    --dry)  DRY=1 ;;
+    *) echo "unknown flag: $a" >&2; exit 2 ;;
+  esac
+done
+
+mkdir -p "$STATE"
+say(){ printf '%s  %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$*" | tee -a "$LOG"; }
+
+[[ -f "$PROMPT" ]] || { say "FATAL: $PROMPT missing"; exit 1; }
+command -v claude >/dev/null || { say "FATAL: claude CLI not on PATH"; exit 1; }
+
+# ---------------------------------------------------------------- queue
+# Rebuilt only when absent. Per-reel status is authoritative and survives restarts.
+build_queue(){
+  say "building queue from $ROOT"
+  python3 - "$ROOT" "$QUEUE" <<'PY'
+import json,os,sys,glob
+root,out=sys.argv[1],sys.argv[2]
+seen={}
+for pat in ('youtube/*/beat_sheet.json','skills/youtube/*/beat_sheet.json','*/youtube/*/beat_sheet.json'):
+    for bs in glob.glob(os.path.join(root,pat)):
+        seen[os.path.dirname(os.path.abspath(bs))]=bs
+items=[]
+for d,bs in sorted(seen.items()):
+    slug=os.path.basename(d)
+    try: nb=len(json.load(open(bs)).get('beats',[]))
+    except Exception: nb=0
+    t=os.path.getmtime(bs)
+    renders=[p for p in (os.path.join(d,slug+'.mp4'),os.path.join(d,slug+'-slate.mp4')) if os.path.exists(p)]
+    if renders and all(os.path.getmtime(p)>=t-60 for p in renders):
+        continue                                   # current cut exists — nothing to do
+    items.append({"slug":slug,"dir":d,"beats":nb,
+                  "state":"stale" if renders else "unbuilt",
+                  "status":"pending","attempts":0,"note":""})
+items.sort(key=lambda i:(0 if i["state"]=="stale" else 1, -i["beats"], i["slug"]))
+json.dump({"root":root,"items":items},open(out,'w'),indent=1)
+print(len(items))
+PY
+}
+
+next_reel(){
+  python3 - "$QUEUE" <<'PY'
+import json,sys
+q=json.load(open(sys.argv[1]))
+for i in q["items"]:
+    if i["status"]=="pending":
+        print(i["dir"]); break
+PY
+}
+
+set_status(){  # dir status note
+  python3 - "$QUEUE" "$1" "$2" "${3:-}" <<'PY'
+import json,sys
+p,d,st,note=sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4]
+q=json.load(open(p))
+for i in q["items"]:
+    if i["dir"]==d:
+        i["status"]=st; i["note"]=note
+        if st=="failed": i["attempts"]+=1
+        if st=="failed" and i["attempts"]<2: i["status"]="pending"
+json.dump(q,open(p,'w'),indent=1)
+PY
+}
+
+counts(){
+  python3 - "$QUEUE" <<'PY'
+import json,sys,collections
+q=json.load(open(sys.argv[1]))
+c=collections.Counter(i["status"] for i in q["items"])
+print(" ".join(f"{k}={v}" for k,v in sorted(c.items())) or "empty")
+PY
+}
+
+free_gb(){ df -g "$ROOT" 2>/dev/null | awk 'NR==2{print $4}' || echo 999; }
+
+[[ -f "$QUEUE" ]] || build_queue >/dev/null
+say "queue: $(counts)"
+
+consec_fail=0
+while true; do
+  d="$(next_reel)"
+  if [[ -z "$d" ]]; then
+    say "queue drained. rescanning in 30m — new beat sheets get picked up automatically."
+    (( ONCE )) && exit 0
+    rm -f "$QUEUE"; sleep 1800; build_queue >/dev/null; continue
+  fi
+
+  slug="$(basename "$d")"
+  gb="$(free_gb)"
+  if [[ "$gb" -lt "$MIN_FREE_GB" ]]; then
+    say "PAUSED: only ${gb}GB free (need ${MIN_FREE_GB}). Renders fail dirty when the disk fills."
+    sleep 600; continue
+  fi
+
+  say "── $slug   (free ${gb}GB, $(counts))"
+  if (( DRY )); then
+    say "DRY: would run claude -p on $d"; exit 0
+  fi
+
+  set_status "$d" "building" ""
+  start=$(date +%s)
+
+  # Fresh context per reel. --dangerously-skip-permissions is appropriate here ONLY
+  # because this machine does nothing else and every output is regenerable from the
+  # beat sheet, which is git-tracked.
+  if ( cd "$ROOT" && \
+       REEL_DIR="$d" REEL_SLUG="$slug" \
+       claude -p "$(cat "$PROMPT")
+
+TARGET REEL FOR THIS INVOCATION: $d
+Work only on this reel. When it is done or has failed, stop — the supervisor starts the next one." \
+         ${MODEL:+--model "$MODEL"} \
+         --dangerously-skip-permissions \
+         >>"$STATE/$slug.out" 2>&1 ); then
+    dur=$(( $(date +%s) - start ))
+    if ls "$d/$slug"*.mp4 >/dev/null 2>&1; then
+      set_status "$d" "done" "${dur}s"
+      say "   DONE in ${dur}s"
+      consec_fail=0
+    else
+      set_status "$d" "failed" "exit 0 but no render"
+      say "   FAILED — claude exited clean but produced no mp4"
+      consec_fail=$((consec_fail+1))
+    fi
+  else
+    dur=$(( $(date +%s) - start ))
+    set_status "$d" "failed" "claude exited non-zero after ${dur}s"
+    say "   FAILED after ${dur}s — see $STATE/$slug.out"
+    consec_fail=$((consec_fail+1))
+  fi
+
+  if (( consec_fail >= CONSEC_FAIL_STOP )); then
+    say "HALT: $consec_fail reels failed in a row. That is a systemic bug, not bad luck."
+    say "      Diagnose before restarting; the queue is preserved at $QUEUE."
+    exit 1
+  fi
+
+  (( ONCE )) && exit 0
+  sleep "$COOLDOWN"
+done

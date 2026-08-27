@@ -1,0 +1,20 @@
+# MASTERCHECK
+
+| field | value |
+|---|---|
+| master | workspace-reflection-training.mp4 |
+| resolution | 3840×2160 |
+| fps | 24 |
+| pix_fmt | yuv420p |
+| audio_streams | 1 |
+| video_codec | h264 |
+| duration_s | 168.121 |
+| is_short | False |
+| failures | 0 |
+| verdict | **PASS** |
+
+## Notes
+
+- duration: 168.121s  expected=168.107s  drift=0.014s ✓
+
+GATE MASTER: PASS

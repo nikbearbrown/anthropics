@@ -30,20 +30,12 @@
     "built_at": "2026-07-16T20:59:09.929663",
     "voice_kokoro": "am_onyx",
     "build": {
-      "at": "2026-07-28T21:58:02",
+      "at": "2026-08-02T22:08:50",
       "cut": "master",
-      "filled": 4,
-      "of": 13,
+      "filled": 15,
+      "of": 16,
       "slates": [
-        "NBB00",
-        "B00",
-        "B02",
-        "B03",
-        "B04",
-        "B05",
-        "NBB01",
-        "NBB02",
-        "NBB03"
+        "B04"
       ],
       "skin_warnings": []
     }
@@ -85,11 +77,10 @@
       "audio_file": "mp3/beat-NBB00.mp3",
       "actual_duration_s": 28.42,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T21:58:02",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for NBB00"
+        "status": "VIDEO",
+        "src": "media/NBB00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T22:08:50"
       }
     },
     {
@@ -108,6 +99,10 @@
               "Nik Bear Brown",
               "Type III Error Detector"
             ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
           }
         }
       },
@@ -119,11 +114,10 @@
       "actual_duration_s": 3.97,
       "engine": "kokoro",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T21:58:02",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T22:08:50"
       }
     },
     {
@@ -157,7 +151,7 @@
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-28T21:58:02"
+        "at": "2026-08-02T22:08:50"
       }
     },
     {
@@ -176,6 +170,10 @@
             "topic": "CONDUCTING AI — TYPE III ERROR",
             "segment": "REFRAMING DETECTOR",
             "runningText": "generating detector…"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
           }
         }
       },
@@ -187,11 +185,10 @@
       "actual_duration_s": 21.93,
       "engine": "kokoro",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T21:58:02",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T22:08:50"
       }
     },
     {
@@ -210,6 +207,10 @@
             "topic": "CONDUCTING AI — TYPE III ERROR",
             "segment": "REFRAMING DETECTOR",
             "code": "# type3_detector.py — Claude Code output\nimport anthropic, json\n\nclient = anthropic.Anthropic()\n\ndef detect_type3(problem_statement):\n    resp = client.messages.create(\n        model='claude-3-5-haiku-20241022',\n        max_tokens=1024,\n        messages=[{'role':'user','content':\n            f'Generate 3 reframings of: \"{problem_statement}\"\\n'\n            f'Moves: zoom-out, zoom-in, change-actor.\\n'\n            f'For each, provide a test_solution that passes '\n            f'that reframing but might fail another.\\n'\n            f'Return JSON: {{\"reframings\": [...]}}'\n        }]\n    )\n    # reframings = json.loads(client.messages.create(...).content[0].text)[\"reframings\"]\n    return json.loads(resp.content[0].text)['reframings']"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
           }
         }
       },
@@ -221,11 +222,10 @@
       "actual_duration_s": 15.68,
       "engine": "kokoro",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T21:58:02",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T22:08:50"
       }
     },
     {
@@ -254,7 +254,7 @@
         "status": "SLATE",
         "src": null,
         "filled_by": null,
-        "at": "2026-07-28T21:58:02",
+        "at": "2026-08-02T22:08:50",
         "needs": "PIPELINE → render animated_graphics.py scene B04_*"
       }
     },
@@ -274,6 +274,10 @@
             "topic": "CONDUCTING AI — TYPE III ERROR",
             "segment": "REFRAMING DETECTOR",
             "runningText": "updating…"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
           }
         }
       },
@@ -285,11 +289,10 @@
       "actual_duration_s": 11.65,
       "engine": "kokoro",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T21:58:02",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T22:08:50"
       }
     },
     {
@@ -323,7 +326,7 @@
         "status": "VIDEO",
         "src": "media/B06.mp4",
         "filled_by": "media",
-        "at": "2026-07-28T21:58:02"
+        "at": "2026-08-02T22:08:50"
       }
     },
     {
@@ -357,7 +360,7 @@
         "status": "VIDEO",
         "src": "media/B07.mp4",
         "filled_by": "media",
-        "at": "2026-07-28T21:58:02"
+        "at": "2026-08-02T22:08:50"
       }
     },
     {
@@ -391,7 +394,7 @@
         "status": "VIDEO",
         "src": "media/B08.mp4",
         "filled_by": "media",
-        "at": "2026-07-28T21:58:02"
+        "at": "2026-08-02T22:08:50"
       }
     },
     {
@@ -426,6 +429,10 @@
               }
             ],
             "dark": true
+          },
+          "rendered": {
+            "out": "media/NBB01.mp4",
+            "at": ""
           }
         }
       },
@@ -434,11 +441,10 @@
       "actual_duration_s": 33.75,
       "lead_silence_s": 0.5,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T21:58:02",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for NBB01"
+        "status": "VIDEO",
+        "src": "media/NBB01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T22:08:50"
       }
     },
     {
@@ -477,11 +483,10 @@
       "audio_file": "mp3/beat-NBB02.mp3",
       "actual_duration_s": 7.81,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T21:58:02",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for NBB02"
+        "status": "VIDEO",
+        "src": "media/NBB02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T22:08:50"
       }
     },
     {
@@ -516,11 +521,10 @@
       "voice": "am_onyx",
       "narration_text": "Type III Error Detector — Wrong Problem, Right Solution",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T21:58:02",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for NBB03"
+        "status": "VIDEO",
+        "src": "media/NBB03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T22:08:50"
       }
     },
     {
@@ -553,8 +557,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T22:08:50"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BHTF",
@@ -586,8 +594,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T22:08:50"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BOUT",
@@ -614,8 +626,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T22:08:50"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

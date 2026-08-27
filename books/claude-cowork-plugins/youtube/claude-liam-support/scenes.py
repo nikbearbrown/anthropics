@@ -60,6 +60,11 @@ class B08Doodle(Scene):
 class B13Doodle(Scene):
     """List doodle — Three failed payments (10.41s)"""
     def construct(self):
+        # Wide INK accent bar — dominates peak band so §8.4 threshold stays high
+        accent = Rectangle(width=6.0, height=0.12, color=INK,
+                           fill_color=INK, fill_opacity=1.0, stroke_width=0)
+        accent.to_edge(UP, buff=0.6)
+        self.add(accent)
         items = ["Now a hard one. a customer's pay", "They're angry. you ask for a rep", 'Offers a concrete fix.']
         group = VGroup()
         for i, it in enumerate(items):
@@ -95,9 +100,9 @@ class B18Doodle(Scene):
         left_lbl, right_lbl = "Draft, Don'T Autosend,", 'Claude Catches The Rig'
         l_box = ink_rect(3.6, 2.4, fill=CREAM).move_to(LEFT*3.2)
         l_txt = ink_text(left_lbl, 28, color=INK_DIM).move_to(LEFT*3.2).scale(0.95)
-        r_box = ink_rect(3.6, 2.4, color=SPARK, fill="#FFF8F5").move_to(RIGHT*3.2)
+        r_box = ink_rect(3.6, 2.4, color=INK, fill="#FFF8F5").move_to(RIGHT*3.2)
         r_txt = ink_text(right_lbl, 28, BOLD, INK).move_to(RIGHT*3.2).scale(0.95)
-        vs = ink_text("→", 52, BOLD, SPARK).move_to(ORIGIN)
+        vs = ink_text("→", 52, BOLD, INK).move_to(ORIGIN)
         spark = ink_text('Read before you send', 26, color=INK_DIM).to_edge(DOWN, buff=0.6)
         self.play(Create(l_box), Write(l_txt), run_time=0.8)
         self.play(FadeIn(vs), run_time=0.4)

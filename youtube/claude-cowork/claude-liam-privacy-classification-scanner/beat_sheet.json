@@ -25,21 +25,12 @@
       "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
     ],
     "build": {
-      "at": "2026-07-16T05:34:47",
+      "at": "2026-08-10T04:06:21",
       "cut": "master",
-      "filled": 5,
-      "of": 10,
-      "slates": [
-        "B01",
-        "B04",
-        "B06",
-        "B07",
-        "B08"
-      ],
-      "skin_warnings": [
-        "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk",
-        "B09: palette=claude but the outro is 'NikBearBrownOutro' — OUTRO LAW wants ClaudeTitleOutro"
-      ]
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": []
     }
   },
   "beats": [
@@ -49,20 +40,18 @@
       "narration_text": "This is Liam, in for Bear. Nik Bear Brown. Build it with a CLI, then take it apart.",
       "estimated_duration_s": 10.0,
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
         "remotion": {
-          "pattern": "NikBearBrownOpen",
+          "pattern": "ClaudeComposerAsk",
           "props": {
+            "greeting": "Liam",
             "topic": "CLAUDE",
-            "lines": [
-              "Nik Bear Brown",
-              "Brutalist + Educational AI",
-              "Privacy Classification Scanner",
-              "Folder You Think Is Safe",
-              "Three Files You Forgot to Redact"
-            ]
+            "segment": "Build a Privacy Classification Scanner for Cowork Folders",
+            "command": "This is Liam, in for Bear. Nik Bear Brown. Build it with a CLI, then take it apart.",
+            "runningText": "building the answer…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/B00.mp4",
@@ -76,7 +65,7 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T05:34:47"
+        "at": "2026-08-10T04:06:21"
       }
     },
     {
@@ -85,32 +74,40 @@
       "narration_text": "You think your working folder is safe — the scanner finds patient identifiers in three files you forgot to redact. 'I can access this file' and 'I should give Claude access to this file' are different questions. The scanner makes the difference visible before the session begins.",
       "estimated_duration_s": 12.0,
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CoworkTaskView",
           "props": {
-            "title": "YOU THINK YOUR WORKING",
-            "items": [
+            "blocks": [
               {
-                "label": "You think your working folder",
-                "sub": "You think your working folder is safe —",
-                "icon": "BOX",
-                "cueFrame": 0
+                "type": "prompt",
+                "text": "You think your working folder is safe — the scanner finds patient identifiers in three files you for…"
               },
               {
-                "label": "the scanner finds patient identifiers in three files you forgot to redact",
-                "sub": "the scanner finds patient identifiers in three files you forgot to redact.",
-                "icon": "BOX",
-                "cueFrame": 24
-              },
-              {
-                "label": "'I can access this file'",
-                "sub": "'I can access this file' and 'I should give Claude access to this file' are different questions.",
-                "icon": "BOX",
-                "cueFrame": 48
+                "type": "review",
+                "items": [
+                  {
+                    "title": "You think your working folder is safe — the scanner finds patient identifiers in three fil",
+                    "badge": "Rule",
+                    "badgeTone": "pass"
+                  },
+                  {
+                    "title": "'I can access this file' and 'I should give Claude access to this file' are different ques",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  },
+                  {
+                    "title": "The scanner makes the difference visible before the session begins.",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  }
+                ]
               }
+            ],
+            "cues": [
+              0,
+              18
             ]
           },
           "rendered": {
@@ -122,11 +119,10 @@
       "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 14.72,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-29T03:41:30",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:06:21"
       }
     },
     {
@@ -135,17 +131,39 @@
       "narration_text": "Build privacy_scanner.py: takes a directory path, lists all files, and classifies each by the book's six-tier sensitivity taxonomy — Public, Internal, Confidential, Personal, Regulated, Credentials.",
       "estimated_duration_s": 15.0,
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
+        "type": "REMOTION",
+        "source": "own",
         "motion": "fade",
         "remotion": {
-          "pattern": "NikBearBrownTerminalAsk",
+          "pattern": "CCSession",
           "props": {
-            "command": "claude \"Write privacy_scanner.py:\n  takes a directory path\n  classifies each file by sensitivity:\n    Public (no PII, no credentials)\n    Internal (draft/memo/notes)\n    Confidential (contract/nda/client)\n    Personal (names/emails/SSN)\n    Regulated (HIPAA/FERPA keywords)\n    Credentials (password/api_key/token)\n  print grouped summary table\"",
-            "topic": "CLAUDE",
-            "segment": "PRIVACY SCAN",
-            "runningText": "running analysis…",
-            "greeting": "The ask,"
+            "title": "privacy-scanner",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Build privacy_scanner.py: classify files by six-tier sensitivity, never read contents",
+                "cue": 0,
+                "typeDuration": 60
+              },
+              {
+                "type": "status",
+                "verb": "Planning",
+                "elapsed": "0m 8s"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "privacy_scanner.py",
+                "state": "running"
+              }
+            ],
+            "mascot": "auto",
+            "cues": [
+              0,
+              40,
+              70
+            ]
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -159,7 +177,7 @@
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T05:34:47"
+        "at": "2026-08-10T04:06:21"
       }
     },
     {
@@ -168,16 +186,43 @@
       "narration_text": "Check the code. Classification is filename-only — the tool never reads file contents for Personal or Regulated detection. Privacy in, privacy preserved. Each category has explicit regex patterns: tax records match Regulated, API key files match Credentials, client contracts match Confidential.",
       "estimated_duration_s": 15.0,
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
+        "type": "REMOTION",
+        "source": "own",
         "motion": "fade",
         "remotion": {
-          "pattern": "NikBearBrownCodeBlock",
+          "pattern": "CCSession",
           "props": {
-            "filename": "privacy_scanner.py",
-            "segment": "PRIVACY SCAN",
-            "topic": "CLAUDE",
-            "code": "# privacy_scanner.py — Claude Code output\nimport re, pathlib\n\nTAXONOMY = {\n  'Credentials': r'password|api.?key|token|secret',\n  'Regulated':   r'hipaa|ferpa|phi|tax|ssn|patient',\n  'Personal':    r'resume|name|email|dob|address',\n  'Confidential':r'contract|nda|client|agreement',\n  'Internal':    r'draft|memo|notes|internal',\n  'Public':      r'.*'   # fallthrough\n}\n\ndef classify(name):\n    n = name.lower()\n    for category, pat in TAXONOMY.items():\n        if re.search(pat, n):\n            return category\n    return 'Public'\n# filename-only — never reads file contents"
+            "title": "privacy-scanner",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "0m 22s"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "privacy_scanner.py",
+                "state": "done",
+                "children": [
+                  {
+                    "name": "Bash",
+                    "arg": "python3 privacy_scanner.py --help"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "Classification is filename-only — never reads file contents"
+              }
+            ],
+            "mascot": "off",
+            "cues": [
+              0,
+              30,
+              70
+            ]
           },
           "rendered": {
             "out": "media/B03.mp4",
@@ -191,7 +236,7 @@
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T05:34:47"
+        "at": "2026-08-10T04:06:21"
       }
     },
     {
@@ -200,32 +245,40 @@
       "narration_text": "Scan a test directory with dummy filenames. The table groups by category: two Credentials files, one Regulated, three Confidential, five Internal, four Public. The working folder you thought was safe has two credential files the agent must never see.",
       "estimated_duration_s": 14.0,
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CoworkTaskView",
           "props": {
-            "title": "SCAN A TEST DIRECTORY",
-            "items": [
+            "blocks": [
               {
-                "label": "Scan a test directory with dummy filenames",
-                "sub": "Scan a test directory with dummy filenames.",
-                "icon": "BOX",
-                "cueFrame": 0
+                "type": "prompt",
+                "text": "Scan a test directory with dummy filenames. The table groups by category: two Credentials files, one…"
               },
               {
-                "label": "The table groups by category:",
-                "sub": "The table groups by category: two Credentials files, one Regulated, three Confidential, five Internal, four Public.",
-                "icon": "BOX",
-                "cueFrame": 24
-              },
-              {
-                "label": "The working folder you thought",
-                "sub": "The working folder you thought was safe has two credential files the agent must never see.",
-                "icon": "BOX",
-                "cueFrame": 48
+                "type": "review",
+                "items": [
+                  {
+                    "title": "Scan a test directory with dummy filenames.",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  },
+                  {
+                    "title": "The table groups by category: two Credentials files, one Regulated, three Confidential, fi",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  },
+                  {
+                    "title": "The working folder you thought was safe has two credential files the agent must never see.",
+                    "badge": "Warning",
+                    "badgeTone": "warn"
+                  }
+                ]
               }
+            ],
+            "cues": [
+              0,
+              18
             ]
           },
           "rendered": {
@@ -237,11 +290,10 @@
       "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 14.49,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-29T03:41:30",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:06:21"
       }
     },
     {
@@ -250,17 +302,51 @@
       "narration_text": "Add a Cowork-ready flag that outputs only files safe for a Cowork session. Any file above Internal is excluded automatically.",
       "estimated_duration_s": 15.0,
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
+        "type": "REMOTION",
+        "source": "own",
         "motion": "fade",
         "remotion": {
-          "pattern": "NikBearBrownTerminalAsk",
+          "pattern": "CCSession",
           "props": {
-            "command": "claude \"update privacy_scanner.py:\n  add --cowork-ready flag\n  output only files classified Public or Internal\n  exclude Personal/Regulated/Confidential/Credentials\n  print count: 'N of M files safe for Cowork'\"",
-            "topic": "CLAUDE",
-            "segment": "PRIVACY SCAN",
-            "runningText": "updating scanner…",
-            "greeting": "The change,"
+            "title": "privacy-scanner",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Add --cowork-ready flag: output only files safe for a Cowork session",
+                "cue": 0,
+                "typeDuration": 60
+              },
+              {
+                "type": "status",
+                "verb": "Planning",
+                "elapsed": "0m 6s"
+              },
+              {
+                "type": "diff",
+                "file": "privacy_scanner.py",
+                "addCount": 8,
+                "delCount": 0,
+                "lines": [
+                  {
+                    "gutter": "+",
+                    "text": "if args.cowork_ready:",
+                    "kind": "add"
+                  },
+                  {
+                    "gutter": "+",
+                    "text": "    df = df[df['category'].isin(['Public', 'Internal'])]",
+                    "kind": "add"
+                  }
+                ]
+              }
+            ],
+            "mascot": "auto",
+            "cues": [
+              0,
+              40,
+              70
+            ]
           },
           "rendered": {
             "out": "media/B05.mp4",
@@ -274,7 +360,7 @@
         "status": "VIDEO",
         "src": "media/B05.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T05:34:47"
+        "at": "2026-08-10T04:06:21"
       }
     },
     {
@@ -283,32 +369,45 @@
       "narration_text": "Run with the Cowork-ready flag. Nine of fifteen files are safe — the six sensitive files are excluded automatically. That is the working folder the agent sees. The other six never entered the session.",
       "estimated_duration_s": 10.0,
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CoworkTaskView",
           "props": {
-            "title": "RUN WITH THE COWORK-READY",
-            "items": [
+            "blocks": [
               {
-                "label": "Run with the Cowork-ready flag.",
-                "sub": "Run with the Cowork-ready flag.",
-                "icon": "BOX",
-                "cueFrame": 0
+                "type": "prompt",
+                "text": "Run with the Cowork-ready flag. Nine of fifteen files are safe — the six sensitive files are exclude…"
               },
               {
-                "label": "Nine of fifteen files are",
-                "sub": "Nine of fifteen files are safe —",
-                "icon": "BOX",
-                "cueFrame": 24
-              },
-              {
-                "label": "the six sensitive files are",
-                "sub": "the six sensitive files are excluded automatically.",
-                "icon": "BOX",
-                "cueFrame": 48
+                "type": "review",
+                "items": [
+                  {
+                    "title": "Run with the Cowork-ready flag.",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  },
+                  {
+                    "title": "Nine of fifteen files are safe — the six sensitive files are excluded automatically.",
+                    "badge": "Rule",
+                    "badgeTone": "pass"
+                  },
+                  {
+                    "title": "That is the working folder the agent sees.",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  },
+                  {
+                    "title": "The other six never entered the session.",
+                    "badge": "Warning",
+                    "badgeTone": "warn"
+                  }
+                ]
               }
+            ],
+            "cues": [
+              0,
+              18
             ]
           },
           "rendered": {
@@ -320,11 +419,10 @@
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 11.41,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-29T03:41:30",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:06:21"
       }
     },
     {
@@ -333,32 +431,35 @@
       "narration_text": "Access and appropriate access are different. The scanner makes that gap visible before any session begins — so the agent sees only what it should, and the audit starts from a clean scope.",
       "estimated_duration_s": 12.0,
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CoworkTaskView",
           "props": {
-            "title": "ACCESS AND APPROPRIATE ACCESS",
-            "items": [
+            "blocks": [
               {
-                "label": "Access and appropriate access are different",
-                "sub": "Access and appropriate access are different.",
-                "icon": "BOX",
-                "cueFrame": 0
+                "type": "prompt",
+                "text": "Access and appropriate access are different. The scanner makes that gap visible before any session b…"
               },
               {
-                "label": "The scanner makes that gap",
-                "sub": "The scanner makes that gap visible before any session begins —",
-                "icon": "BOX",
-                "cueFrame": 24
-              },
-              {
-                "label": "so the agent sees only",
-                "sub": "so the agent sees only what it should, and the audit starts from a clean scope.",
-                "icon": "BOX",
-                "cueFrame": 48
+                "type": "review",
+                "items": [
+                  {
+                    "title": "Access and appropriate access are different.",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  },
+                  {
+                    "title": "The scanner makes that gap visible before any session begins — so the agent sees only what",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  }
+                ]
               }
+            ],
+            "cues": [
+              0,
+              18
             ]
           },
           "rendered": {
@@ -370,11 +471,10 @@
       "audio_file": "mp3/beat-B07.mp3",
       "actual_duration_s": 10.45,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-29T03:41:30",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B07"
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:06:21"
       }
     },
     {
@@ -383,32 +483,35 @@
       "narration_text": "Your move: run privacy_scanner.py on your working folder before your next Cowork session. Next reel: the personal workflow canvas — fifteen tasks, four buckets, two surprises.",
       "estimated_duration_s": 6.0,
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CoworkTaskView",
           "props": {
-            "title": "YOUR MOVE: RUN PRIVACY_SCANNER.PY",
-            "items": [
+            "blocks": [
               {
-                "label": "Your move: run privacy_scanner.py on your working folder",
-                "sub": "Your move: run privacy_scanner.py on your working folder before your next Cowork session.",
-                "icon": "BOX",
-                "cueFrame": 0
+                "type": "prompt",
+                "text": "Your move: run privacy_scanner.py on your working folder before your next Cowork session. Next reel:…"
               },
               {
-                "label": "Next reel: the personal workflow",
-                "sub": "Next reel: the personal workflow canvas —",
-                "icon": "BOX",
-                "cueFrame": 24
-              },
-              {
-                "label": "fifteen tasks, four buckets, two",
-                "sub": "fifteen tasks, four buckets, two surprises.",
-                "icon": "BOX",
-                "cueFrame": 48
+                "type": "review",
+                "items": [
+                  {
+                    "title": "Your move: run privacy_scanner.py on your working folder before your next Cowork session.",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  },
+                  {
+                    "title": "Next reel: the personal workflow canvas — fifteen tasks, four buckets, two surprises.",
+                    "badge": "Fact",
+                    "badgeTone": "neutral"
+                  }
+                ]
               }
+            ],
+            "cues": [
+              0,
+              18
             ]
           },
           "rendered": {
@@ -420,59 +523,10 @@
       "audio_file": "mp3/beat-B08.mp3",
       "actual_duration_s": 10.56,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-29T03:41:30",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B08"
-      }
-    },
-    {
-      "beat_id": "YOURTURN",
-      "act": "your-turn",
-      "lane": "REMOTION",
-      "scene": "ClaudeComposerAsk",
-      "narration_text": "Your turn. Paste this: you want to build a scanner that classifies files in a Claude Cowork folder by privacy level before any AI workflow runs on them. Ask Claude to show you the scanner architecture: the three classification tiers, the pattern the scanner looks for to assign each tier, and how the classification gates which files Claude is allowed to read.",
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeComposerAsk",
-          "props": {
-            "greeting": "Your turn.",
-            "command": "I want to build a scanner that classifies files in a Claude Cowork folder by privacy level before any AI workflow runs on them. Show me the scanner architecture: the three classification tiers (public, internal, sensitive), the patterns the scanner looks for to assign each tier, and how the classification gates which files Claude is allowed to read in the workflow.",
-            "segment": "Build a Privacy Classification Scanner for Cowork Folders",
-            "topic": "CLAUDE COWORK · @NikBearBrown",
-            "folderLabel": "@NikBearBrown",
-            "modelLabel": "Claude Sonnet",
-            "runningText": "paste your task, workflow, or brief here…"
-          }
-        }
-      },
-      "est_s": 14
-    },
-    {
-      "beat_id": "OUTRO",
-      "act": "OUTRO",
-      "lane": "REMOTION",
-      "scene": "ClaudeTitleOutro",
-      "narration_text": "Build a Privacy Classification Scanner for Cowork Folders.",
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeTitleOutro",
-          "props": {
-            "title": "Build a Privacy Classification Scanner for Cowork Folders",
-            "handle": "@NikBearBrown",
-            "mascotSeed": "claude-liam-privacy-classification-scanner"
-          }
-        }
-      },
-      "est_s": 8,
-      "build": {
-        "status": "SLATE",
-        "note": "design-v1: remotion props added"
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:06:21"
       }
     },
     {
@@ -491,11 +545,12 @@
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Build a Privacy Classification Scanner for Cowork Folders",
-            "artifactHeading": "Key findings",
+            "artifactHeading": "Privacy Classification Scanner",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "6 tiers: Credentials · Regulated · Personal · Internal · …",
+              "Classification is filename-based — no file reading",
+              "Cowork-ready flag: excludes anything above Internal",
+              "Access ≠ appropriate access — scanner shows the gap"
             ]
           },
           "rendered": {
@@ -505,8 +560,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:06:21"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BHTF",
@@ -524,12 +583,12 @@
           "pattern": "ClaudeComposerAsk",
           "props": {
             "greeting": "Your turn.",
-            "topic": "YOUR TURN · CLAUDE",
-            "segment": "Build a Privacy Classification Scanner for Cowork…",
-            "command": "Take what you learned from [Build a Privacy Classification Scanner for Cowork Folders] and apply it to your own work. What's one thing you'll try first?",
-            "runningText": "paste this into Claude and run it on your own work…",
-            "output": [],
-            "folderLabel": "@NikBearBrown"
+            "command": "I want to build a scanner that classifies files in a Claude Cowork folder by privacy level before any AI workflow runs on them. Show me the scanner architecture: the three classification tiers (public, internal, sensitive), the patterns the scanner looks for to assign each tier, and how the classification gates which files Claude is allowed to read in the workflow.",
+            "segment": "Build a Privacy Classification Scanner for Cowork Folders",
+            "topic": "CLAUDE COWORK · @NikBearBrown · YOUR TURN",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your task, workflow, or brief here…"
           },
           "rendered": {
             "out": "media/BHTF.mp4",
@@ -538,8 +597,13 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:06:21"
+      },
+      "actual_duration_s": 20.0,
+      "narration": ""
     },
     {
       "beat_id": "BOUT",
@@ -557,7 +621,8 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "Build a Privacy Classification Scanner for Cowork Folders",
-            "slug": "privacy-classification-scanner"
+            "slug": "privacy-classification-scanner",
+            "handle": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -566,8 +631,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:06:21"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

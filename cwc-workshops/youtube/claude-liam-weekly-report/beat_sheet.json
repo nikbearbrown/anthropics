@@ -18,13 +18,14 @@
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "modelLabel": "Opus 4.8",
+    "modelLabel": "Opus 4.7",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/cwc-workshops/agent-decomposition/.claude/skills/weekly-report/SKILL.md",
+    "verdict_stripped": "BVDT removed: body too thin (3 beats, ~106 words < 5 beats/180 words threshold) — a placeholder verdict is worse than none.",
     "build": {
-      "at": "2026-07-25T04:46:23",
-      "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-08-26T00:42:37",
+      "cut": "master",
+      "filled": 6,
+      "of": 6,
       "slates": [],
       "skin_warnings": []
     }
@@ -49,11 +50,11 @@
             "runningText": "reading weekly-report SKILL.md…",
             "output": [
               "skill: weekly-report",
-              "Structure and data sources for the weekly inventory report. Load this when the t",
+              "Structure and data sources for the weekly inventory report.",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "Opus 4.8",
+            "modelLabel": "Opus 4.7",
             "effortLabel": "High"
           },
           "rendered": {
@@ -68,7 +69,7 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:46:23"
+        "at": "2026-08-26T00:42:37"
       }
     },
     {
@@ -111,7 +112,7 @@
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:46:23"
+        "at": "2026-08-26T00:42:37"
       }
     },
     {
@@ -147,7 +148,7 @@
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "Artifact: SKILL.md → World: weekly inventory state. Format, not facts.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -162,13 +163,13 @@
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:46:23"
+        "at": "2026-08-26T00:42:37"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. weekly-report is a specification written as an instruction set. Claude's job: Structure and data sources for the weekly inventory report. Load this when the task is \"weekly repor. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the Teardown moment. weekly-report is a specification written as an instruction set. Claude's job: Structure and data sources for the weekly inventory report. Load this when the task is \"weekly report\". What it gets right: repeatable results. What it bites: anything outside the spec.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,8 +180,12 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Structure and data sources for the weekly inventory report. Load this when the task is \"weekly report\", \"Monday report\", or \"summarize inventory status\".",
-            "sparkLine": "This is the part worth knowing."
+            "body": "Structure and data sources: weekly inventory report.",
+            "quote": "\"weekly report\" · \"Monday report\" · \"summarize inventory status\"",
+            "cite": "Trigger phrases",
+            "verdictLabel": "What it bites: anything outside the spec.",
+            "verdictPositive": false,
+            "sparkLine": "The spec bites."
           },
           "rendered": {
             "out": "media/B03.mp4",
@@ -189,48 +194,12 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 15.81,
+      "actual_duration_s": 15.72,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:46:23"
-      }
-    },
-    {
-      "beat_id": "BVDT",
-      "act": "verdict",
-      "narration_text": "weekly-report makes Claude execute one task reliably. The SKILL.md is the spec — Structure and data sources for the weekly inventory report. Load this when the t. Same input, same output, every run. Know the limit: only what the file says.",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "estimated_duration_s": 18,
-      "shot": {
-        "type": "REMOTION",
-        "remotion": {
-          "pattern": "ClaudeVerdictArtifact",
-          "props": {
-            "artifactTitle": "Verdict",
-            "artifactHeading": "Claude, Weekly Report.",
-            "artifactLines": [
-              "Skill: weekly-report — Claude reads SKILL.md before acting",
-              "Structure and data sources for the weekly inventory report. Load this when the task is \"we",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
-            ]
-          },
-          "rendered": {
-            "out": "media/BVDT.mp4",
-            "at": ""
-          }
-        }
-      },
-      "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 13.93,
-      "build": {
-        "status": "VIDEO",
-        "src": "media/BVDT.mp4",
-        "filled_by": "media",
-        "at": "2026-07-25T04:46:23"
+        "at": "2026-08-26T00:42:37"
       }
     },
     {
@@ -248,11 +217,11 @@
             "greeting": "Your turn.",
             "topic": "WEEKLY-REPORT · ANTHROPIC SKILL",
             "segment": "Claude, Weekly Report.",
-            "command": "I want to structure and data sources for the weekly inventory report. load this . Read the weekly-report skill and walk me through what you will do before you do it.",
+            "command": "Read the weekly-report skill. Walk me through each step you will take before you start — what data sources you will check and what the output will look like.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "Opus 4.8",
+            "modelLabel": "Opus 4.7",
             "effortLabel": "High"
           },
           "rendered": {
@@ -267,7 +236,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:46:23"
+        "at": "2026-08-26T00:42:37"
       }
     },
     {
@@ -283,8 +252,7 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "Claude, Weekly Report.",
-            "handle": "@NikBearBrown",
-            "subline": "weekly-report · Anthropic Skills"
+            "handle": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -298,7 +266,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:46:23"
+        "at": "2026-08-26T00:42:37"
       }
     }
   ]

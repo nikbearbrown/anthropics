@@ -32,7 +32,7 @@ class B03Doodle(Scene):
         body     = 'The alternative is the brief you scrawl between meetings — half a thou'
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
-        b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
+        b = ink_text(body, 28, color=INK_DIM).set_width(11.5).move_to(DOWN*0.65)
         spark = ink_text('The scrawled brief', 26, color=INK_DIM).to_edge(DOWN, buff=0.6)
         self.play(Write(h), run_time=1.0)
         self.play(Create(line), run_time=0.5)
@@ -48,7 +48,7 @@ class B07Doodle(Scene):
         body     = 'It also watches the competition — how rivals position themselves, who '
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
-        b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
+        b = ink_text(body, 28, color=INK_DIM).set_width(11.5).move_to(DOWN*0.65)
         spark = ink_text('Find the gap', 26, color=INK_DIM).to_edge(DOWN, buff=0.6)
         self.play(Write(h), run_time=1.0)
         self.play(Create(line), run_time=0.5)
@@ -110,7 +110,7 @@ class B21Doodle(Scene):
         body     = 'Everyone has formats they dread — captions, subject lines, meta descri'
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
-        b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
+        b = ink_text(body, 28, color=INK_DIM).set_width(11.5).move_to(DOWN*0.65)
         spark = ink_text('Delegate the dread', 26, color=INK_DIM).to_edge(DOWN, buff=0.6)
         self.play(Write(h), run_time=1.0)
         self.play(Create(line), run_time=0.5)
@@ -126,7 +126,7 @@ class B23Doodle(Scene):
         body     = 'But review everything that goes public. It drafts well; your touch is '
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
-        b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
+        b = ink_text(body, 28, color=INK_DIM).set_width(11.5).move_to(DOWN*0.65)
         spark = ink_text('You keep the judgment', 26, color=INK_DIM).to_edge(DOWN, buff=0.6)
         self.play(Write(h), run_time=1.0)
         self.play(Create(line), run_time=0.5)

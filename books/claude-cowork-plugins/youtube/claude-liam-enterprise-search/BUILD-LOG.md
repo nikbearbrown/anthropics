@@ -36,3 +36,35 @@ Pending audio lock.
 
 **GATE P REQUIRED** — present full narration for sign-off before audio.
 
+
+## 2026-08-26 — HUMAN FEEDBACK (Bear, is-done review): text issues + bunched boxes
+
+Bear flagged the slate cut: bar-chart text colliding/truncated (B02, B09) and the
+chip cards "bunched up in the upper left ... boxes bigger and in the middle" (B11/B21).
+
+### Root causes and fixes
+1. **VRChipGrid bunched upper-left — canvas mismatch, EVERY VR* structural beat.**
+   `illustrations/structural.tsx` components are authored in a 1280×720 design space,
+   but Root.tsx registers the VR* comps at 1920×1080 — absolute pixel math stranded
+   every illustration in the top-left 2/3 of frame. FIX (shared, permanent):
+   `IlluStage` (illustrations/kit.tsx) now scales its 1280×720 design space to the
+   actual canvas via useVideoConfig, centered. ChipGrid additionally centers its grid
+   block vertically and enlarges cards for ≤6 items. §9 verified: lint clean, tsc
+   (2 pre-existing Root.tsx errors untouched), same-frame-twice pixel-identical,
+   frames read. NOTE: other already-built reels with VR* beats have the old layout
+   baked into media/*.mp4 — they need a re-render pass.
+2. **B02/B09 bar charts — generated `Text(narration[:30])` labels** collided and
+   truncated mid-word; captions were 60-char slices; bar heights contradicted the
+   narration (the favored thing was shorter). Rewrote both scenes in scenes_std.py:
+   short category labels ("by filename/by content", "generic/grounded answer"),
+   complete captions, heights matching meaning. FILMLOOP-PROMPT.md gained rule 5b
+   so the loop stops generating narration-fragment chart text.
+3. **"ACTI" fused** — the known Pango space-collapse; "ACT  I"/"ACT  III" doubled.
+
+### State
+B02/B09/B11/B21 re-rendered; cut recompiled → `claude-liam-enterprise-search.mp4`
+(master-named: no slate beats remain). All four fixed beats verified by eye in the
+cut. Automated GATE V fails 34× `underfill` — the pre-existing 55%-fill-floor vs
+airy-brand-style tension (every defect is underfill/low-contrast; none are the
+flagged issues, none from this session's beats). That threshold question is open
+at pipeline level, not per-reel.

@@ -37,7 +37,7 @@ class B06Doodle(Scene):
             boxes.append(VGroup(b, l))
         for i in range(len(steps)-1):
             a = Arrow(RIGHT*(start_x+i*3.6+1.4), RIGHT*(start_x+(i+1)*3.6-1.4),
-                      buff=0, color=SPARK, stroke_width=3, tip_length=0.2)
+                      buff=0, color=INK, stroke_width=3, tip_length=0.2)
             arrows.append(a)
         spark = ink_text('Scattered → summary', 28, color=INK_DIM).to_edge(DOWN, buff=0.6)
         for b in boxes:
@@ -72,7 +72,7 @@ class B14Doodle(Scene):
         l_txt = ink_text(left_lbl, 28, color=INK_DIM).move_to(LEFT*3.2).scale(0.95)
         r_box = ink_rect(3.6, 2.4, color=SPARK, fill="#FFF8F5").move_to(RIGHT*3.2)
         r_txt = ink_text(right_lbl, 28, BOLD, INK).move_to(RIGHT*3.2).scale(0.95)
-        vs = ink_text("→", 52, BOLD, SPARK).move_to(ORIGIN)
+        vs = ink_text("→", 52, BOLD, INK).move_to(ORIGIN)
         spark = ink_text('Prep before the room', 26, color=INK_DIM).to_edge(DOWN, buff=0.6)
         self.play(Create(l_box), Write(l_txt), run_time=0.8)
         self.play(FadeIn(vs), run_time=0.4)

@@ -13,22 +13,12 @@
     "engine": "kokoro",
     "voice_kokoro": "am_onyx",
     "build": {
-      "at": "2026-07-28T22:15:39",
+      "at": "2026-08-02T21:20:48",
       "cut": "master",
-      "filled": 0,
-      "of": 11,
+      "filled": 13,
+      "of": 14,
       "slates": [
-        "B00",
-        "B01",
-        "B02",
-        "B03",
-        "B04",
-        "B05",
-        "B06",
-        "B07",
-        "B08",
-        "YOURTURN",
-        "B09"
+        "B04"
       ],
       "skin_warnings": []
     }
@@ -50,6 +40,10 @@
               "Nik Bear Brown",
               "Supervision Calibration Logger"
             ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
           }
         }
       },
@@ -58,11 +52,10 @@
       "engine": "kokoro",
       "audio_file": "mp3/beat-B00.mp3",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T22:15:39",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
       }
     },
     {
@@ -111,11 +104,10 @@
       "engine": "kokoro",
       "audio_file": "mp3/beat-B01.mp3",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-29T03:41:30",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
       }
     },
     {
@@ -145,13 +137,17 @@
                 "cueFrame": 222
               },
               {
-                "label": "and audit, which prints a",
+                "label": "and audit, which prints.",
                 "sub": "and audit, which prints a weekly report with level breakdown, average verify time, and the top three gap interactions…",
                 "icon": "circle-check",
                 "cueFrame": 420
               }
             ],
             "dark": false
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
           }
         }
       },
@@ -160,11 +156,10 @@
       "engine": "kokoro",
       "audio_file": "mp3/beat-B02.mp3",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T22:15:39",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
       }
     },
     {
@@ -183,6 +178,10 @@
             "topic": "CONDUCTING AI — SUPERVISION CALIBRATION",
             "segment": "CALIBRATION LOGGER",
             "code": "# supervision_logger.py — Claude Code output\nimport anthropic, json, datetime, argparse\nfrom pathlib import Path\n\nclient = anthropic.Anthropic()\nLOG_FILE = Path('supervision_log.json')\n\ndef cmd_log(description):\n    log = json.loads(LOG_FILE.read_text()) if LOG_FILE.exists() else []\n    log.append({'description': description,\n                'timestamp': datetime.datetime.now().isoformat(),\n                'classified': False})\n    LOG_FILE.write_text(json.dumps(log, indent=2))\n\ndef cmd_audit(log):\n    # gap_interactions = [e for e in log if e['level']=='Level III'\n    #                     and e['verify_time']<2]\n    gaps = [e for e in log\n            if e.get('level')=='Level III'\n            and e.get('verify_time_minutes',99)<2]\n    return gaps"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
           }
         }
       },
@@ -191,11 +190,10 @@
       "engine": "kokoro",
       "audio_file": "mp3/beat-B03.mp3",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T22:15:39",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
       }
     },
     {
@@ -221,7 +219,7 @@
         "status": "SLATE",
         "src": null,
         "filled_by": null,
-        "at": "2026-07-28T22:15:39",
+        "at": "2026-08-02T21:20:48",
         "needs": "PIPELINE → render animated_graphics.py scene B04_*"
       }
     },
@@ -242,6 +240,10 @@
             "segment": "CALIBRATION LOGGER",
             "runningText": "updating…",
             "greeting": "The change,"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
           }
         }
       },
@@ -250,11 +252,10 @@
       "engine": "kokoro",
       "audio_file": "mp3/beat-B05.mp3",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T22:15:39",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
       }
     },
     {
@@ -303,11 +304,10 @@
       "engine": "kokoro",
       "audio_file": "mp3/beat-B06.mp3",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-29T03:41:30",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
       }
     },
     {
@@ -326,7 +326,7 @@
             "title": "CALIBRATION IS A SKILL",
             "items": [
               {
-                "label": "Calibration is a skill, and",
+                "label": "Calibration is a skill.",
                 "sub": "Calibration is a skill, and skills improve with measurement.",
                 "icon": "BOX",
                 "cueFrame": 0
@@ -356,11 +356,10 @@
       "engine": "kokoro",
       "audio_file": "mp3/beat-B07.mp3",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-29T03:41:30",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B07"
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
       }
     },
     {
@@ -409,11 +408,10 @@
       "engine": "kokoro",
       "audio_file": "mp3/beat-B08.mp3",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-29T03:41:30",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B08"
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
       }
     },
     {
@@ -433,6 +431,10 @@
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Claude Sonnet",
             "runningText": "paste your question, paper, or concept here…"
+          },
+          "rendered": {
+            "out": "media/YOURTURN.mp4",
+            "at": ""
           }
         }
       },
@@ -440,11 +442,10 @@
       "audio_file": "mp3/beat-YOURTURN.mp3",
       "actual_duration_s": 19.03,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T22:15:39",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+        "status": "VIDEO",
+        "src": "media/YOURTURN.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
       }
     },
     {
@@ -461,6 +462,10 @@
             "title": "Supervision Calibration Logger — Weekly AI Audit",
             "handle": "@NikBearBrown",
             "mascotSeed": "supervision-calibration-logger"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
           }
         }
       },
@@ -469,11 +474,10 @@
       "engine": "kokoro",
       "audio_file": "mp3/beat-B09.mp3",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T22:15:39",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B09"
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
       }
     },
     {
@@ -506,8 +510,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BHTF",
@@ -539,8 +547,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BOUT",
@@ -567,8 +579,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-02T21:20:48"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

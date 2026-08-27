@@ -29,7 +29,7 @@ class B02Doodle(Scene):
     """Reveal doodle — The afternoon that vanishes (11.07s)"""
     def construct(self):
         headline = 'The afternoon that vanishes'
-        body     = "Here's what it usually looks like. An afternoon vanishing into open ta"
+        body     = "Here's what it usually looks like.\nTabs, printouts, sources in your head."
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
         b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
@@ -45,7 +45,7 @@ class B08Doodle(Scene):
     """Reveal doodle — Reading the rivals (13.46s)"""
     def construct(self):
         headline = 'Reading the rivals'
-        body     = 'Competitor intelligence first. Claude reads how rivals position themse'
+        body     = 'Competitor intelligence first.\nWhere rivals sit — and where the gaps are.'
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
         b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
@@ -61,7 +61,7 @@ class B13Doodle(Scene):
     """Reveal doodle — Your own shelf (12.44s)"""
     def construct(self):
         headline = 'Your own shelf'
-        body     = "Or point it at a batch you've already collected. Drop a folder of arti"
+        body     = 'Drop a folder of articles into Cowork.\nAsk for the trends. Ask where they split.'
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
         b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
@@ -77,7 +77,7 @@ class B16Doodle(Scene):
     """Reveal doodle — The edge of a decision (11.95s)"""
     def construct(self):
         headline = 'The edge of a decision'
-        body     = 'This is the moment research is really for — standing at the edge of a '
+        body     = 'A decision you cannot take back.\nResearch sharpens the edge before you jump.'
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
         b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
@@ -93,7 +93,7 @@ class B20Doodle(Scene):
     """Reveal doodle — Head down, delivering (8.75s)"""
     def construct(self):
         headline = 'Head down, delivering'
-        body     = 'Which leaves one habit worth building. Picture the operator with their'
+        body     = 'Shipping the work, head down.\nNever once looking up at the market.'
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
         b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)
@@ -109,7 +109,7 @@ class B21Doodle(Scene):
     """Reveal doodle — Head up, deciding (11.95s)"""
     def construct(self):
         headline = 'Head up, deciding'
-        body     = 'Now the one who spends an hour a month scouting — who knows their mark'
+        body     = 'An hour a month scouting.\nSame effort. Better decisions.'
         line = Line(LEFT*3.5, RIGHT*3.5, color=SPARK, stroke_width=4).shift(UP*0.15)
         h = ink_text(headline, 46, BOLD).move_to(UP*1.1)
         b = ink_text(body, 28, color=INK_DIM).move_to(DOWN*0.65)

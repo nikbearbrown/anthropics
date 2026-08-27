@@ -30,23 +30,12 @@
       "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
     ],
     "build": {
-      "at": "2026-07-16T06:32:23",
+      "at": "2026-08-10T04:11:32",
       "cut": "master",
-      "filled": 0,
-      "of": 7,
-      "slates": [
-        "B00",
-        "B01",
-        "B02",
-        "B03",
-        "B04",
-        "B05",
-        "B06"
-      ],
-      "skin_warnings": [
-        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
-        "B06: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
-      ]
+      "filled": 10,
+      "of": 10,
+      "slates": [],
+      "skin_warnings": []
     },
     "design_version": "v1",
     "voice": "am_onyx"
@@ -92,7 +81,10 @@
       "audio_file": "mp3/beat-B00.mp3",
       "actual_duration_s": 21.85,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:11:32"
       },
       "lane": "BOOKEND",
       "voice": "am_onyx",
@@ -107,29 +99,29 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "FormBCard",
+          "pattern": "CCSession",
           "props": {
-            "title": "Plan Mode: Freeze Before the Byte Changes",
-            "items": [
+            "title": "claude-code",
+            "mode": "plan",
+            "blocks": [
               {
-                "label": "Key point one",
-                "sub": "",
-                "icon": "target",
-                "cueFrame": 20
+                "type": "prompt",
+                "text": "Claude Code has three interruption points. Esc stops Claude mid-action — the current operation halts. Plan mode, Shift+T…",
+                "cue": 0,
+                "typeDuration": 60
               },
               {
-                "label": "Key point two",
-                "sub": "",
-                "icon": "list-checks",
-                "cueFrame": 55
-              },
-              {
-                "label": "Key point three",
-                "sub": "",
-                "icon": "zap",
-                "cueFrame": 90
+                "type": "tool",
+                "name": "Read",
+                "arg": "file",
+                "state": "done"
               }
-            ]
+            ],
+            "cues": [
+              0,
+              35
+            ],
+            "mascot": "auto"
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -143,9 +135,12 @@
       "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 22.36,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:11:32"
       },
-      "lane": "BOOKEND",
+      "lane": "LANE_A",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx"
@@ -160,7 +155,7 @@
         "motion": "callout-reveal",
         "media": "media/B02.mp4",
         "manim": {
-          "scene_class": "Scene_B02_ClaudeLiamPlan",
+          "scene_class": "B02_ClaudeLiamPlan",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B02.mp4",
@@ -174,11 +169,10 @@
       "audio_file": "mp3/beat-B02.mp3",
       "actual_duration_s": 18.01,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:32:23",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:B02_ClaudeLiamPlan",
+        "at": "2026-08-10T04:11:32"
       }
     },
     {
@@ -191,7 +185,7 @@
         "motion": "callout-reveal",
         "media": "media/B03.mp4",
         "manim": {
-          "scene_class": "Scene_B03_ClaudeLiamPlan",
+          "scene_class": "B03_ClaudeLiamPlan",
           "scenes_file": "scenes_std.py",
           "rendered": {
             "out": "media/B03.mp4",
@@ -205,11 +199,10 @@
       "audio_file": "mp3/beat-B03.mp3",
       "actual_duration_s": 17.43,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:32:23",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim:B03_ClaudeLiamPlan",
+        "at": "2026-08-10T04:11:32"
       }
     },
     {
@@ -219,7 +212,48 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "stagger"
+        "motion": "stagger",
+        "remotion": {
+          "pattern": "CCPlanCard",
+          "props": {
+            "sections": [
+              {
+                "title": "When plan mode pays off",
+                "numbered": false,
+                "items": [
+                  {
+                    "text": "Any operation whose failure costs > 30s to recover"
+                  },
+                  {
+                    "text": "First session on a new project"
+                  },
+                  {
+                    "text": "Routine work touching nothing sensitive — skip plan mode"
+                  }
+                ]
+              },
+              {
+                "title": "Three interruption points",
+                "numbered": true,
+                "items": [
+                  {
+                    "text": "Esc — halts current operation mid-action"
+                  },
+                  {
+                    "text": "Shift+Tab×2 — plan mode (read-only, propose, wait)"
+                  },
+                  {
+                    "text": "Ctrl+G — opens plan in text editor for direct editing"
+                  }
+                ]
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
       },
       "new_visual_element": "Artifact view — when to use plan mode: first session / destructive / care about the file",
       "spark_line": "Thirty seconds. One guarantee.",
@@ -227,11 +261,10 @@
       "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 22.06,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:32:23",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:11:32"
       }
     },
     {
@@ -252,19 +285,22 @@
             "runningText": "paste your spec, CLAUDE.md, or build plan here…",
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Claude Sonnet"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
           }
         }
       },
       "new_visual_element": "HANDOFF — plan mode practice prompt",
       "estimated_duration_s": 9,
       "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 4.76,
+      "actual_duration_s": 13.99,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T06:32:23",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:11:32"
       }
     },
     {
@@ -275,11 +311,32 @@
         "type": "REMOTION",
         "source": "own",
         "remotion": {
-          "pattern": "ClaudeTitleOutro",
+          "pattern": "CCSession",
           "props": {
-            "title": "Plan Mode: Freeze Before the Byte Changes",
-            "handle": "@NikBearBrown",
-            "mascotSeed": "claude-liam-plan-mode-interruption"
+            "title": "claude-code",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "If this stops a restructure from landing before you approve it, subscribe. Liam, in for Bear.",
+                "cue": 0,
+                "typeDuration": 60
+              },
+              {
+                "type": "status",
+                "verb": "Analyzing",
+                "elapsed": "~3s"
+              }
+            ],
+            "cues": [
+              0,
+              35
+            ],
+            "mascot": "auto"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
           }
         }
       },
@@ -288,10 +345,12 @@
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 5.63,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "note": "design-v1: title-fixed,handle-fixed,mascotSeed-added"
-      }
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:11:32"
+      },
+      "lane": "LANE_A"
     },
     {
       "beat_id": "BVDT",
@@ -309,11 +368,12 @@
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Plan Mode: Freeze Before the Byte Changes",
-            "artifactHeading": "Key findings",
+            "artifactHeading": "Plan Mode Interruption",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "3 points: Esc (mid-action) · Plan mode · Ctrl+C",
+              "Plan mode: Claude proposes — cannot act until approved",
+              "Ctrl+G: open plan in editor · edit before approving",
+              "Use when failure costs > 30 seconds to recover"
             ]
           },
           "rendered": {
@@ -323,8 +383,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:11:32"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BHTF",
@@ -356,8 +420,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:11:32"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BOUT",
@@ -375,7 +443,8 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "Plan Mode: Freeze Before the Byte Changes",
-            "slug": "plan-mode-interruption"
+            "slug": "plan-mode-interruption",
+            "handle": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -384,8 +453,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-10T04:11:32"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }
