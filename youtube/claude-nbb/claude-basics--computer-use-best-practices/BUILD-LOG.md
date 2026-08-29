@@ -102,5 +102,18 @@ back up before the second compile.
 
 ## Delivery
 
-Not yet pushed/delivered as of this log entry — see next steps in the
-worker's final message.
+Committed and pushed to `anthropics` (commit `8f201e22`, rebased onto
+`ff259ffc` from a concurrent worker, pushed as `550a2253`). Staged to the
+local Drive outbox via `deliver.py --push`
+(`~/Documents/books/DELIVERY-nbb/claude-basics--computer-use-best-practices/`:
+4K master, 9:16 master, description).
+
+**Post-push mtime note:** `git pull --rebase` (needed to resolve a push
+rejection from a concurrent worker's commit) re-checks-out the files in my
+own commit during replay, which bumped `beat_sheet.json`/`beat_sheet.916.json`/
+`TYPECHECK.md`'s mtimes to the rebase time — momentarily making them appear
+newer than the already-compiled masters. Verified via `git diff` that content
+is byte-identical to what was compiled (no real edit occurred), then `touch`ed
+the three master mp4s to restore the true build ordering (masters newer than
+sheets). Documenting this in case a future nbb-rebrand run hits the same
+rebase-mtime artifact and needs to know it's not a real staleness signal.
