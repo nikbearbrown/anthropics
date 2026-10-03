@@ -1,0 +1,695 @@
+{
+  "metadata": {
+    "slug": "show-tell-agent-decomposition-skills-vs-tools",
+    "title": "Agent Decomposition: Skills vs Tools",
+    "playlist": "Claude",
+    "chapter_number": 0,
+    "in_for_bear": true,
+    "topic": "CLAUDE · AGENT DESIGN",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "German (Hallo)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "Show-tell uses hesitant writer and key terms instead of composer cold open, and illustrated body instead of verdict. Your Turn and spoken outro retained.",
+    "audience": "educators, students, and builders designing Claude workflows",
+    "source_doc": "SOURCES.md; StockPilot workshop README and Anthropic documentation",
+    "tags": [
+      "Agent Decomposition",
+      "Agent Skills",
+      "Claude",
+      "Claude Code",
+      "Skills vs Tools",
+      "AI Subagents",
+      "Context Engineering",
+      "Agent Workflows",
+      "Human Approval",
+      "AI Evaluation",
+      "StockPilot Workshop",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-30T16:40:35",
+      "cut": "master",
+      "filled": 14,
+      "of": 14,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "bookend",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hallo. This is Liam, in for Bear. A slow agent does not necessarily need a shorter prompt. It needs a better division of work. Let's separate skills, tools, and subagents.",
+      "estimated_duration_s": 12.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Primary content enters; holds for narration"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "A slow agent needs\na shorter prompt.",
+            "triggerWords": "a shorter prompt",
+            "replacementWords": "a better division of work",
+            "fontSize": 80,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-agent-decomposition-skills-vs-tools",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-30T20:18:39.363757+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "actual_duration_s": 10.528,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 10.541666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "bookend",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Three different things. A skill supplies instructions. A tool performs an action. A subagent works in a separate context. A skill can guide tool use, but that does not automatically make it a separate agent.",
+      "estimated_duration_s": 14.58,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Primary content enters; holds for narration"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "skill",
+                "meaning": "Instructions loaded when needed"
+              },
+              {
+                "term": "tool",
+                "meaning": "An action the agent can call"
+              },
+              {
+                "term": "subagent",
+                "meaning": "A worker with separate context"
+              }
+            ],
+            "folderLabel": "@NikBearBrown",
+            "durationSeconds": 11.797333
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-30T20:19:05.040247+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 11.797,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 11.833333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Imagine putting every procedure into the agent's starting instructions. Forecasting, checking inventory, writing a report. Most tasks need only some of that material. The first design question is what belongs in the core, and what can wait until it is needed.",
+      "estimated_duration_s": 17.08,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three procedure pages arrive in one context tray; one page is selected, exposing unnecessary baggage.",
+        "motion_claim": "Three procedure pages arrive in one context tray; one page is selected, exposing unnecessary baggage.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Objects establish the problem"
+          },
+          {
+            "at": 0.3,
+            "event": "Three procedure pages arrive in one context tray; one page is selected, exposing unnecessary baggage."
+          }
+        ],
+        "manim": {
+          "class": "B00_Crowded"
+        }
+      },
+      "actual_duration_s": 14.272,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 14.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Anthropic's StockPilot workshop reports reducing its system prompt from four hundred and two lines to fifteen. The other instructions did not disappear. Roughly four hundred lines moved into skills, loaded on demand. That is deferred context, not deleted knowledge.",
+      "estimated_duration_s": 16.25,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A thick instruction stack separates into a small core and a nearby stack of skill pages; two large line counts and Workshop report.",
+        "motion_claim": "A thick instruction stack separates into a small core and a nearby stack of skill pages; two large line counts and Workshop report.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Objects establish the problem"
+          },
+          {
+            "at": 0.3,
+            "event": "A thick instruction stack separates into a small core and a nearby stack of skill pages; two large line counts and Workshop report."
+          }
+        ],
+        "manim": {
+          "class": "B01_Core"
+        }
+      },
+      "actual_duration_s": 15.275,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 15.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Here is a skill being used. The agent loads the relevant instructions into its existing context. The page joins the current work. By default, this is not a fresh worker with a private memory. Separate execution has to be configured explicitly.",
+      "estimated_duration_s": 17.08,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A skill page slides into the same context tray, joining the existing page; no second workspace appears.",
+        "motion_claim": "A skill page slides into the same context tray, joining the existing page; no second workspace appears.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Objects establish the problem"
+          },
+          {
+            "at": 0.3,
+            "event": "A skill page slides into the same context tray, joining the existing page; no second workspace appears."
+          }
+        ],
+        "manim": {
+          "class": "B02_Skill"
+        }
+      },
+      "actual_duration_s": 13.803,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 13.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the agent calls a tool. A request goes out; a result comes back. That tool might read inventory, run code, or write a file. Tools are not automatically harmless or stateless. What they can change depends on the implementation and permissions.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A request page moves into a tool block; a new result page emerges on its other side.",
+        "motion_claim": "A request page moves into a tool block; a new result page emerges on its other side.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Objects establish the problem"
+          },
+          {
+            "at": 0.3,
+            "event": "A request page moves into a tool block; a new result page emerges on its other side."
+          }
+        ],
+        "manim": {
+          "class": "B03_Tool"
+        }
+      },
+      "actual_duration_s": 14.101,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 14.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "A subagent is different. Give a worker a bounded task and its own context. It does the work there, then returns a result. This can keep intermediate detail out of the parent's conversation. It can also add coordination time and additional model usage.",
+      "estimated_duration_s": 17.92,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two separate trays establish parent and worker contexts; a task crosses outward and a compact result returns.",
+        "motion_claim": "Two separate trays establish parent and worker contexts; a task crosses outward and a compact result returns.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Objects establish the problem"
+          },
+          {
+            "at": 0.3,
+            "event": "Two separate trays establish parent and worker contexts; a task crosses outward and a compact result returns."
+          }
+        ],
+        "manim": {
+          "class": "B04_Worker"
+        }
+      },
+      "actual_duration_s": 14.251,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 14.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Try an inventory assistant. A skill explains the reorder policy. A tool reads the stock record. The agent uses both to draft a recommendation. The instruction page tells it how to decide; the tool result supplies evidence. Neither replaces the other.",
+      "estimated_duration_s": 17.08,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A policy page and a tool-produced stock page meet in one tray; a draft page rises from their combination.",
+        "motion_claim": "A policy page and a tool-produced stock page meet in one tray; a draft page rises from their combination.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Objects establish the problem"
+          },
+          {
+            "at": 0.3,
+            "event": "A policy page and a tool-produced stock page meet in one tray; a draft page rises from their combination."
+          }
+        ],
+        "manim": {
+          "class": "B05_Policy"
+        }
+      },
+      "actual_duration_s": 14.656,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 14.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Before placing an order, put a human approval point between the draft and the action. Check the quantity, supplier, and evidence. Reading stock and spending money should not inherit the same permission merely because they sit inside the same workflow.",
+      "estimated_duration_s": 16.67,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A draft approaches a closed approval gate; a check arrives and the gate opens before the draft can reach the action block.",
+        "motion_claim": "A draft approaches a closed approval gate; a check arrives and the gate opens before the draft can reach the action block.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Objects establish the problem"
+          },
+          {
+            "at": 0.3,
+            "event": "A draft approaches a closed approval gate; a check arrives and the gate opens before the draft can reach the action block."
+          }
+        ],
+        "manim": {
+          "class": "B06_Approval"
+        }
+      },
+      "actual_duration_s": 13.525,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 13.541666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The workshop also changed how data was processed. Its daily sweep went from a hundred and two tool calls to three scripts. Those scripts worked over data directly. Moving instructions into skills was only one part of the redesign; batching work was another.",
+      "estimated_duration_s": 17.92,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Many small operation blocks consolidate into three larger script blocks, with two large counts and Workshop report.",
+        "motion_claim": "Many small operation blocks consolidate into three larger script blocks, with two large counts and Workshop report.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Objects establish the problem"
+          },
+          {
+            "at": 0.3,
+            "event": "Many small operation blocks consolidate into three larger script blocks, with two large counts and Workshop report."
+          }
+        ],
+        "manim": {
+          "class": "B07_Batch"
+        }
+      },
+      "actual_duration_s": 14.251,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 14.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "For that daily sweep, the workshop reports four hundred and eighty-eight seconds before, and about one hundred seconds after. Several changes contributed. Treat this as a reported example, not a guaranteed fivefold speedup for your agent. We have not rerun that benchmark here.",
+      "estimated_duration_s": 17.92,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two isometric bars grow on the same baseline with heights proportional to 488 and 100; only two values and Workshop report.",
+        "motion_claim": "Two isometric bars grow on the same baseline with heights proportional to 488 and 100; only two values and Workshop report.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Objects establish the problem"
+          },
+          {
+            "at": 0.3,
+            "event": "Two isometric bars grow on the same baseline with heights proportional to 488 and 100; only two values and Workshop report."
+          }
+        ],
+        "manim": {
+          "class": "B08_Timing"
+        }
+      },
+      "actual_duration_s": 15.317,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 15.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Test your redesign on the same tasks. Check correctness, elapsed time, and usage. If the result is faster but wrong, reject it. If a separate worker returns a huge transcript, you may just have moved the clutter. Measure the complete workflow, not the prompt's line count.",
+      "estimated_duration_s": 19.17,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two result pages pass through the same comparison frame; a rejected page drops out and a checked result remains.",
+        "motion_claim": "Two result pages pass through the same comparison frame; a rejected page drops out and a checked result remains.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Objects establish the problem"
+          },
+          {
+            "at": 0.3,
+            "event": "Two result pages pass through the same comparison frame; a rejected page drops out and a checked result remains."
+          }
+        ],
+        "manim": {
+          "class": "B09_Measure"
+        }
+      },
+      "actual_duration_s": 14.571,
+      "audio_file": "mp3/beat-B09.mp3",
+      "render_duration_s": 14.583333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "bookend",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude: Split my workflow into instructions, actions, and separate workers. Justify each boundary. Then check two things yourself. Can every action be tested? Does every separate worker need its own context? If not, simplify the design.",
+      "estimated_duration_s": 17.08,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Primary content enters; holds for narration"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · YOUR TURN",
+            "segment": "Divide the Work",
+            "command": "Split my workflow into instructions, actions, and separate workers. Justify each boundary.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: every action can be tested.",
+              "Check: each worker needs separate context."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude",
+            "effortLabel": "High",
+            "largeText": true
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-30T20:20:01.761624+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 14.443,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 14.458333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-30T16:40:35"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "bookend",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Agent Decomposition: Skills vs Tools. At Nik Bear Brown.",
+      "estimated_duration_s": 3.75,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell: one large isometric illustration, at most three large labels; narration carries the explanation. Only underfill and clustering are waived."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Primary content enters; holds for narration"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Agent Decomposition: Skills vs Tools",
+            "slug": "show-tell-agent-decomposition-skills-vs-tools",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-30T20:20:16.220211+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 5.48,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 5.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-30T16:40:35"
+      }
+    }
+  ]
+}

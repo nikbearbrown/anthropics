@@ -1,0 +1,1462 @@
+{
+  "metadata": {
+    "slug": "claude-liam-the-missing-feedback-loop",
+    "title": "The Missing Feedback Loop",
+    "topic": "ANTHROPIC'S MODEL HARDWARE STANDARD — WHAT THE LOOP PROVES AND WHAT IT DOESN'T",
+    "purpose": "AI took off in software because coding has a free, instant, unambiguous verifier — the feedback loop. The physical world never had one, which is the real reason AI stayed on the screen. Anthropic's Model Hardware Standard is a bet that the loop can be built for physical equipment. The film gives the mechanism its full due (the driver/manifest architecture is real, the integration-cost collapse is real, the QuEra laser result is genuinely strong), then does the skeptical work the headlines skip: Claude wrote the script that controls the laser — it does not control the laser; the verifier is task-specific and nobody standardizes it; the physics is still programmatic, not physical (the bubbles); and every number is company-reported from a single announcement. The defensible claim is narrower than the headline and still important.",
+    "register": "Teardown",
+    "channel": "claude-liam",
+    "skill": "deep-explainer",
+    "book": "anthropics",
+    "voice_default": "am_onyx",
+    "engine_default": "kokoro",
+    "sources": [
+      "SOURCES.md"
+    ],
+    "factcheck": "FACTCHECK.md",
+    "build": {
+      "at": "2026-08-31T01:19:55",
+      "cut": "master",
+      "filled": 24,
+      "of": 29,
+      "slates": [
+        "B04",
+        "B09",
+        "B13",
+        "B18",
+        "B23"
+      ],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 22,
+      "narration_text": "Jambo — this is Liam, in for Bear. Two results about the same laser. A four-person engineering team spent months on a recovery script, and it worked fifty-eight percent of the time. An AI agent worked on it for one night, and its script works ninety-nine point three percent of the time. Both numbers are real. What happened between them is the story.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "ClaudeComposerAsk: greeting 'Jambo, Liam.' in EB Garamond above the composer"
+          },
+          {
+            "at": 0.2,
+            "event": "command types: 'Why did AI get good at code but stay locked out of the physical world?'"
+          },
+          {
+            "at": 0.65,
+            "event": "the ask lands answered: a short Claude reply block appears — 'Code has a feedback loop. Atoms never did. Someone is trying to build one.'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Jambo, Liam.",
+            "topic": "THE MODEL HARDWARE STANDARD",
+            "segment": "The Missing Feedback Loop",
+            "command": "Why did AI get good at code but stay locked out of the physical world?",
+            "runningText": "checking the loop…",
+            "output": [
+              "Code has a cheap, instant, unambiguous verifier.",
+              "Atoms never did.",
+              "Someone is trying to build one."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 18.01,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "ACT I — THE LOOP",
+      "lane": "CARD",
+      "estimated_duration_s": 16,
+      "narration_text": "Act one. The loop. Here is why AI took off in software first, stated as machinery instead of destiny. Coding has a feedback loop. Write the code, run it, read the failure, revise. Every pass is nearly free, and the verdict arrives in seconds.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "segment card sets: ACT I — THE LOOP, Title Case serif, hairline underline draws"
+          },
+          {
+            "at": 0.55,
+            "event": "four small serif words appear beneath in sequence on the spoken words: write · run · read · revise"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "actLabel": "Act I",
+            "title": "The Loop"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 13.85,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ACT I — THE LOOP",
+      "lane": "MANIM",
+      "estimated_duration_s": 14,
+      "narration_text": "Watch it operate. The agent writes, the test suite answers, the agent revises. Around the loop hundreds of times an hour if it wants. Nothing burns, nothing wears out, and rolling back a mistake costs exactly one git command.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: a four-node cycle draws — WRITE, RUN, OBSERVE, REVISE — a terracotta dot begins circulating"
+          },
+          {
+            "at": 0.35,
+            "event": "RIGHT: a ledger appears — ITERATIONS counter, COST column, VERDICT column"
+          },
+          {
+            "at": 0.5,
+            "event": "the counter climbs in step with the dot's laps; COST stays at zero; VERDICT flickers PASS/FAIL"
+          },
+          {
+            "at": 0.88,
+            "event": "on 'one git command' a small 'git revert' tag stamps under the ledger"
+          }
+        ],
+        "graphic": {
+          "manim": "B02_TheLoopRuns",
+          "scene_class": "B02_TheLoopRuns",
+          "engine": "manim",
+          "production_viz": {
+            "label": "the software feedback loop spinning, with its ledger updating in step",
+            "mechanic": "Cream canvas. LEFT HALF: four ink-boxed labels arranged in a cycle (WRITE top, RUN right, OBSERVE bottom, REVISE left) joined by arced arrows; a terracotta dot travels the cycle continuously. RIGHT HALF: a three-row ledger table — ITERATIONS with an integer that increments each lap, COST holding at $0, VERDICT alternating PASS (ink) / FAIL (gray). The two halves are causally synced: the counter ticks exactly when the dot passes RUN. Final moment: a small mono 'git revert' chip lands beneath the ledger. Left = the subject operating, right = the numbers updating; nothing static."
+          }
+        }
+      },
+      "actual_duration_s": 12.63,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "ACT I — THE LOOP",
+      "lane": "MANIM",
+      "estimated_duration_s": 15,
+      "narration_text": "Now run the same loop through atoms. Execution becomes actuation, and actuation wears equipment. The compiler error becomes a fault you may not even sense. And rollback — sometimes there is no rollback. A bad laser adjustment is not a red test.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: the act-one loop returns small and gray; beside it a second loop labels itself ATOMS and turns visibly slower"
+          },
+          {
+            "at": 0.3,
+            "event": "RIGHT: a two-column ledger — SOFTWARE vs PHYSICAL — rows land pairwise: execution/actuation, test output/sensor reading, compiler error/silent fault"
+          },
+          {
+            "at": 0.75,
+            "event": "the ROLLBACK row lands: 'git revert' vs a terracotta em-dash — the physical cell gets no entry"
+          },
+          {
+            "at": 0.92,
+            "event": "the ATOMS loop's dot stalls mid-arc on 'not a red test'"
+          }
+        ],
+        "graphic": {
+          "manim": "B03_SameLoopThroughAtoms",
+          "scene_class": "B03_SameLoopThroughAtoms",
+          "engine": "manim",
+          "production_viz": {
+            "label": "the loop re-priced for the physical world; the rollback cell is empty",
+            "mechanic": "Cream canvas. LEFT: two small cycles side by side — CODE (dot circulating briskly) and ATOMS (dot circulating at one-quarter speed, hitching). RIGHT: a paired ledger, SOFTWARE column and PHYSICAL column, four rows appearing one pair at a time, each physical entry visibly worse (wear icon, noise tilde, silent-fault gray). Row four ROLLBACK: software cell 'git revert' in mono; physical cell receives only a terracotta em-dash. Close: the ATOMS dot freezes mid-arc. The point is priced, not narrated."
+          }
+        }
+      },
+      "actual_duration_s": 14.1,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "ACT I — THE LOOP",
+      "lane": "VOX",
+      "estimated_duration_s": 14,
+      "narration_text": "So the physical world never had the loop. Experiments are slow. Sensors are noisy and partial. Failure can be expensive, or irreversible, or invisible until much later. Which is the actual reason AI stayed on the screen. Not modesty. Economics.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B04.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "show": [
+          {
+            "at": 0.1,
+            "event": "slow ease-out push into a working lab bench — instruments, cabling, no people needed"
+          },
+          {
+            "at": 0.8,
+            "event": "terracotta underline draws beneath a serif label: ECONOMICS, NOT MODESTY"
+          }
+        ],
+        "vox": {
+          "shopping": {
+            "need": "a real, cluttered optics or wet-lab bench — instruments, cables, the texture of physical work; wide enough to push into",
+            "tier": 1,
+            "min_duration_s": 16,
+            "fallback": "GRAPHIC/own — an ink line-drawing of a lab bench on cream, same push, same label"
+          }
+        }
+      },
+      "actual_duration_s": 14.31,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-31T01:19:55",
+        "needs": "YOU → drop a historical image at media/B04.png (or .mp4)",
+        "suggested": "find: So the physical world never had the loop. Experiments are slow. Sensors are noisy and partial. Failure can be expensive, or irreversible, or invisible until muc"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "ACT I — THE LOOP",
+      "lane": "REMOTION",
+      "estimated_duration_s": 15,
+      "narration_text": "That is the boundary Anthropic is now aiming at. The Model Hardware Standard — everyone immediately called it MCP for hardware — a common interface for AI agents to discover, monitor, and operate physical equipment. It is a bet that the loop can be built.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "two panels: LEFT 'THE SCREEN' (agent, tests, code — dense, alive), RIGHT 'THE WORLD' (instruments — grayed, disconnected)"
+          },
+          {
+            "at": 0.5,
+            "event": "on 'Model Hardware Standard' a bridge line draws from left panel to right panel"
+          },
+          {
+            "at": 0.85,
+            "event": "the right panel warms from gray toward ink on 'the loop can be built'"
+          }
+        ],
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "The bet",
+            "left": {
+              "label": "The screen",
+              "note": "Agents, tests, code. The loop lives here."
+            },
+            "right": {
+              "label": "The world",
+              "note": "Instruments, atoms, photons. No loop — yet."
+            },
+            "sparkLine": "a common interface for physical equipment"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 14.81,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "ACT II — A DRIVER, NOT A BRAIN",
+      "lane": "CARD",
+      "estimated_duration_s": 14,
+      "narration_text": "Act two. A driver, not a brain. Because the first thing to understand about this standard is what layer it lives at. It is not a new capability inside the model. It is plumbing — and the plumbing is the point.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B06.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "segment card: ACT II — A DRIVER, NOT A BRAIN"
+          },
+          {
+            "at": 0.7,
+            "event": "subtitle sets: 'the plumbing is the point'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "actLabel": "Act II",
+            "title": "A Driver, Not a Brain"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 11.31,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "ACT II — A DRIVER, NOT A BRAIN",
+      "lane": "REMOTION",
+      "estimated_duration_s": 15,
+      "narration_text": "Here is the shape of it. A driver translates between the agent and the device with primitives — read, write. And a manifest describes the machine: what can be measured, what can be adjusted, and what safety limits get enforced. The manual, made machine-readable.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B07.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Onda code block types: device = mhs.discover(\"laser_controller_01\")"
+          },
+          {
+            "at": 0.35,
+            "event": "manifest = device.get_manifest() — and the returned dict prints: measurable, adjustable, safety_limits"
+          },
+          {
+            "at": 0.7,
+            "event": "device.read(\"lock_frequency\") / device.write(\"piezo_voltage\", ...) type in"
+          },
+          {
+            "at": 0.9,
+            "event": "comment lands: '# the manual, made machine-readable'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "mhs_driver.py",
+            "code": "device = mhs.discover(\"laser_01\")\nm = device.get_manifest()\n# measurable:    [\"lock_frequency\"]\n# adjustable:    [\"piezo_voltage\"]\n# safety_limits: {\"piezo_voltage\":\n#                    [0, 5.0]}\n\nr = device.read(\"lock_frequency\")\ndevice.write(\"piezo_voltage\", fix)",
+            "sparkLine": "the manual, made machine-readable",
+            "codeSize": 0.046
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 14.02,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "ACT II — A DRIVER, NOT A BRAIN",
+      "lane": "MANIM",
+      "estimated_duration_s": 15,
+      "narration_text": "If that sounds familiar, it should. MCP's real contribution was never letting models call functions — they always could. It was standard discovery, so no bespoke glue per tool. This applies the same move one level down. One interface, any programmable device.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B08.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: an agent node with a tangle of bespoke wires to four devices — microscope, liquid handler, arm, laser"
+          },
+          {
+            "at": 0.45,
+            "event": "the tangle collapses into one clean bus through a DRIVER band on 'standard discovery'"
+          },
+          {
+            "at": 0.7,
+            "event": "RIGHT: the integration ledger — BESPOKE: N times M glue jobs; STANDARD: N plus M — the counts computed with the small numbers 4 and 3"
+          },
+          {
+            "at": 0.92,
+            "event": "the N+M cell gets the terracotta ring"
+          }
+        ],
+        "graphic": {
+          "manim": "B08_OneLevelDown",
+          "scene_class": "B08_OneLevelDown",
+          "engine": "manim",
+          "production_viz": {
+            "label": "bespoke glue collapses into one discovery bus; the ledger prices it N×M → N+M",
+            "mechanic": "Cream canvas. LEFT: AGENT node top-left; four device chips (MICROSCOPE, LIQUID HANDLER, ARM, LASER) right of it; first a crossing tangle of gray bespoke wires (each wire briefly flashes as 'custom glue'), then the tangle fades and a single ink bus drops through a horizontal DRIVER band into all four chips. RIGHT: a two-row ledger that computes on screen: BESPOKE 4 × 3 = 12 integrations; STANDARD 4 + 3 = 7 — digits animate in, and the 7 receives the single terracotta ring. Left is the topology changing; right is the same change priced."
+          }
+        }
+      },
+      "actual_duration_s": 15.23,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "ACT II — A DRIVER, NOT A BRAIN",
+      "lane": "VOX",
+      "estimated_duration_s": 15,
+      "narration_text": "And the integration numbers are the honest headline. A dose-response rig that took weeks of vendor setup — connected in eight hours. A new camera on a microscopy stack — minutes. That is real money and real time, before any question about intelligence.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B09.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "drawon",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a lab-automation deck (liquid handler / robotic arm) holds; treatment seats it on the cream stage"
+          },
+          {
+            "at": 0.45,
+            "event": "terracotta annotation draws: 'weeks → 8 hours' beside the rig"
+          },
+          {
+            "at": 0.75,
+            "event": "second annotation: 'new camera → minutes'"
+          }
+        ],
+        "vox": {
+          "shopping": {
+            "need": "a real laboratory-automation work cell — liquid handler or robotic arm over a plate deck; clean side angle with room for two annotations",
+            "tier": 1,
+            "min_duration_s": 17,
+            "fallback": "GRAPHIC/own — ink isotype of an arm over a plate deck, same two terracotta annotations"
+          }
+        }
+      },
+      "actual_duration_s": 13.57,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-31T01:19:55",
+        "needs": "YOU → drop a historical image at media/B09.png (or .mp4)",
+        "suggested": "find: And the integration numbers are the honest headline. A dose-response rig that took weeks of vendor setup — connected in eight hours. A new camera on a microscop"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "ACT II — A DRIVER, NOT A BRAIN",
+      "lane": "MANIM",
+      "estimated_duration_s": 17,
+      "narration_text": "The safety design is the part worth respecting. Limits live in the driver, below the model. The agent can propose anything; a voltage out of range simply does not execute. Which is correct — and note the fine print. That floor is only as strong as whoever wrote the manifest.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B10.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: a three-band vertical stack — AGENT (proposes), DRIVER (enforces), DEVICE (acts)"
+          },
+          {
+            "at": 0.35,
+            "event": "a command arrow labeled 7.0 V leaves AGENT, hits the DRIVER band, and stops dead — terracotta X; the limit tag reads [0, 5.0]"
+          },
+          {
+            "at": 0.6,
+            "event": "a second arrow labeled 3.2 V passes clean through to DEVICE"
+          },
+          {
+            "at": 0.82,
+            "event": "RIGHT: the manifest table's safety_limits row highlights; a pen icon lands beside it with the tag 'written by a person'"
+          }
+        ],
+        "graphic": {
+          "manim": "B10_TheFloorBelowTheModel",
+          "scene_class": "B10_TheFloorBelowTheModel",
+          "engine": "manim",
+          "production_viz": {
+            "label": "the driver stops the out-of-range command; then the camera finds who wrote the limit",
+            "mechanic": "Cream canvas. LEFT: three stacked horizontal bands — AGENT, DRIVER, DEVICE — with the DRIVER band drawn as a visibly solid floor. Arrow one ('write 7.0 V') descends from AGENT and terminates AT the driver band with a terracotta X and the enforced range printed at the impact point: [0, 5.0]. Arrow two ('write 3.2 V') descends and passes through to DEVICE, which pulses once. RIGHT: a small manifest table (measurable / adjustable / safety_limits rows); the safety_limits row gains the highlight, and an ink pen nib icon lands beside it with the serif tag 'written by a person'. The reassurance and the caveat are the same drawing."
+          }
+        }
+      },
+      "actual_duration_s": 14.63,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "ACT II — A DRIVER, NOT A BRAIN",
+      "lane": "REMOTION",
+      "estimated_duration_s": 13,
+      "narration_text": "And be clear about what the standard does not cover. Your success metric. Your sensors. Your physics. It standardizes access to the machine. It does not standardize knowing whether what the machine just did was right.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B11.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "chip grid: STANDARDIZED column fills — discovery, read/write, limits, telemetry"
+          },
+          {
+            "at": 0.5,
+            "event": "NOT STANDARDIZED column fills hollow — success metric, sensors, physics, verification"
+          },
+          {
+            "at": 0.9,
+            "event": "the word ACCESS gets the underline; the word RIGHT stays hollow"
+          }
+        ],
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "What the standard covers",
+            "cols": 2,
+            "chips": [
+              "✓ discovery",
+              "✓ read / write",
+              "✓ safety limits",
+              "✓ telemetry",
+              "✗ success metric",
+              "✗ sensors",
+              "✗ physics",
+              "✗ verification"
+            ],
+            "sparkLine": "access ≠ knowing it was right"
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 11.63,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "ACT III — THE LASER",
+      "lane": "CARD",
+      "estimated_duration_s": 10,
+      "narration_text": "Act three. The laser. This is the case everyone is quoting, and it rewards being told precisely — because the precise version is stranger and more interesting than the headline.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B12.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "segment card: ACT III — THE LASER"
+          },
+          {
+            "at": 0.7,
+            "event": "subtitle: 'told precisely'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "actLabel": "Act III",
+            "title": "The Laser"
+          },
+          "rendered": {
+            "out": "media/B12.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 9.62,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B12.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "ACT III — THE LASER",
+      "lane": "VOX",
+      "estimated_duration_s": 15,
+      "narration_text": "A neutral-atom quantum computer steers its atoms with lasers, and the lasers must hold a frequency lock. The lock drops, the machine stalls. A human expert at the bench needs five to ten minutes to bring it back. And it happens a lot.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B13.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.55,
+          0.5
+        ],
+        "show": [
+          {
+            "at": 0.1,
+            "event": "slow push into a quantum-optics table — laser paths, mirror mounts, the machine-room texture"
+          },
+          {
+            "at": 0.75,
+            "event": "terracotta ring lands on the beam path; serif label: THE LOCK"
+          }
+        ],
+        "vox": {
+          "shopping": {
+            "need": "a real quantum-computing optics table or laser bench — beam lines, mounts, dense optics; pushes toward one beam path",
+            "tier": 2,
+            "min_duration_s": 17,
+            "fallback": "GRAPHIC/own — ink schematic of a laser locking to a reference cavity, same terracotta ring on the lock point"
+          }
+        }
+      },
+      "actual_duration_s": 12.93,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-31T01:19:55",
+        "needs": "YOU → drop a historical image at media/B13.png (or .mp4)",
+        "suggested": "find: A neutral-atom quantum computer steers its atoms with lasers, and the lasers must hold a frequency lock. The lock drops, the machine stalls. A human expert at t"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "ACT III — THE LASER",
+      "lane": "MANIM",
+      "estimated_duration_s": 14,
+      "narration_text": "The automated baseline was a linear script that replayed the expert's steps — built by four engineers over several months. It worked fifty-eight percent of the time, at about a hundred and fifty seconds per attempt. Respectable. Also, clearly, a ceiling.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B14.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: a strict linear chain of steps walks — STEP 1 → STEP 2 → STEP 3 → … — a dot marching straight through"
+          },
+          {
+            "at": 0.4,
+            "event": "RIGHT: the ledger fills as the chain walks — SUCCESS bar rises and halts at 58%; TIME ≈150 s; TEAM 4; BUILD months"
+          },
+          {
+            "at": 0.9,
+            "event": "a thin ink ceiling line draws above the 58% bar on 'a ceiling'"
+          }
+        ],
+        "graphic": {
+          "manim": "B14_TheBaseline",
+          "scene_class": "B14_TheBaseline",
+          "engine": "manim",
+          "production_viz": {
+            "label": "the linear script walks its fixed steps while its ledger fills; the bar halts at 58 and gets a ceiling",
+            "mechanic": "Cream canvas. LEFT: five ink step-boxes in a strict left-to-right chain, one path, no branches; a dot marches through them at constant velocity, twice. RIGHT: a four-row ledger — SUCCESS (a vertical bar that rises smoothly and halts hard at 58%, value printed), TIME PER ATTEMPT (~150 s counts up), TEAM (4), BUILD TIME (several months). Bar motion is synced to the marching dot. Close: a thin horizontal ceiling rule draws just above the bar's top. The linearity of the left IS the explanation of the number on the right."
+          }
+        }
+      },
+      "actual_duration_s": 13.82,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "ACT III — THE LASER",
+      "lane": "MANIM",
+      "estimated_duration_s": 16,
+      "narration_text": "Then the loop, with photons. Overnight, four instances of Claude in different roles ran the rig. Break the lock on purpose — block the beam, cut the power, shove the frequency. Try a recovery. Read the instruments. Log what worked. Revise. Hundreds of attempts, unattended.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B15.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: the act-one cycle returns, relabeled — INDUCE, RECOVER, MEASURE, REVISE — dot circulating; four small spark marks sit at the corners with role tags"
+          },
+          {
+            "at": 0.45,
+            "event": "on the three sabotage phrases, three tags flash at INDUCE: beam blocked · power cut · frequency shoved"
+          },
+          {
+            "at": 0.6,
+            "event": "RIGHT: ATTEMPTS counter climbs into the hundreds; a night-hours bar extends beneath it"
+          },
+          {
+            "at": 0.9,
+            "event": "the ledger's RECOVERY RATE row climbs as the counter runs"
+          }
+        ],
+        "graphic": {
+          "manim": "B15_TheLoopWithPhotons",
+          "scene_class": "B15_TheLoopWithPhotons",
+          "engine": "manim",
+          "production_viz": {
+            "label": "act one's loop relabeled for the rig; attempts and recovery rate climb through the night",
+            "mechanic": "Cream canvas. LEFT: the same four-node cycle geometry as B02 (visual rhyme is the point), relabeled INDUCE / RECOVER / MEASURE / REVISE, terracotta dot circulating; four small terracotta spark glyphs at the diagonal corners carry mono role tags (planner, operator, analyst, critic). At INDUCE, three small tags flash in sequence: BEAM BLOCKED, POWER CUT, FREQ SHOVED. RIGHT: a ledger — ATTEMPTS (integer climbing continuously into the hundreds), HOURS (a horizontal night bar extending), RECOVERY RATE (a percentage that climbs in steps as attempts accumulate). Both sides run simultaneously; the loop drives the numbers."
+          }
+        }
+      },
+      "actual_duration_s": 14.02,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B15.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "ACT III — THE LASER",
+      "lane": "REMOTION",
+      "estimated_duration_s": 17,
+      "narration_text": "Now the detail the headlines blur. Claude did not stay in the loop. It compiled everything it learned into a deterministic decision tree — plain, inspectable Python. The thing recovering the laser in production contains no AI at all. Claude wrote the operator. It is not the operator.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B16.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "divergence panels: LEFT 'the headline' — Claude wired to the laser, live; RIGHT 'what shipped' — a plain script wired to the laser, Claude stepped back"
+          },
+          {
+            "at": 0.55,
+            "event": "on 'no AI at all' the right panel's Claude mark fades out entirely"
+          },
+          {
+            "at": 0.85,
+            "event": "the closing line sets: 'wrote the operator ≠ is the operator'"
+          }
+        ],
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "Who is in the loop",
+            "left": {
+              "label": "The headline",
+              "note": "Claude controls the laser — live, per attempt."
+            },
+            "right": {
+              "label": "What shipped",
+              "note": "A deterministic decision tree. Inspectable Python. No model in the loop."
+            },
+            "sparkLine": "wrote the operator ≠ is the operator"
+          },
+          "rendered": {
+            "out": "media/B16.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 15.87,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B16.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B17",
+      "act": "ACT III — THE LASER",
+      "lane": "MANIM",
+      "estimated_duration_s": 15,
+      "narration_text": "Then the test. Seven hundred blind trials against induced failures. Six hundred ninety-five recoveries — ninety-nine point three percent. Easy faults fixed in under six seconds, the hardest in ten to fourteen. The human at the bench needed five to ten minutes.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B17.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: a 700-cell trial grid fills in ink, fast raster sweep; five cells land terracotta and stay"
+          },
+          {
+            "at": 0.5,
+            "event": "RIGHT: the ledger fills in sync — RECOVERED 695 / 700 counts up; RATE 99.3%"
+          },
+          {
+            "at": 0.75,
+            "event": "latency rows land: SIMPLE 0.9–5.4 s · HARD 10–14 s · HUMAN 5–10 min, drawn as bars whose scale break is explicit"
+          },
+          {
+            "at": 0.95,
+            "event": "the five terracotta failures get a small tally tag: 5"
+          }
+        ],
+        "graphic": {
+          "manim": "B17_SevenHundredTrials",
+          "scene_class": "B17_SevenHundredTrials",
+          "engine": "manim",
+          "production_viz": {
+            "label": "the 700-cell grid rasters full while the ledger counts; five failures stay terracotta",
+            "mechanic": "Cream canvas. LEFT: a 35×20 grid of small squares filling ink in a raster sweep synced to a RECOVERED counter; exactly five squares (scattered, fixed seed) fill terracotta instead and persist. RIGHT: ledger — RECOVERED 695/700 counting in sync with the sweep; RATE printing 99.3% when the sweep completes; then three horizontal latency bars: SIMPLE 0.9–5.4 s, HARD 10–14 s, HUMAN 5–10 min — the human bar visibly breaks the axis (drawn with an explicit axis-break glyph rather than pretending linearity). Close: a '5' tally chip beside the terracotta cells. Grid drives ledger; nothing appears pre-filled."
+          }
+        }
+      },
+      "actual_duration_s": 14.63,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B17.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B18",
+      "act": "ACT III — THE LASER",
+      "lane": "VOX",
+      "estimated_duration_s": 16,
+      "narration_text": "Same rig, second result, fewer headlines. Tuning the lock's control loop. The specialist's tune left fifteen point seven millivolts of residual error. Claude's, after three hundred sixty-three experiments and sixteen unattended hours — one point five five. Then it held for nineteen hours without losing lock once.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B18.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "drawon",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "show": [
+          {
+            "at": 0.1,
+            "event": "close still of laser optics / servo electronics holds on the stage"
+          },
+          {
+            "at": 0.4,
+            "event": "terracotta annotations draw: '15.7 mV → 1.55 mV' and '363 experiments · 16 h'"
+          },
+          {
+            "at": 0.8,
+            "event": "third annotation: '19 h · zero unlocks'"
+          }
+        ],
+        "vox": {
+          "shopping": {
+            "need": "a tight close-up of laser optics, a servo controller, or locking electronics — something with dials/boards to annotate",
+            "tier": 1,
+            "min_duration_s": 18,
+            "fallback": "GRAPHIC/own — ink error-signal trace tightening around zero, same three annotations"
+          }
+        }
+      },
+      "actual_duration_s": 17.02,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-31T01:19:55",
+        "needs": "YOU → drop a historical image at media/B18.png (or .mp4)",
+        "suggested": "find: Same rig, second result, fewer headlines. Tuning the lock's control loop. The specialist's tune left fifteen point seven millivolts of residual error. Claude's,"
+      }
+    },
+    {
+      "beat_id": "B19",
+      "act": "ACT III — THE LASER",
+      "lane": "REMOTION",
+      "estimated_duration_s": 16,
+      "narration_text": "So separate three claims that keep getting fused. AI operating hardware in real time — not demonstrated. AI experimenting on hardware, overnight, to write a better conventional script — demonstrated. That script then running with no model in the loop — demonstrated. The agent as meta-programmer. That is the result.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B19.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "three claim chips land in a column"
+          },
+          {
+            "at": 0.35,
+            "event": "chip one — 'real-time AI control' — receives a hollow verdict: NOT DEMONSTRATED"
+          },
+          {
+            "at": 0.6,
+            "event": "chips two and three — 'AI experiments, writes the script' and 'script runs without AI' — receive ink ticks: DEMONSTRATED"
+          },
+          {
+            "at": 0.9,
+            "event": "footer line sets: META-PROGRAMMER, NOT MACHINE OPERATOR"
+          }
+        ],
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "Three claims, one demo",
+            "cols": 1,
+            "chips": [
+              "✗ AI operating hardware in real time — not demonstrated",
+              "✓ AI experimenting overnight, writing the script — demonstrated",
+              "✓ that script running with no model in it — demonstrated"
+            ],
+            "sparkLine": "meta-programmer, not machine operator"
+          },
+          "rendered": {
+            "out": "media/B19.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 17.34,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B19.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B20",
+      "act": "ACT IV — THE VERIFIER ISN'T FREE",
+      "lane": "CARD",
+      "estimated_duration_s": 10,
+      "narration_text": "Act four. The verifier is not free. Because the coding analogy has a hidden asymmetry, and that asymmetry is the whole question of how far this generalizes.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B20.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "segment card: ACT IV — THE VERIFIER ISN'T FREE"
+          },
+          {
+            "at": 0.7,
+            "event": "subtitle: 'the hidden asymmetry'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "actLabel": "Act IV",
+            "title": "The Verifier Isn't Free"
+          },
+          "rendered": {
+            "out": "media/B20.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 9.51,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B20.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B21",
+      "act": "ACT IV — THE VERIFIER ISN'T FREE",
+      "lane": "MANIM",
+      "estimated_duration_s": 14,
+      "narration_text": "The compiler is a universal verifier. One test harness covers essentially all code, for free, instantly. The laser's verifier — a photodetector reading an unambiguous number — had to exist already. Every physical task needs its own. And nobody standardizes that part.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B21.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: many differently-shaped code chips funnel through ONE compiler box, each emerging with a verdict stamp"
+          },
+          {
+            "at": 0.5,
+            "event": "RIGHT: a row of four physical tasks, each with its own bespoke sensor bolted on — photodetector, camera, assay clock, strain gauge"
+          },
+          {
+            "at": 0.8,
+            "event": "a fifth task slot appears with a terracotta '?' where its sensor should be"
+          },
+          {
+            "at": 0.95,
+            "event": "footer: 'the verifier is the custom part'"
+          }
+        ],
+        "graphic": {
+          "manim": "B21_OneCompilerManySensors",
+          "scene_class": "B21_OneCompilerManySensors",
+          "engine": "manim",
+          "production_viz": {
+            "label": "all code funnels through one free verifier; each physical task needs its own bolted-on sensor, and one slot holds a question mark",
+            "mechanic": "Cream canvas. LEFT HALF: six small code-chips of varied silhouettes drop one after another into a single ink box labeled COMPILER / TESTS; each pops out below with a stamped verdict (PASS/FAIL) — one funnel, every shape. RIGHT HALF: four task chips in a row (LASER LOCK, PLATE READ, REACTION, WELD) each with a distinct small sensor glyph bolted to its top edge (photodiode, camera, clock, gauge), drawn one at a time — four tasks, four different instruments. A fifth chip slides in labeled YOUR TASK with an empty bolt-point and a terracotta '?'. Footer serif line: 'the verifier is the custom part'."
+          }
+        }
+      },
+      "actual_duration_s": 16.19,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B21.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B22",
+      "act": "ACT IV — THE VERIFIER ISN'T FREE",
+      "lane": "REMOTION",
+      "estimated_duration_s": 16,
+      "narration_text": "So sort physical tasks by the price of checking. Optical and electrical — cheap, instant signals. That is where these demos live. Chemistry and biology — verdicts arrive in hours and consume the sample. Mechanical assembly — sometimes checking means breaking. The loop only spins where checking is cheap.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B22.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "three-column chip grid by verification cost: CHEAP / DELAYED / DESTRUCTIVE"
+          },
+          {
+            "at": 0.5,
+            "event": "the CHEAP column gets a terracotta bracket labeled 'the demos live here'"
+          },
+          {
+            "at": 0.9,
+            "event": "footer: 'the loop spins where checking is cheap'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "The price of checking",
+            "cols": 1,
+            "chips": [
+              "CHEAP · INSTANT — laser lock, beam position, voltages, imaging",
+              "DELAYED · CONSUMING — assays, cell cultures, synthesis",
+              "DESTRUCTIVE — weld strength, structural tests"
+            ],
+            "sparkLine": "the loop spins where checking is cheap"
+          },
+          "rendered": {
+            "out": "media/B22.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 16.66,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B22.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B23",
+      "act": "ACT IV — THE VERIFIER ISN'T FREE",
+      "lane": "VOX",
+      "estimated_duration_s": 15,
+      "narration_text": "And when the physics gets tacit, watch what happens. At one pharma lab, bubbles formed in a viscous sample. Claude's instinct — retry the same well with new settings. Which whipped more foam. Humans had to say it out loud: this failure is physical, not software.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B23.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.55
+        ],
+        "show": [
+          {
+            "at": 0.1,
+            "event": "push into a liquid-handling head over a microplate — pipette tips, wells"
+          },
+          {
+            "at": 0.6,
+            "event": "terracotta ring lands on one well; label: THE FOAM"
+          },
+          {
+            "at": 0.85,
+            "event": "serif line beneath: 'physical, not software'"
+          }
+        ],
+        "vox": {
+          "shopping": {
+            "need": "a real liquid handler head over a 96-well microplate, close enough that one well can take a ring annotation",
+            "tier": 1,
+            "min_duration_s": 17,
+            "fallback": "GRAPHIC/own — ink microplate top-down, one well fizzing with foam hatching, same ring and label"
+          }
+        }
+      },
+      "actual_duration_s": 14.36,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-31T01:19:55",
+        "needs": "YOU → drop a historical image at media/B23.png (or .mp4)",
+        "suggested": "find: And when the physics gets tacit, watch what happens. At one pharma lab, bubbles formed in a viscous sample. Claude's instinct — retry the same well with new set"
+      }
+    },
+    {
+      "beat_id": "B24",
+      "act": "ACT IV — THE VERIFIER ISN'T FREE",
+      "lane": "REMOTION",
+      "estimated_duration_s": 13,
+      "narration_text": "Anthropic's own write-up says it plainly. When hardware misbehaved, Claude could not troubleshoot, because its understanding of the rig was programmatic rather than physical. Remember that sentence. It is the most honest line in the announcement.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B24.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a serif quote card sets the line: 'its understanding of the rig was programmatic rather than physical'"
+          },
+          {
+            "at": 0.6,
+            "event": "terracotta underline draws beneath 'programmatic rather than physical'"
+          },
+          {
+            "at": 0.85,
+            "event": "attribution line: — Anthropic, on the QuEra experiments"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeC2FullStatement",
+          "props": {
+            "statement": "Its understanding of the rig was programmatic rather than physical.",
+            "emphasis": "programmatic rather than physical",
+            "subline": "Anthropic, on the QuEra experiments — the most honest line in the announcement.",
+            "accent": "#A64A24"
+          },
+          "rendered": {
+            "out": "media/B24.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 13.33,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B24.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "B25",
+      "act": "ACT IV — THE VERIFIER ISN'T FREE",
+      "lane": "MANIM",
+      "estimated_duration_s": 15,
+      "narration_text": "Last — weigh the evidence like an adult. One vendor announcement. Cooperative partners with every incentive to look good. No peer review, no independent replication, no open-source release yet. That is not an accusation. It is just what a research preview is.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B25.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: a balance scale draws; DEMONSTRATED chips settle on one pan (real hardware, blind trials), ASSERTED chips on the other (generalization, 'solved')"
+          },
+          {
+            "at": 0.55,
+            "event": "RIGHT: an evidence checklist fills — peer review ✗ · replication ✗ · open code ✗ · real hardware ✓ · blind trials ✓ (company-run)"
+          },
+          {
+            "at": 0.9,
+            "event": "footer: 'a preview, weighed as one'"
+          }
+        ],
+        "graphic": {
+          "manim": "B25_WeighThePreview",
+          "scene_class": "B25_WeighThePreview",
+          "engine": "manim",
+          "production_viz": {
+            "label": "the scale takes demonstrated and asserted chips while the checklist fills; the film grades its own sources",
+            "mechanic": "Cream canvas. LEFT: a simple ink balance — beam, fulcrum, two pans. Chips drop one at a time: onto the left pan, ink chips REAL HARDWARE and BLIND TRIALS; onto the right pan, hollow chips GENERALIZES and 'SOLVED'. The beam tilts as weight lands — solid chips weigh more than hollow ones, and the tilt says so. RIGHT: a five-row checklist filling in sequence: PEER REVIEW ✗, REPLICATION ✗, OPEN CODE ✗, REAL HARDWARE ✓, BLIND TRIALS ✓ with the small gray annotation '(company-run)'. Footer serif: 'a preview, weighed as one'."
+          }
+        }
+      },
+      "actual_duration_s": 14.95,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B25.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "closing",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 17,
+      "narration_text": "So, the verdict. The loop is real — where a sensor can score the outcome. The integration cost is genuinely collapsing. Claude wrote the operator; it is not the operator. Verification stayed task-specific. And every number in this film is company-reported. Hold it accordingly.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "ClaudeVerdictArtifact: verdict lines land one at a time with the narration"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "The Missing Feedback Loop",
+            "artifactHeading": "What the evidence supports",
+            "artifactLines": [
+              "The feedback loop is real — where a sensor can score the outcome.",
+              "Integration cost is genuinely collapsing: weeks of vendor glue → hours.",
+              "Claude wrote the operator — it is not the operator. Production runs plain code.",
+              "Verification stayed task-specific. The standard ships access, not truth.",
+              "Every number here is company-reported. Hold it accordingly."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 14.98,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "closing",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 24,
+      "narration_text": "Your turn. Paste this into Claude: pick a physical task you actually do — focusing a microscope, reflowing a solder joint, watering a greenhouse. What sensor would give this task a cheap, instant, unambiguous verifier — and what failure would that verifier miss completely? If you find a cheap verifier, you have found where this standard lands first. If you cannot — you have found its edge.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "ClaudeComposerAsk: greeting 'Your turn.'"
+          },
+          {
+            "at": 0.2,
+            "event": "the full prompt types into the composer as Liam reads it"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN — HUNT THE VERIFIER",
+            "segment": "The Missing Feedback Loop",
+            "command": "Pick a physical task I actually do — focusing a microscope, reflowing a solder joint, watering a greenhouse. What sensor would give it a cheap, instant, unambiguous verifier — and what failure would that verifier miss completely?",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 19.63,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "closing",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 8,
+      "narration_text": "The Missing Feedback Loop. Thanks for watching.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "ClaudeTitleOutro: title re-reads on the cream stage"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Missing Feedback Loop",
+            "slug": "claude-liam-the-missing-feedback-loop",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 2.99,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T01:19:55"
+      }
+    }
+  ]
+}

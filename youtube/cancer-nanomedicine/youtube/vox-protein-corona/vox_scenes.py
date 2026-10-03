@@ -1,6 +1,10 @@
 import sys, pathlib
-sys.path.insert(0, str(pathlib.Path(__file__).resolve()
-                       .parents[3] / "vox/aspects/explainer/vox-explainer/manim"))
+_here = pathlib.Path(__file__).resolve()
+for _up in range(3, 10):
+    _cand = _here.parents[_up] / "vox/aspects/explainer/vox-explainer/manim"
+    if _cand.is_dir():
+        sys.path.insert(0, str(_cand))
+        break
 from vox_graphics import *
 import json, os
 _bs = os.path.join(os.path.dirname(__file__), "beat_sheet.json")
@@ -51,6 +55,88 @@ class B02_Question(Scene):
         self.play(FadeIn(q1), run_time=0.8)
         self.play(FadeIn(q2), Create(u), run_time=0.9)
         self.wait(max(0.3, total - 2.2))
+
+
+# ---------------------------------------------------------------------------
+# B03 — PROTEINS SWARM (four plasma proteins arrive in order)
+# ---------------------------------------------------------------------------
+class B03_ProteinsSwarm(Scene):
+    def construct(self):
+        total = DUR["B03"]
+
+        particle = Circle(0.7).set_fill(TEAL, 0.75).set_stroke(INK, 2)
+        particle.move_to(ORIGIN)
+
+        # Albumin — oval, arrives from left
+        albumin = Ellipse(width=0.55, height=0.32).set_fill(CRIMSON, 0.85)
+        albumin.set_stroke(CRIMSON, 2)
+        albumin.move_to(LEFT * 5.5)
+        alb_lbl = Text("albumin", font=MONO, font_size=13, color=CRIMSON)
+        alb_lbl.next_to(albumin, DOWN, buff=0.12)
+
+        # IgG — Y-shape (two lines converging), from upper-right
+        ig_arm1 = Line(RIGHT * 5 + UP * 2.4, RIGHT * 4.6 + UP * 1.9,
+                       color=CRIMSON, stroke_width=4)
+        ig_arm2 = Line(RIGHT * 4.2 + UP * 2.4, RIGHT * 4.6 + UP * 1.9,
+                       color=CRIMSON, stroke_width=4)
+        ig_stem = Line(RIGHT * 4.6 + UP * 1.9, RIGHT * 4.6 + UP * 1.35,
+                       color=CRIMSON, stroke_width=4)
+        igg = VGroup(ig_arm1, ig_arm2, ig_stem)
+        igg_lbl = Text("IgG", font=MONO, font_size=13, color=CRIMSON)
+        igg_lbl.next_to(igg, RIGHT, buff=0.15)
+
+        # Fibrinogen — long rod, arrives from below
+        fib = Rectangle(width=0.85, height=0.16).set_fill(CRIMSON, 0.85)
+        fib.set_stroke(CRIMSON, 2)
+        fib.move_to(DOWN * 3.0)
+        fib_lbl = Text("fibrinogen", font=MONO, font_size=13, color=CRIMSON)
+        fib_lbl.next_to(fib, DOWN, buff=0.12)
+
+        # Apolipoprotein — small oval, arrives from upper-left
+        apo = Ellipse(width=0.42, height=0.28).set_fill(CRIMSON, 0.85)
+        apo.set_stroke(CRIMSON, 2)
+        apo.move_to(LEFT * 4.5 + UP * 2.2)
+        apo_lbl = Text("apolipoprotein", font=MONO, font_size=13, color=CRIMSON)
+        apo_lbl.next_to(apo, UP, buff=0.12)
+
+        title = Text("plasma proteins arrive, in order",
+                     font=DISPLAY, font_size=20, color=INK)
+        title.move_to(UP * 3.3)
+        gold_u = Line(title.get_corner(DL) + DOWN * 0.09,
+                      title.get_corner(DR) + DOWN * 0.09,
+                      color=GOLD, stroke_width=2)
+
+        seconds = Text("within seconds", font=SERIF, font_size=18,
+                       color=CRIMSON, slant=ITALIC)
+        seconds.move_to(DOWN * 2.0)
+
+        self.play(FadeIn(title), Create(gold_u), GrowFromCenter(particle),
+                  run_time=0.8)
+        # Albumin first — land LEFT of particle
+        self.play(FadeIn(albumin, shift=RIGHT * 0.2),
+                  FadeIn(alb_lbl, shift=RIGHT * 0.2), run_time=0.5)
+        self.play(albumin.animate.move_to(LEFT * 1.0),
+                  alb_lbl.animate.move_to(LEFT * 1.5 + DOWN * 0.5),
+                  run_time=0.8)
+        # IgG — land ABOVE particle
+        self.play(FadeIn(igg), FadeIn(igg_lbl), run_time=0.4)
+        self.play(igg.animate.move_to(UP * 1.0),
+                  igg_lbl.animate.move_to(RIGHT * 0.9 + UP * 1.0),
+                  run_time=0.7)
+        # Fibrinogen — land BELOW particle
+        self.play(FadeIn(fib, shift=UP * 0.2),
+                  FadeIn(fib_lbl, shift=UP * 0.2), run_time=0.4)
+        self.play(fib.animate.move_to(DOWN * 1.0),
+                  fib_lbl.animate.move_to(DOWN * 1.5),
+                  run_time=0.7)
+        # Apolipoprotein — land RIGHT of particle
+        self.play(FadeIn(apo, shift=DOWN * 0.2),
+                  FadeIn(apo_lbl, shift=DOWN * 0.2), run_time=0.4)
+        self.play(apo.animate.move_to(RIGHT * 1.0),
+                  apo_lbl.animate.move_to(RIGHT * 1.7 + UP * 0.5),
+                  run_time=0.7)
+        self.play(FadeIn(seconds, shift=UP * 0.1), run_time=0.5)
+        self.wait(max(0.3, total - 5.9))
 
 
 # ---------------------------------------------------------------------------

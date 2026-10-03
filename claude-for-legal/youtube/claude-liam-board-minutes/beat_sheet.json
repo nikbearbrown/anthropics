@@ -20,11 +20,46 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-for-legal/corporate-legal/skills/board-minutes/SKILL.md",
+    "source_detail": {
+      "capabilities": [],
+      "constraints": [
+        "Matter context. Check ## Matter workspaces in the practice-level CLAUDE.md. If Enabled is ✗ (the default for in-house users), skip the rest of this paragraph — skills…",
+        "If ~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md has no minutes format: run cold-start first. Do not proceed with a generic format",
+        "Any guests who attended for specific agenda items only (note their attendance as limited to that item)",
+        "Confirm quorum was present. If not: stop and flag before drafting. Do not produce minutes that imply a valid meeting occurred. Surface the question to outside counsel…",
+        "Use the house format from ~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md. Do not default to a generic format. The seed minutes are the template…",
+        "Long-form narrative: Summarise the substance of the discussion — what questions were raised, what information was presented, what factors the board considered. Do not…",
+        "Action minutes: Note only what was presented and what action was taken. No discussion content beyond \"the board discussed the matter.\"",
+        "Hybrid: Full narrative for major items (acquisitions, financials, significant approvals), action-only for routine items"
+      ],
+      "referenced_files": [
+        "/corporate-legal:matter-workspace switch <slug>",
+        "practice-level",
+        "matter.md",
+        "~/.claude/plugins/config/claude-for-legal/corporate-legal/matters/<matter-slug>/",
+        "Cross-matter context",
+        "~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md",
+        "/corporate-legal:written-consent"
+      ],
+      "code_signals": [],
+      "sections": [
+        "Matter context",
+        "Purpose",
+        "Load context",
+        "Step 1: Identify the meeting",
+        "Calendar detection",
+        "Meeting metadata to confirm",
+        "Step 2: Attendance",
+        "Step 3: Materials",
+        "Step 4: Draft the minutes",
+        "Standard structure (adapt to house format)"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T06:16:31",
+      "at": "2026-09-06T00:10:08",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -50,7 +85,7 @@
             "output": [
               "skill: board-minutes",
               ">",
-              "steps: 0 — executing."
+              "steps: 6 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -68,13 +103,13 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:16:31"
+        "at": "2026-09-06T00:10:08"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is board-minutes. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is board-minutes. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at /corporate-legal:matter-workspace switch <slug>, practice-level, matter.md, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -106,18 +141,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.14,
+      "actual_duration_s": 19.11,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:16:31"
+        "at": "2026-09-06T00:10:08"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "The pipeline has 6 steps. Identify the meeting → Attendance → Materials, plus 3 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -132,22 +167,27 @@
             "outputLabel": "RESULT",
             "phases": [
               {
-                "label": "Read SKILL.md",
-                "desc": "load the instruction set",
+                "label": "Identify the meeting",
+                "desc": "",
                 "accent": true
               },
               {
-                "label": "Execute",
-                "desc": "run each step in order",
+                "label": "Attendance",
+                "desc": "Ask for the attendee list, or offer to pull from the…",
                 "accent": false
               },
               {
-                "label": "Return output",
-                "desc": "deliver the result",
+                "label": "Materials",
+                "desc": "Ask for the meeting materials. These are the source for the…",
+                "accent": false
+              },
+              {
+                "label": "Draft the minutes",
+                "desc": "Use the house format from ~/.claude/plugins/config/claude-fo…",
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "6 steps. Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -157,18 +197,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 12.03,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:16:31"
+        "at": "2026-09-06T00:10:08"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. board-minutes is a specification written as an instruction set. Claude's job: >. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. Matter context. Check ## Matter workspaces in the practice-level CLAUDE.md. If Enabled is ✗ (the default for in-house users), skip the rest of this paragraph — skills…. That is the constraint in board-minutes — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +219,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": ">",
+            "body": "Matter context. Check ## Matter workspaces in the practice-level CLAUDE.md. If Enabled is ✗ (the default for in-house users), skip the rest of this paragraph — skills…",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,12 +229,44 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 10.58,
+      "actual_duration_s": 16.96,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:16:31"
+        "at": "2026-09-06T00:10:08"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In board-minutes, supporting material: /corporate-legal:matter-workspace switch <slug>, practice-level, matter.md, ~/.claude/plugins/config/claude-for-legal/corporate-legal/matters/<matter-slug>/; sections: Matter context, Purpose, Load context, Step 1: Identify the meeting. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "/corporate-legal:matter-workspace switch <slug>; practice-level; matter.md",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 23.06,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-06T00:10:08"
       }
     },
     {
@@ -214,8 +286,9 @@
             "artifactLines": [
               "Skill: board-minutes — Claude reads SKILL.md before acting",
               ">",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "6-step pipeline: Identify the meeting → Attendance → Materials",
+              "Constraint: Matter context. Check ## Matter workspaces in the practice-level CLAUDE.md. If Enabled is…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -230,7 +303,7 @@
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:16:31"
+        "at": "2026-09-06T00:10:08"
       }
     },
     {
@@ -267,7 +340,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:16:31"
+        "at": "2026-09-06T00:10:08"
       }
     },
     {
@@ -298,7 +371,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:16:31"
+        "at": "2026-09-06T00:10:08"
       }
     }
   ]

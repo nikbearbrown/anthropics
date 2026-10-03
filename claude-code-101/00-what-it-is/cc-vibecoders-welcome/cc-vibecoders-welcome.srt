@@ -1,0 +1,344 @@
+1
+00:00:00,000 --> 00:00:04,019
+This is Liam, in for Bear. I don't write
+code, and I'm about to build something
+
+2
+00:00:04,019 --> 00:00:08,140
+anyway. That's what vibecoding is: you
+describe the thing, Claude Code writes it,
+
+3
+00:00:08,140 --> 00:00:12,261
+you decide whether it's right. An empty
+folder, one file in it, and one paragraph
+
+4
+00:00:12,261 --> 00:00:14,398
+— every constraint I care about, up front.
+
+5
+00:00:14,398 --> 00:00:15,670
+Watch what it does first.
+
+6
+00:00:15,720 --> 00:00:20,008
+Here's the idea of this film. Vibecoding
+means you describe a tool in plain words,
+
+7
+00:00:20,008 --> 00:00:24,087
+Claude Code writes it, and you decide
+whether it's right — not by trusting it,
+
+8
+00:00:24,087 --> 00:00:28,218
+by reading it. I'll build a reading log
+I'd actually use, and I'll show you the
+
+9
+00:00:28,218 --> 00:00:32,454
+two things it added that I never asked
+for, and the one thing it wrote outside my
+
+10
+00:00:32,454 --> 00:00:32,820
+folder.
+
+11
+00:00:32,870 --> 00:00:34,854
+Five words before we start. Vibecoding:
+
+12
+00:00:34,854 --> 00:00:38,670
+you describe the tool in plain words,
+Claude writes the code, you judge it.
+
+13
+00:00:38,670 --> 00:00:42,689
+Local storage: the browser's own small
+store — the page keeps your data with no
+
+14
+00:00:42,689 --> 00:00:46,251
+server. Tool call: Claude asking for
+permission to read, write, or run
+
+15
+00:00:46,251 --> 00:00:50,270
+something. Diff: the exact lines removed,
+in red, and added, in green — nothing
+
+16
+00:00:50,270 --> 00:00:54,137
+else. And git diff stat: the change
+tracker's one-line answer — which files,
+
+17
+00:00:54,137 --> 00:00:54,900
+how many lines.
+
+18
+00:00:54,950 --> 00:00:58,787
+Before it writes, it says what it's going
+to write. Listen to the end of that
+
+19
+00:00:58,787 --> 00:01:02,774
+sentence: 'and a delete option.' I never
+asked for a delete option. I'm going to
+
+20
+00:01:02,774 --> 00:01:06,711
+let it write anyway — a two-line fix is
+cheap — but I've just learned the first
+
+21
+00:01:06,711 --> 00:01:09,900
+rule: it will add things. So I'll read the
+file before I run it.
+
+22
+00:01:09,950 --> 00:01:14,333
+One tool call. Write, index.html, two
+hundred and eighty-six lines, in one pass.
+
+23
+00:01:14,333 --> 00:01:16,469
+Then its own summary of what it built —
+
+24
+00:01:16,469 --> 00:01:21,126
+and that summary is fluent, formatted, and
+confident. It is also a claim. The file is
+
+25
+00:01:21,126 --> 00:01:25,070
+the artifact. Whether the file does what I
+asked is a separate question.
+
+26
+00:01:25,120 --> 00:01:29,510
+Claude says done. I check. The bang runs a
+shell command from inside the session. Two
+
+27
+00:01:29,510 --> 00:01:33,745
+hundred eighty-six lines. Local storage,
+twice. Now the one I said out loud before
+
+28
+00:01:33,745 --> 00:01:37,774
+I looked: no external requests — grep for
+any URL or script tag. Nothing. That
+
+29
+00:01:37,774 --> 00:01:41,802
+constraint held. Then the one I was
+waiting for. Remove, and sort. Both there.
+
+30
+00:01:41,802 --> 00:01:43,610
+One I was told about. One I wasn't.
+
+31
+00:01:43,660 --> 00:01:47,745
+So I tell it exactly what I found and
+exactly what not to do. Take both out.
+
+32
+00:01:47,745 --> 00:01:51,829
+Change nothing else. Don't touch the
+styling. Three edits, one file. And the
+
+33
+00:01:51,829 --> 00:01:56,075
+diff is all red — fourteen lines gone,
+nothing added. That is the scope I asked
+
+34
+00:01:56,075 --> 00:01:58,010
+for. Read the diff, not the summary.
+
+35
+00:01:58,060 --> 00:02:02,189
+Then — without being asked — it did one
+more thing. It wrote a memory. Two files,
+
+36
+00:02:02,189 --> 00:02:06,164
+outside my folder, in its own directory,
+so it remembers next time that I want
+
+37
+00:02:06,164 --> 00:02:10,344
+exactly what I asked for. It told me. I'd
+have missed it if I'd stopped reading at
+
+38
+00:02:10,344 --> 00:02:14,523
+'both removed.' That's the product working
+as designed. It is also a decision made
+
+39
+00:02:14,523 --> 00:02:14,880
+for me.
+
+40
+00:02:14,930 --> 00:02:18,843
+Check it. Git diff stat: one file,
+fourteen deletions, nothing else in the
+
+41
+00:02:18,843 --> 00:02:23,021
+tree. Grep for remove or sort: gone. Local
+storage: still two. Inside the repo,
+
+42
+00:02:23,021 --> 00:02:26,829
+'nothing else touched' is true. Then I
+look where git can't. That memory
+
+43
+00:02:26,829 --> 00:02:29,790
+directory. Two files. And the note it
+wrote is about me.
+
+44
+00:02:29,840 --> 00:02:33,599
+Who did what. Step one was mine: the
+sentence with five constraints in it —
+
+45
+00:02:33,599 --> 00:02:37,710
+that's problem formulation. Claude built
+the file; the handoff condition was every
+
+46
+00:02:37,710 --> 00:02:39,714
+constraint holds under grep, and it did.
+
+47
+00:02:39,714 --> 00:02:43,925
+Step three, the dangerous middle: reading
+the plan and the file, and hearing 'delete
+
+48
+00:02:43,925 --> 00:02:47,684
+option' and 'sorted' before running
+anything. Claude removed both, cleanly.
+
+49
+00:02:47,684 --> 00:02:51,644
+Then interpretive judgment: 'nothing else
+touched' was true inside the tree and
+
+50
+00:02:51,644 --> 00:02:55,504
+false outside it. Notice the zero. No
+executive integration — one thread, one
+
+51
+00:02:55,504 --> 00:02:58,060
+file. That's fine at this size. It won't
+stay fine.
+
+52
+00:02:58,110 --> 00:03:02,290
+So what was mine. I must decide what done
+means — I wrote it down before it started.
+
+53
+00:03:02,290 --> 00:03:06,321
+I must read the file before I run it. And
+I must look outside the folder, because
+
+54
+00:03:06,321 --> 00:03:10,451
+the machine cannot tell me when it's done
+something I'd mind; it sounded exactly as
+
+55
+00:03:10,451 --> 00:03:14,432
+sure about the memory file as about the
+form. Claude can write two hundred lines
+
+56
+00:03:14,432 --> 00:03:18,264
+in one pass and remove exactly what I
+name. Next time I keep the constraints.
+
+57
+00:03:18,264 --> 00:03:20,204
+Six lines. Mine — and one of them says:
+
+58
+00:03:20,204 --> 00:03:21,100
+don't remember me.
+
+59
+00:03:21,150 --> 00:03:25,217
+Let's recap with Claude. Vibecoding is
+real: no code written by hand, a working
+
+60
+00:03:25,217 --> 00:03:28,976
+tool in two turns. The first pass added
+two features nobody asked for and
+
+61
+00:03:28,976 --> 00:03:33,249
+announced one of them. The correction was
+fourteen deleted lines and nothing else —
+
+62
+00:03:33,249 --> 00:03:37,419
+inside the repo. Outside it, Claude wrote
+itself a note about me. Every check she
+
+63
+00:03:37,419 --> 00:03:41,795
+ran was a command; the only claim she took
+on faith was the one that turned out to be
+
+64
+00:03:41,795 --> 00:03:45,965
+wrong. What would prove this reel wrong: a
+session where reading the plan and the
+
+65
+00:03:45,965 --> 00:03:47,870
+diff catches nothing, twice in a row.
+
+66
+00:03:47,920 --> 00:03:51,719
+Your turn. Make an empty folder, open
+Claude Code in it, and describe one small
+
+67
+00:03:51,719 --> 00:03:55,421
+tool you'd actually use — in a paragraph
+that lists every constraint you care
+
+68
+00:03:55,421 --> 00:03:59,267
+about. Before you run what it writes,
+paste this: List everything you built that
+
+69
+00:03:59,267 --> 00:04:02,874
+I did not explicitly ask for, and
+everything you wrote outside this folder.
+
+70
+00:04:02,874 --> 00:04:06,720
+Then tell me which of those you would
+remove if I asked for exactly what I asked
+
+71
+00:04:06,720 --> 00:04:07,730
+for and nothing else.
+
+72
+00:04:07,780 --> 00:04:10,930
+Vibecoders Welcome. Liam, in for Bear.

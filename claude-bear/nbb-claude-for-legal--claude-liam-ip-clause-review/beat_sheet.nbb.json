@@ -1,0 +1,319 @@
+{
+ "metadata": {
+  "title": "Claude, Ip Clause Review.",
+  "subtitle": "The IP-Clause-Review Skill",
+  "slug": "claude-for-legal--claude-liam-ip-clause-review",
+  "topic": "IP-CLAUSE-REVIEW · ANTHROPIC SKILL",
+  "purpose": "Answer one real question in the Teardown register: when Claude reviews an IP clause, is it judging whether the clause is good, or running a written checklist? Lands the carry-out that Claude runs the list one item at a time — including the item that catches whether the clause actually assigns the IP or just licenses it.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/claude-for-legal/youtube/claude-liam-ip-clause-review/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the ip-clause-review Skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-08-30T11:11:34",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "The obvious guess is that Claude reads the IP clause and forms a judgment — the way a lawyer would. Wrong branch. It's running a checklist. So what's actually on that list?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'When Claude reviews an IP clause, is it judging?', hesitates on 'judging', corrects to 'checking a list', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "When Claude reviews\nan IP clause,\nis it judging?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "judging",
+      "replacementWords": "checking a list",
+      "mistakeRate": 6,
+      "hesitateWithin": 2,
+      "hesitateBetween": 14,
+      "charMs": 48,
+      "jitter": 26,
+      "seed": "hai-ip-clause-review"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('judging' -> 'checking a list') lands on screen.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T11:11:34"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "A Skill isn't a plugin or an API — it's a folder. This one is called ip-clause-review, and inside it is a single file, SKILL.md, written in plain English. That file is the whole program: the checks, the order, what to flag. The choice is deliberate — text you can read is text you can audit, no hidden logic sitting where the reviewer can't see it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A SKILL IS A FOLDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A SKILL IS A FOLDER",
+     "chips": [
+      "ip-clause-review/",
+      "SKILL.md",
+      "CLAUDE ACTS"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T11:11:34"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "The checks live in a Steps section — a numbered list Claude runs top to bottom. Read the file, apply each check to the clause, return the result. No branching, no jumping ahead, unless a step itself says otherwise. What that buys you is repeatability: the same clause fed in twice goes through the same list, and the list can't quietly change its mind between runs.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "READ, CHECK, RETURN",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "READ, CHECK, RETURN",
+     "chips": [
+      "READ SKILL.md",
+      "APPLY EACH CHECK",
+      "RETURN RESULT"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "linear — no branching unless a step says so",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T11:11:34"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "One item on the list is the ownership check. Here's what's actually happening: a clause that grants a license just lets someone use the work — ownership doesn't move. Only a clause that assigns the IP outright — 'all right, title, and interest, transferred' — actually hands it over. That gap is the design cost of English: a contract can read like it's transferring ownership, in warm confident prose, and still leave the work sitting with whoever created it. The check exists because that gap fools people.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "LICENSES IT, OR ASSIGNS IT",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "LICENSES IT, OR ASSIGNS IT",
+     "chips": [
+      "GRANTS A LICENSE",
+      "OWNERSHIP STAYS PUT",
+      "ASSIGNS THE IP"
+     ],
+     "arrows": false,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "only 'assigns' actually transfers ownership",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T11:11:34"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Claude isn't judging whether the clause is good — it's running a written list, one item at a time, including the one that catches whether the clause actually assigns the IP or just licenses it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Claude isn't judging whether the clause is good — it's running a written list, one item at a time, including the one that catches whether the clause actually assigns the IP or just licenses it.",
+      "attribution": "",
+      "sparkLine": "Runs the list. Assignment, not license."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T11:11:34"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I need to know whether an IP clause in a contract actually transfers ownership or only grants a license. Here's the clause — paste it in. Before you give me a verdict, walk me through it step by step: does the clause use assignment language — 'assigns', 'all right, title, and interest, transferred' — or license language — 'grants a license to use'? What's the practical difference for who ends up owning the work? And if it's ambiguous, tell me the exact phrase that makes it ambiguous. Show your reasoning; don't just give me a yes or no. Go deeper: ask the same model to write you three example IP clauses that read like they transfer ownership but actually don't — and name the tell in each one.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 55,
+   "llm_exercise": {
+    "prompt": "I need to know whether an IP clause in a contract actually transfers ownership or only grants a license. Here's the clause: [paste your clause]. Before you give me a verdict, walk me through it step by step: (1) does the clause use assignment language ('assigns', 'all right, title, and interest, transferred') or license language ('grants a license to use')? (2) what's the practical difference for who ends up owning the work? (3) if it's ambiguous, tell me the exact phrase that makes it ambiguous. Show your reasoning; don't just give me a yes or no.",
+    "dig_deeper": "Go deeper: ask the same model to write you three example IP clauses that read like they transfer ownership but actually don't — and name the tell in each one."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "IP-CLAUSE-REVIEW · ANTHROPIC SKILL",
+      "segment": "Claude, Ip Clause Review.",
+      "command": "I need to know whether an IP clause in a contract actually transfers ownership or only grants a license. Here's the clause: [paste your clause]. Before you give me a verdict, walk me through it step by step: (1) assignment language or license language? (2) what's the practical difference for who ends up owning the work? (3) if it's ambiguous, tell me the exact phrase that makes it ambiguous. Show your reasoning; don't just give me a yes or no.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T11:11:34"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Ip Clause Review — assignment, not license. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Ip Clause Review — assignment, not license. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T11:11:34"
+   }
+  }
+ ]
+}

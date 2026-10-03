@@ -1,0 +1,155 @@
+1
+00:00:00,000 --> 00:00:04,742
+Konnichiwa. This is Liam, in for Bear. Installing a plugin takes one command. So the
+
+2
+00:00:04,762 --> 00:00:08,869
+question isn't how to install one. It's how to look inside it first.
+
+3
+00:00:08,939 --> 00:00:13,907
+Three terms. The manifest: a file called plugin dot json that names the plugin. A
+
+4
+00:00:13,927 --> 00:00:18,895
+hook: a command that runs by itself when something happens in your session. And an
+
+5
+00:00:18,915 --> 00:00:22,885
+MCP server: a program that plugs Claude into outside tools and data.
+
+6
+00:00:22,955 --> 00:00:27,833
+Here's the plugin box from last time. On disk, a plugin is just a folder. Open it,
+
+7
+00:00:27,853 --> 00:00:30,714
+and each kind of part has its own place inside.
+
+8
+00:00:30,784 --> 00:00:36,161
+First, the shipping label: a file called plugin dot json, in a folder named dot
+
+9
+00:00:36,181 --> 00:00:40,478
+claude-plugin. It holds the plugin's name, a description, and sometimes a version.
+
+10
+00:00:40,498 --> 00:00:42,277
+Only the name is required.
+
+11
+00:00:42,347 --> 00:00:47,112
+Slash commands are the parts you trigger yourself. Each one is a markdown file in
+
+12
+00:00:47,132 --> 00:00:51,579
+the commands folder. Type slash commit, and Claude follows the steps written in that
+
+13
+00:00:51,599 --> 00:00:51,898
+file.
+
+14
+00:00:51,968 --> 00:00:56,982
+Sub-agents are helpers with one job, and each one is a markdown file in the agents
+
+15
+00:00:57,002 --> 00:01:01,701
+folder. Claude hands one a multi-step task. It works through it on its own, then
+
+16
+00:01:01,721 --> 00:01:02,330
+reports back.
+
+17
+00:01:02,400 --> 00:01:07,635
+Skills are folders of know-how, each with a SKILL.md file. You don't have to type
+
+18
+00:01:07,655 --> 00:01:11,840
+anything. Claude reads each skill's description, and opens one when the task
+
+19
+00:01:11,860 --> 00:01:12,190
+matches.
+
+20
+00:01:12,260 --> 00:01:17,442
+Hooks fire on events. The hooks file says: when Claude edits a file, or finishes a
+
+21
+00:01:17,462 --> 00:01:21,669
+turn, run this command. The security-guidance plugin uses hooks to check each edit
+
+22
+00:01:21,689 --> 00:01:25,246
+for risky code. That's a real program, running on your machine.
+
+23
+00:01:25,316 --> 00:01:30,965
+MCP servers are listed in dot mcp dot json. They plug Claude into outside tools and
+
+24
+00:01:30,985 --> 00:01:36,279
+data, and they start when the plugin is turned on. GitHub's plugin holds one entry:
+
+25
+00:01:36,299 --> 00:01:39,113
+GitHub's own server, reached with your access token.
+
+26
+00:01:39,183 --> 00:01:44,302
+And a plugin carries only the parts it needs. Commit-commands is a label and three
+
+27
+00:01:44,322 --> 00:01:48,414
+slash commands. GitHub's is a label and one MCP server. Nothing else.
+
+28
+00:01:48,484 --> 00:01:53,103
+Plugins live in a marketplace, a catalog you install from. Anthropic's official one
+
+29
+00:01:53,123 --> 00:01:58,099
+lists two hundred fifty-five. But the catalog's own README says: make sure you trust
+
+30
+00:01:58,119 --> 00:02:02,025
+a plugin before you install it. Anthropic doesn't control what's inside.
+
+31
+00:02:02,095 --> 00:02:06,238
+Your turn. Paste this into Claude Code: Before I install the Claude Code plugin
+
+32
+00:02:06,258 --> 00:02:10,104
+[name], read its folder. List every part it ships: plugin dot json, commands,
+
+33
+00:02:10,124 --> 00:02:14,268
+sub-agents, skills, hooks, and MCP servers. For each hook, give the event and the
+
+34
+00:02:14,288 --> 00:02:19,026
+exact command it runs. For each MCP server, say where it connects and what keys it
+
+35
+00:02:19,046 --> 00:02:23,487
+needs. Then list what it could read, change, or send off my machine. Don't install
+
+36
+00:02:23,507 --> 00:02:27,948
+or run anything. Then check two things yourself. Open the hooks file and read every
+
+37
+00:02:27,968 --> 00:02:32,706
+command it runs. And open dot mcp dot json. Does every server match what the plugin
+
+38
+00:02:32,726 --> 00:02:33,598
+says it does?
+
+39
+00:02:33,668 --> 00:02:38,203
+What's Inside a Plugin Folder. At Nik Bear Brown.

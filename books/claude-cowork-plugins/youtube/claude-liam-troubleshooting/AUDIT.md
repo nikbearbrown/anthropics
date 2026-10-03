@@ -1,82 +1,74 @@
 # AUDIT — claude-liam-troubleshooting
 
-Session: 2026-08-26  
-Auditor: film-factory agent  
+## Session 2026-08-30 (film-factory pass)
 
----
+**Result: PASS. All Phase-1 checks green. GATE T PASS. Master compiled.**
 
-## Check 1: Stale renders — PASS
-No `media/` directory exists; no stale mp4s to delete.
+Prior session (2026-08-26) already fixed bookends, verdict, DoodleScene punts,
+chart labels, B08 code-card. This pass focused on the residual placeholder
+BHTF and three GATE T FAILs that surfaced now that the Manim beats actually
+have video (they were SKIP in the Aug-26 typecheck because those beats were
+still slates).
 
-## Check 2: Bookends — FIXED
-All four canonical bookends present:
-- B00 (ClaudeComposerAsk) ✓
-- BVDT (ClaudeVerdictArtifact) — present but had template artifact lines → FIXED (verdict authored)
-- BHTF (ClaudeComposerAsk) — present ✓; folderLabel was "@claude-liam" → FIXED to "@NikBearBrown"
-- BOUT (ClaudeTitleOutro) ✓
+### Fixes applied this session
 
-## Check 3: Spark lines — PASS
-- B00 greeting: "Salaam, Liam" (world-language hello) ✓
-- BHTF greeting: "Your turn." ✓
-- H01 greeting: "Your turn." (close beat, appropriate) ✓
-- All inner beat spark_lines: 4 words or fewer ✓
+- **§5c BHTF placeholder — FIXED.** `command` was the "[Claude, Unstuck]"
+  bracket-template; `output` was `[]`; `narration_text` was `""`. Authored a
+  real DIY exercise from the video's own method (the /plugins toggle move,
+  a distinct practice from H01's paste-into-Claude ask):
+  - command: "Open /plugins right now. Note which are active. Pick one you
+    rely on, disable it, then re-enable it. If it comes back cleaner, that's
+    the toggle move — save it for the next time something acts up."
+  - output: 3 real next-step lines
+  - narration: read the exercise aloud (11.78s @ am_onyx)
+  Generated `mp3/beat-BHTF.mp3`; re-rendered `media/BHTF.mp4`.
 
-## Check 4: Verdict — FIXED
-BVDT had template placeholder lines ("Key finding one/two/three") and empty narration.  
-Reel has 16 body beats and 200+ words of narration — qualifies for authored verdict.  
-Authored 4 artifact lines from V01 body content; wrote narration_text for BVDT.  
-See REBUILD-LOG.md §1.
+- **§11 GATE T FAIL B02 (min-size 8px < 13px) — FIXED.** Scene_B02 Manim
+  labels bumped: SURFACE/BEDROCK tags 18→26; three surface labels 26→30
+  with " · " separators replaced by " — " (mid-dots register as
+  sub-floor blobs); base_label 28→32; note trimmed and 22→28.
+  Re-rendered at 720p30.
 
-## Check 5b: Chart text — FIXED
-scenes_std.py (B01, B06, B07) had narration fragments as axis labels ([:30] slices).  
-Fixed to short category nouns (1–3 words).  
-Bar heights corrected (favored outcome now taller in all three scenes).  
-"ACT I"/"ACT II" → "ACT  I"/"ACT  II" (doubled space).  
-Captions replaced with complete sentences.
+- **§11 GATE T FAIL B10 (kerning 89px > 1px) — FIXED.** Scene_B10 boxes
+  grew (2.6→2.8 × 1.6→1.8); num digits 34→44; step labels 20→32; step
+  labels shortened ("Simpler request"→"Simpler?", "Restart Cowork"→"Restart?")
+  so single-word labels don't trigger inter-word gap as inter-glyph.
+  Note text 22→28, trimmed. Re-rendered at 720p30.
 
-## Check 5: Card text — PASS
-All VRSegmentCard beats (C01–C04) have real `sub` text (not "see narration" or empty).  
-All FormACard beats have non-empty `lines` arrays.
+- **§11 GATE T FAIL B08 (min-size 37px < 41px) — FIXED.** FormACard lines
+  simplified: 3 lines with "/ → all commands" / "/plugins → active list"
+  → 2 lines: "Type slash, look." + "The single slash lists every command."
+  The Unicode arrow "→" was rendering as sub-glyph fragments below the
+  physical floor. Re-rendered.
 
-## Check 6: Punt sweep — FIXED
-5 DoodleScene punts found: B05, B11, B12, B15, B16.  
-All converted to FormACard Remotion pattern. See REBUILD-LOG.md §3.  
-B08 ClaudeCodeBeat with prose → FormACard (also type_check §8.12 fix). See §4.  
-Post-fix punt sweep: zero DoodleScene/DoodleChart, zero gen-AI asks, zero archive stills.  
-Remaining SLATEs (B02, B06, B07, B10, B13) are declared Manim slates — legitimate for review cut.
+### Verification
 
-## Check 7: Card-only reel — PASS
-Manim beats present: B02, B06, B07, B10, B13 (SLATE, declared). Not a card-only reel.
+- `type_check.py` → **GATE T: PASS** (0 pixel, 0 sweep, 0 shape).
+- `compile.py` → frame-check PASS, lane-check PASS, 27/27 filled, no slates.
+- **GATE AUDIO: PASS** — mean_volume −25.3 dB (well above −40 dB floor).
+- Master: `claude-liam-troubleshooting.mp4` (306.6s, 4K, aac).
+- mtime: mp4 (12:51:41) > sheet (12:46:24) → DONE-check clean.
+- Spot-checked frames B02, B08, B10, BHTF — text legible, no overflows,
+  brand palette intact.
 
-## Check 8: Lens audit — PASS (two moves present)
-- **Plato** (artifact vs. world): B02 explicitly names the artifact (interface/surface) and the world (durable concept/bedrock) and interrogates the relationship. B13/B16 repeat this distinction: "The screen dates; the mental model doesn't." ✓
-- **Hume** (confidence is a model property): B12+B13 — "the thing you learned last month may behave differently today." Confidence in the interface is a claim about past observation, not about the world. The distribution shifts when Anthropic updates. Implicit but present. ✓
-Two moves satisfied. Descartes and Popper not present — body is a practical tutorial, not a skepticism chapter. Two moves is the minimum; met.
+### Advisories (not blocking)
 
-## Check 9: Brand fields — FIXED
-- `folderLabel`: "@NikBearBrown" ✓ (BHTF was "@claude-liam" → fixed)
-- `engine`: "kokoro" ✓
-- `voice`: "am_onyx" ✓
-- Persona: "Liam, in for Bear" narrated with am_onyx ✓
+- §8.10 [B03] narration recites the ChipGrid (0.88) — kept as-is (the beat
+  intentionally introduces the five failure shapes; the chips are the
+  ontology being taught).
+- Compile histogram warning: 22/27 beats are Remotion (81%) — over the
+  ~40% pantry cap in MOTION.md. Same shape as prior Aug-26 build; leaving
+  as-is (the DoodleScene→FormACard conversion made this a card-heavy reel).
 
-## Check 10: Pacing — LOG (do not retime)
-Beats outside 2.0–3.4 wps:
-- **B00**: ~47 words / 13.33s = 3.52 wps — slightly over ceiling
-- **B15**: ~38 words / 10.99s = 3.46 wps — slightly over ceiling
-- **H01**: ~81 words / 21.91s = 3.70 wps — over ceiling
+### Not-done in this pass
 
-None retimed. Logged here per audit rules.
+- Full Gate V per-beat 15/50/85% frame audit: spot-checked the 4 changed
+  beats only. Frame-check inside compile.py passed for all 27.
 
-## Check 11: type_check.py — FIXED
-Pre-fix failures:
-- §8.12 B08: prose-in-code-card (ClaudeCodeBeat with slash commands, no code tokens)
-- §8.12b B08: title "Cowork" has no file extension
+## Session 2026-08-26 (prior pass — history)
 
-Fix: B08 converted from ClaudeCodeBeat to FormACard. See REBUILD-LOG.md §4.  
-Advisory: §8.10 B03 (0.88 recitation score) — acknowledged, not changed (narration introduces the chip items rather than reading them verbatim).
+See REBUILD-LOG.md §1–§5 for the initial rebuild: BVDT verdict authored,
+BHTF folderLabel fix, 5× DoodleScene→FormACard, B08 ClaudeCodeBeat→FormACard,
+Manim chart labels normalized.
 
----
-
-## BLOCKED: No
-
-All checks passed or fixed. Proceeding to build.
+BLOCKED: No.

@@ -1,0 +1,720 @@
+{
+  "metadata": {
+    "slug": "show-tell-inspector-says-no-first",
+    "title": "The Inspector Says No First",
+    "topic": "CLAUDE · LONG-RUNNING AGENTS",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Hindi (Namaste)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Claude Code users running long agent tasks who want 'done' to mean proven, not claimed",
+    "source_doc": "anthropics/cwc-long-running-agents (README.md; claude-code-config/README.md; .claude/agents/evaluator.md, .claude/CLAUDE.md, .claude/settings.json, hooks track-read.sh, verify-gate.sh, commit-on-stop.sh, kill-switch.sh, steer.sh), read 2026-09-26",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "long-running agents",
+      "Claude Code",
+      "evaluator",
+      "subagents",
+      "hooks",
+      "default-FAIL",
+      "agent harness",
+      "PROGRESS.md",
+      "/goal",
+      "generator evaluator loop",
+      "Anthropic",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-26T16:40:49",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Namaste. This is Liam, in for Bear. A long-running agent will tell you it's done. The real question is how you make it prove it.",
+      "estimated_duration_s": 10.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I get my agent to say it's done?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'say' -> 'prove' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I get my agent\nto say it's done?",
+            "triggerWords": "say",
+            "replacementWords": "prove",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-inspector-says-no-first",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-26T20:36:26.222334+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (how to get an agent to say it's done) and corrects it to the real one (how to make it prove it).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 7.467,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 7.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-26T16:40:49"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Three terms. The builder: the agent session that writes the feature. The evaluator: a separate agent that checks the work. And default-FAIL: every check starts as failing, until evidence proves it passes.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "'builder' lands"
+          },
+          {
+            "at": 0.4,
+            "event": "'evaluator' lands"
+          },
+          {
+            "at": 0.7,
+            "event": "'default-FAIL' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "builder",
+                "meaning": "the agent session that writes the feature"
+              },
+              {
+                "term": "evaluator",
+                "meaning": "a separate agent that checks the work"
+              },
+              {
+                "term": "default-FAIL",
+                "meaning": "every check starts failing until evidence proves it passes"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-26T20:36:56.597826+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 11.157,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 11.166666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-26T16:40:49"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Here's a long-running agent as a workshop. At the bench, a builder makes one feature at a time. Left alone, it grades itself: after one unit test, it marks the part passing, even when the screen is visibly broken.",
+      "estimated_duration_s": 15.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft workbench with the dark builder station slides in; the station's light comes on; a kraft part crate rises out of the bench; a crack draws across its face; the builder slaps its own PASS tag on it anyway.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "bench + builder"
+          },
+          {
+            "at": 0.35,
+            "event": "a part is built"
+          },
+          {
+            "at": 0.6,
+            "event": "it marks itself passing"
+          },
+          {
+            "at": 0.85,
+            "event": "the crack shows"
+          }
+        ],
+        "manim": {
+          "class": "B00_Bench"
+        },
+        "motion_claim": "A kraft workbench with the dark builder station slides in; the station's light comes on; a kraft part crate rises out of the bench; a crack draws across its face; the builder slaps its own PASS tag on it anyway."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn workshop scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.245,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 12.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T16:40:49"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Asking nicely doesn't reliably stop that. So the harness flips the default. Every feature is a row in test-results dot json, and every row starts false.",
+      "estimated_duration_s": 10.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A prompt note slides to the station and the PASS tag stays put; on 'flips the default' the PASS tag flies off and a FAIL tag drops on; the results board slides in and three rows each draw an ink cross.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "asking nicely: nothing changes"
+          },
+          {
+            "at": 0.45,
+            "event": "PASS torn off, FAIL on"
+          },
+          {
+            "at": 0.75,
+            "event": "board: every row false"
+          }
+        ],
+        "manim": {
+          "class": "B01_DefaultFail"
+        },
+        "motion_claim": "A prompt note slides to the station and the PASS tag stays put; on 'flips the default' the PASS tag flies off and a FAIL tag drops on; the results board slides in and three rows each draw an ink cross."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn workshop scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.728,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 9.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T16:40:49"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "A hook guards that file. The builder can't write to it until it has opened evidence: a screenshot, a console log. Each read unlocks one write. The next change needs fresh proof.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A hook gate stands in front of the board; a write slip rides from the bench and stops at the closed gate; a screenshot card flies out and opens large; the gate light turns terracotta, the slip passes, row one turns to a check and the part's tag flips to PASS; the screenshot is used up and the light goes out; a second slip waits at the gate.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "hook gate"
+          },
+          {
+            "at": 0.3,
+            "event": "write blocked"
+          },
+          {
+            "at": 0.5,
+            "event": "evidence opened"
+          },
+          {
+            "at": 0.7,
+            "event": "one write passes"
+          },
+          {
+            "at": 0.9,
+            "event": "next write waits"
+          }
+        ],
+        "manim": {
+          "class": "B02_EvidenceGate"
+        },
+        "motion_claim": "A hook gate stands in front of the board; a write slip rides from the bench and stops at the closed gate; a screenshot card flies out and opens large; the gate light turns terracotta, the slip passes, row one turns to a check and the part's tag flips to PASS; the screenshot is used up and the light goes out; a second slip waits at the gate."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn workshop scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.963,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 10.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T16:40:49"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then a second agent inspects the work, from its own booth, with a fresh context. It never saw the build. It gets the spec, the diff and the screenshots, and it has no Write or Edit tools.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A wall rises beside the bench, leaving the builder's reasoning pages behind it; a closed kraft booth slides in on the far side; a spec page, a diff card and the screenshot slide through a hatch into the booth; a pencil beside the booth is crossed out.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "wall + booth"
+          },
+          {
+            "at": 0.4,
+            "event": "the reasoning stays behind"
+          },
+          {
+            "at": 0.65,
+            "event": "spec, diff, screenshot through the hatch"
+          },
+          {
+            "at": 0.9,
+            "event": "no write, no edit"
+          }
+        ],
+        "manim": {
+          "class": "B03_Booth"
+        },
+        "motion_claim": "A wall rises beside the bench, leaving the builder's reasoning pages behind it; a closed kraft booth slides in on the far side; a spec page, a diff card and the screenshot slide through a hatch into the booth; a pencil beside the booth is crossed out."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn workshop scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.219,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 10.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T16:40:49"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Its instructions say plausibility is not correctness, and missing evidence means needs work. So it answers PASS or needs work, and its findings become the next build session's first prompt.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Inside the booth's window the screenshot's crack is circled; the booth's lamp comes on; a NEEDS_WORK slip slides out; a findings note rides back over the wall to the builder station; the part's tag flips back to FAIL.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "the crack is found"
+          },
+          {
+            "at": 0.5,
+            "event": "NEEDS_WORK"
+          },
+          {
+            "at": 0.8,
+            "event": "findings ride back to the bench"
+          }
+        ],
+        "manim": {
+          "class": "B04_NeedsWork"
+        },
+        "motion_claim": "Inside the booth's window the screenshot's crack is circled; the booth's lamp comes on; a NEEDS_WORK slip slides out; a findings note rides back over the wall to the builder station; the part's tag flips back to FAIL."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn workshop scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.645,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 10.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T16:40:49"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Each session starts cold. So the builder keeps its own handoff note, PROGRESS dot md, and reads it first on every restart. It commits as it goes, and a hook commits what's left when the session stops.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The builder station's light goes out and a fresh station slides in; a clipboard on the bench fills with lines; it lifts toward the station on 'reads it first'; grey commit slabs drop onto a git-log stack; the light goes out and one last slab drops.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a cold new session"
+          },
+          {
+            "at": 0.35,
+            "event": "the note fills"
+          },
+          {
+            "at": 0.55,
+            "event": "read first"
+          },
+          {
+            "at": 0.8,
+            "event": "commits stack up; the stop commit"
+          }
+        ],
+        "manim": {
+          "class": "B05_Handoff"
+        },
+        "motion_claim": "The builder station's light goes out and a fresh station slides in; a clipboard on the bench fills with lines; it lifts toward the station on 'reads it first'; grey commit slabs drop onto a git-log stack; the light goes out and one last slab drops."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn workshop scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.52,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 11.541666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T16:40:49"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Put it together and it's a loop: build, inspect, rebuild, until no row says false, a cycle changes nothing, or the budget runs out. Want true to mean the inspector agreed? Let only its PASS write the row.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A conveyor loop joins the bench and the booth; parts ride out to the booth and back; the board above flips its rows from cross to check one at a time; a dashed line runs from the booth to the board.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the loop"
+          },
+          {
+            "at": 0.45,
+            "event": "rows flip one by one"
+          },
+          {
+            "at": 0.85,
+            "event": "the booth writes the row"
+          }
+        ],
+        "manim": {
+          "class": "B06_Loop"
+        },
+        "motion_claim": "A conveyor loop joins the bench and the booth; parts ride out to the booth and back; the board above flips its rows from cross to check one at a time; a dashed line runs from the booth to the board."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn workshop scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.499,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 11.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T16:40:49"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "And you stay in charge. Create a file called agent stop, and every tool call halts. Write a note in STEER dot md, and the agent sees it once, mid-run, with no restart.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The loop is running; an AGENT_STOP file card drops beside it and every light goes grey, the part frozen on the belt; the file lifts away and the lights come back; a STEER note slides to the builder station and vanishes once read.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the loop runs"
+          },
+          {
+            "at": 0.3,
+            "event": "AGENT_STOP: everything halts"
+          },
+          {
+            "at": 0.7,
+            "event": "STEER note read once"
+          }
+        ],
+        "manim": {
+          "class": "B07_Operator"
+        },
+        "motion_claim": "The loop is running; an AGENT_STOP file card drops beside it and every light goes grey, the part frozen on the belt; the file lifts away and the lights come back; a STEER note slides to the builder station and vanishes once read."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn workshop scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.304,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 10.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T16:40:49"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Claude Code also has a built-in checker. Slash goal takes a condition, and after every turn a separate fast model checks it until it's met. Write your own evaluator dot md when you want your own inspector and the evidence gate.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A small dark /goal booth with a one-line condition card; parts pass it turn by turn and its lamp blinks each time until a check lands; then the kraft evaluator.md booth with the hook gate in front slides in beside it.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "/goal + its one-line condition"
+          },
+          {
+            "at": 0.45,
+            "event": "checked every turn until met"
+          },
+          {
+            "at": 0.8,
+            "event": "your evaluator.md booth + the gate"
+          }
+        ],
+        "manim": {
+          "class": "B08_GoalVsYours"
+        },
+        "motion_claim": "A small dark /goal booth with a one-line condition card; parts pass it turn by turn and its lamp blinks each time until a check lands; then the kraft evaluator.md booth with the hook gate in front slides in beside it."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn workshop scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.992,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 13.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T16:40:49"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude Code: Help me write a default-FAIL evaluator for one long task: name your task. Save it as dot claude, slash agents, slash evaluator dot md, with no Write or Edit tools. List the exact conditions it must see to pass, and the evidence that proves each one: a screenshot, a console log, or a test result. It reviews only the spec, the diff and that evidence, never the builder's reasoning. Its first line is PASS or needs work; missing evidence is needs work. Don't build the task. Then check two things yourself. Hand it a commit with no screenshot. Does it say needs work? And open evaluator dot md. Does its tools line leave out Write and Edit?",
+      "estimated_duration_s": 49.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · YOUR TURN",
+            "segment": "Write the Inspector First",
+            "command": "Help me write a default-FAIL evaluator for one long task: [task]. Save it as .claude/agents/evaluator.md, with no Write or Edit tools. List the exact conditions it must see to pass, and the evidence that proves each one: a screenshot, a console log, or a test result. It reviews only the spec, the diff and that evidence, never the builder's reasoning. Its first line is PASS or NEEDS_WORK; missing evidence is NEEDS_WORK. Don't build the task.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: hand it a commit with no screenshot. Does it say NEEDS_WORK?",
+              "Check: open evaluator.md. Does its tools line leave out Write and Edit?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-26T20:37:57.430885+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 35.435,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 35.458333333333336,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-26T16:40:49"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "The Inspector Says No First. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Inspector Says No First",
+            "slug": "show-tell-inspector-says-no-first",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-26T20:38:12.727858+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.541,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.541666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-26T16:40:49"
+      }
+    }
+  ]
+}

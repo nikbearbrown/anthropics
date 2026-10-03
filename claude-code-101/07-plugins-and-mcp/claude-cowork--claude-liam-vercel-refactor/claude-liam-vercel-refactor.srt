@@ -1,0 +1,135 @@
+1
+00:00:00,000 --> 00:00:15,740
+Annyeong — this is Liam, in for Bear.
+Today's ask: a live Vercel site needs
+cleaning up. Who does it — Claude Code, or
+
+2
+00:00:15,790 --> 00:00:27,280
+Act one. The split. Claude Code lives
+where your repository lives: it reads the
+codebase, edits files, runs commands, and
+
+3
+00:00:27,330 --> 00:00:42,210
+Cowork is the opposite shape: a remote
+agent in an isolated environment. It keeps
+working after you close the laptop,
+
+4
+00:00:42,260 --> 00:00:57,080
+One update to the old folk wisdom: the
+boundary is no longer code versus visual.
+Claude Code has a browser now — a preview
+
+5
+00:00:57,130 --> 00:01:07,300
+Act two. Before anyone edits anything: the
+map. A Next.js app is full of boundaries
+that carry runtime meaning — and a cleanup
+
+6
+00:01:07,350 --> 00:01:21,000
+The opening move is plan mode. Claude
+reads files and runs exploration commands
+but edits nothing until you approve the
+
+7
+00:01:21,050 --> 00:01:33,710
+The audit maps four layers: server versus
+client component boundaries. Edge versus
+Node runtimes. Redirects, rewrites, and
+
+8
+00:01:33,760 --> 00:01:49,180
+Here's the silent failure. One casual use-
+client on the wrong component, one Node-
+only import in an edge path, one fetch
+
+9
+00:01:49,230 --> 00:02:05,070
+And a 2026 wrinkle: in Next sixteen,
+middleware was renamed proxy, and next
+lint is gone entirely. An audit that greps
+
+10
+00:02:05,120 --> 00:02:19,620
+For big repos, scope is the safety
+feature: per-directory CLAUDE dot em-dee
+files, deny rules on generated code, and
+
+11
+00:02:19,670 --> 00:02:25,060
+Act three. The gate. Every refactor phase
+ends the same way, and none of it is
+optional.
+
+12
+00:02:25,110 --> 00:02:38,520
+Because next lint is gone, the gate has to
+be explicit — four commands, run in order:
+ESLint through the CLI. TypeScript with
+
+13
+00:02:38,570 --> 00:02:52,860
+One more layer of honesty: local Next is
+not Vercel. If the refactor touches
+request-time behavior, pull the project's
+
+14
+00:02:52,910 --> 00:03:06,920
+Act four. Vercel already assumes the
+workflow you want: push a branch, get a
+preview deployment with its own URL. The
+
+15
+00:03:06,970 --> 00:03:16,500
+Add deployment checks so promotion has
+conditions, not vibes. If the refactor
+deserved an agent, it deserves a release
+
+16
+00:03:16,550 --> 00:03:32,010
+And the trap nobody budgets for: protected
+previews. If the preview URL sits behind
+authentication and you point an agent at
+
+17
+00:03:32,060 --> 00:03:46,260
+Act five. Now Cowork earns its half. Hand
+it the production URL, the preview URL,
+and a bounded checklist of pages and
+
+18
+00:03:46,310 --> 00:04:01,680
+When outside systems are involved, Cowork
+has a documented priority order:
+connectors first, browser second, screen
+
+19
+00:04:01,730 --> 00:04:16,360
+And the loop closes cleanly: when Cowork
+finds a regression, it doesn't fix code.
+It writes the finding, and the fix routes
+
+20
+00:04:16,410 --> 00:04:32,570
+Last judgment call: dangerously-skip-
+permissions is exactly what it says.
+Reserve it for sandboxed, disposable
+
+21
+00:04:32,620 --> 00:04:52,880
+Let's recap with Claude. Claude Code
+changes the repository — plan mode first,
+scoped memory, one bounded phase at a
+
+22
+00:04:52,930 --> 00:05:19,550
+Your turn. Here's the prompt, word for
+word: You are in a git-tracked Next.js
+repo deployed on Vercel. Audit first, no
+
+23
+00:05:19,600 --> 00:05:22,710
+Refactor, Verified. Liam, in for Bear.

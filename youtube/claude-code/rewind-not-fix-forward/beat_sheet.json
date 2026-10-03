@@ -22,7 +22,15 @@
     ],
     "total_estimated_duration_seconds": 82,
     "design_version": "v1",
-    "voice": "am_onyx"
+    "voice": "am_onyx",
+    "build": {
+      "at": "2026-08-31T16:51:13",
+      "cut": "master",
+      "filled": 10,
+      "of": 10,
+      "slates": [],
+      "skin_warnings": []
+    }
   },
   "beats": [
     {
@@ -35,7 +43,7 @@
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Liam",
+            "greeting": "Zdravo, Liam",
             "topic": "REWIND DISCIPLINE · CAPS",
             "segment": "Rewind, Not Fix-Forward: The Andon Cord",
             "command": "What is: Rewind, Not Fix-Forward: The Andon Cord?",
@@ -69,7 +77,10 @@
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T16:51:13"
       }
     },
     {
@@ -82,25 +93,25 @@
         "remotion": {
           "pattern": "FormBCard",
           "props": {
-            "title": "Rewind, Not Fix-Forward: The Andon Cord",
+            "title": "Why fix-forward fails",
             "items": [
               {
-                "label": "Key point one",
-                "sub": "",
-                "icon": "target",
+                "label": "Correction appends",
+                "sub": "The failed prompt stays; the fix joins it.",
+                "icon": "layers",
                 "cueFrame": 20
               },
               {
-                "label": "Key point two",
-                "sub": "",
-                "icon": "list-checks",
-                "cueFrame": 55
+                "label": "Conditioned on both",
+                "sub": "Claude's next output reads the mistake and the correction together.",
+                "icon": "clipboard-list",
+                "cueFrame": 120
               },
               {
-                "label": "Key point three",
-                "sub": "",
-                "icon": "zap",
-                "cueFrame": 90
+                "label": "Symptom moves",
+                "sub": "One bug leaves; another shows up further down the conversation.",
+                "icon": "shield-alert",
+                "cueFrame": 260
               }
             ]
           },
@@ -120,7 +131,10 @@
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T16:51:13"
       }
     },
     {
@@ -145,7 +159,13 @@
       "spark_line": "Back to before the error.",
       "estimated_duration_s": 12,
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 18.26
+      "actual_duration_s": 18.26,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:Scene_B02_RewindNotFix",
+        "at": "2026-08-31T16:51:13"
+      }
     },
     {
       "beat_id": "B03",
@@ -169,7 +189,13 @@
       "spark_line": "Shorter context wins.",
       "estimated_duration_s": 13,
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 22.06
+      "actual_duration_s": 22.06,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim:Scene_B03_RewindNotFix",
+        "at": "2026-08-31T16:51:13"
+      }
     },
     {
       "beat_id": "B04",
@@ -178,13 +204,49 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "stagger"
+        "motion": "stagger",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Two rewinds = fix the spec",
+            "items": [
+              {
+                "label": "The signal",
+                "sub": "Two rewinds on one row for the same failure.",
+                "icon": "shield-alert",
+                "cueFrame": 20
+              },
+              {
+                "label": "Open the spec",
+                "sub": "Handoff condition next to the SDD — which one is missing the constraint?",
+                "icon": "clipboard-list",
+                "cueFrame": 180
+              },
+              {
+                "label": "Andon cord",
+                "sub": "Stop the line. Fix the cause, not the prompt.",
+                "icon": "circle-x",
+                "cueFrame": 360
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
       },
       "new_visual_element": "Artifact view — two-rewind signal: fix the spec, not the prompt",
       "spark_line": "Two rewinds = fix the spec.",
       "estimated_duration_s": 13,
       "audio_file": "mp3/beat-B04.mp3",
-      "actual_duration_s": 21.29
+      "actual_duration_s": 21.29,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T16:51:13"
+      }
     },
     {
       "beat_id": "B05",
@@ -204,13 +266,23 @@
             "runningText": "paste your spec, CLAUDE.md, or build plan here…",
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Claude Sonnet"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
           }
         }
       },
       "new_visual_element": "HANDOFF — respecify prompt template",
       "estimated_duration_s": 9,
       "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 6.36
+      "actual_duration_s": 17.17,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T16:51:13"
+      }
     },
     {
       "beat_id": "B06",
@@ -225,6 +297,10 @@
             "title": "Rewind, Not Fix-Forward: The Andon Cord",
             "handle": "@NikBearBrown",
             "mascotSeed": "rewind-not-fix-forward"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
           }
         }
       },
@@ -233,16 +309,17 @@
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 6.42,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "note": "design-v1: title-fixed,handle-fixed,mascotSeed-added"
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T16:51:13"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict recap",
       "lane": "BOOKEND",
-      "narration_text": "",
+      "narration_text": "The quiet signal is two rewinds on one row for the same failure. If it fires, stop typing new prompts. Open the handoff condition next to the SDD and ask which one is missing the constraint. The fix is upstream — in the document, not in the next attempt.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
@@ -254,11 +331,11 @@
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Rewind, Not Fix-Forward: The Andon Cord",
-            "artifactHeading": "Key findings",
+            "artifactHeading": "The Andon cord rule",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "Esc-Esc rewinds context; a correction only appends to it.",
+              "Respecify closes the spec gap in one added sentence.",
+              "Two rewinds on one row = fix the spec, not the prompt."
             ]
           },
           "rendered": {
@@ -268,14 +345,19 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T16:51:13"
+      },
+      "actual_duration_s": 14.17,
+      "audio_file": "mp3/beat-BVDT.mp3"
     },
     {
       "beat_id": "BHTF",
       "act": "your turn",
       "lane": "BOOKEND",
-      "narration_text": "",
+      "narration_text": "Your turn. Open your last failed Claude Code session. Was your instinct to paste a correction, or to Esc-Esc? Copy the failed prompt in. Add one sentence that closes the spec gap you now see. Rewind, then rerun with the tighter spec.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
@@ -289,9 +371,13 @@
             "greeting": "Your turn.",
             "topic": "YOUR TURN · REWIND DISCIPLINE · CAPS",
             "segment": "Rewind, Not Fix-Forward: The Andon Cord",
-            "command": "Take what you learned from [Rewind, Not Fix-Forward: The Andon Cord] and apply it to your own work. What's one thing you'll try first?",
-            "runningText": "paste this into Claude and run it on your own work…",
-            "output": [],
+            "command": "Open your last failed Claude Code session. Paste the prompt that produced the wrong output below, add one sentence that closes the spec gap you now see (e.g. 'use only immutable updates — return new arrays; do not mutate the input'), then rewind with Esc-Esc or /rewind and rerun with the tighter spec.",
+            "runningText": "paste your failed prompt here, then the closing sentence…",
+            "output": [
+              "Rewind is Esc-Esc or /rewind — both restore state to before the last prompt.",
+              "Two rewinds on one row = stop; the spec is wrong, not the model.",
+              "Then the respec: one sentence that closes the gap you now see."
+            ],
             "folderLabel": "@NikBearBrown"
           },
           "rendered": {
@@ -301,8 +387,13 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T16:51:13"
+      },
+      "actual_duration_s": 12.89,
+      "audio_file": "mp3/beat-BHTF.mp3"
     },
     {
       "beat_id": "BOUT",
@@ -329,8 +420,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T16:51:13"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

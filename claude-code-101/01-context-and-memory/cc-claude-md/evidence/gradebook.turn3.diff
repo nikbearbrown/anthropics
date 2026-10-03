@@ -1,0 +1,26 @@
+diff --git a/src/gradebook.py b/src/gradebook.py
+index 5e2995c..1498535 100644
+--- a/src/gradebook.py
++++ b/src/gradebook.py
+@@ -27,6 +27,15 @@ def score(name, value):
+     print(f"{name}: {value}")
+ 
+ 
++def remove(name):
++    data = load()
++    if data.pop(name, None) is None:
++        print(f"no such student: {name}")
++        return
++    save(data)
++    print(f"removed {name}")
++
++
+ def report():
+     for name, scores in load().items():
+         avg = sum(scores) / len(scores) if scores else 0.0
+@@ -35,4 +44,4 @@ def report():
+ 
+ if __name__ == "__main__":
+     cmd, *args = sys.argv[1:] or ["report"]
+-    {"add": add, "score": score, "report": report}[cmd](*args)
++    {"add": add, "score": score, "remove": remove, "report": report}[cmd](*args)

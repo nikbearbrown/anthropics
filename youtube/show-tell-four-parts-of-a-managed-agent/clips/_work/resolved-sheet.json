@@ -1,0 +1,679 @@
+{
+  "metadata": {
+    "slug": "show-tell-four-parts-of-a-managed-agent",
+    "title": "Four Parts of a Managed Agent",
+    "topic": "CLAUDE · MANAGED AGENTS (BETA)",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Hindi (Namaste)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Developers who know the Messages API or Claude Code and want a plain map of Claude Managed Agents before they build one",
+    "source_doc": "anthropics/launch-your-agent/cma-primitives.md (read in full 2026-09-27) + .claude/skills/launch-your-agent/references/cma-api.md; checked against the raw live docs at platform.claude.com/docs/en/managed-agents/ (overview, agent-setup, environments, sessions, session-operations, events-and-streaming, reference; fetched 2026-09-27)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude",
+      "Claude Managed Agents",
+      "managed agents",
+      "agents",
+      "Claude API",
+      "beta",
+      "agent",
+      "environment",
+      "session",
+      "events",
+      "sandbox",
+      "checkpoint",
+      "Anthropic",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T01:59:50",
+      "cut": "review",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Namaste. This is Liam, in for Bear. It's easy to picture a managed agent as one thing you switch on. Claude Managed Agents, now in beta, splits it into four parts. So the real question is how those four parts fit together.",
+      "estimated_duration_s": 16.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I switch on a managed agent?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'switch on a managed agent' -> 'fit its four parts together' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I\nswitch on a managed agent?",
+            "triggerWords": "switch on a managed agent",
+            "replacementWords": "fit its four parts together",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-four-parts-of-a-managed-agent",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T05:57:26.727709+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (how do I switch on a managed agent) and corrects it to the real one (how do I fit its four parts together).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 12.67,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 12.708333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T01:59:50"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A managed agent: Anthropic runs the agent loop for you. A sandbox: an isolated Linux container, where the agent's tools run. And an event: one message into, or out of, a session.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "'managed agent' lands"
+          },
+          {
+            "at": 0.4,
+            "event": "'sandbox' lands"
+          },
+          {
+            "at": 0.7,
+            "event": "'event' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "managed agent",
+                "meaning": "Anthropic runs the agent loop for you (beta)"
+              },
+              {
+                "term": "sandbox",
+                "meaning": "an isolated Linux container where tools run"
+              },
+              {
+                "term": "event",
+                "meaning": "one message into, or out of, a session"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T05:57:57.433439+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 10.82,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 10.833333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T01:59:50"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Anthropic's docs name four parts. The agent. The environment. The session. And events. You make the first two once. Every run is a session, and events are how you talk to it.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Four objects drop onto four ghost pads, one per name: a white blueprint card (agent), a kraft crate (environment), a closed crate with a lamp post (session), a short belt with a card (events); a 'beta' pill lands; the blueprint and crate get an ink ring ('once') while a card rides the belt into the session.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "agent, environment, session, events drop in"
+          },
+          {
+            "at": 0.6,
+            "event": "the first two, once"
+          },
+          {
+            "at": 0.85,
+            "event": "a card rides into the session"
+          }
+        ],
+        "manim": {
+          "class": "B00_FourParts"
+        },
+        "motion_claim": "Four objects drop onto four ghost pads, one per name: a white blueprint card (agent), a kraft crate (environment), a closed crate with a lamp post (session), a short belt with a card (events); a 'beta' pill lands; the blueprint and crate get an ink ring ('once') while a card rides the belt into the session."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn blueprint-crate-and-belt scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.34,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 9.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:59:50"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The agent is the blueprint: the model, a system prompt, tools, MCP servers and skills. Create it once, and reuse it by its ID. Change it, and you get a new version. Version one becomes version two, and the old one stays in the history.",
+      "estimated_duration_s": 18.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The blueprint card grows to centre ('agent'); five part tiles drop onto it as each is named (dark model block, white prompt page, kraft tools, dark MCP block, white skill page); an ID tag hangs off it; an ink pen line redraws a tile, a second card drops on top of the stack ('v1' -> 'v2'), and the first card slides back behind it ('history').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the blueprint"
+          },
+          {
+            "at": 0.2,
+            "event": "five parts drop in"
+          },
+          {
+            "at": 0.55,
+            "event": "reuse by ID"
+          },
+          {
+            "at": 0.75,
+            "event": "v1 -> v2"
+          },
+          {
+            "at": 0.9,
+            "event": "the old card stays behind"
+          }
+        ],
+        "manim": {
+          "class": "B01_Blueprint"
+        },
+        "motion_claim": "The blueprint card grows to centre ('agent'); five part tiles drop onto it as each is named (dark model block, white prompt page, kraft tools, dark MCP block, white skill page); an ID tag hangs off it; an ink pen line redraws a tile, a second card drops on top of the stack ('v1' -> 'v2'), and the first card slides back behind it ('history')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn blueprint-crate-and-belt scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.65,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 13.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:59:50"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The environment says where sessions run: Anthropic's cloud sandbox, or a self-hosted one on your own machines. It lists packages to install ahead of time, and which hosts the network may reach.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The blueprint shrinks to the upper left; a kraft crate slides in to centre ('environment'); small package boxes drop into it; a fence of posts draws around the right side with one gap, and a dark host block lands beyond the gap with a dashed ink line through it ('allowed host').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the crate"
+          },
+          {
+            "at": 0.55,
+            "event": "packages drop in"
+          },
+          {
+            "at": 0.8,
+            "event": "the fence, one allowed host"
+          }
+        ],
+        "manim": {
+          "class": "B02_Environment"
+        },
+        "motion_claim": "The blueprint shrinks to the upper left; a kraft crate slides in to centre ('environment'); small package boxes drop into it; a fence of posts draws around the right side with one gap, and a dark host block lands beyond the gap with a dashed ink line through it ('allowed host')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn blueprint-crate-and-belt scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.01,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 11.041666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:59:50"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "A session is one run. It names an agent and an environment, and it gets its own fresh container. Two sessions, two sandboxes, no shared files. Created without a first event, it starts idle.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Blueprint and crate sit small at the left; a closed session crate slides out to the right on a pad, ink threads draw to it from the blueprint and the crate ('session'); a second crate slides out on a second pad; a ghost lamp on each post ('idle').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "one session"
+          },
+          {
+            "at": 0.35,
+            "event": "names an agent and an environment"
+          },
+          {
+            "at": 0.6,
+            "event": "two sessions, two sandboxes"
+          },
+          {
+            "at": 0.9,
+            "event": "idle"
+          }
+        ],
+        "manim": {
+          "class": "B03_Session"
+        },
+        "motion_claim": "Blueprint and crate sit small at the left; a closed session crate slides out to the right on a pad, ink threads draw to it from the blueprint and the crate ('session'); a second crate slides out on a second pad; a ghost lamp on each post ('idle')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn blueprint-crate-and-belt scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.31,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 11.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:59:50"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Events are how you talk to it. You send a user dot message. The session switches to running, and the agent works on its own. Tool calls, results and replies stream back as agent events. Mid-run, another message steers it, and an interrupt stops it.",
+      "estimated_duration_s": 18.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "One session crate large at centre with its lamp; a pale belt runs in from the left; a white card rides in ('user.message'); the lamp turns terracotta ('running'); three white cards ride out on a second belt to the right ('agent events'); a second card rides in (steer), then a kraft card (interrupt) and the lamp goes ghost.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the belt"
+          },
+          {
+            "at": 0.25,
+            "event": "user.message rides in"
+          },
+          {
+            "at": 0.4,
+            "event": "lamp: running"
+          },
+          {
+            "at": 0.6,
+            "event": "agent events ride out"
+          },
+          {
+            "at": 0.85,
+            "event": "steer, interrupt"
+          }
+        ],
+        "manim": {
+          "class": "B04_Events"
+        },
+        "motion_claim": "One session crate large at centre with its lamp; a pale belt runs in from the left; a white card rides in ('user.message'); the lamp turns terracotta ('running'); three white cards ride out on a second belt to the right ('agent events'); a second card rides in (steer), then a kraft card (interrupt) and the lamp goes ghost."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn blueprint-crate-and-belt scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.74,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 13.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:59:50"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "When a turn ends, the session sends status idle, and waits. Its sandbox is checkpointed: the files, the installed packages, everything the agent made. Send another user message, and it picks up from there.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The lamp is ghost ('idle'); a camera flash, and a white photo card of the crate pops up beside it ('checkpoint'); a new card rides in on the belt, the photo slides back into the crate, and the lamp turns terracotta again.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "idle"
+          },
+          {
+            "at": 0.3,
+            "event": "the checkpoint photo"
+          },
+          {
+            "at": 0.75,
+            "event": "a new message resumes it"
+          }
+        ],
+        "manim": {
+          "class": "B05_Checkpoint"
+        },
+        "motion_claim": "The lamp is ghost ('idle'); a camera flash, and a white photo card of the crate pops up beside it ('checkpoint'); a new card rides in on the belt, the photo slides back into the crate, and the lamp turns terracotta again."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn blueprint-crate-and-belt scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.48,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 11.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:59:50"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "One limit, from the live docs. The conversation history stays until you delete it. The sandbox state lasts thirty days from when the sandbox was created, and activity doesn't extend it. So have the agent save what matters as outputs.",
+      "estimated_duration_s": 16.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The checkpoint photo sits on a ghost timeline bar; a history stack of cards stays solid beside the crate ('history'); a hero '30 days' counter climbs as the bar fills in grey segments ('per Anthropic's docs'); the photo fades at the bar's end; a file card drops into a kraft tray ('outputs').",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "history stays"
+          },
+          {
+            "at": 0.45,
+            "event": "30 days, per the docs"
+          },
+          {
+            "at": 0.7,
+            "event": "activity doesn't extend it"
+          },
+          {
+            "at": 0.9,
+            "event": "save to outputs"
+          }
+        ],
+        "manim": {
+          "class": "B06_ThirtyDays"
+        },
+        "motion_claim": "The checkpoint photo sits on a ghost timeline bar; a history stack of cards stays solid beside the crate ('history'); a hero '30 days' counter climbs as the bar fills in grey segments ('per Anthropic's docs'); the photo fades at the bar's end; a file card drops into a kraft tray ('outputs')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn blueprint-crate-and-belt scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.12,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 13.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:59:50"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Put together: one agent and one environment, made once, and as many sessions as you need, each one driven by events. Anthropic runs the loop. You design the four parts.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The blueprint and the crate sit at the left; three session crates slide out on pads at the right, one after another, each with its lamp; a card rides a short belt into each and its lamp lights ('one agent', 'many sessions').",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "one agent, one environment"
+          },
+          {
+            "at": 0.5,
+            "event": "many sessions"
+          },
+          {
+            "at": 0.8,
+            "event": "events drive each"
+          }
+        ],
+        "manim": {
+          "class": "B07_Together"
+        },
+        "motion_claim": "The blueprint and the crate sit at the left; three session crates slide out on pads at the right, one after another, each with its lamp; a card rides a short belt into each and its lamp lights ('one agent', 'many sessions')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn blueprint-crate-and-belt scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.79,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 9.791666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:59:50"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude Code, in a repo with tests: Plan a Claude Managed Agent that runs this repo's tests and reports what fails. Don't create anything yet. Write a four parts file: the agent (model, prompt, tools), the environment (packages, allowed hosts), one session, and the events I'd send and watch for. Check each part against the live docs. Then check two things yourself. Is every field it names in the live docs? And does the network allow only the hosts the job needs?",
+      "estimated_duration_s": 34.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · YOUR TURN",
+            "segment": "Four Parts of a Managed Agent",
+            "command": "Plan a Claude Managed Agent that runs this repo's tests and reports what fails. Don't create anything yet. Write FOUR_PARTS.md: the agent (model, prompt, tools), the environment (packages, allowed hosts), one session, and the events I'd send and watch for. Check each part against the live docs.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: every field it names is in the live docs?",
+              "Check: the network allows only the hosts it needs?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T05:58:51.919785+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 25.15,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 25.166666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T01:59:50"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Four Parts of a Managed Agent. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Four Parts of a Managed Agent",
+            "slug": "show-tell-four-parts-of-a-managed-agent",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T05:59:05.883103+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.69,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.708333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T01:59:50"
+      }
+    }
+  ]
+}

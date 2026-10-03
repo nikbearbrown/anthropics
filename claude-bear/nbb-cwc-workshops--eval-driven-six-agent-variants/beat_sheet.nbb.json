@@ -1,0 +1,512 @@
+{
+ "metadata": {
+  "title": "Six Agent Variants: How to Measure What Prompt Changes Actually Do",
+  "slug": "cwc-workshops--eval-driven-six-agent-variants",
+  "topic": "CLAUDE BASICS · AGENT EVALS",
+  "purpose": "Take a slide-writing agent's eval harness apart in the Teardown register: two layers (code checks + LLM judge), one fixed test set, one pinned baseline, four rounds — the last round breaks pattern by dropping every added rule and swapping the model, which empties the mandatory-diagram grader and proves the trade-off: rules that only live in a prompt don't survive a model swap. Redo of the cwc-workshops workshop-teardown cut; facts re-grounded directly against the workshop repo (the source's six-step waterfall of invented percentages and agent techniques not in the repo is dropped).",
+  "skill": "hai-simple",
+  "register": "Teardown",
+  "brand": "nbb",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "in_for_bear": true,
+  "clock": "narration",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/cwc-workshops/youtube/eval-driven-six-agent-variants/beat_sheet.json",
+  "redo_of": "eval-driven-six-agent-variants",
+  "grounding_repo": "/Users/nik/Documents/Cowork/anthropics/cwc-workshops/eval-driven-agent-development",
+  "anchor_pair": "S03 -> S08 (must be the SAME case: the mandatory-diagram grader, present then empty)",
+  "one_flag": "none needed - all claims restate the workshop repo's own files, not this reel's inference",
+  "mirror_pair": "S09 / S10 - mirrored construction (both directions)",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "build": {
+   "at": "2026-09-01T04:37:18",
+   "cut": "master",
+   "filled": 14,
+   "of": 14,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. Somebody edits an agent's prompt, opens the new deck, calls it better because it looks cleaner. That's a glance, not a measurement. Here's what actually testing a prompt change looks like, round after round — and what the glance is missing under the hood.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types the naive claim, hesitates on 'looks', corrects to 'scores', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "My new prompt looks better. Done.\nBut how do I know it's actually better?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "looks",
+      "replacementWords": "scores",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 10,
+      "charMs": 45,
+      "jitter": 22,
+      "seed": "nbb-cwc-eval-six-variants"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md. Params match the verified-working precedent (cwc-workshops--claude-liam-eval-audit-and-sweep): charMs 45, hesitateBetween 10, mistakeRate 4, short text. VERIFY media/B00.mp4 by pulling a frame near the end of the beat's actual_duration_s and confirming the 'scores' replacement AND the second line are both fully typed before compiling further.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "S01",
+   "act": "1 stakes",
+   "narration_text": "Take the setup apart: one Claude agent that writes slide decks, one system prompt you keep editing, the same five test topics run against every version. That's the whole rig — and it's what you're trying to measure whether you moved.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A prompt, edited again, feeding the same five tasks"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A prompt, edited again, feeding the same five tasks",
+     "mechanic": "A system-prompt card on the left with a pencil-edit mark. An arrow fans out to five small task cards on the right (career, environment, food, social, tech), each producing a slide-deck icon.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "S01Scene"
+   },
+   "audio_file": "mp3/beat-S01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "S02",
+   "act": "2 wrong guess",
+   "narration_text": "The obvious read is a comparison by eye: new deck next to old, whichever looks cleaner ships. Fast, feels honest — and here's what's actually happening. You're judging the surface of the output, not testing the change that produced it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Two decks, a glance, a decision"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Two decks, a glance, a decision",
+     "mechanic": "Two slide-deck icons side by side (OLD / NEW). An eye icon sweeps between them once, then a checkmark stamps 'SHIP IT' — sell the reading as reasonable and fast.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "S02Scene"
+   },
+   "audio_file": "mp3/beat-S02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "S03",
+   "act": "4 ANCHOR PLANTED",
+   "narration_text": "Hold onto one rule: every slide has to carry a real diagram, not just text and boxes. Now hold onto its enforcer — one grader does exactly one thing, count whether that rule got followed on every slide. Remember this pair. It comes back.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — the diagram rule, and its counter"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — the diagram rule, and its counter",
+     "mechanic": "THE ANCHOR. A slide silhouette with a required image-slot outlined in teal. Beside it a tally counter reading '5 / 5 SLIDES'. THIS EXACT COMPOSITION RETURNS AT S08.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "S03Scene"
+   },
+   "audio_file": "mp3/beat-S03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "S04",
+   "act": "2 BREAK IT",
+   "narration_text": "Here's what the glance misses. A nine-point caption on slide four, sitting under a ten-point floor — the eye slides right past it. A code grader opens the file, reads the actual font sizes, flags it in milliseconds. No judgment call, no rendering, no debate — the file says nine, the floor says ten.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "The glance misses it; the parser doesn't"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "The glance misses it; the parser doesn't",
+     "mechanic": "The S02 eye icon sweeps past slide four and nods approval. Beneath it, the same slide zoomed in: a caption reading '9pt' flagged crimson against a '10pt FLOOR' line, caught by a code-bracket icon in milliseconds.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "S04Scene"
+   },
+   "audio_file": "mp3/beat-S04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S04.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "S05",
+   "act": "3 mechanism",
+   "narration_text": "The eval runs in two layers, and they're doing different jobs. Layer one is pure code — it opens the deck file and checks the parts you can prove without judgment: slide count, images present, clutter, font sizes, stray emoji. No model call. Milliseconds. Pass or fail is a fact about the file.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Layer one: the code checks, ticking down"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Layer one: the code checks, ticking down",
+     "mechanic": "A .pptx file icon feeds into a code-bracket gear. Five check-cards tick down in teal: SLIDE COUNT, IMAGES PRESENT, CLUTTER, FONT SIZE, EMOJI. A small 'no model call' badge sits beside the gear.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "S05Scene"
+   },
+   "audio_file": "mp3/beat-S05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S05.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "S06",
+   "act": "3 mechanism",
+   "narration_text": "Layer two picks up what code can't decide. It hands the rendered slide images to an LLM judge and asks for scores on text, imagery, layout, color, and whether the title actually matches the body underneath it. That's the layer where taste lives — and the layer where the noise lives with it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Layer two: the rendered slide, judged"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Layer two: the rendered slide, judged",
+     "mechanic": "A rendered slide image feeds into a robed-judge icon (simple geometric gavel/eye mark, no likeness). Five scoring dials fill in: TEXT, IMAGE, LAYOUT, COLOR, TITLE-BODY.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "S06Scene"
+   },
+   "audio_file": "mp3/beat-S06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S06.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "S07",
+   "act": "3 mechanism",
+   "narration_text": "The prompt is edited one rule at a time, so you can see what each rule is actually doing. Round one just tightens typography and trims word count. Round two adds the mandatory-diagram rule. Round three adds a QA loop — the agent rasterizes its own deck, inspects every slide for overlap and overflow, fixes what it finds, checks again before it's done. One rule per round, so every score move is attributable.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Three rounds, each adding one rule"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Three rounds, each adding one rule",
+     "mechanic": "Three stacked round-cards building left to right: 'ROUND 1 · TYPOGRAPHY', 'ROUND 2 · DIAGRAM' (teal, ties to the anchor slot), 'ROUND 3 · QA LOOP' with a small self-inspect icon (magnifying glass over its own deck).",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "S07Scene"
+   },
+   "audio_file": "mp3/beat-S07.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S07.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "S08",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "Round four breaks the pattern on purpose — drop every one of those added rules, go back to the plain prompt, run it on a stronger model. Now check the same diagram grader from round two. It's empty. Zero slides carry the required image. That rule was never in the model. It only ever lived in the words you just took out. Here's the trade-off, named: rules in a prompt survive as long as the prompt does, no further.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — the diagram slot, empty"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — the diagram slot, empty",
+     "mechanic": "THE S03 COMPOSITION RETURNS, identical. 'ROUND 4 · MODEL SWAP' card appears with the three prior round-cards crossed out. The tally counter that read '5 / 5 SLIDES' resets to '0 / 5 SLIDES' in crimson. A new-model badge appears beside a dimmed old-model badge.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "S08Scene"
+   },
+   "audio_file": "mp3/beat-S08.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S08.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "S09",
+   "act": "5 DIRECTION A",
+   "narration_text": "When a code check fails — no diagram on a slide, a caption under the size floor — that's not an opinion. It's a fact about the file, proven the moment it's parsed. No judge, no rubric, no room to argue.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A code fail: proven, no judgment needed"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A code fail: proven, no judgment needed",
+     "mechanic": "A code-bracket icon stamps a crimson 'FAIL' on a parsed fact (missing image slot). Label beneath: 'PROVEN AT PARSE TIME.' No judge icon anywhere in frame.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "S09Scene"
+   },
+   "audio_file": "mp3/beat-S09.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S09.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "S10",
+   "act": "5 DIRECTION B",
+   "narration_text": "Now flip it. Every code check passing doesn't prove the deck is good — a slide can hit every rule and still not explain the idea. That's exactly what code can't measure. It's what the LLM judge is there for, and it's what code alone would let ship.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Mirroring S09: all code checks pass, judge still needed"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Mirroring S09: all code checks pass, judge still needed",
+     "mechanic": "Mirroring S09's layout: five code checks all tick teal 'PASS'. The slide sits there anyway, flat and unclear. The judge icon from S06 reappears and circles a low 'TITLE-BODY' dial in crimson.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "S10Scene"
+   },
+   "audio_file": "mp3/beat-S10.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S10.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Score every version against the same fixed test and the same pinned baseline. A rule that only lives in the prompt doesn't survive a model swap — and that's how you tell a prompt win from a model win.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Score every version against the same fixed test and the same pinned baseline. A rule that only lives in the prompt doesn't survive a model swap — and that's how you tell a prompt win from a model win.",
+      "attribution": "",
+      "sparkLine": "Same test. Same baseline."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. Take an agent you're iterating on. Freeze one fixed test set of real inputs. Write one code check that's just a plain fact — present or not — and one rubric a judge model can score from the rendered result. Run every version — including one where you swap the model instead of the prompt — against the same test and the same pinned baseline. What actually moved, and what only looked like it moved? Go deeper: pick one rule that only lives in your prompt, and see whether it survives when you strip the rule and swap the model.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "llm_exercise": {
+    "prompt": "I want to measure whether prompt edits to an agent I'm iterating on are actually improving it, and I want to tell a prompt win from a model win. Build me a small eval harness with two layers: (1) one code check that parses the agent's output and returns pass or fail on a plain, verifiable fact — no judgment; (2) one rubric a judge model can score from the rendered output for what code can't measure — text quality, layout, whether the title matches the body. Freeze one fixed test set of five real inputs. Run every version of my prompt against that same test with the same pinned baseline model. Then also run one version where I swap the model instead of editing the prompt. Give me a table: for each version, code-layer pass rate and judge-layer scores side by side, with prompt-only wins and model-only wins clearly labeled.",
+    "dig_deeper": "Go deeper: pick one rule your prompt teaches the agent to follow — like 'every slide has to carry a diagram.' Strip the rule from the prompt and run it on a stronger model. Does the rule still hold, or was it living in the words all along?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN · AGENT EVALS",
+      "segment": "Your Turn",
+      "command": "Take an agent I'm iterating on. Freeze one fixed test set of real inputs, write one code check that's just a plain fact — present or not — and one rubric a judge model can score from the rendered result. Run every version, including one where I swap the model instead of the prompt, against that same test and the same pinned baseline. What actually moved, and what only looked like it moved?",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T04:37:18"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Six Agent Variants — how to measure what a prompt change actually did. Same test, same baseline, or you're guessing. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroSeries",
+     "props": {
+      "eyebrow": "AGENT EVALS · @NikBearBrown",
+      "line": "Six Agent Variants — how to measure what a prompt change actually did."
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T04:37:18"
+   }
+  }
+ ]
+}

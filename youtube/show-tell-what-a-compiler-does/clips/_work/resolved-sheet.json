@@ -1,0 +1,907 @@
+{
+  "metadata": {
+    "slug": "show-tell-what-a-compiler-does",
+    "title": "What a Compiler Does",
+    "topic": "CLAUDE'S C COMPILER · DESIGN DOC",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Arabic (Salaam)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "CS students and developers who use a C compiler every day and want to know what happens inside it, stage by stage, shown on one real compiler's pipeline (Claude's C Compiler, which its README says is not validated for correctness)",
+    "source_doc": "anthropics/claudes-c-compiler/DESIGN_DOC.md (High-Level Pipeline and stage descriptions) and README.md, read in full 2026-09-27 and diffed against the raw upstream files (sources/live_*)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "compiler",
+      "C compiler",
+      "Claude's C Compiler",
+      "CCC",
+      "preprocessor",
+      "lexer",
+      "parser",
+      "syntax tree",
+      "semantic analysis",
+      "IR",
+      "SSA",
+      "optimizer",
+      "code generation",
+      "assembler",
+      "linker",
+      "ELF",
+      "Rust",
+      "Claude",
+      "Anthropic",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T15:04:22",
+      "cut": "review",
+      "filled": 17,
+      "of": 17,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Salaam. This is Liam, in for Bear. It's tempting to ask how a compiler turns your code into a program in one go. But it doesn't happen in one go. So the real question is what a compiler does at each stage.",
+      "estimated_duration_s": 16.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'What does a compiler do to my code in one go?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'do to my code in one go' -> 'do at each stage' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "What does a compiler\ndo to my code in one go?",
+            "triggerWords": "do to my code in one go",
+            "replacementWords": "do at each stage",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-what-a-compiler-does",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T18:54:01.179941+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (what does a compiler do to my code in one go) and corrects it to the real one (what does a compiler do at each stage).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 11.46,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 11.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A compiler: a program that turns source code into a program a chip can run. A token: one word of code, like a name, a number, or a symbol. I R: the compiler's own in-between language. And assembly: a chip's instructions, written as text.",
+      "estimated_duration_s": 17.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "'compiler' lands"
+          },
+          {
+            "at": 0.3,
+            "event": "'token' lands"
+          },
+          {
+            "at": 0.55,
+            "event": "'IR' lands"
+          },
+          {
+            "at": 0.8,
+            "event": "'assembly' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "compiler",
+                "meaning": "turns source code into a program a chip can run"
+              },
+              {
+                "term": "token",
+                "meaning": "one word of code: a name, a number, a symbol"
+              },
+              {
+                "term": "IR",
+                "meaning": "the compiler's own in-between language"
+              },
+              {
+                "term": "assembly",
+                "meaning": "a chip's instructions, written as text"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T18:54:46.075749+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: four prerequisites, one line each."
+      },
+      "actual_duration_s": 13.42,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 13.458333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "A compiler turns code written in C into a program a chip can run. Claude's C Compiler, which its read me says Claude wrote in Rust, from scratch, does it as one pipeline, with no outside tools. Let's follow one file through every stage.",
+      "estimated_duration_s": 17.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white source page ('C source') waits at the left of a long pale belt; four machines rise onto the belt (three kraft, the last one dark with four lamps); the page rides through them in turn and comes out at the far end as a kraft box taped shut ('ELF program').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the C source page"
+          },
+          {
+            "at": 0.4,
+            "event": "one pipeline of machines"
+          },
+          {
+            "at": 0.8,
+            "event": "out comes a program"
+          }
+        ],
+        "manim": {
+          "class": "B00_Pipeline"
+        },
+        "motion_claim": "A white source page ('C source') waits at the left of a long pale belt; four machines rise onto the belt (three kraft, the last one dark with four lamps); the page rides through them in turn and comes out at the far end as a kraft box taped shut ('ELF program')."
+      },
+      "actual_duration_s": 13.4,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 13.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "First, the preprocessor. It works on the raw text: it pastes in each header named by a hash include, expands every macro, and drops any code that an if def switches off.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The source page grows large ('preprocessor'); a header page slides in and merges at its top ('#include'); one line with a kraft macro tag widens into three lines ('macro'); a bracketed block of two lines fades out and the page closes up.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the page"
+          },
+          {
+            "at": 0.45,
+            "event": "a header pastes in"
+          },
+          {
+            "at": 0.7,
+            "event": "a macro expands"
+          },
+          {
+            "at": 0.9,
+            "event": "switched-off code drops out"
+          }
+        ],
+        "manim": {
+          "class": "B01_Preprocess"
+        },
+        "motion_claim": "The source page grows large ('preprocessor'); a header page slides in and merges at its top ('#include'); one line with a kraft macro tag widens into three lines ('macro'); a bracketed block of two lines fades out and the page closes up."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the source page, token tiles, a syntax tree, IR strips, chip doors, the taped ELF box) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.07,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 10.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Next, the lexer chops that text into tokens. Each name, number and symbol becomes one tile, and every tile keeps its span: where in the file it came from.",
+      "estimated_duration_s": 11.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "One line of the page lifts out and stretches into a long white strip ('lexer'); a terracotta scan line sweeps along it and the strip splits into kraft tiles of different widths ('tokens'); a small grey span tab drops under each tile, with a grey thread back to the page.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "one line of text"
+          },
+          {
+            "at": 0.35,
+            "event": "cut into token tiles"
+          },
+          {
+            "at": 0.8,
+            "event": "each keeps its span"
+          }
+        ],
+        "manim": {
+          "class": "B02_Lex"
+        },
+        "motion_claim": "One line of the page lifts out and stretches into a long white strip ('lexer'); a terracotta scan line sweeps along it and the strip splits into kraft tiles of different widths ('tokens'); a small grey span tab drops under each tile, with a grey thread back to the page."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the source page, token tiles, a syntax tree, IR strips, chip doors, the taped ELF box) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.41,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 9.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The parser reads the tokens in order and builds a syntax tree, which shows how the pieces fit together. It works by recursive descent: each grammar rule calls the rules for the parts inside it.",
+      "estimated_duration_s": 14.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The tiles rise one by one, left to right, and settle as the leaves of a tree; grey edges draw up to kraft branch nodes and a root ('syntax tree', 'parser'); the root lights, then each branch in turn, top down.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "tokens read in order"
+          },
+          {
+            "at": 0.4,
+            "event": "a tree grows"
+          },
+          {
+            "at": 0.75,
+            "event": "each rule calls the rules inside it"
+          }
+        ],
+        "manim": {
+          "class": "B03_Parse"
+        },
+        "motion_claim": "The tiles rise one by one, left to right, and settle as the leaves of a tree; grey edges draw up to kraft branch nodes and a root ('syntax tree', 'parser'); the root lights, then each branch in turn, top down."
+      },
+      "actual_duration_s": 10.92,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 10.958333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then semantic analysis checks that the tree makes sense. It works out the type of every expression, computes constant values ahead of time, and records each name in a symbol table.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Grey type tabs stamp onto the tree's nodes one by one ('types'); a small subtree folds up into a single node with a terracotta dot (a constant computed); a grey-outlined card at the right fills with rows as the name leaves send copies ('symbol table').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the tree is checked"
+          },
+          {
+            "at": 0.35,
+            "event": "types stamp on"
+          },
+          {
+            "at": 0.6,
+            "event": "a constant computed"
+          },
+          {
+            "at": 0.85,
+            "event": "names go into the symbol table"
+          }
+        ],
+        "manim": {
+          "class": "B04_Sema"
+        },
+        "motion_claim": "Grey type tabs stamp onto the tree's nodes one by one ('types'); a small subtree folds up into a single node with a terracotta dot (a constant computed); a grey-outlined card at the right fills with rows as the name leaves send copies ('symbol table')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the source page, token tiles, a syntax tree, IR strips, chip doors, the taped ELF box) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.6,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 10.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Lowering turns the checked tree into I R, an in-between language that's the same for every chip. At first, every local variable gets a stack slot: its own box in memory.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The tree shrinks away to the left and a column of white IR strips drops in, one by one ('IR'); below them a row of small open kraft boxes appears ('stack slots'), and a grey thread ties each variable strip to its box.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the tree becomes IR"
+          },
+          {
+            "at": 0.5,
+            "event": "same for every chip"
+          },
+          {
+            "at": 0.75,
+            "event": "each local gets a stack slot"
+          }
+        ],
+        "manim": {
+          "class": "B05_Lower"
+        },
+        "motion_claim": "The tree shrinks away to the left and a column of white IR strips drops in, one by one ('IR'); below them a row of small open kraft boxes appears ('stack slots'), and a grey thread ties each variable strip to its box."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the source page, token tiles, a syntax tree, IR strips, chip doors, the taped ELF box) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.22,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 10.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "A pass called mem to reg then promotes those slots into registers. The result is S S A form, and where two paths through the code meet, a phi node picks which value arrives.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The threads cut and the stack-slot boxes sink away; a dark register tab snaps onto each strip ('registers'); the column splits into two short paths that rejoin at one strip, where a terracotta dot lands ('phi node').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "slots promoted to registers"
+          },
+          {
+            "at": 0.55,
+            "event": "two paths"
+          },
+          {
+            "at": 0.85,
+            "event": "a phi node where they meet"
+          }
+        ],
+        "manim": {
+          "class": "B06_SSA"
+        },
+        "motion_claim": "The threads cut and the stack-slot boxes sink away; a dark register tab snaps onto each strip ('registers'); the column splits into two short paths that rejoin at one strip, where a terracotta dot lands ('phi node')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the source page, token tiles, a syntax tree, IR strips, chip doors, the taped ELF box) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.6,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 10.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the optimizer runs a chain of passes over the I R, looping up to three times. Constant folding does the math it can already see, and dead code elimination deletes what nothing uses. Last, phi nodes become plain register copies.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A grey loop track draws around the IR column with three round markers ('up to 3 rounds'); two strips merge into one (folding); two strips fade out and the column closes up (dead code); the terracotta phi dot turns into a plain grey strip ('optimizer').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "passes loop over the IR"
+          },
+          {
+            "at": 0.45,
+            "event": "constants folded"
+          },
+          {
+            "at": 0.65,
+            "event": "dead code deleted"
+          },
+          {
+            "at": 0.9,
+            "event": "phi nodes become copies"
+          }
+        ],
+        "manim": {
+          "class": "B07_Optimize"
+        },
+        "motion_claim": "A grey loop track draws around the IR column with three round markers ('up to 3 rounds'); two strips merge into one (folding); two strips fade out and the column closes up (dead code); the terracotta phi dot turns into a plain grey strip ('optimizer')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the source page, token tiles, a syntax tree, IR strips, chip doors, the taped ELF box) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.89,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 13.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then the back end. The same I R can go to one of four chips: x eighty-six sixty-four, i six eighty-six, A. Arch sixty-four, or risk five sixty-four. The chosen code generator writes assembly for that chip.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Four dark doors rise in a row, each with a grey lamp; the lamps light one by one as the chips are named; the first door's lamp turns terracotta ('x86-64'); the IR column slides into it and a column of white assembly strips comes out ('assembly').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the back end"
+          },
+          {
+            "at": 0.3,
+            "event": "four chips"
+          },
+          {
+            "at": 0.8,
+            "event": "assembly for the chosen chip"
+          }
+        ],
+        "manim": {
+          "class": "B08_Codegen"
+        },
+        "motion_claim": "Four dark doors rise in a row, each with a grey lamp; the lamps light one by one as the chips are named; the first door's lamp turns terracotta ('x86-64'); the IR column slides into it and a column of white assembly strips comes out ('assembly')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the source page, token tiles, a syntax tree, IR strips, chip doors, the taped ELF box) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.01,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 12.041666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Each back end then runs a peephole optimizer over its assembly. It finds wasted patterns, like storing a value and loading it straight back, and cuts the waste.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The assembly column grows large ('peephole'); a terracotta scan line runs down it; a grey bracket closes on a store strip and the load strip under it ('store, load'); the load strip slides out and the column closes up.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the peephole pass"
+          },
+          {
+            "at": 0.55,
+            "event": "a store then a load"
+          },
+          {
+            "at": 0.85,
+            "event": "the waste is cut"
+          }
+        ],
+        "manim": {
+          "class": "B09_Peephole"
+        },
+        "motion_claim": "The assembly column grows large ('peephole'); a terracotta scan line runs down it; a grey bracket closes on a store strip and the load strip under it ('store, load'); the load strip slides out and the column closes up."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the source page, token tiles, a syntax tree, IR strips, chip doors, the taped ELF box) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.47,
+      "audio_file": "mp3/beat-B09.mp3",
+      "render_duration_s": 9.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The built-in assembler turns that text into machine code. It parses each line, encodes each instruction as bytes, and writes an object file, a dot o.",
+      "estimated_duration_s": 10.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The strips ride into a kraft press ('assembler'); out the other side comes a row of grey byte tiles, one group per strip; the tiles pack into a kraft block ('.o file').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "text into the assembler"
+          },
+          {
+            "at": 0.5,
+            "event": "each instruction becomes bytes"
+          },
+          {
+            "at": 0.85,
+            "event": "an object file"
+          }
+        ],
+        "manim": {
+          "class": "B10_Assemble"
+        },
+        "motion_claim": "The strips ride into a kraft press ('assembler'); out the other side comes a row of grey byte tiles, one group per strip; the tiles pack into a kraft block ('.o file')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the source page, token tiles, a syntax tree, IR strips, chip doors, the taped ELF box) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.94,
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 8.958333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Last, the built-in linker. It reads the object file with the C runtime and libraries, resolves every symbol, finding where each named function lives, patches the code to point there, and writes the finished ELF executable.",
+      "estimated_duration_s": 14.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The .o block slides left; two more kraft blocks slide in beside it ('runtime + libs'); grey cables draw from the .o block to the other two; the three push together into one kraft box, which closes under terracotta tape ('ELF', 'linker').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the linker"
+          },
+          {
+            "at": 0.3,
+            "event": "object file, runtime, libraries"
+          },
+          {
+            "at": 0.55,
+            "event": "symbols resolved, code patched"
+          },
+          {
+            "at": 0.85,
+            "event": "the ELF executable"
+          }
+        ],
+        "manim": {
+          "class": "B11_Link"
+        },
+        "motion_claim": "The .o block slides left; two more kraft blocks slide in beside it ('runtime + libs'); grey cables draw from the .o block to the other two; the three push together into one kraft box, which closes under terracotta tape ('ELF', 'linker')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the source page, token tiles, a syntax tree, IR strips, chip doors, the taped ELF box) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.95,
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 12.958333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "One warning, in the read me's own words: None of it has been validated for correctness. The docs may be wrong. And, I do not recommend you use this code. So use it to learn the stages, not to build real software.",
+      "estimated_duration_s": 16.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The taped ELF box sits centre-left; beside it a large empty check box draws in and stays empty ('not validated'); the design doc's white page slides in at the right with a grey question tab ('docs may be wrong').",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "not validated for correctness"
+          },
+          {
+            "at": 0.5,
+            "event": "the docs may be wrong"
+          },
+          {
+            "at": 0.8,
+            "event": "learn from it; don't ship with it"
+          }
+        ],
+        "manim": {
+          "class": "B12_Warning"
+        },
+        "motion_claim": "The taped ELF box sits centre-left; beside it a large empty check box draws in and stays empty ('not validated'); the design doc's white page slides in at the right with a grey question tab ('docs may be wrong')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the source page, token tiles, a syntax tree, IR strips, chip doors, the taped ELF box) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.48,
+      "audio_file": "mp3/beat-B12.mp3",
+      "render_duration_s": 11.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. In Claude Code, paste this. Write add dot c, a main that sets x to two and y to three and returns x plus y. Using the C compiler on this machine, show it to me one stage at a time: the preprocessed text, the tokens, the syntax tree, and the assembly at O zero and at O two. Name the stage that made each one. Then build it and run it. Then check: does echo dollar question mark print five? And at O two, is the add instruction gone, folded into a five?",
+      "estimated_duration_s": 38.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · YOUR TURN",
+            "segment": "What a Compiler Does",
+            "command": "Write add.c, a main that sets x to 2 and y to 3 and returns x + y. Using the C compiler on this machine, show it to me one stage at a time: the preprocessed text, the tokens, the syntax tree, and the assembly at -O0 and at -O2. Name the stage that made each one. Then build it and run it.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: does echo $? print 5?",
+              "Check: at -O2, is the add gone?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T18:56:27.402021+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 24.02,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 24.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T15:04:22"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "What a Compiler Does. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "What a Compiler Does",
+            "slug": "show-tell-what-a-compiler-does",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T18:57:02.635895+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.03,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.041666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T15:04:22"
+      }
+    }
+  ]
+}

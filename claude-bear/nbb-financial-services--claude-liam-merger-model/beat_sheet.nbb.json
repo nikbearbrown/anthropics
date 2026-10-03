@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "Runs the Steps, Not Its Own Reasoning.",
+  "subtitle": "The Merger-Model Skill (Anthropic Skills)",
+  "slug": "financial-services--claude-liam-merger-model",
+  "topic": "MERGER-MODEL · ANTHROPIC SKILL",
+  "purpose": "Answer one real question in the Teardown register: when Claude builds a merger model, does it reason its way through the deal like an M&A analyst, or does it execute a written file, step by step? Take the mechanism apart — the folder, the SKILL.md, the Steps section, the linear execution — and land the trade-off the design makes: repeatability at the expense of improvisation. Carry-out: inside the merger-model skill, Claude runs the file, not its own reasoning.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-merger-model/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the merger-model skill itself), named at B00 and present through NB01-NB03/BCRY/BHTF; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-02T02:02:03",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's the wrong guess — thinking Claude reasons its way through a merger model the way an M&A analyst would, weighing accretion against dilution in its head. It doesn't. Inside a Skill, Claude opens a written file and runs each step in the order it's written. Here's what that actually is.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "lead_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'When Claude builds a merger model, does it reason through the steps?', hesitates on 'reason', corrects to 'follow', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "When Claude builds\na merger model,\ndoes it reason\nthrough the steps?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "reason",
+      "replacementWords": "follow",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "hai-merger-model"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: ~50-word narration + lead_silence_s 1.0 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('reason' -> 'follow') lands on screen and the full corrected question finishes typing before the clip ends. Parameters (42ms/char, 8% hesitateBetween, 4% mistakeRate, 2% hesitateWithin, 26% jitter) copied from the proven-working fix on the financial-services--claude-liam-comps-analysis sibling (68 chars here vs. 66 chars there) - re-verify by frame pull.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T02:02:03"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Here's what a Skill actually is: a folder Claude reads before it does anything. This one is called merger-model. Inside sits a file called SKILL.md — the full instruction set, written in plain English, no hidden logic and no compiled code. Claude opens the file, reads it, then acts. The unusual design call is right there — they chose text as the runtime, not code. The file itself is the program.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A SKILL IS A FOLDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A SKILL IS A FOLDER",
+     "chips": [
+      "merger-model/",
+      "SKILL.md",
+      "instructions"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T02:02:03"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "The actual pipeline lives in the file's Steps section. Claude reads each step and runs it, one at a time, in the exact order written. Linear execution — no branching unless a step tells it to branch. They optimized for repeatability at the expense of improvisation. That's the whole trade-off, sitting right on the page.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 19,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "STEPS, IN ORDER",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "STEPS, IN ORDER",
+     "chips": [
+      "the Steps",
+      "read each step",
+      "execute"
+     ],
+     "arrows": true,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "linear — no branching unless told",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T02:02:03"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "That's what merger-model actually specifies: accretion or dilution analysis for an M&A deal — pro forma EPS impact, synergy sensitivities, purchase price allocation. It's a specification, not a suggestion. Feed it the same two companies twice and the same steps produce the same accretion/dilution walk, both times. This works if you value repeatability and audit trails. It fails if you need Claude to notice something the file didn't anticipate. Step outside what the file actually says, and there's nothing written down to fall back on.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "WHAT THE FILE SPECIFIES",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "WHAT THE FILE SPECIFIES",
+     "chips": [
+      "acc/dilution",
+      "pro forma EPS",
+      "PP allocation"
+     ],
+     "arrows": false,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "same deal, same numbers, every run",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T02:02:03"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Here's what's actually happening: inside the merger-model skill, Claude isn't reasoning through the deal — it's running the written steps. Same two companies, same accretion/dilution result, every run. Never more than the file specifies.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Inside the merger-model skill, Claude isn't reasoning through the deal — it's running the written steps. Same two companies, same accretion/dilution result, every run. Never more than the file specifies.",
+      "attribution": "",
+      "sparkLine": "Runs the steps. Doesn't reason."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T02:02:03"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt — paste it into Claude, ChatGPT, or Gemini. I'm building an accretion/dilution model for a specific M&A deal. Act as my first-pass M&A analyst: walk me through the standard merger-model method step by step — how to project standalone earnings, purchase price allocation, synergy assumptions, and financing mix, and where the real judgment calls live. Then, using my deal — the acquirer, target, deal size, and consideration mix — flag the three assumptions that will drive whether it prints accretive or dilutive, and which two are the most fragile. And name the sensitivities I should show the IC — which variables to stress and by how much — and explain why those matter more than the others. Go deeper: if this deal is accretive on stated synergies but dilutive on a thirty-percent synergy haircut, which two operating levers post-close would most cheaply close the gap — and what would break each one? Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 60,
+   "llm_exercise": {
+    "prompt": "I'm building an accretion/dilution model for a specific M&A deal. Act as my first-pass M&A analyst: (1) walk me through the standard merger-model method step by step — how to project standalone earnings, purchase price allocation, synergy assumptions, and financing mix, and where the real judgment calls live; (2) using my deal — [describe your acquirer, target, deal size, and consideration mix (cash/stock/debt)] — flag the three assumptions that will drive whether it prints accretive or dilutive, and which two are the most fragile; (3) name the sensitivities I should show the IC — which variables to stress and by how much — and explain why those matter more than the others.",
+    "dig_deeper": "Go deeper: if this deal is accretive on stated synergies but dilutive on a thirty-percent synergy haircut, which two operating levers post-close would most cheaply close the gap — and what would break each one?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "MERGER-MODEL · ANTHROPIC SKILL",
+      "segment": "Runs the Steps, Not Its Own Reasoning.",
+      "command": "I'm building an accretion/dilution model for a specific M&A deal. Act as my first-pass M&A analyst: (1) walk me through the standard merger-model method step by step — how to project standalone earnings, purchase price allocation, synergy assumptions, and financing mix, and where the real judgment calls live; (2) using my deal — [describe your acquirer, target, deal size, and consideration mix (cash/stock/debt)] — flag the three assumptions that will drive whether it prints accretive or dilutive, and which two are the most fragile; (3) name the sensitivities I should show the IC — which variables to stress and by how much — and explain why those matter more than the others.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T02:02:03"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Runs the Steps, Not Its Own Reasoning. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroSeries",
+     "props": {
+      "eyebrow": "MERGER-MODEL · @HumanitariansAI",
+      "line": "Runs the Steps, Not Its Own Reasoning."
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T02:02:03"
+   }
+  }
+ ]
+}

@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "Decide First.",
+  "subtitle": "The Build MCP Server Skill (Deployment & Tool Design)",
+  "slug": "claude-plugins-official--claude-liam-build-mcp-server",
+  "topic": "BUILD MCP SERVER · CLAUDE PLUGIN",
+  "purpose": "Take apart the Build MCP Server skill: explain the three deployment paths and what each optimizes for, evaluate the two tool-design patterns against action-space size, and name the cost of a vague tool description. Land the carry-out that the skill asks four questions — deployment, users, action count, auth — before any code exists, and skipping that order costs a rewrite, not a tweak.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/claude-plugins-official/youtube/claude-liam-build-mcp-server/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Extending Claude — Skills, Plugins & Connectors",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the Build MCP Server skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-08-30T21:35:23",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Someone assumed the first step was writing code. It isn't — the skill runs a discovery pass before a line of code exists. So: what do I decide first for an MCP server?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'What do I code first for an MCP server?', hesitates on 'code', corrects to 'decide', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "What do I\ncode first\nfor an MCP\nserver?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "code",
+      "replacementWords": "decide",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "hai-build-mcp-server"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 1.0 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('code' -> 'decide') lands on screen and the full corrected question finishes typing before the clip ends. Text is shorter (39 chars) than the claude-plugins-official--claude-liam-agent-development sibling's already-fixed-safe text (60 chars) at the same already-tuned timing parameters (42ms/char, 4% mistakeRate, 2%/8% hesitation), so no separate timing-fix pass is expected; verified anyway by frame pull per TIMING LAW.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T21:35:23"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Take the deployment matrix apart. Three paths, ranked. Remote HTTP is the default because it optimizes for the thing that actually kills MCP servers in practice — install friction. One server, zero installs on the user's machine, and OAuth flows work the way OAuth is supposed to work, with real redirect handling. The trade-off it accepts: your server can't touch the user's local files. MCPB — Model Context Protocol Bundle — is the sanctioned local packaging format: server plus runtime, shipped as one artifact. Reach for it when the server has to read local files, drive a desktop app, or talk to something on localhost. Local stdio via npx or uvx works for a personal prototype and falls apart the moment you try to distribute it — no clean install story, no update story — so treat it as a stepping stone and flag the MCPB upgrade path on the handoff. The decision matrix covers seven scenarios: small SaaS API goes remote, large SaaS goes remote with search-plus-execute, UI widgets go MCP app, local desktop goes MCPB. Pick the path first and the rest of the design writes against a target instead of into open air.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THREE DEPLOYMENT PATHS",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THREE DEPLOYMENT PATHS",
+     "chips": [
+      "remote HTTP",
+      "MCPB",
+      "stdio"
+     ],
+     "arrows": true,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "remote HTTP default · unless local machine required",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T21:35:23"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Tool design has two patterns, chosen by size. Pattern A: one tool per action. Works when the action space is under about fifteen operations. Give each one a dedicated tool with a tight description and schema; Claude reads the list once at registration and knows exactly what's on the menu. Pattern B: search-plus-execute. When you're wrapping a large API — dozens to hundreds of endpoints — listing every operation floods Claude's context window and degrades model performance for everything else the session is trying to do. The fix is two tools instead of hundreds: search-actions returns the operations matching a natural-language intent, and execute-action runs one by ID. Context stays lean; the long tail lives in the search index, not the tool list. The hybrid promotes the three to five most-used actions to dedicated tools and keeps the rest behind search. Beyond tools, three more primitives exist and most builds don't use them. Resources — host-browsable docs and data the client can page through. Prompts — user-triggered slash commands. Elicitation — a spec-native way to ask the user something mid-tool without building your own UI. Most servers only need tools. Knowing the other three exists is what stops you from reinventing them badly.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 44,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "TWO TOOL-DESIGN PATTERNS",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "TWO TOOL-DESIGN PATTERNS",
+     "chips": [
+      "<15 actions",
+      "one-per-action",
+      "search+execute"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "large surface: search-plus-execute keeps context lean",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T21:35:23"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's a subtlety in how well any of this works once the server actually ships. Claude picks a tool by reading its description, not its name. That sounds obvious and it isn't — a description that just restates the tool's name, 'creates an issue' for create-issue, gives Claude nothing to decide with when a sibling tool like update-issue is sitting right next to it. The name is a label. The description is the trigger clause. The more specific it is — when this fires, on what shape of request, in what context — the more reliably Claude reaches for the right tool at the right moment. Vague description, wrong dispatch, no stack trace to tell you which one lost.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE DESCRIPTION DECIDES",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE DESCRIPTION DECIDES",
+     "chips": [
+      "create-issue",
+      "description",
+      "update-issue"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "a vague description blurs similar tools together",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T21:35:23"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Build MCP Server asks four questions — deployment, users, action count, auth — before a line of code exists. Skip that order and you don't get to tweak the server later. You rewrite it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Build MCP Server asks four questions — deployment, users, action count, auth — before a line of code exists. Skip that order and you don't get to tweak the server later. You rewrite it.",
+      "attribution": "",
+      "sparkLine": "Decide first. Code second."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T21:35:23"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. I want to design an MCP server that wraps the GitHub API, and I want to make the four decisions up front instead of scaffolding blind. One — deployment: pick between remote HTTP, MCPB, and stdio, decide which one fits GitHub API access, and explain the trade-off you're taking. Two — users: state whether this is single-user or multi-tenant, and what that changes about auth. Three — action count: list the operations you actually need — create issues, search repositories, get pull request details at minimum — and decide whether to expose them as one-tool-per-action or search-plus-execute, given the size of the GitHub API. Four — auth: choose a strategy, personal access token or OAuth, and justify it against the deployment choice. Then draft the tool definitions with descriptions that state when Claude should reach for each one — not what the tool is called. Critique your own descriptions: which is the vaguest, and how would you tighten it so Claude picks it over its siblings? Go deeper: ask the same model to work out where the search-plus-execute cutover actually sits for the GitHub API — count the endpoints you'd realistically want exposed, and design a hybrid where the three to five most-called operations get dedicated tools while the rest live behind search-actions and execute-action. Then have it name what breaks when a promoted tool changes shape, and how you'd notice.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 90,
+   "llm_exercise": {
+    "prompt": "I want to design an MCP server that wraps the GitHub API, and I want to make the four decisions up front instead of scaffolding blind. (1) Deployment: pick between remote HTTP, MCPB (local bundle), and stdio (npx/uvx) — decide which fits GitHub API access, and explain the trade-off. (2) Users: single-user or multi-tenant, and what that changes about auth. (3) Action count: list the operations you actually need (create issues, search repositories, get pull request details, at minimum) and decide one-tool-per-action vs search-plus-execute, given the size of the GitHub API. (4) Auth: choose a strategy — personal access token or OAuth — and justify it against the deployment choice. Then draft the tool definitions with descriptions that state when Claude should reach for each one — not what the tool is called. Critique your own descriptions: which is the vaguest, and how would you tighten it so Claude picks it over its siblings?",
+    "dig_deeper": "Go deeper: ask the same model to work out where the search-plus-execute cutover actually sits for the GitHub API — count the endpoints you'd realistically want exposed, and design a hybrid where the three to five most-called operations get dedicated tools while the rest live behind search-actions and execute-action. Then have it name what breaks when a promoted tool changes shape, and how you'd notice."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "BUILD MCP SERVER · CLAUDE PLUGIN",
+      "segment": "Decide First.",
+      "command": "I'm designing an MCP server that wraps the GitHub API and want to decide, not scaffold. (1) Deployment: pick remote HTTP, MCPB, or stdio for GitHub API access and name the trade-off. (2) Users: single-user or multi-tenant — how does that shape auth? (3) Action count: list the operations you actually need (create issues, search repos, get PR details) and decide one-tool-per-action vs search-plus-execute against the size of the GitHub API. (4) Auth: pick PAT or OAuth and justify it against the deployment choice. Then draft tool descriptions that state when Claude should reach for each one — not what it's called — and critique your own vaguest description.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T21:35:23"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Decide First. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Decide First. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T21:35:23"
+   }
+  }
+ ]
+}

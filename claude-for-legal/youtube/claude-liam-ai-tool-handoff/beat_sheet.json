@@ -20,11 +20,44 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-for-legal/corporate-legal/skills/ai-tool-handoff/SKILL.md",
+    "source_detail": {
+      "capabilities": [],
+      "constraints": [
+        "Matter context. Check ## Matter workspaces in the practice-level CLAUDE.md. If Enabled is ✗ (the default for in-house users), skip the rest of this paragraph — skills…",
+        "Filter output: Flag only where extraction target is present — no need for \"no CoC clause found\" for every doc",
+        "\"Use as-is\": Ingest directly into diligence findings. (Only if ~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md says this — it's rare.)"
+      ],
+      "referenced_files": [
+        "~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md",
+        "/corporate-legal:matter-workspace switch <slug>",
+        "practice-level",
+        "matter.md",
+        "~/.claude/plugins/config/claude-for-legal/corporate-legal/matters/<matter-slug>/",
+        "Cross-matter context",
+        "tabular-review",
+        "/corporate-legal:tabular-review"
+      ],
+      "code_signals": [
+        "code block: markdown"
+      ],
+      "sections": [
+        "Matter context",
+        "Purpose",
+        "Load context",
+        "When to hand off",
+        "The handoff",
+        "Step 1: Prepare the batch",
+        "Step 2: Load (or instruct the loader)",
+        "[Tool] Load Request — [Deal code] — [Category]",
+        "Step 3: QA the output",
+        "Step 4: Judgment layer"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T05:31:48",
+      "at": "2026-09-05T23:08:07",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -50,7 +83,7 @@
             "output": [
               "skill: ai-tool-handoff",
               ">",
-              "steps: 0 — executing."
+              "steps: 4 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -68,13 +101,13 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:31:48"
+        "at": "2026-09-05T23:08:07"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is ai-tool-handoff. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is ai-tool-handoff. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at ~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md, /corporate-legal:matter-workspace switch <slug>, practice-level, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -106,18 +139,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.54,
+      "actual_duration_s": 23.91,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:31:48"
+        "at": "2026-09-05T23:08:07"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "The pipeline has 4 steps. Prepare the batch → Load (or instruct the loader) → QA the output, plus 1 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -132,22 +165,27 @@
             "outputLabel": "RESULT",
             "phases": [
               {
-                "label": "Read SKILL.md",
-                "desc": "load the instruction set",
+                "label": "Prepare the batch",
+                "desc": "- Identify documents for the batch (from VDR inventory)…",
                 "accent": true
               },
               {
-                "label": "Execute",
-                "desc": "run each step in order",
+                "label": "Load (or instruct the loader)",
+                "desc": "Per ~/.claude/plugins/config/claude-for-legal/corporate-lega…",
                 "accent": false
               },
               {
-                "label": "Return output",
-                "desc": "deliver the result",
+                "label": "QA the output",
+                "desc": "When the tool returns results, apply the trust level: \"Use…",
+                "accent": false
+              },
+              {
+                "label": "Judgment layer",
+                "desc": "The tool found the clauses. Now apply judgment: For each…",
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "4 steps. Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -157,18 +195,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 12.86,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:31:48"
+        "at": "2026-09-05T23:08:07"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. ai-tool-handoff is a specification written as an instruction set. Claude's job: >. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. Matter context. Check ## Matter workspaces in the practice-level CLAUDE.md. If Enabled is ✗ (the default for in-house users), skip the rest of this paragraph — skills…. That is the constraint in ai-tool-handoff — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +217,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": ">",
+            "body": "Matter context. Check ## Matter workspaces in the practice-level CLAUDE.md. If Enabled is ✗ (the default for in-house users), skip the rest of this paragraph — skills…",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,12 +227,44 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 10.99,
+      "actual_duration_s": 17.54,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:31:48"
+        "at": "2026-09-05T23:08:07"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In ai-tool-handoff, supporting material: ~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md, /corporate-legal:matter-workspace switch <slug>, practice-level, matter.md; implementation signals: code block: markdown; sections: Matter context, Purpose, Load context, When to hand off. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md; /corporate-legal:matter-workspace switch <slug>; practice-level; code block: markdown",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 24.64,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T23:08:07"
       }
     },
     {
@@ -214,8 +284,9 @@
             "artifactLines": [
               "Skill: ai-tool-handoff — Claude reads SKILL.md before acting",
               ">",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "4-step pipeline: Prepare the batch → Load (or instruct the loader) → QA the output",
+              "Constraint: Matter context. Check ## Matter workspaces in the practice-level CLAUDE.md. If Enabled is…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -230,7 +301,7 @@
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:31:48"
+        "at": "2026-09-05T23:08:07"
       }
     },
     {
@@ -267,7 +338,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:31:48"
+        "at": "2026-09-05T23:08:07"
       }
     },
     {
@@ -298,7 +369,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:31:48"
+        "at": "2026-09-05T23:08:07"
       }
     }
   ]

@@ -1,0 +1,41 @@
+# FACTCHECK — cc-five-claudes-explained
+
+Status: PASS — checked 2026-09-08 by the build session against `SESSION.md` (the real headless Claude Code session, id `76868a34-6d8f-4776-86ee-293691bd9fbf`) and its `evidence/` files.
+
+**Verification boundary.** Every factual claim in this reel is a claim about one session that ran on 2026-09-08 and is transcribed verbatim in `SESSION.md`, plus the commands Liam ran by hand in a plain terminal (also in `SESSION.md`). Nothing is sourced from memory of how Claude Code "usually" behaves. One product claim (row 18) is about Cowork, not the session, and is sourced. The two closing-block beats apply doctrine from two INFO-7375 courses to the session; the doctrine is cited, not re-derived. Restructured 2026-09-08 (Bear): the SKEPTIC beat is gone; THE IDEA and DEFINITIONS follow the cold open. Product strings on screen (`accept edits on`, the status verbs, the footer keybindings) are rendered by the CC kit from `tokens/claudecode.ts` and are not authored here.
+
+| # | Beat | Claim (as spoken / shown) | Verdict | Source / derivation | Fix |
+|---|---|---|---|---|---|
+| 1 | BIDEA | 'They're not five versions of one thing; they're five products sharing a name' — the writer corrects 'versions' → 'products' | PASS | the five names Liam typed; Claude's own file labels each by what it is | — |
+| 2 | BDEFS | Definitions card: the terminal · Cowork · Projects · Skills · the fence | PASS | Cowork = desktop-app mode (row 18); Projects = claude.ai feature (Claude's file §4); Skills = `~/.claude/skills` folders (SESSION.md VERIFY); the fence = the blocked-`ls` sentence | — |
+| 3 | B00 | Liam's ask, shown verbatim in the prompt block ("I keep seeing the name Claude on five different things …") | PASS | `SESSION.md` → Turn 1 → "Liam typed"; `evidence/ask1.txt` | — |
+| 4 | B00 | Status verb `Exploring` | PASS | product verb, `tokens/claudecode.ts` → `VERBS` | — |
+| 5 | B00, B04 | Status-line figures (`0m 04s`, `↓ 1.2k tokens`, `0m 12s`, `↓ 2.1k tokens`) | EXEMPT | kit chrome; a headless session prints no status line. Real timing is in the RESULT lines (turn 1: 47 s; turn 2: 55 s) and is not spoken | — |
+| 6 | B00, B01 | `which claude && claude --version` → `/opt/homebrew/bin/claude` / `2.1.150 (Claude Code)` | PASS | `SESSION.md` Turn 1, first TOOL line; `evidence/turn1.jsonl` | — |
+| 7 | B01 | `ls -d /Applications/Claude.app` → "ls in '/Applications/Claude.app' was blocked. For security, Claude Code may only list files in the allowed working directories for this session." | PASS | `SESSION.md` Turn 1, TOOL line 2 — the product's sentence, split across text blocks at clause boundaries, wording untouched | — |
+| 8 | B01 | `ls ~/.claude/skills` → blocked, same sentence | PASS | `SESSION.md` Turn 1, TOOL line 4. Display shortens `/Users/bear/.claude/skills` to `~/.claude/skills` (path shortening, documented in `author_sheet.py`) | — |
+| 9 | B01 | "a program in homebrew, with a version number" | PASS | `/opt/homebrew/bin/claude`; the version is on screen, never spoken (datable) | — |
+| 10 | B02 | Claude's lines: "You're talking to Claude Code, the CLI — running inside a Cowork sandbox." / "2. Cowork — Command: pwd" / "the CoWork segment and the UUID-scoped /private/tmp/claude-501/... root are Cowork's fingerprint. Present." / "3. Projects — No command exists." / "5. Claude Code — Present, and it's what's replying to you." | PASS | `SESSION.md` Turn 1 → CLAUDE. Markdown bold stripped for display; the numbered-item bodies are quoted from the item text; nothing reworded | — |
+| 11 | B02 | "The folder path has the word CoWork in it" | PASS | `pwd` output in `SESSION.md`: `/private/tmp/claude-501/-Users-bear-Documents-CoWork/…/five-claudes-session` | — |
+| 12 | B02 | "I made this folder from the desktop app" | PASS | the folder is the scratchpad of the Claude desktop-app Code session that ran the build (`SESSION.md` → Liam's VERIFY after turn 1, Finding) | — |
+| 13 | B02 | "Projects: no command exists — honest. Desktop app, Skills: can't tell from here — honest." | PASS | Claude's items 1, 3, 4 in `SESSION.md` Turn 1 | — |
+| 14 | B03 | `ls -d /Applications/Claude.app` → `/Applications/Claude.app`; `ls ~/.claude/skills` → `claude-refactor`, `is-done` | PASS | `SESSION.md` → Liam's VERIFY after turn 1 (plain terminal) | — |
+| 15 | B03 | "Skills: two folders under my home directory" | CORRECTED | first draft said "two folders of markdown"; `claude-refactor/` is an empty folder (only `is-done/` holds a `SKILL.md`). Narration corrected and B03 audio regenerated before compile | narration + `--only B03` |
+| 16 | B03 | "The one it did claim, I can't check with a command either. Nobody can." | PASS | Claude's own `WHICH-CLAUDE.md` §3: "Command: none available from this terminal that identifies Cowork itself." A process listing would show the desktop app running, not which surface is answering | — |
+| 17 | B04 | Liam's correction, verbatim in the prompt block | PASS | `SESSION.md` → Turn 2 → "Liam typed"; `evidence/ask2.txt` | — |
+| 18 | B04, B05 | One tool call: `Write WHICH-CLAUDE.md`; status verb `Writing` | PASS | `SESSION.md` Turn 2, TOOL line; `VERBS` | — |
+| 19 | B05 | Claude's summary lines ("Wrote WHICH-CLAUDE.md. Only #1 (Claude Code CLI) is PRESENT — the only command that returned real content from this terminal. The other four are UNVERIFIED FROM HERE … and Cowork I retracted — a folder name is not an identification. No other files created.") | PASS | `SESSION.md` Turn 2 → CLAUDE. One clause elided at the `…` ("two blocked by the sandbox (desktop app, skills), one has no local command at all (Projects),"); nothing reworded | — |
+| 20 | B06, BVDT | "Cowork lives inside the desktop app" — Cowork is a mode of the Claude desktop app, not a website | PASS | Anthropic's Cowork announcement and the Claude desktop app itself (Cowork is a tab beside Chat and Code in `Claude.app`; this build ran in that app's Code tab). Claude's own label ("a website / hosted service") is flagged in its file as unconfirmed | — |
+| 21 | B06 | `grep -c "Status: PRESENT" WHICH-CLAUDE.md` → `1`; `grep -n "What it is" WHICH-CLAUDE.md` → lines 8, 14, 22, 33, 41; `git status --short` → `?? WHICH-CLAUDE.md` | PASS | `SESSION.md` → Liam's VERIFY after turn 2. Grep lines are display-truncated with `…` at the kit's line budget | — |
+| 22 | B06 | "It flagged that label as a guess it couldn't confirm" | PASS | `WHICH-CLAUDE.md` line 22–23: "(best classification of the four options; I cannot confirm this from the terminal)" | — |
+| 23 | B08 | Six steps, who did what, the handoff conditions, tally PF 1 · PA 1 · IJ 1 · TO 1 · EI 0 | PASS | each step maps to a `SESSION.md` line (1 → ask1; 2 → Turn 1 tools + answer; 3 → Finding after turn 1; 4 → Turn 2 Write; 5 → Finding after turn 2; 6 → Liam's VERIFY after turn 1). Capacities per `info-7375-conducting-ai` | — |
+| 24 | B09 | Ledger rows | PASS | each row names something in `SESSION.md`; "it did" rows point at Turn 2 (retraction; the flagged label) | — |
+| 25 | BVDT | "the terminal can prove exactly one of them from inside: itself" | PASS | `WHICH-CLAUDE.md`: one PRESENT, four UNVERIFIED FROM HERE; the two blocked `ls` calls | — |
+| 26 | BVDT | "The two things it called unverified are on the disk" | PASS | `ls -d /Applications/Claude.app ~/.claude/skills` in `SESSION.md` | — |
+| 27 | BHTF | The viewer's prompt | EXEMPT | an instruction to the viewer, not a claim | — |
+| 28 | all | Version string `2.1.150 (Claude Code)` on screen | EXEMPT | session output shown as evidence; never spoken (datable) | — |
+| 29 | metadata | Session cost (turn 1 $0.238, turn 2 $0.283) | EXEMPT | recorded in `SOURCES.md`, not spoken | — |
+
+## Stripped — what the source concept reel said that this one does not
+
+The copied concept (`claude-cowork--claude-liam-five-claudes-explained`, sourced from a Ruben Hassid infographic) carried per-product setup steps, "biggest mistake" tips, and prices ("Code costs ten dollars a month", "Cowork: the most powerful and most expensive", "click 'Projects' in the left sidebar" to set up Cowork). Its own `FACTCHECK.md` marked the prices DATABLE and the rest AUTHOR'S CLAIM. None of it can be checked against a transcript, one line is wrong on its face, and the prices will rot. All stripped. The five names are kept because they are what Liam typed.

@@ -18,13 +18,46 @@
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "modelLabel": "Opus 4.7",
+    "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/cwc-workshops/agent-decomposition/.claude/skills/supplier-selection/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "How to rank and pick a supplier for a SKU",
+        "Load this whenever a task involves choosing a supplier",
+        "comparing quotes",
+        "or creating a purchase order."
+      ],
+      "constraints": [
+        "Ranking suppliers is arithmetic, not judgment. Compute it in Python via code execution — do not reason about it in prose",
+        "| SUP-05 Granite Gear Partners | West-coast DC only. Add 2–3 days to catalog lead time for WH-EAST deliveries. |",
+        "| SUP-07 Ridgecrest Imports | Import-only; lead times are port-congestion sensitive. Don't rely on stated lead for an urgent order. |"
+      ],
+      "referenced_files": [
+        "/mnt/user/data/supplier_catalog.csv",
+        "(supplier_id, unit_price, min_order_qty)",
+        "/mnt/user/data/suppliers.csv",
+        "supplier_id",
+        "lead_time_days",
+        "unit_price",
+        "min_order_qty"
+      ],
+      "code_signals": [
+        "code block: python"
+      ],
+      "sections": [
+        "Method",
+        "Do this in code",
+        "Supplier-specific overrides",
+        "Warehouse lead-time adjustments",
+        "Expedite override",
+        "Output"
+      ]
+    },
     "build": {
-      "at": "2026-08-26T05:56:36",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T21:55:47",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +66,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is supplier-selection. How to rank and pick a supplier for a SKU. Load this whenever a task involves choosing a supplier, comparing quotes, or creating a purchase order. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is supplier-selection. How to rank and pick a supplier for a SKU. Load this whenever a task involves choosing a supplier, comparing quotes, or creating a purchase order.. Its concrete surface area includes How to rank and pick a supplier for a SKU; Load this whenever a task involves choosing a supplier; comparing quotes. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,11 +82,11 @@
             "runningText": "reading supplier-selection SKILL.md…",
             "output": [
               "skill: supplier-selection",
-              "How to rank and pick a supplier for a SKU.",
+              "How to rank and pick a supplier for a SKU. Load this whenever a task involves…",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "Opus 4.7",
+            "modelLabel": "Opus 4.8",
             "effortLabel": "High"
           },
           "rendered": {
@@ -63,18 +96,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 15.64,
+      "actual_duration_s": 22.12,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:56:36"
+        "at": "2026-09-05T21:55:47"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is supplier-selection. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is supplier-selection. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at /mnt/user/data/supplier_catalog.csv, (supplier_id, unit_price, min_order_qty), /mnt/user/data/suppliers.csv, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -97,7 +130,7 @@
             ],
             "calloutText": "The SKILL.md is the instruction set.",
             "calloutSub": "1 file total.",
-            "sparkLine": "File is the program."
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -106,18 +139,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.42,
+      "actual_duration_s": 26.07,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:56:36"
+        "at": "2026-09-05T21:55:47"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "supplier-selection is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: How to rank and pick a supplier for a SKU; Load this whenever a task involves choosing a supplier; comparing quotes; or creating a purchase order.. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -157,18 +190,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 16.64,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:56:36"
+        "at": "2026-09-05T21:55:47"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. supplier-selection is a specification written as an instruction set. Claude's job: How to rank and pick a supplier for a SKU. Load this whenever a task involves choosing a supplier, comparing quotes, or creating a purchase order. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. Ranking suppliers is arithmetic, not judgment. Compute it in Python via code execution — do not reason about it in prose. That is the constraint in supplier-selection — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,8 +212,8 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Arithmetic, not judgment — the formula is the spec.",
-            "sparkLine": "Know the limit."
+            "body": "Ranking suppliers is arithmetic, not judgment. Compute it in Python via code execution — do not reason about it in prose",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
             "out": "media/B03.mp4",
@@ -189,18 +222,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 18.01,
+      "actual_duration_s": 15.34,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:56:36"
+        "at": "2026-09-05T21:55:47"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In supplier-selection, supporting material: /mnt/user/data/supplier_catalog.csv, (supplier_id, unit_price, min_order_qty), /mnt/user/data/suppliers.csv, supplier_id; implementation signals: code block: python; sections: Method, Do this in code, Supplier-specific overrides, Warehouse lead-time adjustments. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "How to rank and pick a supplier for a SKU; Load this whenever a task involves choosing a supplier; comparing quotes; /mnt/user/data/supplier_catalog.csv; (supplier_id, unit_price, min_order_qty)…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 28.67,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T21:55:47"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "supplier-selection makes Claude execute one task reliably. The SKILL.md is the spec — How to rank and pick a supplier for a SKU. Load this whenever a task involves choosing a supplier. Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "supplier-selection makes Claude execute one task reliably. The SKILL.md is the spec — How to rank and pick a supplier for a SKU. Load this whenever a task involves…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -213,9 +278,10 @@
             "artifactHeading": "Claude, Supplier Selection.",
             "artifactLines": [
               "Skill: supplier-selection — Claude reads SKILL.md before acting",
-              "Task: rank and pick a supplier for a SKU — chosen by a weighted score",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "How to rank and pick a supplier for a SKU. Load this whenever a task involves choosing a…",
+              "Capabilities: How to rank and pick a supplier for a SKU; Load this whenever a task involves choosing a supplier; comparing quotes",
+              "Constraint: Ranking suppliers is arithmetic, not judgment. Compute it in Python via code execution…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -225,18 +291,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 15.38,
+      "actual_duration_s": 14.31,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:56:36"
+        "at": "2026-09-05T21:55:47"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I need to select a supplier for a SKU. Read the supplier-selection skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to how to rank and pick a supplier for a sku. load this whenever a task involves. Read the supplier-selection skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -248,11 +314,11 @@
             "greeting": "Your turn.",
             "topic": "SUPPLIER-SELECTION · ANTHROPIC SKILL",
             "segment": "Claude, Supplier Selection.",
-            "command": "I need to select a supplier for a SKU. Read the supplier-selection skill and walk me through what you will do before you do it.",
+            "command": "I want to how to rank and pick a supplier for a sku. load this whenever a task. Read the supplier-selection skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "Opus 4.7",
+            "modelLabel": "Opus 4.8",
             "effortLabel": "High"
           },
           "rendered": {
@@ -262,12 +328,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 12.78,
+      "actual_duration_s": 14.7,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:56:36"
+        "at": "2026-09-05T21:55:47"
       }
     },
     {
@@ -298,7 +364,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:56:36"
+        "at": "2026-09-05T21:55:47"
       }
     }
   ]

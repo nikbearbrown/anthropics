@@ -1,0 +1,290 @@
+{
+ "metadata": {
+  "title": "Claude Doesn't Build a New Video App — It Wires In Zoom's SDK.",
+  "subtitle": "What build-zoom-meeting-app Actually Wires In",
+  "slug": "knowledge-work-plugins--claude-liam-build-zoom-meeting-app",
+  "topic": "BUILD ZOOM MEETING APP · ANTHROPIC SKILL",
+  "purpose": "Answer one real question in the Teardown register: does Claude write a new video-calling engine when you install build-zoom-meeting-app, or does it wire Zoom's own Meeting SDK into an app you already have? Take the skill apart, show the mechanism — a folder holding one SKILL.md, four ordered situations — and name the design choice: guaranteed coverage of Zoom's own SDKs, at the expense of doing anything Zoom hasn't already built.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/knowledge-work-plugins/youtube/claude-liam-build-zoom-meeting-app/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED — CARRY-OUT.md",
+  "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A — source is skill-teardown format (anatomy -> pipeline -> constraint -> verdict), no anchor structure to preserve",
+  "build": {
+   "at": "2026-09-02T15:32:06",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Read 'build-zoom-meeting-app' and it sounds like Claude writes a video-calling engine. It doesn't — it wires Zoom's Meeting SDK into an app you already have. Join flow, embed, meeting lifecycle. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Does Claude write a new video calling system?', hesitates on 'new', corrects to 'Zoom'",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Does Claude\nwrite a new\nvideo calling\nsystem?",
+      "face": "serif",
+      "fontSize": 80,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "new",
+      "replacementWords": "Zoom",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 46,
+      "jitter": 20,
+      "seed": "hai-zoom-meeting-app"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('new' -> 'Zoom') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T15:32:06"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 anatomy — a skill is a folder",
+   "narration_text": "Open the folder. Inside sits one file — SKILL.md — plain English, no code. It says exactly what build-zoom-meeting-app covers: joining a meeting through the Meeting SDK, embedding one in a web or mobile app, handling the lifecycle around it. Claude reads that file, then follows it. The routine lives in the document, not in the weights — same file every run, same steps every run.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 23,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A folder icon opening to reveal SKILL.md, references/, scripts/; SKILL.md highlighted"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A skill is a folder",
+     "mechanic": "A folder opens on cream to reveal three items: SKILL.md (highlighted in crimson), a references/ folder, a scripts/ folder. A caption below reads 'Claude reads it, then follows it.'",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T15:32:06"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "2 mechanism — the pipeline",
+   "narration_text": "The pipeline is boring on purpose. Read the file top to bottom. Walk each step exactly as written. Return the result. No branching, no shortcuts — unless a step itself says branch. They optimized for the same routine every time, at the expense of any judgment about when a step doesn't fit. Predictability was the point.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 21,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Three-phase pipeline: Read SKILL.md -> Execute steps in order -> Return result"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Input in, output out",
+     "mechanic": "Three cards left to right joined by arrows: 'Read SKILL.md', 'Execute steps in order', 'Return result'. Linear, no branch points drawn.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T15:32:06"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "3 constraint — exactly four situations",
+   "narration_text": "Four situations, and only four. Implementing a Meeting SDK join. Embedding a meeting in a web or mobile app. Handling the lifecycle — start, waiting room, end. Or deciding between the Meeting SDK and the Video SDK. Each one stays inside Zoom's own developer tools. Ask for something outside those four and there's no mode that covers it. Narrow surface by design — guaranteed coverage of Zoom's own SDKs, at the expense of anything Zoom hasn't already built.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 29,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Four situation cards: Meeting SDK join, web/mobile embed, lifecycle, SDK choice; a boundary line with 'nothing outside this list' beyond it"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Exactly four situations",
+     "mechanic": "Four rows fill in one at a time with a checkmark: 'Meeting SDK join — implementing the join flow', 'Web or mobile embed — a meeting inside your app', 'Meeting lifecycle — start, waiting room, end', 'SDK choice — Meeting SDK vs. Video SDK'. A dashed boundary line beneath the list, with a faint unlabelled field beyond it captioned 'nothing outside this list'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T15:32:06"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "4 CARRY-OUT",
+   "narration_text": "build-zoom-meeting-app never hands Claude a video engine to write. It hands Claude Zoom's Meeting SDK, wired into an app you already have — as a join flow, an embed, or the lifecycle around the call. Zoom builds the engine. Claude does the plumbing.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "build-zoom-meeting-app never hands Claude a video engine to write. It hands Claude Zoom's Meeting SDK, wired into an app you already have — as a join flow, an embed, or the lifecycle around the call. Zoom builds the engine. Claude does the plumbing.",
+      "attribution": "",
+      "sparkLine": "It wires the SDK. It doesn't invent the engine."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T15:32:06"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini. Say: I want to add video-calling to a web or mobile app I already have. Walk me through the trade-off between Zoom's Meeting SDK and Zoom's Video SDK for what I want — embedding a scheduled meeting with a join button and normal host and participant lifecycle. Then draft a SKILL.md-style checklist: three to five ordered steps, plain English, specific enough that a stranger could execute the same way every time. Go deeper: ask which step in that checklist assumes Zoom's product decisions you'd want to override — recording, waiting room, chat — and what breaks if you try. That's the seam between wiring in someone else's SDK and building the piece yourself.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 46,
+   "llm_exercise": {
+    "prompt": "I want to add video-calling to a web or mobile app I already have. Walk me through the trade-off between Zoom's Meeting SDK and Zoom's Video SDK for my situation — embedding a scheduled meeting with a join button, standard Zoom UI, and normal host/participant lifecycle. Then draft a SKILL.md-style checklist: three to five ordered steps for wiring the Meeting SDK into my app, in plain English, specific enough that a stranger could execute the same way every time. Include what to install, what credentials I need, what event fires on 'meeting joined', and where the video actually renders.",
+    "dig_deeper": "Go deeper: ask which step in that checklist assumes Zoom's own product decisions I might want to override — recording behavior, waiting room, chat — and what breaks if I try. That's the seam between wiring in someone else's SDK and building the piece yourself."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "BUILD ZOOM MEETING APP · ANTHROPIC SKILL",
+      "segment": "Claude, Zoom Meeting App.",
+      "command": "I want to add video-calling to a web app I already have. Walk me through the trade-off between Zoom's Meeting SDK and Zoom's Video SDK for embedding a scheduled meeting with a join button. Then draft a SKILL.md-style checklist — three to five ordered steps, plain English, specific enough that a stranger could execute it the same way every time.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T15:32:06"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude Doesn't Build a New Video App — It Wires In Zoom's SDK. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude Doesn't Build a New Video App — It Wires In Zoom's SDK. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T15:32:06"
+   }
+  }
+ ]
+}

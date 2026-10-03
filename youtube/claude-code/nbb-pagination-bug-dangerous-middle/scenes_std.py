@@ -16,7 +16,7 @@ class Scene_B02_NbbPaginationBug(Scene):
         font = "EB Garamond"
 
         if "THE QUESTION":
-            act = Text("THE QUESTION", font_size=24, color="#2A1A0E", font=font)
+            act = Text("THE QUESTION", font_size=43, color="#2A1A0E", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
@@ -27,20 +27,20 @@ class Scene_B02_NbbPaginationBug(Scene):
 
         # Primary concept text
         if "Every test Seth wrote passed":
-            line1 = Text("Every test Seth wrote passed", font_size=36, color="#2A1A0E", font=font)
-            line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
+            line1 = Text("Every test Seth wrote passed", font_size=64, color="#2A1A0E", font=font)
+            line1.scale(max(0.75, min(1.0, 20.0 / max(0.1, line1.width))))
             line1.shift(UP * 0.3)
             self.play(Write(line1), run_time=0.5)
 
         if "The function compiled":
-            line2 = Text("The function compiled", font_size=28, color="#2A1A0E", font=font)
-            line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
+            line2 = Text("The function compiled", font_size=50, color="#2A1A0E", font=font)
+            line2.scale(max(0.75, min(1.0, 20.0 / max(0.1, line2.width))))
             line2.shift(DOWN * 0.6)
             self.play(Write(line2), run_time=0.4)
 
         if "The code was clean":
-            line3 = Text("The code was clean", font_size=22, color="#2A1A0E", font=font)
-            line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
+            line3 = Text("The code was clean", font_size=54, color="#2A1A0E", font=font)
+            line3.scale(max(0.75, min(1.0, 20.0 / max(0.1, line3.width))))
             line3.shift(DOWN * 1.4)
             self.play(FadeIn(line3), run_time=0.3)
 
@@ -61,12 +61,12 @@ class Scene_B03_NbbPaginationBug(Scene):
         font = "EB Garamond"
 
         if "THE PROBLEM":
-            act = Text("THE PROBLEM", font_size=24, color="#2A1A0E", font=font)
+            act = Text("THE PROBLEM", font_size=43, color="#2A1A0E", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
         import numpy as np
-        stages = [t for t in ["The function itself is fine", "The calling loop used a termination condition: stop when the", "For 247 items, page 5 comes back with 47 - the loop stops co"] if t]
+        stages = [t for t in ["Function", "Loop", "Stop rule"] if t]
         if not stages:
             stages = ["Input", "Process", "Output"]
         n = len(stages)
@@ -80,8 +80,8 @@ class Scene_B03_NbbPaginationBug(Scene):
             circle = Circle(radius=0.55, color=colors[i % 2], stroke_width=2.5,
                             fill_color="#FFFFFF", fill_opacity=1)
             circle.move_to(pos)
-            txt = Text(lbl[:20], font_size=18, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, 0.9 / max(0.1, txt.width)))
+            txt = Text(lbl[:20], font_size=44, color="#2A1A0E", font=font)
+            txt.scale(max(0.75, min(1.0, 3.0 / max(0.1, txt.width))))
             txt.move_to(circle)
             grp = VGroup(circle, txt)
             nodes.append((grp, pos))
@@ -105,7 +105,7 @@ class Scene_B04_NbbPaginationBug(Scene):
         font = "EB Garamond"
 
         if "THE PROBLEM":
-            act = Text("THE PROBLEM", font_size=24, color="#2A1A0E", font=font)
+            act = Text("THE PROBLEM", font_size=43, color="#2A1A0E", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
@@ -116,20 +116,20 @@ class Scene_B04_NbbPaginationBug(Scene):
 
         # Primary concept text
         if "The bug lives in exactly one place on the number line: any i":
-            line1 = Text("The bug lives in exactly one place on the number line: any i", font_size=36, color="#2A1A0E", font=font)
-            line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
+            line1 = Text("The bug lives in exactly one place o", font_size=64, color="#2A1A0E", font=font)
+            line1.scale(max(0.75, min(1.0, 20.0 / max(0.1, line1.width))))
             line1.shift(UP * 0.3)
             self.play(Write(line1), run_time=0.5)
 
         if "Everything else works":
-            line2 = Text("Everything else works", font_size=28, color="#2A1A0E", font=font)
-            line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
+            line2 = Text("Everything else works", font_size=50, color="#2A1A0E", font=font)
+            line2.scale(max(0.75, min(1.0, 20.0 / max(0.1, line2.width))))
             line2.shift(DOWN * 0.6)
             self.play(Write(line2), run_time=0.4)
 
         if "The test set covered the obvious cases":
-            line3 = Text("The test set covered the obvious cases", font_size=22, color="#2A1A0E", font=font)
-            line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
+            line3 = Text("The test set covered the obvious cases", font_size=54, color="#2A1A0E", font=font)
+            line3.scale(max(0.75, min(1.0, 20.0 / max(0.1, line3.width))))
             line3.shift(DOWN * 1.4)
             self.play(FadeIn(line3), run_time=0.3)
 
@@ -151,13 +151,13 @@ class Scene_B05_NbbPaginationBug(Scene):
 
         # Act label at top
         if "THE MECHANISM":
-            act = Text("THE MECHANISM", font_size=24, color="#2A1A0E", font=font, slant=NORMAL)
+            act = Text("THE MECHANISM", font_size=43, color="#2A1A0E", font=font, slant=NORMAL)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
         # Build pipeline boxes that reveal left-to-right
         stages = []
-        labels_text = [t for t in ["The failure was not in the function", "The function was fine", "The failure was at the joint between the function and the ca"] if t]
+        labels_text = [t for t in ["Function", "Handoff", "Caller"] if t]
         if not labels_text:
             labels_text = ["Input", "Process", "Output"]
 
@@ -173,8 +173,8 @@ class Scene_B05_NbbPaginationBug(Scene):
                                    color="#2A1A0E", stroke_width=2,
                                    fill_color="#FFFFFF", fill_opacity=1)
             box.move_to(RIGHT * (start_x + i * spacing))
-            txt = Text(lbl, font_size=20, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, (spacing * 0.8 - 0.3) / max(0.1, txt.width)))
+            txt = Text(lbl, font_size=50, color="#2A1A0E", font=font)
+            txt.scale(max(0.75, min(1.0, (spacing * 0.8 - 0.3) / max(0.1, txt.width))))
             txt.move_to(box)
             grp = VGroup(box, txt)
             box_mobs.append(grp)
@@ -202,13 +202,13 @@ class Scene_B06_NbbPaginationBug(Scene):
 
         # Act label at top
         if "THE MECHANISM":
-            act = Text("THE MECHANISM", font_size=24, color="#2A1A0E", font=font, slant=NORMAL)
+            act = Text("THE MECHANISM", font_size=43, color="#2A1A0E", font=font, slant=NORMAL)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
         # Build pipeline boxes that reveal left-to-right
         stages = []
-        labels_text = [t for t in ["A handoff condition is a falsifiable claim, written before t", "It is specific, testable, and binary", "The condition Seth needed: given total items equals page siz"] if t]
+        labels_text = [t for t in ["Falsifiable", "Testable", "Written first"] if t]
         if not labels_text:
             labels_text = ["Input", "Process", "Output"]
 
@@ -224,8 +224,8 @@ class Scene_B06_NbbPaginationBug(Scene):
                                    color="#2A1A0E", stroke_width=2,
                                    fill_color="#FFFFFF", fill_opacity=1)
             box.move_to(RIGHT * (start_x + i * spacing))
-            txt = Text(lbl, font_size=20, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, (spacing * 0.8 - 0.3) / max(0.1, txt.width)))
+            txt = Text(lbl, font_size=50, color="#2A1A0E", font=font)
+            txt.scale(max(0.75, min(1.0, (spacing * 0.8 - 0.3) / max(0.1, txt.width))))
             txt.move_to(box)
             grp = VGroup(box, txt)
             box_mobs.append(grp)
@@ -252,7 +252,7 @@ class Scene_B07_NbbPaginationBug(Scene):
         font = "EB Garamond"
 
         if "THE MECHANISM":
-            act = Text("THE MECHANISM", font_size=24, color="#2A1A0E", font=font)
+            act = Text("THE MECHANISM", font_size=43, color="#2A1A0E", font=font)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
@@ -277,16 +277,16 @@ class Scene_B07_NbbPaginationBug(Scene):
                          color="#C8102E", fill_color="#C8102E", fill_opacity=0.85, stroke_width=0)
         bar2.move_to([pt2[0], (pt2[1]+origin[1])/2, 0])
 
-        lbl1 = Text("The handoff condition lives in the prompt, before Claude run"[:30], font_size=20, color="#2A1A0E", font=font)
+        lbl1 = Text("The handoff condition lives in the p"[:30], font_size=50, color="#2A1A0E", font=font)
         lbl1.next_to(ax.c2p(1, 0), DOWN, buff=0.2)
-        lbl2 = Text("Not in the code review afterward"[:30] if "Not in the code review afterward" else "Comparison", font_size=20, color="#2A1A0E", font=font)
+        lbl2 = Text("Not in the code review afterward"[:30] if "Not in the code review afterward" else "Comparison", font_size=50, color="#2A1A0E", font=font)
         lbl2.next_to(ax.c2p(2, 0), DOWN, buff=0.2)
 
         self.play(GrowFromEdge(bar1, DOWN), Write(lbl1), run_time=0.6)
         self.play(GrowFromEdge(bar2, DOWN), Write(lbl2), run_time=0.6)
 
         if "The condition you write before is the condition that constra":
-            note = Text("The condition you write before is the condition that constra"[:60], font_size=22, color="#2A1A0E", font=font)
+            note = Text("The condition you write before is th"[:60], font_size=54, color="#2A1A0E", font=font)
             note.to_edge(DOWN, buff=0.4)
             self.play(Write(note), run_time=0.5)
 
@@ -301,13 +301,13 @@ class Scene_B08_NbbPaginationBug(Scene):
 
         # Act label at top
         if "THE EXAMPLE":
-            act = Text("THE EXAMPLE", font_size=24, color="#2A1A0E", font=font, slant=NORMAL)
+            act = Text("THE EXAMPLE", font_size=43, color="#2A1A0E", font=font, slant=NORMAL)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
         # Build pipeline boxes that reveal left-to-right
         stages = []
-        labels_text = [t for t in ["Priya builds a paginated leaderboard for her school\'s quiz a", "She tests page 1 of 20, page 2 of 40", "She deploys"] if t]
+        labels_text = [t for t in ["Leaderboard", "Tests", "Deploy"] if t]
         if not labels_text:
             labels_text = ["Input", "Process", "Output"]
 
@@ -323,8 +323,8 @@ class Scene_B08_NbbPaginationBug(Scene):
                                    color="#2A1A0E", stroke_width=2,
                                    fill_color="#FFFFFF", fill_opacity=1)
             box.move_to(RIGHT * (start_x + i * spacing))
-            txt = Text(lbl, font_size=20, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, (spacing * 0.8 - 0.3) / max(0.1, txt.width)))
+            txt = Text(lbl, font_size=50, color="#2A1A0E", font=font)
+            txt.scale(max(0.75, min(1.0, (spacing * 0.8 - 0.3) / max(0.1, txt.width))))
             txt.move_to(box)
             grp = VGroup(box, txt)
             box_mobs.append(grp)
@@ -352,13 +352,13 @@ class Scene_B09_NbbPaginationBug(Scene):
 
         # Act label at top
         if "THE PRACTICE":
-            act = Text("THE PRACTICE", font_size=24, color="#2A1A0E", font=font, slant=NORMAL)
+            act = Text("THE PRACTICE", font_size=43, color="#2A1A0E", font=font, slant=NORMAL)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
         # Build pipeline boxes that reveal left-to-right
         stages = []
-        labels_text = [t for t in ["Before you ship any paginated output - or any function with ", "Not the round number", "The round number plus one"] if t]
+        labels_text = [t for t in ["Before ship", "n × page", "+ 1"] if t]
         if not labels_text:
             labels_text = ["Input", "Process", "Output"]
 
@@ -374,8 +374,8 @@ class Scene_B09_NbbPaginationBug(Scene):
                                    color="#2A1A0E", stroke_width=2,
                                    fill_color="#FFFFFF", fill_opacity=1)
             box.move_to(RIGHT * (start_x + i * spacing))
-            txt = Text(lbl, font_size=20, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, (spacing * 0.8 - 0.3) / max(0.1, txt.width)))
+            txt = Text(lbl, font_size=50, color="#2A1A0E", font=font)
+            txt.scale(max(0.75, min(1.0, (spacing * 0.8 - 0.3) / max(0.1, txt.width))))
             txt.move_to(box)
             grp = VGroup(box, txt)
             box_mobs.append(grp)
@@ -403,13 +403,13 @@ class Scene_B10_NbbPaginationBug(Scene):
 
         # Act label at top
         if "RECAP":
-            act = Text("RECAP", font_size=24, color="#2A1A0E", font=font, slant=NORMAL)
+            act = Text("RECAP", font_size=43, color="#2A1A0E", font=font, slant=NORMAL)
             act.to_edge(UP, buff=0.3)
             self.play(FadeIn(act), run_time=0.3)
 
         # Build pipeline boxes that reveal left-to-right
         stages = []
-        labels_text = [t for t in ["The dangerous middle is not the easy bug that fails on first", "It is the bug that lives inside what looks like correct work", "The handoff condition is the sentence that makes that test m"] if t]
+        labels_text = [t for t in ["Not easy bug", "Looks correct", "Handoff test"] if t]
         if not labels_text:
             labels_text = ["Input", "Process", "Output"]
 
@@ -425,8 +425,8 @@ class Scene_B10_NbbPaginationBug(Scene):
                                    color="#2A1A0E", stroke_width=2,
                                    fill_color="#FFFFFF", fill_opacity=1)
             box.move_to(RIGHT * (start_x + i * spacing))
-            txt = Text(lbl, font_size=20, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, (spacing * 0.8 - 0.3) / max(0.1, txt.width)))
+            txt = Text(lbl, font_size=50, color="#2A1A0E", font=font)
+            txt.scale(max(0.75, min(1.0, (spacing * 0.8 - 0.3) / max(0.1, txt.width))))
             txt.move_to(box)
             grp = VGroup(box, txt)
             box_mobs.append(grp)

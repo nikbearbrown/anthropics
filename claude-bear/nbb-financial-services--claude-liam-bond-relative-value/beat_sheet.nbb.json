@@ -1,0 +1,286 @@
+{
+ "metadata": {
+  "title": "How Does Claude Tell Whether a Bond Is Rich or Cheap?",
+  "slug": "financial-services--claude-liam-bond-relative-value",
+  "topic": "BOND-RELATIVE-VALUE · ANTHROPIC SKILL",
+  "purpose": "Answer whether Claude judges a bond's richness or cheapness by trading feel, or by running a fixed computed comparison across price, curve, spread, and stress scenario. Lands the carry-out that a rich-or-cheap read is a computed number waiting for a trader's decision, not Claude's own call.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-bond-relative-value/beat_sheet.json",
+  "source_note": "Source sheet's narration carries real skill-specific facts (not unfilled template placeholders) -- see QUESTION.md. Facts preserved: the bond-relative-value skill performs relative value analysis on bonds by combining pricing, yield curve context, credit spreads, and scenario stress testing; used for richness/cheapness, spread decomposition, bond comparison, and rate-shock scenarios. Register re-registered Teardown -> Plain; source's B03 design-tell verdict became a plain mechanism + both-directions beat; a wrong-guess beat and an anchor (a ten-year corporate bond, +40bp over curve: priced -> curve read -> spread decomposed -> stress-tested -> a computed read, waiting) were added per hai-simple's Phase 1 structure, since the source's Teardown shape carried neither.",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (a ten-year corporate bond, +40bp over curve: priced -> curve read -> spread decomposed -> stress-tested, landing at a computed rich/cheap read that waits for a trader's decision)",
+  "build": {
+   "at": "2026-09-01T08:01:40",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "You'd guess Claude reads a bond and calls it rich or cheap on feel, the way a trader would. It doesn't — it runs a fixed procedure. I'm Liam, in for Bear; let's take that procedure apart.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Which bond is rich or cheap -- by feel?', hesitates on 'feel', corrects to 'a curve', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Which bond is\nrich or cheap —\nby feel?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "feel",
+      "replacementWords": "a curve",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-bond-relative-value"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('feel' -> 'a curve') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T08:01:40"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "Here's what's actually happening. The natural read is that Claude brings a trader's feel to the bond — pattern recognition, market intuition. It doesn't. The skill runs a fixed comparison over four inputs: the bond's price, the yield curve it sits on, the credit spread over that curve, and a stress-tested rate shock. Take away the curve and there's nothing to spread against — the skill won't invent one. They optimized for a repeatable procedure; they gave up the trader's ability to work without a benchmark.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A trader's-feel figure struck through; a priced/curve/spread/stress checklist lit instead"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Feel, struck -- price/curve/spread/stress, lit",
+     "mechanic": "Left: a figure icon labelled 'TRADER'S FEEL' beside a thought-bubble of scattered decision marks. Right: a numbered card labelled 'PRICE / CURVE / SPREAD / STRESS'. The feel side dims and gets a terracotta strike; the procedure side stays lit. A final line reads 'no curve -- nothing to spread it against' and the figure does not reach for it.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "BRVB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T08:01:40"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "Here's the machinery in order. Take the bond's price, put it against the yield curve, decompose the credit spread over that curve, then shock the whole thing with a stress-tested rate move. Watch the anchor: a ten-year corporate bond trading forty basis points over the curve. Price. Curve read. Spread decomposed. Stress run. Four stops, and the skill halts — cheap by eight basis points, waiting. No verdict on what to trade; that's the design choice.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR -- a ten-year corporate bond traveling priced -> curve read -> spread decomposed -> stress run, then stopping"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR -- one bond, four stops",
+     "mechanic": "THE ANCHOR. Four stacked cards labelled 'PRICED', 'CURVE READ', 'SPREAD DECOMPOSED', 'STRESS RUN'. A single highlighted token '10Y CORP +40BP' travels down through all four cards in turn, each lighting as it arrives. At the bottom, the token halts beside a label 'read: cheap 8bp -- waiting'. THIS EXACT COMPOSITION RETURNS, PAID OFF, AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "BRVB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T08:01:40"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "The read is built — priced, curved, spread-decomposed, stress-tested. Now name the trade-offs. Cheap by the read isn't the same as worth buying: the read only reflects the curve you fed it, and a stale curve gives you a wrong read with the same confidence as a right one. Rich by the read isn't automatically avoid it: the stress scenario can still favor holding. This works if you value repeatable, auditable numbers; it fails if you need the skill to compensate for a bad input or make the call itself.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS, resting at the read; splits into 'cheap is not worth buying' and 'rich is not avoid it'"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS -- read, then split",
+     "mechanic": "THE B02 FOUR-CARD COMPOSITION RETURNS, identical placement, the token resting at the 'STRESS RUN' card beside 'read: cheap 8bp'. It shrinks and slides up. Two cards fade in beneath: left reads 'CHEAP: 8BP' with a checkmark, then a struck-through 'WORTH BUYING?' beneath it, labelled 'cheap is not worth buying'; right reads 'RICH' beside a faint 'stress favors holding' note, labelled 'rich is not avoid it'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "BRVB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T08:01:40"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A rich-or-cheap read isn't Claude's call on what to buy — it's a computed number, built from price, the curve, the spread, and a stress test, waiting for the person who has to defend the trade.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A rich-or-cheap read isn't Claude's call on what to buy — it's a computed number, built from price, the curve, the spread, and a stress test, waiting for the person who has to defend the trade.",
+      "attribution": "",
+      "sparkLine": "Computed and waiting, not judged."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T08:01:40"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE — your turn handoff",
+   "narration_text": "Your turn. Paste this into Claude. Give it one bond — coupon, maturity, current price — and one yield curve as a series of maturities and yields. Ask it to run the bond-relative-value skill: decompose the spread over the curve, then stress-test it against a hundred-basis-point parallel shift. Then swap in a different curve for the same bond and watch how much the read moves. Go deeper: ask Claude what would make the second read the wrong one to trust. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "BOND-RELATIVE-VALUE · ANTHROPIC SKILL",
+      "segment": "Your Turn",
+      "command": "Give me one bond — coupon, maturity, current price — and one yield curve as a series of maturities and yields. Run the bond-relative-value skill: decompose the spread over the curve, then stress-test it against a hundred-basis-point parallel shift. Then swap in a different curve for the same bond and show me how much the read moves. Go deeper: what would make the second read the wrong one to trust?",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T08:01:40"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "How Does Claude Tell Whether a Bond Is Rich or Cheap? Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "How Does Claude Tell Whether a Bond Is Rich or Cheap? Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T08:01:40"
+   }
+  }
+ ]
+}

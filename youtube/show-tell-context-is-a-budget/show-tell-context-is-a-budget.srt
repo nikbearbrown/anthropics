@@ -1,0 +1,155 @@
+1
+00:00:00,000 --> 00:00:04,539
+Ciao. This is Liam, in for Bear. When an agent loses the thread, the instinct is to
+
+2
+00:00:04,559 --> 00:00:09,366
+give it more. So don't ask how to give your agent more context. Ask how to give it
+
+3
+00:00:09,386 --> 00:00:10,170
+the right context.
+
+4
+00:00:10,240 --> 00:00:14,286
+Three terms. The context window: everything the model sees at once, from
+
+5
+00:00:14,306 --> 00:00:19,030
+instructions and tools to history and data. Context rot: as that window fills, the
+
+6
+00:00:19,050 --> 00:00:23,096
+model recalls what's in it less accurately. And context engineering: choosing what
+
+7
+00:00:23,116 --> 00:00:25,807
+goes in, every time the model is called.
+
+8
+00:00:25,877 --> 00:00:30,926
+Picture the context window as a tray. Everything the model sees has to fit in it:
+
+9
+00:00:30,946 --> 00:00:35,044
+the instructions, the tools, the message history, and any data it pulls in.
+
+10
+00:00:35,114 --> 00:00:40,264
+An agent working in a loop keeps adding to it. Every tool call, every result, lands
+
+11
+00:00:40,284 --> 00:00:45,110
+in the tray. But more isn't better. As the tray fills, the model recalls what's
+
+12
+00:00:45,130 --> 00:00:47,695
+inside less accurately. Anthropic calls this context rot.
+
+13
+00:00:47,765 --> 00:00:52,518
+Why? Attention is a budget. Every token attends to every other token, so n tokens
+
+14
+00:00:52,538 --> 00:00:56,655
+make n squared pairs. Add more, and each one gets a thinner share.
+
+15
+00:00:56,725 --> 00:01:01,481
+So the goal is the smallest set of high-signal tokens that gets the job done. A
+
+16
+00:01:01,501 --> 00:01:05,958
+clear prompt. A few tools that don't overlap. A handful of good examples, not a
+
+17
+00:01:05,978 --> 00:01:07,450
+laundry list of edge cases.
+
+18
+00:01:07,520 --> 00:01:11,287
+Next, don't load everything up front. Keep lightweight references, like file paths
+
+19
+00:01:11,307 --> 00:01:16,020
+and links, and load the data just in time. Claude Code does this, using commands
+
+20
+00:01:16,040 --> 00:01:20,122
+like head and tail to read big data without loading all of it.
+
+21
+00:01:20,192 --> 00:01:24,553
+Long tasks outgrow any tray, and Anthropic describes three fixes. First, compaction.
+
+22
+00:01:24,573 --> 00:01:29,299
+Near the limit, the history gets summarized. In Claude Code, that keeps decisions
+
+23
+00:01:29,319 --> 00:01:34,046
+and unresolved bugs, and drops redundant tool outputs. Then a fresh window starts
+
+24
+00:01:34,066 --> 00:01:35,141
+from the summary.
+
+25
+00:01:35,211 --> 00:01:39,664
+Second, structured note-taking. The agent writes notes to a file outside the window,
+
+26
+00:01:39,684 --> 00:01:44,826
+like a to-do list. After the context resets, it reads them back and carries on.
+
+27
+00:01:44,896 --> 00:01:49,595
+Third, sub-agents. The main agent keeps the plan and hands focused jobs to
+
+28
+00:01:49,615 --> 00:01:54,315
+sub-agents with clean windows. Each may use tens of thousands of tokens exploring,
+
+29
+00:01:54,335 --> 00:01:58,671
+but returns only a condensed summary, often one to two thousand tokens.
+
+30
+00:01:58,741 --> 00:02:03,609
+Whichever you use, the rule is the same. Context is a budget. Spend it on the
+
+31
+00:02:03,629 --> 00:02:06,970
+smallest set of high-signal tokens that gets the next step right.
+
+32
+00:02:07,040 --> 00:02:11,360
+Your turn. Paste this into Claude: Here's a long task I run with an AI agent:
+
+33
+00:02:11,380 --> 00:02:15,158
+[describe it in two sentences]. List everything that lands in its context. Mark each
+
+34
+00:02:15,178 --> 00:02:19,498
+item: keep, load only when needed, compact, move to a notes file, or hand to a
+
+35
+00:02:19,518 --> 00:02:23,296
+sub-agent. Then write the summary you'd keep if the context reset right now. Then
+
+36
+00:02:23,316 --> 00:02:27,636
+check two things yourself. For each item you kept, does the next step use it? If
+
+37
+00:02:27,656 --> 00:02:31,976
+not, cut it. And paste only the summary into a fresh chat. Can Claude say what's
+
+38
+00:02:31,996 --> 00:02:33,061
+done and what's next?
+
+39
+00:02:33,131 --> 00:02:37,218
+Context Is a Budget. At Nik Bear Brown.

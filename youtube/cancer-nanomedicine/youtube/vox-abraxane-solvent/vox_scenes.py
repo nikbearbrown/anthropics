@@ -14,14 +14,16 @@ manufacturing scale-up.
 Gate B: every zero-width stroke is also zero-opacity.
 """
 import sys, json, os, pathlib
-# vox_graphics.py lives in the toolkit at books/vox/aspects/explainer/vox-explainer/manim/
-# This reel is at books/cancer-nanomedicine/youtube/vox-abraxane-solvent/
-# So resolve 3 parents up (to books/) then into vox/aspects/explainer/vox-explainer/manim
-_HERE = pathlib.Path(__file__).resolve().parent
-_BOOKS = _HERE.parents[2]   # books/
-_GFX_DIR = _BOOKS / "vox" / "aspects" / "explainer" / "vox-explainer" / "manim"
-if str(_GFX_DIR) not in sys.path:
-    sys.path.insert(0, str(_GFX_DIR))
+# Walk up from this file looking for books/vox/aspects/explainer/vox-explainer/manim
+# (reels can sit at any depth under a book — the hard-coded parents[2] was fragile)
+_here = pathlib.Path(__file__).resolve()
+for _p in _here.parents:
+    _cand = _p / "vox" / "aspects" / "explainer" / "vox-explainer" / "manim"
+    if _cand.is_dir() and (_cand / "vox_graphics.py").exists():
+        sys.path.insert(0, str(_cand))
+        break
+else:
+    raise ImportError("vox_graphics.py not found walking up from " + str(_here))
 from vox_graphics import *   # noqa: F401,F403
 from vox_graphics import _quote_scene
 

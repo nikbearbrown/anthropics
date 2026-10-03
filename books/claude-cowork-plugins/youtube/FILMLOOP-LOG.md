@@ -156,3 +156,54 @@ H01 narration: 3.86 wps — above the 2.0–3.4 wps window. Advisory only; will 
 
 21/30 beats (70%) carried by Remotion — over the ~40% advisory cap. No hard-fail; logged for future refactor.
 
+
+---
+
+## 2026-08-30 (later) — claude-liam-troubleshooting  (film-factory follow-up)
+
+**Slug:** `claude-liam-troubleshooting`
+**Result:** DONE. Master `claude-liam-troubleshooting.mp4` 306.6s (5:07), 4K, aac.
+**Sheet:** `beat_sheet.json` @ 12:46:24 · **Master:** @ 12:51:41 (newer ✓).
+
+### Checks fixed this pass
+- **§5c BHTF placeholder** — bracket-template command, empty `output`, empty
+  `narration_text`. Authored a real DIY exercise (open `/plugins`, toggle a
+  plugin off then on — the "toggle move"), 3 real output lines, spoken
+  narration. Distinct from H01's paste-into-Claude ask.
+- **§11 GATE T** — 3 FAILs surfaced now that the Manim beats have real video
+  (they were SKIP in the Aug-26 typecheck):
+  - B02 (min-size 8px < 13px): Scene_B02 label font_sizes bumped 18→26/28→32,
+    " · " → " — " to defeat sub-floor mid-dot blobs.
+  - B10 (kerning 89px > 1px): Scene_B10 boxes grew, digit font 34→44, label
+    font 20→32, shortened "Simpler request"/"Restart Cowork" to one-word
+    labels so inter-word gaps don't feed the inter-glyph check.
+  - B08 (min-size 37px < 41px): FormACard 3 lines with "→" arrows → 2 lines
+    without. Unicode arrow was rendering as sub-glyph strokes.
+- After fixes: **GATE T: PASS** (0 pixel, 0 sweep, 0 shape).
+
+### Punts authored / stripped
+None this pass. Aug-26 pass already replaced 5× DoodleScene punts with
+FormACards and 1 ClaudeCodeBeat prose punt with FormACard — see
+REBUILD-LOG.md §3–§4.
+
+### Verdict
+Already authored 2026-08-26 (REBUILD-LOG.md §1). Not touched this pass;
+`verdict_audit.py` clean for this reel.
+
+### Duration
+306.6 s = 5:06.6 (master cut).
+
+### Gate V
+- content-check + frame-check + lane-check all PASS on 27 beats.
+- `build.status` Counter: `{'VIDEO': 27}`; `metadata.build.slates = []`.
+- Spot-checked frames of the 4 changed beats (B02, B08, B10, BHTF): text
+  legible at native 4K, brand palette intact, no overflow, layout clean.
+- **GATE AUDIO: PASS** — mean_volume −25.3 dB (floor: −40 dB).
+- Motion histogram `remotion:22  graphic:5` (81% Remotion — same shape as
+  Aug-26; over the 40% MOTION.md cap but 5 Remotion beats are required
+  bookends and 4 are required SegmentCards; body ratio is more balanced).
+- Cut mtime 12:51:41 > sheet mtime 12:46:24 → DONE-check satisfied.
+
+### Downgrade / justification
+None. Zero validators loosened. Every FAIL fixed at the source (font_size
+bumps, label shortening, glyph replacement, no strict-mode disable).

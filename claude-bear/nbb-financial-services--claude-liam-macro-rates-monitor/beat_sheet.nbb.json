@@ -1,0 +1,290 @@
+{
+ "metadata": {
+  "title": "Does Claude's Macro Rates Dashboard Predict Where Rates Are Headed?",
+  "slug": "financial-services--claude-liam-macro-rates-monitor",
+  "topic": "MACRO-RATES-MONITOR · ANTHROPIC SKILL",
+  "purpose": "Take the macro-rates-monitor skill apart in the Teardown register. Show the actual machinery — four named inputs (macro indicators, yield curves, inflation breakevens, swap rates) pulled once and walked through in fixed order, each block reading only the definition the file gives it — and name the design choice: reproducible mechanical combination at the expense of any original forecast. Lands the carry-out that a finished dashboard means the combination ran correctly, not that reality will follow it.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-macro-rates-monitor/beat_sheet.json",
+  "source_note": "Source sheet's narration already carries real skill-specific facts (not unfilled template placeholders) -- see QUESTION.md. Facts preserved: macro-rates-monitor builds macroeconomic and rates dashboards combining four named inputs -- macro indicators, yield curves, inflation breakevens, swap rates -- used for monitoring macro conditions, yield curve shape, real vs nominal decomposition, policy rate expectations, financial conditions. Register re-registered Teardown -> Plain; source's B03 design-tell verdict became a plain mechanism + both-directions beat; a wrong-guess beat and an anchor (one data package traveling through all four inputs to a finished dashboard) were added per hai-simple's Phase 1 structure, since the source's Teardown shape carried neither.",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (one data package: INDICATORS -> YIELD CURVE -> BREAKEVENS -> SWAP RATES, in order, then resting at DASHBOARD)",
+  "build": {
+   "at": "2026-09-02T01:31:25",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "'Claude's macro rates dashboard' — sounds like Claude forecasts where rates head next. It doesn't. The skill runs a fixed combination on four named inputs. Liam, in for Bear — let's take the file apart.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Can Claude predict where rates go?', hesitates on 'predict', corrects to 'combine four indicators about', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Can Claude\npredict\nwhere rates go?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "predict",
+      "replacementWords": "combine four indicators about",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-macro-rates-monitor"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('predict' -> 'combine four indicators about') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T01:31:25"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "The natural reading of 'macro rates dashboard' is that Claude is doing economics — reading the data, forming a view, calling where rates head next. That's not what's happening. What's on the page is a mechanical spec: four named inputs — macro indicators, the shape of the yield curve, inflation breakevens, swap rates — combined by relationships that are already defined for them, like decomposing a yield into its real and nominal halves. Ask instead 'what will the central bank actually do next quarter,' and the machinery has nothing to run — that call isn't one of the four things the file combines. They optimized for reproducible combination; the price is any original forecast.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 25,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "An analyst forecasting, struck; a four-input combination chain, lit"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Forecast, struck -- four inputs combined, lit",
+     "mechanic": "Left: a card labelled 'FORECAST' with a figure guessing an arrow up or down. Right: a card labelled 'FOUR INPUTS, COMBINED' listing three grouped lines. The forecast side dims and gets a terracotta strike; the four-input side stays lit. A final line reads 'central bank's next move -- can't run' and the chain does not reach for it.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "MRB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T01:31:25"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "Here's what's actually happening inside the file. Four blocks, wired in order: macro indicators first, then the shape of the yield curve, then inflation breakevens — the market's own implied inflation number, priced off nominal against inflation-protected yields — then swap rates. Watch the anchor: one pull of market data walks down through all four blocks in sequence before it arrives at the dashboard. Every block reads only from the definition the file hands it — no reaching for outside context, no filling in gaps by guessing. The design choice worth naming: they built it to be identical every run, at the cost of ever being clever.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR -- one data package traveling through INDICATORS -> YIELD CURVE -> BREAKEVENS -> SWAP RATES, in order, to DASHBOARD"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR -- one package, four inputs",
+     "mechanic": "THE ANCHOR. Four stacked cards labelled 'INDICATORS', 'YIELD CURVE', 'BREAKEVENS', 'SWAP RATES', plus a fifth 'DASHBOARD' card at the bottom. A single highlighted token 'MARKET DATA PULL' travels down through the four cards in turn, each lighting as it arrives, never skipping ahead of an unlit card, then arrives at DASHBOARD. THIS EXACT COMPOSITION RETURNS, PAID OFF, AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "MRB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T01:31:25"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "The package comes out the other side as a finished dashboard, but pay attention to what that actually proves. It proves the four blocks combined the way the file says to combine them — nothing skipped, nothing improvised. It does not prove the economic read on the far side will hold up: a breakeven computed exactly right can still turn out to be a poor predictor of the actual inflation that arrives. And going the other direction — if swap-rate data isn't available for a region and that block can't populate, that's a data gap in the pipe, not evidence the other three blocks are wrong. Two claims, one machinery — ran-correctly and reads-reality are not the same claim.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 27,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS, resting at DASHBOARD; splits into 'ran is not sound' and 'missing is not wrong'"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS -- dashboard, then split",
+     "mechanic": "THE B02 FOUR-CARD COMPOSITION RETURNS, identical placement, the token resting at the 'DASHBOARD' card. It shrinks and slides up. Two cards fade in beneath: left reads 'RAN: BREAKEVEN' with a checkmark, then a struck-through 'SOUND?' beneath it, labelled 'ran is not sound'; right reads 'MISSING: SWAP RATES' beside a faint 'data gap, not wrong' note, labelled 'missing is not wrong'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "MRB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T01:31:25"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A macro rates dashboard from Claude isn't an original economic call -- it's four named inputs, macro indicators, yield curve, breakevens, and swap rates, combined by one fixed, repeatable procedure. A finished dashboard means the combination ran correctly, not that reality will follow it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A macro rates dashboard from Claude isn't an original economic call — it's four named inputs, macro indicators, yield curve, breakevens, and swap rates, combined by one fixed, repeatable procedure. A finished dashboard means the combination ran correctly, not that reality will follow it.",
+      "attribution": "",
+      "sparkLine": "Combined, not forecast."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T01:31:25"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini. Pick a country or region you follow. Ask the model to pull together a mock macro rates read that combines four inputs — macro indicators, the shape of the yield curve, inflation breakevens, swap rates — and have it show you the definition it's using for each one, in plain English, before it combines them. Then ask what the central bank will actually do at its next meeting, and watch which parts of that question the combination can and cannot answer. Go deeper: after the read, ask which piece of the dashboard would move most if the market suddenly repriced the central bank's next move — that's the seam where mechanical combination stops and forecasting judgment would have to begin. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 46,
+   "llm_exercise": {
+    "prompt": "I want to see how a macro rates read gets built by combining named inputs instead of forecasting. Pick a country or region — I'll fill it in — and pull together a mock macro rates read that combines four inputs: macro indicators, the shape of the yield curve, inflation breakevens (the market's implied inflation number, priced off nominal yields against inflation-protected yields), and swap rates. Before you combine them, show me the definition you're using for each of the four, in plain English. Then combine them into one paragraph read of current conditions. Finally, tell me what the central bank will actually do at its next meeting, and — separately — show me which parts of that question the four-input combination can and cannot answer.",
+    "dig_deeper": "Go deeper: after the read, ask the model which piece of the dashboard would move most if the market suddenly repriced the central bank's next move — that's the seam where mechanical combination stops and forecasting judgment would have to begin."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "MACRO-RATES-MONITOR · ANTHROPIC SKILL",
+      "segment": "Your Turn",
+      "command": "Pick a country or region I follow and pull together a mock macro rates read that combines four inputs: macro indicators, the shape of the yield curve, inflation breakevens, and swap rates. Show me the definition you're using for each one, in plain English, before you combine them. Then tell me what the central bank will actually do at its next meeting, and — separately — show me which parts of that question the combination can and cannot answer.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T01:31:25"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Does Claude's Macro Rates Dashboard Predict Where Rates Are Headed? Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Does Claude's Macro Rates Dashboard Predict Where Rates Are Headed? Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T01:31:25"
+   }
+  }
+ ]
+}

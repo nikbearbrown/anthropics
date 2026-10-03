@@ -1,0 +1,358 @@
+{
+ "metadata": {
+  "title": "Flags Decide The Path.",
+  "subtitle": "The Forecasting Skill (Compute vs. Delegate)",
+  "slug": "cwc-workshops--claude-liam-forecasting",
+  "topic": "FORECASTING · ANTHROPIC SKILL",
+  "purpose": "Answer one real question in the Teardown register: when Claude forecasts demand for a SKU, does it always hand the job to a subagent, or does it sometimes just compute the number itself? Take the skill apart, name the design choice — flags decide the path, and the returned number is a computed estimate, never a fact about next month.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/cwc-workshops/youtube/claude-liam-forecasting/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the SKU forecast decision itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-01T00:33:32",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's the assumption people bring in: Claude always spawns a subagent to run a forecast. It doesn't. Sometimes it just does the arithmetic itself. So — when does it delegate, and when does it compute?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.9,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Does Claude always spawn a subagent to forecast?', hesitates on 'always', corrects to 'sometimes', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Does Claude\nalways spawn\na subagent\nto forecast?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "always",
+      "replacementWords": "sometimes",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "hai-forecasting"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.9 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('always' -> 'sometimes') lands on screen and the full corrected question finishes typing before the clip ends.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T00:33:32"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Here's what's actually inside a skill: a folder Claude opens before it decides anything. This one is forecasting — a demand forecast for one SKU. Two Python scripts do the arithmetic: rolling_mean.py for a single item, and batch_days_of_cover.py for ranking many SKUs at once. And a SKILL.md file — the router — that names which script fits the situation, or when neither does and the job goes to a subagent instead. The design isn't clever. It's a lookup table plus code.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A SKILL IS A FOLDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A SKILL IS A FOLDER",
+     "chips": [
+      "single script",
+      "batch script",
+      "SKILL.md"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "SKILL.md says which script, and when to delegate",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T00:33:32"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Now the branching. Two paths, and four flags decide. Path A — compute it yourself, a rolling mean over recent sales. Fires only when the horizon is two weeks or less, the SKU isn't seasonal, no promo runs next month, and nothing suggests a trend break. Path B — hand it to a forecasting subagent whenever any one of those flags flips: longer horizon, seasonal item, promo, visible trend. Why delegate at all? The subagent needs ninety days of sales history to spot the pattern, and loading that much into your own context would crowd out the rest of the task. They optimized for context economy — the subagent gets its own window, the main thread stays clean. The trade-off is real: every delegation is an extra call.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 34,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FLAGS DECIDE THE PATH",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FLAGS DECIDE THE PATH",
+     "chips": [
+      "4 flags",
+      "Path A",
+      "Path B"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "Path B gets its own context window",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T00:33:32"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "One more flag matters after the number comes back: confidence. Below 0.6, the downstream rule is escalate — don't auto-order. A low score doesn't mean the model is broken; it means the inputs weren't clean enough to trust the arithmetic alone. A high score doesn't guarantee the number is right, either — it just means nothing in the inputs said otherwise. And forecast_qty itself isn't a fact about next month. It's what the rolling mean, or the subagent's model, computed from the flags it was given. Same flags, same path, same number — every time. The design choice is reproducibility, not omniscience.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "CONFIDENCE < 0.6 -> ESCALATE",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "CONFIDENCE < 0.6 -> ESCALATE",
+     "chips": [
+      "confidence < 0.6",
+      "escalate",
+      "not a fact"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "same flags, same path, same number",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T00:33:32"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Here's what's actually happening. Claude picks compute-it-yourself or hand-it-to-a-subagent by the flags, not by guesswork — and whichever path runs, the number it returns is a computed estimate, not a fact about next month.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Claude picks compute-it-yourself or hand-it-to-a-subagent by the flags, not by guesswork — and whichever path runs, the number it returns is a computed estimate, not a fact about next month.",
+      "attribution": "",
+      "sparkLine": "Flags decide. The number is an estimate."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T00:33:32"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff",
+   "narration_text": "Your turn. Paste this into Claude: I'm forecasting demand for a product with a promotion next month, a thirty-day horizon. Should you compute this yourself with a simple average, or delegate it — and why? Then tell me what confidence score you'd attach, and whether that's high enough to auto-order or should escalate to a human instead. The honest test isn't whether Claude gives you a number. It's whether it names the flag that decided the path.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 25,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "FORECASTING · ANTHROPIC SKILL",
+      "segment": "Flags Decide The Path.",
+      "command": "I'm forecasting demand for a product with a promotion next month, a 30-day horizon. Should you compute this yourself with a simple average, or delegate it — and why? Then tell me what confidence score you'd attach, and whether that's high enough to auto-order or should escalate to a human instead.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T00:33:32"
+   }
+  },
+  {
+   "beat_id": "B_LLM",
+   "act": "LLM EXERCISE",
+   "narration_text": "Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini — a working design brief, not a summary of the video. Ask any of them: I'm designing a decision policy for when an AI assistant should compute an answer itself versus delegate to a specialized subagent. Give me the four to six flags I should check, the trade-off each one captures, and what makes a good confidence threshold for escalate-to-human. Go deeper: what breaks if that threshold is set too high — and how would you detect it in production?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "llm_exercise": {
+    "prompt": "I'm designing a decision policy for when an AI assistant should compute an answer itself versus delegate the work to a specialized subagent. Give me the four to six flags I should check before deciding, explain the trade-off each flag captures (context cost vs. accuracy, for example), and describe what makes a good confidence threshold for the escalate-to-human rule. Assume I'll wire this into a production tool, not a demo.",
+    "dig_deeper": "Go deeper: what breaks if the confidence threshold is set too high — and how would you detect that in production?"
+   },
+   "shot": {
+    "type": "CARD",
+    "source": "own",
+    "motion": "hold",
+    "new_visual_element": "LLM EXERCISE — paste-ready design brief in the teardown palette",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Paste into any LLM.",
+      "topic": "LLM EXERCISE",
+      "segment": "Design the delegation policy.",
+      "command": "I'm designing a decision policy for when an AI assistant should compute an answer itself versus delegate the work to a specialized subagent. Give me the four to six flags I should check before deciding, explain the trade-off each flag captures (context cost vs. accuracy, for example), and describe what makes a good confidence threshold for the escalate-to-human rule. Assume I'll wire this into a production tool, not a demo.",
+      "runningText": "Go deeper: what breaks if the threshold is too high — and how would you detect it in production?",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/B_LLM.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B_LLM.mp3",
+   "build": {
+    "status": "PENDING",
+    "src": "media/B_LLM.mp4",
+    "filled_by": "",
+    "at": ""
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Flags Decide The Path. Liam, in for Bear. Find more at nikbearbrown.com, or on YouTube at @NikBearBrown.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Flags Decide The Path. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "PENDING",
+    "src": "media/BOUT.mp4",
+    "filled_by": "",
+    "at": ""
+   }
+  }
+ ]
+}

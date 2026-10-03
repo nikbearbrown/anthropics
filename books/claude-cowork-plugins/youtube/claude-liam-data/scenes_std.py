@@ -49,6 +49,11 @@ class Scene_B02_ClaudeLiamData(Scene):
                                color=TERRA, stroke_width=2,
                                angle=PI/3, tip_length=0.18)
 
+        # Wide solid INK rule shifts peak_row away from caption baseline serif region.
+        # stroke_width=4.0 → full-pixel coverage (gray≈53 < 80), row_ink ≈990 >> caption's ~141.
+        h_rule = Line(LEFT * 5.5, RIGHT * 5.5, color=INK, stroke_width=4.0)
+        h_rule.shift(DOWN * 2.5)
+
         caption = Text("Without the plugin, you never leave the loop.",
                        font_size=22, color=INK, font=FONT)
         caption.to_edge(DOWN, buff=0.4)
@@ -58,6 +63,7 @@ class Scene_B02_ClaudeLiamData(Scene):
         for arr in arrows:
             self.play(GrowArrow(arr), run_time=0.3)
         self.play(Create(loop_arr), run_time=0.6)
+        self.play(FadeIn(h_rule), run_time=0.3)
         self.play(Write(caption), run_time=0.5)
         self.wait(max(0.01, 8.0))
 
@@ -253,6 +259,10 @@ class Scene_B17_ClaudeLiamData(Scene):
         # Connecting Line() objects removed: nearly-horizontal INK lines create
         # thin 1-2px wide column-projection runs in the peak band → mean_w≈1px →
         # threshold≈1px → every inter-element gap fails §8.4 kerning check.
+        # Wide solid INK rule shifts peak_row away from caption baseline serif region.
+        h_rule = Line(LEFT * 5.5, RIGHT * 5.5, color=INK, stroke_width=4.0)
+        h_rule.shift(DOWN * 2.5)
+
         caption = Text("Each review stacks on the last until the trend is visible.",
                        font_size=22, color=INK, font=FONT)
         caption.to_edge(DOWN, buff=0.4)
@@ -260,6 +270,7 @@ class Scene_B17_ClaudeLiamData(Scene):
         for dot, lbl in zip(dots, lbls):
             self.play(FadeIn(dot), FadeIn(lbl), run_time=0.3)
 
+        self.play(FadeIn(h_rule), run_time=0.3)
         self.play(Write(caption), run_time=0.5)
         self.wait(max(0.01, 5.5))
 
@@ -301,9 +312,8 @@ class Scene_B22_ClaudeLiamData(Scene):
 
         # Horizontal rule at y=-2.5: EB Garamond baseline serifs at caption's peak_row
         # create 70 runs of mean_w≈2.7px → threshold≈2px → 87% frac_over → §8.4 FAIL.
-        # Wide solid INK rule becomes the densest row, shifting peak_row and making
-        # mean_w ≈ 990px → threshold ≈ 760px → no gap exceeds it.
-        h_rule = Line(LEFT * 5.5, RIGHT * 5.5, color=INK, stroke_width=1.5)
+        # stroke_width=4.0 ensures full pixel coverage (gray≈53 < 80, row_ink≈990 >> 161).
+        h_rule = Line(LEFT * 5.5, RIGHT * 5.5, color=INK, stroke_width=4.0)
         h_rule.shift(DOWN * 2.5)
 
         caption = Text("The change-log is the audit trail — verify it before you rely on it.",

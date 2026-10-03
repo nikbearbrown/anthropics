@@ -8,13 +8,13 @@
 | pix_fmt | yuv420p |
 | audio_streams | 1 |
 | video_codec | h264 |
-| duration_s | 199.518 |
+| duration_s | 199.529 |
 | is_short | False |
 | failures | 0 |
 | verdict | **PASS** |
 
 ## Notes
 
-- duration: 199.518s  expected=199.510s  drift=0.008s ✓
+- duration: 199.529s  expected=199.510s  drift=0.019s ✓
 
 GATE MASTER: PASS

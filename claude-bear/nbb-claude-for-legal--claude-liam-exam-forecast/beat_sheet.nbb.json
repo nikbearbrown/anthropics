@@ -1,0 +1,566 @@
+{
+ "metadata": {
+  "title": "Claude, Exam Forecast.",
+  "subtitle": "What an Exam-Forecast Skill Actually Promises",
+  "slug": "claude-for-legal--claude-liam-exam-forecast",
+  "topic": "CLAUDE SKILLS · EXAM FORECAST",
+  "purpose": "Take apart what an exam-forecast skill actually is: a counting mechanism run against public course material, output as a ranked list. Lands the carry-out that it doesn't show you the exam — it reorders your study time.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/claude-for-legal/youtube/claude-liam-exam-forecast/beat_sheet.json",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B07 (a ranked three-slot list: planted blank, then filled in)",
+  "one_flag": "B06 (the forecast only works where a pattern already exists)",
+  "build": {
+   "at": "2026-08-30T02:15:44",
+   "cut": "master",
+   "filled": 13,
+   "of": 13,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Newcomer assumption: Claude reads the textbook, tells you exactly what's on the exam. It can't — it ranks topics by likelihood. Different machine entirely. So what does exam-forecast really promise? Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Claude reads my textbook and tells me EXACTLY what's on the exam.', hesitates on 'exactly', corrects to 'roughly', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude reads my textbook\nand tells me exactly\nwhat's on the exam.\nWhat does it really promise?",
+      "face": "serif",
+      "fontSize": 74,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "exactly",
+      "replacementWords": "roughly",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 12,
+      "charMs": 46,
+      "jitter": 26,
+      "seed": "hai-exam-forecast"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 30-35 word narration + lead_silence_s 0.8 gives the typing a wide window; verify media/B00.mp4 >= 8s and that the correction ('exactly' -> 'roughly') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T02:15:44"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes",
+   "narration_text": "Here's what's actually happening at finals: fourteen weeks of reading compressed into days. Read it sequentially from page one and the clock runs out before the content does. Something has to give — either you skip material, or you reorder it. Reorder is the interesting choice.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NOT ENOUGH TIME TO REREAD",
+    "media": "manim/B01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NOT ENOUGH TIME TO REREAD",
+     "chips": [
+      "14 WEEKS OF READING",
+      "DAYS LEFT TO STUDY"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "time runs out before content does",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "EFB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T02:15:44"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "4 ANCHOR PLANTED",
+   "narration_text": "Concrete case. Contracts final, three weeks out. Feed the skill two files — your syllabus and every past exam you can find — and it hands back a ranked list. Three slots. Topic one, two, three. Empty for now; the mechanism goes here.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — three blank ranked slots",
+    "media": "manim/B02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — A RANKED LIST",
+     "chips": [
+      "TOPIC 1?",
+      "TOPIC 2?",
+      "TOPIC 3?"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "what your Contracts final forecast will look like",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "EFB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T02:15:44"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "2 wrong guess",
+   "narration_text": "The intuitive read on the word 'forecast': Claude somehow saw this year's exam and is handing you the real questions early. If that were the mechanism, it would be a leak, not a forecast. Different failure mode, different word.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ASSUMPTION",
+    "media": "manim/B03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ASSUMPTION",
+     "chips": [
+      "SEEN THE REAL EXAM?"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "a reasonable guess — and wrong",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "EFB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T02:15:44"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "2 BREAK IT",
+   "narration_text": "It hasn't and it can't — the professor's exam file sits behind their own login until exam day. The forecast reads something else entirely: the material that's already public. Your syllabus. Old exams. The pattern was there the whole time. The skill just counts it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "ONE IS LOCKED, ONE IS PUBLIC",
+    "media": "manim/B04.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "ONE IS LOCKED, ONE IS PUBLIC",
+     "chips": [
+      "THIS YEAR'S EXAM",
+      "SYLLABUS, PAST EXAMS"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [
+      0
+     ],
+     "caption": "the forecast comes from what's already public",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "EFB04Scene"
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T02:15:44"
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "3 mechanism",
+   "narration_text": "Here's what a Skill actually is: a folder Claude reads before it does the work. Inside is SKILL.md — the recipe. Three steps, in order. Gather the sources you fed in. Count how often each topic showed up on past exams. Rank what's left. Instructions as a plain markdown file, not as code.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 19,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "HOW THE SKILL WORKS",
+    "media": "manim/B05.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "HOW THE SKILL WORKS",
+     "chips": [
+      "SKILL.md",
+      "GATHER SOURCES",
+      "COUNT PAST TOPICS",
+      "RANK WHAT'S LEFT"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "the file is the instructions, run in order",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "EFB05Scene"
+   },
+   "audio_file": "mp3/beat-B05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B05.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T02:15:44"
+   }
+  },
+  {
+   "beat_id": "B06",
+   "act": "3 ONE FLAG",
+   "narration_text": "One flag on the whole thing. It only works where a pattern already exists. A brand-new course leaves nothing to count. A professor who rewrites the format every year has erased the pattern on purpose. They optimized the exam for teaching, not for prediction — and prediction is exactly what the forecast needs. No history, no forecast.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 19,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ONE FLAG",
+    "media": "manim/B06.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ONE FLAG",
+     "chips": [
+      "A COURSE WITH A RECORD",
+      "A BRAND-NEW COURSE"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [
+      1
+     ],
+     "caption": "no history, no forecast",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "EFB06Scene"
+   },
+   "audio_file": "mp3/beat-B06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B06.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T02:15:44"
+   }
+  },
+  {
+   "beat_id": "B07",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "Back to the Contracts final. Same three slots, now filled. Consideration doctrine first — it's been on the exam four of the last five years. Statute of frauds second. Then the narrower exceptions. The output is a ranked list because the input was a count. The shape of the answer tracks the shape of the question.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — same three slots, filled in",
+    "media": "manim/B07.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — THE RANKED LIST",
+     "chips": [
+      "1. CONSIDERATION",
+      "2. STATUTE OF FRAUDS",
+      "3. THE EXCEPTIONS"
+     ],
+     "arrows": false,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "ranked by pattern, not memorized answers",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "EFB07Scene"
+   },
+   "audio_file": "mp3/beat-B07.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B07.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T02:15:44"
+   }
+  },
+  {
+   "beat_id": "B08",
+   "act": "5 DIRECTION A",
+   "narration_text": "Ranked first doesn't mean guaranteed. Consideration doctrine could still sit out this particular year — a pattern is exactly the kind of thing that can break once. The forecast is a probability, judged from the past. Not a certainty about the future.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "RANKED FIRST ISN'T GUARANTEED",
+    "media": "manim/B08.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "RANKED FIRST ISN'T GUARANTEED",
+     "chips": [
+      "RANKED FIRST",
+      "STILL MIGHT NOT APPEAR"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "a pattern, not a promise",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "EFB08Scene"
+   },
+   "audio_file": "mp3/beat-B08.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B08.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T02:15:44"
+   }
+  },
+  {
+   "beat_id": "B09",
+   "act": "5 DIRECTION B",
+   "narration_text": "And ranked low doesn't mean safe to skip. The bottom of the list is still on the list — a low-ranked topic can be exactly the curveball the professor uses to see who actually read. The forecast reorders your study time. It never deletes a topic from the exam.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "RANKED LOW ISN'T SAFE TO SKIP",
+    "media": "manim/B09.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "RANKED LOW ISN'T SAFE TO SKIP",
+     "chips": [
+      "RANKED LAST",
+      "STILL COULD BE ON THE PAGE"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "the list re-orders study time, it never deletes a topic",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "EFB09Scene"
+   },
+   "audio_file": "mp3/beat-B09.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B09.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T02:15:44"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Exam forecast doesn't show you the exam. It shows you where the class has been leaning — a rank order for your study time, not a shortcut past it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Exam forecast doesn't show you the exam. It shows you where the class has been leaning — a rank order for your study time, not a shortcut past it.",
+      "attribution": "",
+      "sparkLine": "Study in the right order."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T02:15:44"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I have a final in three weeks. Here's my syllabus and reading list — read them. Then, if I share past exams for the course, count how often each topic has appeared. Rank what's left by how often it's actually been tested, and tell me where to start studying first. Go deeper: take the top-ranked topic and give me a one-week study plan that reflects exactly how it's been tested before.",
+   "llm_exercise": {
+    "prompt": "I have a final in three weeks. Here's my syllabus and reading list — read them. Then, if I share past exams for the course, count how often each topic has appeared. Rank what's left by how often it's actually been tested, and tell me where to start studying first.",
+    "dig_deeper": "Go deeper: take the top-ranked topic and give me a one-week study plan that reflects exactly how it's been tested before."
+   },
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE SKILLS · EXAM FORECAST",
+      "segment": "Claude, Exam Forecast.",
+      "command": "I have a final in three weeks. Here's my syllabus and reading list — read them. Then, if I share past exams for the course, count how often each topic has appeared. Rank what's left by how often it's actually been tested, and tell me where to start studying first.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T02:15:44"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Exam Forecast. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Exam Forecast. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T02:15:44"
+   }
+  }
+ ]
+}

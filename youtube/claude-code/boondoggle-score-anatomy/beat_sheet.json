@@ -2,17 +2,18 @@
   "metadata": {
     "slug": "boondoggle-score-anatomy",
     "title": "The Boondoggle Score: Label Who Does Each Step",
-    "topic": "SCORE ANATOMY · CAPS",
+    "topic": "SCORE ANATOMY",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
     "engine": "kokoro",
+    "voice": "am_onyx",
     "voice_kokoro": "am_onyx",
     "palette": "claude",
     "greeting": "Sawadee, Liam",
     "folderLabel": "@NikBearBrown",
     "playlist": "Claude",
-    "description_blurb": "Before writing a line, the Boondoggle Score maps each build step to Claude-only, human-only, or Claude-with-review — a score where every row says Claude-only is either trivial or dishonest.",
+    "description_blurb": "Gru turns a build plan into a Boondoggle Score: each step names whether Claude acts, the human decides, or Claude drafts under review, with explicit handoff conditions before work proceeds.",
     "hashtags": [
       "ClaudeCode",
       "Students",
@@ -20,29 +21,22 @@
       "BoondoggleScore",
       "EssentialComplexity"
     ],
-    "total_estimated_duration_seconds": 82,
-    "design_version": "v1",
-    "voice": "am_onyx",
+    "total_estimated_duration_seconds": 182.03,
+    "design_version": "v2",
     "build": {
-      "at": "2026-07-28T23:22:36",
+      "at": "2026-09-05T00:03:34",
       "cut": "master",
-      "filled": 3,
-      "of": 7,
-      "slates": [
-        "B00",
-        "B04",
-        "B05",
-        "B06"
-      ],
-      "skin_warnings": [
-        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
-      ]
+      "filled": 10,
+      "of": 10,
+      "slates": [],
+      "skin_warnings": []
     }
   },
   "beats": [
     {
       "beat_id": "B00",
       "act": "ASK",
+      "lane": "BOOKEND",
       "narration_text": "He ran the /boondoggle command before starting his build. The Score table appeared: five steps, a labor column for each. He filled it in quickly — Claude-only on every row. His instructor asked him to read it back out loud. Step three: select the statistical method. Step five: set the classification threshold. He had written Claude-only for both. She asked: 'Do you know what method Claude will pick? Do you know if the threshold is right for this data?' He did not. This is Liam, in for Bear.",
       "shot": {
         "type": "REMOTION",
@@ -50,11 +44,11 @@
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Liam",
-            "topic": "SCORE ANATOMY · CAPS",
-            "segment": "The Boondoggle Score: Label Who Does Each…",
-            "command": "What is: The Boondoggle Score: Label Who Does Each Step?",
-            "runningText": "building the answer…",
+            "greeting": "Sawadee, Liam",
+            "topic": "SCORE ANATOMY",
+            "segment": "Who Does What",
+            "command": "/boondoggle",
+            "runningText": "generating score table…",
             "output": [],
             "folderLabel": "@NikBearBrown"
           },
@@ -65,84 +59,229 @@
         }
       },
       "new_visual_element": "ClaudeComposerAsk — cold open, /boondoggle command",
-      "remotion": {
-        "pattern": "ClaudeComposerAsk",
-        "props": {
-          "greeting": "Sawadee, Liam",
-          "topic": "SCORE ANATOMY · CAPS",
-          "segment": "Who Does What",
-          "command": "/boondoggle",
-          "runningText": "generating score table…",
-          "folderLabel": "@NikBearBrown"
-        }
-      },
-      "estimated_duration_s": 15,
+      "estimated_duration_s": 24,
       "audio_file": "mp3/beat-B00.mp3",
       "actual_duration_s": 24.3,
       "engine": "kokoro",
-      "build": {
-        "status": "SLATE"
-      },
-      "lane": "BOOKEND",
       "voice": "am_onyx",
-      "voice_kokoro": "am_onyx"
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T00:03:34"
+      }
+    },
+    {
+      "beat_id": "G01",
+      "act": "GRU-CONTEXT",
+      "narration_text": "Gru is the software design document consultant behind the command. Not a code generator first — an architecture coach. Gru asks what you are proposing to build, what need it serves, what decisions are still unmade, and where Claude needs human review before the next step is allowed to happen.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Gru's job",
+            "items": [
+              {
+                "label": "Name the thing",
+                "sub": "What are you actually proposing to build?",
+                "icon": "clipboard-list",
+                "cueFrame": 120
+              },
+              {
+                "label": "Hold the architecture",
+                "sub": "Needs, principles, flows, components, risks.",
+                "icon": "layers",
+                "cueFrame": 300
+              },
+              {
+                "label": "Set handoffs",
+                "sub": "Claude can proceed only when “done” is explicit.",
+                "icon": "list-checks",
+                "cueFrame": 480
+              }
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/G01.mp4",
+            "at": "2026-09-04T23:45:20"
+          }
+        }
+      },
+      "new_visual_element": "FormBCard — Gru as software design document consultant and handoff coach",
+      "estimated_duration_s": 17,
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
+      "actual_duration_s": 15.7,
+      "audio_file": "mp3/beat-G01.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/G01.mp4",
+        "filled_by": "remotion:FormBCard",
+        "at": "2026-09-05T00:03:34"
+      }
+    },
+    {
+      "beat_id": "G02",
+      "act": "BOONDOGGLING-DEFINITION",
+      "narration_text": "Boondoggling is programming as conducting. Claude is very good at execution: scaffolding, syntax, transformations, drafts. The human still conducts: problem formulation, plausibility auditing, tool orchestration, interpretive judgment, and executive integration. The point is not to type less. The point is to decide more precisely.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Programming as conducting",
+            "items": [
+              {
+                "label": "Claude executes",
+                "sub": "Mechanical work, drafts, scaffolds, transformations.",
+                "icon": "zap",
+                "cueFrame": 130
+              },
+              {
+                "label": "Human conducts",
+                "sub": "Formulation, judgment, orchestration, accountability.",
+                "icon": "hand",
+                "cueFrame": 330
+              },
+              {
+                "label": "Better handoffs",
+                "sub": "Every step says who acts and what proves it is done.",
+                "icon": "circle-check",
+                "cueFrame": 520
+              }
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/G02.mp4",
+            "at": "2026-09-04T23:45:20"
+          }
+        }
+      },
+      "new_visual_element": "FormBCard — boondoggling as programming-as-conducting",
+      "estimated_duration_s": 19,
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
+      "actual_duration_s": 18.43,
+      "audio_file": "mp3/beat-G02.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/G02.mp4",
+        "filled_by": "remotion:FormBCard",
+        "at": "2026-09-05T00:03:34"
+      }
+    },
+    {
+      "beat_id": "G03",
+      "act": "SCORE-PURPOSE",
+      "narration_text": "That is what the Boondoggle Score makes visible. It is a table for each build step: what phase is this, who should do it, why that labor assignment is honest, and what condition must be true before the next step starts. Now the anatomy matters, because the Score is where vague confidence gets turned into accountable sequence.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "What the Score makes visible",
+            "items": [
+              {
+                "label": "Step and phase",
+                "sub": "Where this action belongs in the build.",
+                "icon": "layers",
+                "cueFrame": 120
+              },
+              {
+                "label": "Who and why",
+                "sub": "Claude-only, human-only, or Claude-with-review.",
+                "icon": "clipboard-list",
+                "cueFrame": 330
+              },
+              {
+                "label": "Handoff condition",
+                "sub": "The explicit proof that the next step may begin.",
+                "icon": "circle-check",
+                "cueFrame": 520
+              }
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/G03.mp4",
+            "at": "2026-09-04T23:45:20"
+          }
+        }
+      },
+      "new_visual_element": "FormBCard — Boondoggle Score purpose before anatomy",
+      "estimated_duration_s": 20,
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
+      "actual_duration_s": 17.34,
+      "audio_file": "mp3/beat-G03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/G03.mp4",
+        "filled_by": "remotion:FormBCard",
+        "at": "2026-09-05T00:03:34"
+      }
     },
     {
       "beat_id": "B01",
       "act": "SCORE-TABLE",
       "narration_text": "The Score table has five columns: step, phase, who does it, why, handoff condition. The who column has three values: Claude-only, human-only, and Claude-with-review. Claude-only means the step is purely mechanical and the outcome is verifiable. Human-only means the decision requires domain judgment that Claude cannot supply. Claude-with-review means Claude drafts, human checks before anything proceeds.",
       "shot": {
-        "type": "CARD",
+        "type": "REMOTION",
         "source": "own",
-        "motion": "callout-reveal",
-        "media": "media/B01.mp4",
-        "manim": {
-          "scene_class": "Scene_B01_BoondoggleScoreAnatomy",
-          "scenes_file": "scenes_std.py",
-          "rendered": {
-            "out": "media/B01.mp4",
-            "at": "2026-07-25T09:58:50.183522"
-          }
-        },
         "remotion": {
           "pattern": "FormBCard",
           "props": {
-            "title": "SCORE-TABLE",
+            "title": "Who does what",
             "items": [
               {
-                "label": "The Score table has five",
-                "sub": "The Score table has five columns: step, phase, who does it, why, handoff condition",
+                "label": "Claude-only",
+                "sub": "Mechanical step, outcome verifiable.",
                 "icon": "clipboard-list",
-                "cueFrame": 24
+                "cueFrame": 180
               },
               {
-                "label": "The who column has three",
-                "sub": "The who column has three values: Claude-only, human-only, and Claude-with-review",
+                "label": "Human-only",
+                "sub": "Decision needs domain judgment Claude cannot supply.",
+                "icon": "hand",
+                "cueFrame": 350
+              },
+              {
+                "label": "Claude-with-review",
+                "sub": "Claude drafts, human checks before proceeding.",
                 "icon": "list-checks",
-                "cueFrame": 310
-              },
-              {
-                "label": "Claude-only means the step is",
-                "sub": "Claude-only means the step is purely mechanical and the outcome is verifiable",
-                "icon": "clipboard-list",
-                "cueFrame": 596
+                "cueFrame": 510
               }
             ],
             "dark": false
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
           }
         }
       },
-      "new_visual_element": "Score table — step / phase / who / why / handoff condition / three values for who",
-      "spark_line": "Three values. Name each one.",
-      "estimated_duration_s": 13,
+      "new_visual_element": "FormBCard — three values in the who column (Claude-only / Human-only / Claude-with-review)",
+      "estimated_duration_s": 21,
       "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 20.89,
       "engine": "kokoro",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-28T23:22:36"
+        "at": "2026-09-05T00:03:34"
       }
     },
     {
@@ -152,28 +291,44 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "callout-reveal",
-        "media": "media/B02.mp4",
-        "manim": {
-          "scene_class": "Scene_B02_BoondoggleScoreAnatomy",
-          "scenes_file": "scenes_std.py",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Brooks 1986: two complexities",
+            "items": [
+              {
+                "label": "Accidental",
+                "sub": "Syntax errors, boilerplate, scaffolding — Claude eats this.",
+                "icon": "layers",
+                "cueFrame": 120
+              },
+              {
+                "label": "Essential",
+                "sub": "What to build, which method, which threshold — the human's.",
+                "icon": "target",
+                "cueFrame": 400
+              }
+            ],
+            "dark": false
+          },
           "rendered": {
             "out": "media/B02.mp4",
-            "at": "2026-07-25T09:58:52.424620"
+            "at": ""
           }
         }
       },
-      "new_visual_element": "Essential complexity — Brooks 1986 / accidental: Claude / essential: human / method choice and threshold = essential",
-      "spark_line": "Claude eats accidental. You own essential.",
-      "estimated_duration_s": 13,
+      "new_visual_element": "FormBCard — accidental vs essential complexity (Brooks 1986)",
+      "estimated_duration_s": 23,
       "audio_file": "mp3/beat-B02.mp3",
       "actual_duration_s": 22.78,
       "engine": "kokoro",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-28T23:22:36"
+        "at": "2026-09-05T00:03:34"
       }
     },
     {
@@ -183,90 +338,128 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "callout-reveal",
-        "media": "media/B03.mp4",
-        "manim": {
-          "scene_class": "Scene_B03_BoondoggleScoreAnatomy",
-          "scenes_file": "scenes_std.py",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The handoff-condition test",
+            "items": [
+              {
+                "label": "Vague handoff",
+                "sub": "'Claude decides.' — not a handoff condition.",
+                "icon": "shield-alert",
+                "cueFrame": 200
+              },
+              {
+                "label": "Specific handoff",
+                "sub": "'Classification threshold verified against baseline dataset.'",
+                "icon": "circle-check",
+                "cueFrame": 400
+              }
+            ],
+            "dark": false
+          },
           "rendered": {
             "out": "media/B03.mp4",
-            "at": "2026-07-25T09:58:54.567709"
+            "at": ""
           }
         }
       },
-      "new_visual_element": "All Claude-only = signal — trivial or dishonest / handoff condition cannot be vague / specific condition = test",
-      "spark_line": "Vague handoff = vague build.",
-      "estimated_duration_s": 13,
+      "new_visual_element": "FormBCard — vague vs specific handoff condition (Popper move)",
+      "estimated_duration_s": 20,
       "audio_file": "mp3/beat-B03.mp3",
       "actual_duration_s": 20.46,
       "engine": "kokoro",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-28T23:22:36"
+        "at": "2026-09-05T00:03:34"
       }
     },
     {
       "beat_id": "B04",
       "act": "VERDICT",
+      "lane": "BOOKEND",
       "narration_text": "The Score is not a judgment about capability — Claude is capable of many things. It is a prompt for your own judgment: which steps require a decision that only you can make? The Score forces that question before any code runs. A build with two human-only rows and three Claude-only rows is an honest build. A build with zero human-only rows is probably not.",
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "stagger"
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "The Boondoggle Score",
+            "artifactHeading": "Verdict",
+            "artifactLines": [
+              "Not a capability judgment — a prompt for yours.",
+              "Forces the who-decides question before code runs.",
+              "Zero human-only rows: probably not honest."
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
       },
-      "new_visual_element": "Artifact view — completed Score table / human-only rows visible / honest build vs. all Claude-only",
-      "spark_line": "The Score is a prompt for your judgment.",
-      "estimated_duration_s": 13,
+      "new_visual_element": "ClaudeVerdictArtifact — honest-build verdict",
+      "estimated_duration_s": 19,
       "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 18.6,
       "engine": "kokoro",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T23:22:36",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T00:03:34"
       }
     },
     {
       "beat_id": "B05",
       "act": "HANDOFF",
+      "lane": "BOOKEND",
       "narration_text": "Your turn. Paste this: you want to understand the Boondoggle Score anatomy before applying it. Ask Claude to walk you through each column — what it measures, what a red flag looks like in that column, and what a score above eight means for the build.",
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "type-on",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
             "greeting": "Your turn.",
-            "topic": "CLAUDE CODE · @NikBearBrown",
-            "segment": "The Boondoggle Score: Label Who Does Each Step",
+            "topic": "YOUR TURN · SCORE ANATOMY",
+            "segment": "Walk me through the columns",
             "command": "Walk me through the anatomy of the Boondoggle Score: what does each column measure, what does a red flag look like in each column, and what does a total score above eight mean for whether I should proceed with this build plan?",
             "runningText": "paste your spec, CLAUDE.md, or build plan here…",
-            "folderLabel": "@NikBearBrown",
-            "modelLabel": "Claude Sonnet"
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
           }
         }
       },
-      "new_visual_element": "HANDOFF — Boondoggle Score table prompt",
-      "estimated_duration_s": 9,
+      "new_visual_element": "ClaudeComposerAsk — Your Turn prompt, walk-me-through-each-column",
+      "estimated_duration_s": 13,
       "audio_file": "mp3/beat-B05.mp3",
       "actual_duration_s": 12.86,
       "engine": "kokoro",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T23:22:36",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T00:03:34"
       }
     },
     {
       "beat_id": "B06",
       "act": "OUTRO",
+      "lane": "BOOKEND",
       "narration_text": "If this surfaces the human-only step you almost gave to Claude, subscribe. Liam, in for Bear.",
       "shot": {
         "type": "REMOTION",
@@ -277,114 +470,25 @@
             "title": "The Boondoggle Score: Label Who Does Each Step",
             "handle": "@NikBearBrown",
             "mascotSeed": "boondoggle-score-anatomy"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
           }
         }
       },
-      "new_visual_element": "ClaudeTitleOutro — The Boondoggle Score.",
-      "estimated_duration_s": 5,
+      "new_visual_element": "ClaudeTitleOutro — title restate, subscribe",
+      "estimated_duration_s": 7,
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 6.14,
-      "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-28T23:22:36",
-        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
-      },
-      "engine": "kokoro"
-    },
-    {
-      "beat_id": "BVDT",
-      "act": "verdict recap",
-      "lane": "BOOKEND",
-      "narration_text": "",
-      "voice": "am_onyx",
       "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 20,
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeVerdictArtifact",
-          "props": {
-            "artifactTitle": "The Boondoggle Score: Label Who Does Each Step",
-            "artifactHeading": "Key findings",
-            "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
-            ]
-          },
-          "rendered": {
-            "out": "media/BVDT.mp4",
-            "at": ""
-          }
-        }
-      },
-      "build": {
-        "status": "SLATE"
-      }
-    },
-    {
-      "beat_id": "BHTF",
-      "act": "your turn",
-      "lane": "BOOKEND",
-      "narration_text": "",
       "voice": "am_onyx",
-      "engine": "kokoro",
       "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 20,
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeComposerAsk",
-          "props": {
-            "greeting": "Your turn.",
-            "topic": "YOUR TURN · SCORE ANATOMY · CAPS",
-            "segment": "The Boondoggle Score: Label Who Does Each…",
-            "command": "Take what you learned from [The Boondoggle Score: Label Who Does Each Step] and apply it to your own work. What's one thing you'll try first?",
-            "runningText": "paste this into Claude and run it on your own work…",
-            "output": [],
-            "folderLabel": "@NikBearBrown"
-          },
-          "rendered": {
-            "out": "media/BHTF.mp4",
-            "at": ""
-          }
-        }
-      },
       "build": {
-        "status": "SLATE"
-      }
-    },
-    {
-      "beat_id": "BOUT",
-      "act": "outro",
-      "lane": "BOOKEND",
-      "narration_text": "",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 8,
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeTitleOutro",
-          "props": {
-            "title": "The Boondoggle Score: Label Who Does Each Step",
-            "slug": "boondoggle-score-anatomy"
-          },
-          "rendered": {
-            "out": "media/BOUT.mp4",
-            "at": ""
-          }
-        }
-      },
-      "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T00:03:34"
       }
     }
   ]

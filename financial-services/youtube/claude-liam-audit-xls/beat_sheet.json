@@ -20,11 +20,43 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/financial-services/plugins/agent-plugins/earnings-reviewer/skills/audit-xls/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Audit a spreadsheet for formula accuracy",
+        "and common mistakes",
+        "Scopes to a selected range",
+        "a single sheet",
+        "or the entire model (including financial-model integrity checks like BS balance"
+      ],
+      "constraints": [
+        "> - sheet — the current active sheet only",
+        "## Step 3: Model-integrity checks (MODEL scope only)"
+      ],
+      "referenced_files": [
+        "#N/A",
+        "#DIV/0!",
+        "=A1*1.05",
+        "1.05"
+      ],
+      "code_signals": [],
+      "sections": [
+        "Step 1: Determine scope",
+        "Step 2: Formula-level checks (ALL scopes)",
+        "Step 3: Model-integrity checks (MODEL scope only)",
+        "3a. Structural review",
+        "3b. Balance Sheet",
+        "3c. Cash Flow Statement",
+        "3d. Income Statement",
+        "3e. Circular references",
+        "3f. Logic & reasonableness",
+        "3g. Model-type-specific bugs"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T06:01:52",
+      "at": "2026-09-05T23:51:31",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +65,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is audit-xls. Audit a spreadsheet for formula accuracy, errors, and common mistakes. Scopes to a selected range, a single sheet, or the entire model (including financial-model integrity checks like BS balance, cash tie-out, and logic sanity). Triggers on \"audit this sheet\", \"check my formulas\", \"find formula errors\", \"QA this spreadsheet\", \"sanity check this\", \"debug model\", \"model check\", \"model won't balance\", \"something's off in my model\", \"model review\".. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is audit-xls. Audit a spreadsheet for formula accuracy, errors, and common mistakes. Scopes to a selected range, a single sheet, or the entire model (including financial-model integrity checks like BS balance, cash tie-out, and logic sanity). Triggers on \"audit this sheet\", \"check my formulas\", \"find formula errors\", \"QA this spreadsheet\", \"sanity check this\", \"debug model\", \"model check\", \"model won't balance\", \"something's off in my model\", \"model review\".. Its concrete surface area includes Audit a spreadsheet for formula accuracy; and common mistakes; Scopes to a selected range. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,8 +81,8 @@
             "runningText": "reading audit-xls SKILL.md…",
             "output": [
               "skill: audit-xls",
-              "Audit a spreadsheet for formula accuracy, errors, and common mistakes. Scopes to",
-              "steps: 0 — executing."
+              "Audit a spreadsheet for formula accuracy, errors, and common mistakes. Scopes…",
+              "steps: 4 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -63,18 +95,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 30.29,
+      "actual_duration_s": 36.97,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:01:52"
+        "at": "2026-09-05T23:51:31"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is audit-xls. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is audit-xls. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at #N/A, #DIV/0!, =A1*1.05, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -106,18 +138,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.31,
+      "actual_duration_s": 19.46,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:01:52"
+        "at": "2026-09-05T23:51:31"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "The pipeline has 4 steps. Determine scope → Formula-level checks (ALL scopes) → Model-integrity checks (MODEL scope only), plus 1 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -132,22 +164,27 @@
             "outputLabel": "RESULT",
             "phases": [
               {
-                "label": "Read SKILL.md",
-                "desc": "load the instruction set",
+                "label": "Determine scope",
+                "desc": "If the user already gave a scope, use it. Otherwise ask…",
                 "accent": true
               },
               {
-                "label": "Execute",
-                "desc": "run each step in order",
+                "label": "Formula-level checks (ALL…",
+                "desc": "Run these regardless of scope: | Check | What to look for |…",
                 "accent": false
               },
               {
-                "label": "Return output",
-                "desc": "deliver the result",
+                "label": "Model-integrity checks (MODEL…",
+                "desc": "If scope is model, identify the model type (DCF / LBO /…",
+                "accent": false
+              },
+              {
+                "label": "Report",
+                "desc": "Output a findings table: | # | Sheet | Cell/Range |…",
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "4 steps. Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -157,18 +194,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 14.91,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:01:52"
+        "at": "2026-09-05T23:51:31"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the design tell. BS balance first — if it doesn't balance, everything downstream is suspect. That is the interesting constraint in audit-xls — a deliberate trade-off baked into the instruction set.",
+      "narration_text": "Here is the design tell. > - sheet — the current active sheet only. That is the constraint in audit-xls — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +216,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "BS balance first — if it doesn't balance, everything downstream is suspect",
+            "body": "> - sheet — the current active sheet only",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,18 +226,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 11.71,
+      "actual_duration_s": 10.15,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:01:52"
+        "at": "2026-09-05T23:51:31"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In audit-xls, supporting material: #N/A, #DIV/0!, =A1*1.05, 1.05; sections: Step 1: Determine scope, Step 2: Formula-level checks (ALL scopes), Step 3: Model-integrity checks (MODEL scope only), 3a. Structural review. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Audit a spreadsheet for formula accuracy; and common mistakes; Scopes to a selected range; #N/A; #DIV/0!; =A1*1.05",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 21.97,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T23:51:31"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "audit-xls makes Claude execute one task reliably. The SKILL.md is the spec — Audit a spreadsheet for formula accuracy, errors, and common mistakes. Scopes to. Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "audit-xls makes Claude execute one task reliably. The SKILL.md is the spec — Audit a spreadsheet for formula accuracy, errors, and common mistakes. Scopes…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -213,9 +282,10 @@
             "artifactHeading": "Claude, Audit Xls.",
             "artifactLines": [
               "Skill: audit-xls — Claude reads SKILL.md before acting",
-              "Audit a spreadsheet for formula accuracy, errors, and common mistakes. Scopes to a selecte",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "Audit a spreadsheet for formula accuracy, errors, and common mistakes. Scopes to a…",
+              "4-step pipeline: Determine scope → Formula-level checks (ALL scopes) → Model-integrity checks (MODEL scope only)",
+              "Constraint: > - sheet — the current active sheet only",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -225,18 +295,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 14.51,
+      "actual_duration_s": 14.1,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:01:52"
+        "at": "2026-09-05T23:51:31"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to audit a spreadsheet for formula accuracy, errors, and common mistakes. scopes to. Read the audit-xls skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to audit a spreadsheet for formula accuracy, errors, and common mistakes. scopes. Read the audit-xls skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -248,7 +318,7 @@
             "greeting": "Your turn.",
             "topic": "AUDIT-XLS · ANTHROPIC SKILL",
             "segment": "Claude, Audit Xls.",
-            "command": "I want to audit a spreadsheet for formula accuracy, errors, and common mistakes. Read the audit-xls skill and walk me through what you will do before you do it.",
+            "command": "I want to audit a spreadsheet for formula accuracy, errors, and common. Read the audit-xls skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -262,12 +332,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 15.15,
+      "actual_duration_s": 14.83,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:01:52"
+        "at": "2026-09-05T23:51:31"
       }
     },
     {
@@ -298,7 +368,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:01:52"
+        "at": "2026-09-05T23:51:31"
       }
     }
   ]

@@ -4,41 +4,26 @@
     "slug": "protein-corona-overwrites",
     "topic": "CANCER NANOMEDICINE",
     "register": "Teardown",
-    "voice": "nbbhuman",
-    "voice_id": "TyW6NH39JcFb5M3xdIIk",
     "palette": "claude",
     "style_preset": "nikbearbrown",
     "style": "cli",
     "ground": "#FFFFFF",
     "color_semantics": "teardown: INK #2A1A0E neutral/normal; CRIMSON #C8102E key finding/vulnerability; SLATE #545454 structure/neutral",
-    "note": "CLI video REQUIRED spine: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT(manim B04_ProteinCorona) · B05 CHANGE · B06 slate · B07 slate · B08 slate · B09 outro. Source: cancer-nanomedicine/chapters/04-targeting-epr-protein-corona-and-active-ligands.md",
-    "total_estimated_duration_seconds": 148,
+    "note": "CLI video spine: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT · B05 CHANGE · B06 revised · B07 summary · B08 next-steps · B09 outro. Claude bookends appended: BVDT · BHTF · BOUT. Source: cancer-nanomedicine/chapters/04-targeting-epr-protein-corona-and-active-ligands.md",
+    "total_estimated_duration_seconds": 205,
     "audience": "Claude",
-    "derived_from": "beat_sheet.json",
+    "derived_from": "beat_sheet.pre-rebuild.json",
     "outro_source": "AUTHOR.MD :: NikBearBrown",
     "engine": "kokoro",
     "voice_kokoro": "am_onyx",
-    "_variant_todo": [
-      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
-      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
-      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
-      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
-    ],
     "build": {
-      "at": "2026-07-16T04:13:53",
-      "cut": "master",
-      "filled": 5,
-      "of": 10,
-      "slates": [
-        "B01",
-        "B04",
-        "B06",
-        "B07",
-        "B08"
-      ],
+      "at": "2026-08-27T22:14:16",
+      "cut": "review",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
       "skin_warnings": [
-        "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk",
-        "B09: palette=claude but the outro is 'NikBearBrownOutro' — OUTRO LAW wants ClaudeTitleOutro"
+        "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk"
       ]
     }
   },
@@ -66,14 +51,17 @@
           }
         }
       },
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "audio_file": "mp3/beat-B00.mp3",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "actual_duration_s": 5.78,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:13:53"
+        "at": "2026-08-27T22:14:16"
       }
     },
     {
@@ -81,30 +69,30 @@
       "act": "PROBLEM",
       "role_note": "stakes/why before terminal -- <=60 words",
       "narration_text": "You spend months engineering a nanoparticle with targeting ligands on its surface — antibodies, peptides, folate — to direct it to cancer cells. You inject it into a patient. Within thirty seconds, a layer of serum proteins adsorbs onto the surface, completely burying your targeting ligands. The body has overwritten your design. What the immune system sees and what you designed are not the same thing.",
-      "visual_intent": "SLATE — title card: PROTEIN CORONA: YOUR DESIGN MEETS BIOLOGY; thirty-second timeline: injection → protein adsorption → ligands buried → MPS clearance; the nanoparticle you injected is not the nanoparticle that reaches the tumor",
       "shot": {
         "type": "REMOTION",
         "source": "own",
+        "motion": "fade",
         "remotion": {
           "pattern": "FormBCard",
           "props": {
-            "title": "Research the Protein Corona: How the Body Immediately Overwrites Your Nanoparticle Design",
+            "title": "Protein corona: your design meets biology",
             "items": [
               {
-                "label": "Key point one",
-                "sub": "",
+                "label": "The design",
+                "sub": "Months engineering targeting ligands — antibodies, peptides, folate",
                 "icon": "target",
                 "cueFrame": 20
               },
               {
-                "label": "Key point two",
-                "sub": "",
-                "icon": "list-checks",
+                "label": "The overwrite",
+                "sub": "Within 30 s, serum proteins adsorb and bury the ligands",
+                "icon": "layers",
                 "cueFrame": 55
               },
               {
-                "label": "Key point three",
-                "sub": "",
+                "label": "The mismatch",
+                "sub": "What you injected is not what the immune system sees",
                 "icon": "zap",
                 "cueFrame": 90
               }
@@ -116,16 +104,18 @@
           }
         }
       },
-      "estimated_duration_s": 10,
+      "estimated_duration_s": 21,
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 20.78,
-      "build": {
-        "status": "SLATE"
-      },
-      "lane": "BOOKEND",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "voice_kokoro": "am_onyx"
+      "voice_kokoro": "am_onyx",
+      "actual_duration_s": 20.78,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T22:14:16"
+      }
     },
     {
       "beat_id": "B02",
@@ -151,14 +141,17 @@
           }
         }
       },
-      "estimated_duration_s": 15,
+      "estimated_duration_s": 12,
       "audio_file": "mp3/beat-B02.mp3",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "actual_duration_s": 11.2,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:13:53"
+        "at": "2026-08-27T22:14:16"
       }
     },
     {
@@ -184,40 +177,76 @@
           }
         }
       },
-      "estimated_duration_s": 15,
+      "estimated_duration_s": 19,
       "audio_file": "mp3/beat-B03.mp3",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "actual_duration_s": 18.94,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:13:53"
+        "at": "2026-08-27T22:14:16"
       }
     },
     {
       "beat_id": "B04",
       "act": "OUTPUT — run",
-      "role_note": "OPEN vox slot → Manim video B04_ProteinCorona",
+      "role_note": "corona timeline — Vroman effect + what MPS clearance sees",
       "narration_text": "Run it. The gold nanoparticle at the center carries crimson targeting ligands radiating outward. Then the soft corona arrives — albumin dots at the inner ring. Then the hard corona — a thick grey ring that buries the ligands entirely. The macrophage approaching from the left does not see your targeting ligands. It sees the complement proteins on the corona. That is what MPS clearance looks like at the molecular level.",
-      "visual_intent": "Manim B04_ProteinCorona: nanoparticle center → targeting ligands (CRIMSON lines) → soft corona (albumin dots) → hard corona (thick outer ring burying ligands) → macrophage approaching; annotation: THE CELL SEES THE CORONA, NOT YOUR LIGANDS",
       "shot": {
-        "type": "GRAPHIC",
-        "source": "manim",
+        "type": "REMOTION",
+        "source": "own",
         "motion": "fade",
-        "manim": {
-          "scene_class": "B04_ProteinCorona",
-          "file": "vox_scenes.py"
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The molecular view of MPS clearance",
+            "items": [
+              {
+                "label": "Ligands",
+                "sub": "Crimson lines radiating from the gold nanoparticle",
+                "icon": "target",
+                "cueFrame": 15
+              },
+              {
+                "label": "Soft corona (<30 s)",
+                "sub": "Albumin adsorbs at the inner ring — Vroman effect starts",
+                "icon": "layers",
+                "cueFrame": 55
+              },
+              {
+                "label": "Hard corona (<1 min)",
+                "sub": "Thick outer ring buries the ligands entirely",
+                "icon": "shield-alert",
+                "cueFrame": 95
+              },
+              {
+                "label": "What the macrophage sees",
+                "sub": "Complement C3 on the corona — not your targeting ligands",
+                "icon": "circle-x",
+                "cueFrame": 140
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
         }
       },
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 22,
       "audio_file": "mp3/beat-B04.mp3",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "actual_duration_s": 21.38,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:13:53",
-        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T22:14:16"
       }
     },
     {
@@ -246,35 +275,74 @@
       },
       "estimated_duration_s": 14,
       "audio_file": "mp3/beat-B05.mp3",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "actual_duration_s": 13.82,
       "build": {
         "status": "VIDEO",
         "src": "media/B05.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:13:53"
+        "at": "2026-08-27T22:14:16"
       }
     },
     {
       "beat_id": "B06",
       "act": "OUTPUT — revised",
-      "role_note": "change result narration",
+      "role_note": "the honest ledger — fight the corona vs design with it",
       "narration_text": "Pre-coating with albumin reduces but does not eliminate corona formation — and the albumin coat itself can be displaced by apolipoproteins in minutes. Apolipoprotein A-I pre-coating is a deliberate liver-targeting strategy: you recruit a corona that routes the nanoparticle to hepatocytes. Zwitterionic surfaces reduce protein adsorption by up to ninety percent in vitro, but in vivo the reduction is closer to fifty percent. No zwitterionic nanoparticle has cleared a phase two trial.",
-      "visual_intent": "SLATE — two-strategy comparison: CORONA EXPLOITATION (albumin/apolipoprotein precoating → deliberate routing) vs CORONA ELIMINATION (zwitterionic, <50% reduction in vivo); clinical status: neither in phase 2 approval",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Fight the corona vs design with it — the ledger",
+            "items": [
+              {
+                "label": "Albumin pre-coat",
+                "sub": "Reduces corona; displaced by apolipoproteins in minutes",
+                "icon": "shield",
+                "cueFrame": 20
+              },
+              {
+                "label": "ApoA-I pre-coat",
+                "sub": "Recruits a corona that routes the particle to hepatocytes",
+                "icon": "target",
+                "cueFrame": 60
+              },
+              {
+                "label": "Zwitterionic surface",
+                "sub": "~90% reduction in vitro; ~50% in vivo",
+                "icon": "circle-check",
+                "cueFrame": 100
+              },
+              {
+                "label": "Clinical status",
+                "sub": "No zwitterionic nanoparticle past phase 2",
+                "icon": "circle-x",
+                "cueFrame": 140
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 18,
+      "estimated_duration_s": 28,
       "audio_file": "mp3/beat-B06.mp3",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "actual_duration_s": 27.24,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:13:53",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B06.mp4)",
-        "suggested": "suggested prompt: Pre-coating with albumin reduces but does not eliminate corona formation — and the albumin coat itself can be displaced by apolipoproteins in minutes. Apolipopr"
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T22:14:16"
       }
     },
     {
@@ -282,22 +350,52 @@
       "act": "SUMMARY",
       "role_note": "the lesson — one beat",
       "narration_text": "So the protein corona is the body's first-pass editing of your design. The nanoparticle you engineer is not the nanoparticle that reaches the tumor — it is the corona-coated particle that results from your design interacting with the biological environment. The field spent a decade fighting this. Some groups are now designing with it.",
-      "visual_intent": "SLATE — summary card: THE CORONA IS NOT YOUR ENEMY — IT IS THE PRODUCT; your design + biological environment = the actual nanoparticle; designing with corona vs fighting it",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The corona is not your enemy — it is the product",
+            "items": [
+              {
+                "label": "Your design",
+                "sub": "The engineered particle you injected",
+                "icon": "target",
+                "cueFrame": 18
+              },
+              {
+                "label": "The biology",
+                "sub": "Blood, plasma proteins, the Vroman effect",
+                "icon": "layers",
+                "cueFrame": 55
+              },
+              {
+                "label": "The product",
+                "sub": "The corona-coated particle is what reaches the tumor",
+                "icon": "circle-check",
+                "cueFrame": 95
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 16,
+      "estimated_duration_s": 19,
       "audio_file": "mp3/beat-B07.mp3",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "actual_duration_s": 18.26,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:13:53",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
-        "suggested": "suggested prompt: So the protein corona is the body's first-pass editing of your design. The nanoparticle you engineer is not the nanoparticle that reaches the tumor — it is the "
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T22:14:16"
       }
     },
     {
@@ -305,22 +403,52 @@
       "act": "NEXT STEPS",
       "role_note": "what to do next",
       "narration_text": "Your move: run your nanoparticle in fifty percent human serum and re-measure the size by DLS. If the hydrodynamic diameter increased by more than thirty nanometers, you have a hard corona. Then check the zeta potential — if it neutralized toward zero, complement proteins have adsorbed. Those two measurements tell you whether your active targeting is still functional.",
-      "visual_intent": "SLATE — next steps card: 1) incubate NP in 50% human serum, re-measure DLS (>30 nm increase = hard corona); 2) check zeta potential (neutralized = complement adsorption); 3) verify targeting ligand accessibility post-corona by competitive binding assay",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Your move — three benchtop measurements",
+            "items": [
+              {
+                "label": "DLS in 50% serum",
+                "sub": ">30 nm hydrodynamic increase = hard corona present",
+                "icon": "ruler",
+                "cueFrame": 20
+              },
+              {
+                "label": "Zeta potential",
+                "sub": "Neutralized toward zero = complement adsorbed",
+                "icon": "list-checks",
+                "cueFrame": 65
+              },
+              {
+                "label": "Verdict",
+                "sub": "Together they tell you whether active targeting still works",
+                "icon": "zap",
+                "cueFrame": 110
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 17,
+      "estimated_duration_s": 20,
       "audio_file": "mp3/beat-B08.mp3",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "actual_duration_s": 19.46,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:13:53",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
-        "suggested": "suggested prompt: Your move: run your nanoparticle in fifty percent human serum and re-measure the size by DLS. If the hydrodynamic diameter increased by more than thirty nanomet"
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T22:14:16"
       }
     },
     {
@@ -346,37 +474,42 @@
           }
         }
       },
-      "estimated_duration_s": 8,
+      "estimated_duration_s": 7,
       "audio_file": "mp3/beat-B09.mp3",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "actual_duration_s": 6.51,
       "build": {
         "status": "VIDEO",
         "src": "media/B09.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:13:53"
+        "at": "2026-08-27T22:14:16"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict recap",
       "lane": "BOOKEND",
-      "narration_text": "",
+      "narration_text": "The verdict. Within thirty seconds of injection the protein corona buries your targeting ligands, so cell-culture uptake tells you almost nothing about what reaches a tumor. Zwitterionic surfaces cut adsorption by half in vivo — none has cleared a phase two trial. The more honest strategy now is designing with the corona: apolipoprotein A-I pre-coating routes particles to hepatocytes, and the corona-coated particle is the product.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 24,
+      "audio_file": "mp3/beat-BVDT.mp3",
       "shot": {
         "type": "REMOTION",
         "source": "own",
+        "motion": "fade",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Research the Protein Corona: How the Body Immediately Overwrites Your Nanoparticle Design",
-            "artifactHeading": "Key findings",
+            "artifactHeading": "The verdict",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "Within 30 s the corona buries your targeting ligands — cell-culture uptake ≠ tumor delivery",
+              "Zwitterionic surfaces: ~50% adsorption reduction in vivo; none past phase 2",
+              "ApoA-I pre-coating routes particles to hepatocytes — design with the corona, not against it"
             ]
           },
           "rendered": {
@@ -385,29 +518,35 @@
           }
         }
       },
+      "actual_duration_s": 22.46,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T22:14:16"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "your turn",
       "lane": "BOOKEND",
-      "narration_text": "",
+      "narration_text": "Your turn. Take the corona test protocol into your own lab. Run your nanoparticle in fifty percent human serum, measure the DLS shift and the zeta change, and decide whether to fight the corona or recruit one. Paste the prompt into Claude and run it on your own work.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 15,
+      "audio_file": "mp3/beat-BHTF.mp3",
       "shot": {
         "type": "REMOTION",
         "source": "own",
+        "motion": "fade",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
             "greeting": "Your turn.",
             "topic": "YOUR TURN · CANCER NANOMEDICINE",
-            "segment": "Research the Protein Corona: How the Body…",
-            "command": "Take what you learned from [Research the Protein Corona: How the Body Immediately Overwrites Your Nanoparticle Design] and apply it to your own work. What's one thing you'll try first?",
+            "segment": "Protein corona — your work",
+            "command": "Take the corona test protocol and apply it to your project: run your nanoparticle in 50% human serum, measure the DLS shift and the zeta change, and tell me whether your active-targeting ligand still has line-of-sight to its receptor. What's the first result you'll bring back?",
             "runningText": "paste this into Claude and run it on your own work…",
             "output": [],
             "folderLabel": "@NikBearBrown"
@@ -418,8 +557,12 @@
           }
         }
       },
+      "actual_duration_s": 14.85,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T22:14:16"
       }
     },
     {
@@ -430,10 +573,11 @@
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 8,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "source": "own",
+        "motion": "fade",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
@@ -446,8 +590,12 @@
           }
         }
       },
+      "actual_duration_s": 6.0,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T22:14:16"
       }
     }
   ]

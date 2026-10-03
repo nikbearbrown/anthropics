@@ -1,0 +1,289 @@
+{
+ "metadata": {
+  "title": "Claude Doesn't Join Your Zoom Calls — It Builds the Bot.",
+  "subtitle": "A Skill That Ships Code, Not Attendance",
+  "slug": "knowledge-work-plugins--claude-liam-build-zoom-bot",
+  "topic": "BUILD ZOOM BOT · ANTHROPIC SKILL",
+  "purpose": "Take a Claude skill apart in the Teardown register: build-zoom-bot doesn't put Claude in your meetings — it points Claude at Zoom's Meeting SDK, RTMS, and your backend and hands back the code for one of three build targets. Name the trade-off: they optimized for a narrow, buildable scope at the expense of anything outside the list.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/knowledge-work-plugins/youtube/claude-liam-build-zoom-bot/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED — CARRY-OUT.md",
+  "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A — source is skill-teardown format (anatomy -> pipeline -> constraint -> verdict), no anchor structure to preserve",
+  "build": {
+   "at": "2026-09-02T14:35:04",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. The obvious read is that Claude itself sits in your Zoom call, listening. It doesn't. What this skill actually does is build the software that sits in the call. Here's what's happening under the hood.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Can Claude be my Zoom meeting bot?', hesitates on 'be', corrects to 'build'",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Can Claude\nbe my\nZoom meeting\nbot?",
+      "face": "serif",
+      "fontSize": 80,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "be",
+      "replacementWords": "build",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 46,
+      "jitter": 20,
+      "seed": "nbb-zoom-bot"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('be' -> 'build') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T14:35:04"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 anatomy — a skill is a folder",
+   "narration_text": "Take this thing apart, and here's what you find. A skill is a folder — Claude reads it before it does anything else. Inside the build-zoom-bot folder, one file: SKILL.md, written in plain language. It spells out exactly what this skill covers — joining meetings, recording them, or wiring up real-time media and a backend. No hidden logic, no secret sauce. Claude reads the file, then follows it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 19,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A folder icon opening to reveal SKILL.md, references/, scripts/; SKILL.md highlighted"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A skill is a folder",
+     "mechanic": "A folder opens on cream to reveal three items: SKILL.md (highlighted in crimson), a references/ folder, a scripts/ folder. A caption below reads 'Claude reads it, then follows it.'",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E",
+      "#545454"
+     ]
+    },
+    "manim": "B01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T14:35:04"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "2 mechanism — the pipeline",
+   "narration_text": "Here's the mechanism, in full. Claude reads the file, works through each step in the order it's written, then returns the result. No branching — unless a step itself says to branch. Read, run, next step. That's the whole loop.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Three-phase pipeline: Read SKILL.md -> Execute steps in order -> Return result"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Input in, output out",
+     "mechanic": "Three cards left to right joined by arrows: 'Read SKILL.md', 'Execute steps in order', 'Return result'. Linear, no branch points drawn.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E",
+      "#545454"
+     ]
+    },
+    "manim": "B02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T14:35:04"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "3 constraint — exactly three build targets",
+   "narration_text": "The list inside SKILL.md hands Claude exactly three things it knows how to build: a meeting bot that joins a call, a recorder that captures the session, or a real-time media workflow that processes audio and video as it happens. Each one gets assembled from the same three pieces — Zoom's Meeting SDK, its real-time media streams, and your own backend service. They optimized for a narrow, buildable scope; here's what it costs. Ask it to build something outside those three, and there's no step left to run.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 23,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Three build-target cards: meeting bot, recorder, real-time media workflow; a boundary line with 'nothing outside this list' beyond it"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Exactly three build targets",
+     "mechanic": "Three rows fill in one at a time with a checkmark: 'Meeting bot — joins a call', 'Recorder — captures the session', 'Real-time media workflow — processes as it happens'. A dashed boundary line beneath the list, with a faint unlabelled field beyond it captioned 'nothing outside this list'.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E",
+      "#545454"
+     ]
+    },
+    "manim": "B03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T14:35:04"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "4 CARRY-OUT",
+   "narration_text": "Build-zoom-bot doesn't put Claude in your meetings. It points Claude at Zoom's Meeting SDK, RTMS, and your backend, and ships you the code for one of three things — a meeting bot, a recorder, or a real-time media workflow. It builds the software that attends the call; it never attends the call itself.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Build-zoom-bot doesn't put Claude in your meetings. It points Claude at Zoom's Meeting SDK, RTMS, and your backend, and ships you the code for one of three things — a meeting bot, a recorder, or a real-time media workflow.",
+      "attribution": "",
+      "sparkLine": "It builds the bot. It doesn't join the call."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T14:35:04"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: ask it to sketch the architecture for a Zoom bot that joins a call and saves the transcript — the Meeting SDK piece, the real-time media streams piece, and the backend piece, one at a time, with what each piece is doing. Then ask it to solve the same problem without any of those three pieces, and watch where the architecture forces it back to them. Go deeper: ask it to design something the skill wasn't scoped for — a bot that greets attendees by name from your CRM — and see where Claude reaches outside the three pieces, and where it stops.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "llm_exercise": {
+    "prompt": "I want to understand how a Claude 'skill' called build-zoom-bot actually works. The skill's SKILL.md tells Claude it can build exactly three things — a meeting bot that joins a call, a recorder that captures the session, or a real-time media workflow that processes audio and video live — and each one is assembled from three pieces: Zoom's Meeting SDK, Zoom's real-time media streams (RTMS), and my own backend service. Sketch the architecture for the first target: a meeting bot that joins a Zoom call and saves the transcript. Do it in three parts, one at a time, and for each part tell me exactly what work that piece is doing: (1) the Meeting SDK part, (2) the real-time media streams part, (3) my backend service part. No code yet — just the pieces and their responsibilities.",
+    "dig_deeper": "Go deeper: ask it to design a bot the skill clearly wasn't scoped for — one that greets each attendee by name from your CRM as they join. Where does Claude reach outside the Meeting SDK, RTMS, and backend? Where does it stop? What does that tell you about what the skill was actually optimized for?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "BUILD ZOOM BOT · ANTHROPIC SKILL",
+      "segment": "Claude Doesn't Join Your Zoom Calls.",
+      "command": "I want to understand how build-zoom-bot works. Sketch the architecture for a Zoom bot that joins a call and saves the transcript — in three parts, one at a time: (1) the Meeting SDK piece, (2) the real-time media streams (RTMS) piece, (3) my backend service piece. For each, tell me exactly what work it's doing. No code — just the pieces and their responsibilities.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T14:35:04"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude Doesn't Join Your Zoom Calls — It Builds the Bot. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude Doesn't Join Your Zoom Calls — It Builds the Bot. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T14:35:04"
+   }
+  }
+ ]
+}

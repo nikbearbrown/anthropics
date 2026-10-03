@@ -1,6 +1,6 @@
 # TYPECHECK.md — GATE T
 
-Reel: `agents-that-remember-memory-store`  |  Checked: 2026-08-26T05:13  |  Overall: PASS  |  Beats checked: 14  |  FAILs: 0
+Reel: `agents-that-remember-memory-store`  |  Checked: 2026-08-28T01:03  |  Overall: PASS  |  Beats checked: 14  |  FAILs: 0
 
 Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-height.  Contrast: 4.5:1 WCAG.  Kern threshold: 3.5× expected advance.  Wordy budget: 2 elements.
 

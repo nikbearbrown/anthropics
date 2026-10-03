@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Slack GIF Creator",
+    "title": "Claude, Slack Gif Creator.",
     "slug": "claude-liam-slack-gif-creator",
-    "topic": "SLACK GIF CREATOR · ANTHROPIC SKILL",
+    "topic": "SLACK-GIF-CREATOR · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,58 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Olá, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/skills/skills/slack-gif-creator/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/skills/skills/slack-gif-creator/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Knowledge and utilities for creating animated GIFs optimized for Slack",
+        "Provides constraints",
+        "validation tools",
+        "and animation concepts",
+        "Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack."
+      ],
+      "constraints": [
+        "Only when asked to make the file size smaller, implement a few of the following methods:"
+      ],
+      "referenced_files": [
+        "create_gradient_background",
+        "core.gif_builder",
+        "core.validators",
+        "core.easing",
+        "core.frame_composer",
+        "math.sin()",
+        "math.cos()",
+        "math.sin(t frequency 2 * math.pi)",
+        "easing='bounce_out'",
+        "easing='ease_in'"
+      ],
+      "code_signals": [
+        "code block: python",
+        "code block: bash"
+      ],
+      "sections": [
+        "Slack Requirements",
+        "Core Workflow",
+        "Drawing Graphics",
+        "Working with User-Uploaded Images",
+        "Drawing from Scratch",
+        "Making Graphics Look Good",
+        "Available Utilities",
+        "GIFBuilder (core.gif_builder)",
+        "Validators (core.validators)",
+        "Easing Functions (core.easing)"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T15:17:55",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T12:45:56",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +73,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Olá — this is Liam, in for Bear. Ask Claude to make an animated GIF for Slack. The Slack GIF Creator fires. It knows Slack's exact specs: emoji GIFs at 128 by 128 pixels, message GIFs at 480, FPS between 10 and 30, colors between 48 and 128. It has three utilities: GIFBuilder for assembling and optimizing frames, validators to check Slack compliance, and easing functions for smooth motion. The animation logic itself uses PIL ImageDraw primitives — the skill gives you knowledge and tools, not rigid templates. Let me show you the spec, the toolkit, and the animation concepts.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is slack-gif-creator. Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.. Its concrete surface area includes Knowledge and utilities for creating animated GIFs optimized for Slack; Provides constraints; validation tools. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Olá, Liam",
-            "topic": "SLACK GIF CREATOR · ANTHROPIC SKILL",
-            "segment": "ANIMATION",
-            "command": "Make me a bouncing star emoji GIF for Slack — something eye-catching for our team channel.",
+            "greeting": "Hola, Liam",
+            "topic": "SLACK-GIF-CREATOR · ANTHROPIC SKILL",
+            "segment": "Claude, Slack Gif Creator.",
+            "command": "Run the slack-gif-creator skill.",
             "runningText": "reading slack-gif-creator SKILL.md…",
             "output": [
-              "Format: emoji → 128×128, ≤3s, 48 colors, optimize_for_emoji=True",
-              "Animation: bounce + pulse combo using ease_out + sin wave",
-              "Validate: is_slack_ready('emoji.gif') before delivery"
+              "skill: slack-gif-creator",
+              "Knowledge and utilities for creating animated GIFs optimized for Slack.…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +103,62 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 35.63,
+      "actual_duration_s": 27.67,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T15:17:55"
+        "at": "2026-09-05T12:45:56"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — Slack spec + 3 utilities",
-      "narration_text": "The skill separates into two concerns: the spec and the toolkit. Spec first. There are two format tracks. Emoji GIFs: 128 by 128 pixels, 10 to 30 FPS, 48 to 128 colors, and keep them under 3 seconds. Message GIFs: 480 by 480 pixels, same FPS and color range. Three utilities abstract the hard parts. GIFBuilder takes width, height, and FPS, accepts PIL Image frames, and saves with color quantization — set num_colors to 48 and optimize_for_emoji to True for emoji mode. Validators let you check compliance before delivery: validate_gif for a detailed report, is_slack_ready for a quick boolean. The easing module gives you seven motion curves — linear, ease_in, ease_out, ease_in_out, bounce_out, elastic_out, and back_out. Pass a progress value from 0 to 1 and get a smoothed value back. Dependencies: Pillow, imageio, numpy.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is slack-gif-creator. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at create_gradient_background, core.gif_builder, core.validators, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "SlackGifAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Know the spec. Use the toolkit. Write the PIL logic yourself."
+            "skillName": "slack-gif-creator",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📝",
+                "name": "LICENSE.txt",
+                "size": "11k",
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📝",
+                "name": "requirements.txt",
+                "size": "66b",
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "7k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "core",
+                "size": null,
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "4 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +167,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 49.96,
+      "actual_duration_s": 18.33,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T15:17:55"
+        "at": "2026-09-05T12:45:56"
       }
     },
     {
       "beat_id": "B02",
-      "act": "self-demo — 8 animation concepts from SKILL.md",
-      "narration_text": "The skill documents eight animation concepts. Shake: offset position with math.sin using the frame index, add small random variations for a natural feel. Pulse or heartbeat: scale size rhythmically with sin — two quick pulses then pause for the heartbeat variant. Bounce: use ease_in for falling, bounce_out for landing. Spin or rotate: PIL's rotate method, or a sine wave for wobble. Fade in and out: RGBA image, adjust alpha, or Image.blend between two frames. Slide: start off-screen, interpolate with ease_out for a smooth stop, back_out for an overshoot. Zoom: scale from 0.1 to 2.0 and crop the center. Explode or particle burst: generate particles with random angles and velocities, apply gravity by incrementing the y velocity each frame, and fade out alpha over time. The explicit message: combine concepts — bouncing plus rotating, pulsing plus sliding. Use PIL's full capabilities.",
+      "act": "pipeline",
+      "narration_text": "slack-gif-creator is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Knowledge and utilities for creating animated GIFs optimized for Slack; Provides constraints; validation tools; and animation concepts. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "SlackGifAnimations",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Combine concepts. PIL does more than you think."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +218,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 50.84,
+      "actual_duration_s": 16.53,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T15:17:55"
+        "at": "2026-09-05T12:45:56"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. The architectural insight of the Slack GIF Creator is that it solves a constraint problem, not a creativity problem: the spec is fixed, compliance is verifiable, and the toolkit handles the tedious parts so the animation logic can be expressive. What it gets right: exact Slack specs are baked in and the validator catches non-compliant output before delivery; GIFBuilder abstracts frame assembly and handles color quantization automatically; seven easing functions cover the full range of smooth motion; and the explicit no-rigid-templates philosophy gives full PIL access for creative work. Where it bites: PIL-only drawing makes complex shapes like hearts and snowflakes require careful polygon math by hand; there is no text rendering guidance since emoji fonts are flagged as unreliable and no alternative is given; color palette dithering artifacts at 48 colors are not addressed; seamless looping requires matching first and last frames manually with no helper for it; and the three dependencies must be pre-installed — the skill does not install them.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. Only when asked to make the file size smaller, implement a few of the following methods:. That is the constraint in slack-gif-creator — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 32,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "SlackGifTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "GIF is a constraint problem. Solve it with PIL primitives."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "Only when asked to make the file size smaller, implement a few of the following methods:",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 58.56,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 12.84,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T15:17:55"
+        "at": "2026-09-05T12:45:56"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In slack-gif-creator, supporting material: create_gradient_background, core.gif_builder, core.validators, core.easing; implementation signals: code block: python, code block: bash; sections: Slack Requirements, Core Workflow, Drawing Graphics, Working with User-Uploaded Images. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Knowledge and utilities for creating animated GIFs optimized for Slack; Provides constraints; validation tools; create_gradient_background; core.gif_builder; core.validators; code block: python; code block: bash",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 21.01,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T12:45:56"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. The Slack GIF Creator bakes in Slack's exact specs: emoji at 128 by 128 pixels, under 3 seconds, message at 480 by 480. Two utilities to know: GIFBuilder for frame assembly and color optimization, and the validator to check compliance before delivery. Seven easing functions for smooth motion. Eight animation concepts in the skill: shake, pulse, bounce, spin, fade, slide, zoom, explode. Philosophy: provide knowledge and utilities, not rigid templates — write the animation logic with PIL ImageDraw primitives directly. Always validate before delivery.",
+      "narration_text": "slack-gif-creator makes Claude execute one task reliably. The SKILL.md is the spec — Knowledge and utilities for creating animated GIFs optimized for Slack.…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "Slack GIF Creator",
+            "artifactHeading": "Claude, Slack Gif Creator.",
             "artifactLines": [
-              "Emoji: 128×128, ≤3s, 48–128 colors, optimize_for_emoji=True",
-              "Message: 480×480, same FPS (10–30) and color range",
-              "GIFBuilder: frame assembly + color quantization + emoji optimization",
-              "Validator: validate_gif() / is_slack_ready() — check before delivery",
-              "7 easing curves: linear, ease_in/out, bounce_out, elastic_out, back_out",
-              "8 animation concepts: shake, pulse, bounce, spin, fade, slide, zoom, explode"
+              "Skill: slack-gif-creator — Claude reads SKILL.md before acting",
+              "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides…",
+              "Capabilities: Knowledge and utilities for creating animated GIFs optimized for Slack; Provides constraints; validation tools",
+              "Constraint: Only when asked to make the file size smaller, implement a few of the following methods:",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +319,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 34.94,
+      "actual_duration_s": 14.46,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T15:17:55"
+        "at": "2026-09-05T12:45:56"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Open a Claude session. Paste this: Make me a pulsing fire emoji GIF for Slack. It should loop smoothly, feel energetic, and stay under 3 seconds. Use the Slack GIF Creator skill. Then watch three things: first, does Claude look up the emoji spec — 128 by 128 pixels, under 3 seconds, 48 to 128 colors — before writing any code? Second, does it use GIFBuilder and the easing module rather than writing its own frame assembly from scratch? And third, does it call is_slack_ready or validate_gif on the output before declaring it done? If Claude generates a GIF without checking the validator, it may be delivering a file Slack will reject. And if it writes its own animation loop from scratch without using the easing functions, it reinvented something the skill already provides. Those are your gates.",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to knowledge and utilities for creating animated gifs optimized for slack. Read the slack-gif-creator skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "SLACK GIF CREATOR · HANDOFF",
-            "segment": "ANIMATION",
-            "command": "Make me a pulsing fire emoji GIF for Slack. Smooth loop, energetic, under 3 seconds. Use the Slack GIF Creator skill.",
-            "runningText": "Watch: does Claude check emoji spec? Use GIFBuilder + easing? Run validator before delivery?",
-            "output": [
-              "Expected: emoji spec looked up (128×128, ≤3s) before any code",
-              "Expected: GIFBuilder + easing module used, not reinvented",
-              "Red flag: no validator call before declaring the GIF done"
-            ],
+            "greeting": "Your turn.",
+            "topic": "SLACK-GIF-CREATOR · ANTHROPIC SKILL",
+            "segment": "Claude, Slack Gif Creator.",
+            "command": "I want to knowledge and utilities for creating animated gifs optimized for. Read the slack-gif-creator skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,27 +356,27 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 42.22,
+      "actual_duration_s": 14.85,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T15:17:55"
+        "at": "2026-09-05T12:45:56"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "Slack GIF Creator. Liam, in for Bear.",
+      "narration_text": "Claude, Slack Gif Creator. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "Slack GIF Creator",
+            "title": "Claude, Slack Gif Creator.",
             "handle": "@NikBearBrown",
             "subline": "slack-gif-creator · Anthropic Skills"
           },
@@ -259,12 +387,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 3.01,
+      "actual_duration_s": 3.5,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T15:17:55"
+        "at": "2026-09-05T12:45:56"
       }
     }
   ]

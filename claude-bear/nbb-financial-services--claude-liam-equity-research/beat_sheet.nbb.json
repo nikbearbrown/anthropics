@@ -1,0 +1,290 @@
+{
+ "metadata": {
+  "title": "Claude, Equity Research.",
+  "slug": "financial-services--claude-liam-equity-research",
+  "topic": "EQUITY-RESEARCH · ANTHROPIC SKILL",
+  "purpose": "Take the equity-research skill apart in the Teardown register. Explain the mechanism (a plain-language SKILL.md Claude reads before it works, running four written steps — analyst consensus estimates, fundamentals, historical prices, macro context — into one snapshot), name the design trade (a legible, repeatable pipeline optimized for auditability at the cost of adaptive judgment), and land the carry-out that Claude only runs the steps that are written down.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/financial-services/youtube/claude-liam-equity-research/beat_sheet.json",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (ask Claude to research one company: it opens SKILL.md and runs four steps into one snapshot; ask the same skill something the file doesn't cover, like whether to buy the stock, and no step lights up - not refusal, just nothing written for it)",
+  "build": {
+   "at": "2026-09-01T17:14:25",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Ask Claude to do equity research and it's easy to picture a trained analyst inside the model. There isn't one. It's a written file — plain language, on disk, read before it works. Liam takes it apart.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Ask Claude for equity research — is that a trained analyst inside it?', hesitates on 'trained analyst', corrects to 'written file', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Ask Claude for\nequity research —\nis that a trained\nanalyst inside it?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "trained, analyst",
+      "replacementWords": "written, file",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-equity-research"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('trained analyst' -> 'written file') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T17:14:25"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "Here's what a Claude Skill actually is. Not a specialized model, not extra training — a folder Claude reads before it works. This one is called equity-research, and inside the folder is one file: SKILL.md, written in plain English, telling Claude to combine four things — analyst consensus estimates, company fundamentals, historical prices, and macro context — into a research snapshot. That's the whole engine, in a text file you could open.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "An equity-research folder holding one file, SKILL.md; an arrow to four source chips — consensus estimates, fundamentals, historical prices, macro context"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A folder, one file",
+     "mechanic": "A folder icon labelled 'equity-research' holds a single card, 'SKILL.md', in teal. An arrow points from it to four small chips that fade in one at a time on the right: consensus estimates, fundamentals, historical prices, macro context. Caption: plain language, no hidden logic.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "EQRB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T17:14:25"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "Here's the concrete case. Ask Claude to research one company. It opens SKILL.md and runs the steps in the order they're written — pull the analyst consensus estimates, pull the fundamentals, pull the historical prices, pull the macro context — then assembles all four into one snapshot and hands it back. Same steps, same order, for any ticker you name. The determinism is the point: they optimized for a legible, repeatable pipeline over adaptive judgment.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 25,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — a request card into SKILL.md; four step-cards light up teal in sequence; arrows converge into one snapshot card"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — one company, four steps",
+     "mechanic": "THE ANCHOR. A card reading 'research this company' arrows into 'SKILL.md'. Above, four step cards — consensus estimates, fundamentals, historical prices, macro context — light up teal one by one in sequence. Arrows from each converge down into a single 'one snapshot' card. THIS EXACT FOUR-STEP SEQUENCE RETURNS AT B03, this time with a fifth question that lights nothing.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "EQRB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T17:14:25"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "Ask that same skill a question the file doesn't cover — should you buy the stock — and nothing lights up. Not Claude refusing to think; no step written for it. That's the design being honest about its edges. And it cuts the other way too: a clean snapshot doesn't mean the numbers were checked or judged. The file only assembles what its steps say to pull. Assembly is not validation. This works if you value an auditable pipeline; it fails if you needed judgment the file never wrote down.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — a 'should I buy it?' card into SKILL.md, a dashed line to an empty card labelled no step written for it; a clean-snapshot card beside a struck-through 'checked? judged?'"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — a question with no step",
+     "mechanic": "THE B02 SEQUENCE RETURNS: the same SKILL.md card, this time fed the question 'should I buy it?'. A dashed line leads to an empty, unlit card. Italic caption in terracotta: 'no step written for it.' Beneath: 'not Claude refusing — this file just never wrote it down.' A divider, then the reverse case: a teal 'clean snapshot' card beside the phrase 'checked? judged?' struck through in terracotta, captioned 'only assembled — the file never claims to check the numbers.'",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "EQRB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T17:14:25"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Equity-research isn't a trained analyst inside Claude — it's a written file of steps, and Claude only runs the steps that are written down.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Equity-research isn't a trained analyst inside Claude — it's a written file of steps, and Claude only runs the steps that are written down.",
+      "attribution": "",
+      "sparkLine": "Written steps, run as written."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T17:14:25"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff / LLM exercise",
+   "narration_text": "Your turn. Here's a prompt you can paste straight into Claude, ChatGPT, or Gemini — read it with me. Draft a plain-language SKILL.md file for equity research on one company I care about. Tell it to combine analyst consensus estimates, company fundamentals, historical prices, and macro context into a one-page snapshot. Then list, explicitly, three questions this file will NOT answer — including whether to buy the stock — and explain why each one is out of scope for a skill built from those four sources. Go deeper: if you added a fifth source of your own choosing, which one would move the file closest to actually judging whether to buy, and which one would just add noise? Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 46,
+   "llm_exercise": {
+    "prompt": "Draft a plain-language SKILL.md file for equity research on one company I care about. Tell it to combine (1) analyst consensus estimates, (2) company fundamentals, (3) historical prices, and (4) macro context into a one-page research snapshot. Then list, explicitly, three questions this file will NOT answer — including whether to buy the stock — and explain why each one is out of scope for a skill built from only those four sources.",
+    "dig_deeper": "Go deeper: if you added a fifth source of your own choosing, which one would move the file closest to actually judging whether to buy the stock — and which one would just add noise?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "EQUITY-RESEARCH · ANTHROPIC SKILL",
+      "segment": "Your Turn",
+      "command": "Draft a plain-language SKILL.md file for equity research on one company I care about. Tell it to combine (1) analyst consensus estimates, (2) company fundamentals, (3) historical prices, and (4) macro context into a one-page research snapshot. Then list, explicitly, three questions this file will NOT answer — including whether to buy the stock — and explain why each one is out of scope for a skill built from only those four sources.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "SKILL.md §Step 3 — BHTF is the LLM-exercise beat (second-to-last), following the sibling nbb precedent (nbb-claude-basics--claude-liam-four-places-your-data-goes, nbb-claude-basics--anthropic-sdk-php-server-hands-back-encrypted-context) that folds the exercise into the existing 'your turn handoff' rather than inserting a duplicate B_LLM slot. Structured llm_exercise block per SKILL.md schema (prompt + dig_deeper). Prompt is paste-ready for any frontier LLM — no CLI, no local files required, produces a useful SKILL.md draft + a scoped-out list on its own. dig_deeper is a real next question about which fifth source moves the file toward judgment vs adds noise — a question the video doesn't answer.",
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T17:14:25"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Equity Research. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Equity Research. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T17:14:25"
+   }
+  }
+ ]
+}

@@ -1,0 +1,493 @@
+{
+ "metadata": {
+  "title": "Claude, Nav Tieout.",
+  "subtitle": "Recompute, Flag — Never Verify the NAV",
+  "slug": "financial-services--claude-liam-nav-tieout",
+  "topic": "CLAUDE · SKILLS",
+  "purpose": "Answer one real question in the Teardown register: does nav-tieout mean Claude is verifying the fund's NAV is correct? Takes the skill apart to show it recomputes the LP's capital account from the NAV pack and flags disagreement — the NAV itself is never checked, only the tie-out — and names the design choice that made it a checker rather than an auditor.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/financial-services/youtube/claude-liam-nav-tieout/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B03 -> B06 (the $4,000 NAV-pack/LP-statement gap: planted, then returned to)",
+  "one_flag": "N/A - no inference beat; every claim is generic skill mechanics or the source's own stated job line",
+  "build": {
+   "at": "2026-09-02T03:20:06",
+   "cut": "master",
+   "filled": 11,
+   "of": 11,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. Nav-tieout sounds like Claude proving the fund's NAV is correct. It isn't — the skill assumes the NAV pack and checks whether the LP statement agrees. Let's take it apart.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Claude proves the fund's NAV is correct with nav-tieout.', hesitates on 'proves', corrects to 'assumes', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude proves the\nfund's NAV is\ncorrect with nav-tieout.\nWhat does it actually do?",
+      "face": "serif",
+      "fontSize": 68,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "proves",
+      "replacementWords": "assumes",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 12,
+      "charMs": 46,
+      "jitter": 26,
+      "seed": "hai-nav-tieout"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('proves' -> 'assumes') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T03:20:06"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes",
+   "narration_text": "The name sells one story. Claude has a nav-tieout skill, therefore Claude is independently confirming the fund's NAV is accurate — auditing the number itself. That's the story a listener packs into the word 'tieout': an evaluation, not a comparison.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SOUNDS LIKE AN AUDIT OF THE NAV",
+    "media": "manim/B01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SOUNDS LIKE AN AUDIT OF THE NAV",
+     "chips": [
+      "HAS A NAV-TIEOUT SKILL",
+      "CONFIRMS THE NAV ITSELF?"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "that's the natural read",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BNB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T03:20:06"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "2 wrong guess, broken",
+   "narration_text": "Here's the machinery contradicting the story. The skill never touches the NAV pack. Run it on a period with a known LP-statement error and the fund's NAV components sit exactly where they started — the only thing that moves is a flag on the LP side. The NAV pack is treated as trusted input, not as a claim to be tested.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NAV PACK UNCHANGED",
+    "media": "manim/B02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NAV PACK UNCHANGED",
+     "chips": [
+      "RUN ON A KNOWN LP ERROR",
+      "CHANGES THE NAV PACK?",
+      "NAV PACK UNCHANGED"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [
+      1
+     ],
+     "caption": "the NAV pack is trusted, not tested",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BNB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T03:20:06"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PLANTED",
+   "narration_text": "Concrete case. The NAV pack puts the LP's capital account at four hundred four thousand. The LP statement shows four hundred thousand. Nav-tieout does one thing: it recomputes the account straight from the NAV components and flags the four-thousand-dollar gap. Notice what it did not do — it never asked whether four hundred four thousand was the right number to compute from.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — A GAP, SURFACED",
+    "media": "manim/B03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — A GAP, SURFACED",
+     "chips": [
+      "NAV PACK $404,000",
+      "LP STMT $400,000",
+      "FLAGGED $4,000 GAP"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "a $4,000 gap, flagged",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BNB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T03:20:06"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "3 mechanism",
+   "narration_text": "The mechanism is three steps, one LP statement at a time. Recompute the capital account straight from the NAV components. Compare it to what the LP was actually sent. Flag any differences. Fixed order, no branching unless the SKILL.md explicitly permits it. That rigidity is a design choice — they optimized for auditability at the expense of any judgement in the moment.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "RECOMPUTE, COMPARE, FLAG",
+    "media": "manim/B04.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "RECOMPUTE, COMPARE, FLAG",
+     "chips": [
+      "RECOMPUTE FROM NAV",
+      "COMPARE TO LP STMT",
+      "FLAG DIFFERENCES"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "in a fixed order, every run",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BNB04Scene"
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T03:20:06"
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "3 mechanism",
+   "narration_text": "So this makes nav-tieout a checker, not an auditor of the fund. Here's the trade. You get the same mismatch caught the same way every time, before the statement goes out. What you give up is any question about whether the NAV pack itself is right. This works if you value catching statement errors before they ship; it fails if you need somebody verifying the fund's numbers upstream.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "CHECKER, NOT AUDITOR",
+    "media": "manim/B05.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "CHECKER, NOT AUDITOR",
+     "chips": [
+      "SAME CHECK, EVERY RUN",
+      "IS THE NAV PACK RIGHT?"
+     ],
+     "arrows": false,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "the payoff, and the limit",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BNB05Scene"
+   },
+   "audio_file": "mp3/beat-B05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B05.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T03:20:06"
+   }
+  },
+  {
+   "beat_id": "B06",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "Back to that four-thousand-dollar gap. Nav-tieout never asked whether the NAV pack's numbers were right. It recomputed the LP's account from them, saw the statement disagreed, put a flag on that line, and stopped. What happens next — who is wrong, who fixes what — is a human decision the skill deliberately does not touch.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — STILL FLAGGED",
+    "media": "manim/B06.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — STILL FLAGGED",
+     "chips": [
+      "NAV PACK $404,000",
+      "LP STMT $400,000",
+      "FLAGGED $4,000 GAP"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "still flagged, never resolved",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BNB06Scene"
+   },
+   "audio_file": "mp3/beat-B06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B06.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T03:20:06"
+   }
+  },
+  {
+   "beat_id": "B07",
+   "act": "5 both directions",
+   "narration_text": "The logic runs both directions, and both matter. A flagged mismatch doesn't prove the LP statement is wrong — the NAV pack could be the one carrying the error. And a clean tie-out doesn't prove the fund's NAV was calculated correctly — it only proves the two documents agree. Agreement is evidence of consistency, not of truth.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NEITHER PROVES THE OTHER",
+    "media": "manim/B07.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NEITHER PROVES THE OTHER",
+     "pairs": [
+      [
+       "MISMATCH FLAGGED",
+       "PROVES THE STATEMENT WRONG?"
+      ],
+      [
+       "TIES OUT CLEAN",
+       "PROVES THE NAV IS RIGHT?"
+      ]
+     ],
+     "strike": [
+      1,
+      3
+     ],
+     "caption": "neither one is proof",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BNB07Scene"
+   },
+   "audio_file": "mp3/beat-B07.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B07.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T03:20:06"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Here's the carry-out. Nav-tieout doesn't check whether the fund's NAV is right — it recomputes the LP's capital account from the NAV pack and flags where the statement disagrees. The NAV itself stays untested. Recomputes and flags. Never verifies.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "nav-tieout doesn't check whether the fund's NAV is right — it recomputes the LP's capital account from the NAV pack and flags where the statement disagrees. The NAV itself stays untested.",
+      "attribution": "",
+      "sparkLine": "Recomputes and flags. Never verifies the NAV."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T03:20:06"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Try it yourself. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini — it makes the model spell out the recomputation before it does it, so you see exactly which NAV-pack line items feed each LP-statement field, and what a flagged mismatch does and doesn't prove. Go deeper: ask what it would take — new inputs, new procedures — for a nav-tieout to actually verify the fund's NAV, not just its consistency with the LP statement.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "llm_exercise": {
+    "prompt": "I'm looking at a private-fund NAV pack and one LP's own capital-account statement, and I want to understand what a nav-tieout actually proves. The NAV pack is authoritative for the fund's numbers; the LP statement is what the investor was sent. Walk me through, step by step, how you'd recompute the LP's capital account from the NAV components and compare it to the LP statement — and before you do it, spell out exactly which NAV-pack line items feed the recomputation and which LP-statement fields they get compared against. Then tell me what a flagged mismatch does and does not prove, in both directions.",
+    "dig_deeper": "Go deeper: what would it take — new inputs, new procedures — for a nav-tieout to actually verify the fund's NAV, not just its consistency with the LP statement?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Try it yourself.",
+      "topic": "CLAUDE · SKILLS",
+      "segment": "Claude, Nav Tieout.",
+      "command": "I'm looking at a private-fund NAV pack and one LP's own capital-account statement. Walk me through how you'd recompute the LP's capital account from the NAV components and compare it to the LP statement — and before you do it, spell out which NAV-pack line items feed the recomputation and which LP-statement fields they get compared against.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T03:20:06"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Nav Tieout. Liam, in for Bear. More teardowns at brutalist dot art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Nav Tieout. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T03:20:06"
+   }
+  }
+ ]
+}

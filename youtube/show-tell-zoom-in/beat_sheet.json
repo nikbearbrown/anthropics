@@ -1,0 +1,815 @@
+{
+  "metadata": {
+    "slug": "show-tell-zoom-in",
+    "title": "Zoom In",
+    "topic": "CLAUDE API · VISION",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "French (Bonjour)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Developers and students who send images to Claude and want it to read small detail in charts, documents and screenshots",
+    "source_doc": "anthropics/claude-cookbooks multimodal/crop_tool.ipynb, read RAW from GitHub main @ 813fbeec on 2026-09-27 (notebook rewritten in 6c63a145, 2026-07-23), plus the live vision.md and vision-coordinates.md it cites (sources/live_*); the stale local copy (47ebd6a5) was diffed",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude",
+      "Claude API",
+      "vision",
+      "tool use",
+      "zoom tool",
+      "crop tool",
+      "image analysis",
+      "charts",
+      "Anthropic cookbook",
+      "agentic loop",
+      "Anthropic",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T20:39:39",
+      "cut": "master",
+      "filled": 15,
+      "of": 15,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Bonjour. This is Liam, in for Bear. When Claude can't read a tiny label on a chart, it's tempting to ask how to make Claude see better. But Anthropic's cookbook doesn't change how Claude sees. It hands Claude a tool. So the real question is how to let Claude zoom in.",
+      "estimated_duration_s": 20.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I make Claude see better on a dense chart?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'make Claude see better' -> 'let Claude zoom in' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I make Claude see better\non a dense chart?",
+            "triggerWords": "make Claude see better",
+            "replacementWords": "let Claude zoom in",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-zoom-in",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-28T00:32:00.970861+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (make Claude see better) and corrects it to the real one (let Claude zoom in).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 14.1,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 14.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A tool: a function your code runs when Claude asks for it. A patch: a small square of pixels that Claude sees as one unit. Coordinates: numbers that name a spot in the image, here in pixels. And a crop: one region, cut out of an image.",
+      "estimated_duration_s": 18.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "'tool' lands"
+          },
+          {
+            "at": 0.35,
+            "event": "'patch' lands"
+          },
+          {
+            "at": 0.6,
+            "event": "'coordinates' lands"
+          },
+          {
+            "at": 0.8,
+            "event": "'crop' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "tool",
+                "meaning": "a function your code runs when Claude asks"
+              },
+              {
+                "term": "patch",
+                "meaning": "a square of pixels Claude sees as one unit"
+              },
+              {
+                "term": "coordinates",
+                "meaning": "numbers that name a spot, in pixels"
+              },
+              {
+                "term": "crop",
+                "meaning": "one region cut out of an image"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-28T00:32:32.660561+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: four prerequisites, one line each."
+      },
+      "actual_duration_s": 13.42,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 13.458333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Here's the problem this cookbook starts from. Claude sees an image once, at a fixed effective resolution. On a dense chart, a small label, or two lines that nearly touch, can be too small to make out. The cookbook says no amount of prompting recovers it.",
+      "estimated_duration_s": 18.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white chart card rises on the stage; grey series lines draw across it; two lines (A grey, E kraft) draw and nearly touch at one spot; a tiny grey label sits by a peak ('tiny label'); a terracotta dot marks the spot ('nearly touch').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the chart"
+          },
+          {
+            "at": 0.35,
+            "event": "one look, fixed resolution"
+          },
+          {
+            "at": 0.6,
+            "event": "the tiny label, the near-touch"
+          },
+          {
+            "at": 0.85,
+            "event": "prompting can't recover it"
+          }
+        ],
+        "manim": {
+          "class": "B00_Chart"
+        },
+        "motion_claim": "A white chart card rises on the stage; grey series lines draw across it; two lines (A grey, E kraft) draw and nearly touch at one spot; a tiny grey label sits by a peak ('tiny label'); a terracotta dot marks the spot ('nearly touch')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn chart-and-zoom scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.93,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 13.958333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The reason is how Claude sees. It reads an image in patches, squares twenty-eight pixels on a side. Each patch is one visual token, and each model has a budget of them. An image over the budget is scaled down before Claude sees it, and the small details shrink with it.",
+      "estimated_duration_s": 20.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A grid of patches draws over the chart ('patches'); one patch is outlined and both lines fit inside it ('one patch'); a copy of the chart shrinks down to a smaller card ('scaled down').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the patch grid"
+          },
+          {
+            "at": 0.4,
+            "event": "one patch holds both lines"
+          },
+          {
+            "at": 0.7,
+            "event": "over budget: scaled down"
+          },
+          {
+            "at": 0.9,
+            "event": "details shrink"
+          }
+        ],
+        "manim": {
+          "class": "B01_Patches"
+        },
+        "motion_claim": "A grid of patches draws over the chart ('patches'); one patch is outlined and both lines fit inside it ('one patch'); a copy of the chart shrinks down to a smaller card ('scaled down')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn chart-and-zoom scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 14.81,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 14.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "So the cookbook's first step happens in your code. Keep the full-resolution original. Then resize a copy to exactly the size Claude will see, using resized size, a function from Claude's vision docs. That copy is what you send. Now any pixel Claude names lines up with the copy you hold.",
+      "estimated_duration_s": 20.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The big chart slides down-left ('original'); a kraft box lands beside it ('your code'); a smaller copy of the chart rises top-left ('copy'); corner ticks line up on the copy.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "keep the original"
+          },
+          {
+            "at": 0.35,
+            "event": "resize a copy"
+          },
+          {
+            "at": 0.65,
+            "event": "send the copy"
+          },
+          {
+            "at": 0.9,
+            "event": "pixels line up"
+          }
+        ],
+        "manim": {
+          "class": "B02_Resize"
+        },
+        "motion_claim": "The big chart slides down-left ('original'); a kraft box lands beside it ('your code'); a smaller copy of the chart rises top-left ('copy'); corner ticks line up on the copy."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn chart-and-zoom scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 15.66,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 15.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Next, give Claude a tool named zoom. It takes four numbers: x one, y one, x two, and y two. Those are the left, top, right and bottom edges of a region, in pixels, counted from the top-left corner. An earlier version of this cookbook used numbers from zero to one. The vision docs say Claude works best with pixel coordinates, so the current one uses pixels.",
+      "estimated_duration_s": 26.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A dark Claude block with a terracotta spark lands right ('Claude'); a small dark tag snaps onto it ('zoom'); on the copy, an origin dot at the top-left ('0, 0'); a frame draws with its two corners marked ('x1, y1', 'x2, y2'); a pale '0 to 1' tag is crossed out.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the zoom tool"
+          },
+          {
+            "at": 0.3,
+            "event": "four numbers"
+          },
+          {
+            "at": 0.55,
+            "event": "edges in pixels from the top-left"
+          },
+          {
+            "at": 0.85,
+            "event": "not 0 to 1: pixels"
+          }
+        ],
+        "manim": {
+          "class": "B03_Tool"
+        },
+        "motion_claim": "A dark Claude block with a terracotta spark lands right ('Claude'); a small dark tag snaps onto it ('zoom'); on the copy, an origin dot at the top-left ('0, 0'); a frame draws with its two corners marked ('x1, y1', 'x2, y2'); a pale '0 to 1' tag is crossed out."
+      },
+      "actual_duration_s": 19.31,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 19.333333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Now ask. The cookbook's question: at month forty-eight, which line is higher: the Widget A line, or the Widget E line? In the full view, the two lines nearly touch. So instead of answering, Claude calls zoom, with a box around that spot.",
+      "estimated_duration_s": 17.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A question slip slides into Claude ('A or E?'); the spot on the copy pulses; a frame draws around it; a small call card travels from Claude down to your code ('zoom call').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the question"
+          },
+          {
+            "at": 0.45,
+            "event": "the lines nearly touch"
+          },
+          {
+            "at": 0.75,
+            "event": "Claude calls zoom"
+          }
+        ],
+        "manim": {
+          "class": "B04_Ask"
+        },
+        "motion_claim": "A question slip slides into Claude ('A or E?'); the spot on the copy pulses; a frame draws around it; a small call card travels from Claude down to your code ('zoom call')."
+      },
+      "actual_duration_s": 12.48,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 12.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Your code runs the call. It maps the box from the copy onto the full-resolution original, and cuts the region out of the original, not the copy. So the crop keeps every pixel the source image has.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The frame on the copy is echoed, scaled up, onto the original ('same box'); the region lifts out of the original as a tile ('crop'); the copy's frame stays empty.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the call arrives"
+          },
+          {
+            "at": 0.35,
+            "event": "the box maps onto the original"
+          },
+          {
+            "at": 0.65,
+            "event": "cut from the original"
+          },
+          {
+            "at": 0.9,
+            "event": "every pixel kept"
+          }
+        ],
+        "manim": {
+          "class": "B05_Crop"
+        },
+        "motion_claim": "The frame on the copy is echoed, scaled up, onto the original ('same box'); the region lifts out of the original as a tile ('crop'); the copy's frame stays empty."
+      },
+      "actual_duration_s": 11.43,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 11.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then it scales the crop up, to the largest size the image budget allows, so each detail covers more patches. It sends that back as the tool result: the magnified crop, as a JPEG, and one line of text naming the region. JPEG, because every result stays in the conversation, and a few big PNG crops can pass the API's request size limit.",
+      "estimated_duration_s": 25.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The tile grows to a large magnified crop where A and E are clearly apart ('magnified'); a patch grid draws over it, the gap now spans several patches; the tile rides back to Claude with a grey text strip ('JPEG').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "scaled up to the budget"
+          },
+          {
+            "at": 0.35,
+            "event": "more patches per detail"
+          },
+          {
+            "at": 0.6,
+            "event": "sent back as the result"
+          },
+          {
+            "at": 0.85,
+            "event": "JPEG: results accumulate"
+          }
+        ],
+        "manim": {
+          "class": "B06_Magnify"
+        },
+        "motion_claim": "The tile grows to a large magnified crop where A and E are clearly apart ('magnified'); a patch grid draws over it, the gap now spans several patches; the tile rides back to Claude with a grey text strip ('JPEG')."
+      },
+      "actual_duration_s": 19.43,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 19.458333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Claude looks at the magnified crop. If it still can't tell, it zooms again, tighter. In the cookbook's run, it zoomed twice, then answered: Widget E is higher. Asked the same question without the tool, it had said Widget A, which was wrong.",
+      "estimated_duration_s": 17.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The magnified crop sits centre; a smaller frame draws inside it; a second, tighter crop grows ('zoom 2'); E sits clearly above A at the month line; a check lands by E ('E higher'); a small 'A' slip is crossed out ('no tool').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Claude reads the crop"
+          },
+          {
+            "at": 0.3,
+            "event": "zooms again, tighter"
+          },
+          {
+            "at": 0.6,
+            "event": "answers: E"
+          },
+          {
+            "at": 0.85,
+            "event": "without the tool: A, wrong"
+          }
+        ],
+        "manim": {
+          "class": "B07_Again"
+        },
+        "motion_claim": "The magnified crop sits centre; a smaller frame draws inside it; a second, tighter crop grows ('zoom 2'); E sits clearly above A at the month line; a check lands by E ('E higher'); a small 'A' slip is crossed out ('no tool')."
+      },
+      "actual_duration_s": 12.5,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 12.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "A loop drives all of this. Claude asks, your code crops and returns, and Claude looks again. The loop ends when Claude answers with words instead of a zoom call. The cookbook's runner also stops after twenty rounds, as a guard against a loop that runs away.",
+      "estimated_duration_s": 18.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Claude above, your code below; an ink arc draws down ('ask'), another draws back up ('crop'); a terracotta dot circles the loop twice; an answer card leaves Claude ('answer'); a small counter plate shows the cap ('max 20').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the loop"
+          },
+          {
+            "at": 0.4,
+            "event": "ask, crop, look again"
+          },
+          {
+            "at": 0.65,
+            "event": "ends with words"
+          },
+          {
+            "at": 0.9,
+            "event": "capped at twenty rounds"
+          }
+        ],
+        "manim": {
+          "class": "B08_Loop"
+        },
+        "motion_claim": "Claude above, your code below; an ink arc draws down ('ask'), another draws back up ('crop'); a terracotta dot circles the loop twice; an answer card leaves Claude ('answer'); a small counter plate shows the cap ('max 20')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn chart-and-zoom scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.89,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 13.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The chart is only the example. The cookbook says the same pattern works wherever the detail is small next to the whole image: dense documents, screenshots, schematics, and scans of paper forms.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The chart slides away; a scanned form card rises with many grey lines and a tiny field ('scanned form'); the same frame draws round the field; a magnified tile of it grows beside ('same move').",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the chart was the example"
+          },
+          {
+            "at": 0.5,
+            "event": "any small detail"
+          },
+          {
+            "at": 0.85,
+            "event": "the same zoom"
+          }
+        ],
+        "manim": {
+          "class": "B09_Anywhere"
+        },
+        "motion_claim": "The chart slides away; a scanned form card rises with many grey lines and a tiny field ('scanned form'); the same frame draws round the field; a magnified tile of it grows beside ('same move')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn chart-and-zoom scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.69,
+      "audio_file": "mp3/beat-B09.mp3",
+      "render_duration_s": 10.708333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Does it help? The cookbook reports that on a public chart-reading benchmark, the zoom tool more than doubled accuracy. It isn't free. Each zoom is another round trip, and it re-sends the conversation plus a magnified crop. You trade tokens and time for detail.",
+      "estimated_duration_s": 17.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two grey bars grow side by side ('no tool', 'zoom tool'), the second more than twice the first ('more than 2x', 'per the cookbook'); then a stack of token slabs climbs beside them ('tokens').",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the benchmark"
+          },
+          {
+            "at": 0.35,
+            "event": "more than doubled"
+          },
+          {
+            "at": 0.6,
+            "event": "not free"
+          },
+          {
+            "at": 0.85,
+            "event": "tokens and time for detail"
+          }
+        ],
+        "manim": {
+          "class": "B10_Payoff"
+        },
+        "motion_claim": "Two grey bars grow side by side ('no tool', 'zoom tool'), the second more than twice the first ('more than 2x', 'per the cookbook'); then a stack of token slabs climbs beside them ('tokens')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn chart-and-zoom scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 14.63,
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 14.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Open Claude Code in a project with a script that asks Claude about an image, and paste this: Add a zoom tool to my image question script, the way Anthropic's crop tool cookbook does it. Inputs x one, y one, x two, y two, in pixels. Crop from the full-resolution original, scale the crop up, and print every region Claude asks for. Then check two things. First: does each printed region cover the detail the question is about? And does the answer change when you turn the tool off?",
+      "estimated_duration_s": 36.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · YOUR TURN",
+            "segment": "Zoom In",
+            "command": "Add a zoom tool to my image-question script, the way Anthropic's crop_tool cookbook does it: inputs x1, y1, x2, y2 in pixels; crop from the full-resolution original, scale the crop up, and print every region Claude asks for.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: does each region cover the detail?",
+              "Check: does the answer change with the tool off?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-28T00:33:33.693784+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 24.85,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 24.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T20:39:39"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Zoom In. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Zoom In",
+            "slug": "show-tell-zoom-in",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-28T00:33:49.446117+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 3.39,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 3.4166666666666665,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T20:39:39"
+      }
+    }
+  ]
+}

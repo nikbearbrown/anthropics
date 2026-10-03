@@ -1,0 +1,290 @@
+{
+ "metadata": {
+  "title": "Is Claude's Financial Plan Its Own Judgment?",
+  "slug": "financial-services--claude-liam-financial-plan",
+  "topic": "FINANCIAL-PLAN · ANTHROPIC SKILL",
+  "purpose": "Answer whether Claude's financial plan reflects its own judgment about what's best for the client, or is running a fixed set of steps from a written skill file. Lands the carry-out that a financial plan from Claude is its skill running fixed steps over the inputs you gave it -- not a judgment about what's best for you.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-financial-plan/beat_sheet.json",
+  "source_note": "Like the dcf-model and 3-statement-model sibling redos, the source sheet's narration already states real skill-specific facts (not unfilled template placeholders) -- see QUESTION.md. Facts preserved: the financial-plan skill builds or updates a comprehensive financial plan covering retirement projections, education funding, estate planning, and cash flow analysis; used for new client onboarding, annual plan reviews, or scenario modeling; triggers on 'financial plan', 'retirement plan', 'can I retire', 'education funding', 'estate plan', 'cash flow analysis', or 'plan update'. Register re-registered Teardown -> Plain; source's B03/BVDT design-tell verdict became a plain mechanism + both-directions beat; a wrong-guess beat and an anchor (retirement-age dial -> monthly savings-target readout) were added per hai-simple's Phase 1 structure, since the source's Teardown shape carried neither.",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (retirement-age dial -> monthly savings-target readout; scenario grid)",
+  "build": {
+   "at": "2026-09-01T17:53:46",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "People ask whether Claude's financial plan is its own judgment about what's best for you. It isn't. Liam here, in for Bear — let's take the skill apart and see what actually decides that plan.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'What decides what my financial plan is -- judgment?', hesitates on 'judgment', corrects to 'a skill', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "What decides\nmy financial plan —\njudgment?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "judgment",
+      "replacementWords": "a skill",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-financial-plan"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('judgment' -> 'a skill') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T17:53:46"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "Here's the intuitive guess. Claude weighs your situation the way a financial advisor would — someone who's gotten to know you and reached a conclusion about what your plan should look like. The skill doesn't work that way. It only recognizes the cases the file names — new client onboarding, an annual plan review, a scenario request — and it only builds the four things the file names: retirement projections, education funding, estate planning, and cash flow analysis. Ask for something outside that list — a tax filing, an insurance shop — and it won't improvise. There is no independent financial expertise underneath to fall back on. They optimized for reproducibility at the expense of judgment. Same inputs, same procedure, same four artifacts. That is the trade.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "An advisor figure weighing a conclusion, struck through; trigger tags feeding a steps card, lit; a fifth unlisted request left dim, unconnected"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Judgment, struck -- steps, lit",
+     "mechanic": "Left: a figure icon labelled 'ADVISOR JUDGMENT' beside a thought-bubble arriving at a single conclusion mark. Right: three input tags -- 'ONBOARDING', 'ANNUAL REVIEW', 'SCENARIO' -- feeding into a card labelled 'SKILL.md STEPS', which lights four output tags: 'RETIREMENT', 'EDUCATION', 'ESTATE', 'CASH FLOW'. The advisor side dims and gets a terracotta strike. A fifth tag, 'TAX FILING?', appears beside the steps card with no connecting line and stays dim -- no step for it.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "FPB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T17:53:46"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "So here's the actual machinery. Claude reads SKILL.md once, then runs the steps in order for whichever case triggered — onboarding, an annual review, or a scenario request — and produces the four artifacts: retirement projections, education funding, estate planning, and cash flow analysis. Watch the anchor. Turn the retirement-age dial down from sixty-five to sixty and the monthly savings-target readout rises. Same steps. One different input. One different number. Nothing is being reasoned about here. It's being computed.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR -- a retirement-age dial wired directly to a single monthly-savings-target readout"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR -- one dial, one number",
+     "mechanic": "THE ANCHOR. Four step cards in a row -- 'RETIREMENT', 'EDUCATION', 'ESTATE', 'CASH FLOW' -- feeding down into a dial labelled 'RETIREMENT AGE'. The dial connects by a single line to a readout card labelled 'MONTHLY SAVINGS TARGET'. The dial is turned down (65 -> 60); the readout number visibly rises in response. THIS EXACT COMPOSITION RETURNS, AS A GRID, AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "FPB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T17:53:46"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "Turn that same dial across a few scenarios and you'll see both directions of the honest limit. A savings target that jumps a lot when you shift the retirement age by five years isn't the skill reacting or improvising. It's the same four steps run again with a different input. And a savings target that barely moves between two close retirement ages isn't the skill weighing them and deciding both are fine. It means the inputs were close, and the fixed steps produced a similar output. The dial moves the number. It never means the skill formed an opinion about the number.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 23,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS as a small scenario grid, then splits into 'jumps a lot is not improvising' and 'barely changes is not judged fine'"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS -- scenario grid, then split",
+     "mechanic": "THE B02 DIAL-AND-READOUT COMPOSITION RETURNS, identical placement, now repeated three times side by side as a small scenario grid -- same dial, three retirement-age settings (65 / 62 / 60), three readout numbers, each visibly different. It shrinks and slides up. Two cards fade in beneath: left shows the readout numbers spread far apart, labelled 'jumps a lot is not improvising'; right shows two close ages (65 / 64) producing nearly identical readouts, labelled 'barely changes is not judged fine'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "FPB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T17:53:46"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A financial plan from Claude is the skill running fixed steps over the inputs you handed it — not a judgment about what's best for you. Change an input, and the plan updates. That's what happened. That's all that happened.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A financial plan from Claude is the skill running fixed steps over the inputs you handed it — not a judgment about what's best for you. Change an input, and the plan updates. That's what happened. That's all that happened.",
+      "attribution": "",
+      "sparkLine": "Fixed steps, not judgment."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T17:53:46"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. Hand it a current age, a target retirement age, a target retirement income, one planning goal like funding a child's education — plus your current investable assets and annual savings — and ask it to run the financial-plan skill and produce the four artifacts. Then change only the retirement age by five years and rerun. For each artifact, ask which numbers moved and which stayed put. That's how you see the fixed steps working, instead of trusting them. Go deeper: ask it to describe a set of inputs where the plan would run cleanly and still be a bad plan — and explain why the same fixed steps can't catch that. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 40,
+   "llm_exercise": {
+    "prompt": "I want to see how the financial-plan skill actually builds a plan. Here are my inputs: current age 40, target retirement age 65, target annual retirement income $80,000, one primary planning goal — funding four years of college for a child in fifteen years at an estimated total cost of $120,000, current investable assets $150,000, current annual savings $20,000. Run the financial-plan skill and build a plan around these inputs, showing me the four artifacts: retirement projections, education funding, estate planning outline, and cash flow analysis. Then change only my target retirement age to 60 — nothing else — and rerun. For each of the four artifacts, tell me exactly which numbers moved, which stayed put, and by how much. Show me the wiring, not just the answers.",
+    "dig_deeper": "Go deeper: describe a set of inputs where the plan runs cleanly and is still a bad plan — and explain why running the same fixed steps can't catch that."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "FINANCIAL-PLAN · ANTHROPIC SKILL",
+      "segment": "Your Turn",
+      "command": "My inputs: current age 40, target retirement age 65, target retirement income $80,000, one planning goal — $120,000 college fund for a child in 15 years, current investable assets $150,000, current annual savings $20,000. Run the financial-plan skill and produce all four artifacts: retirement projections, education funding, estate planning, cash flow analysis. Then change only the retirement age to 60 and rerun. For each artifact, tell me exactly which numbers moved, which stayed put, and by how much.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T17:53:46"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Is Claude's Financial Plan Its Own Judgment? Liam, in for Bear. Brutalist dot art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Is Claude's Financial Plan Its Own Judgment? Liam, in for Bear. www.brutalist.art",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T17:53:46"
+   }
+  }
+ ]
+}

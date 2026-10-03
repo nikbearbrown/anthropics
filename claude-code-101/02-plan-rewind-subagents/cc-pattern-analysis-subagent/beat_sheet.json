@@ -1,0 +1,1251 @@
+{
+  "metadata": {
+    "slug": "cc-pattern-analysis-subagent",
+    "title": "Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code",
+    "subtitle": "Same ask, once inline and once through a deployed subagent. The main session's tool sequence goes from eight-reads-and-a-write to two calls.",
+    "topic": "CLAUDE CODE 101",
+    "skill": "cc-explainer",
+    "playlist": "Claude Code 101",
+    "tier": "02-plan-rewind-subagents",
+    "audience": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "handle": "@NikBearBrown",
+    "brand": "claude",
+    "palette": "claude",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "persona": "liam",
+    "in_for_bear": true,
+    "build": {
+      "at": "2026-09-09T23:34:49",
+      "cut": "master",
+      "filled": 14,
+      "of": 14,
+      "slates": [],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'CCSession' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    },
+    "operator": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "closing_voice": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "aspect": "16:9",
+    "fps": 30,
+    "session": "SESSION.md",
+    "derived_from": "claude-code-101/02-plan-rewind-subagents/claude-code--claude-liam-pattern-analysis-subagent (the concept card; body replaced by two real headless runs)",
+    "sources": [
+      "SESSION.md (two real runs, 2026-09-09)",
+      "info-7375-conducting-ai/chapters/02-the-solve-verify-asymmetry.md",
+      "info-7375-irreducibly-human/chapters/04-tier-4-metacognitive-and-supervisory.md"
+    ]
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN — INLINE",
+      "lane": "TERMINAL",
+      "narration_text": "This is Liam, in for Bear. One ask, one folder — five student answers to the binary-search rubric, and a request for the top three things the batch is getting wrong. Watch what Claude reads. The rubric. Every submission. All five of them, one after another. Every student's answer is now sitting in the main session's window. Eight reads to answer a question about a batch that has nothing to do with the build I'm going to make next.",
+      "estimated_duration_s": 28.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the inline run: the ask, Read rubric, Read five submissions, Write",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "grading — inline",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "For the binary-search rubric, find the top three misconceptions the batch is showing. Write them to feedback_focus.md.",
+                "cue": 0,
+                "typeDuration": 72
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "rubric.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "submissions/01-mira.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "submissions/02-jules.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "submissions/03-priya.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "submissions/04-omar.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "submissions/05-tao.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "feedback_focus.md",
+                "state": "done"
+              }
+            ],
+            "cues": [
+              0,
+              95,
+              125,
+              150,
+              175,
+              200,
+              225,
+              255
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "The ask types"
+        },
+        {
+          "at": 0.4,
+          "event": "Five submissions land"
+        },
+        {
+          "at": 0.9,
+          "event": "Write feedback_focus.md"
+        }
+      ],
+      "actual_duration_s": 21.08,
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "THE IDEA",
+      "lane": "IDEA",
+      "narration_text": "Here's the idea of this film. A batch of student work is context-heavy — five, fifty, five hundred files that the build has no reason to remember. The right move isn't a smarter prompt. It's a subagent — its own Claude, its own window, its own three-tool whitelist — deployed once in a file, invoked per batch. The main session's tool sequence goes from eight reads and a write down to two: dispatch the subagent, write the summary it returns.",
+      "estimated_duration_s": 28.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "BrutalistHesitantWriter — 'prompt' reconsidered into 'subagent'",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "A batch needs a bigger prompt.\nBigger — reads more, remembers more.\nEight reads, five in main context.\nA pattern-analyzer is a subagent.",
+            "triggerWords": "prompt",
+            "replacementWords": "subagent",
+            "face": "serif",
+            "fontSize": 78,
+            "align": "center",
+            "ink": "#F2F0E9",
+            "accent": "#D97757",
+            "bg": "#1F1E1B",
+            "seed": "cc-pattern-analysis-subagent",
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 5,
+            "jitter": 20
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the idea of the film is not in any session; the writer types it and corrects the one word the film exists to fix"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Writer starts"
+        },
+        {
+          "at": 0.25,
+          "event": "'prompt' → 'subagent'"
+        },
+        {
+          "at": 0.85,
+          "event": "Last line"
+        }
+      ],
+      "actual_duration_s": 21.89,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "DEFINITIONS",
+      "lane": "CARD",
+      "narration_text": "Four words before we start. Subagent: a separate Claude with its own context window and its own tool whitelist, invoked from the main session. YAML frontmatter: the fenced block at the top of a Markdown file — a name, a description, a tool list — that Claude Code reads as configuration. Tool whitelist: the exact list of tools that subagent is allowed to touch; anything else is refused. Main context: the tokens the main session is holding right now; every file it reads goes in here and stays.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCDefinitions — four terms",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCDefinitions",
+          "props": {
+            "title": "TERMS IN THIS FILM",
+            "terms": [
+              {
+                "term": "subagent",
+                "meaning": "a separate Claude with its own context and tool whitelist, called from the main session"
+              },
+              {
+                "term": "YAML frontmatter",
+                "meaning": "the fenced block at the top of a Markdown file — machine-readable configuration"
+              },
+              {
+                "term": "tool whitelist",
+                "meaning": "the exact tools this subagent may use; anything else is refused"
+              },
+              {
+                "term": "main context",
+                "meaning": "the tokens the main session is holding now — every read goes in and stays"
+              }
+            ],
+            "startCue": 12,
+            "rowGap": 52
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "definitions for a chat-window audience"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "First term"
+        },
+        {
+          "at": 0.5,
+          "event": "Terms land"
+        },
+        {
+          "at": 0.9,
+          "event": "Hold"
+        }
+      ],
+      "actual_duration_s": 25.98,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "INLINE — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "Check the inline run against what I actually asked for. Five lines in the output — one more than I asked for; it added a title heading. Eight reads in the main session's history. And thirty-five thousand tokens landed in the main session's window — every submission, every criterion, now living in the same context as anything I do next.",
+      "estimated_duration_s": 21.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — wc, tool sequence, cache_creation",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "grading — inline",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!wc -l feedback_focus.md",
+                "cue": 0,
+                "typeDuration": 32
+              },
+              {
+                "type": "text",
+                "text": "       5 feedback_focus.md"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -c '^Read' history.txt",
+                "cue": 0,
+                "typeDuration": 34
+              },
+              {
+                "type": "text",
+                "text": "8"
+              },
+              {
+                "type": "prompt",
+                "text": "!jq .usage.cache_creation_input_tokens",
+                "cue": 0,
+                "typeDuration": 48
+              },
+              {
+                "type": "text",
+                "text": "35572"
+              },
+              {
+                "type": "text",
+                "text": "# every submission, in main context"
+              }
+            ],
+            "cues": [
+              0,
+              44,
+              80,
+              130,
+              165,
+              215,
+              250
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 5"
+        },
+        {
+          "at": 0.4,
+          "event": "grep → 8 Reads"
+        },
+        {
+          "at": 0.85,
+          "event": "35,572 tokens"
+        }
+      ],
+      "actual_duration_s": 18.65,
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "THE DEPLOYMENT",
+      "lane": "SHELL",
+      "narration_text": "Here's the deployment — one Markdown file at a specific path, written by me before the next run. Dot-claude, agents, pattern-analyzer dot md. Thirty-nine lines. YAML frontmatter first — a name, a description of when to use it, and a tool whitelist: Read, Grep, Glob, and nothing else. Then a prompt for the subagent itself: scan submissions against the rubric, aggregate the batch, return three sections — common misconceptions, severity by criterion, recommended focus. Return only that block.",
+      "estimated_duration_s": 27.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCPlainShell — cat .claude/agents/pattern-analyzer.md",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "zsh — ~/grading",
+            "lines": [
+              "$ cat .claude/agents/pattern-analyzer.md",
+              "---",
+              "name: pattern-analyzer",
+              "description: Scans a batch of student submissions",
+              "  in submissions/ against rubric.md — WITHOUT",
+              "  loading a submission into the main session.",
+              "tools: Read, Grep, Glob",
+              "---",
+              "# pattern-analyzer",
+              "Return COMMON_MISCONCEPTIONS, SEVERITY_BY_CRITERION,",
+              "and RECOMMENDED_FOCUS. Do not write files.",
+              "$ wc -l .claude/agents/pattern-analyzer.md",
+              "      39 .claude/agents/pattern-analyzer.md"
+            ],
+            "startCue": 10,
+            "lineGap": 20
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the deployment file is read outside any session — it configures Claude Code, it is not spoken by it"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "cat starts"
+        },
+        {
+          "at": 0.35,
+          "event": "tools whitelist"
+        },
+        {
+          "at": 0.85,
+          "event": "39 lines"
+        }
+      ],
+      "actual_duration_s": 26.11,
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "SUBAGENT — THE RUN",
+      "lane": "TERMINAL",
+      "narration_text": "Same ask, same folder — this time with the deployment file in place. The main session doesn't read a submission. It dispatches the pattern-analyzer subagent with one Task call. Inside its own window, the subagent Globs the folder and reads every submission — over there, not in here. It returns three findings and a short summary — and it says, out loud, that it can't write files because its whitelist doesn't include Write. So the main session writes feedback_focus.md itself. Two tool calls: dispatch, write.",
+      "estimated_duration_s": 30.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the subagent run: Task, the summary landing, Write",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "grading — subagent",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "For the binary-search rubric, find the top three misconceptions the batch is showing. Write them to feedback_focus.md.",
+                "cue": 0,
+                "typeDuration": 72
+              },
+              {
+                "type": "tool",
+                "name": "Task",
+                "arg": "pattern-analyzer",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "1. Students compute the midpoint as"
+              },
+              {
+                "type": "text",
+                "text": "(lo + hi) // 2, unaware of overflow."
+              },
+              {
+                "type": "text",
+                "text": "2. Students describe shrinking the"
+              },
+              {
+                "type": "text",
+                "text": "range but state no loop invariant."
+              },
+              {
+                "type": "text",
+                "text": "3. Complexity is incomplete or wrong."
+              },
+              {
+                "type": "text",
+                "text": "Note: I do not have Write access."
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "feedback_focus.md",
+                "state": "done"
+              }
+            ],
+            "cues": [
+              0,
+              95,
+              145,
+              170,
+              195,
+              220,
+              245,
+              275,
+              305
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Same ask"
+        },
+        {
+          "at": 0.35,
+          "event": "Task pattern-analyzer"
+        },
+        {
+          "at": 0.75,
+          "event": "Whitelist self-enforces"
+        },
+        {
+          "at": 0.95,
+          "event": "Write"
+        }
+      ],
+      "actual_duration_s": 26.54,
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "SUBAGENT — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "Check it. Three lines in the output — one line per finding, no title, exactly what I asked for. Two tools in the main session's history: Task, and Write. Zero reads. And thirty-two thousand tokens in the main session's window — a little smaller than the inline run, but that's not the point. The point is what's inside those tokens. The five submissions are not. They lived in the subagent's window, and its window closed when it returned.",
+      "estimated_duration_s": 27.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — wc, tool sequence (Task, Write), cache_creation",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "grading — subagent",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!wc -l feedback_focus.md",
+                "cue": 0,
+                "typeDuration": 32
+              },
+              {
+                "type": "text",
+                "text": "       3 feedback_focus.md"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -oE 'Task|Write' history.txt",
+                "cue": 0,
+                "typeDuration": 46
+              },
+              {
+                "type": "text",
+                "text": "Task"
+              },
+              {
+                "type": "text",
+                "text": "Write"
+              },
+              {
+                "type": "prompt",
+                "text": "!jq .usage.cache_creation_input_tokens",
+                "cue": 0,
+                "typeDuration": 48
+              },
+              {
+                "type": "text",
+                "text": "31942"
+              },
+              {
+                "type": "text",
+                "text": "# no submission in main context"
+              }
+            ],
+            "cues": [
+              0,
+              44,
+              80,
+              130,
+              155,
+              185,
+              235,
+              270
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 3"
+        },
+        {
+          "at": 0.35,
+          "event": "Task, Write"
+        },
+        {
+          "at": 0.75,
+          "event": "31,942"
+        },
+        {
+          "at": 0.95,
+          "event": "no submissions in main"
+        }
+      ],
+      "actual_duration_s": 20.78,
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "BFLOW",
+      "act": "THE FLOW",
+      "lane": "DIAGRAM",
+      "narration_text": "Drawn out, the flow is this. The main session has the ask. It calls the Task tool, naming the pattern-analyzer subagent. The subagent opens its own window, with its own whitelist — Read, Grep, Glob — and reads the rubric and every submission in there. It returns one thing: a structured summary — under a thousand words — into the main session. The main session takes that summary and writes feedback_focus.md. The batch never crosses back.",
+      "estimated_duration_s": 27.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "FlowDiagram — MAIN → TASK → SUBAGENT (Read/Grep/Glob) → SUMMARY → MAIN → WRITE",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "FlowDiagram",
+          "props": {
+            "skin": "claude",
+            "kicker": "PATTERN-ANALYZER SUBAGENT",
+            "caption": "Two calls in main. All the reading, over there.",
+            "pulse": true,
+            "nodes": [
+              {
+                "id": "main",
+                "label": "MAIN",
+                "sub": "the build session",
+                "tier": "client",
+                "x": 80,
+                "y": 460,
+                "w": 300,
+                "h": 160,
+                "hi": true
+              },
+              {
+                "id": "task",
+                "label": "TASK",
+                "sub": "dispatch call",
+                "tier": "edge",
+                "x": 460,
+                "y": 460,
+                "w": 300,
+                "h": 160
+              },
+              {
+                "id": "sub",
+                "label": "SUBAGENT",
+                "sub": "Read · Grep · Glob",
+                "tier": "compute",
+                "x": 840,
+                "y": 320,
+                "w": 320,
+                "h": 180,
+                "hi": true
+              },
+              {
+                "id": "batch",
+                "label": "BATCH",
+                "sub": "rubric + 5 files",
+                "tier": "data",
+                "x": 840,
+                "y": 600,
+                "w": 320,
+                "h": 160
+              },
+              {
+                "id": "sum",
+                "label": "SUMMARY",
+                "sub": "~1k tokens back",
+                "tier": "data",
+                "x": 1240,
+                "y": 460,
+                "w": 300,
+                "h": 160
+              },
+              {
+                "id": "write",
+                "label": "WRITE",
+                "sub": "feedback_focus.md",
+                "tier": "compute",
+                "x": 1600,
+                "y": 460,
+                "w": 260,
+                "h": 160,
+                "hi": true
+              }
+            ],
+            "edges": [
+              {
+                "from": "main",
+                "to": "task",
+                "order": 1,
+                "kind": "flow"
+              },
+              {
+                "from": "task",
+                "to": "sub",
+                "order": 2,
+                "kind": "flow"
+              },
+              {
+                "from": "batch",
+                "to": "sub",
+                "order": 3,
+                "kind": "data"
+              },
+              {
+                "from": "sub",
+                "to": "sum",
+                "order": 4,
+                "kind": "reply"
+              },
+              {
+                "from": "sum",
+                "to": "main",
+                "order": 5,
+                "kind": "flow",
+                "dashed": true
+              },
+              {
+                "from": "main",
+                "to": "write",
+                "order": 6,
+                "kind": "flow"
+              }
+            ],
+            "viewBox": {
+              "w": 1920,
+              "h": 1080
+            }
+          },
+          "rendered": {
+            "out": "media/BFLOW.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "BFLOW: the topology across two windows is not visible in either window; the terminal only shows Task then Write"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "MAIN"
+        },
+        {
+          "at": 0.35,
+          "event": "TASK → SUBAGENT"
+        },
+        {
+          "at": 0.7,
+          "event": "SUMMARY back"
+        },
+        {
+          "at": 0.9,
+          "event": "WRITE"
+        }
+      ],
+      "actual_duration_s": 22.1,
+      "audio_file": "mp3/beat-BFLOW.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BFLOW.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "BSHOW",
+      "act": "THE OUTPUT — SHOWN",
+      "lane": "SHELL",
+      "narration_text": "And here it is — the actual file the subagent run wrote. Three lines, most severe first. Midpoint overflow. No loop invariant. Complexity omitted or wrong. That is what I take into next week's session. Not the five submissions; not the rubric. Three sentences.",
+      "estimated_duration_s": 16.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCPlainShell — cat feedback_focus.md (the subagent run's output)",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "zsh — ~/grading",
+            "lines": [
+              "$ cat feedback_focus.md",
+              "1. Students compute the midpoint as (lo + hi) // 2",
+              "and treat it as the correct form, unaware it can",
+              "overflow on large inputs.",
+              "2. Students describe shrinking the range but do not",
+              "state a loop invariant — that the target, if present,",
+              "lies within [lo, hi) at every step.",
+              "3. Students report complexity incompletely — omitting",
+              "O(1) extra space, and one case wrong on Big-O.",
+              "$ wc -l feedback_focus.md",
+              "       3 feedback_focus.md"
+            ],
+            "startCue": 12,
+            "lineGap": 18
+          },
+          "rendered": {
+            "out": "media/BSHOW.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "BSHOW: the produced artifact must be shown in the plain shell, not implied by the session"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "cat starts"
+        },
+        {
+          "at": 0.5,
+          "event": "three findings"
+        },
+        {
+          "at": 0.95,
+          "event": "3 lines"
+        }
+      ],
+      "actual_duration_s": 14.63,
+      "audio_file": "mp3/beat-BSHOW.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BSHOW.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "CONDUCT — THE BOONDOGGLE SCORE",
+      "lane": "TERMINAL",
+      "narration_text": "Who did what. Step one, mine: the one-sentence ask, and a rubric that names five criteria. Claude did the inline run — the handoff was a written feedback file; it wrote one, but eight reads landed in the main session. Step three, the dangerous middle: writing the deployment file. Thirty-nine lines with a whitelist of three tools, before any run. Claude did the subagent run; the handoff was two main-session tool calls, and that is what the trace shows. Interpretive judgment at the end: the subagent said its whitelist would not let it Write, and I let the main session write instead of loosening the whitelist. One page. Honest score.",
+      "estimated_duration_s": 38.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCBoondoggleScore",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCBoondoggleScore",
+          "props": {
+            "system": "one ask · five criteria",
+            "steps": [
+              {
+                "n": 1,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "Ask + rubric with five criteria"
+              },
+              {
+                "n": 2,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Inline: 8 Reads, 35,572 in main",
+                "handoff": "a feedback file, one finding per line",
+                "dependsOn": [
+                  1
+                ]
+              },
+              {
+                "n": 3,
+                "phase": "C",
+                "labor": "human",
+                "capacity": "PA",
+                "text": "Read the tool sequence: batch in main",
+                "dependsOn": [
+                  2
+                ]
+              },
+              {
+                "n": 4,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "Deploy .claude/agents/pattern-analyzer.md",
+                "dependsOn": [
+                  3
+                ]
+              },
+              {
+                "n": 5,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Subagent: Task, Write — two calls",
+                "handoff": "summary in; batch out of main context",
+                "dependsOn": [
+                  4
+                ]
+              },
+              {
+                "n": 6,
+                "phase": "H",
+                "labor": "human",
+                "capacity": "IJ",
+                "text": "Whitelist self-enforced; let it",
+                "dependsOn": [
+                  5
+                ]
+              }
+            ],
+            "dangerousMiddle": 3,
+            "distribution": true,
+            "stepGap": 22
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Header"
+        },
+        {
+          "at": 0.4,
+          "event": "Step 3 rings"
+        },
+        {
+          "at": 0.9,
+          "event": "Tally"
+        }
+      ],
+      "actual_duration_s": 32.02,
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "HUMAN — THE LEDGER",
+      "lane": "TERMINAL",
+      "narration_text": "So what was mine. I must name what a batch is for — teaching focus for next week, not a graded artifact for right now. I must write the whitelist myself; nobody else can decide the tools this subagent should not touch. I must read the tool sequence, not the summary — that is where the receipt lives. I should reject a loosened whitelist when it self-enforces. Claude can dispatch a subagent by description alone — it did. It can honor a whitelist and say so — it did. It should return a structured summary, not full quotes — it did. It should not write when it has no Write — it didn't.",
+      "estimated_duration_s": 39.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCHumanLedger",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCHumanLedger",
+          "props": {
+            "ai": [
+              {
+                "tier": "CAN",
+                "text": "dispatch subagent by description"
+              },
+              {
+                "tier": "CAN",
+                "text": "honor a whitelist and say so"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "return structured, not quotes"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "not write without Write access"
+              }
+            ],
+            "human": [
+              {
+                "tier": "MUST",
+                "text": "name what the batch is for"
+              },
+              {
+                "tier": "MUST",
+                "text": "write the whitelist myself"
+              },
+              {
+                "tier": "MUST",
+                "text": "read the tools, not the summary"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "reject a loosened whitelist"
+              }
+            ],
+            "closing": "The deployment, made durable. 39 lines. Mine.",
+            "humanCue": 70,
+            "rowGap": 12
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "THE AI"
+        },
+        {
+          "at": 0.35,
+          "event": "THE HUMAN"
+        },
+        {
+          "at": 0.85,
+          "event": "Closing"
+        }
+      ],
+      "actual_duration_s": 28.86,
+      "audio_file": "mp3/beat-B06.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "VERDICT",
+      "lane": "BOOKEND",
+      "narration_text": "Let's recap with Claude. Inline run: eight reads, five submissions in main context, thirty-five thousand tokens the build has no reason to remember. Subagent run: one Task, one Write, and thirty-two thousand tokens with no submission in them — the batch lived over there. Deployment is one Markdown file: name, description, three-tool whitelist. The whitelist enforced itself: the subagent noticed it could not Write and said so; the main session wrote. What would prove this reel wrong: a subagent invocation whose main session Reads a batch file after the summary returns.",
+      "estimated_duration_s": 32.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeVerdictArtifact",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "verdict.md",
+            "artifactHeading": "Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code",
+            "artifactLines": [
+              "Inline: 8 Reads, 35,572 tokens in main, five submissions carried into the build session.",
+              "Subagent: 1 Task, 1 Write, 31,942 tokens in main, no submission crossed back.",
+              "Deployment is one Markdown file — name, description, Read/Grep/Glob whitelist. The whitelist enforced itself.",
+              "FALSIFIABLE: a subagent invocation whose main session Reads a batch file after the summary returns."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Artifact"
+        },
+        {
+          "at": 0.2,
+          "event": "Lines"
+        },
+        {
+          "at": 0.9,
+          "event": "Falsifiable"
+        }
+      ],
+      "lead_silence_s": 0.5,
+      "actual_duration_s": 30.14,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "YOUR TURN",
+      "lane": "BOOKEND",
+      "narration_text": "Your turn. Before your next batch job — a pile of submissions, a folder of tickets, a stack of resumes — open Claude Code and paste this: Write me a subagent for triage. Ask me what the batch is, what the rubric or criterion file is, and what three-section structured summary I want back. Then write dot-claude, agents, triage dot md — YAML frontmatter, a Read-Grep-Glob whitelist, and the prompt. Don't dispatch it yet.",
+      "estimated_duration_s": 26.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeComposerAsk",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "Write me a subagent for triage. Ask me what the batch is, what the rubric or criterion file is, and what three-section structured summary I want back. Then write .claude/agents/triage.md — YAML frontmatter, a Read-Grep-Glob whitelist, and the prompt. Don't dispatch it yet.",
+            "segment": "Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code",
+            "topic": "YOUR TURN · CLAUDE CODE 101",
+            "runningText": "paste this into Claude Code…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Composer"
+        },
+        {
+          "at": 0.6,
+          "event": "Send arms"
+        }
+      ],
+      "actual_duration_s": 21.59,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "OUTRO",
+      "lane": "BOOKEND",
+      "narration_text": "Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code. Liam, in for Bear.",
+      "estimated_duration_s": 6.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeTitleOutro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code",
+            "slug": "cc-pattern-analysis-subagent",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Title"
+        },
+        {
+          "at": 0.35,
+          "event": "@NikBearBrown"
+        },
+        {
+          "at": 0.55,
+          "event": "Mascot"
+        }
+      ],
+      "actual_duration_s": 5.93,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T23:34:49"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+# CLAUDE.md
+
+## Commands
+- Run the CLI: `python3 src/gradebook.py [add NAME | score NAME VALUE | remove NAME | report]`
+- Run tests: `python3 tests/test_gradebook.py`
+
+## Rules
+- **Every function that writes grades.json must call `audit(name, action)` from `src/audit.py` right after `save(data)`.** No exceptions.
+- New subcommands: a top-level function plus an entry in the dispatch dict at the bottom of `src/gradebook.py`.
+- Tests: `unittest` only, in `tests/test_gradebook.py`, same tempfile pattern as `test_average`.
+
+## Architecture
+Single-module CLI; each command re-reads and re-writes `grades.json`. No in-memory state.

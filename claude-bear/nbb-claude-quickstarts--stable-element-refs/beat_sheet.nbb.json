@@ -1,0 +1,324 @@
+{
+ "metadata": {
+  "title": "Stable Reference IDs Survive Viewport Chaos.",
+  "slug": "claude-quickstarts--stable-element-refs",
+  "topic": "BROWSER AUTOMATION · COMPUTER USE",
+  "purpose": "Take apart the pixel-vs-ref case: explain why a browser's layout engine makes any absolute coordinate a lease, evaluate the one-pass tagging fix, name what it doesn't cover (elements added later, shadow-root duplicates). Land the carry-out that a ref names the button; a pixel only reports where the button sat, once.",
+  "skill": "hai-simple",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "in_for_bear": true,
+  "clock": "narration",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/claude-quickstarts/youtube/stable-element-refs/beat_sheet.json",
+  "anchor_pair": "B01 -> B03 (same Confirm Order button, same ref)",
+  "one_flag": "B02 -- the tagging pattern is real, exact implementation not pinned to one verified API in this checkout",
+  "playlist": "Claude Basics",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "build": {
+   "at": "2026-08-31T11:43:22",
+   "cut": "master",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's the trap: a button's pixel address feels permanent. It isn't — the window resizes, the layout reflows, and the number that used to name the button now names empty space. So what actually stays with the button when the pixels move?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Button at 960, 540 resize same pixel right?', hesitates on 'pixel', corrects to 'ref', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Button at 960, 540\nresize same pixel\nright?",
+      "face": "serif",
+      "fontSize": 84,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "pixel",
+      "replacementWords": "ref",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 10,
+      "charMs": 45,
+      "jitter": 20,
+      "seed": "hai-qs-stable-element-refs"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('pixel' -> 'ref') is visible on a late frame.",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T11:43:22"
+   },
+   "audio_file": "mp3/beat-B00.mp3"
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess / 4 ANCHOR PLANTED",
+   "narration_text": "Here's what's actually happening. Your automation finds the Confirm Order button at pixel 960, 540 on a 1920 by 1080 page and stores that coordinate. Resize the window to 1440 by 900, the layout engine reflows every element, and the button lands near 720, 405. The stored coordinate hasn't moved — the button did. The click fires into empty space. The design underneath: browser layout is a fluid function of viewport size, not a fixed grid, so any absolute pixel is a lease, not a deed.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR -- Confirm Order button at (960,540) on a 1920x1080 page card; the page reflows to a 1440x900 card; the same pixel now sits on empty space, marked with a cross"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR -- remembered pixel, reflowed page",
+     "mechanic": "THE ANCHOR. Left card: 1920x1080 page, 'Confirm Order' button, terracotta dot at (960,540). Arrow to a second, smaller card: 1440x900, page reflowed, button visibly moved. The remembered (960,540) dot is plotted on the new card at its old relative spot -- it lands on empty space, marked with a cross. THIS EXACT BUTTON RETURNS AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B01Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T11:43:22"
+   },
+   "audio_file": "mp3/beat-B01.mp3"
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism (ONE FLAG)",
+   "narration_text": "The fix runs before Claude ever reads the page. A pre-load script walks the DOM and stamps every clickable element with a stable reference id — an attribute glued to the element object itself, not to its screen position. Flagged: the exact attribute name and tagging protocol vary tool to tool — this is the pattern, not one fixed API. What matters is the layer it sits on. Claude now targets the id in the DOM; the browser resolves that id back to whatever pixel the element currently occupies. They optimized for a stable handle on the element at the cost of one extra tagging pass at load time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 25,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Code card: element.setAttribute('data-ref','confirm_order_1'); a terracotta FLAG marker labelled 'pattern, not one fixed API'; source credit"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ONE FLAG -- tag before Claude looks",
+     "mechanic": "A code line builds in mono on cream: element.setAttribute('data-ref', 'confirm_order_1'). Beneath it, a single terracotta FLAG marker with the caption 'pattern, not one fixed API'. Bottom-right: 'Source: Claude Quickstarts (Anthropic)'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B02Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T11:43:22"
+   },
+   "audio_file": "mp3/beat-B02.mp3"
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "Watch what changes and what doesn't. Same Confirm Order button, now tagged with the id confirm_order_1, sitting at pixel 960, 540 on the 1920 by 1080 page. Resize to 1440 by 900. The pixel address becomes 720, 405 — that number is a report of location, and location moved. The id, confirm_order_1, doesn't move, because it isn't describing location; it's naming the element. Claude targets the id, the browser hands back the current pixel, the click lands. Same button, either viewport.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS -- same button, same id label glued to it through the resize morph; the pixel chip changes value, the id chip does not"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS -- id survives, pixel doesn't",
+     "mechanic": "THE B01 BUTTON RETURNS, identical. State 1: 1920x1080 card, button at (960,540), terracotta id chip 'ref=confirm_order_1' glued to it, ink pixel chip '(960,540)' beneath. Morph to state 2: 1440x900 card, button visibly relocated, id chip UNCHANGED and still glued to the button, pixel chip now reads '(720,405)'. Final line: 'Claude clicks ref=confirm_order_1. Lands every time.'",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B03Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T11:43:22"
+   },
+   "audio_file": "mp3/beat-B03.mp3"
+  },
+  {
+   "beat_id": "B04",
+   "act": "5 BOTH DIRECTIONS",
+   "narration_text": "This trick has an exact scope. It works for every element that existed when the script ran — resize, reflow, zoom, any operation that only rearranges what's already there. It does not work for elements that don't exist yet: a modal that opens after a click, a row that renders after a scroll, anything the page paints later. Those elements were never tagged, so there's no id for Claude to target — the automation is aiming at nothing. The honest answer is another tagging pass fired the moment those elements appear. This works if you value a one-line targeting API; it fails if you expect it to cover the parts of the page that don't exist yet.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 25,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Split card: left, 'tagged before load' holds through resize (check); right, 'appears after load' -- untagged, struck, captioned 'needs its own pass'"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Both directions -- what the tag covers",
+     "mechanic": "Two panels side by side. Left, labelled 'TAGGED BEFORE LOAD': the button survives a resize arrow, checkmark. Right, labelled 'APPEARS AFTER LOAD': a modal/list element fading in with no tag, struck through in terracotta, caption 'needs its own pass'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B04Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T11:43:22"
+   },
+   "audio_file": "mp3/beat-B04.mp3"
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A pixel coordinate reports where the button sat, once. A ref names the button itself — so it holds when the pixels don't.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A pixel coordinate reports where the button sat, once. A ref names the button itself — so it holds when the pixels don't.",
+      "attribution": "",
+      "sparkLine": "A ref names it. A pixel just points."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T11:43:22"
+   },
+   "audio_file": "mp3/beat-BCRY.mp3"
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I want to understand how to make a browser-automation script survive a viewport resize. Right now my agent stores the pixel coordinate of every clickable element it finds and re-clicks that pixel later — after a resize the layout reflows and every stored coordinate points at empty space. Walk me through — one, what happens in a browser's layout engine when the window resizes and why pixel positions aren't stable across viewports; two, the pattern of tagging DOM elements with stable reference ids before the agent looks at the page, including a minimal JavaScript snippet that walks the DOM and stamps a data-ref attribute on every clickable element; three, how to target elements by that ref instead of by pixel, plus what the pattern doesn't cover — elements that appear later, duplicate ids across shadow roots — and how to handle each. Go deeper: ask the same model what happens when a single-page app re-renders a whole component tree and destroys the tagged nodes mid-session — where in the app's lifecycle should the tagging pass re-fire, and how do you keep refs stable across renders when the DOM identity of each node changes?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 60,
+   "llm_exercise": {
+    "prompt": "I want to understand how to make a browser-automation script survive a viewport resize. Right now my agent stores the pixel coordinate of every clickable element it finds and re-clicks that pixel later — after a resize the layout reflows and every stored coordinate points at empty space. Walk me through: (1) what happens in a browser's layout engine when the window resizes and why pixel positions aren't stable across viewports; (2) the pattern of tagging DOM elements with stable reference ids before the agent looks at the page, including a minimal JavaScript snippet that walks the DOM and stamps a data-ref attribute on every clickable element; (3) how to target elements by that ref instead of by pixel, plus what the pattern doesn't cover — elements that appear later, duplicate ids across shadow roots — and how to handle each.",
+    "dig_deeper": "Go deeper: ask the same model what happens when a single-page app re-renders a whole component tree and destroys the tagged nodes mid-session — where in the app's lifecycle should the tagging pass re-fire, and how do you keep refs stable across renders when the DOM identity of each node changes?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "BROWSER AUTOMATION · COMPUTER USE",
+      "segment": "A ref names it. A pixel just points.",
+      "command": "I want to make a browser-automation script survive a viewport resize. My agent stores pixel coordinates of clickable elements — after a resize the layout reflows and every stored pixel points at empty space. (1) Explain what a browser's layout engine does on resize and why pixel positions aren't stable across viewports. (2) Show the pattern of tagging DOM elements with stable reference ids before the agent looks — include a minimal JavaScript snippet that walks the DOM and stamps a data-ref on every clickable element. (3) Explain how to target by ref instead of pixel, and what the pattern doesn't cover (elements added later, duplicate ids across shadow roots).",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T11:43:22"
+   },
+   "audio_file": "mp3/beat-BHTF.mp3"
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Stable Reference IDs Survive Viewport Chaos. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Stable Reference IDs Survive Viewport Chaos. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T11:43:22"
+   },
+   "audio_file": "mp3/beat-BOUT.mp3"
+  }
+ ]
+}

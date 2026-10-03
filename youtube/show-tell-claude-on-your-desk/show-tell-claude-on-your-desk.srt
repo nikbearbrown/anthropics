@@ -1,0 +1,151 @@
+1
+00:00:00,000 --> 00:00:05,013
+Hej. This is Liam, in for Bear. Claude's desk buddy isn't a product feature. It's an
+
+2
+00:00:05,033 --> 00:00:09,103
+opt-in API for makers, so the real question is how you build one.
+
+3
+00:00:09,173 --> 00:00:13,775
+Three terms. B L E, Bluetooth Low Energy: a low-power wireless link. A permission
+
+4
+00:00:13,795 --> 00:00:18,396
+prompt: Claude asking before it runs a tool. And a reference repo: one worked
+
+5
+00:00:18,416 --> 00:00:20,047
+example, made to be copied.
+
+6
+00:00:20,117 --> 00:00:25,133
+Here's the desk. A laptop runs the Claude app, on Mac or Windows. Beside it sits a
+
+7
+00:00:25,153 --> 00:00:29,577
+tiny device with a screen and buttons. The app can connect your Cowork and Claude
+
+8
+00:00:29,597 --> 00:00:31,354
+Code sessions to it, over Bluetooth.
+
+9
+00:00:31,424 --> 00:00:36,594
+That bridge is off by default, and you opt in. Turn on developer mode, open Hardware
+
+10
+00:00:36,614 --> 00:00:40,812
+Buddy, click connect, and pick your device. After that, it reconnects by itself.
+
+11
+00:00:40,832 --> 00:00:43,407
+It's for makers, not an official product feature.
+
+12
+00:00:43,477 --> 00:00:47,924
+Now the app sends a snapshot whenever something changes, and every ten seconds
+
+13
+00:00:47,944 --> 00:00:52,391
+anyway: how many sessions are running or waiting, plus a few recent transcript
+
+14
+00:00:52,411 --> 00:00:55,140
+lines, newest first. The tiny screen scrolls them.
+
+15
+00:00:55,210 --> 00:01:00,519
+The team's own example is a desk pet, on an E S P thirty-two board. It sleeps when
+
+16
+00:01:00,539 --> 00:01:03,183
+nothing's happening. Start a session, and it wakes up.
+
+17
+00:01:03,253 --> 00:01:07,492
+Now Claude wants to run a Bash command, and it needs your permission. The snapshot
+
+18
+00:01:07,512 --> 00:01:12,603
+carries a prompt: the tool, a short hint, and an ID. It shows up on the device too,
+
+19
+00:01:12,623 --> 00:01:14,874
+and the pet gets impatient. Its light blinks.
+
+20
+00:01:14,944 --> 00:01:19,775
+Press the front button, and the device sends back one line: that same ID, and the
+
+21
+00:01:19,795 --> 00:01:23,717
+decision, once. Once approves that one tool call. The other button sends deny.
+
+22
+00:01:23,737 --> 00:01:25,839
+Approve quickly, and the pet shows hearts.
+
+23
+00:01:25,909 --> 00:01:30,074
+That link carries transcript snippets and tool hints, and an unencrypted one can be
+
+24
+00:01:30,094 --> 00:01:34,857
+read by anyone in radio range with a cheap dongle. So the reference says to require
+
+25
+00:01:34,877 --> 00:01:39,341
+encrypted pairing. The device shows a six-digit pass key, you type it into the app,
+
+26
+00:01:39,361 --> 00:01:41,732
+and the link is encrypted from then on.
+
+27
+00:01:41,802 --> 00:01:46,612
+And you don't need any of this code. REFERENCE dot md is the contract: advertise the
+
+28
+00:01:46,632 --> 00:01:51,139
+Nordic UART Service, a standard way to send text over Bluetooth, then trade one line
+
+29
+00:01:51,159 --> 00:01:56,271
+of JSON at a time. An Arduino, or a Raspberry Pi with a Bluetooth dongle, will do.
+
+30
+00:01:56,291 --> 00:01:59,289
+The repo's own advice: the best contribution is a fork.
+
+31
+00:01:59,359 --> 00:02:03,248
+Your turn. Paste this into Claude: Here is REFERENCE dot md from Anthropic's claude
+
+32
+00:02:03,268 --> 00:02:07,995
+desktop buddy repo: paste it. Help me plan a tiny device of my own that speaks this
+
+33
+00:02:08,015 --> 00:02:11,625
+protocol: name your device. List what its screen shows from each snapshot, which
+
+34
+00:02:11,645 --> 00:02:15,814
+permission prompts it may approve with a button press, and what it must never do
+
+35
+00:02:15,834 --> 00:02:19,723
+without a person. Plan only; no firmware yet. Then check two things yourself. Find
+
+36
+00:02:19,743 --> 00:02:24,191
+every approval in the plan. Is each one a button press? And open REFERENCE dot md.
+
+37
+00:02:24,211 --> 00:02:26,425
+Do the plan's field names match it exactly?
+
+38
+00:02:26,495 --> 00:02:30,284
+Claude on Your Desk. At Nik Bear Brown.

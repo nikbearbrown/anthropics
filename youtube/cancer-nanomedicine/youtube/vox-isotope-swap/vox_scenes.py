@@ -14,8 +14,8 @@ NO VISION trial stats. Isotope-swap loop and scan-selects-patient only.
 """
 import sys, pathlib, json, os
 # Resolve toolkit manim library from this file's location:
-# vox-isotope-swap/ -> youtube/ -> cancer-nanomedicine/ -> books/ -> books/vox/aspects/...
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[3]
+# vox-isotope-swap/ -> youtube/ -> cancer-nanomedicine/ -> youtube/ -> anthropics/ -> books/
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[5]
     / "vox/aspects/explainer/vox-explainer/manim"))
 
 from vox_graphics import *

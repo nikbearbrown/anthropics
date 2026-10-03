@@ -1,6 +1,6 @@
 # TYPECHECK.md — GATE T
 
-Reel: `agent-decomposition-skills-vs-tools`  |  Checked: 2026-08-26T03:34  |  Overall: PASS  |  Beats checked: 14  |  FAILs: 0
+Reel: `agent-decomposition-skills-vs-tools`  |  Checked: 2026-08-29T14:02  |  Overall: PASS  |  Beats checked: 14  |  FAILs: 0
 
 Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-height.  Contrast: 4.5:1 WCAG.  Kern threshold: 3.5× expected advance.  Wordy budget: 2 elements.
 

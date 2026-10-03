@@ -1,0 +1,511 @@
+{
+ "metadata": {
+  "title": "The Pareto Frontier: Finding the Cheapest Model That Solves Your Task",
+  "slug": "cwc-workshops--rightmodel-pareto-frontier",
+  "topic": "CLAUDE BASICS · PARETO FRONTIER",
+  "purpose": "Answer one real question in the Teardown register (Feynman × MKBHD): with Opus, Sonnet, and Haiku all able to do a task at different prices and accuracies, how do you find the pareto-frontier pick — the cheapest model that still clears your accuracy bar — without paying to try all three in production? Lands the carry-out that the right model sits on the task-specific cost/accuracy frontier, found by a sweep, not guessed from the model names; and judges the design choice that model names are marketing, not a pick order.",
+  "skill": "hai-simple",
+  "register": "Teardown",
+  "brand": "nbb",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "in_for_bear": true,
+  "clock": "narration",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/cwc-workshops/youtube/rightmodel-pareto-frontier/beat_sheet.json",
+  "redo_of": "rightmodel-pareto-frontier",
+  "anchor_pair": "S03 -> S08 (same frontier-curve composition: abstract, then real dots)",
+  "one_flag": "S07 - pricing/quality figures are the source's own illustrative worked example, not live current pricing",
+  "mirror_pair": "S09 / S10 - mirrored construction (both directions)",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "build": {
+   "at": "2026-09-01T05:07:48",
+   "cut": "master",
+   "filled": 14,
+   "of": 14,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam, in for Bear. Look at that on screen — it's the wrong frame. Smartest sounds like a rule; it isn't. The real pick is the frontier: the cheapest model that still clears your accuracy bar. So which model actually belongs there — and why can't you tell from the name?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types the naive claim, hesitates on 'smartest', corrects to 'frontier', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Just pick the smartest model?\nOpus wins on accuracy.\nWhich model wins here?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "smartest",
+      "replacementWords": "frontier",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 10,
+      "charMs": 45,
+      "jitter": 22,
+      "seed": "cwc-rightmodel-pareto-frontier"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md. VERIFY media/B00.mp4 by pulling a frame near the end of the beat's actual_duration_s and confirming the 'frontier' replacement AND the third line are both fully typed before compiling further.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "S01",
+   "act": "1 stakes",
+   "narration_text": "Here's the setup. Three Claude models — Opus, Sonnet, Haiku — can all do the job. Trying all three on real production traffic before you commit is the honest answer, and it is expensive. So most teams don't. They guess from the model name and ship.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Three models, one task, an expensive trial"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Three models, one task, an expensive trial",
+     "mechanic": "Three labelled cards — OPUS, SONNET, HAIKU — each with an arrow toward a single task box. A dollar-sign stamp marks the cost of running all three on real traffic.",
+     "colors": [
+      "#2F2A26",
+      "#1F4E5F",
+      "#F3EBDD"
+     ]
+    },
+    "manim": "S01Scene"
+   },
+   "audio_file": "mp3/beat-S01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "S02",
+   "act": "2 wrong guess",
+   "narration_text": "Here's how the naive read plays out. Grab Opus because it's the smartest, or grab Haiku because it's the cheapest. The names invite it — top of the line and entry level feel like a safe frame. Both extremes look like they can't be wrong. That's exactly the trap.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "The two-extremes reading"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "The two-extremes reading",
+     "mechanic": "Two arrows diverge from a decision point: one toward OPUS labelled 'accuracy', one toward HAIKU labelled 'price'. Both glow teal as if equally safe.",
+     "colors": [
+      "#2F2A26",
+      "#1F4E5F",
+      "#F3EBDD"
+     ]
+    },
+    "manim": "S02Scene"
+   },
+   "audio_file": "mp3/beat-S02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "S03",
+   "act": "4 ANCHOR PLANTED",
+   "narration_text": "Hold onto one shape — this is the whole video. The pareto frontier is the curve of models where the free lunch is gone: you can't buy more accuracy without paying more, and you can't cut cost without losing accuracy. Everything off that curve is dominated by something on it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — the frontier curve, abstract"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — the frontier curve, abstract",
+     "mechanic": "THE ANCHOR. Cost/accuracy axes with three generic grey dots and a dashed teal frontier curve passing through the non-dominated ones. THIS EXACT AXES+CURVE COMPOSITION RETURNS AT S08 with real, named dots.",
+     "colors": [
+      "#2F2A26",
+      "#1F4E5F",
+      "#F3EBDD"
+     ]
+    },
+    "manim": "S03Scene"
+   },
+   "audio_file": "mp3/beat-S03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "S04",
+   "act": "2 BREAK IT",
+   "narration_text": "Now break the naive read. Pick a real task — customer-support classification — and run the sweep. Both extremes lose. Opus's extra accuracy costs double Sonnet's price for a job Sonnet already does well enough. Haiku saves three cents per call and drops eight accuracy points. Neither extreme is on the frontier for this task.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Both extremes, struck"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Both extremes, struck",
+     "mechanic": "The S02 two-arrow diagram returns; both arrows are struck through crimson. Beneath, two small captions: 'OPUS: 2x THE PRICE' and 'HAIKU: -8 POINTS'.",
+     "colors": [
+      "#2F2A26",
+      "#E4572E",
+      "#F3EBDD"
+     ]
+    },
+    "manim": "S04Scene"
+   },
+   "audio_file": "mp3/beat-S04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S04.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "S05",
+   "act": "3 mechanism",
+   "narration_text": "Here's what actually finds the frontier. A sweep. Run every candidate model against the same eval suite — same inputs, same graders, same scoring — and write down two numbers per model: accuracy on that task, and cost per call. You can't reason your way to the frontier from the model names. You measure.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "The sweep: same suite, two numbers per model"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "The sweep: same suite, two numbers per model",
+     "mechanic": "One eval-suite card feeding three arrows into OPUS/SONNET/HAIKU cards, each producing a small results tag showing 'accuracy' and 'cost' slots filling in.",
+     "colors": [
+      "#2F2A26",
+      "#1F4E5F",
+      "#F3EBDD"
+     ]
+    },
+    "manim": "S05Scene"
+   },
+   "audio_file": "mp3/beat-S05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S05.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "S06",
+   "act": "3 mechanism",
+   "narration_text": "Plot the two numbers — accuracy up, cost across. A model earns a spot on the frontier only if no other model dominates it: no cheaper model at the same accuracy, no more-accurate model at the same cost. Anything strictly worse on both axes falls off. That's the whole rule.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Non-dominated: the frontier rule"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Non-dominated: the frontier rule",
+     "mechanic": "A generic dot sits off the frontier curve; a second dot up and to the left of it (better on both axes) makes the first dot fade — 'DOMINATED'. A dot ON the curve stays solid — 'ON THE FRONTIER'.",
+     "colors": [
+      "#2F2A26",
+      "#1F4E5F",
+      "#F3EBDD"
+     ]
+    },
+    "manim": "S06Scene"
+   },
+   "audio_file": "mp3/beat-S06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S06.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "S07",
+   "act": "3 ONE FLAG",
+   "narration_text": "The numbers for this worked example — and the reel's one honest hedge. Per million tokens: Opus fifteen dollars in, seventy-five out; Sonnet three and fifteen; Haiku a quarter and a dollar-twenty-five. Accuracy on the task: ninety-eight, ninety, eighty-two percent. These are illustrative — check the live price sheet before you decide. Providers move these; the frontier moves with them.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ONE FLAG — a cost/quality table, marked relative"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ONE FLAG — a cost/quality table, marked relative",
+     "mechanic": "A three-row table: OPUS $15/$75, 98%; SONNET $3/$15, 90%; HAIKU $0.25/$1.25, 82%. A single terracotta FLAG marker over the table with 'ILLUSTRATIVE — CHECK CURRENT PRICING' — the reel's only hedge, labelled as one.",
+     "colors": [
+      "#2F2A26",
+      "#E4572E",
+      "#F3EBDD"
+     ]
+    },
+    "manim": "S07Scene"
+   },
+   "audio_file": "mp3/beat-S07.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S07.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "S08",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "Same axes, real dots. Haiku at one cent per call, eighty-two percent accuracy. Sonnet at four cents, ninety — the frontier pick for this task. Opus at eight cents, ninety-eight. What Sonnet costs you against Opus is two points of accuracy. What it saves is four thousand dollars per hundred thousand calls. That's the shape of the trade — the frontier just makes it visible.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 19,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — real dots on the frontier"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — real dots on the frontier",
+     "mechanic": "THE S03 AXES+CURVE COMPOSITION RETURNS, identical. Three named dots land on it: HAIKU ($0.01, 82%), SONNET ($0.04, 90%) ringed teal as the frontier pick, OPUS ($0.08, 98%). Caption: 'SAVE $4,000 / 100K CALLS'.",
+     "colors": [
+      "#2F2A26",
+      "#1F4E5F",
+      "#F3EBDD"
+     ]
+    },
+    "manim": "S08Scene"
+   },
+   "audio_file": "mp3/beat-S08.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S08.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "S09",
+   "act": "5 DIRECTION A",
+   "narration_text": "Now change the accuracy bar and the pick changes with it. Need ninety-five percent or better? Only Opus clears the line. The frontier hasn't moved; your cutoff has. That extra cost stops being waste and starts being the price of the accuracy you actually need.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "High threshold: Opus is the only frontier point"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "High threshold: Opus is the only frontier point",
+     "mechanic": "A dashed horizontal threshold line at 95% crosses the S08 scatter. Only OPUS sits above it; it rings teal, the other two dots grey out below the line.",
+     "colors": [
+      "#2F2A26",
+      "#1F4E5F",
+      "#F3EBDD"
+     ]
+    },
+    "manim": "S09Scene"
+   },
+   "audio_file": "mp3/beat-S09.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S09.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "S10",
+   "act": "5 DIRECTION B",
+   "narration_text": "Flip it the other way. Eighty-two percent is enough for your task? Then Haiku is the frontier point, and every extra dollar Sonnet or Opus costs is accuracy you're paying for and not using. Same curve, different bar — different pick. The frontier doesn't tell you which model. You do, once you name your bar.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Mirroring S09: low threshold, Haiku is the frontier point"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Mirroring S09: low threshold, Haiku is the frontier point",
+     "mechanic": "Mirroring S09's layout: a dashed threshold line drops to 82%. HAIKU now rings teal as the frontier pick; SONNET and OPUS grey out above it, captioned 'MONEY LEFT ON THE TABLE'.",
+     "colors": [
+      "#2F2A26",
+      "#E4572E",
+      "#F3EBDD"
+     ]
+    },
+    "manim": "S10Scene"
+   },
+   "audio_file": "mp3/beat-S10.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S10.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "The right model isn't the smartest and isn't the cheapest. It's whichever sits on the frontier for your task, at your accuracy bar. And a sweep — same eval suite, two numbers per model — is the only way to find it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "The right model isn't the smartest or the cheapest — it's whichever sits on the frontier for your task, and a sweep is the only way to find it.",
+      "attribution": "",
+      "sparkLine": "Sweep finds it."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Here is a prompt you can paste directly into Claude, ChatGPT, or Gemini. Ask it to design a pareto-frontier sweep for your own task — an eval suite, the two numbers per model, the frontier rule, and which of Opus, Sonnet, or Haiku it predicts sits on the frontier for you. Go deeper: your accuracy bar is not a constant — it drifts with the traffic mix. How would you re-run the sweep on a schedule, and when do you demote a model that used to sit on the frontier but no longer does?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "llm_exercise": {
+    "prompt": "I want to find the pareto-frontier model for a specific task — the cheapest Claude model that still clears my accuracy bar — instead of guessing from the model names. My task is [describe your task in 2-3 sentences: the input, the desired output, and a numeric accuracy bar that means 'good enough' for you]. Design the sweep: (1) a minimal eval suite for this task — the inputs, the graders, and the scoring rubric; (2) the two numbers to record per model — accuracy on the suite, and cost per call using the current per-million-token input/output prices; (3) the frontier rule (a model stays on the frontier only if no other model is at least as accurate and at least as cheap); (4) how to read the plot at my accuracy bar and pick the pareto-optimal model; (5) which of Opus, Sonnet, or Haiku you'd predict sits on the frontier for my task, and what would change your answer. Give the eval-suite outline, the scoring rubric, and the picking rule as pseudocode.",
+    "dig_deeper": "Go deeper: your accuracy bar is not a constant — it drifts with the traffic mix (new categories, edge cases, adversarial inputs). How would you redesign the sweep so the frontier gets re-measured on a schedule, and when should you demote a model that used to sit on the frontier but doesn't anymore — after how many failed calls, using what statistical test, and how do you avoid a demote-flap when accuracy hovers on the boundary?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "PARETO FRONTIER · SWEEP EXERCISE",
+      "segment": "The Pareto Frontier: Finding the Cheapest Model That Solves Your Task",
+      "command": "Design a pareto-frontier sweep for my task: eval suite, two numbers per model, frontier rule, and which of Opus, Sonnet, or Haiku sits on it for me. Pseudocode plus trade-offs.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T05:07:48"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "The Pareto Frontier: Finding the Cheapest Model That Solves Your Task. Liam, in for Bear. More at brutalist dot art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "The Pareto Frontier: Finding the Cheapest Model That Solves Your Task. Liam, in for Bear. More at brutalist.art.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T05:07:48"
+   }
+  }
+ ]
+}

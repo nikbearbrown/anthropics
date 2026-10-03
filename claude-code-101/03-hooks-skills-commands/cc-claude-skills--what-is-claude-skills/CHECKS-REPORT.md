@@ -1,0 +1,3 @@
+# CHECKS-REPORT — cc-claude-skills--what-is-claude-skills
+
+13 beats · 13 SHOW · 0 CARD/HOLD/PUNT. Concept film — BUILD-SHOW: not armed (no `metadata.build`; no BFLOW/BSHOW). Arc: prediction before reveal (B00 "two of those three are lies of omission"); concrete (four real runs on three fixture skills) before abstract; friction (B05 — the control passes, which is the doctrine); falsifiable line in BVDT; handoff BHTF = B07's first MUST. IDEA + DEFINITIONS then CONDUCT + HUMAN ✓. Non-terminal: BIDEA, BDEFS, B01, B03 — each reasoned in `shot.leaves_terminal_because`. Gates expected: GATE F clean; BOOKEND ids (BVDT/BHTF/BOUT present, cc-explainer cold open on `CCSession`); Gate V (BVDT has 4 lines); GATE T; kit budgets asserted in author_sheet.py.

@@ -1,0 +1,419 @@
+{
+ "metadata": {
+  "title": "What Is the Claude Basics Playlist.",
+  "slug": "claude-basics--what-is-claude-basics",
+  "topic": "CLAUDE BASICS · WHAT CHANGES RESULTS IN WEEK ONE",
+  "purpose": "Take apart the week-one Claude experience: explain why a stateless chat surface makes every new conversation start blank, evaluate the project container as the opt-in fix, and name what it does not cover (files uploaded but never referenced, empty projects, context-window budget). Land the carry-out that a blank chat and an empty project behave the same — Claude only sharpens once you feed it the documents you'd otherwise keep re-explaining.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/youtube/claude-basics/what-is-claude-basics/beat_sheet.json",
+  "register": "Teardown",
+  "brand": "hai-simple",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "anchor_pair": "S04 -> S05 (must be the SAME composition — three documents)",
+  "one_flag": "none — see SOURCES.md",
+  "mirror_pair": "S06 / S07 — mirrored construction (both directions)",
+  "gate_c": "SIGNED — CARRY-OUT.md",
+  "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "skin_warning": "OutroSeries/OutroCTA render on hardcoded VOX tokens (flat white/near-black/crimson), not the humanitarians cream/ink/teal/crimson used in S01-S07 — no color props exist on these components (checked tokens/vox.ts). Used per hai-simple SKILL.md's explicit instruction anyway; logged as a known library gap, not routed around with an unauthorized new component.",
+  "build": {
+   "at": "2026-08-28T10:33:17",
+   "cut": "master",
+   "filled": 12,
+   "of": 12,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "You think Claude isn't smart enough for your work. Here's what's actually happening: the model is stateless by default — every new chat starts blank, and it can only reason over what you put in front of it. Not-smart-enough is the wrong diagnosis. Not-fed-enough is the mechanism.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types the naive framing, hesitates on 'smart', corrects to 'fed', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Is Claude just\nnot smart\nenough for my work?",
+      "face": "serif",
+      "fontSize": 84,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "smart",
+      "replacementWords": "fed",
+      "mistakeRate": 8,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 28,
+      "seed": "hai-claude-basics-week-one"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. Teardown rewrite names the actual design choice (statelessness) as the mechanism behind the naive 'not smart enough' framing. On-screen writer text/trigger/replacement preserved verbatim.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T10:33:17"
+   }
+  },
+  {
+   "beat_id": "S01",
+   "act": "1 stakes",
+   "narration_text": "Two people use Claude for a week. Same tokenized weights on both ends — literally the same model. One person's answers stay generic no matter what they ask. The other's get sharper by day three. Same model. Different context window.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Two people, same model, diverging output"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Same model, different results",
+     "mechanic": "Two simple person-dot icons on the left, both feeding into one identical 'MODEL' box in the centre. Two output lines diverge on the right: one flat labelled 'still generic' (crimson), one climbing labelled 'sharper by day 3' (teal).",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#1F4E5F",
+      "#E4572E"
+     ]
+    },
+    "manim": "S01Scene"
+   },
+   "audio_file": "mp3/beat-S01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T10:33:17"
+   }
+  },
+  {
+   "beat_id": "S02",
+   "act": "2 wrong guess",
+   "narration_text": "The obvious diagnosis: the first person is asking bad questions, or needs a bigger model. Reasonable — it's the read the interface invites, because a chat box looks like a search bar. It's also wrong. The bottleneck isn't capability. It's what the model can see when it answers.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NOT SMART ENOUGH? -> SMARTER MODEL, sold as reasonable"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "The obvious guess",
+     "mechanic": "Large 'NOT SMART ENOUGH?' in bold INK. Below, an arrow to a bigger box labelled 'SMARTER MODEL'. Sell this as reasonable — no crimson break yet, this is the wrong guess, not the falsification.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "S02Scene"
+   },
+   "audio_file": "mp3/beat-S02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T10:33:17"
+   }
+  },
+  {
+   "beat_id": "S03",
+   "act": "2 BREAK IT",
+   "narration_text": "Even the sharpest model can't know what you never told it. The chat surface is stateless by design: every new conversation opens with a clean context window — no files, no history, no memory of last week. They optimized for a simple, session-free server; you pay for that choice by re-explaining yourself every Monday.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SMARTER MODEL struck through; repeated BLANK CHAT boxes across weeks"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "No index of you to miss",
+     "mechanic": "'SMARTER MODEL' from S02 reappears, struck through in crimson. Beneath it, three identical 'BLANK CHAT' boxes labelled Week 1 / Week 2 / Week 3 in a row, all the same. Crimson strike is the beat's only accent.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "S03Scene"
+   },
+   "audio_file": "mp3/beat-S03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T10:33:17"
+   }
+  },
+  {
+   "beat_id": "S04",
+   "act": "3 mechanism + 4 ANCHOR PLANTED",
+   "narration_text": "The second person is working in a project. Here's what that actually is: a persistent context envelope. Real documents attached to the container, a thread that carries its own history across sessions. Instead of retyping the setup every chat, the setup lives with the project. Picture the three documents you keep re-explaining at work — those are the ones to hold onto.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — three stacked documents beside a PROJECT frame with a history thread"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — three documents",
+     "mechanic": "THE ANCHOR. Three small rectangle 'document' icons stacked on the left in INK. A teal-outlined 'PROJECT' frame on the right with a thin curling line inside it labelled 'history'. Label beneath the documents: 'the three you keep re-explaining'. THIS EXACT THREE-DOCUMENT COMPOSITION RETURNS AT S05.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "S04Scene"
+   },
+   "audio_file": "mp3/beat-S04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T10:33:17"
+   }
+  },
+  {
+   "beat_id": "S05",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "So tonight, the concrete move: take those three documents — the ones you re-explain most — and drop them into one project. That's the whole thing. You're not tuning prompts; you're loading the context container so the model finally has what you've been keeping in your head. Feed it what it needs, and the output stops being generic.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — same three documents, sliding into the project frame"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — load them tonight",
+     "mechanic": "THE S04 COMPOSITION RETURNS, identical — three stacked documents, teal PROJECT frame. Now the three documents animate sliding INTO the frame. Label beneath: 'tonight: load these three.' Teal accent on the frame border as the documents land inside it.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "S05Scene"
+   },
+   "audio_file": "mp3/beat-S05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S05.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T10:33:17"
+   }
+  },
+  {
+   "beat_id": "S06",
+   "act": "5 DIRECTION A",
+   "narration_text": "When the project is genuinely loaded — the real documents attached, the thread with actual history behind it — the completions stop defaulting to generic. Not because the model got smarter between Monday and Wednesday. Because the context window got denser. Same weights, more to reason over.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "LOADED PROJECT, teal check, specific output"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Loaded — specific",
+     "mechanic": "A PROJECT frame filled with three document icons and a teal checkmark. An arrow labelled 'genuinely loaded' points to an output box reading 'SPECIFIC' in teal bold. Teal is the beat's accent.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "S06Scene"
+   },
+   "audio_file": "mp3/beat-S06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S06.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T10:33:17"
+   }
+  },
+  {
+   "beat_id": "S07",
+   "act": "5 DIRECTION B",
+   "narration_text": "An empty project doesn't count. One you created and never loaded is a labelled folder with nothing in it — same statelessness as a blank chat, just with a nicer breadcrumb. Files you uploaded but never actually referenced don't help either. The model reasons over what's in the context window this turn, not what's on disk under the project name.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Mirrors S06: EMPTY PROJECT, crimson X, still generic; dimmed unopened files"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Empty — still generic",
+     "mechanic": "Mirroring S06's layout: a PROJECT frame with a crimson X where the documents should be. An arrow labelled 'label changed, context didn't' points to an output box reading 'GENERIC' struck through in crimson-adjacent INK. A few dimmed, unopened file icons sit beside the frame, greyed out. Crimson X is the beat's accent.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "S07Scene"
+   },
+   "audio_file": "mp3/beat-S07.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/S07.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T10:33:17"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A blank chat and an empty project behave the same way. Claude only sharpens once you feed it the documents you'd otherwise keep re-explaining.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A blank chat and an empty project behave the same way. Claude only sharpens once you feed it the documents you'd otherwise keep re-explaining.",
+      "attribution": "",
+      "sparkLine": "Feed it, don't just ask it."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T10:33:17"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I want my week-one Claude results to stop being generic, and I keep hearing the fix is 'use a project' — but I don't fully understand the mechanism. (1) Walk me through what a Claude project actually is under the hood: what the model sees in its context window on each turn, what stays attached to the container versus what has to be re-sent, and how project instructions differ from attached files. (2) Given three recurring documents I re-explain most at work — a style guide, a customer profile, and a decision log — tell me which should be attached as project files, which belong in project instructions, and which should be pasted per-turn, and why. (3) Draft a starter project-instructions block I can paste in that tells you how to use those three docs together. Go deeper: ask the same model what happens when those three docs contradict each other, or grow past the project's context budget — does the project surface the conflict, silently truncate the older content, or start ignoring one of them, and how would I catch that from the outside before it degrades my answers?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 60,
+   "llm_exercise": {
+    "prompt": "I want my week-one Claude results to stop being generic, and I keep hearing the fix is 'use a project' — but I don't fully understand the mechanism. (1) Walk me through what a Claude project actually is under the hood: what the model sees in its context window on each turn, what stays attached to the container versus what has to be re-sent, and how project instructions differ from attached files. (2) Given three recurring documents I re-explain most at work — a style guide, a customer profile, and a decision log — tell me which should be attached as project files, which belong in project instructions, and which should be pasted per-turn, and why. (3) Draft a starter project-instructions block I can paste in that tells you how to use those three docs together.",
+    "dig_deeper": "Go deeper: ask the same model what happens when those three docs contradict each other, or grow past the project's context budget — does the project surface the conflict, silently truncate the older content, or start ignoring one of them, and how would I catch that from the outside before it degrades my answers?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE BASICS · WEEK ONE",
+      "segment": "Feed It, Don't Just Ask It.",
+      "command": "I want my week-one Claude results to stop being generic, and the fix I keep hearing is 'use a project.' (1) Explain what a Claude project actually is: what the model sees each turn, what stays attached to the container, how project instructions differ from attached files. (2) For three docs I re-explain most at work — style guide, customer profile, decision log — tell me which belong as attached files, which as project instructions, which as per-turn paste, and why. (3) Draft a starter project-instructions block I can paste in that tells you how to use those three docs together.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T10:33:17"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "What Is the Claude Basics Playlist. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "What Is the Claude Basics Playlist. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T10:33:17"
+   }
+  }
+ ]
+}

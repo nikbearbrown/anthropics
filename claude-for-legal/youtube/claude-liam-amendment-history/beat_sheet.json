@@ -20,11 +20,46 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-for-legal/commercial-legal/skills/amendment-history/SKILL.md",
+    "source_detail": {
+      "capabilities": [],
+      "constraints": [
+        "to Mode 2. If no provision is mentioned, run Mode 1. Ask only if",
+        "Matter context. Check ## Matter workspaces in the practice-level CLAUDE.md. If Enabled is ✗ (the default for in-house users), skip the rest of this paragraph — skills…",
+        "Parse the user's request to determine which mode to run. Do not ask",
+        "Only ask the user to confirm ordering if:",
+        "top of the output only where uncertain:",
+        "This skill reads the base agreement and amendments — often privileged or confidential in their own right, and typically used for privileged analysis. The output inherits…",
+        "drive the output — do not show it to the user",
+        "Every finding must include an inline section reference so the reader"
+      ],
+      "referenced_files": [
+        "/commercial-legal:matter-workspace switch <slug>",
+        "practice-level",
+        "matter.md",
+        ". Never read another matter's files unless",
+        "~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md"
+      ],
+      "code_signals": [
+        "code block: markdown"
+      ],
+      "sections": [
+        "Instructions",
+        "Examples",
+        "Matter context",
+        "Purpose",
+        "Mode detection",
+        "Step 1: Load and order the documents",
+        "Privilege inheritance",
+        "Step 2: Read and index",
+        "Mode 1: Summary of all changes",
+        "Section reference rule"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T05:41:34",
+      "at": "2026-09-05T23:18:40",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -50,7 +85,7 @@
             "output": [
               "skill: amendment-history",
               ">",
-              "steps: 0 — executing."
+              "steps: 2 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -68,13 +103,13 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:41:34"
+        "at": "2026-09-05T23:18:40"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is amendment-history. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is amendment-history. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at /commercial-legal:matter-workspace switch <slug>, practice-level, matter.md, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -106,18 +141,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.48,
+      "actual_duration_s": 19.43,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:41:34"
+        "at": "2026-09-05T23:18:40"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "The pipeline has 2 steps. Load and order the documents → Read and index. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -132,22 +167,17 @@
             "outputLabel": "RESULT",
             "phases": [
               {
-                "label": "Read SKILL.md",
-                "desc": "load the instruction set",
+                "label": "Load and order the documents",
+                "desc": "Accept documents from any of these sources: [CLM…",
                 "accent": true
               },
               {
-                "label": "Execute",
-                "desc": "run each step in order",
-                "accent": false
-              },
-              {
-                "label": "Return output",
-                "desc": "deliver the result",
+                "label": "Read and index",
+                "desc": "Read each document in chronological order. For each…",
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "2 steps. Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -157,18 +187,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 11.14,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:41:34"
+        "at": "2026-09-05T23:18:40"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. amendment-history is a specification written as an instruction set. Claude's job: >. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. to Mode 2. If no provision is mentioned, run Mode 1. Ask only if. That is the constraint in amendment-history — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +209,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": ">",
+            "body": "to Mode 2. If no provision is mentioned, run Mode 1. Ask only if",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,12 +219,44 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 10.92,
+      "actual_duration_s": 12.07,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:41:34"
+        "at": "2026-09-05T23:18:40"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In amendment-history, supporting material: /commercial-legal:matter-workspace switch <slug>, practice-level, matter.md, . Never read another matter's files unless; implementation signals: code block: markdown; sections: Instructions, Examples, Matter context, Purpose. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "/commercial-legal:matter-workspace switch <slug>; practice-level; matter.md; code block: markdown",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 20.95,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T23:18:40"
       }
     },
     {
@@ -214,8 +276,9 @@
             "artifactLines": [
               "Skill: amendment-history — Claude reads SKILL.md before acting",
               ">",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "2-step pipeline: Load and order the documents → Read and index",
+              "Constraint: to Mode 2. If no provision is mentioned, run Mode 1. Ask only if",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -230,7 +293,7 @@
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:41:34"
+        "at": "2026-09-05T23:18:40"
       }
     },
     {
@@ -267,7 +330,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:41:34"
+        "at": "2026-09-05T23:18:40"
       }
     },
     {
@@ -298,7 +361,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:41:34"
+        "at": "2026-09-05T23:18:40"
       }
     }
   ]

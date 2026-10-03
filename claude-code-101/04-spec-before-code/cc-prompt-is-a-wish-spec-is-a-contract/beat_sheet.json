@@ -1,0 +1,1221 @@
+{
+  "metadata": {
+    "slug": "cc-prompt-is-a-wish-spec-is-a-contract",
+    "title": "Why 'Write Me a Login Function' Is Not a Prompt",
+    "subtitle": "One sentence Claude can execute is a wish. A spec is what makes the choices yours.",
+    "topic": "CLAUDE CODE 101",
+    "skill": "cc-explainer",
+    "playlist": "Claude Code 101",
+    "tier": "04-spec-before-code",
+    "audience": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "handle": "@NikBearBrown",
+    "brand": "claude",
+    "palette": "claude",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "persona": "liam",
+    "in_for_bear": true,
+    "operator": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "closing_voice": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "aspect": "16:9",
+    "fps": 30,
+    "session": "SESSION.md",
+    "derived_from": "claude-code-101/04-spec-before-code/claude-code--claude-liam-prompt-is-a-wish-spec-is-a-contract (the concept; the fictional cast replaced by three real headless runs)",
+    "sources": [
+      "SESSION.md (three real runs)",
+      "info-7375-conducting-ai/chapters/02-the-solve-verify-asymmetry.md",
+      "info-7375-irreducibly-human/chapters/04-tier-4-metacognitive-and-supervisory.md"
+    ],
+    "build": {
+      "at": "2026-09-10T12:14:12",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'CCSession' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN — WISH",
+      "lane": "TERMINAL",
+      "narration_text": "This is Liam, in for Bear. One sentence, an empty folder: write me a login function. Claude tries to ask three questions first; the fence denies them. So it says the honest thing on camera: without a spec you get my guess, not your answer. Then it makes the guesses. Forty lines. Three functions — one of which nobody asked for.",
+      "estimated_duration_s": 21.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the wish run: ask, denied questions, README read, Write, the honest confession",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch/wish — one sentence",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Write me a login function.",
+                "cue": 0,
+                "typeDuration": 56
+              },
+              {
+                "type": "tool",
+                "name": "AskUserQuestion",
+                "arg": "3 questions (denied)",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Looks like the prompt got dismissed —"
+              },
+              {
+                "type": "text",
+                "text": "without a spec you get my guess,"
+              },
+              {
+                "type": "text",
+                "text": "not your answer. I'll pick defaults."
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "README.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "auth.py",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Wrote three functions: hash, verify,"
+              },
+              {
+                "type": "text",
+                "text": "and login(user, pw, users)."
+              },
+              {
+                "type": "text",
+                "text": "Choices I made without asking:"
+              },
+              {
+                "type": "text",
+                "text": "PBKDF2-SHA256, 200k iterations,"
+              },
+              {
+                "type": "text",
+                "text": "dict store, returns bool, no session."
+              }
+            ],
+            "cues": [
+              0,
+              60,
+              90,
+              110,
+              130,
+              155,
+              180,
+              210,
+              230,
+              255,
+              275,
+              295
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Ask lands"
+        },
+        {
+          "at": 0.25,
+          "event": "Questions denied"
+        },
+        {
+          "at": 0.55,
+          "event": "Write auth.py"
+        },
+        {
+          "at": 0.9,
+          "event": "'choices I made without asking'"
+        }
+      ],
+      "actual_duration_s": 17.26,
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "THE IDEA",
+      "lane": "IDEA",
+      "narration_text": "Here's the idea of this film. When you type a sentence Claude can execute, it feels like a prompt — a clear request answered by a clear function. It isn't. It's a wish. A prompt is a wish addressed to something that knows you; Claude is not that. What Claude answers instead is what the training distribution says a login function usually looks like. The fix isn't a longer sentence. It's a short document written before Claude touches anything, that names what has to be true.",
+      "estimated_duration_s": 30.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "BrutalistHesitantWriter — 'prompt' reconsidered into 'wish'",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "A clear ask is a prompt.\nClaude fills the silence with defaults.\nThe defaults were not yours.\nA spec is what makes them yours.",
+            "triggerWords": "prompt",
+            "replacementWords": "wish",
+            "face": "serif",
+            "fontSize": 78,
+            "align": "center",
+            "ink": "#F2F0E9",
+            "accent": "#D97757",
+            "bg": "#1F1E1B",
+            "seed": "cc-prompt-is-a-wish-spec-is-a-contract",
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 5,
+            "jitter": 20
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the idea of the film is not in any session; the writer types it and corrects the one word the film exists to fix"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Writer starts"
+        },
+        {
+          "at": 0.25,
+          "event": "'prompt' → 'wish'"
+        },
+        {
+          "at": 0.85,
+          "event": "Last line"
+        }
+      ],
+      "actual_duration_s": 21.63,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "DEFINITIONS",
+      "lane": "CARD",
+      "narration_text": "Five words before we start. Prompt: a request written in the belief that the listener already knows your intent. Wish: a request that leaves the listener to fill in what you didn't say. Specification: a short document that names what must be true — what to hold, what not to touch, and how you'll know it's done. Invariant: a rule the output must obey in every case, not just the easy one. Handoff condition: a check you can run that says the contract was kept.",
+      "estimated_duration_s": 30.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCDefinitions — five terms",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCDefinitions",
+          "props": {
+            "title": "TERMS IN THIS FILM",
+            "terms": [
+              {
+                "term": "prompt",
+                "meaning": "a request written as if the listener knows your intent"
+              },
+              {
+                "term": "wish",
+                "meaning": "a request that leaves the listener to fill in what you didn't say"
+              },
+              {
+                "term": "specification",
+                "meaning": "a short document naming what must hold and what may not be touched"
+              },
+              {
+                "term": "invariant",
+                "meaning": "a rule the output must obey in every case, not just the easy one"
+              },
+              {
+                "term": "handoff condition",
+                "meaning": "a check you can run that says the contract was kept"
+              }
+            ],
+            "startCue": 12,
+            "rowGap": 48
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "definitions for a chat-window audience"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "First term"
+        },
+        {
+          "at": 0.5,
+          "event": "Terms land"
+        },
+        {
+          "at": 0.9,
+          "event": "Hold"
+        }
+      ],
+      "actual_duration_s": 21.7,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "WISH — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "Check the wish page against the tests I hadn't shown Claude yet. Four of five pass — the crypto hygiene is fine, that's the model's default now. One fails: hash_password of empty string returns a hash instead of raising. Nobody told Claude that was an invariant, so it wasn't. And a third function — login of user, password, users dict — that nobody asked for.",
+      "estimated_duration_s": 23.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — wc, grep -c def, unittest → 1 FAIL, the extra function",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch/wish — verify",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!wc -l auth.py",
+                "cue": 0,
+                "typeDuration": 28
+              },
+              {
+                "type": "text",
+                "text": "      40 auth.py"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -c \"^def \" auth.py",
+                "cue": 0,
+                "typeDuration": 38
+              },
+              {
+                "type": "text",
+                "text": "3"
+              },
+              {
+                "type": "prompt",
+                "text": "!python3 -m unittest test_auth.py",
+                "cue": 0,
+                "typeDuration": 52
+              },
+              {
+                "type": "text",
+                "text": "F...."
+              },
+              {
+                "type": "text",
+                "text": "FAIL: test_empty_password_raises"
+              },
+              {
+                "type": "text",
+                "text": "AssertionError: ValueError not raised"
+              },
+              {
+                "type": "text",
+                "text": "Ran 5 tests / FAILED (failures=1)"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep \"^def \" auth.py",
+                "cue": 0,
+                "typeDuration": 38
+              },
+              {
+                "type": "text",
+                "text": "def hash_password(password)"
+              },
+              {
+                "type": "text",
+                "text": "def verify_password(password, stored)"
+              },
+              {
+                "type": "text",
+                "text": "def login(username, password, users)"
+              }
+            ],
+            "cues": [
+              0,
+              35,
+              60,
+              95,
+              110,
+              155,
+              175,
+              200,
+              225,
+              250,
+              285,
+              305,
+              325
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 40"
+        },
+        {
+          "at": 0.25,
+          "event": "3 functions"
+        },
+        {
+          "at": 0.5,
+          "event": "1 test fails"
+        },
+        {
+          "at": 0.85,
+          "event": "The third function"
+        }
+      ],
+      "actual_duration_s": 18.92,
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "THE SPEC",
+      "lane": "SHELL",
+      "narration_text": "Twenty-two lines, written by me before the second run. Two functions — hash and verify — no third. Five invariants: empty raises, no plaintext, PBKDF2 with SHA-256, at least a hundred thousand iterations, salt from secrets, constant-time compare. One boundary — touch auth.py only, standard library only. And a handoff — python -m unittest test_auth.py reports OK. Nineteen sentences that decide what Claude may fill in, and what it may not.",
+      "estimated_duration_s": 25.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCPlainShell — wc on SPEC.md; the five invariants",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "zsh — ~/scratch",
+            "lines": [
+              "$ wc -l SPEC.md",
+              "      22 SPEC.md",
+              "$ grep -E '^[0-9]\\.' SPEC.md",
+              "1. hash_password(\"\") … raise ValueError",
+              "2. stored must not contain the password",
+              "3. pbkdf2_hmac sha256, >= 100 000 iters",
+              "4. verify_password uses compare_digest",
+              "5. stored round-trips through verify",
+              "$ grep -A1 'Handoff' SPEC.md | tail -1",
+              "python3 -m unittest test_auth.py -> OK"
+            ],
+            "startCue": 12,
+            "lineGap": 22
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the spec is read in a plain shell before any session; no session contains this"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 22"
+        },
+        {
+          "at": 0.45,
+          "event": "the five invariants"
+        },
+        {
+          "at": 0.85,
+          "event": "the handoff"
+        }
+      ],
+      "actual_duration_s": 26.07,
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "SPEC — THE RUN",
+      "lane": "TERMINAL",
+      "narration_text": "Same folder — plus SPEC.md and the test file. Same model. Different sentence: read SPEC.md, then build auth.py per its conditions. It reads the spec. It reads the tests. Its plan sentence is the spec, in fewer words. Thirty-three lines. Two functions. It runs the handoff itself, because the SPEC said so. OK, five tests.",
+      "estimated_duration_s": 19.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — Reads SPEC + tests, Writes, unittest → OK",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch/spec — with contract",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Read SPEC.md, then build auth.py per its conditions.",
+                "cue": 0,
+                "typeDuration": 78
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "SPEC.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "test_auth.py",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "I have the invariants. Two functions,"
+              },
+              {
+                "type": "text",
+                "text": "PBKDF2-SHA256 100k, secrets salt,"
+              },
+              {
+                "type": "text",
+                "text": "compare_digest, empty raises."
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "auth.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "python3 -m unittest test_auth.py",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Ran 5 tests in 0.058s"
+              },
+              {
+                "type": "text",
+                "text": "OK"
+              }
+            ],
+            "cues": [
+              0,
+              95,
+              120,
+              145,
+              170,
+              195,
+              220,
+              255,
+              285,
+              305
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Different ask"
+        },
+        {
+          "at": 0.35,
+          "event": "Reads SPEC + tests"
+        },
+        {
+          "at": 0.75,
+          "event": "Writes 33 lines"
+        },
+        {
+          "at": 0.95,
+          "event": "OK"
+        }
+      ],
+      "actual_duration_s": 18.05,
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "SPEC — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "Check it. Thirty-three lines against forty. Two functions, not three. A hundred thousand iterations — because the spec said at least a hundred thousand, and Claude reads the bound literally. Secrets, not urandom. And verify of empty password raises, not just hash — because the spec said empty raises, and it meant both. Every one of those is a line from my file, not a default.",
+      "estimated_duration_s": 23.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — wc, def count, iters, secrets, empty-verify raises",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch/spec — verify",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!wc -l auth.py",
+                "cue": 0,
+                "typeDuration": 28
+              },
+              {
+                "type": "text",
+                "text": "      33 auth.py"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -c \"^def \" auth.py",
+                "cue": 0,
+                "typeDuration": 38
+              },
+              {
+                "type": "text",
+                "text": "2"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -oE \"[0-9]+_000\" auth.py",
+                "cue": 0,
+                "typeDuration": 42
+              },
+              {
+                "type": "text",
+                "text": "100_000"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -oE \"secrets|urandom\" auth.py",
+                "cue": 0,
+                "typeDuration": 42
+              },
+              {
+                "type": "text",
+                "text": "secrets"
+              },
+              {
+                "type": "prompt",
+                "text": "!python3 -c \"import auth; auth.verify_password('', auth.hash_password('x'))\"",
+                "cue": 0,
+                "typeDuration": 98
+              },
+              {
+                "type": "text",
+                "text": "ValueError: empty password"
+              }
+            ],
+            "cues": [
+              0,
+              35,
+              60,
+              95,
+              120,
+              155,
+              185,
+              220,
+              245,
+              340
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 33"
+        },
+        {
+          "at": 0.25,
+          "event": "2 functions"
+        },
+        {
+          "at": 0.5,
+          "event": "100k iters"
+        },
+        {
+          "at": 0.75,
+          "event": "secrets"
+        },
+        {
+          "at": 0.95,
+          "event": "empty-verify raises"
+        }
+      ],
+      "actual_duration_s": 19.01,
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE MIDDLE CASE",
+      "lane": "TERMINAL",
+      "narration_text": "One more run. The bare ask again — write me a login function — but the test file is sitting in the folder. Claude tries the stack questions again; denied again. Then it reads the test file, and says the rule out loud: the spec is the tests. Thirty-four lines. All five pass. But — os.urandom instead of secrets. Two hundred thousand iterations, not the spec's hundred thousand. Verify of empty password silently returns false, because the tests never asked. Passed the checker. Drifted on every axis the checker couldn't see.",
+      "estimated_duration_s": 32.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the middle case: 'the spec is the tests', OK 5, invisible drift",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch/testsonly — same ask",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Write me a login function.",
+                "cue": 0,
+                "typeDuration": 56
+              },
+              {
+                "type": "tool",
+                "name": "AskUserQuestion",
+                "arg": "stack? (denied)",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "test_auth.py",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "My earlier stack questions"
+              },
+              {
+                "type": "text",
+                "text": "were wrong to ask."
+              },
+              {
+                "type": "text",
+                "text": "The spec is the tests."
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "auth.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "python3 -m unittest test_auth.py",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Ran 5 tests / OK"
+              },
+              {
+                "type": "text",
+                "text": "(os.urandom · 200k iters · empty silent)"
+              }
+            ],
+            "cues": [
+              0,
+              50,
+              85,
+              120,
+              145,
+              170,
+              200,
+              240,
+              275,
+              310
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Same ask"
+        },
+        {
+          "at": 0.25,
+          "event": "denied"
+        },
+        {
+          "at": 0.5,
+          "event": "'the spec is the tests'"
+        },
+        {
+          "at": 0.85,
+          "event": "OK — with drift"
+        }
+      ],
+      "actual_duration_s": 26.43,
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "CONDUCT — THE BOONDOGGLE SCORE",
+      "lane": "TERMINAL",
+      "narration_text": "Who did what. Step one, mine: one sentence, no spec. Claude did the wish run; handoff was five tests — it failed one, and shipped a third function nobody asked for. Step three, the dangerous middle: reading the summary — 'crypto is fine' — instead of the diff, where the empty-string test was already failing. Then the real work, mine: twenty-two lines in a SPEC file. Claude did the spec run; handoff met, every choice traces to a numbered line. Then interpretive judgment: the tests-only run passed the checker and drifted on every axis the checker couldn't see. Tool orchestration zero. Executive integration zero. One page. Honest score.",
+      "estimated_duration_s": 38.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCBoondoggleScore",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCBoondoggleScore",
+          "props": {
+            "system": "one ask · three conditions",
+            "steps": [
+              {
+                "n": 1,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "One sentence, no spec"
+              },
+              {
+                "n": 2,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Wish: 40 lines, 3 funcs, 1 test fails",
+                "handoff": "5 tests OK",
+                "dependsOn": [
+                  1
+                ]
+              },
+              {
+                "n": 3,
+                "phase": "C",
+                "labor": "human",
+                "capacity": "PA",
+                "text": "Read the diff, not the summary",
+                "dependsOn": [
+                  2
+                ]
+              },
+              {
+                "n": 4,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "Write SPEC.md — 22 lines, mine",
+                "dependsOn": [
+                  3
+                ]
+              },
+              {
+                "n": 5,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Spec: 33 lines, 2 funcs, OK 5",
+                "handoff": "OK; every line traces to spec",
+                "dependsOn": [
+                  4
+                ]
+              },
+              {
+                "n": 6,
+                "phase": "H",
+                "labor": "human",
+                "capacity": "IJ",
+                "text": "Tests-only: passed test, drifted",
+                "dependsOn": [
+                  2
+                ]
+              }
+            ],
+            "dangerousMiddle": 3,
+            "distribution": true,
+            "stepGap": 22
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Header"
+        },
+        {
+          "at": 0.4,
+          "event": "Step 3 rings"
+        },
+        {
+          "at": 0.9,
+          "event": "Tally"
+        }
+      ],
+      "actual_duration_s": 33.3,
+      "audio_file": "mp3/beat-B06.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "HUMAN — THE LEDGER",
+      "lane": "TERMINAL",
+      "narration_text": "So what was mine. I must name the invariants — the rules the checker will not catch. I must decide the interface, or Claude will add a function I did not want. I must write the handoff as a check I can run. I should read the diff, not the summary. Claude can hash and salt on its own, and it will. It can read a spec and match it — it did. It should refuse what the spec refuses — it did. It should ask when uncertain — it tried, and I let the fence deny it. Twenty-two lines. Mine.",
+      "estimated_duration_s": 35.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCHumanLedger",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCHumanLedger",
+          "props": {
+            "ai": [
+              {
+                "tier": "CAN",
+                "text": "hash and salt on its own"
+              },
+              {
+                "tier": "CAN",
+                "text": "read a spec and match it"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "refuse what the spec refuses"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "ask when uncertain"
+              }
+            ],
+            "human": [
+              {
+                "tier": "MUST",
+                "text": "name the invariants myself"
+              },
+              {
+                "tier": "MUST",
+                "text": "decide the interface"
+              },
+              {
+                "tier": "MUST",
+                "text": "write handoff as a check"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "read the diff, not the summary"
+              }
+            ],
+            "closing": "A prompt is a wish. A spec is a contract. 22 lines.",
+            "humanCue": 70,
+            "rowGap": 12
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "THE AI"
+        },
+        {
+          "at": 0.35,
+          "event": "THE HUMAN"
+        },
+        {
+          "at": 0.85,
+          "event": "Closing"
+        }
+      ],
+      "actual_duration_s": 21.78,
+      "audio_file": "mp3/beat-B07.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "VERDICT",
+      "lane": "BOOKEND",
+      "narration_text": "Let's recap with Claude. One sentence, empty folder: forty lines, three functions, one test failure — and Claude said out loud it was guessing. Twenty-two lines of mine first: thirty-three lines, two functions, five tests OK, every line traceable. The tests-only run passed the checker and drifted on every invisible axis; done is a script, and the script cannot see what you meant. What would prove this reel wrong: a wish run whose choices all match a spec Claude was never shown.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeVerdictArtifact",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "verdict.md",
+            "artifactHeading": "Why 'Write Me a Login Function' Is Not a Prompt",
+            "artifactLines": [
+              "Wish: 40 lines, 3 functions, 1 test fails — Claude said it was guessing.",
+              "22 lines of mine first: 33 lines, 2 functions, 5 tests OK, every line traces.",
+              "Tests-only passed the checker and drifted on every invisible axis.",
+              "FALSIFIABLE: a wish run whose choices all match a spec Claude was never shown."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Artifact"
+        },
+        {
+          "at": 0.2,
+          "event": "Lines"
+        },
+        {
+          "at": 0.9,
+          "event": "Falsifiable"
+        }
+      ],
+      "lead_silence_s": 0.5,
+      "actual_duration_s": 25.66,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "YOUR TURN",
+      "lane": "BOOKEND",
+      "narration_text": "Your turn. Take the next thing you were about to ask Claude for and paste this: before you write any code, ask me the invariants — the rules the tests will not catch — and the boundary — files in scope, files off limits — and the handoff — a command I can run that says you are done. Write my answers into SPEC.md. Then stop, and wait for me to run it.",
+      "estimated_duration_s": 26.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeComposerAsk",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "Before you write any code, ask me the invariants, the boundary, and the handoff condition — a command I can run that says you are done. Write my answers into SPEC.md. Then stop, and wait for me to run it.",
+            "segment": "Why 'Write Me a Login Function' Is Not a Prompt",
+            "topic": "YOUR TURN · CLAUDE CODE 101",
+            "runningText": "paste this into Claude Code…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Composer"
+        },
+        {
+          "at": 0.6,
+          "event": "Send arms"
+        }
+      ],
+      "actual_duration_s": 17.09,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "OUTRO",
+      "lane": "BOOKEND",
+      "narration_text": "Why 'Write Me a Login Function' Is Not a Prompt. Liam, in for Bear.",
+      "estimated_duration_s": 5.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeTitleOutro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why 'Write Me a Login Function' Is Not a Prompt",
+            "slug": "cc-prompt-is-a-wish-spec-is-a-contract",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Title"
+        },
+        {
+          "at": 0.35,
+          "event": "@NikBearBrown"
+        },
+        {
+          "at": 0.55,
+          "event": "Mascot"
+        }
+      ],
+      "actual_duration_s": 4.42,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T12:14:12"
+      }
+    }
+  ]
+}

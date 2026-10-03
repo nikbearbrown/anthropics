@@ -1,0 +1,77 @@
+1
+00:00:00,000 --> 00:00:12,340
+A 402-line system prompt with 12 tools is
+slow and expensive. A 15-line prompt with
+the same knowledge split into skills runs
+
+2
+00:00:12,390 --> 00:00:20,130
+The question: why does cutting the system
+prompt in half — while keeping all the
+knowledge — actually improve the agent's
+
+3
+00:00:20,180 --> 00:00:47,180
+Three levers trade cost versus control.
+Tools: stateless function calls — the
+agent calls a function, gets a result,
+
+4
+00:00:47,230 --> 00:01:25,200
+Here is the decomposition tree. The
+original: 402 lines, 12 tools, every piece
+of business logic in one window. One task
+
+5
+00:01:25,250 --> 00:01:44,460
+The split is the mechanism. One monolith
+divides into a lean core plus skill
+modules. The reorder-policy skill — 200
+
+6
+00:01:44,510 --> 00:02:18,440
+Let's look at what actually happens when
+the agent calls a skill at runtime. The
+core agent — 15 lines — issues one call:
+
+7
+00:02:18,490 --> 00:02:54,600
+Tools versus skills — when do you reach
+for each? A tool is stateless: one
+function signature, no memory, one call,
+
+8
+00:02:54,650 --> 00:03:30,590
+The gains are not theoretical — they are
+measured. Latency: the monolith took 488
+seconds per low-stock sweep. The
+
+9
+00:03:30,640 --> 00:03:54,760
+Let's recap with Claude. Three levers:
+tools for stateless calls, skills for on-
+demand instructions, subagents for
+
+10
+00:03:54,810 --> 00:04:31,220
+Your turn. Here is the prompt: 'Here's my
+400-line agent prompt — decompose it into
+a lean core plus skills, and show me the
+
+11
+00:04:31,270 --> 00:04:52,750
+Three levers. Tools for stateless calls —
+bounded, deterministic, negligible context
+cost. Skills for on-demand instructions —
+
+12
+00:04:52,800 --> 00:05:07,040
+Your turn. Paste your longest agent
+prompt, and sort every line. A stateless
+call? That's a tool. Instructions the task
+
+13
+00:05:07,090 --> 00:05:13,650
+The 402-Line Prompt: How Decomposition
+Makes Agents 5x Faster. Thanks for
+watching.

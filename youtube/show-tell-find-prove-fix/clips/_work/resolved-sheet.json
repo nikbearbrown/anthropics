@@ -1,0 +1,706 @@
+{
+  "metadata": {
+    "slug": "show-tell-find-prove-fix",
+    "title": "Find, Prove, Fix",
+    "topic": "CLAUDE · SECURING SOURCE CODE",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Spanish (Hola)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Developers and security engineers who have pointed a model at code, got a pile of findings, and need to know which are real and how to fix them",
+    "source_doc": "anthropics/defending-code-reference-harness: docs/blog-post.md, docs/pipeline.md, README.md, docs/patching.md, docs/security.md, docs/triage.md, harness/prompts/find_prompt.py (read in full 2026-09-27)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude",
+      "Claude Code",
+      "security",
+      "vulnerability",
+      "threat model",
+      "sandbox",
+      "gVisor",
+      "proof of concept",
+      "AddressSanitizer",
+      "ASAN",
+      "triage",
+      "patching",
+      "defending-code-reference-harness",
+      "Anthropic",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T01:31:16",
+      "cut": "review",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hola. This is Liam, in for Bear. Point Claude at your code, and it finds bugs. Anthropic says finding is no longer the bottleneck. So the real question is how you prove what it finds, and fix it.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'Can Claude find the bugs in my code?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'find the bugs in my code' -> 'prove and fix what it finds' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Can Claude\nfind the bugs in my code?",
+            "triggerWords": "find the bugs in my code",
+            "replacementWords": "prove and fix what it finds",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-find-prove-fix",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T05:28:35.949634+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (can Claude find the bugs in my code) and corrects it to the real one (can Claude prove and fix what it finds).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 11.05,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 11.083333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T01:31:16"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A threat model: what counts as a vulnerability in your system. A proof of concept: an input that really triggers the bug. And Address Sanitizer: a memory-error detector for C and C plus plus.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "'threat model' lands"
+          },
+          {
+            "at": 0.4,
+            "event": "'proof of concept' lands"
+          },
+          {
+            "at": 0.7,
+            "event": "'ASAN' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "threat model",
+                "meaning": "what counts as a vulnerability in your system"
+              },
+              {
+                "term": "proof of concept",
+                "meaning": "an input that really triggers the bug"
+              },
+              {
+                "term": "ASAN",
+                "meaning": "AddressSanitizer: catches memory errors in C and C++"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T05:29:05.459126+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 11.03,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 11.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T01:31:16"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Here's your code, drawn as a building. Anthropic's guide to securing it has six steps. Two are setup, done once. Four run as a loop: find, prove, triage, fix.",
+      "estimated_duration_s": 11.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft building with dark windows rises on the stage ('your code'); two grey slabs slide in under it ('setup'); an ink loop draws around its base with four dots, and a terracotta dot rides the loop ('loop').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "your code: a building"
+          },
+          {
+            "at": 0.5,
+            "event": "two setup slabs"
+          },
+          {
+            "at": 0.8,
+            "event": "a loop of four"
+          }
+        ],
+        "manim": {
+          "class": "B00_Building"
+        },
+        "motion_claim": "A kraft building with dark windows rises on the stage ('your code'); two grey slabs slide in under it ('setup'); an ink loop draws around its base with four dots, and a terracotta dot rides the loop ('loop')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn building-in-a-glass-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.34,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 9.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:31:16"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step one, the threat model. Decide what counts as a vulnerability: what you trust, and where outside input gets in. Anthropic says a misread trust boundary is the top cause of false positives.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A flat map sheet slides in beside the building ('threat model'); the building's footprint draws on it; a grey zone fills ('trusted'); terracotta dots land on the map's doors and on the building's door; a dashed ink boundary draws between them.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the threat map"
+          },
+          {
+            "at": 0.45,
+            "event": "what you trust"
+          },
+          {
+            "at": 0.6,
+            "event": "where input gets in"
+          },
+          {
+            "at": 0.85,
+            "event": "the trust boundary"
+          }
+        ],
+        "manim": {
+          "class": "B01_ThreatMap"
+        },
+        "motion_claim": "A flat map sheet slides in beside the building ('threat model'); the building's footprint draws on it; a grey zone fills ('trusted'); terracotta dots land on the map's doors and on the building's door; a dashed ink boundary draws between them."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn building-in-a-glass-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.33,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 11.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:31:16"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step two, the sandbox: a sealed glass box. Network only during setup. Then snapshot it and cut the cable, leaving one line out, to the model's API. No credentials inside.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An ink wireframe glass box drops over the building ('sandbox'); a cable runs out to a web block; a snapshot flash; the cable is cut (a gap opens, its ends drop); one thin ink line stays, to a dark block ('model API'); a key card outside the box gets an ink cross.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the glass box"
+          },
+          {
+            "at": 0.35,
+            "event": "network during setup"
+          },
+          {
+            "at": 0.6,
+            "event": "cut the cable"
+          },
+          {
+            "at": 0.8,
+            "event": "one line to the model API"
+          },
+          {
+            "at": 0.92,
+            "event": "no credentials"
+          }
+        ],
+        "manim": {
+          "class": "B02_Sandbox"
+        },
+        "motion_claim": "An ink wireframe glass box drops over the building ('sandbox'); a cable runs out to a web block; a snapshot flash; the cable is cut (a gap opens, its ends drop); one thin ink line stays, to a dark block ('model API'); a key card outside the box gets an ink cross."
+      },
+      "actual_duration_s": 10.86,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 10.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:31:16"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step three, discovery. One agent splits the code into areas. Inspectors search them in parallel, with the threat model in hand. Anthropic found short prompts with rich context work best.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Dashed ink lines split the building's roof into three areas ('areas'); three dark inspector pawns drop onto the roof, one per area ('inspectors'); a small copy of the map flies from the sheet to each pawn.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "split into areas"
+          },
+          {
+            "at": 0.4,
+            "event": "inspectors in parallel"
+          },
+          {
+            "at": 0.65,
+            "event": "the threat model in hand"
+          }
+        ],
+        "manim": {
+          "class": "B03_Inspectors"
+        },
+        "motion_claim": "Dashed ink lines split the building's roof into three areas ('areas'); three dark inspector pawns drop onto the roof, one per area ('inspectors'); a small copy of the map flies from the sheet to each pawn."
+      },
+      "actual_duration_s": 10.88,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 10.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:31:16"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step four, prove it. The harness, a reference and not a product, hunts memory bugs in C and C plus plus. Each finder must bring proof: an input file that crashes the program three times out of three, with Address Sanitizer raising the alarm.",
+      "estimated_duration_s": 17.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An inspector's crash-file card slides down into the building's door slot; the roof alarm flashes terracotta three times while three ink ticks land ('3/3'); a crack draws across the wall ('crash file').",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "a reference, for C and C++ memory bugs"
+          },
+          {
+            "at": 0.45,
+            "event": "an input file"
+          },
+          {
+            "at": 0.75,
+            "event": "crashes 3 of 3"
+          },
+          {
+            "at": 0.9,
+            "event": "the alarm"
+          }
+        ],
+        "manim": {
+          "class": "B04_Crash"
+        },
+        "motion_claim": "An inspector's crash-file card slides down into the building's door slot; the roof alarm flashes terracotta three times while three ink ticks land ('3/3'); a crack draws across the wall ('crash file')."
+      },
+      "actual_duration_s": 13.61,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 13.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:31:16"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then a second agent retries it, in a fresh box. Only the crash file crosses over, never the finder's reasoning. Anthropic's partner teams found a verifier that must build a working proof cut false positives to near zero. But a failed proof doesn't prove there's no bug.",
+      "estimated_duration_s": 18.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A second, smaller glass box rises on the right ('grader'); the crash file arcs across into it while the inspector's page stack stays behind; the grader's alarm flashes and an ink check lands ('per Anthropic'); then a second file crosses, no alarm, and a grey question mark sits beside it.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a fresh box"
+          },
+          {
+            "at": 0.3,
+            "event": "only the file crosses"
+          },
+          {
+            "at": 0.62,
+            "event": "near zero false positives, per Anthropic"
+          },
+          {
+            "at": 0.88,
+            "event": "no proof is not no bug"
+          }
+        ],
+        "manim": {
+          "class": "B05_Grader"
+        },
+        "motion_claim": "A second, smaller glass box rises on the right ('grader'); the crash file arcs across into it while the inspector's page stack stays behind; the grader's alarm flashes and an ink check lands ('per Anthropic'); then a second file crosses, no alarm, and a grey question mark sits beside it."
+      },
+      "actual_duration_s": 15.34,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 15.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:31:16"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step five, triage. Many crashes share one root cause, so a judge merges the duplicates. Then each bug is ranked: can an attacker reach it, and how far would the damage spread?",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft table; five crash cards land on it ('triage'); two pairs slide together and merge ('duplicates'); the three left line up in a ranked column with ink numerals 1, 2, 3 ('ranked').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "crash cards on the table"
+          },
+          {
+            "at": 0.4,
+            "event": "duplicates merge"
+          },
+          {
+            "at": 0.7,
+            "event": "ranked"
+          }
+        ],
+        "manim": {
+          "class": "B06_Triage"
+        },
+        "motion_claim": "A kraft table; five crash cards land on it ('triage'); two pairs slide together and merge ('duplicates'); the three left line up in a ranked column with ink numerals 1, 2, 3 ('ranked')."
+      },
+      "actual_duration_s": 10.09,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 10.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:31:16"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step six, the fix. The patch climbs a ladder: it builds, the old crash stops, the old tests pass, and a fresh agent attacks it. The lessons feed the next round. The ladder shows the crash is gone, not that the patch is safe. A human owns every fix.",
+      "estimated_duration_s": 19.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft patch plate covers the wall crack ('patch'); a four-rung ladder stands beside the building and an ink check lands on each rung; an ink arrow arcs from the building back to the map, which gains a new dot ('next round'); a person figure steps up beside the patch ('human').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the patch"
+          },
+          {
+            "at": 0.25,
+            "event": "builds, crash stops, tests pass, re-attack"
+          },
+          {
+            "at": 0.6,
+            "event": "back into the threat model"
+          },
+          {
+            "at": 0.9,
+            "event": "a human owns every fix"
+          }
+        ],
+        "manim": {
+          "class": "B07_Patch"
+        },
+        "motion_claim": "A kraft patch plate covers the wall crack ('patch'); a four-rung ladder stands beside the building and an ink check lands on each rung; an ink arrow arcs from the building back to the map, which gains a new dot ('next round'); a person figure steps up beside the patch ('human')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn building-in-a-glass-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.59,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 13.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:31:16"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Why now? Anthropic says that by May twenty-second, twenty twenty-six, it had disclosed one thousand, five hundred and ninety-six vulnerabilities. To its knowledge, ninety-seven were patched. Finding has outrun fixing.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A tall stack of grey crash cards grows as a counter climbs to 1,596 ('disclosed', 'per Anthropic'); beside it a one-slab stack, '97', with an ink check ('patched'); the tall stack pulses on 'finding has outrun fixing'.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "1,596 disclosed, per Anthropic"
+          },
+          {
+            "at": 0.7,
+            "event": "97 patched"
+          },
+          {
+            "at": 0.9,
+            "event": "finding has outrun fixing"
+          }
+        ],
+        "manim": {
+          "class": "B08_Count"
+        },
+        "motion_claim": "A tall stack of grey crash cards grows as a counter climbs to 1,596 ('disclosed', 'per Anthropic'); beside it a one-slab stack, '97', with an ink check ('patched'); the tall stack pulses on 'finding has outrun fixing'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn building-in-a-glass-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.5,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 12.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:31:16"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude Code, in a repo you own: In this repo, write a short threat model file: what the code trusts, and where outside input gets in. Find one bug that input could reach, or say there's none. Prove it with a failing test, then make the smallest fix that turns it green. Then check two things yourself. Does the new test fail before the fix? And do the old tests still pass after it?",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · YOUR TURN",
+            "segment": "Find, Prove, Fix",
+            "command": "In this repo, write a short THREAT_MODEL.md: what the code trusts, and where outside input gets in. Find one bug that input could reach, or say there's none. Prove it with a failing test, then make the smallest fix that turns it green.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: the new test fails before the fix?",
+              "Check: all the old tests still pass after?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T05:29:59.684431+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 19.8,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 19.833333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T01:31:16"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Find, Prove, Fix. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Find, Prove, Fix",
+            "slug": "show-tell-find-prove-fix",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T05:30:13.931412+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.07,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.083333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T01:31:16"
+      }
+    }
+  ]
+}

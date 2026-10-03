@@ -1,0 +1,766 @@
+{
+  "metadata": {
+    "slug": "string-similarity-semantic-gap",
+    "title": "Why String Similarity Is Not Semantic Equivalence (and How to Catch the Difference Before You Ship)",
+    "topic": "CLAUDE CODE",
+    "purpose": "vox-explainer slate cut of Claude Code for Students candidate 05. Source chapter: claude-code-for-students/chapters/05-five-supervisory-capacities.md (Plausibility Auditing, the hunting/haunting probe).",
+    "clock": "narration (Kokoro (VOICE-LOCK)) — durations below are word-count estimates until GATE 0 audio lock",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "palette": "claude",
+    "isotype_mark": "square",
+    "color_semantics": "CRIMSON = string similarity / wrong frame / tests passing but wrong; INK = semantic equivalence / domain knowledge / plausibility audit. One accent. Never swap.",
+    "note": "Exclusions honored: no full NLP embedding methodology, no semantic similarity model comparisons, no formal taxonomy of NLP tasks, no Polanyi epistemology at length. Mechanism only: tests verify the problem Claude solved, not the problem you needed to solve.",
+    "total_estimated_duration_seconds": 237.67,
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "register": "Teardown",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "_variant_todo": [
+      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
+      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
+      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
+      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
+    ],
+    "build": {
+      "at": "2026-07-16T06:24:36",
+      "cut": "master",
+      "filled": 0,
+      "of": 10,
+      "slates": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B10"
+      ],
+      "skin_warnings": [
+        "NO RENDERABLE BEATS: no beat carries a shot.remotion.pattern or Manim annotation — the pipeline will render NOTHING and every slot becomes a YOU-slate. The sheet was authored without the scene contract.",
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B10: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "design_version": "v1",
+    "voice": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam",
+            "topic": "CLAUDE CODE",
+            "segment": "Why String Similarity Is Not Semantic Equivalence…",
+            "command": "Why String Similarity Is Not Semantic Equivalence (and How to Catch the Difference Before You Ship)?",
+            "runningText": "building the answer…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "85% accuracy.",
+        "All tests pass.",
+        "hunting ↔ haunting: 0.93"
+      ],
+      "narration_text": "This is Liam, in for Bear. Seth has a classifier. Twelve test pairs, 85% accuracy, all pass. The code is clean. He almost ships. Then he types one more pair by hand: hunting versus haunting. The function returns 0.93 — nearly identical. Hunting means the ghost is chasing a player. Haunting is the ambient-presence state. They are not the same state. They share six letters.",
+      "estimated_duration": 18,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 19.82,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THIS IS LIAM, IN",
+            "items": [
+              {
+                "label": "This is Liam, in for",
+                "sub": "This is Liam, in for Bear.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Seth has a classifier.",
+                "sub": "Seth has a classifier.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Twelve test pairs, 85% accuracy,",
+                "sub": "Twelve test pairs, 85% accuracy, all pass.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "THE QUESTION",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "85% accurate should be reliable.",
+        "Why was it not ready to ship?"
+      ],
+      "narration_text": "An 85% accurate classifier that passes all 12 tests should be reliable enough to ship. Why wasn't it?",
+      "estimated_duration": 10,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 7.02,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "AN 85% ACCURATE CLASSIFIER",
+            "items": [
+              {
+                "label": "An 85% accurate classifier that",
+                "sub": "An 85% accurate classifier that passes all 12 tests should be reliable enough to ship.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Why wasn't it?",
+                "sub": "Why wasn't it?",
+                "icon": "BOX",
+                "cueFrame": 24
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE PROBLEM",
+      "shot_type": "GRAPHIC",
+      "shot_source": "own",
+      "shot_motion": "drawon",
+      "on_screen": [
+        "Claude solved",
+        "the problem you named.",
+        "Not the problem you needed."
+      ],
+      "narration_text": "The function Claude wrote does exactly what Seth asked for. He asked for a string similarity scorer. He got a string similarity scorer. 12 test pairs, 85% accuracy, all sensible. The function is correct inside the frame Seth gave it. The frame was the wrong frame. He needed semantic equivalence over a fixed taxonomy — whether two tags describe the same NPC state. He asked for string similarity — whether two strings share letters. Those are not the same problem.",
+      "estimated_duration": 24,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 24.81,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THE FUNCTION CLAUDE WROTE",
+            "items": [
+              {
+                "label": "The function Claude wrote does",
+                "sub": "The function Claude wrote does exactly what Seth asked for.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "He asked for a string",
+                "sub": "He asked for a string similarity scorer.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "He got a string similarity",
+                "sub": "He got a string similarity scorer.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "shot_type": "GRAPHIC",
+      "shot_source": "own",
+      "shot_motion": "drawon",
+      "on_screen": [
+        "Tests verify what the function does.",
+        "Not what you needed it to do."
+      ],
+      "narration_text": "The test suite only confirmed the problem Claude was asked to solve. String similarity on obvious variants — hunting versus hunting, patrolling versus patrolling — passes. But the test set had no pairs where the strings are similar and the states are different. Claude wrote tests for the function it built. Seth needed tests for the problem he was trying to solve. Those are not the same set.",
+      "estimated_duration": 20,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 19.61,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THE TEST SUITE ONLY",
+            "items": [
+              {
+                "label": "The test suite only confirmed",
+                "sub": "The test suite only confirmed the problem Claude was asked to solve.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "String similarity on obvious variants — hunting versus hunting",
+                "sub": "String similarity on obvious variants —",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "hunting versus hunting, patrolling versus patrolling — passes",
+                "sub": "hunting versus hunting, patrolling versus patrolling —",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE MECHANISM",
+      "shot_type": "STILL",
+      "shot_source": "ai",
+      "shot_motion": "kenburns",
+      "on_screen": [],
+      "narration_text": "Seth was forty minutes in. The code compiled. He almost shipped. What stopped him was not a test failure. It was an itch — a small, hard-to-articulate wrongness located between his eye and the screen. He stared at the test pairs. They all involved obvious things. He typed hunting versus haunting by hand. Not because a test told him to. Because his domain knowledge told him that was the hardest case.",
+      "estimated_duration": 20,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 19.88,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "SETH WAS FORTY MINUTES",
+            "items": [
+              {
+                "label": "Seth was forty minutes in.",
+                "sub": "Seth was forty minutes in.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "The code compiled.",
+                "sub": "The code compiled.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "He almost shipped.",
+                "sub": "He almost shipped.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "shot_type": "GRAPHIC",
+      "shot_source": "own",
+      "shot_motion": "drawon",
+      "on_screen": [
+        "\"hunting\" ↔ \"haunting\"",
+        "similarity: 0.93",
+        "same NPC state? NO"
+      ],
+      "narration_text": "The function returned 0.93. Hunting and haunting share six letters in a seven-letter window. By string similarity, they are nearly the same word. In the game's behavior tree, they are opposite states — one active-chase, one ambient-presence. The classifier would have merged them. The AI director would have received corrupted state data. The bug would have shipped. No test in the suite would have caught it, because no test in the suite asked: what is the hardest case for a string-similarity scorer on short state tags?",
+      "estimated_duration": 24,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 27.26,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THE FUNCTION RETURNED 0.93",
+            "items": [
+              {
+                "label": "The function returned 0.93.",
+                "sub": "The function returned 0.93.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Hunting and haunting share six",
+                "sub": "Hunting and haunting share six letters in a seven-letter window.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "By string similarity, they are",
+                "sub": "By string similarity, they are nearly the same word.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you have a string matching function that passes tests but returns wrong results on semantically equivalent inputs. Ask Claude to explain the string similarity versus semantic equivalence gap — what test cases expose the failure — and how to write the verification that catches this before deployment.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · @NikBearBrown",
+            "command": "I have a string matching function that passes tests but returns wrong results on semantically equivalent inputs. Explain the string similarity versus semantic equivalence gap: what test cases expose this failure mode — and how do I write the verification protocol that catches semantic mismatches before the function ships?",
+            "runningText": "paste your spec, CLAUDE.md, or build plan here…",
+            "folderLabel": "@NikBearBrown",
+            "segment": "Why String Similarity Is Not Semantic Equivalence (and How to Catch the Difference Before You Ship)",
+            "modelLabel": "Claude Sonnet"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: YOURTURN added"
+      },
+      "design_version": "v1"
+    },
+    {
+      "beat_id": "B07",
+      "act": "OUTRO",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "Plausibility auditing",
+        "is hearing the wrong note",
+        "before the proof is ready."
+      ],
+      "narration_text": "The move Seth made has a name: plausibility auditing. It is the capacity to feel that something is off before any test confirms it. Not gut feeling — trained perception. Domain knowledge applied to Claude's output. The itch is real. It is what the expert feels before they can articulate the rule that was violated.",
+      "estimated_duration": 16,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 16.75,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B07"
+      },
+      "shot": {
+        "media": "media/B07.mp4",
+        "manim": {
+          "scene_class": "Scene_B07_ClaudeLiamString",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": "2026-07-25T10:07:12.997967"
+          }
+        },
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why String Similarity Is Not Semantic Equivalence (and How to Catch the Difference Before You Ship)",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-string-similarity-semantic-gap"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE EXAMPLE",
+      "shot_type": "GRAPHIC",
+      "shot_source": "own",
+      "shot_motion": "drawon",
+      "on_screen": [
+        "Leila's quiz grader",
+        "photosynthesis / cellular respiration",
+        "similarity: 0.67"
+      ],
+      "narration_text": "Leila is building a quiz-answer grader. Claude uses fuzzy string matching with a threshold of 0.6. All ten test answers pass. She runs one more: the student wrote photosynthesis. The correct answer is cellular respiration. Similarity score: 0.67 — above the threshold. The grader marks it correct. String similarity doesn't know biology. Leila's domain knowledge does. She ran the probe before shipping because she knew biology.",
+      "estimated_duration": 20,
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 23.51,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B08"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "LEILA IS BUILDING A",
+            "items": [
+              {
+                "label": "Leila is building a quiz-answer",
+                "sub": "Leila is building a quiz-answer grader.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Claude uses fuzzy string matching",
+                "sub": "Claude uses fuzzy string matching with a threshold of 0.6.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "All ten test answers pass.",
+                "sub": "All ten test answers pass.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE PRACTICE",
+      "shot_type": "GRAPHIC",
+      "shot_source": "own",
+      "shot_motion": "drawon",
+      "on_screen": [
+        "Before shipping:",
+        "write the hardest case",
+        "you know."
+      ],
+      "narration_text": "Plausibility auditing is a practice, not a feeling. Before you ship a classifier — or any output Claude produces — ask: what is the hardest case for this approach, given what I know about the domain? Write that case. Run it. If the result feels wrong, it probably is wrong, even if the test suite says otherwise. The domain knowledge that identifies the hard case is yours. Claude does not have it.",
+      "estimated_duration": 20,
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 19.67,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B09"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "PLAUSIBILITY AUDITING IS A",
+            "items": [
+              {
+                "label": "Plausibility auditing is a practice,",
+                "sub": "Plausibility auditing is a practice, not a feeling.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Before you ship a classifier",
+                "sub": "Before you ship a classifier —",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "or any output Claude produces",
+                "sub": "or any output Claude produces —",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "RECAP",
+      "shot_type": "CARD",
+      "shot_source": "own",
+      "shot_motion": "hold",
+      "on_screen": [
+        "Tests verify the problem Claude solved.",
+        "Auditing verifies the problem you needed to solve."
+      ],
+      "narration_text": "Tests verify the problem Claude solved — not the problem you needed to solve. The function did exactly what the spec said. The spec was the wrong frame. Plausibility auditing is the capacity that catches the wrong frame before any test is ready to confirm it — and it only works if you bring domain knowledge Claude doesn't have.",
+      "estimated_duration": 18,
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 17.26,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B10"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "TESTS VERIFY THE PROBLEM",
+            "items": [
+              {
+                "label": "Tests verify the problem Claude",
+                "sub": "Tests verify the problem Claude solved —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "not the problem you needed",
+                "sub": "not the problem you needed to solve.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "The function did exactly what",
+                "sub": "The function did exactly what the spec said.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Why String Similarity Is Not Semantic Equivalence (and How to Catch the Difference Before You Ship)",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CLAUDE CODE",
+            "segment": "Why String Similarity Is Not Semantic Equivalence…",
+            "command": "Take what you learned from [Why String Similarity Is Not Semantic Equivalence (and How to Catch the Difference Before You Ship)] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why String Similarity Is Not Semantic Equivalence (and How to Catch the Difference Before You Ship)",
+            "slug": "string-similarity-semantic-gap"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ],
+  "estimated_total_duration": 210
+}

@@ -20,11 +20,28 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/financial-services/plugins/agent-plugins/gl-reconciler/skills/break-trace/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Use after gl-recon has classified a break."
+      ],
+      "constraints": [
+        "Only the resolver writes adjustments — this skill diagnoses, it does not post"
+      ],
+      "referenced_files": [],
+      "code_signals": [
+        "code block: json"
+      ],
+      "sections": [
+        "Trace path",
+        "Cause → statement",
+        "Output"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T06:41:48",
+      "at": "2026-09-06T00:41:54",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +50,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is break-trace. Root-cause a reconciliation break to its source transaction or posting — follow the audit trail from the break row back to the originating entry on each side and state what differs and why. Use after gl-recon has classified a break.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is break-trace. Root-cause a reconciliation break to its source transaction or posting — follow the audit trail from the break row back to the originating entry on each side and state what differs and why. Use after gl-recon has classified a break.. Its concrete surface area includes Use after gl-recon has classified a break.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,7 +66,7 @@
             "runningText": "reading break-trace SKILL.md…",
             "output": [
               "skill: break-trace",
-              "Root-cause a reconciliation break to its source transaction or posting — follow ",
+              "Root-cause a reconciliation break to its source transaction or posting — follow…",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
@@ -63,12 +80,12 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 19.22,
+      "actual_duration_s": 22.53,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:41:48"
+        "at": "2026-09-06T00:41:54"
       }
     },
     {
@@ -111,13 +128,13 @@
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:41:48"
+        "at": "2026-09-06T00:41:54"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "break-trace is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Use after gl-recon has classified a break.. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -157,18 +174,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 11.54,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:41:48"
+        "at": "2026-09-06T00:41:54"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. break-trace is a specification written as an instruction set. Claude's job: Root-cause a reconciliation break to its source transaction or posting — follow the audit trail from. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. Only the resolver writes adjustments — this skill diagnoses, it does not post. That is the constraint in break-trace — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +196,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Root-cause a reconciliation break to its source transaction or posting — follow the audit trail from the break row back to the originating entry on each side and state what differs and why. Use after ",
+            "body": "Only the resolver writes adjustments — this skill diagnoses, it does not post",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,18 +206,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 15.68,
+      "actual_duration_s": 12.48,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:41:48"
+        "at": "2026-09-06T00:41:54"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In break-trace, implementation signals: code block: json; sections: Trace path, Cause → statement, Output. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Use after gl-recon has classified a break.; code block: json",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 13.8,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-06T00:41:54"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "break-trace makes Claude execute one task reliably. The SKILL.md is the spec — Root-cause a reconciliation break to its source transaction or posting — follow . Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "break-trace makes Claude execute one task reliably. The SKILL.md is the spec — Root-cause a reconciliation break to its source transaction or posting — follow…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -213,9 +262,10 @@
             "artifactHeading": "Claude, Break Trace.",
             "artifactLines": [
               "Skill: break-trace — Claude reads SKILL.md before acting",
-              "Root-cause a reconciliation break to its source transaction or posting — follow the audit ",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "Root-cause a reconciliation break to its source transaction or posting — follow the audit…",
+              "Capabilities: Use after gl-recon has classified a break.",
+              "Constraint: Only the resolver writes adjustments — this skill diagnoses, it does not post",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -225,18 +275,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 14.08,
+      "actual_duration_s": 14.02,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:41:48"
+        "at": "2026-09-06T00:41:54"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to root-cause a reconciliation break to its source transaction or posting — follow . Read the break-trace skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to root-cause a reconciliation break to its source transaction or posting — follow. Read the break-trace skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -248,7 +298,7 @@
             "greeting": "Your turn.",
             "topic": "BREAK-TRACE · ANTHROPIC SKILL",
             "segment": "Claude, Break Trace.",
-            "command": "I want to root-cause a reconciliation break to its source transaction or posting. Read the break-trace skill and walk me through what you will do before you do it.",
+            "command": "I want to root-cause a reconciliation break to its source transaction or. Read the break-trace skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -267,7 +317,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:41:48"
+        "at": "2026-09-06T00:41:54"
       }
     },
     {
@@ -298,7 +348,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:41:48"
+        "at": "2026-09-06T00:41:54"
       }
     }
   ]

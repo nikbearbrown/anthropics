@@ -1,0 +1,290 @@
+{
+ "metadata": {
+  "title": "How Does Claude Find the Cheapest Bond to Deliver?",
+  "slug": "financial-services--claude-liam-bond-futures-basis",
+  "topic": "BOND-FUTURES-BASIS · ANTHROPIC SKILL",
+  "purpose": "Answer whether Claude finds the cheapest-to-deliver bond by trading feel, or by running a fixed computed comparison across the deliverable basket. Lands the carry-out that the cheapest bond is whichever ranks lowest in the comparison -- not the bond Claude favors.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-bond-futures-basis/beat_sheet.json",
+  "source_note": "Unlike some sibling redos, the source sheet's narration carries real skill-specific facts (not unfilled template placeholders) -- see QUESTION.md. Facts preserved: the bond-futures-basis skill prices futures, identifies the cheapest-to-deliver bond, and compares against yield curves to assess delivery-option value and basis-trading opportunities; Claude reads SKILL.md and executes steps linearly. Register re-registered Teardown -> Plain; source's B03 design-tell verdict became a plain mechanism + both-directions beat; a wrong-guess beat and an anchor (delivery cost -> implied repo rate) were added per hai-simple's Phase 1 structure, since the source's Teardown shape carried neither.",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (delivery cost -> implied repo rate, compared against market repo)",
+  "build": {
+   "at": "2026-09-01T07:30:18",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "People ask if Claude picks the cheapest bond to deliver by trader's feel. It doesn't. Liam here, in for Bear — let's take the skill apart and see what actually finds the cheapest one.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'The cheapest bond to deliver -- by feel?', hesitates on 'feel', corrects to 'the math', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "The cheapest bond\nto deliver —\nby feel?",
+      "face": "serif",
+      "fontSize": 60,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "feel",
+      "replacementWords": "the math",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-bond-futures-basis"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('feel' -> 'the math') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T07:30:18"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "Here's the intuitive guess. Finding the cheapest bond to deliver takes a trader's feel — sensing which bond will hold up best into settlement. The skill doesn't work that way. It walks every eligible bond in the basket, prices each one against the futures contract using its conversion factor, and ranks them by actual delivery cost. Tell it you like a bond's prospects and it won't tilt — it reports whichever one comes out numerically lowest. They optimized for a reproducible ranking at the expense of trader's judgment. Same basket, same math, same cheapest bond — every time. That's the trade.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A trader's-feel figure weighing bonds, struck through; a priced-and-ranked checklist of deliverable bonds lit instead"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Trader's feel, struck -- priced and ranked, lit",
+     "mechanic": "Left: a figure icon labelled 'TRADER'S FEEL' beside a thought-bubble of scattered decision marks. Right: a numbered checklist card labelled 'PRICED & RANKED' listing deliverable bonds with computed costs. The feel side dims and gets a terracotta strike; the ranked side stays lit. A final line reads 'not on the list' outside the card and the feel figure does not reach for it.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "BFBB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T07:30:18"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "So here's the actual machinery. The skill works on one bond at a time. Watch the anchor. The futures price times the bond's conversion factor gives you its delivery cost — what you'd effectively pay per unit of face value to hand this bond over. That cost converts into one number: the implied repo rate. The return you'd earn buying the bond, holding it, and delivering it into the contract. Futures price, times conversion factor, into delivery cost, into implied repo rate. One bond, one number.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR -- delivery cost traveling from the futures price, through one deliverable bond, into its implied repo rate"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR -- one bond, one number",
+     "mechanic": "THE ANCHOR. Three stacked cards labelled 'FUTURES PRICE', 'DELIVERABLE BOND', 'IMPLIED REPO RATE'. A single highlighted token 'delivery cost' starts inside the futures-price card, travels down into a highlighted row inside the deliverable-bond card (price x conversion factor), then travels again into a highlighted row inside the implied-repo-rate card. Every other row on all three cards stays dim. THIS EXACT COMPOSITION RETURNS, CONNECTED, AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "BFBB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T07:30:18"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "The comparison is built. Price, conversion factor, and implied repo rate all line up for the cheapest bond in the basket. But here's the honest limit. Finding the cheapest is not the same as finding a profitable trade. The implied repo rate can still sit below the market's actual financing cost, and when it does, the basis trade bleeds — cheapest to deliver, still a loser. And a bond that ranks expensive today isn't ruled out for good. Yields move, conversion factors don't — so the ranking gets rerun on the next print, not assumed fixed. The wiring works. Whether the trade works is a separate question.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS, connected, then splits into 'cheapest is not profitable' and 'expensive today is not excluded forever'"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS -- connected, then split",
+     "mechanic": "THE B02 THREE-CARD COMPOSITION RETURNS, identical placement, now fully connected by a single unbroken line FUTURES -> BOND -> REPO, all three cards lit. It shrinks and slides up. Two cards fade in beneath: left reads 'CHEAPEST: FOUND' with a checkmark, then a struck-through 'PROFITABLE?' beneath it, labelled 'cheapest is not profitable'; right reads 'RANK: EXPENSIVE' beside a faint 'yields can move' note, labelled 'not excluded forever'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "BFBB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T07:30:18"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "The cheapest bond to deliver isn't Claude's pick. It's whichever one comes out lowest in a fixed comparison across the whole deliverable basket. The skill ranks the delivery cost — it doesn't call whether the trade is worth putting on.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "The cheapest bond to deliver isn't Claude's pick. It's whichever one comes out lowest in a fixed comparison across the whole deliverable basket. The skill ranks the delivery cost — it doesn't call whether the trade is worth putting on.",
+      "attribution": "",
+      "sparkLine": "Ranked by cost, not favored."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T07:30:18"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. Hand it a small basket of three deliverable bonds — a price and conversion factor for each — plus a futures price and the market's repo rate, and ask it to run the bond-futures-basis skill. Walk you through pricing each bond, ranking them by delivery cost, and computing the implied repo rate for the cheapest one, so you can see whether the basis trade actually makes money or the cheapest bond is still a loser. Then drop one bond's price and watch whether the ranking flips — and whether the trade's verdict flips with it. Go deeper: describe a set of yields where the cheapest-to-deliver bond switches from long-duration to short-duration, and explain what that switch tells you about which end of the curve is being priced. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 40,
+   "llm_exercise": {
+    "prompt": "I want to see how the cheapest-to-deliver bond gets picked in a bond futures basis trade. Here's a small basket: bond A price = 98.50, conversion factor = 0.9250; bond B price = 102.30, conversion factor = 0.9750; bond C price = 100.10, conversion factor = 0.9500. Futures price = 105.00, market repo rate = 4.75%. Run the bond-futures-basis skill: price each bond against the futures contract using its conversion factor, compute delivery cost for each, and rank them to identify the cheapest to deliver. Then compute the implied repo rate for the cheapest one and compare it against the 4.75% market repo — tell me whether the basis trade is actually profitable, or whether the cheapest bond is still a losing trade. After that, drop bond A's price to 97.00 and rerun the ranking. Tell me which bond is now cheapest and whether the implied repo rate flipped the trade's verdict.",
+    "dig_deeper": "Go deeper: describe a set of yields where the cheapest-to-deliver bond switches from long-duration to short-duration — and explain what that switch tells you about which end of the curve is being priced."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "BOND-FUTURES-BASIS · ANTHROPIC SKILL",
+      "segment": "Your Turn",
+      "command": "Basket: bond A price 98.50, cf 0.9250; bond B price 102.30, cf 0.9750; bond C price 100.10, cf 0.9500. Futures price 105.00, market repo 4.75%. Run the bond-futures-basis skill — price each bond, rank by delivery cost, compute the implied repo rate for the cheapest, and tell me if the basis trade actually clears the market repo. Then drop bond A to 97.00 and rerun — which bond is cheapest now, and does the trade's verdict flip?",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T07:30:18"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "How Does Claude Find the Cheapest Bond to Deliver? Liam, in for Bear. Brutalist dot art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "How Does Claude Find the Cheapest Bond to Deliver? Liam, in for Bear. www.brutalist.art",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T07:30:18"
+   }
+  }
+ ]
+}

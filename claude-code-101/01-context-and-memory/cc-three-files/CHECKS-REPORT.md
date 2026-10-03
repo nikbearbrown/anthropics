@@ -1,0 +1,2 @@
+# CHECKS-REPORT — cc-three-files
+13 beats · 13 SHOW · 0 CARD/HOLD/PUNT. Arc: prediction before reveal (B00 "watch what it decides"); concrete (three runs) before abstract; friction (B05, the unplanned middle case); falsifiable line in BVDT; handoff BHTF = B07's first MUST. IDEA + DEFINITIONS then CONDUCT + HUMAN ✓. Non-terminal: BIDEA, BDEFS, B02 — reasoned. Gates: GATE F clean, BOOKEND ids, Gate V (BVDT has 4 lines), GATE T; kit budgets asserted.

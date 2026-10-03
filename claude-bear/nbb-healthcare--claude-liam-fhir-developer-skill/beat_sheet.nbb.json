@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "It Doesn't Just Pass or Fail. It Names the Problem.",
+  "subtitle": "The FHIR Developer Skill (Status Codes as Spec)",
+  "slug": "healthcare--claude-liam-fhir-developer-skill",
+  "topic": "FHIR-DEVELOPER-SKILL · HTTP STATUS CODE SPECIFICATION",
+  "purpose": "Take the fhir-developer-skill apart in the Teardown register: when a FHIR request is invalid, the skill doesn't just say pass or fail — it returns the exact HTTP status code the FHIR spec already assigns for that class of problem. Name the trade-off: they optimized for interoperability at the expense of coverage — anything the spec has no code for, it won't validate.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/healthcare/youtube/claude-liam-fhir-developer-skill/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single running idea (the exact status code) planted at B00, resolved with concrete 422/412 examples at NB03, compressed at BCRY; not a separate planted/paid-off case (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout, source AUDIT.md records all Phase-1 accuracy checks PASS (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-02T06:21:28",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. Take this Claude skill apart. Does it just tell you a FHIR request failed, or does it name the exact code the spec already assigns for that class of problem? They picked one. Here's the mechanism.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "lead_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Does Claude just return pass-fail on a bad FHIR request?', hesitates on 'pass-fail', corrects to 'the exact code', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Does Claude\njust return\npass-fail on a\nbad FHIR request?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "pass-fail",
+      "replacementWords": "the exact code",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "nbb-fhir-developer-skill"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 1.0 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('pass-fail' -> 'the exact code') lands on screen and the full corrected question finishes typing before the clip ends. Rates reused from the nbb-healthcare--claude-liam-clinical-note-extract-skill sibling's proven working configuration (42ms/char, 8% hesitateBetween, 4% mistakeRate, short 4-line text). Palette swapped to teardown (ink #2A1A0E, accent #C8102E, bg #FFFFFF).",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T06:21:28"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Here's what the skill actually is: a folder Claude reads before it acts. This one is called fhir-developer-skill. Three items inside — SKILL.md carries the whole instruction set in plain English, and next to it sit a references folder and a scripts folder. Nothing hidden, nothing to reverse-engineer. The file is the program. Claude reads it, then does what it says.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 21,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A SKILL IS A FOLDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A SKILL IS A FOLDER",
+     "chips": [
+      "SKILL.md",
+      "references",
+      "scripts"
+     ],
+     "arrows": false,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BKNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T06:21:28"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Open the instructions. Three steps, top to bottom. Read a step. Execute it. Return the result. No branching, unless a step itself says to branch. That linearity is the design choice — deterministic and inspectable, at the expense of any clever runtime routing. Same input, same path through the file, every time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 19,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THREE-STEP PIPELINE",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THREE-STEP PIPELINE",
+     "chips": [
+      "read step",
+      "execute",
+      "return result"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "linear, step by step",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BKNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T06:21:28"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's what falls out. Hand it a FHIR resource, and it returns the exact HTTP status code for what's wrong. Four twenty-two if an enum value isn't in the allowed set. Four twelve if the ETag on a conditional update doesn't match the current version. Same input, same code, every run. The status code is the spec — it doesn't paraphrase the problem, it names the problem in the vocabulary the FHIR ecosystem already speaks. They optimized for interoperability at the expense of coverage: anything outside that spec, it won't validate at all.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "STATUS CODE IS THE SPEC",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "STATUS CODE IS THE SPEC",
+     "chips": [
+      "422-invalid-enum",
+      "412-etag-mismatch",
+      "code-is-the-spec"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "same input, same code, every run",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BKNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T06:21:28"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Fhir-developer-skill doesn't just pass or fail a request — it returns the exact HTTP status code the spec already assigns for what's wrong. The code is the spec. Interoperable to a fault, and silent on anything the spec doesn't cover.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Fhir-developer-skill doesn't just pass or fail a request — it returns the exact HTTP status code the spec already assigns for what's wrong. The code is the spec.",
+      "attribution": "",
+      "sparkLine": "Not pass-fail. The exact code."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T06:21:28"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: ask it to write a short SKILL.md for a FHIR-developer skill — read the resource, validate against FHIR rules, return the result — and have it return the exact HTTP status code for anything wrong. Four twenty-two for an invalid enum. Four twelve for a stale ETag. Then feed it three sample resources: one clean, one with an out-of-range enum, one with a stale ETag on a conditional update. Watch it name the exact code for each. Go deeper: hand it a resource with a business-rule violation the FHIR spec has no code for, and see whether it stays honest and refuses — or invents a plausible-looking code that doesn't actually exist in the standard.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 40,
+   "llm_exercise": {
+    "prompt": "I want to understand how a Claude skill returns HTTP status codes as a specification, not a paraphrase. A Claude 'skill' is a folder holding SKILL.md — a numbered list of steps Claude reads and runs top to bottom. Write me a short SKILL.md for a FHIR-DEVELOPER skill: three numbered steps (read the resource, validate it against FHIR rules, return the result). For anything wrong, the skill must return the exact HTTP status code the FHIR spec already assigns for that class of problem — 422 for an invalid enum value, 412 for an ETag mismatch on a conditional update, and so on. It must not paraphrase; it must return the specific code. Then draft three sample FHIR resources: one clean, one with an out-of-range enum value on a coded field, and one PUT with a stale If-Match ETag on a conditional update. Run the skill on each and show me the output: for the clean one, 200 OK; for the others, the exact status code plus the specific field or header that triggered it.",
+    "dig_deeper": "Go deeper: hand the skill a resource with a business-rule violation the FHIR spec has no assigned code for — say, a Patient whose age is medically implausible but syntactically valid. Does the skill stay disciplined and refuse — surfacing that the spec doesn't cover this case — or does it invent a plausible-looking status code that doesn't actually exist in the standard?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "FHIR-DEVELOPER-SKILL · HTTP STATUS CODE SPECIFICATION",
+      "segment": "It Doesn't Just Pass or Fail. It Names the Problem.",
+      "command": "Write me a short SKILL.md for a FHIR-DEVELOPER skill: 3 numbered steps (read the resource, validate against FHIR rules, return the result) that returns the exact HTTP status code for anything wrong — 422 for an invalid enum, 412 for a stale ETag on a conditional update — never a paraphrase. Draft 3 sample resources: one clean, one with an out-of-range enum, one PUT with a stale If-Match ETag. Run the skill on each and show me the exact code plus the field or header that triggered it.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T06:21:28"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "It doesn't just pass or fail. It names the problem — in the vocabulary the FHIR spec already speaks. Interoperable to a fault. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "It doesn't just pass or fail. It names the problem — in the vocabulary the FHIR spec already speaks. Interoperable to a fault. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T06:21:28"
+   }
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+# SHOW-DON'T-TELL AUDIT — claude-liam-vox-subagent-context
+
+**Run:** 2026-07-25 10:11
+**Brand:** claude-liam  **Palette:** #F2F0E9/#3D3929/#D97757
+
+| Beat | Narration (gist) | Visual now | Classification | Planned fix |
+|---|---|---|---|---|
+| B01 | This is Liam, in for Bear. The grading-tool session has been | CARD | TELLS | Manim: bar_chart — This is Liam, in for Bear. The grading-to |
+| B02 | The context window is the session's working memory. Every fi | GRAPHIC | TELLS | Manim: bar_chart — The context window is the session's worki |
+| B03 | Here is the question. Adding a research task to a productive | CARD | TELLS | Manim: bar_chart — Here is the question. Adding a research t |
+| B04 | Every file Claude reads in a session stays in that session's | GRAPHIC | TELLS | Manim: bar_chart — Every file Claude reads in a session stay |
+| B05 | A subagent is a Claude session that runs in its own isolated | GRAPHIC | TELLS | Manim: concept_card — A subagent is a Claude session that ru |
+| B06 | The side-by-side. Without subagent: grading build at thirty  | GRAPHIC | TELLS | Manim: bar_chart — The side-by-side. Without subagent: gradi |
+| B07 | Here is where this bites in the classroom. The teacher's gra | STILL | SHOWS | — |
+| B08 | The heuristic: if the task reads more than the main session  | GRAPHIC | TELLS | Manim: bar_chart — The heuristic: if the task reads more tha |
+| B09 | Research fills context. The subagent takes the fill. The mai | CARD | TELLS | Manim: concept_card — Research fills context. The subagent t |
+
+
+## Rebuild Results
+
+- TELLS found: 8
+- Rebuilt (Manim rendered): 8
+- Skipped (render failed): 0
+- scenes_std.py written: 8 classes
+

@@ -18,13 +18,50 @@
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "modelLabel": "Opus 4.7",
+    "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/cwc-workshops/agent-decomposition/.claude/skills/forecasting/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "How to produce a demand forecast for a SKU",
+        "and when to delegate that to a subagent vs",
+        "compute it yourself",
+        "Load this for any task involving \"forecast\"",
+        "\"how much will we sell\""
+      ],
+      "constraints": [
+        "Do not rely on rolling-mean alone — that's pre-promo demand",
+        "Feed {forecast_qty, confidence, flags} into the reorder-policy skill. In particular: if confidence < 0.6, reorder-policy says escalate, don't auto-order. Do not drop the…",
+        "confidence 0.41 < 0.6 → per reorder-policy, do not create a PO. Escalate via notify-templates with the flags, recommend ~2,100 baseline + note that promo uplift could be…"
+      ],
+      "referenced_files": [
+        "is_seasonal",
+        "promo_next_month",
+        "get_stock_level",
+        "get_sales_velocity",
+        "/mnt/user/data/",
+        "{forecast_qty, confidence, method, flags}",
+        "callable_agents",
+        "confidence ≤ 0.55",
+        "promo_next_month=1",
+        "flags: [\"promo_uplift_uncertain\"]"
+      ],
+      "code_signals": [
+        "code block: bash"
+      ],
+      "sections": [
+        "Path A — compute it yourself (code execution)",
+        "Path B — spawn a forecaster subagent",
+        "Seasonal calendar (sanity-check your numbers)",
+        "Promotional handling",
+        "What to do with the result",
+        "Worked example (Path B)"
+      ]
+    },
     "build": {
-      "at": "2026-08-26T02:13:09",
+      "at": "2026-09-05T20:52:23",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +70,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is forecasting. How to produce a demand forecast for a SKU, and when to delegate that to a subagent vs. compute it yourself. Load this for any task involving \"forecast\", \"how much will we sell\", \"next month\", promos, or seasonal SKUs.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is forecasting. How to produce a demand forecast for a SKU, and when to delegate that to a subagent vs. compute it yourself. Load this for any task involving \"forecast\", \"how much will we sell\", \"next month\", promos, or seasonal SKUs.. Its concrete surface area includes How to produce a demand forecast for a SKU; and when to delegate that to a subagent vs; compute it yourself. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,11 +86,11 @@
             "runningText": "reading forecasting SKILL.md…",
             "output": [
               "skill: forecasting",
-              "How to produce a demand forecast for a SKU, and when to delegate that to a subag",
+              "How to produce a demand forecast for a SKU, and when to delegate that to a…",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "Opus 4.7",
+            "modelLabel": "Opus 4.8",
             "effortLabel": "High"
           },
           "rendered": {
@@ -63,18 +100,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 19.35,
+      "actual_duration_s": 26.97,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T02:13:09"
+        "at": "2026-09-05T20:52:23"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is forecasting. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is forecasting. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at is_seasonal, promo_next_month, get_stock_level, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -120,18 +157,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.03,
+      "actual_duration_s": 17.43,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T02:13:09"
+        "at": "2026-09-05T20:52:23"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "forecasting is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: How to produce a demand forecast for a SKU; and when to delegate that to a subagent vs; compute it yourself; Load this for any task involving \"forecast\". The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -171,18 +208,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 17.22,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T02:13:09"
+        "at": "2026-09-05T20:52:23"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. forecasting is a specification written as an instruction set. Claude's job: How to produce a demand forecast for a SKU, and when to delegate that to a subagent vs. compute it yourself. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. Do not rely on rolling-mean alone — that's pre-promo demand. That is the constraint in forecasting — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -193,8 +230,8 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Flags decide the path. Confidence < 0.6 → escalate.",
-            "sparkLine": "Spec limits scope."
+            "body": "Do not rely on rolling-mean alone — that's pre-promo demand",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
             "out": "media/B03.mp4",
@@ -203,21 +240,53 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 16.6,
+      "actual_duration_s": 11.37,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T02:13:09"
+        "at": "2026-09-05T20:52:23"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In forecasting, supporting material: is_seasonal, promo_next_month, get_stock_level, get_sales_velocity; implementation signals: code block: bash; sections: Path A — compute it yourself (code execution), Path B — spawn a forecaster subagent, Seasonal calendar (sanity-check your numbers), Promotional handling. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "How to produce a demand forecast for a SKU; and when to delegate that to a subagent vs; compute it yourself; is_seasonal; promo_next_month; get_stock_level; code block: bash",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 22.21,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T20:52:23"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Path A or Path B: the decision is in the flags — seasonal, promo, horizon. Confidence below 0.6 means escalate, not auto-order — that threshold is the spec's own failure condition. The forecast quantity is what the rolling mean computed; it is not a fact about next month. Same flags, same path, same number. That's the deal.",
+      "narration_text": "forecasting makes Claude execute one task reliably. The SKILL.md is the spec — How to produce a demand forecast for a SKU, and when to delegate that to a…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 22,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
@@ -226,10 +295,11 @@
             "artifactTitle": "Verdict",
             "artifactHeading": "Claude, Forecasting.",
             "artifactLines": [
-              "Path A or Path B — flags decide: seasonal, promo, horizon",
-              "Confidence < 0.6 → escalate, don't auto-order",
-              "forecast_qty is a model output, not a fact about demand",
-              "Same flags → same path → same number"
+              "Skill: forecasting — Claude reads SKILL.md before acting",
+              "How to produce a demand forecast for a SKU, and when to delegate that to a subagent vs.…",
+              "Capabilities: How to produce a demand forecast for a SKU; and when to delegate that to a subagent vs; compute it yourself",
+              "Constraint: Do not rely on rolling-mean alone — that's pre-promo demand",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -239,18 +309,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 14.14,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T02:13:09"
-      },
-      "actual_duration_s": 18.26
+        "at": "2026-09-05T20:52:23"
+      }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I have a SKU with a promotion next month. Read the forecasting skill and walk me through the path decision before you produce a number.' Then check: which path did it pick, and did it flag the confidence correctly? That's how you audit the spec.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to how to produce a demand forecast for a sku, and when to delegate that to a. Read the forecasting skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -262,11 +332,11 @@
             "greeting": "Your turn.",
             "topic": "FORECASTING · ANTHROPIC SKILL",
             "segment": "Claude, Forecasting.",
-            "command": "I have a SKU with a promotion next month. Read the forecasting skill and walk me through the path decision before you produce a number.",
+            "command": "I want to how to produce a demand forecast for a sku, and when to delegate that. Read the forecasting skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "Opus 4.7",
+            "modelLabel": "Opus 4.8",
             "effortLabel": "High"
           },
           "rendered": {
@@ -276,13 +346,13 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": 14.42,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T02:13:09"
-      },
-      "actual_duration_s": 13.95
+        "at": "2026-09-05T20:52:23"
+      }
     },
     {
       "beat_id": "BOUT",
@@ -297,7 +367,8 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "Claude, Forecasting.",
-            "handle": "@NikBearBrown"
+            "handle": "@NikBearBrown",
+            "subline": "forecasting · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -311,7 +382,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T02:13:09"
+        "at": "2026-09-05T20:52:23"
       }
     }
   ]

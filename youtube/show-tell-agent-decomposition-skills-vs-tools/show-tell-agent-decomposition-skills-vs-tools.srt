@@ -1,0 +1,346 @@
+1
+00:00:01,292 --> 00:00:02,500
+Hallo. This is Liam, in for Bear.
+
+2
+00:00:02,958 --> 00:00:05,292
+A slow agent does not necessarily need a
+shorter
+
+3
+00:00:05,292 --> 00:00:07,333
+prompt. It needs a better division of
+work.
+
+4
+00:00:07,500 --> 00:00:09,208
+Let's separate skills, tools, and
+subagents.
+
+5
+00:00:10,542 --> 00:00:12,875
+Three different things. A skill supplies
+instructions.
+
+6
+00:00:13,292 --> 00:00:14,583
+A tool performs an action.
+
+7
+00:00:14,958 --> 00:00:17,083
+A subagent works in a separate context.
+
+8
+00:00:17,458 --> 00:00:19,583
+A skill can guide tool use, but that does
+
+9
+00:00:19,583 --> 00:00:21,583
+not automatically make it a separate
+agent.
+
+10
+00:00:22,375 --> 00:00:25,708
+Imagine putting every procedure into the
+agent's starting instructions.
+
+11
+00:00:26,000 --> 00:00:28,500
+Forecasting, checking inventory, writing a
+report.
+
+12
+00:00:28,833 --> 00:00:30,958
+Most tasks need only some of that
+material.
+
+13
+00:00:31,541 --> 00:00:33,958
+The first design question is what belongs
+in the
+
+14
+00:00:33,958 --> 00:00:35,958
+core, and what can wait until it is
+needed.
+
+15
+00:00:37,958 --> 00:00:40,291
+Anthropic's StockPilot workshop reports
+reducing its system prompt
+
+16
+00:00:40,291 --> 00:00:42,750
+from four hundred and two lines to
+fifteen.
+
+17
+00:00:42,791 --> 00:00:44,583
+The other instructions did not disappear.
+
+18
+00:00:45,125 --> 00:00:47,958
+Roughly four hundred lines moved into
+skills, loaded on
+
+19
+00:00:47,958 --> 00:00:50,708
+demand. That is deferred context, not
+deleted knowledge.
+
+20
+00:00:52,250 --> 00:00:53,291
+Here is a skill being used.
+
+21
+00:00:53,458 --> 00:00:56,250
+The agent loads the relevant instructions
+into its existing
+
+22
+00:00:56,250 --> 00:00:58,875
+context. The page joins the current work.
+
+23
+00:00:59,041 --> 00:01:01,166
+By default, this is not a fresh worker
+with
+
+24
+00:01:01,166 --> 00:01:04,291
+a private memory. Separate execution has
+to be configured
+
+25
+00:01:04,291 --> 00:01:04,958
+explicitly.
+
+26
+00:01:05,791 --> 00:01:07,166
+Now the agent calls a tool.
+
+27
+00:01:07,458 --> 00:01:09,625
+A request goes out; a result comes back.
+
+28
+00:01:09,833 --> 00:01:12,416
+That tool might read inventory, run code,
+or write
+
+29
+00:01:12,416 --> 00:01:15,791
+a file. Tools are not automatically
+harmless or stateless.
+
+30
+00:01:16,208 --> 00:01:18,583
+What they can change depends on the
+implementation and
+
+31
+00:01:18,583 --> 00:01:18,958
+permissions.
+
+32
+00:01:19,916 --> 00:01:21,083
+A subagent is different.
+
+33
+00:01:21,333 --> 00:01:23,208
+Give a worker a bounded task and its own
+
+34
+00:01:23,208 --> 00:01:25,833
+context. It does the work there, then
+returns a
+
+35
+00:01:25,833 --> 00:01:28,666
+result. This can keep intermediate detail
+out of the
+
+36
+00:01:28,666 --> 00:01:32,166
+parent's conversation. It can also add
+coordination time and
+
+37
+00:01:32,166 --> 00:01:33,375
+additional model usage.
+
+38
+00:01:34,208 --> 00:01:35,583
+Try an inventory assistant.
+
+39
+00:01:35,791 --> 00:01:37,666
+A skill explains the reorder policy.
+
+40
+00:01:38,041 --> 00:01:39,583
+A tool reads the stock record.
+
+41
+00:01:39,833 --> 00:01:42,125
+The agent uses both to draft a
+recommendation.
+
+42
+00:01:42,541 --> 00:01:45,000
+The instruction page tells it how to
+decide; the
+
+43
+00:01:45,000 --> 00:01:46,625
+tool result supplies evidence.
+
+44
+00:01:46,916 --> 00:01:48,125
+Neither replaces the other.
+
+45
+00:01:48,875 --> 00:01:51,125
+Before placing an order, put a human
+approval point
+
+46
+00:01:51,125 --> 00:01:52,500
+between the draft and the action.
+
+47
+00:01:52,958 --> 00:01:55,083
+Check the quantity, supplier, and
+evidence.
+
+48
+00:01:55,791 --> 00:01:58,375
+Reading stock and spending money should
+not inherit the
+
+49
+00:01:58,375 --> 00:02:01,208
+same permission merely because they sit
+inside the same
+
+50
+00:02:01,208 --> 00:02:01,583
+workflow.
+
+51
+00:02:02,416 --> 00:02:04,875
+The workshop also changed how data was
+processed.
+
+52
+00:02:05,250 --> 00:02:06,958
+Its daily sweep went from a hundred and
+two
+
+53
+00:02:06,958 --> 00:02:08,541
+tool calls to three scripts.
+
+54
+00:02:09,000 --> 00:02:10,875
+Those scripts worked over data directly.
+
+55
+00:02:11,375 --> 00:02:13,916
+Moving instructions into skills was only
+one part of
+
+56
+00:02:13,916 --> 00:02:15,916
+the redesign; batching work was another.
+
+57
+00:02:16,708 --> 00:02:19,291
+For that daily sweep, the workshop reports
+four hundred
+
+58
+00:02:19,333 --> 00:02:22,125
+and eighty-eight seconds before, and about
+one hundred seconds
+
+59
+00:02:22,125 --> 00:02:24,666
+after. Several changes contributed.
+
+60
+00:02:25,083 --> 00:02:27,500
+Treat this as a reported example, not a
+guaranteed
+
+61
+00:02:27,875 --> 00:02:29,250
+fivefold speedup for your agent.
+
+62
+00:02:29,583 --> 00:02:31,375
+We have not rerun that benchmark here.
+
+63
+00:02:32,041 --> 00:02:33,916
+Test your redesign on the same tasks.
+
+64
+00:02:34,166 --> 00:02:36,208
+Check correctness, elapsed time, and
+usage.
+
+65
+00:02:36,666 --> 00:02:39,083
+If the result is faster but wrong, reject
+it.
+
+66
+00:02:39,416 --> 00:02:41,875
+If a separate worker returns a huge
+transcript, you
+
+67
+00:02:41,875 --> 00:02:42,916
+may just have moved the clutter.
+
+68
+00:02:43,416 --> 00:02:45,875
+Measure the complete workflow, not the
+prompt's line count.
+
+69
+00:02:46,625 --> 00:02:48,958
+Your turn. Paste this into Claude: Split
+my workflow
+
+70
+00:02:48,958 --> 00:02:51,458
+into instructions, actions, and separate
+workers.
+
+71
+00:02:51,791 --> 00:02:54,666
+Justify each boundary. Then check two
+things yourself.
+
+72
+00:02:55,000 --> 00:02:56,166
+Can every action be tested?
+
+73
+00:02:56,500 --> 00:02:58,541
+Does every separate worker need its own
+context?
+
+74
+00:02:58,541 --> 00:03:00,291
+If not, simplify the design.
+
+75
+00:03:02,375 --> 00:03:03,583
+Agent Decomposition: Skills vs Tools.
+
+76
+00:03:03,583 --> 00:03:04,750
+At Nik Bear Brown.

@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "Review, Not Repair.",
+  "subtitle": "The Accessibility Review Skill",
+  "slug": "knowledge-work-plugins--claude-liam-accessibility-review",
+  "topic": "CLAUDE SKILLS · ANTHROPIC",
+  "purpose": "Take a Claude skill apart in the Teardown register: when Claude does an accessibility review, it isn't fixing the design — it's running a written list of steps in SKILL.md that check the design against WCAG 2.1 AA and report failures. Name the trade-off: they optimized for repeatability against a fixed standard at the expense of coverage beyond that standard and any repair of what it finds.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/knowledge-work-plugins/youtube/claude-liam-accessibility-review/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Extending Claude — Skills, Plugins & Connectors",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the accessibility-review skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-02T10:42:50",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. You'd guess accessibility-review means Claude fixes the design. It doesn't — it checks the design against a fixed standard and reports where it fails. Here's what's actually happening.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'How do I get Claude to fix my design for accessibility?', hesitates on 'fix', corrects to 'review', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "How do I get Claude\nto fix my design\nfor accessibility?",
+      "face": "serif",
+      "fontSize": 68,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "fix",
+      "replacementWords": "review",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "nbb-accessibility-review"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('fix' -> 'review') lands on screen and the full corrected question finishes typing before the clip ends. Text is 56 chars across 3 lines, under the family's established-safe 60-char config, at the same charMs/mistakeRate/hesitate rates.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T10:42:50"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Take a Claude skill apart, and here's what's inside. It's a folder — Claude reads it before it acts. This one's called accessibility-review. Open it up: one file, SKILL.md. About four kilobytes. Plain language, no hidden logic underneath. Claude reads the file, then acts on what it says. The file is the program.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A FOLDER, NOT A PROGRAM",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A FOLDER, NOT A PROGRAM",
+     "chips": [
+      "SKILL.md",
+      "plain-text",
+      "one-file"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T10:42:50"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Here's how it gets picked up. The file's description tells Claude exactly when to run it: auditing accessibility, checking a11y, asking whether a design is accessible — or before handing off work that touches color contrast, keyboard navigation, touch target size, or screen reader behavior. Words match, skill fires. Once triggered, Claude opens the Steps section and runs them top to bottom — linear, no branching unless a step says so.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "HOW IT GETS PICKED UP",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "HOW IT GETS PICKED UP",
+     "chips": [
+      "description",
+      "trigger-match",
+      "steps-in-order"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "only runs when the words match",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T10:42:50"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "That's an audit, not a repair — and that's a design choice. They optimized for two things: repeatability, and checking against a fixed, published standard. Run the same design through twice, and you get the same report both times. Here's what it costs. The skill won't rewrite the design to close the gaps it finds — it only reports them. And it only sees what WCAG 2.1 AA covers. Anything outside that standard is outside what this skill sees.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "AN AUDIT, NOT A REPAIR",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "AN AUDIT, NOT A REPAIR",
+     "chips": [
+      "same-result",
+      "every-time",
+      "standard-only"
+     ],
+     "arrows": false,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "it reports gaps, it doesn't close them",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T10:42:50"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "accessibility-review doesn't fix your design — it checks it against WCAG 2.1 AA and reports exactly where it fails, the same way every time. They optimized for a fixed standard; anything outside it, it's blind to.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "accessibility-review doesn't fix your design — it checks it against WCAG 2.1 AA and reports exactly where it fails, the same way every time. They optimized for a fixed standard; anything outside it, it's blind to.",
+      "attribution": "",
+      "sparkLine": "An audit, not a repair."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T10:42:50"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: ask it to write a short SKILL.md for an accessibility-review skill, then run that skill on a design you describe. Watch it report failures against WCAG 2.1 AA without touching the design itself. Go deeper: run the same design through twice — do you get the same report? Then ask about something the standard doesn't cover, like cognitive load or reading level, and watch where the skill stops and the model starts guessing.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "llm_exercise": {
+    "prompt": "I want to understand how a Claude 'skill' runs an accessibility audit. A Claude skill is a folder holding SKILL.md — a description telling Claude when to fire it, plus a numbered list of steps Claude reads and runs top to bottom, with no judgment step. Write me a short SKILL.md for an accessibility-review skill: a description that triggers on 'audit accessibility' / 'check a11y' / 'is this accessible?', plus three to five numbered steps that check a design's color contrast, keyboard navigation, and touch target size against WCAG 2.1 AA. Then run the skill on this design: white text (#FFFFFF) on light gray (#D4D4D4), 24-pixel-tall buttons, no visible focus ring, tap targets 32×32. Report each failure and the exact WCAG 2.1 AA criterion it violates. Do not fix the design — only report where it fails.",
+    "dig_deeper": "Go deeper: run the same design through the skill twice — do you get the same report both times? Then ask about a case the standard doesn't cover, like cognitive load or reading level. Where does 'the standard' stop, and where does 'the model' start filling in?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE SKILLS · ANTHROPIC",
+      "segment": "Review, Not Repair.",
+      "command": "I want to understand how a Claude skill runs an accessibility audit. Write me a short SKILL.md for an accessibility-review skill: a description that triggers on 'audit accessibility' / 'check a11y', and 3–5 numbered steps that check color contrast, keyboard navigation, and touch target size against WCAG 2.1 AA. Then run it on a design I paste. Report each failure and the WCAG criterion it violates. Don't fix the design.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T10:42:50"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Accessibility Review. An audit, not a repair. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Accessibility Review. An audit, not a repair. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T10:42:50"
+   }
+  }
+ ]
+}

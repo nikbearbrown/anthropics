@@ -1,0 +1,290 @@
+{
+ "metadata": {
+  "title": "What Does Claude Actually Do When You Say \"Clean This Data\"?",
+  "slug": "financial-services--claude-liam-clean-data-xls",
+  "topic": "CLEAN-DATA-XLS · ANTHROPIC SKILL",
+  "purpose": "Answer whether Claude decides, using its own judgment, what looks messy in a spreadsheet and fixes it -- or is doing something narrower. Lands the carry-out that cleaning a sheet is one fixed checklist run in order, and a column that comes back clean has been reformatted, not fact-checked.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-clean-data-xls/beat_sheet.json",
+  "source_note": "Source sheet's narration already carries real skill-specific facts (not unfilled template placeholders) -- see QUESTION.md. Facts preserved: clean-data-xls trims whitespace, fixes inconsistent casing, converts numbers stored as text, standardizes dates, removes duplicates, and flags mixed-type columns; used when data is messy, inconsistent, or needs prep before analysis. Register re-registered Teardown -> Plain; source's B03 design-tell verdict became a plain mechanism + both-directions beat; a wrong-guess beat and an anchor (one Revenue column: trimmed -> converted -> flagged -> waiting for review) were added per hai-simple's Phase 1 structure, since the source's Teardown shape carried neither.",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (one Revenue column: ' 1,200 ' / '1300' / 'N/A' / ' 1,400.00 ' -- trimmed -> converted -> flagged, then stopped, waiting for review)",
+  "build": {
+   "at": "2026-09-01T10:15:14",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "People ask if Claude uses its own judgment when it cleans a spreadsheet. It doesn't. Liam here, in for Bear — let's take clean-data-xls apart and see what it actually does.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'What decides what gets cleaned -- judgment?', hesitates on 'judgment', corrects to 'a checklist', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "What decides\nwhat gets cleaned —\njudgment?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "judgment",
+      "replacementWords": "a checklist",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-clean-data-xls"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('judgment' -> 'a checklist') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T10:15:14"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "Here's the intuitive guess. You say 'clean this data' and Claude eyeballs the sheet, decides what looks messy, and fixes it — the way you or I would. The skill doesn't work that way. Clean-data-xls runs one fixed checklist, in order: trim whitespace, fix inconsistent casing, convert numbers stored as text, standardize dates, remove duplicates, flag mixed-type columns. Six steps. Nothing beyond that list. Hand it a column where the same dollar sign covers two different currencies — no way to tell U.S. dollars from Canadian dollars from the symbol alone. That's not on the checklist. No step resolves currency confusion, so the column comes out exactly as ambiguous as it went in. They optimized for a mechanical pass that runs the same way every time at the expense of the human eye that would look at 'dollar sign' and ask 'which dollar?'",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 50,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A judgment figure weighing what 'looks messy', struck through; a fixed six-step checklist lit instead"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Judgment, struck -- checklist, lit",
+     "mechanic": "Left: a figure icon labelled 'JUDGMENT' beside a thought-bubble of scattered decision marks. Right: a card labelled 'THE CHECKLIST -- SIX STEPS' listing three grouped lines. The judgment side dims and gets a terracotta strike; the checklist side stays lit. A final line reads 'two currencies, one symbol -- not on the list' and the checklist does not reach for it.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "CDXB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T10:15:14"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "Here's the actual machinery. Six fixed steps, in order: trim, fix casing, convert numbers stored as text, standardize dates, dedupe, flag mixed types. That order matters — you can't dedupe rows that look different only because one has extra whitespace, so trim comes first. Watch the anchor. One Revenue column holding four values: a padded '1,200', a bare '1300', an 'N/A', and a padded '1,400.00'. Whitespace gets trimmed on the padded values. The number-like text — 1,200, 1,300, 1,400 — converts to real numbers. 'N/A' can't convert, so the column gets flagged mixed-type instead of the skill guessing what 'N/A' meant. And then it stops. Waiting for a human.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 40,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR -- one Revenue column traveling RAW -> TRIMMED -> CONVERTED -> FLAGGED, then stopping"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR -- one column, four stops",
+     "mechanic": "THE ANCHOR. Four stacked cards labelled 'RAW', 'TRIMMED', 'CONVERTED', 'FLAGGED'. A single highlighted token 'REVENUE COLUMN' travels down through all four cards in turn, each lighting as it arrives. At the bottom, the token halts beside a label 'N/A -- flagged, waiting' -- it does not continue past the flagged card. THIS EXACT COMPOSITION RETURNS, PAID OFF, AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "CDXB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T10:15:14"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "Back to that Revenue column: trimmed, converted, flagged, 'N/A' still sitting there. Read the outcome in both directions. Going forward, the fact that '1,200' converted cleanly to a number does not mean it's the right number — if the original entry should have read '12,000' but someone dropped a zero, that typo converts just as cleanly as the correct value. A clean conversion is a formatting result, not an accuracy result. Going the other way, a mixed-type flag isn't a broken-column verdict — an ID column that legitimately mixes numbers and letters, like 'A47' and '1500' and 'X001', gets the same flag as a column where 'N/A' snuck into revenue. Same flag, different situations, no way for the skill to tell them apart from the outside. Reformatted is not correct. Flagged is not broken. And either way, the sheet is waiting for a human to check what the checklist can't.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 50,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS, trimmed/converted/flagged; splits into 'converted cleanly is not correct' and 'flagged is not broken'"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS -- flagged, then split",
+     "mechanic": "THE B02 FOUR-CARD COMPOSITION RETURNS, identical placement, the token resting at the 'FLAGGED' card beside 'N/A -- flagged, waiting'. It shrinks and slides up. Two cards fade in beneath: left reads 'CONVERTED: 1,200' with a checkmark, then a struck-through 'CORRECT?' beneath it, labelled 'converted cleanly is not correct'; right reads 'FLAGGED: MIXED-TYPE' beside a faint 'on purpose, maybe' note, labelled 'flagged is not broken'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "CDXB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T10:15:14"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Here's what clean-data-xls actually does: run one fixed checklist, in order, and touch nothing outside that list. Judgment isn't in the machine. A column that comes back clean has been reformatted — not fact-checked.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Clean-data-xls runs one fixed checklist, in order, and touches nothing outside that list. A column that comes back clean has been reformatted — not fact-checked.",
+      "attribution": "",
+      "sparkLine": "Reformatted, not fact-checked."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T10:15:14"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. Give it a tiny Revenue column with the mess we've been talking about — padded whitespace on some values, a bare '1300', a '1,400.00' with commas and decimals, an 'N/A' sitting in one row, and two rows that both start with a dollar sign but cover different currencies. Add a small ID column that legitimately mixes letters and numbers. Ask it to run the clean-data-xls skill on that scope: trim, fix casing, convert numbers stored as text, standardize dates, dedupe, flag mixed types. Tell it explicitly not to guess what 'N/A' meant and not to resolve the currency ambiguity. When it's done, ask it to walk you through exactly which rows changed and how, which columns got flagged and why, and which of your problems the skill did nothing about. Go deeper: describe a Revenue column where clean-data-xls would return zero flags and produce a perfectly formatted result, but a human auditor would immediately see the numbers can't be right — and explain what the checklist has no way to notice. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 55,
+   "llm_exercise": {
+    "prompt": "I want to see how the clean-data-xls skill actually works. Here is a tiny spreadsheet with a messy Revenue column, six rows: Row 1: ' 1,200 ' (padded whitespace, comma-thousands). Row 2: '1300'. Row 3: 'N/A'. Row 4: ' 1,400.00 '. Row 5: '$500 USD'. Row 6: '$800 CAD' (same dollar symbol, different currency from Row 5). And a small ID column: Row 1: 'A47'. Row 2: '1500'. Row 3: 'X001'. Run the clean-data-xls skill on this scope. Do exactly what the skill does, in order: trim whitespace, fix inconsistent casing, convert numbers stored as text, standardize dates, remove duplicates, and flag mixed-type columns. Do not fix anything the skill wouldn't fix — do not guess what 'N/A' meant and do not resolve the USD vs CAD ambiguity. When you finish, tell me exactly which rows were transformed and how, which columns got flagged and why, and which of my problems the checklist did nothing about. Confirm that every value I gave you is either transformed by a specific checklist step or left alone.",
+    "dig_deeper": "Go deeper: describe a Revenue column where clean-data-xls would return zero flags and produce a perfectly formatted result, but a human auditor would immediately see the numbers can't be right — and explain what the checklist has no way to notice."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLEAN-DATA-XLS · ANTHROPIC SKILL",
+      "segment": "Your Turn",
+      "command": "Here is a tiny spreadsheet with a messy Revenue column: ' 1,200 ' (padded), '1300', 'N/A', ' 1,400.00 ', '$500 USD', '$800 CAD' (same dollar sign, different currency); and an ID column mixing 'A47' / '1500' / 'X001'. Run the clean-data-xls skill on this scope: trim, fix casing, convert numbers, standardize dates, dedupe, flag mixed types. Do not guess what 'N/A' meant, do not resolve the USD vs CAD ambiguity. Tell me exactly which rows changed and how, which columns were flagged and why, and which of my problems the skill did nothing about.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T10:15:14"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "What Does Claude Actually Do When You Say \"Clean This Data\"? Liam, in for Bear. Brutalist dot art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "What Does Claude Actually Do When You Say \"Clean This Data\"? Liam, in for Bear. www.brutalist.art",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T10:15:14"
+   }
+  }
+ ]
+}

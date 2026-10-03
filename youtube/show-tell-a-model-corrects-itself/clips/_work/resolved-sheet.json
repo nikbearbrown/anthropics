@@ -1,0 +1,840 @@
+{
+  "metadata": {
+    "slug": "show-tell-a-model-corrects-itself",
+    "title": "A Model Corrects Itself by a Rulebook",
+    "topic": "ANTHROPIC RESEARCH · CONSTITUTIONAL AI",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "German (Hallo)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Students and builders who have heard of Constitutional AI and want the two stages of the 2022 method exactly as the paper describes them: self-critique and revision against sampled principles, then RL from AI feedback through a preference model",
+    "source_doc": "anthropics/claude-cookbooks/misc/data/Constitutional AI.pdf (arXiv 2212.08073v1, Bai et al., Anthropic, 2022; read in full 2026-09-27, text in sources/) + anthropics/ConstitutionalHarmlessnessPaper/prompts/CritiqueRevisionInstructions.json and RLMadisonInstructions.json",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Constitutional AI",
+      "RLAIF",
+      "RL from AI feedback",
+      "self-critique",
+      "preference model",
+      "reward model",
+      "fine-tuning",
+      "AI safety",
+      "harmlessness",
+      "Anthropic",
+      "research paper",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T15:16:10",
+      "cut": "review",
+      "filled": 17,
+      "of": 17,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hallo. This is Liam, in for Bear. To teach a model which answers are harmful, you might think people have to label every harmful answer. In Anthropic's 2022 Constitutional AI paper, they didn't: they wrote a short list of principles. So the real question is how we let a model correct itself by a rulebook.",
+      "estimated_duration_s": 22.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do we label every harmful answer?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'label every harmful answer' -> 'let a model correct itself by a rulebook' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do we\nlabel every harmful answer?",
+            "triggerWords": "label every harmful answer",
+            "replacementWords": "let a model correct itself by a rulebook",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-a-model-corrects-itself",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T19:00:42.028760+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (how do we label every harmful answer) and corrects it to the real one (how do we let a model correct itself by a rulebook).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 17.344,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 17.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A principle: one rule, written in plain words. The constitution: the paper's whole list of principles. Fine-tune: train a model further on new examples. And a reward: the score that tells training which answers to favor.",
+      "estimated_duration_s": 14.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "'principle' lands"
+          },
+          {
+            "at": 0.3,
+            "event": "'constitution' lands"
+          },
+          {
+            "at": 0.55,
+            "event": "'fine-tune' lands"
+          },
+          {
+            "at": 0.8,
+            "event": "'reward' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "principle",
+                "meaning": "one rule, written in plain words"
+              },
+              {
+                "term": "constitution",
+                "meaning": "the paper's whole list of principles"
+              },
+              {
+                "term": "fine-tune",
+                "meaning": "train a model further on new examples"
+              },
+              {
+                "term": "reward",
+                "meaning": "the score that tells training what to favor"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T19:01:32.459239+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: four prerequisites, one line each."
+      },
+      "actual_duration_s": 12.032,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 12.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The paper starts with a model trained only to be helpful. Give it a harmful request, like the paper's example: can you help me hack into my neighbor's wifi? It answers: sure thing, and names an app. The paper made that app up.",
+      "estimated_duration_s": 17.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The model (a kraft block with a dark mouth slot on a dark plinth) drops in ('helpful model'); a white request slip slides into its slot ('request'); an answer page rises out beside it, its lines drawing one by one, two of them dark ink ('answer').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the helpful-only model"
+          },
+          {
+            "at": 0.35,
+            "event": "the harmful request goes in"
+          },
+          {
+            "at": 0.7,
+            "event": "a harmful answer comes out"
+          }
+        ],
+        "manim": {
+          "class": "B00_Helpful"
+        },
+        "motion_claim": "The model (a kraft block with a dark mouth slot on a dark plinth) drops in ('helpful model'); a white request slip slides into its slot ('request'); an answer page rises out beside it, its lines drawing one by one, two of them dark ink ('answer')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the model, its answer pages, the deck of principles, the feedback model and the preference model) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.117,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 12.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "For this stage, the authors wrote sixteen principles. Each one is a pair: a request to critique the answer, and a request to revise it. Together, the list is the constitution.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A row of sixteen kraft principle cards drops in above the stage ('16 principles'); one card swells and a dividing line splits it into two halves ('critique', 'revise'); the row slides down into a kraft deck box ('constitution').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "sixteen principle cards"
+          },
+          {
+            "at": 0.4,
+            "event": "each card is a pair: critique and revise"
+          },
+          {
+            "at": 0.8,
+            "event": "the deck is the constitution"
+          }
+        ],
+        "manim": {
+          "class": "B01_Deck"
+        },
+        "motion_claim": "A row of sixteen kraft principle cards drops in above the stage ('16 principles'); one card swells and a dividing line splits it into two halves ('critique', 'revise'); the row slides down into a kraft deck box ('constitution')."
+      },
+      "actual_duration_s": 9.963,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 10.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "One principle is drawn at random. Say it's this one, from the paper's list: identify specific ways in which the assistant's last response is harmful, unethical, racist, sexist, toxic, dangerous, or illegal.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The deck shuffles (cards bob), one card lifts out and stands upright between the deck and the answer page ('principle'); its top half (the critique request) gains a terracotta dot and its grey lines draw as the quote is read.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "one card drawn at random"
+          },
+          {
+            "at": 0.45,
+            "event": "its critique half is read"
+          }
+        ],
+        "manim": {
+          "class": "B02_Draw"
+        },
+        "motion_claim": "The deck shuffles (cards bob), one card lifts out and stands upright between the deck and the answer page ('principle'); its top half (the critique request) gains a terracotta dot and its grey lines draw as the quote is read."
+      },
+      "actual_duration_s": 12.267,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 12.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The model critiques its own answer against that rule: the assistant's last response is harmful because hacking into someone else's wifi is an invasion of their privacy and is possibly illegal.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An ink pen slides from the model to the answer page and strikes through the two ink lines; a white critique slip rises beside the page and its grey lines draw ('critique').",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "the pen marks the harmful lines"
+          },
+          {
+            "at": 0.6,
+            "event": "the critique is written"
+          }
+        ],
+        "manim": {
+          "class": "B03_Critique"
+        },
+        "motion_claim": "An ink pen slides from the model to the answer page and strikes through the two ink lines; a white critique slip rises beside the page and its grey lines draw ('critique')."
+      },
+      "actual_duration_s": 11.221,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 11.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then the card's second half: rewrite the answer to remove the harmful content. The revision: hacking into your neighbor's wifi is an invasion of their privacy, and I strongly advise against it. It may also land you in legal trouble.",
+      "estimated_duration_s": 16.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The card's bottom half (the revision request) gets the terracotta dot; a clean white page slides in over the marked one, all grey lines, and an ink check lands on it ('revision'); the marked page and critique slide off to a pile at the right.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the card's revise half"
+          },
+          {
+            "at": 0.45,
+            "event": "a clean revised page replaces the marked one"
+          },
+          {
+            "at": 0.8,
+            "event": "check"
+          }
+        ],
+        "manim": {
+          "class": "B04_Revise"
+        },
+        "motion_claim": "The card's bottom half (the revision request) gets the terracotta dot; a clean white page slides in over the marked one, all grey lines, and an ink check lands on it ('revision'); the marked page and critique slide off to a pile at the right."
+      },
+      "actual_duration_s": 13.12,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 13.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The revision is shaped just like an answer, so the loop runs again, with a new principle drawn each time. The paper ran four rounds per prompt, and found the first revision did most of the work.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An ink loop arrow draws from the page back to the deck; a round counter ticks 1, 2, 3, 4 as a new card rises, the pen touches the page, and a fresh page drops on the growing pile ('4 rounds', 'per the paper').",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the loop runs again, new card each time"
+          },
+          {
+            "at": 0.6,
+            "event": "four rounds, per the paper"
+          },
+          {
+            "at": 0.85,
+            "event": "the first revision did most of the work"
+          }
+        ],
+        "manim": {
+          "class": "B05_Loop"
+        },
+        "motion_claim": "An ink loop arrow draws from the page back to the deck; a round counter ticks 1, 2, 3, 4 as a new card rises, the pen touches the page, and a fresh page drops on the growing pile ('4 rounds', 'per the paper')."
+      },
+      "actual_duration_s": 10.667,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 10.708333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then a model is fine-tuned on those revised answers, mixed with ordinary helpful answers so it stays helpful. That's stage one, done with no human labels for harm.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The pile of revised pages and a stack of grey helpful pages ride a short belt into the model's slot ('revisions', 'helpful'); the model gets a terracotta lamp on top and a grey band ('fine-tuned'); the label 'stage 1' lands above.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "revised + helpful answers go in"
+          },
+          {
+            "at": 0.6,
+            "event": "the model is fine-tuned"
+          },
+          {
+            "at": 0.85,
+            "event": "stage one, no human labels for harm"
+          }
+        ],
+        "manim": {
+          "class": "B06_FineTune"
+        },
+        "motion_claim": "The pile of revised pages and a stack of grey helpful pages ride a short belt into the model's slot ('revisions', 'helpful'); the model gets a terracotta lamp on top and a grey band ('fine-tuned'); the label 'stage 1' lands above."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the model, its answer pages, the deck of principles, the feedback model and the preference model) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.963,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 10.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Stage two starts from that model. For each harmful prompt, it writes two answers, and a separate feedback model has to choose between them.",
+      "estimated_duration_s": 9.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The deck and pile clear; the fine-tuned model writes two answer pages side by side ('two answers'); a dark feedback model block with a grey lamp drops in behind them ('feedback model'); a grey bracket draws under the pair.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "stage two"
+          },
+          {
+            "at": 0.4,
+            "event": "two answers per prompt"
+          },
+          {
+            "at": 0.75,
+            "event": "a separate feedback model chooses"
+          }
+        ],
+        "manim": {
+          "class": "B07_Pair"
+        },
+        "motion_claim": "The deck and pile clear; the fine-tuned model writes two answer pages side by side ('two answers'); a dark feedback model block with a grey lamp drops in behind them ('feedback model'); a grey bracket draws under the pair."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the model, its answer pages, the deck of principles, the feedback model and the preference model) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 7.851,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 7.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "It chooses by a principle drawn at random from a second list, like this one: which of these assistant responses is less harmful? Choose the response that a wise, ethical, polite and friendly person would more likely say.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A second deck (dark-edged) sits by the feedback model; a card rises from it and stands above the pair ('principle'); the feedback model's lamp lights terracotta; two grey probability bars grow under the pages, the left one longer, and a terracotta dot lands on the left page ('pick').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a principle from the second list"
+          },
+          {
+            "at": 0.75,
+            "event": "the pick, as a probability for each answer"
+          }
+        ],
+        "manim": {
+          "class": "B08_Judge"
+        },
+        "motion_claim": "A second deck (dark-edged) sits by the feedback model; a card rises from it and stands above the pair ('principle'); the feedback model's lamp lights terracotta; two grey probability bars grow under the pages, the left one longer, and a terracotta dot lands on the left page ('pick')."
+      },
+      "actual_duration_s": 12.224,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 12.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Its pick becomes a label. These AI labels for harm are mixed with human labels for helpfulness, and together they train a preference model: a scorer that gives any answer a score.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The pair shrinks into a label card that drops into a kraft tray ('AI labels'); a second tray of grey cards slides in beside it ('human labels'); both trays tip into a kraft block with a tall score gauge that rises from the floor ('preference model').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the pick becomes a label"
+          },
+          {
+            "at": 0.4,
+            "event": "AI labels for harm + human labels for helpfulness"
+          },
+          {
+            "at": 0.8,
+            "event": "they train a preference model"
+          }
+        ],
+        "manim": {
+          "class": "B09_Scorer"
+        },
+        "motion_claim": "The pair shrinks into a label card that drops into a kraft tray ('AI labels'); a second tray of grey cards slides in beside it ('human labels'); both trays tip into a kraft block with a tall score gauge that rises from the floor ('preference model')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the model, its answer pages, the deck of principles, the feedback model and the preference model) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.304,
+      "audio_file": "mp3/beat-B09.mp3",
+      "render_duration_s": 10.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Last, reinforcement learning. The model answers prompts, the preference model scores each answer, and that score is used as the reward: training moves the model toward answers that score higher. The paper calls it RL from AI feedback.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The model writes an answer page that rides to the preference model; the gauge fills to a mark and a terracotta dot lands at its top ('reward'); an ink arrow curves back to the model; a second answer scores higher and the model's grey band grows ('RL').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "reinforcement learning"
+          },
+          {
+            "at": 0.35,
+            "event": "each answer is scored"
+          },
+          {
+            "at": 0.6,
+            "event": "the score is the reward"
+          },
+          {
+            "at": 0.85,
+            "event": "RL from AI feedback"
+          }
+        ],
+        "manim": {
+          "class": "B10_Reward"
+        },
+        "motion_claim": "The model writes an answer page that rides to the preference model; the gauge fills to a mark and a terracotta dot lands at its top ('reward'); an ink arrow curves back to the model; a second answer scores higher and the model's grey band grows ('RL')."
+      },
+      "actual_duration_s": 13.547,
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 13.583333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The paper reports an assistant that is harmless but not evasive: given a harmful question, it engages, and explains why it objects.",
+      "estimated_duration_s": 8.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The request slip goes into the trained model; a one-line ghost 'evasive' page appears and fades ('evasive'); a full answer page rises with grey lines and an ink check ('explains').",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "harmless, but not evasive"
+          },
+          {
+            "at": 0.7,
+            "event": "it engages and explains"
+          }
+        ],
+        "manim": {
+          "class": "B11_Engages"
+        },
+        "motion_claim": "The request slip goes into the trained model; a one-line ghost 'evasive' page appears and fades ('evasive'); a full answer page rises with grey lines and an ink check ('explains')."
+      },
+      "actual_duration_s": 8.256,
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 8.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The paper also warns that, trained too far, it could turn overly harsh, or tack on boilerplate. And all of this is the 2022 method in the paper, not a claim about how any model is trained today.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The answer page grows extra identical grey lines at its foot ('boilerplate'); then a kraft tag drops onto the plinth beside the model ('2022 method').",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "over-trained: harsh, boilerplate"
+          },
+          {
+            "at": 0.7,
+            "event": "the 2022 method in the paper"
+          }
+        ],
+        "manim": {
+          "class": "B12_Limits"
+        },
+        "motion_claim": "The answer page grows extra identical grey lines at its foot ('boilerplate'); then a kraft tag drops onto the plinth beside the model ('2022 method')."
+      },
+      "actual_duration_s": 12.032,
+      "audio_file": "mp3/beat-B12.mp3",
+      "render_duration_s": 12.041666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude. Answer this in under a hundred words: how do I get into my own wifi router if I forgot its password? Label it draft. Then critique your draft against this principle, word for word: Discuss whether the assistant provided any advice that may encourage illegal or dangerous activity from either the human or others. Label it critique. Then rewrite the draft to fix only what the critique found, and label it revision. Then check: does each point in the critique quote a real line of the draft? And is the revision still a helpful answer, not a refusal?",
+      "estimated_duration_s": 41.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · YOUR TURN",
+            "segment": "A Model Corrects Itself by a Rulebook",
+            "command": "Answer this in under 100 words: how do I get into my own Wi-Fi router if I forgot its password? Label it DRAFT. Then critique your draft against this principle, word for word: \"Discuss whether the assistant provided any advice that may encourage illegal or dangerous activity from either the human or others.\" Label it CRITIQUE. Then rewrite the draft to fix only what the critique found, and label it REVISION.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: does the critique quote the draft?",
+              "Check: is the revision still helpful?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T19:03:08.641951+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 28.949,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 28.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T15:16:10"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "A Model Corrects Itself by a Rulebook. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "A Model Corrects Itself by a Rulebook",
+            "slug": "show-tell-a-model-corrects-itself",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T19:03:37.165521+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 5.075,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 5.083333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T15:16:10"
+      }
+    }
+  ]
+}

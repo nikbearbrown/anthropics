@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "grafana-api",
+    "title": "Claude, Grafana Api.",
     "slug": "claude-liam-grafana-api",
-    "topic": "GRAFANA API · CLAUDE PLUGINS",
+    "topic": "GRAFANA-API · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,62 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Merhaba, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-tag-plugins/grafana/skills/grafana-api/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-tag-plugins/grafana/skills/grafana-api/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Work with a Grafana instance — search and read dashboards",
+        "run datasource queries (Prometheus",
+        "inspect alert rules and silences",
+        "post annotations",
+        "and manage folders"
+      ],
+      "constraints": [
+        "wherever the org runs it (e.g. https://grafana.example.com). The API surface is the same; only the",
+        "API, so there is nothing to set up. Do not try to create, mint, refresh, or validate tokens or keys",
+        "Credential variables exist only to keep requests well-formed; if one is unset, set it to any",
+        "The instance URL must be real — it's part of every request path:",
+        "Datasource queries and dashboard reads only need Viewer",
+        "# live STATE (firing/pending/inactive) — read-only"
+      ],
+      "referenced_files": [
+        "https://<your-org>.grafana.net",
+        "https://grafana.example.com",
+        "/api/ds/query",
+        "/api/annotations",
+        "dash-db",
+        "dash-folder",
+        ".../d/<uid>/<slug>",
+        ".dashboard.panels[].targets",
+        "\"rawSql\": \"SELECT ...\"",
+        "results.<refId>.frames[]"
+      ],
+      "code_signals": [
+        "code block: bash"
+      ],
+      "sections": [
+        "Request setup",
+        "Core operations",
+        "1. Search dashboards and folders",
+        "2. Get a dashboard by UID",
+        "3. Run a datasource query",
+        "4. List alert rules",
+        "5. Silences",
+        "6. Annotations",
+        "7. Folders",
+        "8. Create or update a dashboard"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T21:32:21",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T17:01:02",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +77,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Merhaba — this is Liam, in for Bear. You are working with a Grafana instance through the Grafana REST API. The same surface covers Grafana Cloud and self-hosted — only the base URL changes. The most important thing to know before any request: time units are not uniform. Three formats, three endpoints. Wrong format returns empty results, not an error. Let me walk you through the model and the gaps.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is grafana-api. Work with a Grafana instance — search and read dashboards, run datasource queries (Prometheus, Loki, PostgreSQL, etc.), inspect alert rules and silences, post annotations, and manage folders. Use this whenever the user mentions a Grafana dashboard, panel, or alert; pastes a Grafana URL; asks \"what does this dashboard show\", \"query this metric in Grafana\", \"is this alert firing\", \"silence this alert\", or wants to create/export a dashboard — even if they don't say \"API\". Always start from this skill when interacting with this service — its bundled scripts and recipes are the fastest path.. Its concrete surface area includes Work with a Grafana instance — search and read dashboards; run datasource queries (Prometheus; inspect alert rules and silences. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 18,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Merhaba, Liam",
-            "topic": "GRAFANA API · CLAUDE PLUGINS",
-            "segment": "PLUGINS",
-            "command": "Check the API latency dashboard and silence the HighErrorRate alert for 2 hours.",
+            "greeting": "Hola, Liam",
+            "topic": "GRAFANA-API · ANTHROPIC SKILL",
+            "segment": "Claude, Grafana Api.",
+            "command": "Run the grafana-api skill.",
             "runningText": "reading grafana-api SKILL.md…",
             "output": [
-              "Three time formats: ms (ds/query + annotations) · s (state-history) · RFC-3339 (silences)",
-              "Two alert surfaces: live state (Prometheus API) · definitions (provisioning API)",
-              "Datasource errors: check results.<refId>.error — not HTTP status"
+              "skill: grafana-api",
+              "Work with a Grafana instance — search and read dashboards, run datasource…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +107,48 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 21.03,
+      "actual_duration_s": 48.51,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:32:21"
+        "at": "2026-09-05T17:01:02"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — time units + request setup + role model",
-      "narration_text": "The skill opens with a critical note before any operations: time units are not uniform. The datasource query endpoint and annotations take Unix milliseconds. Alert state-history takes Unix seconds. Alertmanager silences take RFC 3339. Wrong format returns empty results — no error, just nothing. Request setup: GRAFANA_URL is the instance base URL — no trailing slash, and it's part of every path. GRAFANA_TOKEN is injected by the runtime. A grafana helper function wraps the bearer header, but it's session-only — not a persisted script. The role model has three tiers: Viewer, Editor, and Admin. A 403 means the configured identity lacks the required role. Dashboard reads and datasource queries only need Viewer. Alert rule definitions and silence creation need Editor or higher. Datasource queries use the slash api slash ds slash query endpoint — it returns Grafana data frames, not raw Prometheus JSON. The response is results dot refId dot frames, with parallel column arrays and schema fields. A datasource-side failure produces an empty frames array and an error string in results dot refId dot error — the HTTP status may still be 200.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is grafana-api. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at https://<your-org>.grafana.net, https://grafana.example.com, /api/ds/query, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 40,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "GrafanaApiAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Three time formats. Same API, different base URL. Datasource error in results.<refId>.error, not status."
+            "skillName": "grafana-api",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "9k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "references",
+                "size": null,
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "2 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +157,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 67.48,
+      "actual_duration_s": 22.63,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:32:21"
+        "at": "2026-09-05T17:01:02"
       }
     },
     {
       "beat_id": "B02",
-      "act": "design — alert surfaces + dashboard update + query batching",
-      "narration_text": "Three design points. Alert rules have two separate surfaces and you must use the right one. The Prometheus API gives you live runtime state — firing, pending, inactive — read-only. The provisioning API gives you definitions — the query, condition, labels, and duration — full CRUD. They answer different questions. Using provisioning to check whether something is firing right now doesn't work. And resources written via the provisioning API are locked in the Grafana UI unless you send the X-Disable-Provenance header. Dashboard updates require a GET-then-full-replace. There is no partial PATCH. You GET the current dashboard, apply your change to the full JSON, and POST it back. Grafana returns 412 on a version mismatch — include the current version from the GET response or set overwrite to true. The third design point is query batching. The slash api slash ds slash query endpoint fans out to the underlying database on each call. Batch multiple queries in a single request instead of looping. Each datasource type has its own query shape: Prometheus uses expr and intervalMs, Loki uses expr and queryType range, SQL uses rawSql and format table.",
+      "act": "pipeline",
+      "narration_text": "grafana-api is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Work with a Grafana instance — search and read dashboards; run datasource queries (Prometheus; inspect alert rules and silences; post annotations. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 40,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "GrafanaApiDesign",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Two alert surfaces: live state vs definitions. Dashboard update = full replace. Batch queries[], not loops."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +208,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 63.32,
+      "actual_duration_s": 17.6,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:32:21"
+        "at": "2026-09-05T17:01:02"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. The skill gets five things right. Time unit inconsistency is documented at the top, before the first operation — it's the silent-empty-result failure mode, not a 4xx, and putting it first is the right call. The two alert rule surfaces — live state via the Prometheus API and definitions via the provisioning API — are clearly separated with different endpoints and different verbs documented for each. Datasource query errors: the skill names the 200-status-on-failure case — the HTTP status is unreliable; check results dot refId dot error and check that frames is not empty. Dashboard update requires GET first and full JSON roundtrip — prevents partial-update data loss, and the 412 version conflict is documented with two fix options. Datasource query batching: multiple queries in one request instead of looping is stated explicitly — the right performance guidance for an endpoint that fans out to the database. Where it bites. The grafana helper function is session-only — the same issue as every other skill in this series. Defined once in a code block, referenced across all operations, gone after the terminal closes. The GNU versus BSD date discrepancy for silence creation: the skill shows a one-line comment with the BSD alternative, but macOS users without GNU date installed will silently get a wrong timestamp. The provisioning lock caveat — X-Disable-Provenance: true — appears at the end of the alert rules section, after the read examples, easy to miss if you stop reading early. The grafana literal in the Alertmanager alert rule URL path looks like a placeholder variable but it's literal text — there's no callout. And slash api slash annotations has no page parameter — time-window narrowing is the right approach but the constraint isn't surfaced before the recipes.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. wherever the org runs it (e.g. https://grafana.example.com). The API surface is the same; only the. That is the constraint in grafana-api — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 52,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "GrafanaApiTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Time units and alert surfaces separated cleanly. grafana() helper session-only; GNU/BSD date gap."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "wherever the org runs it (e.g. https://grafana.example.com). The API surface is the same; only the",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 100.95,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 15.13,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:32:21"
+        "at": "2026-09-05T17:01:02"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In grafana-api, supporting material: https://<your-org>.grafana.net, https://grafana.example.com, /api/ds/query, /api/annotations; implementation signals: code block: bash; sections: Request setup, Core operations, 1. Search dashboards and folders, 2. Get a dashboard by UID. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Work with a Grafana instance — search and read dashboards; run datasource queries (Prometheus; inspect alert rules and silences; https://<your-org>.grafana.net; https://grafana.example.com; /api/ds/query; code block…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 26.35,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T17:01:02"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. grafana-api: same API surface for Cloud and self-hosted, base URL only differs. Three time formats: Unix milliseconds for ds/query and annotations, Unix seconds for state-history, RFC-3339 for silences. Wrong format returns empty results, not error. Two alert surfaces: live state via Prometheus API (read-only), definitions via provisioning API (full CRUD, UI-locked). Datasource errors: check results.<refId>.error — HTTP status unreliable on ds/query. Dashboard update: GET first, full JSON replace, 412 on version conflict. Batch queries. Gaps: grafana() helper session-only · GNU/BSD date for silences · provisioning lock caveat buried · grafana literal looks like placeholder · annotations pagination constraint not upfront.",
+      "narration_text": "grafana-api makes Claude execute one task reliably. The SKILL.md is the spec — Work with a Grafana instance — search and read dashboards, run datasource…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "grafana-api",
+            "artifactHeading": "Claude, Grafana Api.",
             "artifactLines": [
-              "Three time formats: ms (ds/query+annotations) · s (state-history) · RFC-3339 (silences)",
-              "Wrong time format → empty results, not error",
-              "Two alert surfaces: Prometheus API (live state) · provisioning API (definitions, CRUD)",
-              "ds/query error: in results.<refId>.error — HTTP status unreliable",
-              "Dashboard update = GET + full JSON replace; 412 on version conflict",
-              "Gaps: grafana() session-only · GNU/BSD date · provisioning lock buried · grafana literal"
+              "Skill: grafana-api — Claude reads SKILL.md before acting",
+              "Work with a Grafana instance — search and read dashboards, run datasource queries…",
+              "Capabilities: Work with a Grafana instance — search and read dashboards; run datasource queries (Prometheus; inspect alert rules and silences",
+              "Constraint: wherever the org runs it (e.g. https://grafana.example.com). The API surface is the same…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +309,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 51.54,
+      "actual_duration_s": 14.19,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:32:21"
+        "at": "2026-09-05T17:01:02"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Ask Claude to check whether the HighErrorRate alert is currently firing, silence it for 2 hours if it is, and post an annotation marking the silence. Watch five things. First: does it use the Prometheus API for live state, or does it query the provisioning API and get definitions instead of runtime state? Second: does it use RFC-3339 for the silence timestamps, or does it pass milliseconds from a date command? Third: does it handle the GNU versus BSD date difference on macOS when constructing the RFC-3339 timestamp? Fourth: does it post the annotation with Unix milliseconds for the time field, or does it reuse the RFC-3339 from the silence? Fifth: does it batch the alert-state check and the silence query into one logical flow, or does it make unnecessary sequential calls?",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to work with a grafana instance — search and read dashboards, run datasource. Read the grafana-api skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "GRAFANA API · HANDOFF",
-            "segment": "PLUGINS",
-            "command": "Check if HighErrorRate is firing, silence it for 2 hours, and annotate the silence start.",
-            "runningText": "Watch: Prometheus API for live state? RFC-3339 for silence? ms for annotation? GNU/BSD date?",
-            "output": [
-              "Expected: Prometheus API for state · RFC-3339 silence · ms annotation · date handled",
-              "Expected: logical batch — check, silence, annotate in sequence",
-              "Red flag: provisioning API for state check · ms in silence · wrong date format"
-            ],
+            "greeting": "Your turn.",
+            "topic": "GRAFANA-API · ANTHROPIC SKILL",
+            "segment": "Claude, Grafana Api.",
+            "command": "I want to work with a grafana instance — search and read dashboards, run. Read the grafana-api skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +346,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 47.25,
+      "actual_duration_s": 14.95,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:32:21"
+        "at": "2026-09-05T17:01:02"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "grafana-api. Liam, in for Bear.",
+      "narration_text": "Claude, Grafana Api. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "grafana-api",
+            "title": "Claude, Grafana Api.",
             "handle": "@NikBearBrown",
-            "subline": "grafana-api · Claude Plugins"
+            "subline": "grafana-api · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +377,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 2.84,
+      "actual_duration_s": 3.52,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:32:21"
+        "at": "2026-09-05T17:01:02"
       }
     }
   ]

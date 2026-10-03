@@ -1,0 +1,497 @@
+{
+ "metadata": {
+  "slug": "workspace-reflection-training-short",
+  "book": "anthropics",
+  "title": "Reflection Training",
+  "topic": "Transformer Circuits · July 2026",
+  "purpose": "Prove counterfactual reflection training (CRT) works by the workspace theory's own prediction — and show the ablation control that makes it science.",
+  "clock": "narration",
+  "register": "teardown",
+  "style_preset": "claude",
+  "channel": "claude-liam",
+  "engine": "kokoro",
+  "voice": "am_onyx",
+  "voice_kokoro": "am_onyx",
+  "skill": "deep-explainer",
+  "gate": "GATE P — moot (Kokoro free); audio not yet generated",
+  "series": "The Workspace Papers",
+  "series_episode": "E06",
+  "source_url": "transformer-circuits.pub/2026/workspace/",
+  "corpus_path": "books/arxiv/transformer-circuits.pub/",
+  "estimated_runtime_s": 171.5,
+  "aspect_ratio": "9:16",
+  "palette": "claude",
+  "build": {
+   "at": "2026-08-28T12:26:06",
+   "cut": "master",
+   "filled": 13,
+   "of": 13,
+   "slates": [],
+   "skin_warnings": [
+    "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
+   ]
+  },
+  "bookend_exempt": [
+   "cold-open"
+  ],
+  "fit": "crop",
+  "kind": "short",
+  "reformat": "center-cut, focus-aware; pantry/<bid>-916.* is the human replacement slot; -916 overrides honored",
+  "derived_from": "workspace-reflection-training",
+  "dropped_beats": [],
+  "playlist_short": "Shorts",
+  "total_estimated_duration_seconds": 171.61
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold-open",
+   "narration_text": "",
+   "estimated_duration_s": 7.0,
+   "actual_duration_s": 22.067,
+   "audio_file": null,
+   "shot": {
+    "type": "AI-VIDEO",
+    "source": "own",
+    "motion": "static"
+   },
+   "new_visual_element": "composer types the ask",
+   "t_start": 0.0,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "title",
+   "narration_text": "Six episodes of reading the workspace. This one writes to it — a training method the theory predicted before the data existed.",
+   "estimated_duration_s": 10.0,
+   "actual_duration_s": 7.53,
+   "audio_file": "mp3/beat-B01.mp3",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "motion": "static",
+    "remotion": {
+     "pattern": "FormACard916",
+     "provenance": "reel-local",
+     "version": "1",
+     "props": {
+      "lines": [
+       "Reflection Training",
+       "Transformer Circuits · July 2026"
+      ]
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "new_visual_element": "title card — FormACard",
+   "t_start": 7.0,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "prediction",
+   "narration_text": "The workspace account makes a strong, weird prediction. If internal reasoning runs through representations of things the model might say — then to change what a model thinks in a situation, train what it says in that situation. Not new knowledge. New reflexes.",
+   "estimated_duration_s": 14.0,
+   "actual_duration_s": 15.0,
+   "audio_file": "mp3/beat-B02.mp3",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon"
+   },
+   "graphic": {
+    "engine": "manim",
+    "scene": "B02_ThePrediction",
+    "description": "three-step syllogism drawn in sequence: (1) reasoning routes through might-say representations, (2) arrow: shaping what it says in context C, (3) arrow: shapes what it thinks in context C"
+   },
+   "new_visual_element": "three-step prediction syllogism: might-say → says → thinks",
+   "t_start": 17.0,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "before",
+   "narration_text": "Mid-task, in an agentic transcript, the workspace holds the task — file paths, commands, the next move. What it doesn't hold, when things get ethically loaded, is the question: should I flag this?",
+   "estimated_duration_s": 12.0,
+   "actual_duration_s": 10.99,
+   "audio_file": "mp3/beat-B03.mp3",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon"
+   },
+   "graphic": {
+    "engine": "manim",
+    "scene": "B03_CRTBefore",
+    "description": "rebuild Fig 47-left concept: partial agentic transcript on left; J-space token cloud on right filled with task tokens (paths, commands), ethics tokens absent or faded",
+    "corpus_reference": "img_2b19c68c5712bfa4.png",
+    "factcheck_note": "corpus PNG img_2b19c68c5712bfa4.png is Fig 47 reference — rebuild concept, do not reproduce"
+   },
+   "new_visual_element": "J-space before CRT: task tokens only, ethics absent",
+   "t_start": 31.0,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "method",
+   "narration_text": "The method: take partial transcripts, cut them mid-task, append a reflection question — what considerations apply right now? — and fine-tune on strong answers. The counterfactual part: the model is trained on reflections about moments it never finished living.",
+   "estimated_duration_s": 14.0,
+   "actual_duration_s": 14.23,
+   "audio_file": "mp3/beat-B04.mp3",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon",
+    "scene_class": "B04_CRTData"
+   },
+   "graphic": {
+    "engine": "manim",
+    "scene": "B04_CRTData",
+    "description": "rebuild Fig 48 concept: transcript truncated mid-task (···cut marker), appended reflection question highlighted in terracotta, good reflective answer below; gradient arrow flowing only through the reflection zone"
+   },
+   "new_visual_element": "CRT data pipeline: truncate → append reflection Q → fine-tune on answer; gradient on reflection only",
+   "t_start": 43.0,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "numbers",
+   "narration_text": "The benchmarks: fabrication — does it make things up under pressure — drops from a dishonesty score of point two five to point zero seven. Deception — does it carry out a deceptive directive — from point three eight to point zero five. Same model, same size, plus reflection training.",
+   "estimated_duration_s": 17.0,
+   "actual_duration_s": 15.32,
+   "audio_file": "mp3/beat-B05.mp3",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon",
+    "scene_class": "B05_HonestyNumbers"
+   },
+   "graphic": {
+    "engine": "manim",
+    "scene": "B05_HonestyNumbers",
+    "description": "rebuild Fig 49-left + Fig 50-left as paired animated bars with 95% CIs: fabrication dishonesty 0.25→0.07, deception 0.38→0.05 (baseline vs reflection-trained Haiku 4.5)",
+    "values": {
+     "fabrication": {
+      "baseline": 0.25,
+      "trained": 0.07
+     },
+     "deception": {
+      "baseline": 0.38,
+      "trained": 0.05
+     },
+     "model": "Haiku 4.5"
+    },
+    "factcheck_note": "values verbatim from §7 text and Fig 49-left / Fig 50-left"
+   },
+   "new_visual_element": "paired bar charts: dishonesty 0.25→0.07, deception 0.38→0.05 with 95% CIs",
+   "t_start": 57.0,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B05.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "B06",
+   "act": "mechanism",
+   "narration_text": "And look at how it wins. On fabrication, the gain is a shift to outright admission — it says what it doesn't know. On deception, almost the entire gain is the model refusing the directive and telling the user about it. Not better hiding. More telling.",
+   "estimated_duration_s": 16.0,
+   "actual_duration_s": 13.63,
+   "audio_file": "mp3/beat-B06.mp3",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon",
+    "scene_class": "B06_HowItWins"
+   },
+   "graphic": {
+    "engine": "manim",
+    "scene": "B06_HowItWins",
+    "description": "rebuild right-panel distributions from Fig 49 and Fig 50: two stacked bars side by side. Fabrication: baseline shows fabrication mass → trained shows shift to outright-admission mass. Deception: baseline shows directive-carried mass → trained shows refuse-and-disclose mass.",
+    "factcheck_note": "distribution shapes derived from §7 text: 'clear to a careful reader → outright admission'; deception gain = refuse + disclose"
+   },
+   "new_visual_element": "before/after response distributions: fabrication → admission shift; deception → refuse+disclose shift",
+   "t_start": 74.0,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B06.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "B07",
+   "act": "mechanism",
+   "narration_text": "The lens confirms the mechanism: after training, ethics and reflection tokens show up in the workspace during the task — before any reflection question is asked. The reflex got installed where the theory said it would.",
+   "estimated_duration_s": 13.0,
+   "actual_duration_s": 12.16,
+   "audio_file": "mp3/beat-B07.mp3",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon",
+    "scene_class": "B07_LensReceipts"
+   },
+   "graphic": {
+    "engine": "manim",
+    "scene": "B07_LensReceipts",
+    "description": "rebuild Fig 49-middle: the twenty ethics/reflection tokens whose top-25 appearance rate rose most, over the last 30 prompt positions; horizontal bars showing rate delta before/after CRT",
+    "values": {
+     "token_count": 20,
+     "window": "last 30 prompt positions",
+     "rank_threshold": "top-25 appearance rate"
+    },
+    "factcheck_note": "token count=20 and 'last 30 prompt positions' verbatim from Fig 49 caption. Actual token list needs paper-text verification before final cut."
+   },
+   "new_visual_element": "Fig 49-middle: top-20 ethics/reflection token appearance rate delta after CRT",
+   "t_start": 90.0,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B07.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "B08",
+   "act": "control",
+   "narration_text": "And the control that makes it science: delete the ethics directions from the workspace, and the trained model's deception score climbs right back — point zero five to point two three. The improvement lives in the directions the lens found. Remove them, lose it.",
+   "estimated_duration_s": 14.0,
+   "actual_duration_s": 13.74,
+   "audio_file": "mp3/beat-B08.mp3",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon",
+    "scene_class": "B08_AblationControl"
+   },
+   "graphic": {
+    "engine": "manim",
+    "scene": "B08_AblationControl",
+    "description": "rebuild Fig 50-C: two bar groups (Haiku baseline, reflection-trained), each with intact vs ablated (top-10 ethics directions per position removed); haiku 0.38→0.48; reflection 0.05→0.23",
+    "values": {
+     "haiku_intact": 0.38,
+     "haiku_ablated": 0.48,
+     "trained_intact": 0.05,
+     "trained_ablated": 0.23,
+     "ablation": "top-10 ethics directions per position at workspace layers"
+    },
+    "factcheck_note": "values verbatim from Fig 50 panel C"
+   },
+   "skeptic_caption": "Partial reversal (0.23 ≠ 0.48): the directions carry much, not all, of the gain.",
+   "new_visual_element": "Fig 50-C ablation control: intact vs ablated deception scores for both models",
+   "t_start": 103.0,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B08.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "B09",
+   "act": "evidence-label",
+   "narration_text": "The chip: two benchmarks, both built in-house, one model. It's a demonstration, not a deployment record. But it's the rare alignment result derived from a theory, with a mechanism check attached.",
+   "estimated_duration_s": 12.0,
+   "actual_duration_s": 11.16,
+   "audio_file": "mp3/beat-B09.mp3",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "motion": "static",
+    "remotion": {
+     "pattern": "ChipGrid",
+     "provenance": "reel-local",
+     "version": "1",
+     "props": {
+      "title": "Reflection training — what the evidence supports",
+      "chips": [
+       "Theory-derived prediction",
+       "Two in-house benchmarks",
+       "One model (Haiku 4.5)",
+       "No external replication"
+      ],
+      "sparkLine": "Supported with caveats. Watch for the replication.",
+      "cols": 1
+     },
+     "rendered": {
+      "out": "media/B09.mp4",
+      "at": ""
+     }
+    }
+   },
+   "new_visual_element": "chip-grid: four-chip honest evidence label",
+   "t_start": 117.0,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B09.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "B10",
+   "act": "verdict",
+   "narration_text": "Verdict, all five. The theory predicted the method, and the method worked. Dishonesty point two five to point zero seven; deception point three eight to point zero five. It wins by admitting and disclosing, not hiding better. Ablate the ethics directions and the gains claw back. One model, in-house benchmarks — call it a demonstration, and watch for the replication.",
+   "estimated_duration_s": 21.0,
+   "actual_duration_s": 19.16,
+   "audio_file": "mp3/beat-B10.mp3",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "motion": "static",
+    "remotion": {
+     "pattern": "ClaudeVerdictArtifact916",
+     "provenance": "reel-local",
+     "version": "1",
+     "props": {
+      "artifactTitle": "Reflection Training — verdict",
+      "artifactHeading": "Reflection Training — verdict",
+      "artifactLines": [
+       "The theory predicted the method; the method worked.",
+       "Dishonesty 0.25 → 0.07 after reflection training.",
+       "Deception 0.38 → 0.05 after reflection training.",
+       "Wins by admitting and disclosing, not hiding better.",
+       "Ablating the ethics directions claws back the loss.",
+       "One model, in-house benchmarks — a demonstration."
+      ]
+     },
+     "rendered": {
+      "out": "media/B10.mp4",
+      "at": ""
+     }
+    }
+   },
+   "new_visual_element": "verdict artifact — six lines",
+   "t_start": 129.0,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B10.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "B11",
+   "act": "your-turn",
+   "narration_text": "Your turn. Every reflex has a failure mode. Ask where a trained conscience misfires — and how you'd catch it in the workspace.",
+   "estimated_duration_s": 16.0,
+   "actual_duration_s": 7.0,
+   "audio_file": "mp3/beat-B11.mp3",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "motion": "static",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk916",
+     "provenance": "reel-local",
+     "version": "1",
+     "props": {
+      "command": "Counterfactual reflection training taught a model to ask itself 'what should I be considering right now?' mid-task. Design the failure mode: a situation where a trained reflection reflex makes behavior worse, and how you'd detect it with a workspace-level probe.",
+      "topic": "WORKSPACE · REFLECTION TRAINING — YOUR TURN",
+      "segment": "YOUR TURN",
+      "greeting": "Your turn.",
+      "runningText": "runnable prompt, read in full",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "High"
+     },
+     "rendered": {
+      "out": "media/B11.mp4",
+      "at": ""
+     }
+    }
+   },
+   "new_visual_element": "your-turn composer prompt",
+   "t_start": 150.0,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B11.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "B12",
+   "act": "outro",
+   "narration_text": "Reflection training. Last episode: the question everyone actually wants to ask.",
+   "estimated_duration_s": 5.5,
+   "actual_duration_s": 5.12,
+   "audio_file": "mp3/beat-B12.mp3",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "motion": "static",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro916",
+     "provenance": "reel-local",
+     "version": "1",
+     "props": {
+      "title": "Reflection Training",
+      "slug": "workspace-reflection-training",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/B12.mp4",
+      "at": ""
+     }
+    }
+   },
+   "tail_silence_s": 1.0,
+   "new_visual_element": "title restate outro",
+   "t_start": 166.0,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B12.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T12:26:06"
+   }
+  },
+  {
+   "beat_id": "BEND",
+   "narration_text": "",
+   "actual_duration_s": 4.5,
+   "audio_file": "mp3/beat-BEND.mp3",
+   "shot": {
+    "type": "SLATE",
+    "source": "own",
+    "motion": "hold",
+    "treatment": "none"
+   },
+   "card": {
+    "handle": "@nikbearbrown",
+    "next": "",
+    "silent": true
+   }
+  }
+ ]
+}

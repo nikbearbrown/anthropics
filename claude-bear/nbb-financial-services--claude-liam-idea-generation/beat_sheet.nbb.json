@@ -1,0 +1,493 @@
+{
+ "metadata": {
+  "title": "Claude, Idea Generation.",
+  "subtitle": "Runs The Screen — It Never Brainstorms",
+  "slug": "financial-services--claude-liam-idea-generation",
+  "topic": "CLAUDE · SKILLS",
+  "purpose": "Answer one real question in the Teardown register: does the word 'generation' in idea-generation mean Claude brainstorms new stock picks? Take the routine apart and show the mechanism — a fixed three-step screen (quantitative filter first, thematic research second, pattern check third) — then name the design choice: guaranteed reproducibility at the expense of any coverage outside the screen you wrote.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/financial-services/youtube/claude-liam-idea-generation/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B03 -> B06 (the FCF-up + insider-buying screen surfacing 3 candidates: planted, then returned to)",
+  "one_flag": "N/A - no inference beat; every claim is generic skill mechanics or the source's own stated job line",
+  "build": {
+   "at": "2026-09-01T22:27:03",
+   "cut": "master",
+   "filled": 11,
+   "of": 11,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Read 'Claude has an idea-generation skill' and it sounds like Claude brainstorms new stock picks. It doesn't — it just screens for them. Let's open the file and see how it actually works.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Claude brainstorms new stock ideas with idea-generation.', hesitates on 'brainstorms', corrects to 'screens for', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude brainstorms\nnew stock ideas with\nidea-generation.\nWhat does it actually do?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "brainstorms",
+      "replacementWords": "screens for",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 12,
+      "charMs": 46,
+      "jitter": 26,
+      "seed": "hai-idea-generation"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('brainstorms' -> 'screens for') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T22:27:03"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes",
+   "narration_text": "Here's where the naming does the damage. 'Generation' is carrying a lot of freight — it sounds like Claude's brainstorming stock ideas, free-associating the way an analyst might in a pitch meeting. That's the natural read; it's also the wrong one.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SOUNDS LIKE BRAINSTORMING",
+    "media": "manim/B01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SOUNDS LIKE BRAINSTORMING",
+     "chips": [
+      "HAS AN IDEA-GEN SKILL",
+      "BRAINSTORMS FREELY?"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "that's the natural read",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T22:27:03"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "2 wrong guess, broken",
+   "narration_text": "But nothing in the model is free-associating. Run the routine twice on the same data and you get the same candidates back both times — not two different creative pitches. That's the tell: creative would drift; a checklist doesn't.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SAME CANDIDATES, BOTH RUNS",
+    "media": "manim/B02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SAME CANDIDATES, BOTH RUNS",
+     "chips": [
+      "RUN SAME SCREEN TWICE",
+      "DIFFERENT IDEAS EACH TIME?",
+      "SAME CANDIDATES, BOTH RUNS"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [
+      1
+     ],
+     "caption": "no creative variation",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T22:27:03"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PLANTED",
+   "narration_text": "Here's what the routine actually is: a screen, run in order. Say the criteria are rising free cash flow plus recent insider buying. idea-generation runs the quantitative screen, checks the thematic angle, looks for the pattern — and three candidates surface. That's it. One screen, one candidate set.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — A SCREEN, RUN",
+    "media": "manim/B03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — A SCREEN, RUN",
+     "chips": [
+      "FCF UP + INSIDER BUYING",
+      "PATTERN MATCH",
+      "3 CANDIDATES SURFACE"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "one screen, one candidate set",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T22:27:03"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "3 mechanism",
+   "narration_text": "Read the file top to bottom and walk the steps as written: quantitative screen first, then thematic research, then pattern recognition — surfacing both long and short candidates. No branching, no shortcuts, unless the SKILL.md itself says branch. The design choice worth naming: put the discovery routine in a document, not in the weights. Same routine every run because it's the same document every run.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SCREEN, RESEARCH, PATTERN",
+    "media": "manim/B04.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SCREEN, RESEARCH, PATTERN",
+     "chips": [
+      "QUANTITATIVE SCREEN",
+      "THEMATIC RESEARCH",
+      "PATTERN RECOGNITION"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "in a fixed order, every run",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB04Scene"
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T22:27:03"
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "3 mechanism",
+   "narration_text": "That makes it a screener, not a strategist. They optimized for reproducibility at the expense of coverage. The payoff: the same criteria surface the same candidates, run after run — no drift. The limit: it only finds what fits the screen you wrote. Anything outside that pattern is invisible.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SCREENER, NOT STRATEGIST",
+    "media": "manim/B05.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SCREENER, NOT STRATEGIST",
+     "chips": [
+      "SAME CRITERIA, SAME CANDIDATES",
+      "A BRAND-NEW KIND OF IDEA?"
+     ],
+     "arrows": false,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "the payoff, and the limit",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB05Scene"
+   },
+   "audio_file": "mp3/beat-B05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B05.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T22:27:03"
+   }
+  },
+  {
+   "beat_id": "B06",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "So back to that screen. Run it again tomorrow with the same criteria and the same three candidates surface — not a fresh set, not a new pitch. The mechanism is the file; the mechanism is not creativity between runs.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — STILL THREE",
+    "media": "manim/B06.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — STILL THREE",
+     "chips": [
+      "FCF UP + INSIDER BUYING",
+      "PATTERN MATCH",
+      "3 CANDIDATES SURFACE"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "still the same three, every run",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB06Scene"
+   },
+   "audio_file": "mp3/beat-B06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B06.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T22:27:03"
+   }
+  },
+  {
+   "beat_id": "B07",
+   "act": "5 both directions",
+   "narration_text": "Watch three candidates surface from the screen and you've proven they matched the criteria you wrote. You haven't proven those criteria are the ones that matter here. Watch a stock never surface and you've proven it didn't fit this particular screen. You haven't proven it's a bad trade. Matched-the-screen and worth-owning are two different claims.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NEITHER PROVES THE OTHER",
+    "media": "manim/B07.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NEITHER PROVES THE OTHER",
+     "pairs": [
+      [
+       "SURFACES FROM SCREEN",
+       "PROVES IT'S A GOOD TRADE?"
+      ],
+      [
+       "NEVER SURFACES",
+       "PROVES IT'S A BAD ONE?"
+      ]
+     ],
+     "strike": [
+      1,
+      3
+     ],
+     "caption": "neither one is proof",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB07Scene"
+   },
+   "audio_file": "mp3/beat-B07.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B07.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T22:27:03"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "idea-generation doesn't brainstorm — it runs the same quantitative screen, thematic check, and pattern rule every request, and the taste that says which candidate is actually worth owning isn't in the file.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "idea-generation doesn't brainstorm — it runs the same quantitative screen, thematic check, and pattern rule every request, and the taste that says which candidate is actually worth owning isn't in the file.",
+      "attribution": "",
+      "sparkLine": "Screens for it. Never brainstorms."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T22:27:03"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini. Pick one repeatable idea-generation routine you want to run yourself — undervalued small-caps, sector rotation, earnings-momentum longs, insider-buying names, whatever your beat is — and ask the model to write you a SKILL.md for it: three to five steps in order, plain English, each one specific enough that a stranger could execute it the same way every time. Name your quantitative screen. Name your thematic check. Name your pattern rule. Then have it read the file back and walk through exactly what it'll do, in order, before it does it. Go deeper: after the walk-through, ask which candidate the screen would surface that you'd never have picked on your own — and which one you'd have picked that the screen would miss. That gap is the seam between the screen and you.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42,
+   "llm_exercise": {
+    "prompt": "I want a SKILL.md for a repeatable idea-generation routine I can run myself — for example, [pick one: undervalued small-caps, sector rotation candidates, earnings-momentum longs, insider-buying shorts, dividend-growth names]. Write it as a folder-plus-single-file skill: three to five steps in order, in plain English. Step one is a quantitative screen (name the specific metrics and thresholds). Step two is a thematic research check (name what to read and what to look for). Step three is a pattern rule (name the pattern that has to be present, or absent, to keep a candidate). Then read the file back to me and walk through exactly what you'll do, in order, before you do it.",
+    "dig_deeper": "Go deeper: after the walk-through, ask which candidate the screen would surface that you'd never have picked on your own — and which one you'd have picked that the screen would miss. That gap is the seam between the screen and your judgment."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE · SKILLS",
+      "segment": "Claude, Idea Generation.",
+      "command": "Write me a SKILL.md for a repeatable idea-generation routine I want to run myself. Three to five steps in order, plain English: quantitative screen (metrics + thresholds), thematic research check, pattern rule. Then read the file back to me and walk through exactly what you'll do, before you do it.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T22:27:03"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Idea Generation. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Idea Generation. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T22:27:03"
+   }
+  }
+ ]
+}

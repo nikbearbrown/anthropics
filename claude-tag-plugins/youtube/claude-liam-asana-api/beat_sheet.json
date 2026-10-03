@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Asana API",
+    "title": "Claude, Asana Api.",
     "slug": "claude-liam-asana-api",
-    "topic": "ASANA API · CLAUDE TAG PLUGIN",
+    "topic": "ASANA-API · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -18,12 +18,59 @@
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-tag-plugins/asana/skills/asana-api/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-tag-plugins/asana/skills/asana-api/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Read and manage Asana tasks",
+        "and workspaces",
+        "Use this whenever the user wants to list or search tasks",
+        "create or update a task",
+        "complete a task"
+      ],
+      "constraints": [
+        "API, so there is nothing to set up. Do not try to create, mint, refresh, or validate tokens or keys",
+        "Credential variables exist only to keep requests well-formed; if one is unset, set it to any",
+        "opt_fields for fields. Compact records carry only gid, name, resource_type. Add a",
+        "Exactly one selector is required: --project GID, --tag GID, --section GID, or",
+        "completed-since WHEN — ISO 8601, or now to show only incomplete tasks (omit to include all)",
+        "assignee, due_on, permalink_url); extra fields appear only in --json output",
+        "With no opt_fields you get only the compact record. Read a task's comments with recipe",
+        "Fields nest under data. One of workspace, projects, or parent is required (a standalone task"
+      ],
+      "referenced_files": [
+        "https://app.asana.com/api/1.0",
+        "resource_type",
+        "opt_fields",
+        "{\"data\": ...}",
+        "{\"data\": {...}}",
+        ".data",
+        ".errors",
+        "assignee.name",
+        "memberships.section.name",
+        "scripts/asana_tasks.sh"
+      ],
+      "code_signals": [
+        "code block: bash"
+      ],
+      "sections": [
+        "Request setup",
+        "Response conventions",
+        "Core operations",
+        "1. List tasks (scripts/asana_tasks.sh)",
+        "2. Get one task",
+        "3. Create a task",
+        "4. Update or complete a task",
+        "5. Comment on a task / read its activity (stories)",
+        "6. Search tasks in a workspace (premium)",
+        "7. Projects and sections"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T18:04:36",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T14:44:24",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +79,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. Ask Claude to list your Asana tasks, complete a task, move one between sections, or comment on a project — the Asana API skill fires. It covers the Asana REST API at app.asana.com/api/1.0, with a bundled script for the most common workflows. Every resource in Asana has a gid — a string global ID — and every response wraps its payload in a top-level data key. Those two facts govern everything else. Let me walk you through the resource model, the ten core operations, and where this skill lands well and where it leaves gaps.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is asana-api. Read and manage Asana tasks, projects, sections, comments, and workspaces. Use this whenever the user wants to list or search tasks, create or update a task, complete a task, comment on a task, move tasks between projects or sections, look up a project or workspace, or ask \"what's on my Asana list\" — even if they don't say \"API\". Also use it for any app.asana.com URL or an Asana task/project gid. Always start from this skill when interacting with this service — its bundled scripts and recipes are the fastest path.. Its concrete surface area includes Read and manage Asana tasks; and workspaces; Use this whenever the user wants to list or search tasks. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
             "greeting": "Hola, Liam",
-            "topic": "ASANA API · CLAUDE TAG PLUGIN",
-            "segment": "PLUGIN DEV",
-            "command": "List all incomplete tasks assigned to me in the Launch project.",
+            "topic": "ASANA-API · ANTHROPIC SKILL",
+            "segment": "Claude, Asana Api.",
+            "command": "Run the asana-api skill.",
             "runningText": "reading asana-api SKILL.md…",
             "output": [
-              "Every resource identified by gid (string global ID)",
-              "Every response wrapped in top-level data key",
-              "Bundled asana_tasks.sh handles pagination and TSV/JSONL output"
+              "skill: asana-api",
+              "Read and manage Asana tasks, projects, sections, comments, and workspaces. Use…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +109,55 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 32.38,
+      "actual_duration_s": 42.6,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:04:36"
+        "at": "2026-09-05T14:44:24"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — resource hierarchy + three universal rules",
-      "narration_text": "The resource model nests predictably. A workspace holds projects and users. A project holds sections and tasks. A task carries stories — that is comments plus system activity — plus subtasks, tags, and attachments. Everything is referenced by gid. Three universal rules apply across every request. One: gid, not name — resolve names to gids first. Two: the data envelope — reads return the payload under data, writes send fields under data and receive the result under data; errors replace data with errors. Three: opt_fields — compact records carry only gid, name, and resource_type; request more fields explicitly with a comma-separated opt_fields list, dot notation for relations like assignee.name.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is asana-api. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at https://app.asana.com/api/1.0, resource_type, opt_fields, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "AsanaApiAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "gid is the key. data is the envelope. opt_fields is the escape hatch."
+            "skillName": "asana-api",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "12k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "references",
+                "size": null,
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "scripts",
+                "size": null,
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "3 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +166,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 38.57,
+      "actual_duration_s": 20.97,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:04:36"
+        "at": "2026-09-05T14:44:24"
       }
     },
     {
       "beat_id": "B02",
-      "act": "operations — ten core recipes",
-      "narration_text": "Ten core operations. One: list tasks — the bundled asana_tasks.sh script handles pagination and emits TSV or JSONL. Two: get one task — GET slash tasks slash gid with opt_fields. Three: create a task — POST to slash tasks with fields under data; one of workspace, projects, or parent is required. Four: update or complete — PUT the task with only the fields you're changing; completed true marks it done. Five: comment — POST a story to the task; filter stories for comment_added subtype to read comments. Six: search — premium-only workspace search, capped at one hundred unstable results. Seven: projects and sections — list with workspace filter, get one by gid. Eight: move tasks — addProject, removeProject, and sections slash addTask each take a dedicated POST. Nine: gid lookup — workspaces, users, projects; slash users slash me for the caller. Ten: subtasks, tags, attachments — subtasks nest under tasks slash gid slash subtasks.",
+      "act": "pipeline",
+      "narration_text": "asana-api is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Read and manage Asana tasks; and workspaces; Use this whenever the user wants to list or search tasks; create or update a task. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "AsanaApiOps",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Ten operations. One script. Pagination handled. gid required before every write."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +217,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 52.46,
+      "actual_duration_s": 16.13,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:04:36"
+        "at": "2026-09-05T14:44:24"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. Asana API gets five things right. The three universal rules — gid, data envelope, opt_fields — are stated once and let you read every recipe knowing the pattern. The bundled asana_tasks.sh script handles full pagination, named flags, TSV and JSONL output, and meaningful exit codes — it is the fastest path for the most common operation. Rate limits are documented completely: free versus paid tiers, per-minute caps, search separately, concurrency limits, and Retry-After handling. Error codes map to causes and actions — not just status numbers. And the resource hierarchy is concrete: workspace, project, section, task, story. Where it bites. The auth placeholder fiction: any value works for ASANA_TOKEN because the runtime injects real credentials — technically true but confusing for anyone debugging outside the runtime. Premium search is easy to miss: one hundred unstable results, no real pagination, premium-only — a major gotcha buried in the middle. The opt_fields list is never given — readers must go to references/api.md to know what fields exist on any resource. Pagination models differ silently: offset tokens for collections, created_at.before for search — mixing them breaks queries. And references/api.md is cited frequently for real operations — attachments, webhooks, custom fields — but is not inline, making the skill incomplete for those cases.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. API, so there is nothing to set up. Do not try to create, mint, refresh, or validate tokens or keys. That is the constraint in asana-api — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 34,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "AsanaApiTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Three rules land. Search premium cap and references/api.md dependency: document inline."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "API, so there is nothing to set up. Do not try to create, mint, refresh, or validate tokens or keys",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 77.21,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 13.99,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:04:36"
+        "at": "2026-09-05T14:44:24"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In asana-api, supporting material: https://app.asana.com/api/1.0, resource_type, opt_fields, {\"data\": ...}; implementation signals: code block: bash; sections: Request setup, Response conventions, Core operations, 1. List tasks (scripts/asana_tasks.sh). That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Read and manage Asana tasks; and workspaces; Use this whenever the user wants to list or search tasks; https://app.asana.com/api/1.0; resource_type; opt_fields; code block: bash",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 23.34,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T14:44:24"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. Asana API: workspace/project/section/task/story hierarchy. Three rules: gid, data envelope, opt_fields. Bundled asana_tasks.sh handles pagination. Ten operations: list, get, create, update/complete, comment, search, projects/sections, move, gid-lookup, subtasks/tags/attachments. Pagination: offset token for collections, created_at.before for search. Rate limits: 150 per minute free, 1500 paid, search 60. Gaps: auth placeholder confusing outside runtime, search premium-only cap easy to miss, opt_fields not enumerated, references/api.md dependency for attachments and webhooks.",
+      "narration_text": "asana-api makes Claude execute one task reliably. The SKILL.md is the spec — Read and manage Asana tasks, projects, sections, comments, and workspaces. Use…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "Asana API",
+            "artifactHeading": "Claude, Asana Api.",
             "artifactLines": [
-              "Resource hierarchy: workspace · project · section · task · story",
-              "Three rules: gid (not name) · data envelope · opt_fields for expansion",
-              "Bundled asana_tasks.sh: pagination · TSV/JSONL · named flags · exit codes",
-              "Rate limits: 150/min free · 1500/min paid · search 60/min · Retry-After",
-              "Pagination: offset token (collections) · created_at.before (search)",
-              "Gaps: auth placeholder · search cap · opt_fields unknown · api.md dependency"
+              "Skill: asana-api — Claude reads SKILL.md before acting",
+              "Read and manage Asana tasks, projects, sections, comments, and workspaces. Use this…",
+              "Capabilities: Read and manage Asana tasks; and workspaces; Use this whenever the user wants to list or search tasks",
+              "Constraint: API, so there is nothing to set up. Do not try to create, mint, refresh, or validate…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +318,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 40.45,
+      "actual_duration_s": 14.83,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:04:36"
+        "at": "2026-09-05T14:44:24"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Open a Claude Code session. Paste this: List all incomplete tasks assigned to me across all my Asana workspaces, and tell me which ones are due this week. Watch three things. First: does it call slash users slash me to resolve the caller before listing tasks? Second: does it project dot data from every response — not assume a bare array? Third: does it use asana_tasks.sh for the list, or roll its own curl loop without pagination? The script exists because pagination is the hard part. If Claude skips it and does a single request, it is probably missing tasks. Three gates: gid resolution before listing, data envelope always, bundled script for pagination.",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to read and manage asana tasks, projects, sections, comments, and workspaces. use. Read the asana-api skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "ASANA API · HANDOFF",
-            "segment": "PLUGIN DEV",
-            "command": "List all incomplete tasks assigned to me across all my Asana workspaces, and tell me which ones are due this week.",
-            "runningText": "Watch: /users/me first? .data projected? asana_tasks.sh for pagination?",
-            "output": [
-              "Expected: /users/me call to resolve caller before task list",
-              "Expected: .data projected from every response, not bare array assumed",
-              "Red flag: single curl to /tasks with no pagination · .data skipped · script ignored"
-            ],
+            "greeting": "Your turn.",
+            "topic": "ASANA-API · ANTHROPIC SKILL",
+            "segment": "Claude, Asana Api.",
+            "command": "I want to read and manage asana tasks, projects, sections, comments, and. Read the asana-api skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +355,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 35.35,
+      "actual_duration_s": 15.17,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:04:36"
+        "at": "2026-09-05T14:44:24"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "Asana API. Liam, in for Bear.",
+      "narration_text": "Claude, Asana Api. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "Asana API",
+            "title": "Claude, Asana Api.",
             "handle": "@NikBearBrown",
-            "subline": "asana-api · Plugin Dev"
+            "subline": "asana-api · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +386,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 3.09,
+      "actual_duration_s": 3.46,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:04:36"
+        "at": "2026-09-05T14:44:24"
       }
     }
   ]

@@ -190,51 +190,38 @@ class Scene_B05_VoxSpecSaves(Scene):
 
 
 class Scene_B06_VoxSpecSaves(Scene):
-    """Beat B06 — SHOW: bar/proportion chart. Narration: The five-element specification is the format that reclaims all four decisions. O"""
+    """Beat B06 — SHOW: five-row spec table. Narration: The five-element specification is the format that reclaims all four decisions."""
     def construct(self):
         self.camera.background_color = "#F2F0E9"
         font = "EB Garamond"
 
-        if "":
-            act = Text("", font_size=24, color="#3D3929", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
+        title = Text("The five-element specification", font_size=32, color="#3D3929", font=font)
+        title.to_edge(UP, buff=0.9)
+        self.play(FadeIn(title), run_time=0.4)
 
-        # Two-bar comparison
-        ax = Axes(x_range=[0, 3, 1], y_range=[0, 100, 25],
-                  x_length=7, y_length=4,
-                  axis_config={"color": "#3D3929", "stroke_width": 2},
-                  tips=False)
-        ax.shift(DOWN * 0.5)
-        self.play(Create(ax), run_time=0.4)
+        rows = [
+            "Operation",
+            "Invariants",
+            "Context",
+            "Output format",
+            "Negative constraint",
+        ]
 
-        # Use Rectangle for bars (get_v_line_to_point lacks color kwarg in 0.20.x)
-        origin = ax.c2p(0, 0)
-        pt1 = ax.c2p(1, 65)
-        pt2 = ax.c2p(2, 35)
-        bar_w = 0.5
+        y0 = 1.6
+        row_h = 0.85
+        for i, label in enumerate(rows):
+            y = y0 - i * row_h
+            box = Rectangle(width=7.2, height=0.72,
+                            color="#1F6F5C", stroke_width=2,
+                            fill_color="#1F6F5C", fill_opacity=0.08)
+            box.move_to([0, y, 0])
+            check = Text("✓", font_size=28, color="#1F6F5C", font=font)
+            check.move_to([-3.2, y, 0])
+            txt = Text(label, font_size=26, color="#3D3929", font=font)
+            txt.move_to([0.2, y, 0])
+            self.play(FadeIn(box), FadeIn(check), Write(txt), run_time=0.5)
 
-        bar1 = Rectangle(width=bar_w, height=abs(pt1[1]-origin[1]),
-                         color="#3D3929", fill_color="#3D3929", fill_opacity=0.85, stroke_width=0)
-        bar1.move_to([pt1[0], (pt1[1]+origin[1])/2, 0])
-        bar2 = Rectangle(width=bar_w, height=abs(pt2[1]-origin[1]),
-                         color="#D97757", fill_color="#D97757", fill_opacity=0.85, stroke_width=0)
-        bar2.move_to([pt2[0], (pt2[1]+origin[1])/2, 0])
-
-        lbl1 = Text("The five-element specification is the format that reclaims a"[:30], font_size=20, color="#3D3929", font=font)
-        lbl1.next_to(ax.c2p(1, 0), DOWN, buff=0.2)
-        lbl2 = Text("Operation names the specific file"[:30] if "Operation names the specific file" else "Comparison", font_size=20, color="#3D3929", font=font)
-        lbl2.next_to(ax.c2p(2, 0), DOWN, buff=0.2)
-
-        self.play(GrowFromEdge(bar1, DOWN), Write(lbl1), run_time=0.6)
-        self.play(GrowFromEdge(bar2, DOWN), Write(lbl2), run_time=0.6)
-
-        if "Invariants name what must not change":
-            note = Text("Invariants name what must not change"[:60], font_size=22, color="#3D3929", font=font)
-            note.to_edge(DOWN, buff=0.4)
-            self.play(Write(note), run_time=0.5)
-
-        self.wait(max(0.01, 12.00))
+        self.wait(max(0.01, 18.00))
 
 
 class Scene_B07_VoxSpecSaves(Scene):
@@ -319,99 +306,91 @@ class Scene_B08_VoxSpecSaves(Scene):
 
 
 class Scene_B09_VoxSpecSaves(Scene):
-    """Beat B09 — SHOW: bar/proportion chart. Narration: Here is where this bites in the classroom. Teacher wants to add a Resources page"""
+    """Beat B09 — SHOW: two-bar time chart with short labels. Narration: request vs negative constraint on class-website Resources page."""
     def construct(self):
         self.camera.background_color = "#F2F0E9"
         font = "EB Garamond"
 
-        if "":
-            act = Text("", font_size=24, color="#3D3929", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
+        title = Text("The classroom case — minutes lost", font_size=28, color="#3D3929", font=font)
+        title.to_edge(UP, buff=0.9)
+        self.play(FadeIn(title), run_time=0.4)
 
-        # Two-bar comparison
-        ax = Axes(x_range=[0, 3, 1], y_range=[0, 100, 25],
+        # Two-bar comparison: minutes lost, request (crimson tall) vs constraint (teal short)
+        ax = Axes(x_range=[0, 3, 1], y_range=[0, 45, 15],
                   x_length=7, y_length=4,
                   axis_config={"color": "#3D3929", "stroke_width": 2},
                   tips=False)
         ax.shift(DOWN * 0.5)
         self.play(Create(ax), run_time=0.4)
 
-        # Use Rectangle for bars (get_v_line_to_point lacks color kwarg in 0.20.x)
         origin = ax.c2p(0, 0)
-        pt1 = ax.c2p(1, 65)
-        pt2 = ax.c2p(2, 35)
+        pt1 = ax.c2p(1, 38)
+        pt2 = ax.c2p(2, 2)
         bar_w = 0.5
 
         bar1 = Rectangle(width=bar_w, height=abs(pt1[1]-origin[1]),
-                         color="#3D3929", fill_color="#3D3929", fill_opacity=0.85, stroke_width=0)
+                         color="#BF3339", fill_color="#BF3339", fill_opacity=0.85, stroke_width=0)
         bar1.move_to([pt1[0], (pt1[1]+origin[1])/2, 0])
         bar2 = Rectangle(width=bar_w, height=abs(pt2[1]-origin[1]),
-                         color="#D97757", fill_color="#D97757", fill_opacity=0.85, stroke_width=0)
+                         color="#1F6F5C", fill_color="#1F6F5C", fill_opacity=0.85, stroke_width=0)
         bar2.move_to([pt2[0], (pt2[1]+origin[1])/2, 0])
 
-        lbl1 = Text("Here is where this bites in the classroom"[:30], font_size=20, color="#3D3929", font=font)
-        lbl1.next_to(ax.c2p(1, 0), DOWN, buff=0.2)
-        lbl2 = Text("Teacher wants to add a Resources page to a class website tha"[:30] if "Teacher wants to add a Resources page to a class website tha" else "Comparison", font_size=20, color="#3D3929", font=font)
-        lbl2.next_to(ax.c2p(2, 0), DOWN, buff=0.2)
+        lbl1 = Text("Request", font_size=24, color="#3D3929", font=font)
+        lbl1.next_to(ax.c2p(1, 0), DOWN, buff=0.25)
+        val1 = Text("38 min", font_size=22, color="#BF3339", font=font)
+        val1.next_to(bar1, UP, buff=0.15)
+        lbl2 = Text("Constraint", font_size=24, color="#3D3929", font=font)
+        lbl2.next_to(ax.c2p(2, 0), DOWN, buff=0.25)
+        val2 = Text("~0 min", font_size=22, color="#1F6F5C", font=font)
+        val2.next_to(bar2, UP, buff=0.15)
 
-        self.play(GrowFromEdge(bar1, DOWN), Write(lbl1), run_time=0.6)
-        self.play(GrowFromEdge(bar2, DOWN), Write(lbl2), run_time=0.6)
+        self.play(GrowFromEdge(bar1, DOWN), Write(lbl1), FadeIn(val1), run_time=0.7)
+        self.play(GrowFromEdge(bar2, DOWN), Write(lbl2), FadeIn(val2), run_time=0.7)
 
-        if "Request: Add a resources page":
-            note = Text("Request: Add a resources page"[:60], font_size=22, color="#3D3929", font=font)
-            note.to_edge(DOWN, buff=0.4)
-            self.play(Write(note), run_time=0.5)
+        note = Text("negative constraint: no CDN, no JS", font_size=22, color="#3D3929", font=font)
+        note.to_edge(DOWN, buff=0.5)
+        self.play(Write(note), run_time=0.5)
 
-        self.wait(max(0.01, 10.00))
+        self.wait(max(0.01, 15.00))
 
 
 class Scene_B10_VoxSpecSaves(Scene):
-    """Beat B10 — SHOW: bar/proportion chart. Narration: The practical move: before any Claude Code task, write the five elements. Operat"""
+    """Beat B10 — SHOW: practical five-cell card with time-to-fluency note. Narration: The practical move — write the five elements before any Claude Code task."""
     def construct(self):
         self.camera.background_color = "#F2F0E9"
         font = "EB Garamond"
 
-        if "":
-            act = Text("", font_size=24, color="#3D3929", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
+        title = Text("The five-element card — practical", font_size=30, color="#3D3929", font=font)
+        title.to_edge(UP, buff=0.7)
+        self.play(FadeIn(title), run_time=0.4)
 
-        # Two-bar comparison
-        ax = Axes(x_range=[0, 3, 1], y_range=[0, 100, 25],
-                  x_length=7, y_length=4,
-                  axis_config={"color": "#3D3929", "stroke_width": 2},
-                  tips=False)
-        ax.shift(DOWN * 0.5)
-        self.play(Create(ax), run_time=0.4)
+        rows = [
+            ("Operation", "the specific file"),
+            ("Invariants", "what must not change"),
+            ("Context", "the CLAUDE.md rules"),
+            ("Output format", "what done looks like"),
+            ("Negative constraint", "what Claude must not do"),
+        ]
 
-        # Use Rectangle for bars (get_v_line_to_point lacks color kwarg in 0.20.x)
-        origin = ax.c2p(0, 0)
-        pt1 = ax.c2p(1, 65)
-        pt2 = ax.c2p(2, 35)
-        bar_w = 0.5
+        y0 = 1.6
+        row_h = 0.75
+        for i, (label, sub) in enumerate(rows):
+            y = y0 - i * row_h
+            box = Rectangle(width=8.2, height=0.62,
+                            color="#1F6F5C", stroke_width=2,
+                            fill_color="#1F6F5C", fill_opacity=0.08)
+            box.move_to([0, y, 0])
+            txt = Text(label, font_size=22, color="#3D3929", font=font)
+            txt.move_to([-2.5, y, 0])
+            sub_t = Text(sub, font_size=18, color="#3D3929", font=font)
+            sub_t.move_to([1.4, y, 0])
+            self.play(FadeIn(box), Write(txt), FadeIn(sub_t), run_time=0.4)
 
-        bar1 = Rectangle(width=bar_w, height=abs(pt1[1]-origin[1]),
-                         color="#3D3929", fill_color="#3D3929", fill_opacity=0.85, stroke_width=0)
-        bar1.move_to([pt1[0], (pt1[1]+origin[1])/2, 0])
-        bar2 = Rectangle(width=bar_w, height=abs(pt2[1]-origin[1]),
-                         color="#D97757", fill_color="#D97757", fill_opacity=0.85, stroke_width=0)
-        bar2.move_to([pt2[0], (pt2[1]+origin[1])/2, 0])
+        note = Text("first time: 3-5 min    ·    tenth time: 90 sec", font_size=22, color="#D97757", font=font)
+        note.to_edge(DOWN, buff=0.5)
+        self.play(Write(note), run_time=0.5)
 
-        lbl1 = Text("The practical move: before any Claude Code task, write the f"[:30], font_size=20, color="#3D3929", font=font)
-        lbl1.next_to(ax.c2p(1, 0), DOWN, buff=0.2)
-        lbl2 = Text("Operation: the specific file"[:30] if "Operation: the specific file" else "Comparison", font_size=20, color="#3D3929", font=font)
-        lbl2.next_to(ax.c2p(2, 0), DOWN, buff=0.2)
-
-        self.play(GrowFromEdge(bar1, DOWN), Write(lbl1), run_time=0.6)
-        self.play(GrowFromEdge(bar2, DOWN), Write(lbl2), run_time=0.6)
-
-        if "Invariants: what must not change":
-            note = Text("Invariants: what must not change"[:60], font_size=22, color="#3D3929", font=font)
-            note.to_edge(DOWN, buff=0.4)
-            self.play(Write(note), run_time=0.5)
-
-        self.wait(max(0.01, 10.00))
+        self.wait(max(0.01, 14.00))
 
 
 class Scene_B11_VoxSpecSaves(Scene):

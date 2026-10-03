@@ -16,13 +16,54 @@ Color law: TEAL = diagnosable / fix confirmed / delivery succeeded;
 Exclusions honored: NO companion diagnostic, NO accelerated approval,
 NO three-arm design, NO specific assay protocols.
 """
-import sys, pathlib
-# resolve toolkit manim library from this file's location (works wherever the reel lives)
-_TOOLKIT = pathlib.Path(__file__).resolve().parents[3] / "vox/aspects/explainer/vox-explainer/manim"
-sys.path.insert(0, str(_TOOLKIT))
+import sys, pathlib as _pl
+# resolve toolkit manim library by walking up until we find books/vox/aspects/… (works wherever the reel lives)
+# When Gate A copies this file into a tmpdir, walk-up will miss — PYTHONPATH set by vox_run.sh covers that case.
+for _p in _pl.Path(__file__).resolve().parents:
+    _cand = _p / "vox/aspects/explainer/vox-explainer/manim/vox_graphics.py"
+    if _cand.is_file():
+        _pth = str(_cand.parent)
+        if _pth not in sys.path:
+            sys.path.insert(0, _pth)
+        break
 from vox_graphics import *
-from vox_graphics import _quote_scene
+from vox_graphics import _quote_scene as _toolkit_quote_scene
+from vox_graphics import _wrap
 import json, os
+
+
+def _quote_scene(scene, quote, attribution, credit, hi_words, total, qsize=44):
+    """Local override — the toolkit version creates the gold highlighter Rectangle
+    with `set_stroke(width=0)` but no `opacity=0`, so Gate B (manim_layout_audit)
+    trips on it as a curve/line under the paragraph label. Same visual, stroke fully
+    hidden."""
+    lines = _wrap(quote, 46)
+    q = Paragraph(*lines, font=SERIF, color=INK, font_size=qsize,
+                  alignment="center", line_spacing=0.9)
+    f = max(q.width / 12.4, q.height / 4.6, 1.0)
+    if f > 1.0:
+        q.scale(1.0 / f)
+    q.move_to(UP * 0.6)
+    att = Text(attribution, font=SERIF, color=INK, font_size=28)
+    att.next_to(q, DOWN, buff=0.7)
+    scene.play(FadeIn(q), run_time=1.0)
+    scene.play(FadeIn(att, shift=UP * 0.1), run_time=0.6)
+    if hi_words:
+        key = hi_words.split()[0].lower().strip(".,…'\"")
+        for ln_text, ln in zip(lines, q):
+            if key in ln_text.lower():
+                bar = Rectangle(width=0.1, height=ln.height + 0.18)
+                bar.set_fill(GOLD, 0.55).set_stroke(width=0, opacity=0)
+                bar.align_to(ln, LEFT).align_to(ln, DOWN).shift(DOWN * 0.04)
+                scene.add(bar); ln.set_z_index(1)
+                scene.play(bar.animate.stretch_to_fit_width(ln.width + 0.2)
+                           .align_to(ln, LEFT), run_time=0.9)
+                break
+    if credit:
+        cr = Text(credit, font=SERIF, color=INK, font_size=20)
+        cr.to_corner(DL, buff=0.5)
+        scene.play(FadeIn(cr), run_time=0.4)
+    scene.wait(max(0.5, total - 3.9))
 
 _bs = os.path.join(os.path.dirname(__file__), "beat_sheet.json")
 try:
@@ -128,7 +169,7 @@ class B05_Quote(Scene):
     def construct(self):
         _quote_scene(self,
                      "The result cannot be attributed to delivery failure,\npayload failure, or biology failure.",
-                     "— Cancer Nanomedicine, Chapter 12",
+                     "— Cancer Nanomedicine",
                      None,
                      "attributed",
                      DUR["B05"])
@@ -382,21 +423,23 @@ class B12_TwoPrograms(Scene):
         bar_bg = Rectangle(width=2.4, height=0.55)
         bar_bg.set_fill(WHITE, 0.4).set_stroke("#C9C2B4", 1)
         bar_bg.move_to(RIGHT * 3.5 + UP * 0.65)
-        liver_bar = Rectangle(width=2.4 * 0.78, height=0.41)
+        liver_bar = Rectangle(width=2.4 * 0.78, height=0.18)
         liver_bar.set_fill(CRIMSON, 1).set_stroke(width=0, opacity=0)
-        liver_bar.align_to(bar_bg, LEFT).shift(RIGHT * 0.01)
-        tumor_bar = Rectangle(width=2.4 * 0.04, height=0.41)
+        liver_bar.move_to(bar_bg.get_center() + UP * 0.12)
+        liver_bar.align_to(bar_bg, LEFT).shift(RIGHT * 0.02)
+        tumor_bar = Rectangle(width=2.4 * 0.10, height=0.18)
         tumor_bar.set_fill(TEAL, 1).set_stroke(width=0, opacity=0)
-        tumor_bar.align_to(bar_bg, LEFT).shift(RIGHT * 0.01)
+        tumor_bar.move_to(bar_bg.get_center() + DOWN * 0.12)
+        tumor_bar.align_to(bar_bg, LEFT).shift(RIGHT * 0.02)
         # Bar labels as serif below bar (W6-safe: INK-based, no adrift white text)
-        bar_note = SerifLabel("LIVER >75%  /  TUMOR <3%", INK, size=16)
-        bar_note.next_to(bar_bg, DOWN, buff=0.1)
+        bar_note = SerifLabel("LIVER >75%  /  TUMOR <3%", INK, size=14)
+        bar_note.next_to(bar_bg, DOWN, buff=0.12)
         b_diag = _box("DELIVERY FAILURE DIAGNOSED", CRIMSON, w=3.0, h=0.58, font_size=16)
-        b_diag.move_to(RIGHT * 3.5 + DOWN * 0.3)
+        b_diag.move_to(RIGHT * 3.5 + DOWN * 0.75)
         b_fix = _box("REDESIGNED PEG COATING", TEAL, w=3.0, h=0.58, font_size=16)
-        b_fix.move_to(RIGHT * 3.5 + DOWN * 1.05)
+        b_fix.move_to(RIGHT * 3.5 + DOWN * 1.5)
         b_result = _box("21% RESPONSE", TEAL, w=3.0, h=0.60, font_size=19)
-        b_result.move_to(RIGHT * 3.5 + DOWN * 1.85)
+        b_result.move_to(RIGHT * 3.5 + DOWN * 2.3)
         # Build sequence
         self.play(FadeIn(illus), run_time=0.4)
         self.play(FadeIn(prog_a), FadeIn(prog_b), Create(div), run_time=0.7)

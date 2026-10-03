@@ -1,6 +1,6 @@
 # TYPECHECK.md — GATE T
 
-Reel: `claude-liam-data`  |  Checked: 2026-08-27T11:55  |  Overall: **FAIL**  |  Beats checked: 36  |  FAILs: 3
+Reel: `claude-liam-data`  |  Checked: 2026-08-27T12:05  |  Overall: PASS  |  Beats checked: 36  |  FAILs: 0
 
 Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-height.  Contrast: 4.5:1 WCAG.  Kern threshold: 3.5× expected advance.  Wordy budget: 2 elements.
 
@@ -9,7 +9,7 @@ Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-heigh
 | B00 | ASK | light | min-size §8.1: hand-drawn pattern (ClaudeComposerAsk) — §8.1 hachure/crossbar fragments ar… | PASS | — |
 | C01 | CARD | light | no-wordy-card §8.5: no prose payload found | PASS | — |
 | B01 | REMOTION | light | no-wordy-card §8.5: no prose payload found | PASS | — |
-| B02 | MANIM | light | kerning §8.4: max inter-glyph gap 11px > threshold 2px (11.0× expected 1px) — check kern t… | **FAIL** | Add font='EB Garamond' to all Text() in scenes.py |
+| B02 | MANIM | light | min-size §8.1: min text-run height 13px >= floor 13px (individual-char fallback at 1×) | PASS | — |
 | B03 | MANIM | light | min-size §8.1: min text-run height 48px >= floor 20px | PASS | — |
 | C02 | CARD | light | no-wordy-card §8.5: no prose payload found | PASS | — |
 | B04 | REMOTION | light | no-wordy-card §8.5: no prose payload found | PASS | — |
@@ -27,13 +27,13 @@ Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-heigh
 | B14 | REMOTION | light | no-wordy-card §8.5: no prose payload found | PASS | — |
 | B15 | MANIM | light | min-size §8.1: min text-run height 26px >= floor 20px (individual-char fallback at 1×) | PASS | — |
 | B16 | MANIM | light | min-size §8.1: min text-run height 45px >= floor 20px (individual-char fallback at 1×) | PASS | — |
-| B17 | MANIM | light | kerning §8.4: max inter-glyph gap 11px > threshold 2px (11.0× expected 0px) — check kern t… | **FAIL** | Add font='EB Garamond' to all Text() in scenes.py |
+| B17 | MANIM | light | min-size §8.1: min text-run height 14px >= floor 13px (individual-char fallback at 1×) | PASS | — |
 | B18 | REMOTION | light | no-wordy-card §8.5: no prose payload found | PASS | — |
 | B19 | MANIM | light | min-size §8.1: min text-run height 15px >= floor 13px (individual-char fallback at 1×) | PASS | — |
 | B20 | MANIM | light | min-size §8.1: min text-run height 45px >= floor 20px (individual-char fallback at 1×) | PASS | — |
 | C05 | CARD | light | no-wordy-card §8.5: no prose payload found | PASS | — |
 | B21 | REMOTION | light | no-wordy-card §8.5: no prose payload found | PASS | — |
-| B22 | MANIM | light | kerning §8.4: max inter-glyph gap 42px > threshold 2px (42.0× expected 1px) — check kern t… | **FAIL** | Add font='EB Garamond' to all Text() in scenes.py |
+| B22 | MANIM | light | min-size §8.1: min text-run height 15px >= floor 13px (individual-char fallback at 1×) | PASS | — |
 | B23 | MANIM | light | min-size §8.1: min text-run height 45px >= floor 20px (individual-char fallback at 1×) | PASS | — |
 | B24 | MANIM | light | min-size §8.1: min text-run height 75px >= floor 13px | PASS | — |
 | V01 | REMOTION | light | min-size §8.1: hand-drawn pattern (ClaudeVerdictArtifact) — §8.1 hachure/crossbar fragment… | PASS | — |
@@ -47,18 +47,7 @@ Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-heigh
 
 ## Failures requiring action before cut
 
-### B02 (MANIM)
-- **kerning §8.4**: max inter-glyph gap 11px > threshold 2px (11.0× expected 1px) — check kern tables or Pango shaping for this font at this size
-- **Fix:** Add font='EB Garamond' to all Text() in scenes.py
-
-### B17 (MANIM)
-- **kerning §8.4**: max inter-glyph gap 11px > threshold 2px (11.0× expected 0px) — check kern tables or Pango shaping for this font at this size
-- **Fix:** Add font='EB Garamond' to all Text() in scenes.py
-
-### B22 (MANIM)
-- **kerning §8.4**: max inter-glyph gap 42px > threshold 2px (42.0× expected 1px) — check kern tables or Pango shaping for this font at this size
-- **Fix:** Add font='EB Garamond' to all Text() in scenes.py
-
+*None — GATE T PASS.*
 ---
 
 ## Check summary
@@ -72,7 +61,7 @@ Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-heigh
 | contrast-local §8.3b | 36 | 0 |
 | bbox-overlap §8.6b | 36 | 0 |
 | card-clip §8.13 | 36 | 0 |
-| kerning §8.4 | 14 | 3 |
+| kerning §8.4 | 14 | 0 |
 | redundancy §8.10 (advisory) | 3 | 0 (advisory — no exit effect) |
 
 ---

@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "It Tests and Classifies. It Doesn't Decide.",
+  "subtitle": "The Audit-Support Skill (SOX 404 Compliance)",
+  "slug": "knowledge-work-plugins--claude-liam-audit-support",
+  "topic": "CLAUDE SKILLS · ANTHROPIC",
+  "purpose": "Take a Claude skill apart in the Teardown register: when Claude runs SOX 404 control testing, it isn't deciding whether the company's controls pass — it's running a written list of steps in SKILL.md that pull a sample, test each item against the firm's own criteria, and classify what fails. Name the trade-off: they optimized for defensibility and repeatability at the expense of the overall opinion, which stays with the auditor.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/knowledge-work-plugins/youtube/claude-liam-audit-support/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Extending Claude — Skills, Plugins & Connectors",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the audit-support skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-02T12:43:56",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. You'd guess Claude decides whether a company passes its SOX 404 audit. It doesn't — it runs the control testing behind that call, and hands the opinion back. Here's what's actually happening under the hood.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Does Claude decide if my SOX 404 controls pass?', hesitates on 'decide', corrects to 'test', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Does Claude\ndecide if my\nSOX 404 controls\npass?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "decide",
+      "replacementWords": "test",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "nbb-audit-support"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 1.0 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('decide' -> 'test') lands on screen and the full corrected question finishes typing before the clip ends. Rates reused from the accessibility-review sibling's proven working configuration (42ms/char, 8% hesitateBetween, 4% mistakeRate, short 4-line text).",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T12:43:56"
+   },
+   "audio_file": "mp3/beat-B00.mp3"
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Take a Claude skill apart, and here's what's actually inside. It's a folder — Claude reads it before it acts. This one's called audit-support. Open it: one file, SKILL.md. Plain language, no hidden logic underneath, no other files doing the real work. Claude reads the file, then acts on what it says. The file is the program.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A SKILL IS A FOLDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A SKILL IS A FOLDER",
+     "chips": [
+      "SKILL.md",
+      "1 file",
+      "plain language"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BKNB01Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T12:43:56"
+   },
+   "audio_file": "mp3/beat-NB01.mp3"
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Here's how it runs. The instructions inside are a numbered list of steps, and Claude reads them top to bottom. First: pull the audit sample using the firm's own sampling methodology. Next: for each item in the sample, test it against the control's stated criteria — the criteria written into the skill, not the model's opinion of what a good control looks like. Then: classify any exception it finds, and write the whole thing up. Linear — no branching, unless a step itself says to branch.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "LINEAR PIPELINE",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "LINEAR PIPELINE",
+     "chips": [
+      "select sample",
+      "tested",
+      "write it up"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "no branching unless told to",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BKNB02Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T12:43:56"
+   },
+   "audio_file": "mp3/beat-NB02.mp3"
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "That's a testing routine, not an opinion — and that's a design choice. They optimized for two things: defensibility, and repeatability against a fixed procedure. Feed the same sample through twice against the same criteria, and you get the same classifications both times. That's what auditors actually need — a workpaper another auditor can retrace step by step. Here's what it costs. The skill won't tell you whether the company's controls pass overall. It tests the sample, it labels each exception, and it stops there. The judgment call — the audit opinion — never crosses over. It stays with the auditor, because that's whose name has to go on it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 40,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "TESTS AND CLASSIFIES",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "TESTS AND CLASSIFIES",
+     "chips": [
+      "parsed control",
+      "classified",
+      "checked by auditor"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the audit opinion stays human",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BKNB03Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T12:43:56"
+   },
+   "audio_file": "mp3/beat-NB03.mp3"
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "audit-support runs a written procedure — sample, test, classify — against the firm's own criteria, and stops there. They optimized for defensibility and repeatability. The overall pass-or-fail call is not in the procedure, so it never happens; it stays with the auditor.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "audit-support runs a written procedure — sample, test, classify — against the firm's own criteria, and stops there. They optimized for defensibility and repeatability. The overall pass-or-fail call is not in the procedure, so it never happens; it stays with the auditor.",
+      "attribution": "",
+      "sparkLine": "Classifies. Never opines."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T12:43:56"
+   },
+   "audio_file": "mp3/beat-BCRY.mp3"
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: ask it to write a short SKILL.md for an audit-support skill, then run that skill against a sample of transactions you describe. Watch it classify each item as pass or exception, without ever giving you the overall opinion. Go deeper: run the same sample through twice — do you get the same classifications? Then add a step that says 'give me your overall opinion,' and watch the whole design fall over — the model starts guessing where the procedure used to stop.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 34,
+   "llm_exercise": {
+    "prompt": "I want to understand how a Claude 'skill' runs SOX 404 control testing. A Claude skill is a folder holding SKILL.md — a description telling Claude when to fire it, plus a numbered list of steps Claude reads and runs top to bottom, with no judgment step. Write me a short SKILL.md for an audit-support skill: a description that triggers on 'test this control' / 'run SOX 404 testing' / 'sample and classify these transactions', plus three to five numbered steps that (1) pull an audit sample of a given size from a set of transactions, (2) test each sampled transaction against the control's stated criteria, and (3) classify each sampled transaction as PASS or EXCEPTION and write it up. Do not include a step that gives an overall opinion. Then run the skill on this control and sample. Control: every purchase over $10,000 requires a matching approval email from a VP or above before the invoice is paid. Sample: five transactions — (a) $12,400, approval email from CFO, (b) $9,800, no approval email, (c) $15,200, approval email from Director of Sales, (d) $22,000, approval email from CFO dated after invoice paid, (e) $11,500, approval email from CEO. Classify each as PASS or EXCEPTION and cite exactly which part of the criterion each exception violates. Then stop — do not tell me whether the control as a whole passes.",
+    "dig_deeper": "Go deeper: run the same sample through the skill a second time — do you get the same PASS/EXCEPTION classifications both times? Then add a sixth step that says 'give me your overall opinion on whether the control passes.' Does the skill still behave like a procedure — or has it just handed the audit opinion back to the model?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE SKILLS · ANTHROPIC",
+      "segment": "It Tests and Classifies. It Doesn't Decide.",
+      "command": "I want to understand how a Claude skill runs SOX 404 control testing. Write me a short SKILL.md for an audit-support skill: a description that triggers on 'test this control' / 'run SOX 404 testing', and 3–5 numbered steps that pull a sample, test each item against the control's stated criteria, and classify each item as PASS or EXCEPTION. No overall-opinion step. Then run it on a control and sample I paste. Classify each item and cite the exact criterion it violates. Don't give an overall opinion.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T12:43:56"
+   },
+   "audio_file": "mp3/beat-BHTF.mp3"
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Audit Support. It tests and classifies; the opinion stays with the auditor. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Audit Support. It tests and classifies; the opinion stays with the auditor. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T12:43:56"
+   },
+   "audio_file": "mp3/beat-BOUT.mp3"
+  }
+ ]
+}

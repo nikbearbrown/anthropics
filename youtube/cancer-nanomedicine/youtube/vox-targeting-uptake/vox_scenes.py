@@ -190,9 +190,10 @@ class B05_CultureVsBody(Scene):
         # ring around top 3 steps of right column
         bracket_target = VGroup(s_blood_r, s_vessel_r, s_tissue_r)
         ring = HandRing(bracket_target, color=TEAL)
-        ann = SerifLabel("steps 1-3 unmeasured in culture", TEAL, size=20)
-        ann.next_to(bracket_target, RIGHT, buff=0.3)
-        self.play(Create(ring), FadeIn(ann, shift=LEFT * 0.2), run_time=1.1)
+        ann = SerifLabel("steps 1-3 unmeasured", TEAL, size=20)
+        # place below the ring, centered under the right column, to stay in-safe
+        ann.next_to(rcol_steps, DOWN, buff=0.35)
+        self.play(Create(ring), FadeIn(ann, shift=UP * 0.15), run_time=1.1)
         self.wait(max(0.3, total - 2.1))
 
 
@@ -275,17 +276,18 @@ class B07_LastStep(Scene):
         self.play(FadeIn(tissue), FadeIn(tissue_lbl), run_time=0.6)
         self.play(FadeIn(p_target), FadeIn(lbl_target),
                   FadeIn(p_bare), FadeIn(lbl_bare), run_time=0.6)
-        # Both arrive equally
-        lbl_t_dest = arr_pos_t + UP * 0.35
-        lbl_b_dest = arr_pos_b + DOWN * 0.35
+        # Both arrive equally. Chips move to ABOVE their dots so the
+        # bottom halves stay clear for the "stays in interstitium" label.
+        lbl_t_dest = arr_pos_t + UP * 0.4
+        lbl_b_dest = arr_pos_b + UP * 0.4
         self.play(p_target.animate.move_to(arr_pos_t),
                   lbl_target.animate.move_to(lbl_t_dest),
                   p_bare.animate.move_to(arr_pos_b),
                   lbl_bare.animate.move_to(lbl_b_dest),
                   run_time=1.0)
-        same_ann = SerifLabel("same arrival", TEAL, size=22)
-        same_ann.move_to(tissue.get_left() + RIGHT * 1.2 + ORIGIN)
-        self.play(FadeIn(same_ann, scale=0.9), run_time=0.5)
+        # "same arrival" is stated by the bottom annotation
+        # ("same amount arrives, different cell entry"); a mid-tissue
+        # label collides with the UNTARGETED chip and is redundant.
 
         # Cell receptor on the right side of tissue
         cell_pos = tissue.get_right() + LEFT * 0.6 + UP * 0.6
@@ -313,13 +315,14 @@ class B07_LastStep(Scene):
         self.play(gold_flash.animate.scale(1.22), run_time=0.4)
         self.play(gold_flash.animate.scale(0.01), run_time=0.3)
 
-        # Untargeted stays in interstitium
+        # Untargeted stays in interstitium — placed BELOW the dot,
+        # clear of the UNTARGETED chip (which is now above the dot).
         interst = SerifLabel("stays in interstitium", CRIMSON, size=20)
-        interst.next_to(p_bare, DOWN, buff=0.2)
+        interst.next_to(p_bare, DOWN, buff=0.25)
         self.play(FadeIn(interst, shift=UP * 0.1), run_time=0.5)
 
         ann = SerifLabel("same amount arrives, different cell entry", INK, size=22)
-        ann.move_to(DOWN * 2.8)
+        ann.move_to(DOWN * 3.1)
         self.play(FadeIn(ann), run_time=0.6)
         self.wait(max(0.3, total - 5.7))
 

@@ -1,0 +1,375 @@
+{
+ "metadata": {
+  "title": "enterprise-search",
+  "slug": "claude-tag-plugins--claude-liam-enterprise-search",
+  "topic": "ENTERPRISE SEARCH · CLAUDE SKILL",
+  "purpose": "Answer whether one search is enough to get an answer from a company's own knowledge, using the enterprise-search skill (Glean Client REST API) as the concrete case. Lands the carry-out that enterprise search is a three-step loop — search for candidates, read the document, report what you used — not a single lookup.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/claude-tag-plugins/youtube/claude-liam-enterprise-search/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B01 -> B05 (the contractor-onboarding question: snippet found, full document read, feedback filed)",
+  "build": {
+   "at": "2026-08-31T15:41:11",
+   "cut": "master",
+   "filled": 10,
+   "of": 10,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "The easy assumption is that Claude just runs a search over the company's docs and hands back the top hit as the answer. Here's what's actually happening: search returns candidates — snippets, not answers — and reading the document that matters is the step that actually pays out. Liam, in for Bear. I'll take you through the machinery.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Does Claude just search our docs and answer from the results?', hesitates on 'results', corrects to 'documents', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Does Claude just search\nour docs and answer\nfrom the results?",
+      "face": "serif",
+      "fontSize": 68,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "results",
+      "replacementWords": "documents",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-enterprise-search"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T15:41:11"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 4 ANCHOR PLANTED",
+   "narration_text": "Take a concrete question: what's our policy on contractor onboarding, and is there a prior decision already on file? Answering that isn't a web search. It's a reach into the company's own knowledge — chat, drives, tickets, wikis — content that only exists inside the walls, behind the permissions. Enterprise search was optimized for exactly the surface the open web can't touch.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — the onboarding question, with chat/drives/tickets/wikis fanning into one shared index"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — one question, many sources",
+     "mechanic": "THE ANCHOR. The onboarding question types onto the card. Four source chips — CHAT, DRIVES, TICKETS, WIKIS — fan in from the corners and converge into one labelled INDEX box. THIS EXACT QUESTION RETURNS AT B05.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "ESB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T15:41:11"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "2 wrong guess, falsified",
+   "narration_text": "The instinct is to run one search, glance at the top result, and be done. But look at what a search result actually is: a snippet, roughly thirty-five words. That length is a design choice — long enough to judge whether a document is worth opening, short enough to scan a page of them at once. They optimized snippets for triage, not for answers. Treating one as the answer is using the wrong tool.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A search box returns a truncated snippet card; 'IS THE ANSWER' struck through"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A snippet, not an answer",
+     "mechanic": "A search box yields one result card: a snippet of text trailing into an ellipsis. Overlaid text 'THE ANSWER?' appears, then is struck through in terracotta. A caption settles beneath: '~35 words — built to triage, not to answer.'",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "ESB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T15:41:11"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "3 mechanism",
+   "narration_text": "Here's the loop in three moves. Search returns ranked snippets across every connected source. Read pulls the full text of the documents that matter, using the IDs handed back by search. Feedback — upvote what you used, downvote what you rejected — trains the ranker, and it fires before the task is called done. Two scripts ship in the box to keep the plumbing out of your prompt: one runs the search with pagination, one reads up to fifty documents in a single call. The design here is deliberate: don't make the model rewrite the plumbing every time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "EnterpriseSearchAnatomy",
+     "props": {
+      "sparkLine": "Search finds candidates. Read gets the answer. Feedback trains the ranker."
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T15:41:11"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "3 mechanism",
+   "narration_text": "Two rules keep this loop honest. First: hit the shared index before you go direct to any one connector — the index already ranks across every source, deduplicates, and respects the caller's permissions, so bypassing it usually costs you more than it saves. Second: pagination is cursor-based. Pass the cursor back exactly as given, don't hand-roll one, stop when there isn't one — the design refuses to guess for you. And there's a real limit worth naming: an empty result means one of two things — the content isn't indexed, or the identity asking can't see it — and the API deliberately doesn't say which. That ambiguity is a security choice: telling you 'permission denied' also tells you the document exists.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 27,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "EnterpriseSearchDesign",
+     "props": {
+      "sparkLine": "Index first. Never build a cursor. Empty can mean no access."
+     },
+     "rendered": {
+      "out": "media/B04.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B04.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T15:41:11"
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "Back to the onboarding question. Step one: search turns up a snippet that mentions a policy — enough to know the document is a candidate. Step two: read the whole thing, and the exception buried in the next paragraph shows up. That exception is why the snippet couldn't have answered you — there was no room for it in thirty-five words. Step three: mark that document as the one you actually used. That signal is what makes tomorrow's search rank the right doc higher. The feedback isn't a nicety; it's the training data.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — the onboarding question, snippet found, full document opened, exception surfaced, feedback filed"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — snippet, document, feedback",
+     "mechanic": "THE B01 QUESTION RETURNS, identical. A snippet card appears (step 1), then opens into a full document with one line — the exception — highlighted in terracotta (step 2). A checkmark chip 'used' files against the document (step 3).",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "ESB05Scene"
+   },
+   "audio_file": "mp3/beat-B05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B05.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T15:41:11"
+   }
+  },
+  {
+   "beat_id": "B06",
+   "act": "5 BOTH DIRECTIONS",
+   "narration_text": "The design cuts both ways. A hit doesn't mean the whole picture — some sources may not be wired into the index yet, and the answer could be sitting in one you haven't connected. A miss doesn't mean the answer doesn't exist — it might be a permissions gap, or a query that hasn't broadened enough to reach the document that has it. Both failures look the same on the screen, which is the honest part. The fix is discipline about what an empty result licenses you to conclude, which is: not much.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Mirrored panels: FOUND (not the whole picture) / EMPTY (not proof it's missing)"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Found isn't complete. Empty isn't proof.",
+     "mechanic": "Two mirrored panels. Left: 'FOUND' with an arrow to 'THE WHOLE PICTURE' — struck through, caption 'some sources aren't connected yet'. Right: 'EMPTY' with an arrow to 'DOESN'T EXIST' — struck through, caption 'permissions gap, or broaden the query'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "ESB06Scene"
+   },
+   "audio_file": "mp3/beat-B06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B06.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T15:41:11"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Here's the carry-out. Enterprise search isn't one lookup. It's search for candidates, read the document that actually matters, then report what you used — so the next search ranks better than this one.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Enterprise search isn't one lookup — it's search for candidates, read the document that matters, then report what you used, so the next search ranks better than this one.",
+      "attribution": "",
+      "sparkLine": "Search, read, report."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T15:41:11"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I want to understand how enterprise search — the kind that reaches into a company's own chat, drives, tickets, and wikis — actually differs from a single database lookup. Walk me through the three-step loop of search, read, and feedback: what a snippet is, roughly thirty-five words, and why it's built for triage instead of answers; why the shared index has to be hit before any single connector, and what an empty result can and can't tell me; how cursor-based pagination is supposed to work; and how upvoting the document I actually used trains the ranker for tomorrow. Then give me a concrete example — someone asks, what's our policy on contractor onboarding, and is there a prior decision on file — and show me the three-step trace, including what the read step surfaces that the snippet couldn't. Go deeper: ask the same model what changes when the identity running the search is an agent acting on someone else's behalf — whose permissions apply at index time, what happens to the feedback signal when the human never sees the snippet, and where an audit trail has to live so the wrong person's 'used' vote doesn't quietly bias tomorrow's ranker.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 46,
+   "llm_exercise": {
+    "prompt": "I want to understand how enterprise search — the kind that reaches into a company's own chat, drives, tickets, and wikis — actually differs from a single database lookup. Walk me through the three-step loop of search, read, and feedback: what a snippet is (roughly thirty-five words) and why it's built for triage instead of answers; why the shared index has to be hit before any single connector, and what an empty result can and can't tell me; how cursor-based pagination is supposed to work; and how upvoting the document I actually used trains the ranker for tomorrow. Then give me a concrete example: someone asks 'what's our policy on contractor onboarding, and is there a prior decision on file?' — show me the three-step trace, including what the read step surfaces that the snippet couldn't.",
+    "dig_deeper": "Go deeper: ask the same model what changes in this loop when the identity running the search is an agent acting on someone else's behalf — whose permissions get applied at index time, what happens to the feedback signal when the human never sees the snippet, and where an audit trail has to live so the wrong person's 'used' vote doesn't quietly bias tomorrow's ranker."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "ENTERPRISE SEARCH · YOUR TURN",
+      "segment": "Search, Read, Report.",
+      "command": "Walk me through the three-step loop of enterprise search — search, read, feedback — with a concrete example: 'what's our policy on contractor onboarding, and is there a prior decision on file?' (1) What a ~35-word snippet is built to do — and what it can't. (2) Why to hit the shared index before any one connector, and why an empty result can mean 'not indexed' or 'no permission.' (3) How marking the document you used trains tomorrow's ranker.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T15:41:11"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Search, Read, Report. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Search, Read, Report. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T15:41:11"
+   }
+  }
+ ]
+}

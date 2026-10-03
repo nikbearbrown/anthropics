@@ -1,0 +1,663 @@
+{
+  "metadata": {
+    "slug": "show-tell-claude-on-your-desk",
+    "title": "Claude on Your Desk",
+    "topic": "CLAUDE · HARDWARE BUDDY",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Swedish / Danish / Norwegian (Hej)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Makers and developers who use the Claude desktop app and want a small device that shows Claude's prompts and lets them approve from the desk",
+    "source_doc": "anthropics/claude-desktop-buddy (README.md, REFERENCE.md, CONTRIBUTING.md; src/main.cpp, src/data.h, src/ble_bridge.cpp skimmed), read 2026-09-26",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude desktop",
+      "Hardware Buddy",
+      "BLE",
+      "Bluetooth Low Energy",
+      "ESP32",
+      "Nordic UART Service",
+      "permission prompts",
+      "Claude Code",
+      "Cowork",
+      "maker",
+      "desk pet",
+      "Anthropic",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-26T18:03:32",
+      "cut": "master",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hej. This is Liam, in for Bear. Claude's desk buddy isn't a product feature. It's an opt-in API for makers, so the real question is how you build one.",
+      "estimated_duration_s": 11.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I buy a Claude desk buddy?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'buy' -> 'build' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I buy\na Claude desk buddy?",
+            "triggerWords": "buy",
+            "replacementWords": "build",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-claude-on-your-desk",
+            "banner": ""
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (where to buy a Claude desk buddy) and corrects it to the real one (how to build one).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 9.173,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 9.208333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-09-26T18:03:32"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Three terms. B L E, Bluetooth Low Energy: a low-power wireless link. A permission prompt: Claude asking before it runs a tool. And a reference repo: one worked example, made to be copied.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "'BLE' lands"
+          },
+          {
+            "at": 0.4,
+            "event": "'permission prompt' lands"
+          },
+          {
+            "at": 0.7,
+            "event": "'reference repo' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "BLE",
+                "meaning": "Bluetooth Low Energy, a low-power wireless link"
+              },
+              {
+                "term": "permission prompt",
+                "meaning": "Claude asking before it runs a tool"
+              },
+              {
+                "term": "reference repo",
+                "meaning": "one worked example, made to be copied"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-26T22:01:38.844853+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 10.944,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 10.958333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-26T18:03:32"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Here's the desk. A laptop runs the Claude app, on Mac or Windows. Beside it sits a tiny device with a screen and buttons. The app can connect your Cowork and Claude Code sessions to it, over Bluetooth.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft desk slides up; a laptop lands on it and its screen opens to a Claude window; a tiny upright device drops in beside it; a dashed Bluetooth arc draws from the laptop to the device.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the desk"
+          },
+          {
+            "at": 0.3,
+            "event": "laptop running Claude"
+          },
+          {
+            "at": 0.55,
+            "event": "the tiny device"
+          },
+          {
+            "at": 0.85,
+            "event": "a Bluetooth arc (not yet on)"
+          }
+        ],
+        "manim": {
+          "class": "B00_Desk"
+        },
+        "motion_claim": "A kraft desk slides up; a laptop lands on it and its screen opens to a Claude window; a tiny upright device drops in beside it; a dashed Bluetooth arc draws from the laptop to the device."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn desk scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.307,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 11.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:03:32"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "That bridge is off by default, and you opt in. Turn on developer mode, open Hardware Buddy, click connect, and pick your device. After that, it reconnects by itself. It's for makers, not an official product feature.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The dashed arc greys out; on the laptop screen a toggle slides on (developer mode); a cursor clicks a Connect pill; the arc redraws solid ink with a terracotta dot at each end.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "off by default"
+          },
+          {
+            "at": 0.35,
+            "event": "developer mode on"
+          },
+          {
+            "at": 0.55,
+            "event": "Connect"
+          },
+          {
+            "at": 0.75,
+            "event": "the link is live"
+          }
+        ],
+        "manim": {
+          "class": "B01_OptIn"
+        },
+        "motion_claim": "The dashed arc greys out; on the laptop screen a toggle slides on (developer mode); a cursor clicks a Connect pill; the arc redraws solid ink with a terracotta dot at each end."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn desk scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.053,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 12.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:03:32"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the app sends a snapshot whenever something changes, and every ten seconds anyway: how many sessions are running or waiting, plus a few recent transcript lines, newest first. The tiny screen scrolls them.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The camera steps in: laptop left, the device enlarged right. Transcript lines appear in the Claude window; white snapshot packets ride the arc; on the device's dark screen new lines slide in at the top and push the older ones down.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "a snapshot rides the arc"
+          },
+          {
+            "at": 0.45,
+            "event": "another, on a change"
+          },
+          {
+            "at": 0.75,
+            "event": "recent lines scroll on the tiny screen"
+          }
+        ],
+        "manim": {
+          "class": "B02_Snapshot"
+        },
+        "motion_claim": "The camera steps in: laptop left, the device enlarged right. Transcript lines appear in the Claude window; white snapshot packets ride the arc; on the device's dark screen new lines slide in at the top and push the older ones down."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn desk scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.733,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 11.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:03:32"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The team's own example is a desk pet, on an E S P thirty-two board. It sleeps when nothing's happening. Start a session, and it wakes up.",
+      "estimated_duration_s": 10.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The device's screen shows a face with closed eyes, breathing slowly (asleep); a new session window pops open on the laptop; a packet rides the arc; the pet's eyes open (awake).",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "ESP32 desk pet"
+          },
+          {
+            "at": 0.45,
+            "event": "asleep"
+          },
+          {
+            "at": 0.8,
+            "event": "a session starts: awake"
+          }
+        ],
+        "manim": {
+          "class": "B03_PetWakes"
+        },
+        "motion_claim": "The device's screen shows a face with closed eyes, breathing slowly (asleep); a new session window pops open on the laptop; a packet rides the arc; the pet's eyes open (awake)."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn desk scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.043,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 8.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:03:32"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Now Claude wants to run a Bash command, and it needs your permission. The snapshot carries a prompt: the tool, a short hint, and an ID. It shows up on the device too, and the pet gets impatient. Its light blinks.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A permission prompt card appears in the Claude window (Bash); a copy rides the arc and lands on the device's screen under the pet; the device's light blinks terracotta.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "Claude asks to run Bash"
+          },
+          {
+            "at": 0.45,
+            "event": "the prompt mirrors onto the device"
+          },
+          {
+            "at": 0.8,
+            "event": "the light blinks"
+          }
+        ],
+        "manim": {
+          "class": "B04_Prompt"
+        },
+        "motion_claim": "A permission prompt card appears in the Claude window (Bash); a copy rides the arc and lands on the device's screen under the pet; the device's light blinks terracotta."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn desk scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.691,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 11.708333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:03:32"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Press the front button, and the device sends back one line: that same ID, and the decision, once. Once approves that one tool call. The other button sends deny. Approve quickly, and the pet shows hearts.",
+      "estimated_duration_s": 14.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The front button presses in; a reply packet rides the arc back to the laptop; the laptop's prompt card gets a check and the light stops; the side button pulses (deny); hearts float up from the pet.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "front button pressed"
+          },
+          {
+            "at": 0.4,
+            "event": "the reply rides back: once"
+          },
+          {
+            "at": 0.65,
+            "event": "the other button: deny"
+          },
+          {
+            "at": 0.9,
+            "event": "hearts"
+          }
+        ],
+        "manim": {
+          "class": "B05_Approve"
+        },
+        "motion_claim": "The front button presses in; a reply packet rides the arc back to the laptop; the laptop's prompt card gets a check and the light stops; the side button pulses (deny); hearts float up from the pet."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn desk scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.965,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 11.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:03:32"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "That link carries transcript snippets and tool hints, and an unencrypted one can be read by anyone in radio range with a cheap dongle. So the reference says to require encrypted pairing. The device shows a six-digit pass key, you type it into the app, and the link is encrypted from then on.",
+      "estimated_duration_s": 21.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Packets ride the arc; a small grey dongle slides in below and a dashed line reaches up to the arc; a six-digit passkey appears on the device screen, then the same digits in the Claude window; a padlock closes on the arc and the dongle's line snaps back.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "snippets on the air"
+          },
+          {
+            "at": 0.35,
+            "event": "a cheap dongle listens"
+          },
+          {
+            "at": 0.6,
+            "event": "passkey on device, typed in the app"
+          },
+          {
+            "at": 0.85,
+            "event": "padlock: encrypted"
+          }
+        ],
+        "manim": {
+          "class": "B06_Pairing"
+        },
+        "motion_claim": "Packets ride the arc; a small grey dongle slides in below and a dashed line reaches up to the arc; a six-digit passkey appears on the device screen, then the same digits in the Claude window; a padlock closes on the arc and the dongle's line snaps back."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn desk scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 15.893,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 15.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:03:32"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "And you don't need any of this code. REFERENCE dot md is the contract: advertise the Nordic UART Service, a standard way to send text over Bluetooth, then trade one line of JSON at a time. An Arduino, or a Raspberry Pi with a Bluetooth dongle, will do. The repo's own advice: the best contribution is a fork.",
+      "estimated_duration_s": 23.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The example device slides away; a blueprint sheet unrolls on the desk (REFERENCE.md); one line packets ride the arc; a flat board and a round puck appear on the sheet, each drawing its own arc to the laptop; a fork line branches from the sheet to them.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "the example leaves"
+          },
+          {
+            "at": 0.3,
+            "event": "REFERENCE.md: the contract"
+          },
+          {
+            "at": 0.55,
+            "event": "one JSON line at a time"
+          },
+          {
+            "at": 0.8,
+            "event": "other boards; fork it"
+          }
+        ],
+        "manim": {
+          "class": "B07_Blueprint"
+        },
+        "motion_claim": "The example device slides away; a blueprint sheet unrolls on the desk (REFERENCE.md); one line packets ride the arc; a flat board and a round puck appear on the sheet, each drawing its own arc to the laptop; a fork line branches from the sheet to them."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn desk scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 17.557,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 17.583333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:03:32"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude: Here is REFERENCE dot md from Anthropic's claude desktop buddy repo: paste it. Help me plan a tiny device of my own that speaks this protocol: name your device. List what its screen shows from each snapshot, which permission prompts it may approve with a button press, and what it must never do without a person. Plan only; no firmware yet. Then check two things yourself. Find every approval in the plan. Is each one a button press? And open REFERENCE dot md. Do the plan's field names match it exactly?",
+      "estimated_duration_s": 38.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · YOUR TURN",
+            "segment": "Plan Your Own Desk Device",
+            "command": "Here is REFERENCE.md from anthropics/claude-desktop-buddy: [paste it]. Help me plan a tiny device of my own that speaks this protocol: [your device]. List what its screen shows from each snapshot, which permission prompts it may approve with a button press, and what it must never do without a person. Plan only; no firmware yet.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: find every approval in the plan. Is each one a button press?",
+              "Check: open REFERENCE.md. Do the plan's field names match it exactly?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          }
+        }
+      },
+      "actual_duration_s": 27.136,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 27.166666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-09-26T18:03:32"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Claude on Your Desk. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Claude on Your Desk",
+            "slug": "show-tell-claude-on-your-desk",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 3.859,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 3.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-26T18:03:32"
+      }
+    }
+  ]
+}

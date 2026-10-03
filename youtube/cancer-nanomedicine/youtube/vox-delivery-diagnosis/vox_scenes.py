@@ -21,8 +21,7 @@ failure, disambiguated by one image.
 Gate B convention: every zero-width stroke is also zero-opacity.
 """
 import sys, json, os, pathlib
-sys.path.insert(0, str(pathlib.Path(__file__).resolve()
-                       .parents[3] / "vox/aspects/explainer/vox-explainer/manim"))
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from vox_graphics import *   # noqa: F401,F403  (re-exports manim + vox components)
 from vox_graphics import _quote_scene
 
@@ -40,8 +39,8 @@ except Exception:
 class B01_Title(Scene):
     def construct(self):
         total = DUR["B01"]
-        eye = Text("CANCER NANOMEDICINE", font=DISPLAY, color=TEAL, font_size=18)
-        t1 = Text("Same Non-Response, Two Opposite Fixes:", font=DISPLAY, color=INK, font_size=24, weight=BOLD)
+        eye = Text("CANCER NANOMEDICINE", font=DISPLAY, color=TEAL, font_size=24)
+        t1 = Text("Same Non-Response, Two Opposite Fixes:", font=DISPLAY, color=INK, font_size=26, weight=BOLD)
         t2 = Text("Did the Drug Fail, or Never Arrive?", font=DISPLAY, color=CRIMSON, font_size=28, weight=BOLD)
         block = VGroup(t1, t2).arrange(DOWN, buff=0.18).move_to(UP * 0.15)
         u = Line(t2.get_corner(DL) + DOWN * 0.13, t2.get_corner(DR) + DOWN * 0.13,
@@ -278,7 +277,7 @@ class B11_TwoPrograms(Scene):
         total = DUR["B11"]
 
         # illustrative label at top
-        illus = Text("illustrative", font=DISPLAY, color=SLATE, font_size=18)
+        illus = Text("ILLUSTRATIVE", font=DISPLAY, color=SLATE, font_size=22, weight=BOLD)
         illus.set_stroke(opacity=0.6)
         illus.to_edge(UP, buff=0.35)
 
@@ -348,7 +347,7 @@ class B11_TwoPrograms(Scene):
 class B12_End(Scene):
     def construct(self):
         total = DUR["B12"]
-        eye = Text("CANCER NANOMEDICINE", font=DISPLAY, color=TEAL, font_size=18)
+        eye = Text("CANCER NANOMEDICINE", font=DISPLAY, color=TEAL, font_size=24)
         t1 = Text("Measure where the particle went", font=DISPLAY, color=INK,
                   font_size=28, weight=BOLD)
         t2 = Text("before changing the drug.", font=DISPLAY, color=INK,

@@ -1,0 +1,1034 @@
+{
+  "metadata": {
+    "slug": "cc-conducting-not-prompting",
+    "title": "Conducting, Not Prompting: The Gru/Minion Split",
+    "subtitle": "Same one sentence, twice. Eleven lines of yours, once. The difference is the whole job.",
+    "topic": "CLAUDE CODE 101",
+    "skill": "cc-explainer",
+    "playlist": "Claude Code 101",
+    "tier": "00-what-it-is",
+    "audience": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "handle": "@NikBearBrown",
+    "brand": "claude",
+    "palette": "claude",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "persona": "liam",
+    "in_for_bear": true,
+    "operator": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "closing_voice": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "aspect": "16:9",
+    "fps": 30,
+    "session": "SESSION.md",
+    "derived_from": "claude-code-101/00-what-it-is/claude-code--claude-liam-conducting-not-prompting (the concept and title; card body replaced by two real fresh headless runs of one sentence)",
+    "sources": [
+      "SESSION.md (two real runs)",
+      "info-7375-conducting-ai/chapters/02-the-solve-verify-asymmetry.md",
+      "info-7375-irreducibly-human/chapters/04-tier-4-metacognitive-and-supervisory.md"
+    ],
+    "build": {
+      "at": "2026-09-15T12:37:12",
+      "cut": "master",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'CCSession' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    },
+    "chapter_number": 0
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN — BARE",
+      "lane": "TERMINAL",
+      "narration_text": "This is Liam, in for Bear. One sentence in an empty folder: write format_price of cents. No currency named. No format named. No policy on negatives. So it decides. Dollars. A thousands separator. Negatives allowed, with a minus. Type-error on anything that isn't an int, including a bool. Ten tests, all green. Every one of those is a decision — and none of them are mine.",
+      "estimated_duration_s": 23.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the bare run: ls, two Writes, unittest OK",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch — bare",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Write format_price(cents: int) -> str in format_price.py and add unittest tests in test_format_price.py.",
+                "cue": 0,
+                "typeDuration": 80
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "ls .",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "format_price.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "test_format_price.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "python3 -m unittest -v",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Wrote `format_price.py` — int cents →"
+              },
+              {
+                "type": "text",
+                "text": "`$1,234.56`, negative gets a leading `-`,"
+              },
+              {
+                "type": "text",
+                "text": "rejects non-ints, including bool."
+              },
+              {
+                "type": "text",
+                "text": "Ran 10 tests in 0.000s — OK"
+              }
+            ],
+            "cues": [
+              0,
+              100,
+              140,
+              180,
+              220,
+              260,
+              285,
+              310,
+              335
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "The ask types"
+        },
+        {
+          "at": 0.5,
+          "event": "Two Writes"
+        },
+        {
+          "at": 0.9,
+          "event": "10 tests OK"
+        }
+      ],
+      "actual_duration_s": 19.56,
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T12:37:12"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "THE IDEA",
+      "lane": "IDEA",
+      "narration_text": "Here's the idea of this film. When you type an ask at Claude and it types back, that is prompting — you asked, and you took what came. Conducting is the other move: the decisions get made first, in writing, and the prompt is a handoff. Same ask. Same model. Same minute. Different session — different code. You'll see it in the diff.",
+      "estimated_duration_s": 22.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "BrutalistHesitantWriter — 'prompting' reconsidered into 'conducting'",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Programming with Claude is prompting.\nThe prompt is the whole job.\nBetter prompt, better output.\nSame prompt, twice — different code.",
+            "triggerWords": "prompting",
+            "replacementWords": "conducting",
+            "face": "serif",
+            "fontSize": 78,
+            "align": "center",
+            "ink": "#F2F0E9",
+            "accent": "#D97757",
+            "bg": "#1F1E1B",
+            "seed": "cc-conducting-not-prompting",
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 5,
+            "jitter": 20
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the idea of the film is not in any session; the writer types it and corrects the one word the film exists to fix"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Writer starts"
+        },
+        {
+          "at": 0.35,
+          "event": "'prompting' → 'conducting'"
+        },
+        {
+          "at": 0.85,
+          "event": "Last line"
+        }
+      ],
+      "actual_duration_s": 16.09,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T12:37:12"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "DEFINITIONS",
+      "lane": "CARD",
+      "narration_text": "Three words before we start. Prompting: asking Claude, then reacting to whatever it produced — the prompt is a wish. Conducting: writing your decisions first — cases, rules, what counts as done — and handing them over. The prompt is a handoff, not the whole job. Spec: those decisions in writing, in one file Claude reads before it runs. That's the whole discipline. Three words. Watch what changes.",
+      "estimated_duration_s": 24.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCDefinitions — three terms",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCDefinitions",
+          "props": {
+            "title": "TERMS IN THIS FILM",
+            "terms": [
+              {
+                "term": "Prompting",
+                "meaning": "asking Claude, then reacting to whatever came back"
+              },
+              {
+                "term": "Conducting",
+                "meaning": "writing your decisions before Claude sees the ask"
+              },
+              {
+                "term": "Spec",
+                "meaning": "the decisions written down — cases, rules, done"
+              }
+            ],
+            "startCue": 10,
+            "rowGap": 52
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "definitions for a chat-window audience"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Prompting"
+        },
+        {
+          "at": 0.4,
+          "event": "Conducting"
+        },
+        {
+          "at": 0.85,
+          "event": "Spec"
+        }
+      ],
+      "actual_duration_s": 19.26,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T12:37:12"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "BARE — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "Check the bare run against what I actually wanted. Seven lines, forty-six lines of tests. The suite is green. Ten green tests. Now the five cases I care about — twelve ninety-nine, zero, ten thousand, twelve thousand three forty-five, minus fifty. Five for five, FAIL. The suite is green about the wrong thing. Nobody said EUR — so, dollars.",
+      "estimated_duration_s": 21.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — wc, unittest OK, spec_check FAIL ×5",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch — bare",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!wc -l format_price.py test_format_price.py",
+                "cue": 0,
+                "typeDuration": 60
+              },
+              {
+                "type": "text",
+                "text": "       7 format_price.py"
+              },
+              {
+                "type": "text",
+                "text": "      46 test_format_price.py"
+              },
+              {
+                "type": "prompt",
+                "text": "!python3 -m unittest -v 2>&1 | tail -2",
+                "cue": 0,
+                "typeDuration": 56
+              },
+              {
+                "type": "text",
+                "text": "Ran 10 tests in 0.000s — OK"
+              },
+              {
+                "type": "prompt",
+                "text": "!python3 ../spec_check.py format_price.py",
+                "cue": 0,
+                "typeDuration": 56
+              },
+              {
+                "type": "text",
+                "text": "FAIL: format_price(1299) -> '$12.99'"
+              },
+              {
+                "type": "text",
+                "text": "FAIL: format_price(0) -> '$0.00'"
+              },
+              {
+                "type": "text",
+                "text": "FAIL: format_price(-50) -> '-$0.50'"
+              }
+            ],
+            "cues": [
+              0,
+              60,
+              80,
+              115,
+              175,
+              205,
+              265,
+              290,
+              315
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 7, 46"
+        },
+        {
+          "at": 0.3,
+          "event": "10 tests OK"
+        },
+        {
+          "at": 0.7,
+          "event": "spec_check → five FAILs"
+        }
+      ],
+      "actual_duration_s": 18.22,
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T12:37:12"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "THE SPEC",
+      "lane": "SHELL",
+      "narration_text": "Eleven lines, written by me, before the second run. Five example inputs, and their outputs, in EUR. Four rules: no dollar sign, no separator, two decimals, minus is a ValueError. Every decision Claude made in the bare run — currency, format, negatives — this file makes instead. Eleven lines. That's the whole spec.",
+      "estimated_duration_s": 19.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCPlainShell — wc SPEC.md; cat SPEC.md's decisions",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "zsh — scratch/conducting",
+            "lines": [
+              "$ wc -l SPEC.md",
+              "      11 SPEC.md",
+              "$ cat SPEC.md",
+              "# SPEC — format_price",
+              "",
+              "format_price(cents: int) -> str. Cases:",
+              "- 1299   -> '12.99 EUR'",
+              "- 0      -> '0.00 EUR'",
+              "- 10000  -> '100.00 EUR'",
+              "- 12345  -> '123.45 EUR'",
+              "- -50    -> raises ValueError",
+              "",
+              "No $. No separator. Two decimals. ' EUR'."
+            ],
+            "startCue": 10,
+            "lineGap": 22
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the spec is read in a plain shell before any session; no session contains this"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 11"
+        },
+        {
+          "at": 0.35,
+          "event": "Five cases"
+        },
+        {
+          "at": 0.85,
+          "event": "Four rules"
+        }
+      ],
+      "actual_duration_s": 17.6,
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T12:37:12"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "CONDUCTING — THE RUN",
+      "lane": "TERMINAL",
+      "narration_text": "Same sentence. This time it reads SPEC first. And its plan sentence is the file: split cents into euros and remainder, zero-pad the decimals, raise on negatives. Four lines of implementation. Twenty-five lines of tests, one for each case. Then it runs the suite. Five tests. Green. Every choice traces to a line.",
+      "estimated_duration_s": 19.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the conducting run: Read SPEC, Writes, unittest OK",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch — conducting",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Write format_price(cents: int) -> str in format_price.py and add unittest tests in test_format_price.py. Read SPEC.md first.",
+                "cue": 0,
+                "typeDuration": 90
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "SPEC.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "ls .",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Splits cents into euros and remainder,"
+              },
+              {
+                "type": "text",
+                "text": "zero-pads decimals, raises on negatives."
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "format_price.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "test_format_price.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "python3 -m unittest -v",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "All 5 tests pass — one per SPEC case."
+              }
+            ],
+            "cues": [
+              0,
+              110,
+              140,
+              170,
+              200,
+              235,
+              270,
+              305,
+              335
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Same ask + Read SPEC"
+        },
+        {
+          "at": 0.45,
+          "event": "Plan traces to the file"
+        },
+        {
+          "at": 0.9,
+          "event": "5 tests OK"
+        }
+      ],
+      "actual_duration_s": 17.26,
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T12:37:12"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "CONDUCTING — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "Check it. Four lines against seven. Twenty-five lines of tests against forty-six. No dollar sign. One EUR. And the five cases from SPEC — PASS. Same one sentence. Same model. Eleven lines of mine, first. That's the difference.",
+      "estimated_duration_s": 14.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — wc, grep, spec_check → PASS",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch — conducting",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!wc -l format_price.py",
+                "cue": 0,
+                "typeDuration": 40
+              },
+              {
+                "type": "text",
+                "text": "       4 format_price.py"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -c '\\$' format_price.py",
+                "cue": 0,
+                "typeDuration": 52
+              },
+              {
+                "type": "text",
+                "text": "0"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -c EUR format_price.py",
+                "cue": 0,
+                "typeDuration": 48
+              },
+              {
+                "type": "text",
+                "text": "1"
+              },
+              {
+                "type": "prompt",
+                "text": "!python3 ../spec_check.py format_price.py",
+                "cue": 0,
+                "typeDuration": 56
+              },
+              {
+                "type": "text",
+                "text": "PASS"
+              }
+            ],
+            "cues": [
+              0,
+              50,
+              80,
+              130,
+              160,
+              205,
+              235,
+              290
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 4"
+        },
+        {
+          "at": 0.35,
+          "event": "grep $ → 0"
+        },
+        {
+          "at": 0.6,
+          "event": "grep EUR → 1"
+        },
+        {
+          "at": 0.85,
+          "event": "PASS"
+        }
+      ],
+      "actual_duration_s": 12.91,
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T12:37:12"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "CONDUCT — THE BOONDOGGLE SCORE",
+      "lane": "TERMINAL",
+      "narration_text": "Who did what. Step one, mine: one sentence, in an empty folder. Claude did the bare run — seven lines, dollars, thousands separator, minus-fifty allowed. Handoff met — its own suite passed. Step three, the dangerous middle: I read the file. Ten green tests, testing something that isn't the thing. That was mine to catch. Then the real work, mine: eleven lines of SPEC. Claude did the conducting run — four lines. Handoff: the SPEC checker passes. Interpretive judgment: a green suite is not proof. It's proof that what you asked for is what you got. Ask better — or decide first.",
+      "estimated_duration_s": 36.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCBoondoggleScore",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCBoondoggleScore",
+          "props": {
+            "system": "same sentence · two conditions",
+            "steps": [
+              {
+                "n": 1,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "One sentence in an empty folder"
+              },
+              {
+                "n": 2,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Bare: 7 lines, $, separator, -$ negatives",
+                "handoff": "unittest passes",
+                "dependsOn": [
+                  1
+                ]
+              },
+              {
+                "n": 3,
+                "phase": "C",
+                "labor": "human",
+                "capacity": "PA",
+                "text": "Read the file: green suite, wrong thing",
+                "dependsOn": [
+                  2
+                ]
+              },
+              {
+                "n": 4,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "Write SPEC.md — 11 lines, mine",
+                "dependsOn": [
+                  3
+                ]
+              },
+              {
+                "n": 5,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Conducting: 4 lines, EUR, ValueError",
+                "handoff": "spec_check.py PASS; every line traces",
+                "dependsOn": [
+                  4
+                ]
+              },
+              {
+                "n": 6,
+                "phase": "H",
+                "labor": "human",
+                "capacity": "IJ",
+                "text": "Green suite proves what you asked for",
+                "dependsOn": [
+                  3,
+                  5
+                ]
+              }
+            ],
+            "dangerousMiddle": 3,
+            "distribution": true,
+            "stepGap": 22
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Header"
+        },
+        {
+          "at": 0.4,
+          "event": "Step 3 rings"
+        },
+        {
+          "at": 0.9,
+          "event": "Tally"
+        }
+      ],
+      "actual_duration_s": 29.27,
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T12:37:12"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "HUMAN — THE LEDGER",
+      "lane": "TERMINAL",
+      "narration_text": "So what was mine. I must name the currency and the format — Claude will not, and it will not know it didn't. I must write done as a check I can run. I must read the code, not the summary — a green suite lies about the wrong thing. I should write the spec before the ask, not after the failure. Claude can pick a plausible default and it will. It can produce four lines instead of seven when the decisions are named. It should read the spec first — it did. Eleven lines. Mine.",
+      "estimated_duration_s": 34.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCHumanLedger",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCHumanLedger",
+          "props": {
+            "ai": [
+              {
+                "tier": "CAN",
+                "text": "pick a plausible default silently"
+              },
+              {
+                "tier": "CAN",
+                "text": "write four lines from a spec"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "read the spec before the ask"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "trace each line to a rule"
+              }
+            ],
+            "human": [
+              {
+                "tier": "MUST",
+                "text": "name currency, format, negatives"
+              },
+              {
+                "tier": "MUST",
+                "text": "write done as a check I run"
+              },
+              {
+                "tier": "MUST",
+                "text": "read the code, not the summary"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "write the spec before the ask"
+              }
+            ],
+            "closing": "Same sentence. Eleven lines of mine, first. That's it.",
+            "humanCue": 70,
+            "rowGap": 12
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "THE AI"
+        },
+        {
+          "at": 0.4,
+          "event": "THE HUMAN"
+        },
+        {
+          "at": 0.9,
+          "event": "Closing"
+        }
+      ],
+      "actual_duration_s": 21.1,
+      "audio_file": "mp3/beat-B06.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T12:37:12"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "VERDICT",
+      "lane": "BOOKEND",
+      "narration_text": "Let's recap with Claude. Same one sentence, empty folder: seven lines, dollars, a thousands separator, minus fifty becomes minus zero point five zero. Ten green tests, testing the wrong thing. Same sentence, eleven lines of mine first: four lines, EUR, ValueError on the minus, five tests, five passes. Conducting is not a better prompt. It is the decisions before the prompt. What would prove this reel wrong: a bare run that names the currency without being asked.",
+      "estimated_duration_s": 27.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeVerdictArtifact",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "verdict.md",
+            "artifactHeading": "Conducting, Not Prompting: The Gru/Minion Split",
+            "artifactLines": [
+              "Bare: 7 lines, $, thousands separator, -$0.50 for a negative; 10 tests green, wrong thing.",
+              "Conducting: 4 lines, EUR, ValueError on negatives; 5 tests, one per SPEC case; PASS.",
+              "Conducting is not a better prompt. It is the decisions before the prompt.",
+              "FALSIFIABLE: a bare run that names the currency without being asked."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Artifact"
+        },
+        {
+          "at": 0.2,
+          "event": "Lines"
+        },
+        {
+          "at": 0.9,
+          "event": "Falsifiable"
+        }
+      ],
+      "lead_silence_s": 0.5,
+      "actual_duration_s": 23.45,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T12:37:12"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "YOUR TURN",
+      "lane": "BOOKEND",
+      "narration_text": "Your turn. Before your next Claude Code session, open a text file, name it SPEC dot md, and write three things: five example inputs and their exact outputs, four rules that make those outputs the only right answers, and one line for what done means as a check you can run. Then paste your usual ask, followed by 'Read SPEC.md first.' See the diff.",
+      "estimated_duration_s": 23.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeComposerAsk",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "Open SPEC.md. Write five example inputs and their exact outputs, four rules that make those the only right answers, and one line for done as a check you can run. Then paste your usual ask, followed by 'Read SPEC.md first.' See the diff.",
+            "segment": "Conducting, Not Prompting: The Gru/Minion Split",
+            "topic": "YOUR TURN · CLAUDE CODE 101",
+            "runningText": "paste this into Claude Code…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Composer"
+        },
+        {
+          "at": 0.6,
+          "event": "Send arms"
+        }
+      ],
+      "actual_duration_s": 18.35,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T12:37:12"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "OUTRO",
+      "lane": "BOOKEND",
+      "narration_text": "Conducting, Not Prompting: The Gru/Minion Split. Liam, in for Bear.",
+      "estimated_duration_s": 4.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeTitleOutro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Conducting, Not Prompting: The Gru/Minion Split",
+            "slug": "cc-conducting-not-prompting",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Title"
+        },
+        {
+          "at": 0.35,
+          "event": "@NikBearBrown"
+        },
+        {
+          "at": 0.55,
+          "event": "Mascot"
+        }
+      ],
+      "actual_duration_s": 4.84,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T12:37:12"
+      }
+    }
+  ]
+}

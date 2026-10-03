@@ -1,0 +1,25 @@
+BSHOW.mp4 — source and capture protocol
+
+Origin: the three-file-run's own output `evidence/index.three.html` (895 bytes,
+111 lines), the page Claude wrote in the second headless run
+(session `a97af0bb-…`, 2026-09-09; SESSION.md). No mock; no stand-in.
+
+Capture: rendered by Google Chrome 141.x, `--headless=new`, 1920×1080, at file:/
+against `evidence/index.three.html`, at four states of the sort (worst-case
+bubble sort on the page's 8-bar shuffle takes 28 comparisons):
+
+  step  0 : comparisons=0 (initial 8-bar shuffle from the page's `var arr = [5,2,8,1,6,3,7,4]`)
+  step  8 : comparisons=8 (two rightmost bars locked in green)
+  step 18 : comparisons=18 (mid-sort)
+  step 28 : comparisons=28 (fully sorted, all green)
+
+The four states were captured by patching the page in memory to call the page's
+own `step()` function N times before the screenshot (N ∈ {0,8,18,28}); the
+algorithm and rendering are unchanged from the shipped HTML — see
+`clips/BSHOW-real-*.png`. Each PNG is then cropped to 1200×675 (x=360, y=15)
+and scaled to 1920×1080 by ffmpeg (`crop=1200:675:360:15,scale=1920:1080`) to
+remove the sim's outer cream padding without changing its layout — see
+`clips/BSHOW-final-*.png`. The four cropped PNGs are concatenated at 2 s each
+by ffmpeg `concat` filter (30 fps, libx264) into `clips/BSHOW.mp4` (8.0 s).
+
+The exact commands are in `BUILD-LOG.md`. This file cited in FACTCHECK row for BSHOW.

@@ -1,6 +1,6 @@
 # TYPECHECK.md — GATE T
 
-Reel: `workspace-anatomy`  |  Checked: 2026-08-24T15:43  |  Overall: PASS  |  Beats checked: 15  |  FAILs: 0
+Reel: `workspace-anatomy`  |  Checked: 2026-08-28T02:33  |  Overall: PASS  |  Beats checked: 15  |  FAILs: 0
 
 Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-height.  Contrast: 4.5:1 WCAG.  Kern threshold: 3.5× expected advance.  Wordy budget: 2 elements.
 
@@ -18,7 +18,7 @@ Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-heigh
 | B03 | ? | light | min-size §8.1: min text-run height 42px >= floor 41px | PASS | — |
 | B04 | ? | light | min-size §8.1: min text-run height 42px >= floor 41px | PASS | — |
 | B05 | ? | light | no-wordy-card §8.5: ChipGrid: per-element check passed (max 7 words in 'sparkLine') | PASS | — |
-| B06 | ? | light | min-size §8.1: min text-run height 42px >= floor 41px (individual-char fallback at 2×) | PASS | — |
+| B06 | ? | light | min-size §8.1: min text-run height 41px >= floor 41px (individual-char fallback at 2×) | PASS | — |
 | B07 | ? | light | min-size §8.1: min text-run height 42px >= floor 41px | PASS | — |
 | B08 | ? | light | min-size §8.1: min text-run height 43px >= floor 41px | PASS | — |
 | B09 | ? | light | min-size §8.1: min text-run height 43px >= floor 41px (individual-char fallback at 2×) | PASS | — |

@@ -1,0 +1,39 @@
+diff --git a/index.html b/index.html
+index 5246c06..bb9d785 100644
+--- a/index.html
++++ b/index.html
+@@ -16,6 +16,22 @@
+   <section>
+     <h2>Reach me</h2>
+     <p>The front office takes messages between 8am and 3pm at (555) 010-1234.</p>
++    <p>You can also send a message using the form below. It will open in your email app.</p>
++    <form class="contact" action="mailto:REPLACE-WITH-YOUR-EMAIL@example.com" method="post" enctype="text/plain">
++      <label>
++        Your name
++        <input type="text" name="name" required>
++      </label>
++      <label>
++        Your email
++        <input type="email" name="email" required>
++      </label>
++      <label>
++        Message
++        <textarea name="message" rows="5" required></textarea>
++      </label>
++      <button type="submit">Send message</button>
++    </form>
+   </section>
+   <footer>
+     <p>Last updated by Ms. Reyes. Do not share the office number outside the school community.</p>
+diff --git a/style.css b/style.css
+index 5402a1b..38bfdc4 100644
+--- a/style.css
++++ b/style.css
+@@ -4,3 +4,7 @@ h1 { margin-bottom: 0.25rem; }
+ .tag { color: #7a6f56; margin-top: 0; }
+ h2 { margin-top: 2rem; border-bottom: 1px solid #ddd6c1; padding-bottom: 0.25rem; }
+ footer { margin-top: 3rem; color: #7a6f56; font-size: 0.9rem; }
++.contact { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
++.contact label { display: flex; flex-direction: column; font-size: 0.95rem; }
++.contact input, .contact textarea { font: inherit; padding: 0.5rem; border: 1px solid #ddd6c1; background: #fff; margin-top: 0.25rem; }
++.contact button { font: inherit; padding: 0.5rem 1rem; background: #1a1a1a; color: #fbf7ee; border: 0; cursor: pointer; align-self: flex-start; }

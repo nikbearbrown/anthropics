@@ -1,0 +1,322 @@
+{
+ "metadata": {
+  "title": "Why the Same API Key That Shipped Your Prototype Becomes a Critical Bug in Production",
+  "slug": "claude-basics--claudeforfoundationmodels-same-api-key-shipped-prototype",
+  "topic": "CLAUDE BASICS · WHERE A SECRET LIVES",
+  "purpose": "Answer one real question in the Teardown register: why does the same API key that worked in your prototype become a critical bug in production? Explain the machinery (bundle vs relay), reveal what the design choice optimized for (ownership of the binary), and land the carry-out that the fix isn't a better hiding place — it's moving the key off the device entirely.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/youtube/claude-basics/claudeforfoundationmodels-same-api-key-shipped-prototype/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B04 (dev .apiKey() vs release .proxied()+relay code case, paid off with the relay path completing to Claude)",
+  "build": {
+   "at": "2026-08-28T05:13:30",
+   "cut": "master",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Someone thinks the fix is to hide the key harder before shipping. Wrong axis — you don't hide it, you move it. Why the same key that shipped your prototype becomes a bug in production.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'How do I hide my API key better before I ship?', hesitates on 'hide', corrects to 'move', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "How do I hide my API key\nbetter before I ship?\nWhy does the same key\nbecome a bug in production?",
+      "face": "serif",
+      "fontSize": 84,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "hide",
+      "replacementWords": "move",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-same-api-key-shipped-prototype"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('hide' -> 'move') is visible on a late frame.",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T05:13:30"
+   },
+   "audio_file": "mp3/beat-B00.mp3"
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / wrong guess",
+   "narration_text": "Here's what's actually happening. In development, the bundled key sits inside a process on a machine you control — no adversary is going to take that binary apart. Ship the same key inside the app, and every user is now holding an artifact they can pull to pieces at leisure. The instinct is to hide the string harder — scramble it, split it in pieces. That optimizes for reader friction on the wrong axis. Decompilers reconstruct strings whatever shape you obfuscated them into; you can slow the read down, you never stop it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 25,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "DEV card and SHIP card holding the same key; a decompile arrow cracks the SHIP card open; a scrambled variant is still read straight through"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Same key, flipped risk",
+     "mechanic": "Two cards on cream: DEV (checkmark, 'safe locally') and SHIP, both showing the same key string. An arrow labelled DECOMPILE strikes the SHIP card; the key text turns terracotta and a label reads 'extractable'. Beneath, a scrambled variant of the string is shown, still read straight through by the same arrow — scrambling changes nothing.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B01Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T05:13:30"
+   },
+   "audio_file": "mp3/beat-B01.mp3"
+  },
+  {
+   "beat_id": "B02",
+   "act": "setup - ANCHOR PLANTED",
+   "narration_text": "Here's the concrete case. In development the app calls Claude directly — `.apiKey(\"sk-ant-...\")`, the secret sitting right there in the source. Before release, that one line has to change to `.proxied(headers:[...])`, and a small relay server at yourcompany.com takes over the middle of the path. The relay is where the real key lives now; the app just forwards a request, and the server side stitches the secret back in on the way to Claude.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR - DEV code card vs RELEASE code card, with a relay box injecting the real key on the path to Claude"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR - dev code vs release code, a relay in between",
+     "mechanic": "THE ANCHOR. Left: a mono code card reading `.apiKey(\"sk-ant-...\")` labelled DEV — IN SOURCE. An arrow labelled 'before release' points to a second mono code card reading `.proxied(headers:[...])` labelled RELEASE. Beneath it, a small box labelled RELAY (yourcompany.com) sits on the arrow's path to a CLAUDE label, with its own short arrow captioned 'injects real key'. THIS COMPOSITION RETURNS AT B04.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B02Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T05:13:30"
+   },
+   "audio_file": "mp3/beat-B02.mp3"
+  },
+  {
+   "beat_id": "B03",
+   "act": "3 mechanism",
+   "narration_text": "Here's why the shape of the fix has to change. The threat model flipped. On your own machine, the key only has to work — nobody is prying the binary open. On a device someone else holds, the key has to survive them prying it open, indefinitely. Obfuscation optimizes for reader friction; it does nothing about physical possession. Removing the key from the device is the only move that changes what a determined user can actually reach.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "a lock that stays closed on YOUR MACHINE; the same lock pried open on SOMEONE ELSE'S DEVICE; a scramble icon struck through, changing nothing"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Same lock, different holder",
+     "mechanic": "Left: a closed padlock over 'YOUR MACHINE', ink only — nothing happens to it. Right: the identical padlock over 'SOMEONE ELSE'S DEVICE', pried open by a wrench-shaped DECOMPILE arrow, terracotta. Between them, a small 'scramble' spiral icon is struck through in ink — it never reaches the lock.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B03Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T05:13:30"
+   },
+   "audio_file": "mp3/beat-B03.mp3"
+  },
+  {
+   "beat_id": "B04",
+   "act": "4 ANCHOR PAYOFF - both directions",
+   "narration_text": "So on release the app never holds the real key at all. It sends a request token to your relay, and the relay injects the actual key server-side before forwarding on to Claude. The boundary they've drawn is 'wherever a user can hold the binary.' Inside that boundary, the key has to move off the device. Outside it — on a server you fully control that no user ever touches — the bundled key stays perfectly fine. Nothing about the key changed; the trade-off changed the moment ownership of the binary did.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS - the RELEASE path completes unbroken through the relay to Claude; a SERVER YOU CONTROL path reaches Claude directly, unbroken, no relay"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS - one boundary, and where it isn't needed",
+     "mechanic": "THE B02 COMPOSITION RETURNS: the RELEASE code card's arrow now runs unbroken through the RELAY box to a CLAUDE label, captioned 'token in, real key injected'. Off to the side, a third card labelled 'SERVER YOU CONTROL' holds the same bundled-key line and reaches CLAUDE directly with its own unbroken arrow — no relay box on that path — captioned 'no user ever holds this binary'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B04Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T05:13:30"
+   },
+   "audio_file": "mp3/beat-B04.mp3"
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A key you can decompile isn't hidden — it's just slower to read. The real fix isn't a better hiding place; it's moving the key off the device entirely.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A key you can decompile isn't hidden — it's just slower to read. The real fix isn't a better hiding place; it's moving the key off the device entirely.",
+      "attribution": "",
+      "sparkLine": "Hide it, or move it."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T05:13:30"
+   },
+   "audio_file": "mp3/beat-BCRY.mp3"
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. I'm shipping an iOS app that currently calls the Claude API with a bundled key — the line is `.apiKey(\"sk-ant-...\")`. Walk me through moving that key off the device onto a small relay server I control: the minimum HTTP endpoint my relay needs to expose, the server-side code that injects the real Anthropic key and forwards the request to Claude, what my app should send instead of the key so the relay can tell my own users from an attacker pointing curl at it, and the client-side switch from `.apiKey(...)` to `.proxied(headers:[...])` with the exact headers you'd put there. Assume Node.js on the relay. Go deeper: ask the same model what an attacker actually sees when they decompile the shipped app after the move — what's still exposed in the binary, and where the new soft targets are on the relay side. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 55,
+   "llm_exercise": {
+    "prompt": "I'm shipping an iOS app that currently calls the Claude API directly with a bundled key — the line is `.apiKey(\"sk-ant-...\")`. Before release, I need to move that key off the device onto a small relay server I control. Walk me through it: (1) the minimum HTTP endpoint my relay needs to expose — path, method, request and response shape — so my app can call the relay instead of Anthropic directly, (2) the server-side code that injects the real Anthropic key and forwards the request to Claude, (3) what my app should send instead of the key so the relay can tell my own users from an attacker pointing curl at the endpoint, and (4) the client-side switch from `.apiKey(...)` to `.proxied(headers:[...])`, including the exact headers you'd put there. Assume Node.js on the relay, and treat rate-limiting and abuse detection as follow-ups, not part of this pass.",
+    "dig_deeper": "Go deeper: ask the same model what an attacker actually sees when they decompile the shipped app after the move — what's still exposed in the binary, what's now merely trace evidence, and where the new soft targets have moved to (the relay endpoint URL, the client-side auth token, any rate-limit gaps)."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE BASICS · WHERE A SECRET LIVES",
+      "segment": "LLM Exercise",
+      "command": "I'm shipping an iOS app that currently calls the Claude API directly with a bundled key — `.apiKey(\"sk-ant-...\")`. Walk me through moving that key off the device onto a small relay I control: (1) the minimum HTTP endpoint my relay needs to expose, (2) the server-side code that injects the real Anthropic key and forwards to Claude, (3) what my app should send instead of the key so the relay can tell my users from an attacker pointing curl at it, and (4) the client-side switch from `.apiKey(...)` to `.proxied(headers:[...])` with the exact headers. Assume Node.js on the relay.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T05:13:30"
+   },
+   "audio_file": "mp3/beat-BHTF.mp3"
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Where a Secret Lives — moving the key off the device. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Where a Secret Lives — moving the key off the device. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T05:13:30"
+   },
+   "audio_file": "mp3/beat-BOUT.mp3"
+  }
+ ]
+}

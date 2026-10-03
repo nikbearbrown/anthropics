@@ -1,0 +1,319 @@
+{
+ "metadata": {
+  "title": "Claude, K12 Lesson Differentiation.",
+  "subtitle": "One Source, Three Tiers",
+  "slug": "k12-teacher-skills--claude-liam-k12-lesson-differentiation",
+  "topic": "K12-LESSON-DIFFERENTIATION · ANTHROPIC SKILL",
+  "purpose": "Take a Claude skill apart in the Teardown register: differentiating for three reading levels doesn't mean three separate lessons — Claude tiers one shared lesson three ways from a single material-source file. Name the trade-off: they optimized for consistency at the expense of independent editability.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/k12-teacher-skills/youtube/claude-liam-k12-lesson-differentiation/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the k12-lesson-differentiation Skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-02T08:02:26",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. You'd assume three reading levels means Claude writes three separate lessons. It doesn't. One material-source file, tiered three ways. Here's what's actually happening under the hood.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'When Claude tiers a lesson for three levels, does it write separate?', hesitates on 'separate', corrects to 'one shared version', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "When Claude tiers\na lesson for three levels,\ndoes it write separate?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "separate",
+      "replacementWords": "one shared version",
+      "mistakeRate": 6,
+      "hesitateWithin": 2,
+      "hesitateBetween": 14,
+      "charMs": 48,
+      "jitter": 26,
+      "seed": "nbb-k12-lesson-differentiation"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. triggerWords/replacementWords must be a SINGLE whitespace token each (the component matches trigger against one split token's punctuation-stripped core; a multi-word trigger like 'three lessons' never matches and the correction silently never fires) and the trigger should be the LAST content word before terminal punctuation so nothing trails the replacement ungrammatically. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('separate' -> 'one shared version') lands on screen.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T08:02:26"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Take a Claude Skill apart, and here's what you find. It's a folder — Claude reads it before it works. This one is called k12-lesson-differentiation. Inside, one file: SKILL.md. Plain English, no hidden logic, no secret sauce. Claude reads it, then acts. The file is the program.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A SKILL IS A FOLDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A SKILL IS A FOLDER",
+     "chips": [
+      "FOLDER: k12-lesson-diff",
+      "SKILL.md",
+      "CLAUDE ACTS"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T08:02:26"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Here's the mechanism, in full. The instructions live in a Steps section — a numbered list Claude runs top to bottom. Read the step, run the step, next step. No branching, unless a step itself says to branch. Linear, by design — that's what they optimized for.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "READ, EXECUTE, RETURN",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "READ, EXECUTE, RETURN",
+     "chips": [
+      "READ SKILL.md",
+      "EXECUTE STEPS",
+      "RETURN RESULT"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "linear — no branching unless a step says so",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T08:02:26"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's the design choice that matters most. All three tiers, and the teacher's own plan, render from one material-source file. The facts get written once. Change a number in the source and every tier updates together — no drift between the below-level and above-level versions. They optimized for consistency at the expense of independent editability: a tier can't be tuned in isolation, because every version has to come from the same shared facts.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "ONE SOURCE, THREE TIERS",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "ONE SOURCE, THREE TIERS",
+     "chips": [
+      "MATERIAL SOURCE",
+      "TEACHER PLAN",
+      "3 TIER DOCS"
+     ],
+     "arrows": true,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "written once — tiers can't drift",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T08:02:26"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Claude isn't writing three separate lessons — it's tiering one shared lesson three ways from a single source file. Consistent to a fault, and only as good as the source it renders from.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Claude isn't writing three separate lessons — it's tiering one shared lesson three ways from a single source file. Consistent to a fault, and only as good as the source it renders from.",
+      "attribution": "",
+      "sparkLine": "One source. Three tiers. No drift."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T08:02:26"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into any frontier LLM — Claude, ChatGPT, or Gemini. Ask it to write a short SKILL.md for K12 lesson differentiation, then run its own skill on a fifth-grade fractions lesson, show the material-source file plus three tiered versions, then change one number in the source and watch every tier update together. Go deeper: try to edit one tier directly without touching the source, and see what breaks — and what that tells you about what the design gave up to get consistency.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "llm_exercise": {
+    "prompt": "I want to understand how a Claude 'skill' differentiates a lesson for multiple reading levels. A Claude skill is a folder holding SKILL.md — a numbered list of steps Claude reads and runs top to bottom, with no judgment step. Write me a short SKILL.md for a K12-LESSON-DIFFERENTIATION skill: 4–6 numbered steps that take one lesson concept and one grade level, and output three tiered versions (below-level, on-level, above-level) plus a teacher plan, all rendered from a single material-source file. Then actually run your own SKILL.md on a fifth-grade fractions lesson: show me the material-source file, all four outputs, then change one number in the material-source file, re-run, and show every tier updated in lockstep.",
+    "dig_deeper": "Go deeper: try to edit the above-level tier directly, without touching the material-source file. What breaks — and what does that tell you about what the design gave up to get consistency?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "K12-LESSON-DIFFERENTIATION · ANTHROPIC SKILL",
+      "segment": "Claude, K12 Lesson Differentiation.",
+      "command": "Write me a short SKILL.md for a K12-LESSON-DIFFERENTIATION skill: 4–6 numbered steps that take one lesson concept and grade level and output three tiered versions plus a teacher plan, all rendered from a single material-source file. Then run your own SKILL.md on a 5th-grade fractions lesson: show the material-source file, all four outputs, then change one number in the source and re-run so every tier updates in lockstep.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T08:02:26"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, K12 Lesson Differentiation. One source, three tiers. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, K12 Lesson Differentiation. One source, three tiers. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T08:02:26"
+   }
+  }
+ ]
+}

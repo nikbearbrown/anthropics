@@ -1,0 +1,54 @@
+=== files ===
+ORACLE.sh
+__pycache__
+ranges.py
+ranges.py.orig
+test_ranges.py
+
+=== wc -l ranges.py test_ranges.py ===
+      11 ranges.py
+      26 test_ranges.py
+      37 total
+
+=== ORACLE: python3 -m unittest test_ranges -v ===
+test_empty_raises (test_ranges.TestParseRange.test_empty_raises) ... ok
+test_extra_dash_raises (test_ranges.TestParseRange.test_extra_dash_raises) ... ok
+test_range (test_ranges.TestParseRange.test_range) ... ok
+test_reversed_raises (test_ranges.TestParseRange.test_reversed_raises) ... ok
+test_single_number (test_ranges.TestParseRange.test_single_number) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+
+=== git diff --stat (partner-loop total) ===
+ ranges.py | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+=== git diff ranges.py (final vs initial) ===
+diff --git a/ranges.py b/ranges.py
+index ddbb569..f762598 100644
+--- a/ranges.py
++++ b/ranges.py
+@@ -1,6 +1,11 @@
+ def parse_range(s):
+-    """Parse '1-5' -> (1, 5). '7' -> (7, 7). '' or reversed is an error."""
++    """Parse '1-5' -> (1, 5). '7' -> (7, 7). '', reversed, or extra dashes is an error."""
+     parts = s.split('-')
+     if len(parts) == 1:
+         return (int(parts[0]), int(parts[0]))
+-    return (int(parts[0]), int(parts[1]))
++    if len(parts) != 2:
++        raise ValueError(f"invalid range: {s!r}")
++    start, end = int(parts[0]), int(parts[1])
++    if start > end:
++        raise ValueError(f"reversed range: {s!r}")
++    return (start, end)
+
+=== grep -c 'raise ValueError' ranges.py ===
+2
+
+=== grep 'def parse_range' ranges.py ===
+def parse_range(s):
+    """Parse '1-5' -> (1, 5). '7' -> (7, 7). '', reversed, or extra dashes is an error."""

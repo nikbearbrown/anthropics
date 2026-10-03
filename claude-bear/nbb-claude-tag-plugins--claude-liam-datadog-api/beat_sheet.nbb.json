@@ -1,0 +1,292 @@
+{
+ "metadata": {
+  "title": "Claude, Datadog API.",
+  "slug": "claude-tag-plugins--claude-liam-datadog-api",
+  "topic": "CLAUDE BASICS · DATADOG API SKILL",
+  "purpose": "Take one real question apart in the Teardown register: does Claude already know how an outside API like Datadog's works, or does something have to show it? Lands the carry-out that a skill is a map of an API's traps — read before acting, not knowledge Claude already had — and Claude only dodges the ones the map actually marks.",
+  "skill": "hai-simple",
+  "register": "Teardown",
+  "brand": "hai-fellows",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "in_for_bear": true,
+  "clock": "narration",
+  "bookend_exempt": [
+   "cold-open"
+  ],
+  "one_flag": "N/A — every claim in this reel is carried directly from the source Teardown's own stated facts about the datadog-api skill, not an inference this build is making",
+  "gate_c": "SIGNED — CARRY-OUT.md",
+  "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "redo_of": "anthropics/claude-tag-plugins/youtube/claude-liam-datadog-api/beat_sheet.json (Teardown, 7 beats, fully-written narration — no source_skill file present on this machine, see QUESTION.md)",
+  "build": {
+   "at": "2026-08-31T14:04:35",
+   "cut": "master",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "The natural guess: Claude already knows how APIs like Datadog work, straight out of training. Not quite — Claude has to be shown, in a file it reads before acting, and the file has to name the traps. Here's what that file actually has to spell out.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types the naive framing, hesitates on 'KNOWS', corrects to 'has to be shown', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude already\nKNOWS how APIs\nlike Datadog\nwork, right?",
+      "face": "serif",
+      "fontSize": 80,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "KNOWS",
+      "replacementWords": "has to be shown",
+      "mistakeRate": 8,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 50,
+      "jitter": 28,
+      "seed": "hai-datadog-api"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md. Writer types the newcomer's wrong-guess word 'KNOWS' (implying Claude already possesses this from training), hesitates, corrects to 'has to be shown' -> lands 'Claude already has to be shown how APIs like Datadog work, right?'. The wrong guess is picked up directly by B01's 'file it reads before acting' framing. Narration ~45 words + lead_silence_s 0.8, giving the typing a >=9s window (TIMING LAW).",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T14:04:35"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "anatomy",
+   "narration_text": "Start with the shape. The Datadog API splits into v1 and v2 by what you're touching, not by which is newer — v1 owns metrics, monitors, dashboards, and service levels; v2 owns logs, traces, incidents, and session data. Two headers ride on every request Claude sends: one names the tenant, one names the caller and what it's allowed to touch. The design choice worth naming is regional — Datadog puts the region in the URL, not a header, so calling the wrong regional address returns a flat permission error even when the keys are valid. The skill's fix is a single throwaway call up front, the validate endpoint, before anything real runs. That trades one wasted request for the certainty that the door Claude is knocking on is actually its own.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 45,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "DatadogApiAnatomy",
+     "props": {
+      "sparkLine": "v1 or v2 by resource, not generation. Regional site first."
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T14:04:35"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "design",
+   "narration_text": "Now the results. Long lists come back a page at a time, and Datadog uses three different schemes for that depending on the endpoint — logs, events, and traces hand back a cursor; monitors use a page number; incidents and users use a page size and offset. Three shapes because the endpoints evolved separately and nobody went back to unify them. Two more traps Claude has to track. One endpoint wraps its results a JSON layer deeper than the rest, so the exact same shape of request needs extra nesting most others skip — miss it, and the error the server returns doesn't name which field was wrong. And updating a dashboard replaces the whole document: leave a widget out of the update and it's gone, not skipped. PUT-semantics on a nested object — reads as a footgun if you were expecting PATCH.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 48,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "DatadogApiDesign",
+     "props": {
+      "sparkLine": "Three pagination schemes. Spans vs logs: different JSON:API depth."
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T14:04:35"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "5 both directions",
+   "narration_text": "So does having this file mean Claude never trips? Not exactly, and this is the honest part. Where the file names a trap plainly — the region check, the exact error text a missing flag returns — Claude reads it and skips the mistake outright. Where it's buried in a single line, or never flagged as a trap at all, Claude misses it the same way a person skimming the same page would. The skill is only as sharp as its callouts.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Two columns: what the skill spells out plainly, what it leaves easy to miss — no verdict frame, per-item facts only",
+    "remotion": {
+     "pattern": "MedhavyTwoColumnCard",
+     "props": {
+      "sparkLine": "Clear traps get dodged. Buried ones don't.",
+      "leftHeader": "documented plainly",
+      "leftItems": [
+       "security note leads, before any real operation",
+       "regional site has a one-call check: validate, before anything else",
+       "the missing-flag error is named exactly: \"bad range in URL\"",
+       "each pagination scheme is tied to specific endpoints, not left general"
+      ],
+      "rightHeader": "easy to miss",
+      "rightItems": [
+       "only one bundled script — every other write is hand-rolled",
+       "dashboard replace-all warning is a single sentence",
+       "the deeper-nested endpoint's extra layer isn't flagged as a trap",
+       "the envelope mismatch between endpoints is a footnote, not a callout"
+      ]
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T14:04:35"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A skill doesn't make Claude know an API. It gives Claude a map of where the traps are — and Claude only avoids the ones the map actually marks.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A skill doesn't make Claude know an API. It gives Claude a map of where the traps are — and Claude only avoids the ones the map actually marks.",
+      "attribution": "",
+      "sparkLine": "A map, not knowledge — and only where it's marked.",
+      "citation": ""
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T14:04:35"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini — read it with me. Pick an API you've never used with Claude before, even a small public one. Before you let it write any code, ask it to list the three things it would need confirmed first: how requests are authenticated, how paginated results come back, and any known regional or versioning quirk. Then have it write the first real call, and check whether it actually used what it just told you it needed. Go deeper: for any trap Claude missed, ask whether it was not in the docs at all, or in the docs but never flagged as a trap. That difference is what a skill is for.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 34,
+   "llm_exercise": {
+    "prompt": "I'm about to use [pick an API you've never used with Claude before — even a small public one] for the first time with Claude. Before you write any code, list the three things you'd need confirmed first: how requests are authenticated, how paginated results come back, and any known regional or versioning quirk. Then write the first real call. Afterwards, check whether you actually used what you just told me you needed — and name anything you had to guess.",
+    "dig_deeper": "Go deeper: for any trap Claude missed, ask whether it was not in the docs at all, or in the docs but never flagged as a trap. That difference is exactly what a skill is meant to fill in."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN · AN API CLAUDE HASN'T SEEN",
+      "segment": "Claude, Datadog API.",
+      "command": "Pick an API you've never used with Claude before, even a small public one. Before Claude writes any code, ask it to list the three things it needs confirmed first: how requests are authenticated, how paginated results come back, and any known regional or versioning quirk. Then have it write the first real call, and check whether it actually used what it just told you it needed.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "output": [],
+      "folderLabel": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T14:04:35"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Datadog API. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Datadog API. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T14:04:35"
+   }
+  }
+ ]
+}

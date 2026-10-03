@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Build MCP Server",
+    "title": "Claude, Build Mcp Server.",
     "slug": "claude-liam-build-mcp-server",
-    "topic": "BUILD MCP SERVER · CLAUDE PLUGIN",
+    "topic": "BUILD-MCP-SERVER · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,62 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Ciao, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-plugins-official/plugins/mcp-server-dev/skills/build-mcp-server/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-plugins-official/plugins/mcp-server-dev/skills/build-mcp-server/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "This skill should be used when the user asks to \"build an MCP server\"",
+        "\"create an MCP\"",
+        "\"make an MCP integration\"",
+        "\"wrap an API for Claude\"",
+        "\"expose tools to Claude\""
+      ],
+      "constraints": [
+        "Do not start scaffolding until you have answers to the questions in Phase 1. If the user's opening message already answers them, acknowledge that and skip straight to…",
+        "Anyone who installs it → Remote HTTP (strongly preferred) or MCPB (if it must be local)",
+        "Choose this unless the server must touch the user's local machine",
+        "Choose this when the server must run on the user's machine — it reads local files, drives a desktop app, talks to localhost services, or needs OS-level access",
+        "A script launched via npx / uvx on the user's machine. Fine for personal tools and prototypes. Painful to distribute: users need the right runtime, you can't push…",
+        "Recommend this only as a stepping stone. If the user insists, scaffold it but note the MCPB upgrade path",
+        "Tools are one of three server primitives. Most servers start with tools and never need the others, but knowing they exist prevents reinventing wheels:",
+        "Run the pre-submission checklist — read/write tool split, required annotations, name limits, prompt-injection rules. →…"
+      ],
+      "referenced_files": [
+        "https://claude.com/docs/llms-full.txt",
+        "references/elicitation.md",
+        "@modelcontextprotocol/ext-apps",
+        "build-mcp-app",
+        "references/auth.md",
+        "references/deploy-cloudflare-workers.md",
+        "references/remote-http-scaffold.md",
+        "clientCapabilities.elicitation",
+        "build-mcpb",
+        "references/tool-design.md"
+      ],
+      "code_signals": [],
+      "sections": [
+        "Phase 1 — Interrogate the use case",
+        "1. What does it connect to?",
+        "2. Who will use it?",
+        "3. How many distinct actions does it expose?",
+        "4. Does a tool need mid-call user input or rich display?",
+        "5. What auth does the upstream service use?",
+        "Phase 2 — Recommend a deployment model",
+        "⭐ Remote streamable-HTTP MCP server (default recommendation)",
+        "Elicitation (structured input, no UI build)",
+        "MCP app (remote HTTP + interactive UI)"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T18:39:36",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T15:08:41",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +77,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Ciao — this is Liam, in for Bear. Ask Claude to build an MCP server, create an MCP, make an MCP integration, or wrap an API for Claude — the Build MCP Server skill fires. It is a discovery-and-routing skill: it asks four questions first, then hands off to a specialized skill like build-mcp-app or build-mcpb. Discovery-before-code is the whole model — the wrong deployment choice early means a painful rewrite. Let me walk you through the three deployment paths, the two tool-design patterns, and where this skill makes the decision easy and where the caveats hide.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is build-mcp-server. This skill should be used when the user asks to \"build an MCP server\", \"create an MCP\", \"make an MCP integration\", \"wrap an API for Claude\", \"expose tools to Claude\", \"make an MCP app\", or discusses building something with the Model Context Protocol. It is the entry point for MCP server development — it interrogates the user about their use case, determines the right deployment model (remote HTTP, MCPB, local stdio), picks a tool-design pattern, and hands off to specialized skills.. Its concrete surface area includes This skill should be used when the user asks to \"build an MCP server\"; \"create an MCP\"; \"make an MCP integration\". A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 22,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Ciao, Liam",
-            "topic": "BUILD MCP SERVER · CLAUDE PLUGIN",
-            "segment": "PLUGIN DEV",
-            "command": "Build an MCP server that wraps the GitHub API.",
+            "greeting": "Hola, Liam",
+            "topic": "BUILD-MCP-SERVER · ANTHROPIC SKILL",
+            "segment": "Claude, Build Mcp Server.",
+            "command": "Run the build-mcp-server skill.",
             "runningText": "reading build-mcp-server SKILL.md…",
             "output": [
-              "Discovery first: 4 questions before any scaffolding",
-              "Remote HTTP default — MCPB if local machine required — stdio prototype only",
-              "Pattern A: one-per-action · Pattern B: search+execute for large surfaces"
+              "skill: build-mcp-server",
+              "This skill should be used when the user asks to \"build an MCP server\", \"create…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +107,48 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 31.59,
+      "actual_duration_s": 43.48,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:39:36"
+        "at": "2026-09-05T15:08:41"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — three deployment models + decision matrix",
-      "narration_text": "There are three deployment paths, ranked by preference. Remote HTTP wins by default for anything wrapping a cloud API: zero install friction, one server serves all users, and OAuth flows work properly with redirect handling. Recommend this unless the server must touch the user's local machine. MCPB — Model Context Protocol Bundle — packages a server with its runtime for local distribution: the sanctioned way to ship when the server reads local files, drives a desktop app, or talks to localhost services. Local stdio via npx or uvx is fine for personal prototypes but painful to distribute — recommend it only as a stepping stone and flag the MCPB upgrade path. The decision matrix covers seven scenarios: small SaaS API goes remote, large SaaS goes remote with search-plus-execute, UI widgets go MCP app, local desktop goes MCPB.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is build-mcp-server. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at https://claude.com/docs/llms-full.txt, references/elicitation.md, @modelcontextprotocol/ext-apps, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 32,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "BuildMcpServerDeployment",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Remote HTTP default. MCPB for local. stdio for prototypes only."
+            "skillName": "build-mcp-server",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "11k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "references",
+                "size": null,
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "2 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +157,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 51.33,
+      "actual_duration_s": 23.66,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:39:36"
+        "at": "2026-09-05T15:08:41"
       }
     },
     {
       "beat_id": "B02",
-      "act": "design — tool patterns A/B + primitives",
-      "narration_text": "Tool design has two patterns. Pattern A: one tool per action. When the action space is under about fifteen operations, give each a dedicated tool with a tight description and schema. Claude reads the list once and knows exactly what's possible. Pattern B: search-plus-execute. When wrapping a large API — dozens to hundreds of endpoints — listing every operation floods the context window and degrades model performance. Expose two tools: search-actions to return matching operations for a natural-language intent, and execute-action to run an operation by ID. Context stays lean. The hybrid option promotes the three to five most-used actions to dedicated tools, keeping the long tail behind search and execute. Beyond tools, the other three primitives are resources — host-browsable docs and data — prompts — user-triggered slash commands — and elicitation — spec-native mid-tool user input without building UI. Most servers only need tools; knowing the others prevents reinventing wheels.",
+      "act": "pipeline",
+      "narration_text": "build-mcp-server is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: This skill should be used when the user asks to \"build an MCP server\"; \"create an MCP\"; \"make an MCP integration\"; \"wrap an API for Claude\". The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 34,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "BuildMcpServerPatterns",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Under 15 tools: one per action. Large surface: search+execute. Most servers only need tools."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +208,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 53.55,
+      "actual_duration_s": 17.37,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:39:36"
+        "at": "2026-09-05T15:08:41"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. Build MCP Server gets five things right. The discovery-before-code structure — five questions first, no scaffolding until answered — stops the most common mistake of picking a deployment model before understanding the use case. The remote HTTP default is opinionated with a clear unless rule: unless the server must touch the local machine, remote wins. The search-plus-execute pattern for large API surfaces is documented with a concrete two-tool interface. Elicitation is correctly framed as spec-native, zero UI code, and the caveat about host support is stated. The seven-scenario decision matrix gives Claude a complete picture for any plausible combination. Where it bites. The elicitation capability check requirement is buried mid-paragraph: if you miss it and the client does not advertise the capability, the SDK throws with no clear error path. The FastMCP version disambiguation — jlowin's PyPI package versus the frozen 1.0 bundled in the official mcp SDK — is a single sentence and easy to skip, but using the wrong package breaks decorator-based routing silently. Tool description quality is referenced out to references-slash-tool-design-dot-md with bare inline guidance, not the signal-to-schema advice that matters. The CIMD versus DCR distinction for OAuth is mentioned but fully deferred to references-slash-auth-dot-md. And the load Claude docs first invariant at the top has no enforcement — the Phase 1 questions follow immediately, so a reader can skip the fetch and proceed on stale assumptions.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. Do not start scaffolding until you have answers to the questions in Phase 1. If the user's opening message already answers them, acknowledge that and skip straight to…. That is the constraint in build-mcp-server — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 40,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "BuildMcpServerTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Discovery-before-code and remote-HTTP default solid. Elicitation check and FastMCP split: surface them."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "Do not start scaffolding until you have answers to the questions in Phase 1. If the user's opening message already answers them, acknowledge that and skip straight to…",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 86.66,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 17.09,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:39:36"
+        "at": "2026-09-05T15:08:41"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In build-mcp-server, supporting material: https://claude.com/docs/llms-full.txt, references/elicitation.md, @modelcontextprotocol/ext-apps, build-mcp-app; sections: Phase 1 — Interrogate the use case, 1. What does it connect to?, 2. Who will use it?, 3. How many distinct actions does it expose?. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "This skill should be used when the user asks to \"build an MCP server\"; \"create an MCP\"; \"make an MCP integration\"; https://claude.com/docs/llms-full.txt; references/elicitation.md; @modelcontextprotocol/ext-apps",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 26.94,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T15:08:41"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. Build MCP Server: discovery-before-code, four questions, then hand off to build-mcp-app or build-mcpb. Remote HTTP default — unless server must touch local machine. MCPB for local: filesystem, desktop apps, localhost. Local stdio: prototype only. Pattern A: one per action under fifteen tools. Pattern B: search-plus-execute for large surfaces. Elicitation: spec-native mid-tool input — capability check required or SDK throws. Gaps: elicitation capability check buried, FastMCP version split, tool descriptions deferred, OAuth details in references only.",
+      "narration_text": "build-mcp-server makes Claude execute one task reliably. The SKILL.md is the spec — This skill should be used when the user asks to \"build an MCP server\", \"create…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 22,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "Build MCP Server",
+            "artifactHeading": "Claude, Build Mcp Server.",
             "artifactLines": [
-              "Discovery: 4 questions before scaffolding — deployment, users, action count, auth",
-              "Remote HTTP default · MCPB for local machine · stdio prototype only",
-              "Pattern A: one per action <15 · Pattern B: search+execute for large surfaces",
-              "Elicitation: spec-native, zero UI — capability check required or SDK throws",
-              "Frameworks: TypeScript SDK (default) · FastMCP 3.x (jlowin PyPI, not frozen 1.0)",
-              "Gaps: elicitation check buried · FastMCP version split · tool desc deferred · OAuth refs-only"
+              "Skill: build-mcp-server — Claude reads SKILL.md before acting",
+              "This skill should be used when the user asks to \"build an MCP server\", \"create an MCP\"…",
+              "Capabilities: This skill should be used when the user asks to \"build an MCP server\"; \"create an MCP\"; \"make an MCP integration\"",
+              "Constraint: Do not start scaffolding until you have answers to the questions in Phase 1. If the…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +309,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 35.43,
+      "actual_duration_s": 14.23,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:39:36"
+        "at": "2026-09-05T15:08:41"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Open a Claude Code session. Paste this: Build an MCP server that wraps the GitHub API — tools for creating issues, searching repositories, and getting pull request details. Watch four things. First: does it ask deployment questions before scaffolding, or does it start generating code immediately? Second: does it recommend remote HTTP as the default and give a reason? Third: does it use one tool per action since the surface is small — or does it mistakenly apply search-plus-execute to three tools? Fourth: are the tool descriptions specific enough that Claude could choose between create-issue and update-issue without ambiguity? A description that just restates the tool name is a signal it did not apply the tool-design guidance.",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to this skill should be used when the user asks to \"build an mcp server\", \"create. Read the build-mcp-server skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "BUILD MCP SERVER · HANDOFF",
-            "segment": "PLUGIN DEV",
-            "command": "Build an MCP server that wraps the GitHub API — create issues, search repos, get PRs.",
-            "runningText": "Watch: discovery first? remote HTTP? one-per-action? specific descriptions?",
-            "output": [
-              "Expected: deployment questions before any code · remote HTTP recommended",
-              "Expected: one tool per action (3 tools, not search+execute) · descriptions specific",
-              "Red flag: immediate scaffolding · search+execute for 3 tools · descriptions restate name"
-            ],
+            "greeting": "Your turn.",
+            "topic": "BUILD-MCP-SERVER · ANTHROPIC SKILL",
+            "segment": "Claude, Build Mcp Server.",
+            "command": "I want to this skill should be used when the user asks to \"build an mcp. Read the build-mcp-server skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +346,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 38.68,
+      "actual_duration_s": 14.74,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:39:36"
+        "at": "2026-09-05T15:08:41"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "Build MCP Server. Liam, in for Bear.",
+      "narration_text": "Claude, Build Mcp Server. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "Build MCP Server",
+            "title": "Claude, Build Mcp Server.",
             "handle": "@NikBearBrown",
-            "subline": "build-mcp-server · Plugin Dev"
+            "subline": "build-mcp-server · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +377,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 3.43,
+      "actual_duration_s": 3.86,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:39:36"
+        "at": "2026-09-05T15:08:41"
       }
     }
   ]

@@ -4,15 +4,23 @@
     "slug": "ifp-pressure-barrier",
     "topic": "CANCER NANOMEDICINE",
     "register": "Teardown",
-    "voice": "nbbhuman",
-    "voice_id": "TyW6NH39JcFb5M3xdIIk",
+    "voice": "am_onyx",
+    "engine": "kokoro",
     "palette": "teardown",
     "style_preset": "nikbearbrown",
     "style": "cli",
     "ground": "#FFFFFF",
     "color_semantics": "teardown: INK #2A1A0E neutral/normal; CRIMSON #C8102E key finding/vulnerability; SLATE #545454 structure/neutral",
-    "note": "CLI video REQUIRED spine: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT(manim B04_IFPGradient) · B05 CHANGE · B06 slate · B07 slate · B08 slate · B09 outro. Source: cancer-nanomedicine/chapters/02-tumor-transport-barriers.md",
-    "total_estimated_duration_seconds": 148
+    "note": "CLI video spine: B00 NBB open · B01 problem card · B02 ask · B03 code · B04 output(manim B04_IFPGradient) · B05 change ask · B06 change result card · B07 summary card · B08 next steps card · B09 NBB outro. Source: cancer-nanomedicine/chapters/02-tumor-transport-barriers.md",
+    "total_estimated_duration_seconds": 148,
+    "build": {
+      "at": "2026-08-31T05:49:56",
+      "cut": "review",
+      "filled": 10,
+      "of": 10,
+      "slates": [],
+      "skin_warnings": []
+    }
   },
   "beats": [
     {
@@ -31,10 +39,24 @@
               "Nik Bear Brown",
               "The tumor pushes back. Physics before biology."
             ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
           }
         }
       },
-      "estimated_duration_s": 5
+      "estimated_duration_s": 5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "actual_duration_s": 4.35,
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T05:49:56"
+      }
     },
     {
       "beat_id": "B01",
@@ -44,29 +66,30 @@
       "visual_intent": "SLATE — title card: INTERSTITIAL FLUID PRESSURE: PHYSICS FIGHTS DELIVERY; IFP 20-60 mmHg in solid tumors vs 0-3 mmHg normal; the self-defeating loop: EPR leakiness → IFP elevation → delivery blocked",
       "shot": {
         "type": "REMOTION",
-        "source": "own",
+        "source": "remotion",
+        "motion": "fade",
         "remotion": {
           "pattern": "FormBCard",
           "props": {
-            "title": "Research the Interstitial Fluid Pressure Problem: Why Tumors Resist Drug Delivery From the Inside",
+            "title": "IFP: physics fights delivery",
             "items": [
               {
-                "label": "Key point one",
-                "sub": "",
+                "label": "IFP 20–60 mmHg",
+                "sub": "tumor vs 0–3 in normal tissue",
                 "icon": "target",
-                "cueFrame": 20
+                "cueFrame": 60
               },
               {
-                "label": "Key point two",
-                "sub": "",
-                "icon": "list-checks",
-                "cueFrame": 55
-              },
-              {
-                "label": "Key point three",
-                "sub": "",
+                "label": "Convection reversed",
+                "sub": "the gradient pushes drug out",
                 "icon": "zap",
-                "cueFrame": 90
+                "cueFrame": 160
+              },
+              {
+                "label": "The EPR paradox",
+                "sub": "same vessels enable and defeat delivery",
+                "icon": "shield-alert",
+                "cueFrame": 260
               }
             ]
           },
@@ -76,13 +99,16 @@
           }
         }
       },
-      "estimated_duration_s": 10,
-      "lane": "BOOKEND",
+      "estimated_duration_s": 20,
       "voice": "am_onyx",
       "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
+      "actual_duration_s": 21.89,
+      "audio_file": "mp3/beat-B01.mp3",
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T05:49:56"
       }
     },
     {
@@ -101,11 +127,25 @@
             "topic": "CANCER NANOMEDICINE",
             "segment": "IFP PRESSURE BARRIER",
             "runningText": "researching IFP barrier...",
-            "greeting": "The ask,"
+            "greeting": "Research IFP."
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
           }
         }
       },
-      "estimated_duration_s": 15
+      "estimated_duration_s": 15,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "actual_duration_s": 11.58,
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T05:49:56"
+      }
     },
     {
       "beat_id": "B03",
@@ -123,10 +163,24 @@
             "topic": "CANCER NANOMEDICINE",
             "segment": "IFP PRESSURE BARRIER",
             "code": "# ifp_gradient.py — Claude Code output\nTISSUES = [\n  {\"type\": \"Normal tissue\",\n   \"ifp_mmhg\": \"0-3\",\n   \"lymphatics\": \"functional\",\n   \"transport\": \"convection INWARD + diffusion\",\n   \"drug_dist\": \"uniform\"},\n  {\"type\": \"Solid tumor\",\n   \"ifp_mmhg\": \"20-60 (pancreatic: up to 80)\",\n   \"lymphatics\": \"absent/dysfunctional\",\n   \"transport\": \"convection OUTWARD at rim; diffusion only\",\n   \"drug_dist\": \"RIM-DOMINANT\"},\n]\nprint(\"IFP COMPARISON (Jain lab data):\")\nfor t in TISSUES:\n    print(f\"  {t['type']}: IFP={t['ifp_mmhg']} mmHg | {t['drug_dist']}\")"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
           }
         }
       },
-      "estimated_duration_s": 15
+      "estimated_duration_s": 15,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "actual_duration_s": 20.42,
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T05:49:56"
+      }
     },
     {
       "beat_id": "B04",
@@ -143,7 +197,17 @@
           "file": "vox_scenes.py"
         }
       },
-      "estimated_duration_s": 20
+      "estimated_duration_s": 20,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "actual_duration_s": 22.76,
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim:B04_IFPGradient",
+        "at": "2026-08-31T05:49:56"
+      }
     },
     {
       "beat_id": "B05",
@@ -161,50 +225,169 @@
             "topic": "CANCER NANOMEDICINE",
             "segment": "IFP PRESSURE BARRIER",
             "runningText": "evaluating normalization window...",
-            "greeting": "The ask,"
+            "greeting": "Normalization window."
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
           }
         }
       },
-      "estimated_duration_s": 14
+      "estimated_duration_s": 14,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "actual_duration_s": 14.98,
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T05:49:56"
+      }
     },
     {
       "beat_id": "B06",
       "act": "OUTPUT — revised",
-      "role_note": "change result narration",
+      "role_note": "change result — timeline + losartan + trial status",
       "narration_text": "The normalization window in mouse models is two to six days after anti-VEGF initiation — vessels normalize, IFP drops, drug penetration improves. But in humans the window is poorly defined and patient-to-patient variable. Losartan depletes collagen by suppressing TGF-beta signaling, reducing the stroma that compresses vessels and traps fluid. The Jain lab's NCT trials show improved drug delivery in losartan-pretreated patients, but no survival benefit has been demonstrated yet.",
-      "visual_intent": "SLATE — normalization window timeline: anti-VEGF → 2-6 days normalization window (mouse data) → pruning begins; losartan mechanism (TGF-beta → collagen depletion → IFP reduction); clinical trial status column",
+      "visual_intent": "Normalization window timeline + losartan mechanism + clinical trial status — a three-card breakdown of the revised answer.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The normalization answer",
+            "items": [
+              {
+                "label": "2–6 day window",
+                "sub": "mouse anti-VEGF; human window unclear",
+                "icon": "hand",
+                "cueFrame": 60
+              },
+              {
+                "label": "Losartan",
+                "sub": "cuts TGF-β → depletes collagen → IFP down",
+                "icon": "zap",
+                "cueFrame": 180
+              },
+              {
+                "label": "No survival gain yet",
+                "sub": "Jain-lab NCT trials show delivery gain.",
+                "icon": "shield-alert",
+                "cueFrame": 340
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 18
+      "estimated_duration_s": 20,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "actual_duration_s": 28.14,
+      "audio_file": "mp3/beat-B06.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T05:49:56"
+      }
     },
     {
       "beat_id": "B07",
       "act": "SUMMARY",
       "role_note": "the lesson — one beat",
       "narration_text": "So the IFP problem is a physical consequence of the same leaky vasculature that enables EPR. The tumor physiology is internally contradictory: the leakiness that was supposed to help drug delivery creates the pressure elevation that prevents convection. Every drug delivery strategy for solid tumors has to fight physics before it fights biology.",
-      "visual_intent": "SLATE — summary card: THE SAME BIOLOGY ENABLES AND DEFEATS DELIVERY; leaky vessels → EPR (enables) AND leaky vessels → IFP elevation → reversed convection (defeats); physics is the first barrier, not biology",
+      "visual_intent": "SUMMARY card — physics-first contradiction stated as short serif lines.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Physics before biology.",
+              "Leaky vessels enable EPR.",
+              "The same vessels raise IFP.",
+              "One biology enables and defeats delivery."
+            ]
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 16
+      "estimated_duration_s": 16,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "actual_duration_s": 19.9,
+      "audio_file": "mp3/beat-B07.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T05:49:56"
+      }
     },
     {
       "beat_id": "B08",
       "act": "NEXT STEPS",
-      "role_note": "what to do next",
+      "role_note": "what to do next — viewer task",
       "narration_text": "Your move: find the IFP data for your specific tumor type — pancreatic cancer runs as high as eighty millimeters of mercury, breast cancer is typically ten to twenty. Then check whether any preclinical delivery studies for your nanoparticle used orthotopic tumor models or subcutaneous ones. Subcutaneous tumors have lower IFP than orthotopic. The pressure barrier is not in the subcutaneous model. It is in the real tumor.",
-      "visual_intent": "SLATE — next steps card: 1) find IFP values for your tumor type (pancreatic 20-80 mmHg, breast 10-20 mmHg, glioblastoma 10-25 mmHg); 2) check model type (orthotopic vs subcutaneous); 3) vascular normalization timing as a combination strategy pointer",
+      "visual_intent": "NEXT STEPS — three concrete moves the viewer can do now.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Your move",
+            "items": [
+              {
+                "label": "Find IFP for your tumor",
+                "sub": "pancreatic 20–80; breast 10–20; GBM 10–25",
+                "icon": "crosshair",
+                "cueFrame": 60
+              },
+              {
+                "label": "Check the model",
+                "sub": "orthotopic, not subcutaneous",
+                "icon": "layers",
+                "cueFrame": 200
+              },
+              {
+                "label": "Timing pointer",
+                "sub": "vascular normalization window",
+                "icon": "clipboard-list",
+                "cueFrame": 340
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 17
+      "estimated_duration_s": 20,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "actual_duration_s": 22.81,
+      "audio_file": "mp3/beat-B08.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T05:49:56"
+      }
     },
     {
       "beat_id": "B09",
@@ -221,104 +404,24 @@
             "tagline": "Brutalist + Educational AI",
             "handle": "@NikBearBrown",
             "url": "nikbearbrown.com",
-            "title": "Research the Interstitial Fluid Pressure Problem: Why Tumors Resist Drug Delivery From the Inside"
-          }
-        }
-      },
-      "estimated_duration_s": 8
-    },
-    {
-      "beat_id": "BVDT",
-      "act": "verdict recap",
-      "lane": "BOOKEND",
-      "narration_text": "",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 20,
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeVerdictArtifact",
-          "props": {
-            "artifactTitle": "Research the Interstitial Fluid Pressure Problem: Why Tumors Resist Drug Delivery From the Inside",
-            "artifactHeading": "Key findings",
-            "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
-            ]
+            "title": "IFP: why tumors resist drug delivery"
           },
           "rendered": {
-            "out": "media/BVDT.mp4",
+            "out": "media/B09.mp4",
             "at": ""
           }
         }
       },
-      "build": {
-        "status": "SLATE"
-      }
-    },
-    {
-      "beat_id": "BHTF",
-      "act": "your turn",
-      "lane": "BOOKEND",
-      "narration_text": "",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 20,
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeComposerAsk",
-          "props": {
-            "greeting": "Your turn.",
-            "topic": "YOUR TURN · CANCER NANOMEDICINE",
-            "segment": "Research the Interstitial Fluid Pressure Problem: Why…",
-            "command": "Take what you learned from [Research the Interstitial Fluid Pressure Problem: Why Tumors Resist Drug Delivery From the Inside] and apply it to your own work. What's one thing you'll try first?",
-            "runningText": "paste this into Claude and run it on your own work…",
-            "output": [],
-            "folderLabel": "@NikBearBrown"
-          },
-          "rendered": {
-            "out": "media/BHTF.mp4",
-            "at": ""
-          }
-        }
-      },
-      "build": {
-        "status": "SLATE"
-      }
-    },
-    {
-      "beat_id": "BOUT",
-      "act": "outro",
-      "lane": "BOOKEND",
-      "narration_text": "",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
       "estimated_duration_s": 8,
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeTitleOutro",
-          "props": {
-            "title": "Research the Interstitial Fluid Pressure Problem: Why Tumors Resist Drug Delivery From the Inside",
-            "slug": "ifp-pressure-barrier"
-          },
-          "rendered": {
-            "out": "media/BOUT.mp4",
-            "at": ""
-          }
-        }
-      },
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "actual_duration_s": 6.51,
+      "audio_file": "mp3/beat-B09.mp3",
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T05:49:56"
       }
     }
   ]

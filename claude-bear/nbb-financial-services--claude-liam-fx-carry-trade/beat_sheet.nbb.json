@@ -1,0 +1,261 @@
+{
+ "metadata": {
+  "title": "Claude, Fx Carry Trade.",
+  "slug": "financial-services--claude-liam-fx-carry-trade",
+  "topic": "FX CARRY TRADE · ANTHROPIC SKILL",
+  "purpose": "NBB (Teardown) cut of the fx-carry-trade skill explainer for @NikBearBrown: takes apart what a Claude skill file actually is, explains the design choices (legibility over cleverness, linear pipeline, defined scope), and evaluates the trade-offs on their own terms. Uses fx-carry-trade as the concrete example. Body beats rewritten from Plain to Teardown register (facts unchanged); the LLM exercise (second-to-last) hands off a paste-ready prompt so viewers can interrogate the spec themselves; closes on the NikBearBrown outro.",
+  "skill": "nbb",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-fx-carry-trade/beat_sheet.json",
+  "register": "Teardown",
+  "brand": "nbb",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "claude",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "in_for_bear": true,
+  "clock": "narration",
+  "modelLabel": "Opus 4.8",
+  "gate_c": "N/A — redo mode; carry-out reverse-engineered from source's verdict beat (BCRY)",
+  "gate_h": "N/A — hai-simple lineage (BrutalistHesitantWriter cold open, no puppet host)",
+  "playlist": "Claude Basics",
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Ask Claude to evaluate an FX carry trade. Here's what most people picture — Claude, doing the math. That's not what's actually happening. Claude is reading a file called a skill, and executing what the file says, step by step. The file is the whole program. So let's take one apart — what's inside, and why did they build it this way?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Ask Claude to evaluate\nan FX carry trade.\nIs Claude calculating?\nWhat is a skill, really?",
+      "face": "serif",
+      "fontSize": 84,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "calculating",
+      "replacementWords": "following a skill",
+      "mistakeRate": 8,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 52,
+      "jitter": 28,
+      "seed": "nbb-fx-carry-trade"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3"
+  },
+  {
+   "beat_id": "B01",
+   "act": "anatomy",
+   "narration_text": "A skill is a folder. Inside this one — fx-carry-trade — is one file: SKILL.md, in plain English. That file is the entire instruction set. No compiled code, no hidden branches. Claude reads it, then acts on what it says. Here's the design choice worth naming — they optimized for legibility over cleverness. The cost is you can't hide behavior in bytecode; every step sits right there in the text. That's exactly what makes the skill inspectable.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "SkillTeardownAnatomy",
+     "props": {
+      "skillName": "fx-carry-trade",
+      "eyebrow": "SKILL · ANATOMY",
+      "title": "A skill is a folder.",
+      "files": [
+       {
+        "indent": 1,
+        "icon": "📄",
+        "name": "SKILL.md",
+        "size": "3k",
+        "accent": true
+       }
+      ],
+      "calloutText": "The SKILL.md is the instruction set.",
+      "calloutSub": "1 file total.",
+      "sparkLine": "The file is the program."
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3"
+  },
+  {
+   "beat_id": "B02",
+   "act": "pipeline",
+   "narration_text": "The pipeline lives in a Steps section. Claude reads each step in order and runs it. Linear by default — no branching unless a step explicitly asks for one. That's the whole control flow. They chose predictability over adaptability. Input in, output out — you can always trace what will happen.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "SkillTeardownPipeline",
+     "props": {
+      "eyebrow": "SKILL · PIPELINE",
+      "title": "How the skill works.",
+      "inputLabel": "YOUR REQUEST",
+      "outputLabel": "RESULT",
+      "phases": [
+       {
+        "label": "Read SKILL.md",
+        "desc": "load the instruction set",
+        "accent": true
+       },
+       {
+        "label": "Execute",
+        "desc": "run each step in order",
+        "accent": false
+       },
+       {
+        "label": "Return output",
+        "desc": "deliver the result",
+        "accent": false
+       }
+      ],
+      "footerNote": "Linear execution.",
+      "sparkLine": "Input in. Output out."
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3"
+  },
+  {
+   "beat_id": "B03",
+   "act": "mechanism",
+   "narration_text": "Here's what fx-carry-trade actually specifies. Claude's job: evaluate FX carry trade opportunities using five inputs — spot rates, forward points, interest rate differentials, volatility surface analysis, and historical price trends. Feed those five in, and you get the same result every time. Ask about anything outside that list — currency hedging strategy, tax treatment, execution venue — and the file has nothing to say. Same inputs, same output, defined scope. This works if you value repeatability; it fails the moment you need Claude to reason past the spec.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "SkillTeardownMechanism",
+     "props": {
+      "eyebrow": "SKILL · MECHANISM",
+      "heading": "What the skill does.",
+      "body": "Spot rates, forward points, rate differentials, volatility, price trends.",
+      "sparkLine": "Same input, same output, every time."
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3"
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "carry-out",
+   "narration_text": "So here's the take. A skill is a spec Claude follows exactly — same inputs, same result. Anything the file doesn't mention, the file doesn't cover. That's a feature, not a limit. It's what makes the behavior auditable.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A skill is a spec Claude follows exactly: the same inputs give the same result, and anything outside the file simply isn't covered.",
+      "attribution": "",
+      "sparkLine": "Spec in, same result out."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3"
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM exercise",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I want to evaluate an FX carry trade using spot rates, forward points, interest rate differentials, volatility, and historical price trends. Walk me through what you'll check, step by step, before you calculate anything. Asking for the plan before the answer is how you see the spec — what the model lists is what the skill would cover, and what it doesn't list, the file doesn't cover either. Go deeper: how does that plan change if the trade has to survive an interest-rate cut cycle rather than a stable-rate window? Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "llm_exercise": {
+    "prompt": "I want to evaluate an FX carry trade using spot rates, forward points, interest rate differentials, volatility, and historical price trends. Walk me through what you'll check, step by step, before you calculate anything.",
+    "dig_deeper": "Go deeper: how does that plan change if the trade has to survive an interest-rate cut cycle rather than a stable-rate window?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "FX CARRY TRADE · YOUR TURN",
+      "segment": "Your Turn",
+      "command": "I want to evaluate an FX carry trade using spot rates, forward points, interest rate differentials, volatility, and historical price trends. Walk me through what you'll check, step by step, before you calculate anything.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3"
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro — NikBearBrown",
+   "narration_text": "Claude, FX Carry Trade — that's the whole skill, and where it stops. More teardowns of what's really under the hood, every week, at www.brutalist.art. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Claude, Fx Carry Trade.",
+      "handle": "@NikBearBrown",
+      "subline": "www.brutalist.art · Liam, in for Bear."
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3"
+  }
+ ]
+}

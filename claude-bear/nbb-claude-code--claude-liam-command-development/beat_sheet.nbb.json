@@ -1,0 +1,325 @@
+{
+  "metadata": {
+    "title": "It Talks to Claude, Not You.",
+    "subtitle": "Command Development · Claude Code",
+    "slug": "claude-code--claude-liam-command-development",
+    "topic": "CLAUDE CODE · COMMAND DEVELOPMENT",
+    "purpose": "Take apart the slash-command case: explain that a command's body is a prompt Claude reads, evaluate what the docs specify precisely and what they leave elsewhere, and name the design trade-off — one file, three homes, no built-in validator. Land the carry-out that a command's body is instructions Claude reads, never a message to the person running it.",
+    "skill": "hai-simple",
+    "mode": "redo",
+    "source_sheet": "anthropics/claude-code/youtube/claude-liam-command-development/beat_sheet.json",
+    "register": "Teardown",
+    "persona": "Liam (in for Bear)",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "teardown",
+    "style_preset": "humanitarians",
+    "ground": "#F3EBDD",
+    "folderLabel": "@NikBearBrown",
+    "channel_title": "@NikBearBrown",
+    "playlist": "Claude Code",
+    "in_for_bear": true,
+    "clock": "narration",
+    "gate_c": "SIGNED - CARRY-OUT.md",
+    "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+    "anchor_pair": "B02 -> BHTF (the correct/incorrect review-command example: planted, then paid off as an LLM exercise)",
+    "build": {
+      "at": "2026-08-29T01:35:22",
+      "cut": "master",
+      "filled": 7,
+      "of": 7,
+      "slates": [],
+      "skin_warnings": []
+    },
+    "audience": "NikBearBrown",
+    "derived_from": "beat_sheet.json",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "typography": {
+      "display": "Montserrat",
+      "serif": "EB Garamond",
+      "mono": "PT Mono"
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "hesitant writer cold open",
+      "narration_text": "You picture the body speaking to you — it's your file, in your project, your command. It isn't. The body is a prompt Claude reads. That's the whole trick, and it's why so many first commands quietly do nothing. Let me pull one apart and show you the wiring.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13.0,
+      "lead_silence_s": 0.8,
+      "shot": {
+        "type": "REMOTION",
+        "new_visual_element": "Writer types 'I want a slash command whose body talks to the user. How do I write it?', hesitates on 'user', corrects to 'Claude'",
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "I want a slash command\nwhose body talks to\nthe user.\nHow do I write it?",
+            "face": "serif",
+            "fontSize": 74,
+            "lineSpacing": 1.3,
+            "align": "center",
+            "ink": "#2F2A26",
+            "accent": "#E4572E",
+            "bg": "#F3EBDD",
+            "triggerWords": "user",
+            "replacementWords": "Claude",
+            "mistakeRate": 3,
+            "hesitateWithin": 2,
+            "hesitateBetween": 8,
+            "charMs": 42,
+            "jitter": 22,
+            "seed": "hai-command-development"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('user' -> 'Claude') is visible on a late frame.",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-29T01:35:22"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "3 mechanism",
+      "narration_text": "Here's the machinery. One markdown file, one optional settings block on top. Three homes: project commands scoped to that one project; personal commands in your home folder, visible across every project on your machine; and plugin commands bundled inside a plugin, available the moment it installs. The settings block carries five fields — description for the help menu, allowed-tools listing what the command can call, model to pick which one runs it, argument-hint to shape autocomplete, and disable-invoke to shut off automatic triggering. They optimized for one file working in three contexts unchanged; the cost is that you have to know where to look for it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 35.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "new_visual_element": "ONE FILE, THREE HOMES",
+        "media": "manim/B01.mp4"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "ONE FILE, THREE HOMES",
+          "chips": [
+            "DESCRIPTION",
+            "ALLOWED-TOOLS",
+            "MODEL",
+            "ARGUMENT-HINT",
+            "DISABLE-INVOKE"
+          ],
+          "arrows": false,
+          "accent": [
+            0
+          ],
+          "strike": [],
+          "caption": "lives at the top of the file — project, personal, or plugin",
+          "colors": [
+            "#F3EBDD",
+            "#2F2A26",
+            "#E4572E"
+          ]
+        },
+        "manim": "BPB01Scene"
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-29T01:35:22"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "4 ANCHOR PLANTED",
+      "narration_text": "Here's the anchor, and it's the part everyone misses first time. A command's body is read by Claude, not shown to the person who typed it. Correct: \"review this code for security issues and list each one with a line number.\" That's a direction Claude can act on. Incorrect: \"this command will review your code and give you a report.\" That sentence describes what the user will see — Claude has nothing to actually do with it. Every command body should read like the first: a direction, never a description of an outcome. Get it wrong and the command runs quietly and does nothing, because you told Claude what would happen instead of what to do.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 33.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "new_visual_element": "THE ANCHOR — WHO IT'S FOR",
+        "media": "manim/B02.mp4"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "THE ANCHOR — WHO IT'S FOR",
+          "chips": [
+            "THE COMMAND BODY",
+            "READ BY CLAUDE",
+            "NOT SHOWN TO YOU"
+          ],
+          "arrows": true,
+          "accent": [
+            1
+          ],
+          "strike": [],
+          "caption": "correct: 'review this code for security issues' — a direction, not a description",
+          "colors": [
+            "#F3EBDD",
+            "#2F2A26",
+            "#E4572E"
+          ]
+        },
+        "manim": "BPB02Scene"
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-29T01:35:22"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "5 both directions",
+      "narration_text": "Now judge what the docs give you and what they don't. Fully specified: the three locations, the five settings fields, and the argument syntax — a dollar sign and number for a positional value, an at-sign for a file, an exclamation mark with backticks to run a shell command inline. That's precise. Left elsewhere: the exact bash syntax for that inline shell lives on a separate reference page, and there's no built-in validator to tell you whether a command file is well-formed before you run it. They optimized for a clean spec surface at the cost of a self-checking one — you catch mistakes at runtime, not at write-time.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 32.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "new_visual_element": "PRECISE HERE, LEFT ELSEWHERE",
+        "media": "manim/B03.mp4"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "PRECISE HERE, LEFT ELSEWHERE",
+          "chips": [
+            "LOCATIONS",
+            "FRONTMATTER FIELDS",
+            "ARGUMENTS",
+            "BASH SYNTAX DETAIL",
+            "VALIDATION TOOL"
+          ],
+          "arrows": false,
+          "accent": [],
+          "strike": [
+            3,
+            4
+          ],
+          "caption": "spelled out here; look elsewhere for the rest",
+          "colors": [
+            "#F3EBDD",
+            "#2F2A26",
+            "#E4572E"
+          ]
+        },
+        "manim": "BPB03Scene"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-29T01:35:22"
+      }
+    },
+    {
+      "beat_id": "BCRY",
+      "act": "6 CARRY-OUT",
+      "narration_text": "The take-out: a Claude Code command is a markdown file. Frontmatter tells Claude when and how to run it. The body is instructions Claude reads — never a message meant for the person running it. Write for the reader who will execute your words.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 9.5,
+      "lead_silence_s": 0.6,
+      "shot": {
+        "type": "REMOTION",
+        "new_visual_element": "The carry-out sentence, alone",
+        "remotion": {
+          "pattern": "WantQuote",
+          "props": {
+            "quote": "A Claude Code command is a markdown file: frontmatter tells Claude when and how to run it, and the body is instructions Claude reads — never a message meant for the person running it.",
+            "attribution": "",
+            "sparkLine": "Instructions for Claude, not a message to you."
+          },
+          "rendered": {
+            "out": "media/BCRY.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BCRY.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BCRY.mp4",
+        "filled_by": "media",
+        "at": "2026-08-29T01:35:22"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "LLM EXERCISE",
+      "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I'm writing my first Claude Code slash command — a project command in .claude/commands/review-pr.md that reviews a pull request and posts a summary. Give me the full file: frontmatter with allowed-tools scoped to only the git and gh calls it actually needs, an argument-hint showing the PR number, and a body written as direct instructions Claude will execute — verbs, checks, expected outputs — never a description of what the user will see happen. Then explain why each frontmatter field earned its slot. Go deeper: ask the same model to write a second command whose body accidentally describes an outcome instead of giving a direction, and diff the two — where does the wrong version quietly do nothing?",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 40,
+      "llm_exercise": {
+        "prompt": "I'm writing my first Claude Code slash command — a project command in .claude/commands/review-pr.md that reviews a pull request and posts a summary. Give me the full file: frontmatter with allowed-tools scoped to only the git and gh calls it actually needs, an argument-hint showing the PR number, and a body written as direct instructions Claude will execute — verbs, checks, expected outputs — never a description of what the user will see happen. Then explain why each frontmatter field earned its slot.",
+        "dig_deeper": "Go deeper: ask the same model to write a second command whose body accidentally describes an outcome instead of giving a direction, and diff the two — where does the wrong version quietly do nothing?"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · COMMAND DEVELOPMENT",
+            "segment": "It Talks to Claude, Not You.",
+            "command": "I'm writing my first Claude Code slash command — a project command in .claude/commands/review-pr.md that reviews a pull request and posts a summary. Give me the full file: frontmatter with allowed-tools scoped to only the git and gh calls it needs, an argument-hint showing the PR number, and a body written as direct instructions Claude will execute — never a description of what the user will see happen. Then explain why each frontmatter field earned its slot.",
+            "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+            "folderLabel": "@NikBearBrown",
+            "output": []
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-29T01:35:22"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "It Talks to Claude, Not You. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "tail_silence_s": 1.0,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "OutroCTA",
+          "props": {
+            "line": "It Talks to Claude, Not You. Liam, in for Bear.",
+            "handle": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-29T01:35:22"
+      }
+    }
+  ]
+}

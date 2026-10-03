@@ -1,0 +1,160 @@
+
+##### attempt digest 2026-09-10T01:17:45  (/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/.cc101loop/cc-hook-enforcement.jsonl)
+TEXT I'll build ONE `cc-explainer` reel for the concept "Why 'Never Generate a Grade' Fails Until You Write a Hook". Starting by reading the required files in order.
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/skills/make/cc-explainer/SKILL.md"}
+TEXT Now let me read the exemplar reel files.
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/author_shee
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/SESSION.md"
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/FACTCHECK.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/BUILD-LOG.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/claude-code--claude-lia
+TEXT I have the SKILL.md, the exemplar (`cc-three-files`), and the target concept. Now let me set up the reel folder and design the real session.
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/ | head -40", "des
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcemen
+TEXT There's an existing sibling reel `cc-hook-advisory-vs-deterministic` built an hour ago. Let me check its session to avoid duplication and understand what's done.
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-advisory-vs-det
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-advisory-vs-det
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-advisory-vs-det
+TEXT Let me check the environment and start building. First, check available tools.
+TOOL Bash {"command": "which claude python3 ffmpeg; claude --version 2>&1 | head -3; ls /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-ar
+TEXT Setting up the reel folder and scratch project. I'll reuse the neighbor's guard.py/CLAUDE.md template since it's a proven, real-tested harness — then do fresh runs to build my own evidence.
+TOOL Bash {"command": "mkdir -p /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcem
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-advisory-vs-det
+TOOL ToolSearch {"query": "select:TaskCreate,TaskUpdate,TaskList", "max_results": 3}
+TOOL TaskCreate {"subject": "Setup scratch project + run fresh sessions", "description": "Create CLAUDE.md, students.csv, ask.txt, hooks/guard.py, .claude/s
+TOOL TaskCreate {"subject": "Write SESSION.md from the fresh runs", "description": "Distill the transcripts + verify commands into SESSION.md \u2014 the sou
+TOOL TaskCreate {"subject": "Author beat_sheet via author_sheet.py", "description": "CC spine: B00 CCSession cold open, BIDEA writer, BDEFS, body loop (advi
+TOOL TaskCreate {"subject": "Generate Kokoro audio, factcheck, compile", "description": "Run generate_audio_kokoro.py, write FACTCHECK.md, run factcheck_che
+TOOL TaskCreate {"subject": "Paperwork + CC-BUILT.txt", "description": "CHECKS-REPORT.md, SHOTLIST.md, PROMPTS.md, SOURCES.md, BUILD-PROMPT.md, BUILD-LOG.md
+TOOL TaskUpdate {"taskId": "1", "status": "in_progress"}
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-advisory-vs-det
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-advisory-vs-det
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-advisory-vs-det
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/scr
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/scr
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/scr
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/scr
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/scr
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/scr
+TOOL Bash {"command": "chmod +x /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcem
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/evi
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/evi
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/sc
+TEXT Guard works. Now the first fresh headless run — advisory only (CLAUDE.md present, hook stashed).
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/sc
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/sc
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement\np
+TOOL Bash {"command": "ls ~/.claude/settings.json 2>/dev/null && echo \"---has global settings---\" && cat ~/.claude/settings.json 2>/dev/null | head 
+TEXT Advisory held on the first ask — same finding as neighbor. Now run hook-active (CLAUDE.md stashed) to force Claude to attempt a Write and get the hook to fire.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/sc
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/sc
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement\np
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/sc
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/sc
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement\np
+TEXT Real hook fire captured. Let me verify the outputs.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/sc
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement\np
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement\n#
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/sc
+TEXT All evidence captured. Now write SESSION.md and move on.
+TOOL TaskUpdate {"taskId": "1", "status": "completed"}
+TOOL TaskUpdate {"taskId": "2", "status": "in_progress"}
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/SES
+TOOL TaskUpdate {"taskId": "2", "status": "completed"}
+TOOL TaskUpdate {"taskId": "3", "status": "in_progress"}
+TEXT Now authoring the beat sheet. Title: **"The Hook That Cannot Be Talked Out Of"** — honest to what my session showed and distinct from the sibling reel.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/aut
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement\np
+TEXT 14 beats, ~6:08, zero budget warnings. Now generate Kokoro audio.
+TOOL TaskUpdate {"taskId": "3", "status": "completed"}
+TOOL TaskUpdate {"taskId": "4", "status": "in_progress"}
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\npython3 brutalist-art/runtime/scripts/generate_audio_kokoro.py anthropics
+TEXT Audio done. Now write FACTCHECK, then run the factcheck gate.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/FAC
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\npython3 brutalist-art/runtime/qc/factcheck_check.py anthropics/claude-cod
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/sce
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n# Confirm no stale run holding the render lock\npgrep -f cc-hook-enforcem
+TEXT A PostToolUse hook flagged scenes.py. Let me investigate.
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/ 2>&1 | head\necho \"---\"\ncat /Users/bear/Documents/CoWork
+TOOL Bash {"command": "sed -n '60,140p' /Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/postedit-check.sh", "description": "Read scene
+TOOL Bash {"command": "sed -n '140,200p' /Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/postedit-check.sh", "description": "Read scen
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-advisory-vs-det
+TOOL Bash {"command": "head -50 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py", "description": "See
+TOOL Bash {"command": "grep -n \"scenes.py\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/run.sh 2>&1 | head -8\necho \"---\"\nfind
+TOOL Bash {"command": "grep -n \"scenes.py\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/art 2>&1 | head -8\necho \"---\"\ngrep -r
+TOOL Bash {"command": "grep -n \"scenes.py\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/scripts/remotion_scenes.py 2>&1 |
+TOOL Bash {"command": "rm /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/sc
+TEXT Now compile.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n./brutalist-art/art run anthropics/claude-code-101/03-hooks-skills-comman
+TOOL Bash {"command": "grep -n \"BearsDoodlesVideo\\|construct\\|scene_class\\|def analyze\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutali
+TOOL Bash {"command": "sed -n '470,485p' /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py\necho \"---\
+TOOL Bash {"command": "grep -n \"generic_art\\|n_beats\\|beat_ids\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_
+TEXT Just need a `BearsDoodlesVideo` class with `construct()` that produces no shapes. Let me write a minimal scenes.py.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/sce
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TEXT Warnings only (not errors) — compile will proceed. Running now.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n./brutalist-art/art run anthropics/claude-code-101/03-hooks-skills-comman
+TOOL Bash {"command": "sleep 30 && tail -60 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/912e84ab-e15a-4e53-9fc0-3324f6ca
+TOOL ToolSearch {"query": "select:Monitor", "max_results": 1}
+TOOL Monitor {"description": "wait until art run bg process bla5k11wi finishes", "timeout_ms": 1800000, "persistent": false, "command": "until [ ! -e /pr
+TEXT While the compile runs, let me draft the paperwork.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/CHE
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/SHO
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/PRO
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/SOU
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/BUI
+TOOL Bash {"command": "wc -l /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/912e84ab-e15a-4e53-9fc0-3324f6ca86d8/tasks/bla5
+TOOL Bash {"command": "pgrep -af \"cc-hook-enforcement\\|remotion_scenes\\|art run\\|compile.py\" 2>&1 | head -8\necho \"---\"\nls -la /Users/bear/Doc
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcemen
+TOOL ToolSearch {"query": "select:TaskStop", "max_results": 1}
+TOOL TaskStop {"task_id": "b70i6b5xk"}
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/cl
+TEXT All 14 beats rendered. Now run `art final` for the clean master.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n./brutalist-art/art final anthropics/claude-code-101/03-hooks-skills-comm
+TOOL Bash {"command": "grep -n \"text ends truncated\\|_check_89\\|\u00a78.9\\|def _check_89\\|artifactHeading\\|segment.*truncat\" /Users/bear/Docume
+TOOL Bash {"command": "sed -n '1980,2015p' /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/scripts/type_check.py", "descriptio
+TEXT GATE T flagged title truncation — "Of" isn't in the whitelist of valid 2-letter endings. Retitling to something safe: **"When 'Never' Needs an Exit Code"** (ends "Code" — passes). Patching in place.
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/c
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/c
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement\n#
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement\nl
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n./brutalist-art/art run anthropics/claude-code-101/03-hooks-skills-comman
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art\n./art scenes --check CCShell 2>&1 | head\necho \"---\"\n./a
+TEXT Reorder isn't necessary — I can keep the direct hook demo but render it as CCSession (default mode with bang commands, like B02/B05/B06), which is bookend-legal. Patching in place.
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/c
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement\n#
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n./brutalist-art/art run anthropics/claude-code-101/03-hooks-skills-comman
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\npython3 brutalist-art/runtime/scripts/generate_audio_kokoro.py anthropics
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n./brutalist-art/art run anthropics/claude-code-101/03-hooks-skills-comman
+TEXT All gates PASS. Now art final for the clean master.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n./brutalist-art/art final anthropics/claude-code-101/03-hooks-skills-comm
+TOOL TaskUpdate {"taskId": "4", "status": "completed"}
+TOOL TaskUpdate {"taskId": "5", "status": "in_progress"}
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcemen
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement\n#
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/_qc
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/_qc
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/_qc
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/_qc
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/_qc
+TEXT All dense frames read clean. Now the final paperwork.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/BUI
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/claude-code--claude-lia
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcemen
+TOOL TaskUpdate {"taskId": "5", "status": "completed"}
+TEXT Reel built. **`cc-hook-enforcement.mp4`** — 4:54.7, 3840×2160, 17.6 MB — sits in `/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/`. `CC-BUILT.txt` written to the concept folder with the reel's absolute path. /  / Summary of the b
+EVENTS 352
+RESULT {"subtype": "success", "num_turns": 123, "duration_ms": 3209234, "total_cost_usd": 12.377934250000003, "is_error": false}
+FINAL TEXT Reel built. **`cc-hook-enforcement.mp4`** — 4:54.7, 3840×2160, 17.6 MB — sits in `/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-hook-enforcement/`. `CC-BUILT.txt` written to the concept folder with the reel's absolute path.
+
+Summary of the build:
+- **Title:** *"When 'Never' Needs an Exit Code"* (retitled from *"The Hook That Cannot Be Talked Out Of"* after GATE T §8.9 flagged "Of" as mid-word truncation).
+- **Angle** — distinct from the sibling reel `cc-hook-advisory-vs-deterministic` built earlier tonight: the mechanism as a receipt. Advisory holds and leaves no artifact; the hook fires and leaves an exit code the OS honors, every call.
+- **Session evidence** (`SESSION.md` + `evidence/`): two fresh headless `claude -p` runs on 2026-09-10 (Claude Code 2.1.150) + a direct hook payload demo. Run 1 (advisory-only): Claude refused in one text turn, no Write. Run 2 (hook active, CLAUDE.md moved fully out of `scratch/`): Claude wrote `Suggested letter grade: A-`, the tool_result came back `is_error` with the guard's block message verbatim, Claude read the guard, rewrote clean.
+- **Final gate roster:** F, L, BANNED-CARD, SWEEP-WARN, G, V (28 frames, 0/0/0), T, SHARPNESS, BOOKEND, AUDIO, MASTER, LOUDNESS, RECEIPTS — all PASS.
+- **Cost:** $0.587 total for the two Claude API calls; Kokoro/local for audio; no Higgsfield/ElevenLabs.
+- **Not published.** Master stays in the reel folder.
+
+Three compile passes were needed (`scenes.p

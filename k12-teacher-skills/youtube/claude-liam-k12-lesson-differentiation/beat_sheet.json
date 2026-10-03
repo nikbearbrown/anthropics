@@ -20,11 +20,57 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/k12-teacher-skills/plugin/skills/k12-lesson-differentiation/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Adapts an existing K-12 lesson (math",
+        "or social studies) for students at different proficiency levels (below / at / above grade level)",
+        "Load this skill BEFORE asking the teacher any clarifying question about the lesson",
+        "or student levels",
+        "Triggers on explicit asks to differentiate"
+      ],
+      "constraints": [
+        "description: Adapts an existing K-12 lesson (math, ELA, science, or social studies) for students at different proficiency levels (below / at / above grade level). Load…",
+        "\"The teacher\" throughout this skill is the user you are talking with — the same person, never",
+        "teacher can watch them check off; the only reason to skip this is that no such tool exists",
+        "Teacher language only — name what the teacher is getting, never tool names, file names,",
+        "never name a specific module, unit number, lesson number, or proprietary routine name anywhere",
+        "conversation — use it directly, do not re-ask), Scenario B (teacher uploads a lesson — read it",
+        "first; if unreadable, say so and ask to re-share, never silently fabricate), Scenario B",
+        "ask them to paste or upload; fetching completes Step 1 only — the KG calls in Step 2 are still"
+      ],
+      "referenced_files": [
+        "references/math.md",
+        "references/ela.md",
+        "references/science.md",
+        "references/social_studies.md",
+        "find_standard_statement",
+        "find_curriculum_lessons",
+        "references/learning-commons-kg.md",
+        "differentiation.json",
+        "{\"type\": \"from_shared\", \"key\": …}",
+        ".html"
+      ],
+      "code_signals": [
+        "code block: bash"
+      ],
+      "sections": [
+        "Keeping the teacher posted",
+        "Step 0 — Route (silent, before anything else)",
+        "Step 1 — Identify the source lesson",
+        "Step 2 — Ground in standards",
+        "Step 3 — The differentiation rules",
+        "Copyright guardrail",
+        "Step 4 — The draft offer",
+        "Step 5 — Output (one turn)",
+        "5a. Write the complete differentiation.json (same turn)",
+        "5b. Render all four Word documents — one command, same turn"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T04:01:06",
+      "at": "2026-09-05T21:00:08",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +79,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is k12-lesson-differentiation. Adapts an existing K-12 lesson (math, ELA, science, or social studies) for students at different proficiency levels (below / at / above grade level). Load this skill BEFORE asking the teacher any clarifying question about the lesson, tiers, or student levels. Triggers on explicit asks to differentiate, tier, or scaffold a lesson, and on implicit signals like \"my students are at different levels\". Produces 1 teacher-facing differentiation plan + 3 student-ready tier documents as editable Word documents in a single output turn, rendered from one material-source JSON via bundled scripts (shared content is written once so tiers cannot drift). Uses the Learning Commons Knowledge Graph when connected; works without it. This skill adapts a lesson the teacher brings or names. Not for creating a new lesson from scratch — a new-lesson request that asks for differentiated or leveled materials is k12-lesson-planning's job, one package. Not for grading, rubrics, assessment feedback, or quizzes.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is k12-lesson-differentiation. Adapts an existing K-12 lesson (math, ELA, science, or social studies) for students at different proficiency levels (below / at / above grade level). Load this skill BEFORE asking the teacher any clarifying question about the lesson, tiers, or student levels. Triggers on explicit asks to differentiate, tier, or scaffold a lesson, and on implicit signals like \"my students are at different levels\". Produces 1 teacher-facing differentiation plan + 3 student-ready tier documents as editable Word documents in a single output turn, rendered from one material-source JSON via bundled scripts (shared content is written once so tiers cannot drift). Uses the Learning Commons Knowledge Graph when connected; works without it. This skill adapts a lesson the teacher brings or names. Not for creating a new lesson from scratch — a new-lesson request that asks for differentiated or leveled materials is k12-lesson-planning's job, one package. Not for grading, rubrics, assessment feedback, or quizzes.. Its concrete surface area includes Adapts an existing K-12 lesson (math; or social studies) for students at different proficiency levels (below / at / above grade level); Load this skill BEFORE asking the teacher…. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,8 +95,8 @@
             "runningText": "reading k12-lesson-differentiation SKILL.md…",
             "output": [
               "skill: k12-lesson-differentiation",
-              "Adapts an existing K-12 lesson (math, ELA, science, or social studies) for stude",
-              "steps: 0 — executing."
+              "Adapts an existing K-12 lesson (math, ELA, science, or social studies) for…",
+              "steps: 7 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -63,18 +109,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 61.16,
+      "actual_duration_s": 72.15,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:01:06"
+        "at": "2026-09-05T21:00:08"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is k12-lesson-differentiation. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is k12-lesson-differentiation. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at references/math.md, references/ela.md, references/science.md, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -127,18 +173,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 13.38,
+      "actual_duration_s": 20.99,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:01:06"
+        "at": "2026-09-05T21:00:08"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "The pipeline has 7 steps. Route (silent, before anything else) → Identify the source lesson → Ground in standards, plus 4 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -153,22 +199,27 @@
             "outputLabel": "RESULT",
             "phases": [
               {
-                "label": "Read SKILL.md",
-                "desc": "load the instruction set",
+                "label": "Route (silent, before…",
+                "desc": "1. Subject. Detect math / ELA / science / social studies…",
                 "accent": true
               },
               {
-                "label": "Execute",
-                "desc": "run each step in order",
+                "label": "Identify the source lesson",
+                "desc": "Follow the subject file's source-lesson section: Scenario A…",
                 "accent": false
               },
               {
-                "label": "Return output",
-                "desc": "deliver the result",
+                "label": "Ground in standards",
+                "desc": "If the LC Knowledge Graph is connected: follow the…",
+                "accent": false
+              },
+              {
+                "label": "The differentiation rules",
+                "desc": "Apply all eight rules (R1–R8) from the subject file to…",
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "7 steps. Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -178,18 +229,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 13.99,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:01:06"
+        "at": "2026-09-05T21:00:08"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. k12-lesson-differentiation is a specification written as an instruction set. Claude's job: Adapts an existing K-12 lesson (math, ELA, science, or social studies) for students at different pro. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. description: Adapts an existing K-12 lesson (math, ELA, science, or social studies) for students at different proficiency levels (below / at / above grade level). Load…. That is the constraint in k12-lesson-differentiation — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -200,7 +251,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Adapts an existing K-12 lesson (math, ELA, science, or social studies) for students at different proficiency levels (below / at / above grade level). Load this skill BEFORE asking the teacher any clar",
+            "body": "description: Adapts an existing K-12 lesson (math, ELA, science, or social studies) for students at different proficiency levels (below / at / above grade level). Load…",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -210,18 +261,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 17.11,
+      "actual_duration_s": 18.43,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:01:06"
+        "at": "2026-09-05T21:00:08"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In k12-lesson-differentiation, supporting material: references/math.md, references/ela.md, references/science.md, references/social_studies.md; implementation signals: code block: bash; sections: Keeping the teacher posted, Step 0 — Route (silent, before anything else), Step 1 — Identify the source lesson, Step 2 — Ground in standards. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Adapts an existing K-12 lesson (math; or social studies) for students at different proficiency levels (below / at / above grade level); Load this skill BEFORE asking the teacher any clarifying question about the lesson…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 27.56,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T21:00:08"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "k12-lesson-differentiation makes Claude execute one task reliably. The SKILL.md is the spec — Adapts an existing K-12 lesson (math, ELA, science, or social studies) for stude. Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "k12-lesson-differentiation makes Claude execute one task reliably. The SKILL.md is the spec — Adapts an existing K-12 lesson (math, ELA, science, or social studies) for…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -234,9 +317,10 @@
             "artifactHeading": "Claude, K12 Lesson Differentiation.",
             "artifactLines": [
               "Skill: k12-lesson-differentiation — Claude reads SKILL.md before acting",
-              "Adapts an existing K-12 lesson (math, ELA, science, or social studies) for students at dif",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "Adapts an existing K-12 lesson (math, ELA, science, or social studies) for students at…",
+              "7-step pipeline: Route (silent, before anything else) → Identify the source lesson → Ground in standards",
+              "Constraint: description: Adapts an existing K-12 lesson (math, ELA, science, or social studies) for…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -246,18 +330,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 16.04,
+      "actual_duration_s": 15.45,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:01:06"
+        "at": "2026-09-05T21:00:08"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to adapts an existing k-12 lesson (math, ela, science, or social studies) for stude. Read the k12-lesson-differentiation skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to adapts an existing k-12 lesson (math, ela, science, or social studies) for. Read the k12-lesson-differentiation skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -269,7 +353,7 @@
             "greeting": "Your turn.",
             "topic": "K12-LESSON-DIFFERENTIATION · ANTHROPIC SKILL",
             "segment": "Claude, K12 Lesson Differentiation.",
-            "command": "I want to adapts an existing k-12 lesson (math, ela, science, or social studies). Read the k12-lesson-differentiation skill and walk me through what you will do before you do it.",
+            "command": "I want to adapts an existing k-12 lesson (math, ela, science, or social. Read the k12-lesson-differentiation skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -283,12 +367,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 16.36,
+      "actual_duration_s": 15.94,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:01:06"
+        "at": "2026-09-05T21:00:08"
       }
     },
     {
@@ -319,7 +403,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:01:06"
+        "at": "2026-09-05T21:00:08"
       }
     }
   ]

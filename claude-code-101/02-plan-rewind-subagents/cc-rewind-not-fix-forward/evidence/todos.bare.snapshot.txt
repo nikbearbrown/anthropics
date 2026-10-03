@@ -1,0 +1,71 @@
+def remove_completed(todos):
+    return [t for t in todos if not t.get("done")]
+
+
+def mark_all_done(todos):
+    return [{**t, "done": True} for t in todos]
+
+import copy
+import unittest
+
+from todos import mark_all_done, remove_completed
+
+
+class RemoveCompletedTests(unittest.TestCase):
+    def test_drops_done_items(self):
+        todos = [
+            {"text": "a", "done": False},
+            {"text": "b", "done": True},
+            {"text": "c", "done": False},
+        ]
+        self.assertEqual(
+            remove_completed(todos),
+            [{"text": "a", "done": False}, {"text": "c", "done": False}],
+        )
+
+    def test_empty_list(self):
+        self.assertEqual(remove_completed([]), [])
+
+    def test_all_done(self):
+        todos = [{"text": "a", "done": True}, {"text": "b", "done": True}]
+        self.assertEqual(remove_completed(todos), [])
+
+    def test_none_done(self):
+        todos = [{"text": "a", "done": False}, {"text": "b", "done": False}]
+        self.assertEqual(remove_completed(todos), todos)
+
+    def test_does_not_mutate_input(self):
+        todos = [{"text": "a", "done": False}, {"text": "b", "done": True}]
+        before = copy.deepcopy(todos)
+        remove_completed(todos)
+        self.assertEqual(todos, before)
+
+
+class MarkAllDoneTests(unittest.TestCase):
+    def test_marks_every_item_done(self):
+        todos = [{"text": "a", "done": False}, {"text": "b", "done": True}]
+        self.assertEqual(
+            mark_all_done(todos),
+            [{"text": "a", "done": True}, {"text": "b", "done": True}],
+        )
+
+    def test_empty_list(self):
+        self.assertEqual(mark_all_done([]), [])
+
+    def test_preserves_other_fields(self):
+        todos = [{"text": "a", "done": False, "priority": 1}]
+        self.assertEqual(
+            mark_all_done(todos),
+            [{"text": "a", "done": True, "priority": 1}],
+        )
+
+    def test_does_not_mutate_input(self):
+        todos = [{"text": "a", "done": False}, {"text": "b", "done": False}]
+        before = copy.deepcopy(todos)
+        mark_all_done(todos)
+        self.assertEqual(todos, before)
+
+
+if __name__ == "__main__":
+    unittest.main()
+

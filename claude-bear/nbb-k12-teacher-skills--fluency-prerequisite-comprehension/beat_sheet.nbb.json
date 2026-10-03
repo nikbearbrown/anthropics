@@ -1,0 +1,360 @@
+{
+ "metadata": {
+  "title": "The Fluency Ceiling.",
+  "subtitle": "Why Working Memory Limits Comprehension Scaffolds",
+  "slug": "k12-teacher-skills--fluency-prerequisite-comprehension",
+  "topic": "FLUENCY VS COMPREHENSION · WORKING MEMORY",
+  "purpose": "Take apart why stacking more comprehension scaffolds on a struggling reader doesn't work: working memory is a fixed pool, and if decoding is still effortful it burns the pool before comprehension gets any. Explain the machinery — the split between decoding and comprehension is conserved, so fluency doesn't add capacity, it just moves the line. Name the design trade: a comprehension scaffold on top of a fluency ceiling is scaffolding the wrong level. Land the carry-out that Claude helps check whether decoding is still effortful first, because memory spent on decoding is memory comprehension will never get to use.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/k12-teacher-skills/youtube/fluency-prerequisite-comprehension/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "NB01 (planted: the conserved working-memory bar, low-fluency 78/22 vs high-fluency 12/88 split) -> NB04 (paid off: the cold read shows whether the split from NB01 actually moved)",
+  "one_flag": "NB01 - the 78/22 and 12/88 percentages are an illustrative teaching approximation, not a specific measurement (source SOURCES.md); the underlying working-memory-conservation principle is established (Cognitive Load Theory; Simple View of Reading) - see SCRIPT.md One-flag audit",
+  "build": {
+   "at": "2026-09-02T09:33:47",
+   "cut": "master",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's what's actually happening. Working memory is one fixed pool for the whole reading task — nothing you stack on top makes the pool bigger. Every comprehension scaffold only pays off if there's capacity left over after the student decodes the words. If decoding is still effortful, there isn't.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Nothing's helped. Need another scaffold?', hesitates on 'scaffold', corrects to 'fluency check', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Nothing's helped.\nNeed another scaffold?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "scaffold",
+      "replacementWords": "fluency check",
+      "mistakeRate": 6,
+      "hesitateWithin": 2,
+      "hesitateBetween": 14,
+      "charMs": 48,
+      "jitter": 26,
+      "seed": "hai-fluency-prerequisite-comprehension"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. triggerWords must be a SINGLE whitespace token (component matches trigger against one split token's punctuation-stripped core; a multi-word trigger never matches and the correction silently never fires). 'scaffold' appears exactly ONCE in the text (the last content word before the terminal '?') so only that occurrence fires the correction. replacementWords may be a phrase, typed literally. GATE V FINDING (this reel): lead_silence_s is authored per WRITER LAW convention but is NOT wired into compile.py — the real on-screen typing budget is exactly actual_duration_s (the narration length), not narration+lead_silence. A first-draft 101-char text did not finish typing to the trigger word within a 9.88s beat (confirmed by pulling fps=2 frames across the whole clip — last frame still mid-sentence, before 'scaffold?'). Shortened to 59 chars, matching the char budget of the working `cra-progression-scaffold` sibling's 65-char text at identical charMs/mistakeRate/hesitate settings, and re-verified via frame pulls after re-render.",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T09:33:47"
+   },
+   "audio_file": "mp3/beat-B00.mp3"
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism / 4 ANCHOR PLANTED / ONE FLAG",
+   "narration_text": "One bar of working memory for the whole reading task — that is the machinery. In an illustrative low-fluency case, seventy-eight percent of the bar burns on decoding: sounding out words, tracking syntax, holding letter sequences in mind long enough to string them together. That leaves twenty-two percent for comprehension, the starved slice where meaning actually gets built. In a high-fluency case, decoding drops to twelve percent — automatic and nearly free — and comprehension expands to eighty-eight. The specific numbers are a teaching illustration, not a measurement of any one student. What is real is the design constraint. The bar does not grow. Reading is a fixed-capacity pipeline. Fluency does not add capacity — it moves the split.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 40,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — one bar, two splits, low-fluency vs high-fluency",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "ONE BAR, TWO SPLITS",
+     "chips": [
+      "LOW: 78% DECODING",
+      "HIGH: 12% DECODING"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "same bar — the split moved",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T09:33:47"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Two responses to that ceiling, and they solve different problems. The immediate bridge — read-aloud or partner reading — offloads the decoding load for a few minutes so a student can practice comprehension thinking today. That is a circuit breaker: it buys borrowed capacity for one lesson, and tomorrow the ceiling is still there. The real fix is a separate fluency intervention, run outside the comprehension lesson — decoding practice that actually raises the automatic-decoding line. Another graphic organiser stacked on top of comprehension is scaffolding the wrong level. It cannot compensate for a ceiling; it only crowds the twenty-two percent that was already too small.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "TWO RESPONSES TO THE CEILING",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "TWO RESPONSES TO THE CEILING",
+     "chips": [
+      "BRIDGE: read-aloud",
+      "REAL FIX: fluency practice"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "one buys time; the other buys capacity",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T09:33:47"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "5 BOTH DIRECTIONS",
+   "narration_text": "Fluency practice has five roles, and they do not get the same verdict when you ask what a machine can do. The listener — catching errors as the student reads aloud, flagging the missed word in real time — that role can be handed to AI, and it is the role most classrooms lack the time for. The reader is the role that cannot be substituted. The decoding is the intervention itself: the student has to do the sounding-out for the pathway to strengthen. A text-to-speech track reading the passage to them inverts the whole exercise — the machine does the work you were trying to make the brain do — and nobody notices, because the output still looks like reading.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FIVE ROLES, ONE NON-NEGOTIABLE",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FIVE ROLES, ONE NON-NEGOTIABLE",
+     "chips": [
+      "LISTENER: AI HELPS",
+      "READER: STAYS HUMAN"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the decoding is the intervention",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T09:33:47"
+   }
+  },
+  {
+   "beat_id": "NB04",
+   "act": "3 mechanism / 4 ANCHOR PAYOFF",
+   "narration_text": "Here is how you actually test whether the split moved: the cold read. A brand-new passage, never rehearsed, checked on a different day. A rehearsed passage will fool you — the comprehension share looks like it grew, but what really happened is the student memorized the route. That is recall doing the work, not decoding getting cheaper. Only a passage the student has never seen forces working memory to spend real tokens on decoding, and that is the only condition under which the split you are measuring is the split that matters.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — the cold-read check",
+    "media": "manim/NB04.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE COLD-READ CHECK",
+     "chips": [
+      "REHEARSED: false gains",
+      "COLD READ: real split"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [
+      0
+     ],
+     "caption": "only a passage never seen shows if the split moved",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB04Scene"
+   },
+   "audio_file": "mp3/beat-NB04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB04.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T09:33:47"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Claude doesn't hand you a bigger scaffold — it helps you check whether decoding is still effortful, because every bit of working memory spent on decoding is memory comprehension will never get to use.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Claude doesn't hand you a bigger scaffold — it helps you check whether decoding is still effortful, because every bit of working memory spent on decoding is memory comprehension will never get to use.",
+      "attribution": "",
+      "sparkLine": "Check decoding first."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T09:33:47"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I have a student who isn't responding to comprehension scaffolds — I'll give you grade level, the scaffolds I've already tried, and how the student reads aloud versus how they perform when I read the same passage to them. Diagnose whether the bottleneck is a fluency ceiling — decoding still eating working memory — or a comprehension-strategy gap. Then give me a five-minute diagnostic I can run tomorrow to tell those two apart, an immediate bridge I can use in the current lesson to buy comprehension capacity today, and a separate fluency intervention I can run outside the comprehension lesson for the coming weeks, with weekly checkpoints. Reject any answer that just stacks another comprehension scaffold on top. Go deeper: ask the same model why a rehearsed passage that looks like comprehension gains might actually be measuring memorized recall, and what a cold-read check should look like to catch that mistake — how many days between exposures, how long the passage should be, and exactly what to score for.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 58,
+   "llm_exercise": {
+    "prompt": "I have a student who isn't responding to comprehension scaffolds — I'll give you grade level, the scaffolds I've already tried, and how the student reads aloud versus how they perform when I read the same passage to them. Diagnose whether the bottleneck is a fluency ceiling (decoding still eating working memory) or a comprehension-strategy gap. Then give me: (1) a five-minute diagnostic I can run tomorrow to tell those two apart, (2) an immediate bridge I can use in the current lesson to buy comprehension capacity today, and (3) a separate fluency intervention I can run outside the comprehension lesson for the coming weeks, with weekly checkpoints. Reject any answer that just stacks another comprehension scaffold on top.",
+    "dig_deeper": "Go deeper: ask the same model why a rehearsed passage that looks like comprehension gains might actually be measuring memorized recall, and what a cold-read check should look like to catch that mistake — how many days between exposures, how long the passage should be, and exactly what to score for."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "FLUENCY CEILING · YOUR STUDENT",
+      "segment": "The Fluency Ceiling.",
+      "command": "Student isn't responding to comprehension scaffolds. Inputs: [grade level, scaffolds tried, oral-reading vs listened-to observations]. (1) Diagnose: fluency ceiling or comprehension-strategy gap? (2) Give a 5-minute diagnostic to tell them apart. (3) Immediate bridge for today's lesson + separate fluency intervention for the coming weeks, with weekly checkpoints. Reject any answer that just stacks another comprehension scaffold.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T09:33:47"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "The Fluency Ceiling. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "The Fluency Ceiling. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T09:33:47"
+   }
+  }
+ ]
+}

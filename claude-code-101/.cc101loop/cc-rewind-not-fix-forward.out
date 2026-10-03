@@ -1,0 +1,120 @@
+
+##### attempt digest 2026-09-09T20:17:03  (/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/.cc101loop/cc-rewind-not-fix-forward.jsonl)
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/skills/make/cc-explainer/SKILL.md"}
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/author_shee
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/SESSION.md"
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/FACTCHECK.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/BUILD-LOG.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/claude-code--claude-lia
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/", "description": 
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-
+TOOL Bash {"command": "which claude; claude --version 2>&1 | head -5", "description": "Check Claude Code version"}
+TOOL Bash {"command": "which python3 uuidgen jq; python3 --version; python3 -c \"import unittest; print('unittest ok')\"", "description": "Sanity chec
+TOOL ToolSearch {"query": "select:TaskCreate,TaskUpdate,TaskList", "max_results": 3}
+TEXT Setting up the reel folder and scratch project, then running the real sessions.
+TOOL Bash {"command": "mkdir -p /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fi
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forw
+TOOL Bash {"command": "SID_BARE=$(uuidgen | tr 'A-Z' 'a-z')\nSID_REWIND=$(uuidgen | tr 'A-Z' 'a-z')\necho \"$SID_BARE\" > /Users/bear/Documents/CoWork
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forw
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forw
+TEXT Bare produced clean immutable code. That's fine — I'll pivot the fix-forward correction to a real spec change (switch to a Todo dataclass) which will show the classic fix-forward failure mode: correction touches one function, the other function silently breaks.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forw
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forw
+TEXT Fix-forward produced a real smell: `remove_completed(todos, keep=None)` — the function name says "remove completed" but the parameter lets callers keep by any rule. The name lies. That's the film's argument. Now the rewind run: fresh session, better spec from the start.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forw
+TOOL Bash {"command": "EVID=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TOOL Bash {"command": "EVID=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TEXT The evidence is even stronger — fix-forward's final API doesn't match the original spec (dict-based `remove_completed`) at all, while rewind's clean API (`filter_todos`) matches its improved spec. Now writing the paperwork.
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TEXT Look at test_todos.fixforward.py line 43: `remove_completed(todos, keep=lambda t: len(t.text) > 1)` — the test literally calls `remove_completed` expecting KEEP-by-length semantics (including a done item). The function name has drifted so far the tests document the drift. That's the killshot for the
+TOOL Bash {"command": "EVID=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TOOL Bash {"command": "EVID=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TEXT Writing SESSION.md now.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forw
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/c
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forw
+TEXT Beats clean. Now generating audio with Kokoro.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\nls brutalist-art/runtime/scripts/generate_audio_kokoro.py 2>&1\npython3 b
+TEXT While audio generates in the background, writing the paperwork.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Bash {"command": "tail -40 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/7d4eb233-f247-4721-bca8-e2ea6c312ce5/tasks/b
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/factcheck_check.py /Users/bear/Documents/CoW
+TEXT Now compiling to a review cut.
+TOOL Bash {"command": "pgrep -af \"cc-rewind-not-fix-forward\" 2>&1 | head -5\npgrep -af \"remotion_scenes\" 2>&1 | head -5\necho \"--- clear ---\"", 
+TOOL Bash {"command": "ps -o pid,ppid,command -p 27511 27512 32264 30640 31339 2>&1 | head -20", "description": "Inspect matching processes"}
+TEXT Those are the supervisor wrapping this session — no competing renders. Running compile.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n./brutalist-art/art run anthropics/claude-code-101/02-plan-rewind-subagen
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Bash {"command": "find /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art -type d -name \"_example-comma-orphan\" 2>/dev/null | head
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/scenes.py"}
+TOOL Bash {"command": "bash /Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/postedit-check.sh /Users/bear/Documents/CoWork/bear-textbo
+TOOL Bash {"command": "grep -n \"static-scene\\|scene_static\\|scenes\\.py\" /Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/postedit-
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Bash {"command": "grep -n \"BearsDoodlesVideo\\|scene_class\" /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-pla
+TOOL Bash {"command": "grep -n \"BearsDoodlesVideo\\|not found\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_sce
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TEXT The static-scene hook complains for every Remotion-only reel — the exemplar shipped through it. Moving on to compile.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n./brutalist-art/art run anthropics/claude-code-101/02-plan-rewind-subagen
+TOOL ToolSearch {"query": "select:Monitor", "max_results": 1}
+TOOL Monitor {"command": "tail -f /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/7d4eb233-f247-4721-bca8-e2ea6c312ce5/tasks/bv
+TOOL Bash {"command": "sleep 15 && tail -100 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/7d4eb233-f247-4721-bca8-e2ea6c3
+TOOL Bash {"command": "cat /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/7d4eb233-f247-4721-bca8-e2ea6c312ce5/tasks/bvttpn
+TOOL Read {"file_path": "/private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/7d4eb233-f247-4721-bca8-e2ea6c312ce5/tasks/bvttpn8k
+TOOL Bash {"command": "wc -c /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/7d4eb233-f247-4721-bca8-e2ea6c312ce5/tasks/bvtt
+TOOL Bash {"command": "ps aux | grep -E \"art |beat_plan|remotion|compile.py\" | grep -v grep | head -10\necho \"--- ---\"\nls -la /Users/bear/Documen
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-
+TEXT art run completed successfully — all 15 beats rendered, slate cut exists. Now checking QC reports.
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TOOL Bash {"command": "find /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/ | hea
+TEXT Grabbing a few frames to sanity-check dense beats before `art final`.
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TOOL Bash {"command": "pgrep -af \"art run\\|topaz\\|ffmpeg\\|remotion\\|beat_plan\" 2>&1 | grep -v grep | head -10\necho \"--- file check ---\"\nls -
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TOOL Read {"file_path": "/tmp/cc-rewind-frames/B00-end.png"}
+TOOL Read {"file_path": "/tmp/cc-rewind-frames/B08-end.png"}
+TOOL Read {"file_path": "/tmp/cc-rewind-frames/B09-end.png"}
+TOOL Read {"file_path": "/tmp/cc-rewind-frames/BVDT-end.png"}
+TOOL Read {"file_path": "/tmp/cc-rewind-frames/B04-end.png"}
+TOOL Read {"file_path": "/tmp/cc-rewind-frames/B07-end.png"}
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/c
+TEXT I must NOT run author_sheet.py in-place — it would wipe audio+render stamps. Regenerating to a temp dir and merging the one prop.
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n./brutalist-art/art run anthropics/claude-code-101/02-plan-rewind-subagen
+TEXT All gates PASS: GATE V (0/0/0), GATE T PASS, GATE BOOKEND PASS, GATE MASTER PASS, GATE LOUDNESS PASS. Checking artifacts.
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n./brutalist-art/art final anthropics/claude-code-101/02-plan-rewind-subag
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TOOL Read {"file_path": "/tmp/cc-rewind-final/B09-new.png"}
+TOOL Read {"file_path": "/tmp/cc-rewind-final/at-02.png"}
+TOOL Read {"file_path": "/tmp/cc-rewind-final/at-25.png"}
+TOOL Read {"file_path": "/tmp/cc-rewind-final/at-85.png"}
+TOOL Read {"file_path": "/tmp/cc-rewind-final/at-95.png"}
+TOOL ToolSearch {"query": "select:TaskStop", "max_results": 1}
+TOOL TaskStop {"task_id": "bnt379twe"}
+TEXT Writing BUILD-LOG and CC-BUILT sentinel.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-forwa
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/claude-code--claude-lia
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-rewind-not-fix-fo
+TEXT Done — one film, built. /  / **cc-rewind-not-fix-forward.mp4** — 5:24, 3840×2160 @ 24 fps h264, -24.25 LUFS. All gates PASS: Gate V 0/0/0, GATE T PASS 0 FAILs, BOOKEND PASS, MASTER PASS, LOUDNESS PASS. /  / The film compares two paths on the same ask ("Write `todos.py` with two functions + tests"): (1) fix-
+EVENTS 297
+RESULT {"subtype": "success", "num_turns": 93, "duration_ms": 2368983, "total_cost_usd": 11.427943250000004, "is_error": false}
+FINAL TEXT Done — one film, built.
+
+**cc-rewind-not-fix-forward.mp4** — 5:24, 3840×2160 @ 24 fps h264, -24.25 LUFS. All gates PASS: Gate V 0/0/0, GATE T PASS 0 FAILs, BOOKEND PASS, MASTER PASS, LOUDNESS PASS.
+
+The film compares two paths on the same ask ("Write `todos.py` with two functions + tests"): (1) fix-forward — bare + two `--resume` corrections, 14 turns / 97.9 s / $0.888, ends with `remove_completed(todos, keep=None)` where the name lies and the tests document the drift on line 43; (2) rewind (headless equivalent: fresh `--session-id` with respecified ask) — 5 turns / 26.6 s / $0.359, ends with `filter_todos(keep)` where the name matches. 2.5× cheaper, and every `CCSession` block traces to `evidence/run-{bare,fixforward,fixforward2,rewind}.jsonl`.
+
+Rewind's actual keystrokes (Esc-Esc / `/rewind`) can't be filmed from headless — B05 states the substitution on-screen and `BUILD-LOG.md` records it. `CC-BUILT.txt` is written in the concept folder; the supervisor takes the next reel.

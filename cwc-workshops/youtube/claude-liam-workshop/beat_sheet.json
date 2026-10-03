@@ -18,13 +18,57 @@
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "modelLabel": "Opus 4.7",
+    "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/cwc-workshops/research-desk/.claude/skills/workshop/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Workshop coach for the Research Desk (SEC agents) workshop",
+        "Use when the user types /workshop",
+        "asks for a workshop act or module (\"act 2\"",
+        "\"where am I\")",
+        "wants a TODO(workshop-N) implemented or explained"
+      ],
+      "constraints": [
+        "You are the participant's coach for this workshop. Your job is to move them through WORKSHOP.md one act at a time: make (or guide them through) the changes each act…",
+        "The same head-of-research agent runs through the whole workshop: Act 1 creates it with only a system prompt, Act 2 updates that same agent (a new version) with its full…",
+        "Check before acting — run the status checks; never assume",
+        "Never print credentials (ANTHROPIC_API_KEY, ANTHROPIC_AUTH_TOKEN, anything in .env.local). Confirm presence/absence only. EDGAR_IDENTITY is not a secret",
+        "If the user is the presenter (they mention rehearsing, seeding, or resetting): npm run seed -- NVDA AMD --reset is the one-command prep — it pre-runs the analyses on a…",
+        "Keep .workshop-progress.json at the repo root (gitignored): {\"mode\": \"do-and-teach\", \"completed_acts\": [0,1], \"notes\": \"analyzed NVDA\"}. Read it on every invocation…",
+        "## Status checks (cheap, read-only)",
+        "env.local exists; whether ANTHROPIC_API_KEY/ANTHROPIC_AUTH_TOKEN and EDGAR_IDENTITY are set (presence only) — or just read GET http://localhost:3100/api/desk/status if…"
+      ],
+      "referenced_files": [
+        "/workshop",
+        ".workshop-progress.json",
+        "TODO(workshop-N)",
+        "user.message",
+        "src/lib/orchestrator.ts",
+        "src/app/api/desk/stream/route.ts",
+        "dispatch_analysts",
+        "src/lib/provision.ts",
+        "src/lib/analysis.ts",
+        "user.define_outcome"
+      ],
+      "code_signals": [],
+      "sections": [
+        "Commands you respond to",
+        "Coaching style — the contract for every act",
+        "Progress tracking",
+        "Status checks (cheap, read-only)",
+        "Act-by-act guide",
+        "Act 0 — Prerequisites & install",
+        "Act 1 — Say hello (Setup quick start + code + Desk tab)",
+        "Act 2 — Staff the desk (code + Setup tab)",
+        "Act 3 — One company, done properly (code + Scorecards tab)",
+        "Act 4 — The desk's training manual (content)"
+      ]
+    },
     "build": {
-      "at": "2026-08-26T00:20:46",
+      "at": "2026-09-05T22:10:27",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +77,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is workshop. Workshop coach for the Research Desk (SEC agents) workshop. Use when the user types /workshop, asks for a workshop act or module (\"act 2\", \"next act\", \"where am I\"), wants a TODO(workshop-N) implemented or explained, or asks for help following WORKSHOP.md.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is workshop. Workshop coach for the Research Desk (SEC agents) workshop. Use when the user types /workshop, asks for a workshop act or module (\"act 2\", \"next act\", \"where am I\"), wants a TODO(workshop-N) implemented or explained, or asks for help following WORKSHOP.md.. Its concrete surface area includes Workshop coach for the Research Desk (SEC agents) workshop; Use when the user types /workshop; asks for a workshop act or module (\"act 2\". A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,11 +93,11 @@
             "runningText": "reading workshop SKILL.md…",
             "output": [
               "skill: workshop",
-              "Workshop coach · Research Desk (SEC)",
+              "Workshop coach for the Research Desk (SEC agents) workshop. Use when the user…",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "Opus 4.7",
+            "modelLabel": "Opus 4.8",
             "effortLabel": "High"
           },
           "rendered": {
@@ -63,18 +107,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 20.89,
+      "actual_duration_s": 31.53,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:20:46"
+        "at": "2026-09-05T22:10:27"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is workshop. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is workshop. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at /workshop, .workshop-progress.json, TODO(workshop-N), so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -106,18 +150,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 11.82,
+      "actual_duration_s": 18.37,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:20:46"
+        "at": "2026-09-05T22:10:27"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "workshop is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Workshop coach for the Research Desk (SEC agents) workshop; Use when the user types /workshop; asks for a workshop act or module (\"act 2\"; \"where am I\"). The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -157,18 +201,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 16.98,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:20:46"
+        "at": "2026-09-05T22:10:27"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. workshop is a specification written as an instruction set. Claude's job: Workshop coach for the Research Desk (SEC agents) workshop. Use when the user types /workshop, asks . What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. You are the participant's coach for this workshop. Your job is to move them through WORKSHOP.md one act at a time: make (or guide them through) the changes each act…. That is the constraint in workshop — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,8 +223,8 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Specification-driven: only what the SKILL.md defines.",
-            "sparkLine": "Spec is the limit."
+            "body": "You are the participant's coach for this workshop. Your job is to move them through WORKSHOP.md one act at a time: make (or guide them through) the changes each act…",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
             "out": "media/B03.mp4",
@@ -189,30 +233,30 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 15.91,
+      "actual_duration_s": 15.66,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:20:46"
+        "at": "2026-09-05T22:10:27"
       }
     },
     {
       "beat_id": "B04",
-      "act": "lens",
-      "narration_text": "Here is the Plato move. The artifact is the SKILL.md — Claude's coaching instructions. The world is whether the participant actually builds understanding of Claude Managed Agents. The relationship: the skill governs what Claude says, not whether it lands. That gap is the practitioner's to close.",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In workshop, supporting material: /workshop, .workshop-progress.json, TODO(workshop-N), user.message; sections: Commands you respond to, Coaching style — the contract for every act, Progress tracking, Status checks (cheap, read-only). That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 15,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "SkillTeardownMechanism",
           "props": {
-            "eyebrow": "SKILL · LENS",
-            "heading": "Artifact vs world.",
-            "body": "Artifact governs Claude's words. Learning gap is yours.",
-            "sparkLine": "The gap is yours."
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Workshop coach for the Research Desk (SEC agents) workshop; Use when the user types /workshop; asks for a workshop act or module (\"act 2\"; /workshop; .workshop-progress.json; TODO(workshop-N)",
+            "sparkLine": "Ground the reel in the file."
           },
           "rendered": {
             "out": "media/B04.mp4",
@@ -220,19 +264,56 @@
           }
         }
       },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 19.61,
       "build": {
         "status": "VIDEO",
         "src": "media/B04.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:20:46"
+        "at": "2026-09-05T22:10:27"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "narration_text": "workshop makes Claude execute one task reliably. The SKILL.md is the spec — Workshop coach for the Research Desk (SEC agents) workshop. Use when the user…. Same input, same output, every run. Know the limit: only what the file says.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Verdict",
+            "artifactHeading": "Claude, Workshop.",
+            "artifactLines": [
+              "Skill: workshop — Claude reads SKILL.md before acting",
+              "Workshop coach for the Research Desk (SEC agents) workshop. Use when the user types…",
+              "Capabilities: Workshop coach for the Research Desk (SEC agents) workshop; Use when the user types /workshop; asks for a workshop act or module (\"act 2\"",
+              "Constraint: You are the participant's coach for this workshop. Your job is to move them through…",
+              "Same input → same output, every run"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
       },
-      "actual_duration_s": 15.74,
-      "audio_file": "mp3/beat-B04.mp3"
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 14.21,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T22:10:27"
+      }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to workshop coach for the research desk (sec agents) workshop. use when the user ty. Read the workshop skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to workshop coach for the research desk (sec agents) workshop. use when the user. Read the workshop skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -244,11 +325,11 @@
             "greeting": "Your turn.",
             "topic": "WORKSHOP · ANTHROPIC SKILL",
             "segment": "Claude, Workshop.",
-            "command": "Read the Research Desk workshop SKILL.md and walk me through what each act builds toward — then tell me where the skill's instructions end and the practitioner's judgment begins.",
+            "command": "I want to workshop coach for the research desk (sec agents) workshop. use when. Read the workshop skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "Opus 4.7",
+            "modelLabel": "Opus 4.8",
             "effortLabel": "High"
           },
           "rendered": {
@@ -258,12 +339,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 14.55,
+      "actual_duration_s": 14.46,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:20:46"
+        "at": "2026-09-05T22:10:27"
       }
     },
     {
@@ -279,7 +360,8 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "Claude, Workshop.",
-            "handle": "@NikBearBrown"
+            "handle": "@NikBearBrown",
+            "subline": "workshop · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -293,7 +375,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:20:46"
+        "at": "2026-09-05T22:10:27"
       }
     }
   ]

@@ -1,0 +1,16 @@
+# BUILD-LOG — cc-buildlog-assessment
+
+cc-explainer · Claude Code 101 · tier `01-context-and-memory`, film 04 · Liam, in for Bear · built 2026-09-09.
+
+**The experiment.** One sentence — "Add a password-protected login to signup.html so only known members can sign up." — asked of two students under identical conditions: same fifty-four-line `signup.html` (byte-for-byte, `diff -q` silent), but different `CLAUDE.md` files. Student A's `CLAUDE.md` (36 lines) had six explicit constraints and three dated Lessons Learned — 2026-08-14 email wall, 2026-08-21 server-side Thursday, 2026-08-28 welcome header — each naming a dangerous middle. Student B's `CLAUDE.md` (4 lines) was "Follow best practices. Write clean code…". Two headless `claude -p` runs, one from each folder. Student A's Claude refused the ask and quoted the 2026-08-14 lesson by date, offering three alternatives. Student B's Claude read `signup.html`, raised the client-side/View Source concern in general terms, and called `AskUserQuestion` with three options. No project rule cited on B's side, because there was no project rule to cite. A third fresh headless run — `scratch/grader/`, no `CLAUDE.md` in cwd, both files renamed and dropped in — was asked to grade each on a four-row rubric (constraints named, Lessons Learned with dates, dangerous middles, evidence the file guided later decisions). It Read both files and returned 16/16 for Student A, 0/16 for Student B, per-row justified. It never saw the code. Full transcripts and raw stream-json in `SESSION.md` and `evidence/`.
+
+**Compile.**
+- Pass 1: 13/13 rendered, GATE V 0/0/0, GATE T PASS, SHARPNESS PASS, BOOKEND PASS, LOUDNESS PASS (-24.26 LUFS). Master 264.6 s, 3840×2160, h264/yuv420p, 24 fps.
+- Spot-check of frames at ~85 % duration surfaced two kit-budget defects the gates did not catch:
+  - **B05 (grader)** — the 14-block stack overflowed the shell body; the last two blocks (`Evidence the file guided: 0` and `Total: 0/16`) rolled off before landing, silently dropping the film's payoff line. Fixed by removing the `Student A` / `Student B` header text blocks and prefixing every score row with `A:` / `B:` — 12 blocks, all visible.
+  - **B06 (Boondoggle Score)** — step 2's handoff string `refusal quotes the file, not a principle` (40 chars) truncated at proportional-width type to `not a prin…`, gutting the point. Fixed to `quotes the file, not principle` (30 chars) — fully visible.
+- Pass 2: fixes applied via `author_sheet.py` + `generate_audio_kokoro.py` (audio_file re-stamped after re-authoring; mp3s cached, no regeneration). Only B05 and B06 media were removed and re-rendered. All gates PASS again; master unchanged at 264.5 s.
+
+**FACTCHECK** clean (rows=16, uncovered=0). Two advisory notes not blocking: the SKIN LINT flags `B00 CCSession` as a non-Claude-brand cold open (the SKILL explicitly permits CC surfaces as cold-open surfaces when `metadata.skill: "cc-explainer"` is set; GATE BOOKEND PASS confirms), and the motion histogram flags `type` at 53 % (typing is the natural motion for CCSession beats — the SKILL's TERMINAL-FIRST law is the reason).
+
+**Not published.** Master stays in the reel folder. TOPOST via `post` only on explicit ask.

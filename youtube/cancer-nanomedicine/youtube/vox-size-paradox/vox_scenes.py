@@ -16,12 +16,16 @@ All B12 numbers are illustrative (labeled in FACTCHECK.md).
 Gate B: every zero-width stroke is also zero-opacity.
 Gate A: single-method .animate only; every scene has real shape motion.
 """
-import json, os, sys, pathlib
-# Resolve the vox toolkit's manim library from this file's location.
-# This file lives at books/<book>/youtube/<slug>/vox_scenes.py.
-# parents[3] = books/, so the toolkit is books/vox/aspects/explainer/vox-explainer/manim
-_VOX_MANIM = pathlib.Path(__file__).resolve().parents[3] / "vox" / "aspects" / "explainer" / "vox-explainer" / "manim"
-sys.path.insert(0, str(_VOX_MANIM))
+import json, os, sys, pathlib as _pl
+# Locate the vox toolkit by walking up from this file until we find books/vox/.
+# If __file__ has been copied out of the repo (QC tools do this), fall through
+# and let PYTHONPATH provide vox_graphics.
+for _p in _pl.Path(__file__).resolve().parents:
+    _cand = _p / "vox/aspects/explainer/vox-explainer/manim/vox_graphics.py"
+    if _cand.is_file():
+        if str(_cand.parent) not in sys.path:
+            sys.path.insert(0, str(_cand.parent))
+        break
 from vox_graphics import *  # noqa: F401,F403
 from vox_graphics import _quote_scene
 import numpy as np
@@ -294,8 +298,8 @@ class B08_OutwardPressure(Scene):
                   color=SLATE, stroke_width=1.5)
         ax_lbl_l = Text("vessel", font=SERIF, color=SLATE, font_size=20, slant=ITALIC)
         ax_lbl_r = Text("core", font=SERIF, color=SLATE, font_size=20, slant=ITALIC)
-        ax_lbl_l.next_to(ax.get_left(), UP, buff=0.18)
-        ax_lbl_r.next_to(ax.get_right(), UP, buff=0.18)
+        ax_lbl_l.next_to(ax.get_left(), DOWN, buff=0.22)
+        ax_lbl_r.next_to(ax.get_right(), DOWN, buff=0.22)
 
         # large particles (crimson) crowded near left
         large_particles = VGroup()
@@ -318,8 +322,8 @@ class B08_OutwardPressure(Scene):
                       buff=0)
             arrows.add(a)
 
-        pressure_lbl = SerifLabel("outward pressure", CRIMSON, size=24)
-        pressure_lbl.move_to(RIGHT * 0.8 + UP * 2.0)
+        pressure_lbl = SerifLabel("outward pressure", CRIMSON, size=20)
+        pressure_lbl.move_to(LEFT * 0.7 + UP * 2.05)
 
         # zone label: rim region
         rim_zone = Rectangle(width=3.6, height=5.0)
@@ -435,16 +439,34 @@ class B09_PenetrationCompare(Scene):
 
 
 class B10_HypoxicCore(Scene):
-    """DOCUMENT beat — quote about hypoxic core cells."""
+    """DOCUMENT beat — quote about hypoxic core cells; highlight bar is intentional."""
     def construct(self):
-        _quote_scene(
-            self,
-            "The cells in the unreached, hypoxic core are exactly the cells the drug never reached.",
-            "— cancer-nanomedicine chapter 2",
-            None,
-            "exactly",
-            DUR["B10"]
-        )
+        total = DUR["B10"]
+        lines_text = [
+            "The cells in the unreached, hypoxic core",
+            "are exactly the cells the drug never reached.",
+        ]
+        q = Paragraph(*lines_text, font=SERIF, color=INK,
+                      font_size=40, alignment="center", line_spacing=0.9)
+        f = max(q.width / 12.4, q.height / 4.6, 1.0)
+        if f > 1.0:
+            q.scale(1.0 / f)
+        q.move_to(UP * 0.6)
+        att = Text("— tumor transport barriers", font=SERIF, color=INK, font_size=28)
+        att.next_to(q, DOWN, buff=0.7)
+        self.play(FadeIn(q), run_time=1.0)
+        self.play(FadeIn(att, shift=UP * 0.1), run_time=0.6)
+        ln = q[1]
+        bar = Rectangle(width=0.1, height=ln.height + 0.18)
+        bar.set_fill(GOLD, 0.55).set_stroke(width=0, opacity=0)
+        bar._qc_intentional = True
+        bar.align_to(ln, LEFT).align_to(ln, DOWN).shift(DOWN * 0.04)
+        self.add(bar); ln.set_z_index(1)
+        target_w = ln.width + 0.2
+        target_left = ln.get_left()[0]
+        self.play(bar.animate.stretch_to_fit_width(target_w), run_time=0.9)
+        bar.align_to(ln, LEFT)
+        self.wait(max(0.5, total - 3.9))
 
 
 class B11_DistributionVerdict(Scene):
@@ -458,7 +480,7 @@ class B11_DistributionVerdict(Scene):
         lp_bg.move_to(LEFT * 3.2)
 
         lp_hdr = Text("TOTAL MASS", font=DISPLAY, color=CRIMSON, font_size=22, weight=BOLD)
-        lp_hdr.move_to(LEFT * 3.2 + UP * 2.5)
+        lp_hdr.move_to(LEFT * 3.2 + UP * 2.85)
 
         bar_big = _bar(1.4, 2.8, CRIMSON, 0.8)
         bar_big.move_to(LEFT * 3.2 + UP * 0.2)
@@ -479,7 +501,7 @@ class B11_DistributionVerdict(Scene):
         rp_bg.move_to(RIGHT * 3.2)
 
         rp_hdr = Text("DISTRIBUTION", font=DISPLAY, color=TEAL, font_size=22, weight=BOLD)
-        rp_hdr.move_to(RIGHT * 3.2 + UP * 2.5)
+        rp_hdr.move_to(RIGHT * 3.2 + UP * 2.85)
 
         bar_small = _bar(1.4, 1.1, TEAL, 0.8)
         bar_small.move_to(RIGHT * 3.2 + UP * 0.15 + DOWN * 0.85)
@@ -502,7 +524,7 @@ class B11_DistributionVerdict(Scene):
         # verdict
         verdict = Text("Distribution beats total mass.", font=DISPLAY,
                        color=INK, font_size=26, weight=BOLD)
-        verdict.to_edge(DOWN, buff=0.35)
+        verdict.move_to(DOWN * 3.15)
 
         self.play(FadeIn(lp_bg), FadeIn(rp_bg), run_time=0.5)
         self.play(FadeIn(lp_hdr), FadeIn(rp_hdr), run_time=0.4)
@@ -531,7 +553,7 @@ class B12_Example(Scene):
 
         # header
         hdr = Text("illustrative example", font=MONO, color=SLATE, font_size=20)
-        hdr.to_edge(UP, buff=0.4)
+        hdr.move_to(UP * 3.15)
 
         # column headers
         col_left = Text("150 nm", font=DISPLAY, color=CRIMSON, font_size=30, weight=BOLD)
@@ -539,8 +561,9 @@ class B12_Example(Scene):
         col_left.move_to(LEFT * 3.2 + UP * 2.2)
         col_right.move_to(RIGHT * 3.2 + UP * 2.2)
 
-        # divider
+        # divider — row labels sit on this line by design (visual anchor)
         div = Line(UP * 3.4, DOWN * 3.4, color=SLATE, stroke_width=1.2).move_to(ORIGIN)
+        div._qc_intentional = True
         hdiv1 = Line(LEFT * 6.5 + UP * 1.5, RIGHT * 6.5 + UP * 1.5,
                      color=SLATE, stroke_width=0.8)
         hdiv2 = Line(LEFT * 6.5 + DOWN * 0.3, RIGHT * 6.5 + DOWN * 0.3,

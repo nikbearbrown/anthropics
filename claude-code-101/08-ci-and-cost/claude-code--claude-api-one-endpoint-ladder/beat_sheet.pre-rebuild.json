@@ -1,0 +1,539 @@
+{
+  "metadata": {
+    "slug": "claude-api-one-endpoint-ladder",
+    "title": "One Door, Four Tiers",
+    "subtitle": "Why Every Claude API Feature Is One Endpoint Until It Isn't",
+    "channel": "claude-liam",
+    "persona": "Liam",
+    "folderLabel": "@NikBearBrown",
+    "audience": "Practitioners and makers following the channel's Claude workflows",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "palette": "claude",
+    "typography": {
+      "serif": "EB Garamond",
+      "ui": "system sans",
+      "mono": "SF Mono"
+    },
+    "source": "anthropics/skills/skills/claude-api/SKILL.md",
+    "genre": "deep-explainer",
+    "one_idea": "The platform is a tier ladder over one Messages endpoint, single call to tool-use workflow to hosted agent loop to Managed Agents, and choosing right means locating your task on that ladder.",
+    "duration_estimate_s": 360,
+    "lane_histogram_target": {
+      "VOX": "20-25%",
+      "MANIM": "25-40%",
+      "REMOTION": "30-45%",
+      "CARD": "remainder"
+    },
+    "topic": "CLAUDE · API ARCHITECTURE",
+    "build": {
+      "cut": "design-v1",
+      "note": "Seed beat sheet from video-ideas.md deep-explainer candidate; flesh out via the deep-explainer skill (audio-first)."
+    },
+    "design_version": "v1",
+    "design_notes": "PILOT: replaced B01+A31 VOX/ai with FormA cards; expanded [seed] narrations; fixed OUTRO per OUTRO-LOCK.",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx"
+  },
+  "beats": [
+    {
+      "id": "B00",
+      "act": "COLD OPEN",
+      "lane": "REMOTION",
+      "scene": "ClaudeComposerAsk",
+      "narration": "Hey Claude — If one endpoint absorbs tools, structured outputs, and server tools, where is the real seam — the line past which you stop controlling the loop?",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ciao, Liam",
+            "topic": "CLAUDE · API ARCHITECTURE",
+            "segment": "One Door, Four Tiers",
+            "command": "If one endpoint absorbs tools, structured outputs, and server tools, where is the real seam — the line past which you stop controlling the loop?",
+            "runningText": "reading claude-api SKILL.md…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "effortLabel": "High"
+          }
+        }
+      },
+      "est_s": 12,
+      "design_version": "v1"
+    },
+    {
+      "id": "B01",
+      "act": "COLD OPEN",
+      "lane": "BOOKEND",
+      "form": "A",
+      "polarity": "light",
+      "scene": "FormACard",
+      "narration": "A team ships three separate API wrappers — one for plain responses, one for structured outputs, one for tool calls. They discover later that all three hit the same endpoint with different parameters. The tier difference they were managing wasn't surface-level — it was loop ownership: does the code control the next call, or does the agent?",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "One Door, Four Tiers",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "est_s": 12,
+      "design_version": "v1",
+      "beat_id": "B01",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 10,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "id": "A10",
+      "act": "ACT 1",
+      "lane": "CARD",
+      "form": "A",
+      "polarity": "light",
+      "scene": "FormACard",
+      "narration": "The one endpoint",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "card": {
+          "kind": "text-only",
+          "typography": "EB Garamond",
+          "ground": "#FAF9F5",
+          "ink": "#3D3929",
+          "copy": "The one endpoint"
+        }
+      },
+      "est_s": 4,
+      "design_version": "v1"
+    },
+    {
+      "id": "A11",
+      "act": "ACT 1",
+      "lane": "MANIM",
+      "scene": "body",
+      "narration": "Every Claude API call goes through POST /v1/messages. The model ID, the messages array, the system prompt, the max_tokens cap — these are the four required shapes. Tool definitions and response_format are parameter flags on the same request. There is no separate structured-output API. There is no separate tool-calling API. One surface, one message shape, progressive feature unlock via parameters.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "OneEndpointDiagram",
+          "file": "manim/scenes.py",
+          "description": "Single POST /v1/messages box. Parameters branch off: model, messages[], system, tools[], response_format. Branches appear on cue (karaoke). Terracotta marks the one surface."
+        }
+      },
+      "est_s": 26,
+      "design_version": "v1"
+    },
+    {
+      "id": "A20",
+      "act": "ACT 2",
+      "lane": "CARD",
+      "form": "A",
+      "polarity": "light",
+      "scene": "FormACard",
+      "narration": "Supporting endpoints orbiting it",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "card": {
+          "kind": "text-only",
+          "typography": "EB Garamond",
+          "ground": "#FAF9F5",
+          "ink": "#3D3929",
+          "copy": "Supporting endpoints orbiting it"
+        }
+      },
+      "est_s": 4,
+      "design_version": "v1"
+    },
+    {
+      "id": "A21",
+      "act": "ACT 2",
+      "lane": "REMOTION",
+      "scene": "body",
+      "narration": "Three supporting endpoints orbit Messages. Files: upload binary data too large for inline — PDFs, images, reference docs — and get back a file_id you embed in messages. Batches: submit arrays of requests processed asynchronously at lower cost, a 50% discount at scale. Streaming: server-sent events for incremental token delivery. These aren't alternatives to Messages — they extend how Messages receives or delivers data.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeWindow",
+          "props": {
+            "view": "artifact",
+            "artifactTitle": "Supporting Endpoints",
+            "artifactHeading": "Three endpoints orbit Messages.",
+            "artifactLines": [
+              "Files API — upload large docs; get file_id; embed in messages[]",
+              "Batches API — async arrays of requests; 50% cost discount at scale",
+              "Streaming — server-sent events; incremental token delivery",
+              "None of these replace Messages — they extend how it receives/delivers"
+            ],
+            "sparkLine": "One surface. Three orbit layers."
+          }
+        }
+      },
+      "est_s": 26,
+      "design_version": "v1"
+    },
+    {
+      "id": "A30",
+      "act": "ACT 3",
+      "lane": "CARD",
+      "form": "A",
+      "polarity": "light",
+      "scene": "FormACard",
+      "narration": "The workflow tier: you own the loop",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "card": {
+          "kind": "text-only",
+          "typography": "EB Garamond",
+          "ground": "#FAF9F5",
+          "ink": "#3D3929",
+          "copy": "The workflow tier: you own the loop"
+        }
+      },
+      "est_s": 4,
+      "design_version": "v1"
+    },
+    {
+      "id": "A31",
+      "act": "ACT 3",
+      "lane": "CARD",
+      "form": "A",
+      "polarity": "light",
+      "scene": "FormACard",
+      "narration": "The workflow tier is when your code decides what happens next. Tool-use: the model says 'call search()'; your code executes it and feeds the result back. Structured outputs: the model returns JSON your code parses. In both cases, your code is driving — it decides whether to keep looping, what the next message is, when to stop. The model is a very capable function call inside your while loop.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "card": {
+          "kind": "text-only",
+          "typography": "EB Garamond",
+          "ground": "#FAF9F5",
+          "ink": "#3D3929",
+          "copy": "The workflow tier is when your code decides what happens next. Tool-use: the model says 'call search()'; your code executes it and feeds the result back. Structured outputs: the model returns JSON your code parses. In both cases, your code is driving — it decides whether to keep looping, what the next message is, when to stop. The model is a very capable function call inside your while loop."
+        }
+      },
+      "est_s": 22,
+      "design_version": "v1"
+    },
+    {
+      "id": "A40",
+      "act": "ACT 4",
+      "lane": "CARD",
+      "form": "A",
+      "polarity": "light",
+      "scene": "FormACard",
+      "narration": "The agent seam: the four-question test",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "card": {
+          "kind": "text-only",
+          "typography": "EB Garamond",
+          "ground": "#FAF9F5",
+          "ink": "#3D3929",
+          "copy": "The agent seam: the four-question test"
+        }
+      },
+      "est_s": 4,
+      "design_version": "v1"
+    },
+    {
+      "id": "A41",
+      "act": "ACT 4",
+      "lane": "MANIM",
+      "scene": "body",
+      "narration": "The seam between workflow and agent: four questions. Does your code decide what the next tool call is, or does the model? Does your code interpret the output, or does the model? Does your code hold the conversation state, or does the model? Is the next action determined before or after the model response? Workflow tier: your code drives all four. Agent tier: the model drives all four. A hybrid means you're managing the boundary manually.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "AgentSeamFourQuestions",
+          "file": "manim/scenes.py",
+          "description": "Four questions as a checklist. WORKFLOW column: your code checks all four. AGENT column: model checks all four. Questions appear on cue. Terracotta highlights the shift at the seam."
+        }
+      },
+      "est_s": 26,
+      "design_version": "v1"
+    },
+    {
+      "id": "A50",
+      "act": "ACT 5",
+      "lane": "CARD",
+      "form": "A",
+      "polarity": "light",
+      "scene": "FormACard",
+      "narration": "Crossing the wall to Managed Agents",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "card": {
+          "kind": "text-only",
+          "typography": "EB Garamond",
+          "ground": "#FAF9F5",
+          "ink": "#3D3929",
+          "copy": "Crossing the wall to Managed Agents"
+        }
+      },
+      "est_s": 4,
+      "design_version": "v1"
+    },
+    {
+      "id": "A51",
+      "act": "ACT 5",
+      "lane": "REMOTION",
+      "scene": "body",
+      "narration": "Managed Agents is a different surface — not a parameter flag on Messages. When you graduate a task: the infrastructure handles conversation state, parallel tool execution, and resource limits. You define the starting instruction and the tools; the orchestration layer handles the loop. The crossing point is when you stop wanting to own the loop and start wanting the infrastructure to manage it on your behalf.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeWindow",
+          "props": {
+            "view": "artifact",
+            "artifactTitle": "Managed Agents",
+            "artifactHeading": "You define. The infrastructure loops.",
+            "artifactLines": [
+              "NOT a Messages parameter — a separate surface",
+              "You supply: starting instruction + tool definitions",
+              "Infrastructure handles: state, parallel execution, resource limits",
+              "Crossing point: when you stop wanting to own the loop",
+              "Graduate when: cost-of-error test fails for manual orchestration"
+            ],
+            "sparkLine": "Graduate when the loop is no longer yours to manage."
+          }
+        }
+      },
+      "est_s": 26,
+      "design_version": "v1"
+    },
+    {
+      "id": "EX",
+      "act": "EXAMPLE",
+      "lane": "MANIM",
+      "scene": "worked-example",
+      "narration": "A support tool starts as one classify call — Messages, plain response. Adds tool use to look up an order — still Messages, your code drives the loop. Moves overnight triage to the Batches endpoint — async, same Messages shape. Fails a cost-of-error test for an end-to-end sandbox refund — graduate to Managed Agents. Four stages, one endpoint, one wall.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "SupportToolTierLadder",
+          "file": "manim/scenes.py",
+          "description": "Linear progression: CLASSIFY → TOOL-USE → BATCH → AGENT. Each step appears on cue. Terracotta marks the wall between BATCH and AGENT. Labels: 'your code drives' on left, 'infrastructure drives' on right of the wall."
+        }
+      },
+      "est_s": 28,
+      "design_version": "v1"
+    },
+    {
+      "id": "VERDICT",
+      "act": "CLOSE",
+      "lane": "REMOTION",
+      "scene": "ClaudeVerdictArtifact",
+      "narration": "The platform is a tier ladder over one Messages endpoint — single call to tool-use workflow to hosted agent loop to Managed Agents. Choosing right means locating your task on that ladder.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Verdict",
+            "artifactHeading": "One Door, Four Tiers",
+            "artifactLines": [
+              "Messages: one endpoint, progressive feature unlock via parameters",
+              "Files / Batches / Streaming: orbit layers, not alternatives",
+              "Workflow tier: your code drives the loop",
+              "Agent seam: four questions — who decides next action?",
+              "Managed Agents: infrastructure drives; you supply instruction + tools",
+              "Locate your task on the ladder before choosing the tier"
+            ]
+          }
+        }
+      },
+      "est_s": 16,
+      "design_version": "v1"
+    },
+    {
+      "id": "YOURTURN",
+      "act": "your-turn",
+      "lane": "REMOTION",
+      "scene": "ClaudeComposerAsk",
+      "narration": "Your turn. Paste this: you want to understand the Claude API tier structure before writing your first API call. Ask Claude to walk you through the four tiers — what each one gives you, when you move up, and what the single endpoint pattern looks like at each tier.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · @NikBearBrown",
+            "segment": "One Door, Four Tiers",
+            "command": "I want to understand the Claude API tier structure before I write my first API call. Walk me through the four tiers: what does each tier give me, when do I move up, and what does the single endpoint pattern look like at each tier?",
+            "runningText": "paste your spec, CLAUDE.md, or build plan here…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "effortLabel": "High"
+          }
+        }
+      },
+      "est_s": 14,
+      "design_version": "v1",
+      "beat_id": "YOURTURN"
+    },
+    {
+      "id": "OUTRO",
+      "act": "OUTRO",
+      "lane": "REMOTION",
+      "scene": "ClaudeTitleOutro",
+      "narration": "One Door, Four Tiers — Why Every Claude API Feature Is One Endpoint Until It Isn't",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "One Door, Four Tiers",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-api-one-endpoint-ladder"
+          }
+        }
+      },
+      "est_s": 8,
+      "design_version": "v1"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "One Door, Four Tiers",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · API ARCHITECTURE",
+            "segment": "One Door, Four Tiers",
+            "command": "Take what you learned from [One Door, Four Tiers] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@claude-liam"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "One Door, Four Tiers",
+            "slug": "claude-api-one-endpoint-ladder"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

@@ -106,30 +106,25 @@ class Scene_B03_NbbClearVs(Scene):
         spark.shift(UP * 1.2)
         self.play(Create(spark), run_time=0.2)
 
-        # Primary concept text
-        if "slash-compact summarizes the conversation instead of erasing":
-            line1 = Text("slash-compact summarizes the conversation instead of erasing", font_size=36, color="#2A1A0E", font=font)
-            line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
-            line1.shift(UP * 0.3)
-            self.play(Write(line1), run_time=0.5)
+        # Primary concept text — compact vs clear decision
+        line1 = Text("slash-compact — summarize, don't erase", font_size=36, color="#2A1A0E", font=font)
+        line1.scale(min(1.0, 12.0 / max(0.1, line1.width)))
+        line1.shift(UP * 0.3)
+        self.play(Write(line1), run_time=0.5)
 
-        if "Use compact when the context is long but still load-bearing ":
-            line2 = Text("Use compact when the context is long but still load-bearing ", font_size=28, color="#2A1A0E", font=font)
-            line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
-            line2.shift(DOWN * 0.6)
-            self.play(Write(line2), run_time=0.4)
+        line2 = Text("Still load-bearing? compact.", font_size=32, color="#2A1A0E", font=font)
+        line2.scale(min(1.0, 10.0 / max(0.1, line2.width)))
+        line2.shift(DOWN * 0.6)
+        self.play(Write(line2), run_time=0.4)
 
-        if "Use clear when the context is finished and in the way - betw":
-            line3 = Text("Use clear when the context is finished and in the way - betw", font_size=22, color="#2A1A0E", font=font)
-            line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
-            line3.shift(DOWN * 1.4)
-            self.play(FadeIn(line3), run_time=0.3)
+        line3 = Text("Finished and in the way? clear.", font_size=32, color="#C8102E", font=font)
+        line3.scale(min(1.0, 10.0 / max(0.1, line3.width)))
+        line3.shift(DOWN * 1.4)
+        self.play(FadeIn(line3), run_time=0.3)
 
-        # Terracotta underline on key term
-        if "slash-compact summarizes the conversation instead of erasing":
-            uline = Line(LEFT * min(4.0, len("slash-compact summarizes the conversation instead of erasing") * 0.18), RIGHT * min(4.0, len("slash-compact summarizes the conversation instead of erasing") * 0.18),
-                         color="#C8102E", stroke_width=2)
-            uline.shift(UP * 0.1)
-            self.play(Create(uline), run_time=0.3)
+        # Terracotta underline under the primary term
+        uline = Line(LEFT * 2.2, RIGHT * 2.2, color="#C8102E", stroke_width=2)
+        uline.shift(UP * 0.05)
+        self.play(Create(uline), run_time=0.3)
 
         self.wait(max(0.01, 11.00))

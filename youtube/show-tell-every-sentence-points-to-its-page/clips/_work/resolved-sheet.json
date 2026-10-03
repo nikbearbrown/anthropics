@@ -1,0 +1,643 @@
+{
+  "metadata": {
+    "slug": "show-tell-every-sentence-points-to-its-page",
+    "title": "Every Sentence Points to Its Page",
+    "topic": "CLAUDE API · CITATIONS",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Arabic (Salaam)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Students and developers who ask Claude questions about documents and want answers they can check line by line",
+    "source_doc": "anthropics/claude-cookbooks/misc/using_citations.ipynb (read in full 2026-09-27); checked against the raw live docs page platform.claude.com/docs/en/build-with-claude/citations.md (fetched with curl 2026-09-27, saved in sources/)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude",
+      "Claude API",
+      "citations",
+      "document",
+      "PDF",
+      "plain text",
+      "custom content",
+      "cited text",
+      "grounding",
+      "RAG",
+      "sources",
+      "Anthropic",
+      "cookbook",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T02:26:53",
+      "cut": "review",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Salaam. This is Liam, in for Bear. It's easy to think the way to get sources is to ask Claude to quote them. The citations feature does better: each cited sentence comes back pointing to its place in your documents. So the real question is where each sentence points.",
+      "estimated_duration_s": 19.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I get Claude to quote its sources?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'get Claude to quote its sources' -> 'see where each sentence points' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I\nget Claude to quote its sources?",
+            "triggerWords": "get Claude to quote its sources",
+            "replacementWords": "see where each sentence points",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-every-sentence-points-to-its-page",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T06:24:02.040630+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (how do I get Claude to quote its sources) and corrects it to the real one (how do I see where each sentence points).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 14.66,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 14.666666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T02:26:53"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A document: a source you hand Claude inside the request. A citation: a pointer from part of the answer back to a place in a document. And a chunk: the smallest piece Claude can cite.",
+      "estimated_duration_s": 14.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "'document' lands"
+          },
+          {
+            "at": 0.4,
+            "event": "'citation' lands"
+          },
+          {
+            "at": 0.75,
+            "event": "'chunk' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "document",
+                "meaning": "a source you hand Claude inside the request"
+              },
+              {
+                "term": "citation",
+                "meaning": "a pointer from the answer to a place in a document"
+              },
+              {
+                "term": "chunk",
+                "meaning": "the smallest piece Claude can cite"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T06:24:29.443245+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 10.58,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 10.583333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T02:26:53"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "You put your documents in the request, next to your question, and switch citations on for each one. It's all or none: every document in the request, or none of them. Every active Claude model supports it.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A pale table; three documents drop onto it (a white text page, a PDF stack, a column of kraft blocks) and a question card slides in beside them ('documents', 'question'); a small toggle by each document flips its knob to terracotta, one after another ('citations on'); then all three flip off together and on together (all or none).",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "three documents drop onto the table"
+          },
+          {
+            "at": 0.3,
+            "event": "the question card"
+          },
+          {
+            "at": 0.55,
+            "event": "the toggles flip on, all three"
+          }
+        ],
+        "manim": {
+          "class": "B00_Table"
+        },
+        "motion_claim": "A pale table; three documents drop onto it (a white text page, a PDF stack, a column of kraft blocks) and a question card slides in beside them ('documents', 'question'); a small toggle by each document flips its knob to terracotta, one after another ('citations on'); then all three flip off together and on together (all or none)."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn table-pages-and-threads scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.24,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 11.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:26:53"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "First, each document is cut into chunks. Plain text and PDFs are cut into sentences. Claude can cite one sentence, or chain a few in a row into a passage, but never less than one sentence.",
+      "estimated_duration_s": 14.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The text page grows to fill the stage; a terracotta scan line sweeps down it and each ghost line splits into separate sentence bars in alternating greys ('sentences'); two neighbouring sentences darken together and an ink bracket joins them ('passage').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the page grows"
+          },
+          {
+            "at": 0.3,
+            "event": "the scan cuts sentences"
+          },
+          {
+            "at": 0.7,
+            "event": "two sentences chained into a passage"
+          }
+        ],
+        "manim": {
+          "class": "B01_Chunks"
+        },
+        "motion_claim": "The text page grows to fill the stage; a terracotta scan line sweeps down it and each ghost line splits into separate sentence bars in alternating greys ('sentences'); two neighbouring sentences darken together and an ink bracket joins them ('passage')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn table-pages-and-threads scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.71,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 11.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:26:53"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then Claude answers in pieces. Each piece is a text block: one claim, with a list of the citations behind it. As each claim lands, a thread runs back to the passage it came from, and names the document it's in.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The text page and the PDF sit at the left, numbered 0 and 1; an answer page lands at the right ('answer'); its lines write in one at a time, and as each lands an ink thread arcs from it to a sentence on one of the documents, which turns dark grey, with a terracotta dot where the thread lands.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the answer page"
+          },
+          {
+            "at": 0.3,
+            "event": "claim 1 writes, a thread to document 0"
+          },
+          {
+            "at": 0.75,
+            "event": "claim 2, a thread to document 1"
+          }
+        ],
+        "manim": {
+          "class": "B02_Threads"
+        },
+        "motion_claim": "The text page and the PDF sit at the left, numbered 0 and 1; an answer page lands at the right ('answer'); its lines write in one at a time, and as each lands an ink thread arcs from it to a sentence on one of the documents, which turns dark grey, with a terracotta dot where the thread lands."
+      },
+      "actual_duration_s": 12.37,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 12.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:26:53"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "For plain text, the pointer is a character range: where the passage starts and where it stops, counted from zero. In the docs' own example, the grass is green runs from character zero to twenty.",
+      "estimated_duration_s": 14.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The text page is large at centre with one thread landing on a highlighted sentence; two ink flags rise at its start and its end, numbered 0 and 20; a terracotta dot runs along the sentence from the start flag to the end flag ('characters').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cited sentence"
+          },
+          {
+            "at": 0.4,
+            "event": "start and end flags"
+          },
+          {
+            "at": 0.75,
+            "event": "0 to 20"
+          }
+        ],
+        "manim": {
+          "class": "B03_Characters"
+        },
+        "motion_claim": "The text page is large at centre with one thread landing on a highlighted sentence; two ink flags rise at its start and its end, numbered 0 and 20; a terracotta dot runs along the sentence from the start flag to the end flag ('characters')."
+      },
+      "actual_duration_s": 11.14,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 11.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:26:53"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "For a PDF, it's a page range, counted from one. The text is pulled out and cut into sentences too. But only text can be cited. A picture on the page can't be, and a scanned page with no text can't be cited at all.",
+      "estimated_duration_s": 18.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The PDF's three pages fan out in a row, numbered 1, 2, 3 ('pages'); a thread lands on a sentence on page 2; a dashed ghost thread heads for a picture on page 3 and fades before it gets there; a blank scanned page slides in and no thread reaches it.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "pages fan out, numbered from 1"
+          },
+          {
+            "at": 0.35,
+            "event": "a thread lands on page 2"
+          },
+          {
+            "at": 0.65,
+            "event": "the picture gets no thread"
+          },
+          {
+            "at": 0.85,
+            "event": "the scan gets none"
+          }
+        ],
+        "manim": {
+          "class": "B04_Pages"
+        },
+        "motion_claim": "The PDF's three pages fan out in a row, numbered 1, 2, 3 ('pages'); a thread lands on a sentence on page 2; a dashed ghost thread heads for a picture on page 3 and fades before it gets there; a blank scanned page slides in and no thread reaches it."
+      },
+      "actual_duration_s": 12.39,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 12.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:26:53"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Custom content is your own chunks, used as they are. Claude won't cut them any smaller, so the pointer is a block index, counted from zero. Use it for lists and transcripts, or whenever you want to choose the size yourself.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The column of kraft blocks of different sizes, numbered 0 to 3 ('blocks'); a thread lands on block 2 and the whole block lifts and its top warms; a new block of a different size drops onto the column.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "your own blocks, numbered from 0"
+          },
+          {
+            "at": 0.4,
+            "event": "a thread takes a whole block"
+          },
+          {
+            "at": 0.8,
+            "event": "you choose the size"
+          }
+        ],
+        "manim": {
+          "class": "B05_Blocks"
+        },
+        "motion_claim": "The column of kraft blocks of different sizes, numbered 0 to 3 ('blocks'); a thread lands on block 2 and the whole block lifts and its top warms; a new block of a different size drops onto the column."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn table-pages-and-threads scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.27,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 12.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:26:53"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Each citation also hands back the cited text: the exact words. Those words don't count toward your output tokens, the way asking Claude to write out quotes would. And the pointers are guaranteed valid. They point only into documents you sent.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A thread runs from the text page to the answer; a white slip rides along it from the page to the answer ('cited text'); two meters beside it: 'quoting' fills tall while 'citations' stays short; an ink check lands above the thread's landing dot.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cited-text slip rides back"
+          },
+          {
+            "at": 0.45,
+            "event": "quoting fills, citations stays low"
+          },
+          {
+            "at": 0.8,
+            "event": "a check at the thread's end"
+          }
+        ],
+        "manim": {
+          "class": "B06_CitedText"
+        },
+        "motion_claim": "A thread runs from the text page to the answer; a white slip rides along it from the page to the answer ('cited text'); two meters beside it: 'quoting' fills tall while 'citations' stays short; an ink check lands above the thread's landing dot."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn table-pages-and-threads scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.74,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 13.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:26:53"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Every cited sentence points to its page. But not every line gets a citation. In the notebook's own example, your order likely hasn't shipped yet came back with none. That's Claude reasoning, not quoting. A line with no thread is the one to check yourself.",
+      "estimated_duration_s": 18.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The answer page with two threaded lines to the source page; a third line writes and no thread comes; an ink ring circles it ('no citation'); a magnifier slides over the line ('answer' labels the page).",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "two threaded lines"
+          },
+          {
+            "at": 0.4,
+            "event": "a third line, no thread"
+          },
+          {
+            "at": 0.85,
+            "event": "the magnifier: check it yourself"
+          }
+        ],
+        "manim": {
+          "class": "B07_NoThread"
+        },
+        "motion_claim": "The answer page with two threaded lines to the source page; a third line writes and no thread comes; an ink ring circles it ('no citation'); a magnifier slides over the line ('answer' labels the page)."
+      },
+      "actual_duration_s": 14.4,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 14.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:26:53"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude Code, in any repo with a read me: Write a short Python script that sends the read me to Claude as a plain-text document with citations on, and asks what this project does. Print each text block of the answer, then under it the cited text and its character range, or no citation if it has none. Then check two things yourself. Does the read me, cut at each range, match the quoted text? And is each line with no citation actually true?",
+      "estimated_duration_s": 35.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · YOUR TURN",
+            "segment": "Every Sentence Points to Its Page",
+            "command": "Write a short Python script that sends README.md to Claude as a plain-text document with citations on, and asks what this project does. Print each text block of the answer, then under it the cited text and its character range, or NO CITATION if it has none.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: README at each range matches the quote?",
+              "Check: is each uncited line actually true?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T06:25:29.200431+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 24.53,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 24.541666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T02:26:53"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Every Sentence Points to Its Page. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Every Sentence Points to Its Page",
+            "slug": "show-tell-every-sentence-points-to-its-page",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T06:25:43.609365+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.95,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.958333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T02:26:53"
+      }
+    }
+  ]
+}

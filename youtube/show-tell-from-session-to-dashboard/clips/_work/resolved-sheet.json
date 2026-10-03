@@ -1,0 +1,978 @@
+{
+  "metadata": {
+    "slug": "show-tell-from-session-to-dashboard",
+    "title": "From Session to Dashboard",
+    "topic": "CLAUDE CODE · TELEMETRY PIPELINE",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Japanese (Konnichiwa)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Team leads and developers who want Claude Code's usage numbers on a dashboard: the pipeline from Anthropic's claude-code-monitoring-guide (OpenTelemetry metrics -> collector -> Prometheus -> Grafana, plus the claude -p report), checked against the live Claude Code monitoring docs; no prices",
+    "source_doc": "anthropics/claude-code-monitoring-guide/ (README.md, claude_code_roi_full.md, docker-compose.yml, otel-collector-config.yaml, prometheus.yml, report-generation-prompt.md, grafana/dashboards/working-dashboard.json) byte-compared with raw upstream; live docs code.claude.com/docs/en/monitoring-usage.md fetched raw 2026-09-27 (sources/)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude Code",
+      "telemetry",
+      "OpenTelemetry",
+      "OTel collector",
+      "Prometheus",
+      "Grafana",
+      "PromQL",
+      "monitoring",
+      "observability",
+      "metrics",
+      "Docker Compose",
+      "claude -p",
+      "Linear MCP",
+      "Anthropic",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T18:59:18",
+      "cut": "review",
+      "filled": 19,
+      "of": 19,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Konnichiwa. This is Liam, in for Bear. To see how your team uses Claude Code, you might just ask Claude. But one chat only sees its own session. So the real question is how to track Claude Code on a dashboard.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I track Claude Code by asking Claude?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'by asking Claude' -> 'on a dashboard' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I track Claude Code\nby asking Claude?",
+            "triggerWords": "by asking Claude",
+            "replacementWords": "on a dashboard",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-from-session-to-dashboard",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T22:55:56.178752+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (track Claude Code by asking Claude) and corrects it to the real one (track Claude Code on a dashboard).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 11.776,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 11.791666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A metric: a number counted over time, like tokens used. Open Telemetry: the open standard Claude Code uses to send those numbers out. A collector: a relay that receives them and passes them on. And Prometheus: a database that keeps the numbers over time and answers queries.",
+      "estimated_duration_s": 18.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "'metric' lands"
+          },
+          {
+            "at": 0.3,
+            "event": "'OpenTelemetry' lands"
+          },
+          {
+            "at": 0.55,
+            "event": "'collector' lands"
+          },
+          {
+            "at": 0.8,
+            "event": "'Prometheus' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "metric",
+                "meaning": "a number counted over time, like tokens used"
+              },
+              {
+                "term": "OpenTelemetry",
+                "meaning": "the open standard Claude Code sends them with"
+              },
+              {
+                "term": "collector",
+                "meaning": "a relay that receives them and passes them on"
+              },
+              {
+                "term": "Prometheus",
+                "meaning": "keeps the numbers over time and answers queries"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T22:56:35.791068+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: four prerequisites, one line each."
+      },
+      "actual_duration_s": 15.552,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 15.583333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Anthropic's Claude Code monitoring guide builds one pipeline. On the left, a Claude Code session. Its numbers run down a pipe into a collector, then into Prometheus, and out onto a Grafana dashboard your team can read.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft terminal block lands at the left ('session'); a pipe draws to the right into a kraft funnel (the collector), on into a tall kraft cabinet (Prometheus), and out to a white board whose grey bars grow ('dashboard').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the monitoring guide's pipeline"
+          },
+          {
+            "at": 0.35,
+            "event": "a Claude Code session"
+          },
+          {
+            "at": 0.85,
+            "event": "collector, Prometheus, dashboard"
+          }
+        ],
+        "manim": {
+          "class": "B00_Pipeline"
+        },
+        "motion_claim": "A kraft terminal block lands at the left ('session'); a pipe draws to the right into a kraft funnel (the collector), on into a tall kraft cabinet (Prometheus), and out to a white board whose grey bars grow ('dashboard')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the terminal, the pipe, the collector funnel, the Prometheus cabinet, the dashboard board) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.992,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 13.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "It starts switched off. Sending telemetry to your own backend is opt-in, and the switch is one environment variable: Claude Code enable telemetry, set to one.",
+      "estimated_duration_s": 10.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The pipeline clears; the terminal grows at the left with a switch plate beside it, knob at 'off' ('opt-in'); the knob slides over, the lamp lights terracotta, and the variable lands ('CLAUDE_CODE_ENABLE_TELEMETRY=1').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "switched off"
+          },
+          {
+            "at": 0.45,
+            "event": "opt-in"
+          },
+          {
+            "at": 0.85,
+            "event": "CLAUDE_CODE_ENABLE_TELEMETRY=1"
+          }
+        ],
+        "manim": {
+          "class": "B01_Switch"
+        },
+        "motion_claim": "The pipeline clears; the terminal grows at the left with a switch plate beside it, knob at 'off' ('opt-in'); the knob slides over, the lamp lights terracotta, and the variable lands ('CLAUDE_CODE_ENABLE_TELEMETRY=1')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the terminal, the pipe, the collector funnel, the Prometheus cabinet, the dashboard board) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.28,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 9.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Before any plumbing, the guide tests the tap. Set the metrics exporter to console, cut the export interval from its default of one minute to one second, and run one prompt with the command claude, dash P. The metrics print right in your terminal.",
+      "estimated_duration_s": 17.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A 'claude -p' pill slides into the terminal; a white printout rises from the terminal's top slot ('console'), one grey line per tick ('1 s').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "test the tap first"
+          },
+          {
+            "at": 0.45,
+            "event": "exporter console, interval one second"
+          },
+          {
+            "at": 0.85,
+            "event": "metrics print in the terminal"
+          }
+        ],
+        "manim": {
+          "class": "B02_Console"
+        },
+        "motion_claim": "A 'claude -p' pill slides into the terminal; a white printout rises from the terminal's top slot ('console'), one grey line per tick ('1 s')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the terminal, the pipe, the collector funnel, the Prometheus cabinet, the dashboard board) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.056,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 13.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "For the real pipeline, the guide ships a Docker Compose file. One command, docker compose up, starts three containers: an Open Telemetry collector, Prometheus, and Grafana, which draws the dashboards.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The printout clears and the terminal shrinks to the left; a long dark plinth draws; three pieces drop onto it one by one: the funnel ('collector'), the cabinet ('Prometheus'), the board ('Grafana').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a Docker Compose file"
+          },
+          {
+            "at": 0.45,
+            "event": "one command, three containers"
+          },
+          {
+            "at": 0.85,
+            "event": "collector, Prometheus, Grafana"
+          }
+        ],
+        "manim": {
+          "class": "B03_Compose"
+        },
+        "motion_claim": "The printout clears and the terminal shrinks to the left; a long dark plinth draws; three pieces drop onto it one by one: the funnel ('collector'), the cabinet ('Prometheus'), the board ('Grafana')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the terminal, the pipe, the collector funnel, the Prometheus cabinet, the dashboard board) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.947,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 11.958333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then point Claude Code at the collector. Set the metrics exporter to O T L P, the Open Telemetry protocol, over g R P C, and set the endpoint to localhost, port forty-three seventeen. The pipe connects.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A pipe draws from the terminal toward the funnel ('otlp over grpc'); a socket lands on the funnel ('localhost:4317'); the pipe meets it and a check lands.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "point it at the collector"
+          },
+          {
+            "at": 0.45,
+            "event": "OTLP over gRPC"
+          },
+          {
+            "at": 0.85,
+            "event": "localhost:4317; connected"
+          }
+        ],
+        "manim": {
+          "class": "B04_Endpoint"
+        },
+        "motion_claim": "A pipe draws from the terminal toward the funnel ('otlp over grpc'); a socket lands on the funnel ('localhost:4317'); the pipe meets it and a check lands."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the terminal, the pipe, the collector funnel, the Prometheus cabinet, the dashboard board) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.843,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 12.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Now each session drips numbers down the pipe. The live docs list eight metrics: sessions, lines of code, pull requests, commits, cost, tokens, code edit decisions, and active time.",
+      "estimated_duration_s": 11.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Grey metric drops leave the terminal one after another and ride the pipe into the funnel; eight drops line up above the pipe as the voice names them ('8 metrics').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "drops ride the pipe"
+          },
+          {
+            "at": 0.4,
+            "event": "eight metrics"
+          },
+          {
+            "at": 0.85,
+            "event": "…edit decisions, active time"
+          }
+        ],
+        "manim": {
+          "class": "B05_Metrics"
+        },
+        "motion_claim": "Grey metric drops leave the terminal one after another and ride the pipe into the funnel; eight drops line up above the pipe as the voice names them ('8 metrics')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the terminal, the pipe, the collector funnel, the Prometheus cabinet, the dashboard board) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.709,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 10.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Each drop carries tags. Tokens are split by type: input, output, cache read and cache creation. Tokens and cost also name the model. And by default every metric carries a session I D, so you can slice the numbers later.",
+      "estimated_duration_s": 16.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "One drop grows at the centre and splits into four smaller drops ('type'); a kraft tag on a string hangs from it ('model'); a second tag hangs from every drop ('session.id').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "tags"
+          },
+          {
+            "at": 0.35,
+            "event": "four token types"
+          },
+          {
+            "at": 0.6,
+            "event": "the model"
+          },
+          {
+            "at": 0.85,
+            "event": "session ID on every metric"
+          }
+        ],
+        "manim": {
+          "class": "B06_Tags"
+        },
+        "motion_claim": "One drop grows at the centre and splits into four smaller drops ('type'); a kraft tag on a string hangs from it ('model'); a second tag hangs from every drop ('session.id')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the terminal, the pipe, the collector funnel, the Prometheus cabinet, the dashboard board) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.675,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 13.708333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Events are a second stream: one record each time something happens, like a prompt or a tool result, sent by a separate logs exporter. The guide's collector has one pipeline, for metrics only, so events would need their own.",
+      "estimated_duration_s": 15.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Back to the pipe; a second, thinner pipe draws above it ('events'); white slips ride it; at the funnel a grey cap closes it ('metrics only').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a second stream: events"
+          },
+          {
+            "at": 0.45,
+            "event": "a separate logs exporter"
+          },
+          {
+            "at": 0.85,
+            "event": "the guide's collector: metrics only"
+          }
+        ],
+        "manim": {
+          "class": "B07_Events"
+        },
+        "motion_claim": "Back to the pipe; a second, thinner pipe draws above it ('events'); white slips ride it; at the funnel a grey cap closes it ('metrics only')."
+      },
+      "actual_duration_s": 12.843,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 12.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What stays out: prompt text isn't collected by default, only its length. Raw file contents and code snippets aren't in metrics or events. And your email, attached when you sign in, goes only to the endpoint you set, never to Anthropic.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white prompt page slides toward the pipe; a grey gate drops and stops it ('prompt text'); only a small ruler slip goes in ('length'); a code page is stopped too; a kraft email tag rides the pipe to the collector ('your endpoint').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "prompt text stays out"
+          },
+          {
+            "at": 0.35,
+            "event": "only its length"
+          },
+          {
+            "at": 0.55,
+            "event": "no file contents or code"
+          },
+          {
+            "at": 0.85,
+            "event": "email only to your endpoint"
+          }
+        ],
+        "manim": {
+          "class": "B08_Privacy"
+        },
+        "motion_claim": "A white prompt page slides toward the pipe; a grey gate drops and stops it ('prompt text'); only a small ruler slip goes in ('length'); a code page is stopped too; a kraft email tag rides the pipe to the collector ('your endpoint')."
+      },
+      "actual_duration_s": 13.461,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 13.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Inside the collector, a receiver takes the metrics in on port forty-three seventeen. A batch step groups them, with a one-second timeout, and a Prometheus exporter sets them out on port eighty-eight eighty-nine.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The funnel grows at the centre; drops enter at the left ('4317'), gather in a grey batch tray ('batch'), and leave by a spout at the right onto a small shelf ('8889').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "receiver on 4317"
+          },
+          {
+            "at": 0.5,
+            "event": "batched, one-second timeout"
+          },
+          {
+            "at": 0.85,
+            "event": "Prometheus exporter on 8889"
+          }
+        ],
+        "manim": {
+          "class": "B09_Collector"
+        },
+        "motion_claim": "The funnel grows at the centre; drops enter at the left ('4317'), gather in a grey batch tray ('batch'), and leave by a spout at the right onto a small shelf ('8889')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the terminal, the pipe, the collector funnel, the Prometheus cabinet, the dashboard board) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.139,
+      "audio_file": "mp3/beat-B09.mp3",
+      "render_duration_s": 12.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Prometheus isn't sent anything. It scrapes: every fifteen seconds, it pulls from the collector's port eighty-eight eighty-nine and files each number as a time series.",
+      "estimated_duration_s": 10.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The funnel shrinks to the left with drops waiting on its shelf; the cabinet stands at the right; a grey arm reaches out and pulls the drops in, three times ('scrape', 'every 15 s'); each pull fills a drawer.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Prometheus pulls"
+          },
+          {
+            "at": 0.45,
+            "event": "every fifteen seconds"
+          },
+          {
+            "at": 0.85,
+            "event": "stored as time series"
+          }
+        ],
+        "manim": {
+          "class": "B10_Scrape"
+        },
+        "motion_claim": "The funnel shrinks to the left with drops waiting on its shelf; the cabinet stands at the right; a grey arm reaches out and pulls the drops in, three times ('scrape', 'every 15 s'); each pull fills a drawer."
+      },
+      "actual_duration_s": 9.387,
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 9.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "You ask it questions in Prom Q L. The names change shape on the way in: claude code dot token dot usage becomes claude code token usage tokens total. Add it up by type, and one total splits into input, output, cache read and cache creation.",
+      "estimated_duration_s": 18.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The cabinet at the left; its top drawer slides out; the metric name lands above ('claude_code_token_usage_tokens_total'); one grey column rises, then splits into four columns ('by type').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "PromQL"
+          },
+          {
+            "at": 0.45,
+            "event": "the Prometheus name"
+          },
+          {
+            "at": 0.85,
+            "event": "split by type"
+          }
+        ],
+        "manim": {
+          "class": "B11_Query"
+        },
+        "motion_claim": "The cabinet at the left; its top drawer slides out; the metric name lands above ('claude_code_token_usage_tokens_total'); one grey column rises, then splits into four columns ('by type')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the terminal, the pipe, the collector funnel, the Prometheus cabinet, the dashboard board) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 14.635,
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 14.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Grafana, on port three thousand, draws the dashboard from the guide's own file: total cost, active users, tokens, lines of code, and cost by model. The cost figures are approximations; for billing, the docs point you to your API provider.",
+      "estimated_duration_s": 16.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The white board fills the stage ('Grafana'); four stat tiles fill with grey bars one by one, then a chart grows; a grey approximately sign lands on the cost tile ('approximate').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Grafana on port 3000"
+          },
+          {
+            "at": 0.45,
+            "event": "the guide's panels"
+          },
+          {
+            "at": 0.85,
+            "event": "cost is approximate"
+          }
+        ],
+        "manim": {
+          "class": "B12_Dashboard"
+        },
+        "motion_claim": "The white board fills the stage ('Grafana'); four stat tiles fill with grey bars one by one, then a chart grows; a grey approximately sign lands on the cost tile ('approximate')."
+      },
+      "actual_duration_s": 14.037,
+      "audio_file": "mp3/beat-B12.mp3",
+      "render_duration_s": 14.041666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "For a whole team, an administrator sets the same variables once, in managed settings. A repository's own settings can't turn telemetry on or change where it goes.",
+      "estimated_duration_s": 10.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white settings page at the top ('managed settings'); four small terminals in a row; grey lines draw from the page to each, and their lamps light; a kraft repo folder's own line stops short at an ink cross ('repo settings').",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "managed settings, once for everyone"
+          },
+          {
+            "at": 0.85,
+            "event": "a repository can't turn it on or redirect it"
+          }
+        ],
+        "manim": {
+          "class": "B13_Team"
+        },
+        "motion_claim": "A white settings page at the top ('managed settings'); four small terminals in a row; grey lines draw from the page to each, and their lamps light; a kraft repo folder's own line stops short at an ink cross ('repo settings')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the terminal, the pipe, the collector funnel, the Prometheus cabinet, the dashboard board) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.92,
+      "audio_file": "mp3/beat-B13.mp3",
+      "render_duration_s": 9.958333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Last, the report. The guide's script pulls totals from Prometheus with curl and hands them to claude, dash P, which also reads your team's issues through the Linear M C P server, and writes a productivity report.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The cabinet at the left; a slip rides from it to the terminal ('claude -p'); a dark MCP block plugs in beside the terminal ('Linear MCP'); a white report page rises and its lines and bars draw ('report').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the report"
+          },
+          {
+            "at": 0.4,
+            "event": "totals from Prometheus into claude -p"
+          },
+          {
+            "at": 0.65,
+            "event": "Linear MCP"
+          },
+          {
+            "at": 0.9,
+            "event": "a productivity report"
+          }
+        ],
+        "manim": {
+          "class": "B14_Report"
+        },
+        "motion_claim": "The cabinet at the left; a slip rides from it to the terminal ('claude -p'); a dark MCP block plugs in beside the terminal ('Linear MCP'); a white report page rises and its lines and bars draw ('report')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the terminal, the pipe, the collector funnel, the Prometheus cabinet, the dashboard board) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.331,
+      "audio_file": "mp3/beat-B14.mp3",
+      "render_duration_s": 12.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude Code. Clone github dot com slash anthropics slash claude code monitoring guide, and start it with docker compose up, dash d. Then run claude, dash P, hello, with Claude Code enable telemetry set to one, O-T-E-L metrics exporter set to O T L P, O-T-E-L exporter O T L P protocol set to g R P C, O-T-E-L exporter O T L P endpoint set to localhost, forty-three seventeen, and O-T-E-L metric export interval set to ten thousand, all in that same command. Query Prometheus at localhost, nine oh nine oh, until a claude code metric arrives, and tell me its name. Then check it yourself. Open localhost nine oh nine oh and search for claude code. Is it there? And start a new session. Does the session count go up by one?",
+      "estimated_duration_s": 55.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · YOUR TURN",
+            "segment": "From Session to Dashboard",
+            "command": "Clone github.com/anthropics/claude-code-monitoring-guide and start it with docker compose up -d. Then run claude -p \"hello\" with CLAUDE_CODE_ENABLE_TELEMETRY=1, OTEL_METRICS_EXPORTER=otlp, OTEL_EXPORTER_OTLP_PROTOCOL=grpc, OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 and OTEL_METRIC_EXPORT_INTERVAL=10000 set in that same command. Query Prometheus at localhost:9090 until a claude_code metric arrives, and tell me its name.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: open localhost:9090, search claude_code. There?",
+              "Check: start a new session. Session count up by one?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T22:57:46.004832+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 42.389,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 42.416666666666664,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T18:59:18"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "From Session to Dashboard. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "From Session to Dashboard",
+            "slug": "show-tell-from-session-to-dashboard",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T22:58:00.375292+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.307,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.333333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T18:59:18"
+      }
+    }
+  ]
+}

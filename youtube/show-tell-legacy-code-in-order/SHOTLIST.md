@@ -1,0 +1,19 @@
+# SHOTLIST — show-tell-legacy-code-in-order
+
+**What this is.** The typed work order, one row per beat. Show-tell style: one drawn isometric image per beat, labels only, Liam's voice explains. No cards from the ShowTellCard family: every body beat is a thing, a part or a flow (a cabinet, trays, pages, doors, a comparator), so every beat is a drawing (card test, question 1). Measured narration total: 200.83 s (BOUT includes its 1.0 s tail). No pantry slots, no open requests.
+
+| beat | lane | scene | image | s |
+|---|---|---|---|---|
+| BIDEA | bookend | `BrutalistHesitantWriter` | Types "How do I get Claude / to rewrite my old code?", then corrects "to rewrite my old code" to "to modernize legacy code in order". "Bonjour" greeting spoken over it. | 14.46 |
+| BDEFS | bookend | `ClaudeDefinitions` | "Terms In This Film": legacy code, business rule, brief, equivalence. | 12.67 |
+| B00 | manim | `B00_Folders` | A dark mainframe cabinet drops into a kraft tray ('legacy/'); its lamp blinks; a padlock grows on it; a kraft tray slides in ('analysis/'), then another ('modernized/'). | 16.47 |
+| B01 | manim | `B01_Preflight` | 'preflight'; a question card with five boxes pops up; the cursor ticks each box; a grey scan runs down the cabinet, its lamp blinks, a check; the card flies into the analysis tray as a page; six pips appear ('you decide') and the first lights. | 18.07 |
+| B02 | manim | `B02_AssessMap` | 'assess'; three lenses slide onto the cabinet and read together; an assessment page lands in the tray; 'map'; a circle-pack blooms (grey domain rings, kraft module circles), grey edges draw, one module is ringed; a terracotta dot walks a path ('flow'). | 14.29 |
+| B03 | manim | `B03_Rules` | The map folds into a page; five rule cards rise from the cabinet into a row ('rule cards'); grey threads draw back to the cabinet; a check lands above each; one card is flagged and drops to three pills (check, cross, dash) ('review'); the cursor picks the check; the second pip lights. | 14.87 |
+| B04 | manim | `B04_Brief` | The cards lift and shrink; a kraft binder on a dark plinth ('brief'); three pages fly from the tray into it; three phase strips; two flagged cards move beside it ('P0 rules'), the rest fade; a gate drops; the cursor presses a check pill ('approve'); the third pip lights; the gate lifts. | 17.71 |
+| B05 | manim | `B05_Build` | The binder moves aside; three dark doors rise; each lights and is named ('uplift', 'transform', 'reimagine'); the cabinet lamp blinks on "keeps running"; the binder rides into the transform door; its lamp turns terracotta; a new kraft box comes out into the modernized tray. | 19.56 |
+| B06 | manim | `B06_Verify` | 'verify'; the new box rises to face the cabinet; five test lamps light in turn; input slips drop into both; a grey comparator ('compare'); output slips from both meet in it; a check; ten kraft tiles ('new inputs') drop into both; a second check. | 17.13 |
+| B07 | manim | `B07_Verdict` | A zigzag break on the new box ('canary'); the lamps turn to crosses, then relight when it is mended; a verdict card with three slots; the first is marked ('PROVEN'), the other two pulse; the cabinet lamp dims and relights; the cursor signs a line; pips four and five light. | 17.41 |
+| B08 | manim | `B08_Harden` | The box returns to its tray ('harden'); a terracotta scan runs down the cabinet; three flags pop up and become three ranked grey bars; a patch card ('patch') gets a check; the padlock pulses; the cursor carries the patch to the cabinet ('you apply'); the sixth pip lights. | 12.46 |
+| BHTF | bookend | `ClaudeComposerAsk` | Your Turn: `/code-modernization:modernize-preflight billing --source ~/code/billing` typed in full; two checks. | 21.57 |
+| BOUT | bookend | `ClaudeTitleOutro` | "Legacy Code, in Order. At Nik Bear Brown." + 1.0 s tail. | 4.16 |

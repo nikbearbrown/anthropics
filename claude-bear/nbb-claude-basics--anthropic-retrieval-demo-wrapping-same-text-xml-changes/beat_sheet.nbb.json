@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "Why Wrapping the Same Text in XML Changes the Answer Claude Gives",
+  "slug": "claude-basics--anthropic-retrieval-demo-wrapping-same-text-xml-changes",
+  "topic": "CLAUDE BASICS · INPUT STRUCTURE",
+  "purpose": "Answer one real question in the Teardown register: why does wrapping the same text in XML change Claude's answer? Take apart the mechanism — Claude was trained on huge amounts of tagged text and expects that shape — and name the trade-off: better answers when you speak the shape, worse when you don't. Lands the carry-out that XML tags aren't decoration, they're the training distribution talking back.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/youtube/claude-basics/anthropic-retrieval-demo-wrapping-same-text-xml-changes/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED — CARRY-OUT.md",
+  "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B04 (plain-vs-XML product description, paid off with a second concrete case)",
+  "build": {
+   "at": "2026-08-27T21:33:18",
+   "cut": "master",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. Someone types the same paragraph into Claude twice — plain the first time, wrapped in XML tags the second — and gets two visibly different answers. Same words. So what is the model actually reacting to?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'XML tags are just decoration, right?', hesitates on 'decoration', corrects to 'a constraint', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "XML tags are just\ndecoration, right?\nThen why does the\nanswer change?",
+      "face": "serif",
+      "fontSize": 84,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "decoration",
+      "replacementWords": "a constraint",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-xml-changes-answer"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('decoration' -> 'a constraint') is visible on a late frame.",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-27T21:33:18"
+   },
+   "audio_file": "mp3/beat-B00.mp3"
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / the puzzle",
+   "narration_text": "The words haven't changed. Not one of them. But drop the same paragraph inside angle brackets and the answer that comes back is sharper — which means the model isn't only reading the content. It's reading the shape the content is sitting in.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "One content block, two differently-shaped outputs, a question mark between them"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Same words, different result — a puzzle",
+     "mechanic": "A single text block labelled 'SAME WORDS' on cream. Two arrows branch from it to two output shapes of visibly different quality (one thin/uneven, one full/even). A crimson question mark hovers between the branches — the beat's only accent.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B01Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-27T21:33:18"
+   },
+   "audio_file": "mp3/beat-B01.mp3"
+  },
+  {
+   "beat_id": "B02",
+   "act": "setup — the concrete case / ANCHOR PLANTED",
+   "narration_text": "Here's the concrete case. Take one product description. Paste it in as plain prose and Claude's summary comes back generic — the right general area, none of the specific hooks. Wrap the exact same words in XML tags and the summary tightens up — it pulls out the details that actually matter. Same content, different answer. That gap is the whole thing that needs explaining.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — plain-text block vs. XML-tagged block, generic summary vs. sharp summary"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — one product description, two summaries",
+     "mechanic": "THE ANCHOR. Left: a plain paragraph labelled 'PLAIN TEXT', arrow to a thin generic summary line. Right: the identical words re-set inside visible tag brackets labelled 'XML-TAGGED', arrow to a fuller, sharper summary line. THIS PRODUCT-DESCRIPTION COMPOSITION RETURNS AT B04 in a second, more granular case.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B02Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-27T21:33:18"
+   },
+   "audio_file": "mp3/beat-B02.mp3"
+  },
+  {
+   "beat_id": "B03",
+   "act": "3 mechanism",
+   "narration_text": "Here's what's actually happening. Claude was trained on huge amounts of consistently tagged, structured text — documents where title, content, and category always sat inside the same predictable markup. Over enough of those examples, the model built a strong expectation for that shape. Text that matches the shape it learned gets processed coherently — the model knows what each block is for, so it can hold the fields apart. Text that doesn't gets processed less well, because the model has to guess where one field ends and the next begins. Same information either way. Different confidence. That's the design choice sitting underneath: they optimized for legible structure at the cost of asking you to supply it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Before/after pane — plain block left, tagged block right, over a training-distribution curve"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Trained on the shape, expecting the shape",
+     "mechanic": "A wide bell-curve-like distribution drawn low across the frame, labelled 'TRAINING DATA SHAPES'. A tagged-markup block sits directly under the peak (in crimson) with a short 'processed coherently' label; a plain-text block sits out on the low tail (in ink, no accent) with a 'processed less well' label.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B03Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-27T21:33:18"
+   },
+   "audio_file": "mp3/beat-B03.mp3"
+  },
+  {
+   "beat_id": "B04",
+   "act": "4 ANCHOR PAYOFF — second concrete case",
+   "narration_text": "Look at the difference directly. Plain sentence: Product Name, Robot Building Kit, two hundred pieces — one undivided run, and the model has to work out from context that 'Robot Building Kit' is the title and 'two hundred pieces' belongs to the description. Now wrap the same words in fields — title, content, and category, each in its own tag — and the boundaries stop being a guess. Same words, same facts, but the model isn't inferring the structure anymore. It's being handed one. And that structure is exactly the one it was trained to expect.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR PAYOFF — Robot Building Kit, plain sentence vs. tagged fields, side by side"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — Robot Building Kit, field by field",
+     "mechanic": "THE B02 COMPOSITION RETURNS, same layout: left, the plain sentence 'Product Name: Robot Building Kit. 200 pieces.' in one undivided block. Right, the same words re-set into three bracketed fields — title, content, category — each boundary marked in crimson. The field boundaries are the only new element versus B02.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B04Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-27T21:33:18"
+   },
+   "audio_file": "mp3/beat-B04.mp3"
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "So here's the carry-out. XML tags aren't decoration and they aren't a trick — they're the training distribution talking back. Feed the model the shape it learned and it answers sharper. Feed it prose and it does the extra work of guessing where the fields are. Same words, matched structure, different answer.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "XML tags aren't decoration — they're the training distribution talking back. Same words, matched structure, a sharper answer.",
+      "attribution": "",
+      "sparkLine": "Structure is a constraint, not decoration."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-27T21:33:18"
+   },
+   "audio_file": "mp3/beat-BCRY.mp3"
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste straight into Claude, ChatGPT, or Gemini — no code, no API — that runs the plain-versus-tagged test on your own text so you can watch the answer change in front of you. It hands the model the same paragraph twice, once as prose and once wrapped in title, content, and category tags, and asks it to summarize each version and rate its own confidence. Go deeper: which tag names carry the weight — semantically meaningful ones like title and content, or would generic wrappers like a and b work just as well? Design the experiment that would actually tell you.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42,
+   "llm_exercise": {
+    "prompt": "I'm going to give you the same short passage twice. Version A is plain prose. Version B is the identical words re-set inside XML tags — <title>, <content>, and <category> around the relevant fields. For each version, do three things: (1) write a two-sentence summary, (2) name the single most important fact and quote the words you pulled it from, and (3) rate your confidence in that summary from 1 to 5. Then compare the two: which version was easier to parse, and what specifically made it easier? Version A: [paste the plain prose here]. Version B: [paste the same words with XML tags here].",
+    "dig_deeper": "Go deeper: which tag names carry the weight — semantically meaningful ones like <title> and <content>, or would generic wrappers like <a> and <b> work just as well? Design the experiment that would actually tell you."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE BASICS · INPUT STRUCTURE",
+      "segment": "Plain vs. XML — run it yourself",
+      "command": "I'm going to give you the same short passage twice. Version A is plain prose. Version B is the identical words re-set inside XML tags — <title>, <content>, and <category> around the relevant fields. For each version: (1) write a two-sentence summary, (2) name the single most important fact and quote the words you pulled it from, and (3) rate your confidence 1 to 5. Then compare: which version was easier to parse, and what specifically made it easier?",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-27T21:33:18"
+   },
+   "audio_file": "mp3/beat-BHTF.mp3"
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Why wrapping the same text in XML changes Claude's answer. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Why wrapping the same text in XML changes Claude's answer. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-27T21:33:18"
+   },
+   "audio_file": "mp3/beat-BOUT.mp3"
+  }
+ ]
+}

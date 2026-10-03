@@ -1,0 +1,31 @@
+# CONVERT-LOG — nbb-financial-services--claude-liam-merger-model
+
+Converted `beat_sheet.json` (Plain register, HAI-simple) → `beat_sheet.nbb.json` (Teardown register, NikBearBrown cut). Voice, palette, engine untouched from scaffold (Kokoro `am_onyx` — Liam, in for Bear). 7 beats in, 7 beats out. `_variant_todo` removed.
+
+## What I changed
+
+- **B00 (cold open).** Rewrote narration in Teardown: named the wrong guess ("Claude reasons its way through a merger model … weighing accretion against dilution in its head"), then took the mechanism apart ("opens a written file and runs each step in the order it's written"). ~53 words, in the sibling `nbb-financial-services--claude-liam-comps-analysis`'s working ~50-word range. Kept the BrutalistHesitantWriter props exactly (text, hesitation, timing, colors, seed). Updated the beat's `note` block to reflect the new word count.
+- **NB01 (mechanism — folder).** Deepened from "a folder Claude reads" to naming the design call: "they chose text as the runtime, not code." Preserved the on-screen chips + caption + Manim scene.
+- **NB02 (mechanism — Steps).** Named the trade-off explicitly: "They optimized for repeatability at the expense of improvisation." Preserved chips + caption + Manim scene.
+- **NB03 (mechanism — spec).** Applied the "works if you value X; fails if you need Y" Teardown pattern verbatim ("works if you value repeatability and audit trails; fails if you need Claude to notice something the file didn't anticipate"). Preserved the accretion/dilution/EPS/PPA fact list, chips, caption, and Manim scene. Bumped `estimated_duration_s` 20→28 to reflect the longer narration (rendering pass will overwrite with `actual_duration_s` from the real MP3).
+- **BCRY (carry-out).** Sharpened to "Here's what's actually happening" opener + three short beats: "Same two companies, same accretion/dilution result, every run. Never more than the file specifies." Updated `remotion.props.quote` to match the new narration exactly (WantQuote shows the sentence on screen — narration and prop must match). Left `sparkLine` alone — "Runs the steps. Doesn't reason." is already the perfect Teardown summary.
+- **BHTF (was "your turn handoff" → now LLM EXERCISE).** Changed `act` to "LLM EXERCISE". Added the required `llm_exercise` object with `prompt` + `dig_deeper`. Rewrote narration to read the paste-ready prompt aloud, close with the go-deeper question, and sign off "Liam, in for Bear." Updated `remotion.props.command` to match the paste-ready prompt (three numbered sub-tasks with a bracketed placeholder for the viewer's own deal specifics). Kept ClaudeComposerAsk scene and all other props (folderLabel, topic, segment, greeting). Bumped `estimated_duration_s` 27→60.
+- **BOUT (outro).** Left as-is. The source's outro already follows the NikBearBrown template exactly: `<Title>. Liam, in for Bear.` with OutroSeries eyebrow `MERGER-MODEL · @HumanitariansAI`. No change needed.
+- **metadata.register** flipped from "Plain" → "Teardown".
+- **metadata.purpose** rewritten in Teardown terms so the sheet reads as a Teardown video, not a Plain one — names the mechanism (folder, SKILL.md, Steps section, linear execution) and the design trade-off (repeatability at the expense of improvisation).
+- **metadata._variant_todo** removed.
+
+## Judgment calls
+
+- **Kept the source's HAI palette (cream `#F3EBDD`, ink `#2F2A26`, accent `#E4572E`) rather than the strict teardown palette (white/`#2A1A0E`/`#C8102E`).** The scaffold set `palette: "teardown"` but left the ground/ink/accent in the source's HAI-warm values. The sibling `nbb-financial-services--claude-liam-comps-analysis` did the same. `Do not re-scaffold` — I accept the scaffold's choice. Rendering side handles the palette override.
+- **LLM prompt aimed at the video's actual subject (a merger model on a specific deal), not at the meta-topic (Skills as executable specifications).** The prompt walks the viewer through building an accretion/dilution model on their own deal + names three concrete deliverables (method, three-driver flag, IC sensitivities). It produces useful output on its own — the viewer gets a first-pass merger-model read without watching. The `dig_deeper` pushes into the judgment territory the video keeps naming ("the mechanism is fast; the judgment is yours") by asking which post-close operating levers would rescue the deal under a 30% synergy haircut — a real next question a corp-dev or IB analyst would actually chase, not a summary.
+- **Kept OutroSeries rather than swapping to OutroCTA.** The SKILL.md permits either. Source used OutroSeries with a clean eyebrow that already reads NBB-shaped ("MERGER-MODEL · @HumanitariansAI"). No reason to churn the scene.
+- **Did NOT add "Liam, in for Bear" to the B00 cold open** — the IN-FOR-BEAR LAW says he says so in the cold open, but the sibling nbb reels (checked `nbb-financial-services--claude-liam-comps-analysis`) only sign off at BHTF and BOUT. Matched sibling precedent rather than diverge on my own read; if the LAW should be enforced strictly, that's a factory-wide correction, not a one-reel judgment.
+- **Kept the source `note` field on B00** (updated the word-count sentence to reflect ~50 words instead of the original 20-35) — it carries the timing law + parameter provenance that a later render pass will need.
+- **Bumped `estimated_duration_s` on the two beats whose narration grew (NB03 20→28, BHTF 27→60).** Rendering is a separate pass; the audio generator will write true `actual_duration_s` when it runs. The bumps are directional hints for the todo ledger only, matched to the new word counts using the sibling's ~4.5 words/second ratio.
+
+## Not touched
+
+- `beat_id`, `shot.type`, `graphic.production_viz`, `remotion.pattern`, `remotion.props` colors/timing/scene-selection fields — preserved exactly.
+- All facts. Every claim in the source survives unchanged: still a Skill, still `SKILL.md`, still the Steps section, still same-input-same-output, still merger-model, still accretion/dilution / pro forma EPS / synergies / purchase price allocation. Voice only.
+- `metadata.audience`, `metadata.engine`, `metadata.voice_kokoro`, `metadata.palette`, `metadata.outro_source`, `metadata.derived_from`, `metadata.typography` — as the scaffold set them.

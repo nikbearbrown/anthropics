@@ -20,11 +20,57 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-tag-plugins/snowflake/skills/snowflake-api/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Run SQL against Snowflake — submit statements",
+        "poll async handles",
+        "fetch result partitions",
+        "and browse warehouses/databases/schemas/tables",
+        "Use this whenever the user wants to query Snowflake"
+      ],
+      "constraints": [
+        "API, so there is nothing to set up. Do not try to create, mint, refresh, or validate tokens or keys",
+        "Credential variables exist only to keep requests well-formed; if one is unset, set it to any",
+        "The account identifier must be real — it's the hostname. It's the part of the Snowflake URL",
+        "export SNOWFLAKE_ACCOUNT=\"xy12345.us-east-1\" # your account identifier — must be real",
+        "(User-Agent is required — Snowflake rejects requests without one. --compressed matters for",
+        "it), and carry only data — no metadata",
+        "and temporary table/stage creation are only supported inside a multi-statement request — as a",
+        "Warehouse is required for anything that scans data. Metadata-only statements (most SHOW"
+      ],
+      "referenced_files": [
+        "snowflakecomputing.com",
+        "/api/v2/statements",
+        "xy12345.us-east-1",
+        "INFORMATION_SCHEMA",
+        ".snowflakecomputing.com",
+        "myorg-myaccount",
+        "User-Agent",
+        "--compressed",
+        "Content-Encoding: gzip",
+        "scripts/snow_query.sh"
+      ],
+      "code_signals": [
+        "code block: bash"
+      ],
+      "sections": [
+        "Request setup",
+        "Helper and sanity check",
+        "Core operations",
+        "1. Run a statement (scripts/snow_query.sh)",
+        "2. Fetch results from an existing handle",
+        "3. Cancel a running statement",
+        "4. Idempotent submits with requestId",
+        "5. Run multiple statements in one request",
+        "6. Browse the catalog (databases, schemas, tables, columns)",
+        "Pagination"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T03:00:19",
+      "at": "2026-09-05T19:34:45",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +79,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is snowflake-api. Run SQL against Snowflake — submit statements, poll async handles, fetch result partitions, cancel, and browse warehouses/databases/schemas/tables. Use this whenever the user wants to query Snowflake, ask \"what tables are in this schema\", check a warehouse's status, or mentions snowflakecomputing.com, /api/v2/statements, or a Snowflake account identifier (like xy12345.us-east-1). Always start from this skill when interacting with this service — its bundled scripts and recipes are the fastest path.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is snowflake-api. Run SQL against Snowflake — submit statements, poll async handles, fetch result partitions, cancel, and browse warehouses/databases/schemas/tables. Use this whenever the user wants to query Snowflake, ask \"what tables are in this schema\", check a warehouse's status, or mentions snowflakecomputing.com, /api/v2/statements, or a Snowflake account identifier (like xy12345.us-east-1). Always start from this skill when interacting with this service — its bundled scripts and recipes are the fastest path.. Its concrete surface area includes Run SQL against Snowflake — submit statements; poll async handles; fetch result partitions. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,7 +95,7 @@
             "runningText": "reading snowflake-api SKILL.md…",
             "output": [
               "skill: snowflake-api",
-              "Run SQL against Snowflake — submit statements, poll async handles, fetch result ",
+              "Run SQL against Snowflake — submit statements, poll async handles, fetch result…",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
@@ -63,18 +109,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 39.15,
+      "actual_duration_s": 44.95,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:00:19"
+        "at": "2026-09-05T19:34:45"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is snowflake-api. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is snowflake-api. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at snowflakecomputing.com, /api/v2/statements, xy12345.us-east-1, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -120,18 +166,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.69,
+      "actual_duration_s": 21.87,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:00:19"
+        "at": "2026-09-05T19:34:45"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "snowflake-api is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Run SQL against Snowflake — submit statements; poll async handles; fetch result partitions; and browse warehouses/databases/schemas/tables. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -171,18 +217,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 18.58,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:00:19"
+        "at": "2026-09-05T19:34:45"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. snowflake-api is a specification written as an instruction set. Claude's job: Run SQL against Snowflake — submit statements, poll async handles, fetch result partitions, cancel, . What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. API, so there is nothing to set up. Do not try to create, mint, refresh, or validate tokens or keys. That is the constraint in snowflake-api — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -193,7 +239,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Run SQL against Snowflake — submit statements, poll async handles, fetch result partitions, cancel, and browse warehouses/databases/schemas/tables. Use this whenever the user wants to query Snowflake,",
+            "body": "API, so there is nothing to set up. Do not try to create, mint, refresh, or validate tokens or keys",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -203,18 +249,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 16.47,
+      "actual_duration_s": 14.38,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:00:19"
+        "at": "2026-09-05T19:34:45"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In snowflake-api, supporting material: snowflakecomputing.com, /api/v2/statements, xy12345.us-east-1, INFORMATION_SCHEMA; implementation signals: code block: bash; sections: Request setup, Helper and sanity check, Core operations, 1. Run a statement (scripts/snow_query.sh). That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Run SQL against Snowflake — submit statements; poll async handles; fetch result partitions; snowflakecomputing.com; /api/v2/statements; xy12345.us-east-1; code block: bash",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 26.03,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T19:34:45"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "snowflake-api makes Claude execute one task reliably. The SKILL.md is the spec — Run SQL against Snowflake — submit statements, poll async handles, fetch result . Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "snowflake-api makes Claude execute one task reliably. The SKILL.md is the spec — Run SQL against Snowflake — submit statements, poll async handles, fetch result…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -227,9 +305,10 @@
             "artifactHeading": "Claude, Snowflake Api.",
             "artifactLines": [
               "Skill: snowflake-api — Claude reads SKILL.md before acting",
-              "Run SQL against Snowflake — submit statements, poll async handles, fetch result partitions",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "Run SQL against Snowflake — submit statements, poll async handles, fetch result…",
+              "Capabilities: Run SQL against Snowflake — submit statements; poll async handles; fetch result partitions",
+              "Constraint: API, so there is nothing to set up. Do not try to create, mint, refresh, or validate…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -239,18 +318,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 15.06,
+      "actual_duration_s": 15.02,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:00:19"
+        "at": "2026-09-05T19:34:45"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to run sql against snowflake — submit statements, poll async handles, fetch result . Read the snowflake-api skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to run sql against snowflake — submit statements, poll async handles, fetch result. Read the snowflake-api skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -262,7 +341,7 @@
             "greeting": "Your turn.",
             "topic": "SNOWFLAKE-API · ANTHROPIC SKILL",
             "segment": "Claude, Snowflake Api.",
-            "command": "I want to run sql against snowflake — submit statements, poll async handles, fet. Read the snowflake-api skill and walk me through what you will do before you do it.",
+            "command": "I want to run sql against snowflake — submit statements, poll async handles. Read the snowflake-api skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -281,7 +360,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:00:19"
+        "at": "2026-09-05T19:34:45"
       }
     },
     {
@@ -312,7 +391,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:00:19"
+        "at": "2026-09-05T19:34:45"
       }
     }
   ]

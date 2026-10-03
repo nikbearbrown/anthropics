@@ -1,0 +1,637 @@
+{
+  "metadata": {
+    "slug": "show-tell-claude-plugin-portal",
+    "title": "Claude Plugins: Package, Submit, Go Live",
+    "topic": "CLAUDE · PLUGINS",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "German/Dutch (Hallo)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "developers and builders who want to put their tools inside Claude",
+    "source_doc": "claude.com/blog/build-plugins-for-claude (read 2026-09-26); ClaudeDevs post on X (110x); Bear's reference frames from the launch animation",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude plugins",
+      "MCP",
+      "Model Context Protocol",
+      "Agent Skills",
+      "Claude directory",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-26T13:41:01",
+      "cut": "master",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hallo. This is Liam, in for Bear. Claude just opened a portal for plugins. So the question isn't only how you build one. It's how you get one live.",
+      "estimated_duration_s": 11.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'What is a Claude plugin,'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'build one' → 'get one live' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "What is a Claude plugin,\nand how do I build one?",
+            "triggerWords": "build one",
+            "replacementWords": "get one live",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-claude-plugin-portal",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-26T17:33:06.702390+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive build question and corrects it to the real one: getting a plugin live.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 8.384,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 8.416666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-26T13:41:01"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Three terms. MCP, the Model Context Protocol: an open standard that plugs Claude into outside tools and data. A skill: written instructions Claude loads to do one kind of task well. And a plugin: a package that carries MCP connectors, skills, or both.",
+      "estimated_duration_s": 17.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "'MCP' lands"
+          },
+          {
+            "at": 0.5,
+            "event": "'skill' lands"
+          },
+          {
+            "at": 0.78,
+            "event": "'plugin' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "MCP",
+                "meaning": "Model Context Protocol — an open standard that plugs Claude into outside tools and data"
+              },
+              {
+                "term": "skill",
+                "meaning": "written instructions Claude loads to do one kind of task well"
+              },
+              {
+                "term": "plugin",
+                "meaning": "a package that carries MCP connectors, skills, or both"
+              }
+            ],
+            "folderLabel": "@NikBearBrown",
+            "durationSeconds": 15.32
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-26T17:33:36.380938+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 15.317,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 15.333333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-26T13:41:01"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Start with the plugin itself. Picture it as a sealed box. What goes inside?",
+      "estimated_duration_s": 5.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A sealed cardboard box with terracotta tape drops onto the stage and settles; the word 'plugin' under it.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "box drops in"
+          },
+          {
+            "at": 0.7,
+            "event": "label"
+          }
+        ],
+        "manim": {
+          "class": "B00_SealedBox"
+        },
+        "motion_claim": "A sealed cardboard box with terracotta tape drops onto the stage and settles; the word 'plugin' under it."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 4.779,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 4.791666666666667,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T13:41:01"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "A plugin is a package. Inside go MCP connectors, which plug Claude into outside tools and data, and skills, which are written instructions Claude can follow. A plugin can carry either one, or both.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The lid lifts off; two dark MCP blocks rise out to the left and two skill pages to the right, each labelled once.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "lid lifts"
+          },
+          {
+            "at": 0.3,
+            "event": "MCP blocks rise"
+          },
+          {
+            "at": 0.6,
+            "event": "skill pages rise"
+          }
+        ],
+        "manim": {
+          "class": "B01_Unpack"
+        },
+        "motion_claim": "The lid lifts off; two dark MCP blocks rise out to the left and two skill pages to the right, each labelled once."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.861,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 11.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T13:41:01"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "There are two ways to submit one. Way one is a single MCP connector. You point it at your own remote MCP server, and that's the submission.",
+      "estimated_duration_s": 10.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "One MCP block on the left; a cable draws from its port to a server stack on the right, whose lights come on.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "block"
+          },
+          {
+            "at": 0.5,
+            "event": "cable draws to the server"
+          },
+          {
+            "at": 0.8,
+            "event": "server lights"
+          }
+        ],
+        "manim": {
+          "class": "B02_Connector"
+        },
+        "motion_claim": "One MCP block on the left; a cable draws from its port to a server stack on the right, whose lights come on."
+      },
+      "actual_duration_s": 8.789,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 8.791666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T13:41:01"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Way two is a plugin bundle. You put your MCP servers and your skills together in a GitHub repository, and you submit the repo.",
+      "estimated_duration_s": 9.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An open box; an MCP block and two skill pages drop into it; a folder tag 'GitHub repo' clips onto the box.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "open box"
+          },
+          {
+            "at": 0.45,
+            "event": "parts drop in"
+          },
+          {
+            "at": 0.75,
+            "event": "repo tag"
+          }
+        ],
+        "manim": {
+          "class": "B03_Bundle"
+        },
+        "motion_claim": "An open box; an MCP block and two skill pages drop into it; a folder tag 'GitHub repo' clips onto the box."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.064,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 8.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T13:41:01"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "You submit right inside Claude, from the directory's manage page, if you're a developer on a paid plan. The moment you hit submit, the plugin is checked and safety-scanned, so problems show up early.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A Claude window with a Submit button; a cursor clicks it; a scan beam sweeps the plugin box and a shield with a check appears.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "window + button"
+          },
+          {
+            "at": 0.45,
+            "event": "click"
+          },
+          {
+            "at": 0.7,
+            "event": "scan sweep, shield"
+          }
+        ],
+        "manim": {
+          "class": "B04_Submit"
+        },
+        "motion_claim": "A Claude window with a Submit button; a cursor clicks it; a scan beam sweeps the plugin box and a shield with a check appears."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.157,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 11.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T13:41:01"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then you can track it. The portal shows where your plugin is in review, what the safety scan found, and any changes it recommends. Submitted. In review. Live.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An isometric conveyor with three gates labelled Submit, In review, Live; the box rides through each gate and each turns terracotta with a check.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "conveyor and gates"
+          },
+          {
+            "at": 0.65,
+            "event": "Submit"
+          },
+          {
+            "at": 0.78,
+            "event": "In review"
+          },
+          {
+            "at": 0.9,
+            "event": "Live"
+          }
+        ],
+        "manim": {
+          "class": "B05_Conveyor"
+        },
+        "motion_claim": "An isometric conveyor with three gates labelled Submit, In review, Live; the box rides through each gate and each turns terracotta with a check."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.661,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 8.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T13:41:01"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Once it's live, you can see it being used: installs by product and version, how often your listing gets viewed, and which searches lead people to it.",
+      "estimated_duration_s": 10.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A dashboard card: stacked bars grow (installs), a line climbs (views), three search pills point to the box (searches).",
+        "show": [
+          {
+            "at": 0.25,
+            "event": "bars grow"
+          },
+          {
+            "at": 0.55,
+            "event": "line climbs"
+          },
+          {
+            "at": 0.8,
+            "event": "searches lead to the box"
+          }
+        ],
+        "manim": {
+          "class": "B06_Analytics"
+        },
+        "motion_claim": "A dashboard card: stacked bars grow (installs), a line climbs (views), three search pills point to the box (searches)."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.341,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 8.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T13:41:01"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Why does this matter now? Claude's developer team says MCP usage across Claude products is up a hundred and ten times this year, and that plugins are becoming the way to build for Claude.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A counter climbs from 1× to 110× while a growth curve sweeps up beside it.",
+        "show": [
+          {
+            "at": 0.3,
+            "event": "counter climbs"
+          },
+          {
+            "at": 0.6,
+            "event": "110×"
+          }
+        ],
+        "manim": {
+          "class": "B07_Growth"
+        },
+        "motion_claim": "A counter climbs from 1× to 110× while a growth curve sweeps up beside it."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.453,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 10.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T13:41:01"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude: I use [name a tool] every week. Help me plan a Claude plugin for it: one MCP connector that exposes only the two or three actions I actually need, and one skill that says when and how to use them well. List what the connector needs access to, and flag anything it should not expose. Don't write code yet. Then check two things yourself. Does every action trace to something you actually do with that tool? And does the connector reach anything the job doesn't need? If it does, cut it before you submit.",
+      "estimated_duration_s": 40.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · YOUR TURN",
+            "segment": "Plan Your First Plugin",
+            "command": "I use [name a tool] every week. Help me plan a Claude plugin for it: one MCP connector that exposes only the two or three actions I actually need, and one skill that says when and how to use them well. List what the connector needs access to, and flag anything it should not expose. Don't write code yet.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: every action traces to something you actually do.",
+              "Check: nothing exposed that the job doesn't need."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-26T17:34:32.937281+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 26.517,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 26.541666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-26T13:41:01"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Claude Plugins: Package, Submit, Go Live. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Claude Plugins: Package, Submit, Go Live",
+            "slug": "show-tell-claude-plugin-portal",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 5.117,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 5.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-26T13:41:01"
+      }
+    }
+  ]
+}

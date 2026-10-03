@@ -1,0 +1,289 @@
+{
+ "metadata": {
+  "title": "Claude, First Run.",
+  "slug": "claude-quickstarts--claude-liam-first-run",
+  "topic": "CLAUDE BASICS · SKILLS",
+  "purpose": "Take apart what actually happens the first time Claude picks up a documented skill: the SKILL.md file it opens, the linear Steps section it reads top-to-bottom, and the exact scope the file specifies — nothing more. Evaluate the design choice (legibility and predictability over hidden cleverness) and name what it costs (silence on anything the file never described). Land the carry-out that a skill is a folder of plain-language instructions Claude reads before it acts, not a built-in capability.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/claude-quickstarts/youtube/claude-liam-first-run/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED — CARRY-OUT.md",
+  "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A — redo of a skill-teardown source with no recurring anchor visual; B03's scope box is referenced, not replayed, at BCRY",
+  "build": {
+   "at": "2026-08-31T09:38:44",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "The instinct is to call Claude's first-run behavior 'built in' — hardwired into the model, invisible from the outside. It isn't. It's written down, in a plain-language file Claude opens and reads before it acts. That's the design choice: skills are text, not code. Here's what that file actually holds.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Claude just runs first-run — it's built in, right?', hesitates on 'built', corrects to 'written', lands 'What's really there?'",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude just runs\nfirst-run — it's\nbuilt in, right?\nWhat's really there?",
+      "face": "serif",
+      "fontSize": 80,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "built",
+      "replacementWords": "written",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 46,
+      "jitter": 20,
+      "seed": "hai-claude-first-run"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('built' -> 'written') is visible on a late frame. Teardown rewrite preserves the built→written pivot in the narration and names the design choice (skills are text, not code).",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T09:38:44"
+   },
+   "audio_file": "mp3/beat-B00.mp3"
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 anatomy",
+   "narration_text": "The skill is called first-run. One folder, one file inside it — SKILL.md — and that file holds the whole instruction set in plain language. No hidden code path, no separate logic tucked away somewhere else. They optimized for legibility over cleverness: whatever Claude does with this skill, you can read it, top to bottom. The file is the program.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A folder labelled first-run/ opens to one file, SKILL.md, marked as the instruction set"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A skill is a folder, and one file",
+     "mechanic": "A folder icon labelled 'first-run/' on cream. It opens to reveal a single file card, '📄 SKILL.md', which gets a crimson outline and the label 'the instruction set'. A footer line reads 'The file is the program.'",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B01Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T09:38:44"
+   },
+   "audio_file": "mp3/beat-B01.mp3"
+  },
+  {
+   "beat_id": "B02",
+   "act": "2 pipeline",
+   "narration_text": "The pipeline lives in the Steps section. Claude reads one step, runs it, moves to the next — sequential execution, no hidden control flow. Linear by design; no branching unless a step explicitly says branch. They chose predictability over expressiveness. What you read top to bottom is what runs.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Three phases in sequence: Read SKILL.md, Execute each step, Return the result"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Linear execution, start to finish",
+     "mechanic": "YOUR REQUEST enters on the left, flows through three connected phase boxes — 'Read SKILL.md', 'Execute each step' (crimson-outlined), 'Return the result' — to RESULT on the right. A single straight arrow path; no branch lines anywhere in frame.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B02Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T09:38:44"
+   },
+   "audio_file": "mp3/beat-B02.mp3"
+  },
+  {
+   "beat_id": "B03",
+   "act": "3 mechanism — the scope",
+   "narration_text": "Here's first-run's actual job, spelled out in its own words: check the environment, run one safe browser-only task, open the trajectory viewer. That's the whole scope. Claude runs that exact sequence, every time, and has nothing to say about anything the file never described. The wall around the skill is a feature, not a limitation — they optimized for narrow, predictable behavior at the cost of any improvisation.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Three specified steps inside a bounded box; a dashed boundary marks what the file never covers"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Exactly this far, and no further",
+     "mechanic": "A solid-outlined box holds three listed steps — 'check environment', 'run one safe browser task', 'open trajectory viewer' — each with a small crimson checkmark as it's read. Outside the box, a dashed boundary line separates it from an empty grey field with a faint '?' — no label, no verdict, just what the file doesn't cover.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B03Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T09:38:44"
+   },
+   "audio_file": "mp3/beat-B03.mp3"
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "4 CARRY-OUT",
+   "narration_text": "A skill isn't a built-in capability — it's a folder of plain-language instructions Claude reads before it acts, and follows exactly, only as far as the file goes.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A skill isn't a built-in capability — it's a folder of plain-language instructions Claude reads before it acts, and follows exactly, only as far as the file goes.",
+      "attribution": "",
+      "sparkLine": "Written down, not built in."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T09:38:44"
+   },
+   "audio_file": "mp3/beat-BCRY.mp3"
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. I want to actually understand how a Claude skill works under the hood, not just what a skill 'is' at the marketing level. (1) Walk me through, mechanically, what happens when I invoke a Claude skill by name: what Claude reads, in what order, from where; what a SKILL.md file typically contains — frontmatter, Steps section, examples; and how Claude decides which parts to follow versus ignore. (2) Given a concrete example — a 'first-run' skill whose only job is (a) check the environment, (b) run one safe browser-only task, (c) open the trajectory viewer — write me a plausible SKILL.md for it, with the sections in the order Claude would actually use them. (3) Name three failure modes I should expect from skills authored this way, where the plain-language instructions leave enough room for Claude to do something the author didn't intend. Go deeper: ask the same model what changes when one skill needs to call another skill mid-execution — does Claude re-read the second skill's SKILL.md every time, does it inherit any context from the caller, and what stops one skill from silently overriding another skill's rules?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 62,
+   "llm_exercise": {
+    "prompt": "I want to actually understand how a Claude skill works under the hood, not just what a skill 'is' at the marketing level. (1) Walk me through, mechanically, what happens when I invoke a Claude skill by name: what Claude reads, in what order, from where; what a SKILL.md file typically contains — frontmatter, Steps section, examples; and how Claude decides which parts to follow versus ignore. (2) Given a concrete example — a 'first-run' skill whose only job is (a) check the environment, (b) run one safe browser-only task, (c) open the trajectory viewer — write me a plausible SKILL.md for it, with the sections in the order Claude would actually use them. (3) Name three failure modes I should expect from skills authored this way, where the plain-language instructions leave enough room for Claude to do something the author didn't intend.",
+    "dig_deeper": "Go deeper: ask the same model what changes when one skill needs to call another skill mid-execution — does Claude re-read the second skill's SKILL.md every time, does it inherit any context from the caller, and what stops one skill from silently overriding another skill's rules?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE BASICS · SKILLS",
+      "segment": "Written Down, Not Built In.",
+      "command": "I want to understand how a Claude skill actually works, not just what one 'is.' (1) Walk me through, mechanically, what happens when I invoke a skill by name: what Claude reads, in what order, and what a SKILL.md typically contains (frontmatter, Steps, examples). (2) Write a plausible SKILL.md for a 'first-run' skill whose only job is (a) check the environment, (b) run one safe browser-only task, (c) open the trajectory viewer — sections in the order Claude would actually use them. (3) Name three failure modes to expect from skills authored this way, where plain-language instructions leave Claude room to do something the author didn't intend.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T09:38:44"
+   },
+   "audio_file": "mp3/beat-BHTF.mp3"
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, First Run. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, First Run. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T09:38:44"
+   },
+   "audio_file": "mp3/beat-BOUT.mp3"
+  }
+ ]
+}

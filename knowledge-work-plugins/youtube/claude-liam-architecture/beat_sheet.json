@@ -20,11 +20,39 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/knowledge-work-plugins/engineering/skills/architecture/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Create or evaluate an architecture decision record (ADR)",
+        "Use when choosing between technologies (e.g.",
+        "Kafka vs SQS)",
+        "documenting a design decision with trade-offs and consequences",
+        "reviewing a system design proposal"
+      ],
+      "constraints": [
+        "State constraints upfront — \"We need to ship in 2 weeks\" or \"Must handle 10K rps\" shapes the answer"
+      ],
+      "referenced_files": [],
+      "code_signals": [
+        "code block: markdown"
+      ],
+      "sections": [
+        "Usage",
+        "Modes",
+        "Output — ADR Format",
+        "Context",
+        "Decision",
+        "Options Considered",
+        "Option A: [Name]",
+        "Option B: [Name]",
+        "Trade-off Analysis",
+        "Consequences"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T05:51:40",
+      "at": "2026-09-05T23:33:44",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +61,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is architecture. Create or evaluate an architecture decision record (ADR). Use when choosing between technologies (e.g., Kafka vs SQS), documenting a design decision with trade-offs and consequences, reviewing a system design proposal, or designing a new component from requirements and constraints.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is architecture. Create or evaluate an architecture decision record (ADR). Use when choosing between technologies (e.g., Kafka vs SQS), documenting a design decision with trade-offs and consequences, reviewing a system design proposal, or designing a new component from requirements and constraints.. Its concrete surface area includes Create or evaluate an architecture decision record (ADR); Use when choosing between technologies (e.g.; Kafka vs SQS). A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,7 +77,7 @@
             "runningText": "reading architecture SKILL.md…",
             "output": [
               "skill: architecture",
-              "Create or evaluate an architecture decision record (ADR). Use when choosing betw",
+              "Create or evaluate an architecture decision record (ADR). Use when choosing…",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
@@ -63,12 +91,12 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 21.53,
+      "actual_duration_s": 31.34,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:51:40"
+        "at": "2026-09-05T23:33:44"
       }
     },
     {
@@ -111,13 +139,13 @@
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:51:40"
+        "at": "2026-09-05T23:33:44"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "architecture is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Create or evaluate an architecture decision record (ADR); Use when choosing between technologies (e.g.; Kafka vs SQS); documenting a design decision with trade-offs and consequences. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -157,18 +185,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 18.92,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:51:40"
+        "at": "2026-09-05T23:33:44"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. architecture is a specification written as an instruction set. Claude's job: Create or evaluate an architecture decision record (ADR). Use when choosing between technologies (e.. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. State constraints upfront — \"We need to ship in 2 weeks\" or \"Must handle 10K rps\" shapes the answer. That is the constraint in architecture — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +207,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Create or evaluate an architecture decision record (ADR). Use when choosing between technologies (e.g., Kafka vs SQS), documenting a design decision with trade-offs and consequences, reviewing a syste",
+            "body": "State constraints upfront — \"We need to ship in 2 weeks\" or \"Must handle 10K rps\" shapes the answer",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,18 +217,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 16.09,
+      "actual_duration_s": 13.7,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:51:40"
+        "at": "2026-09-05T23:33:44"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In architecture, implementation signals: code block: markdown; sections: Usage, Modes, Output — ADR Format, Context. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Create or evaluate an architecture decision record (ADR); Use when choosing between technologies (e.g.; Kafka vs SQS); code block: markdown",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 14.19,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T23:33:44"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "architecture makes Claude execute one task reliably. The SKILL.md is the spec — Create or evaluate an architecture decision record (ADR). Use when choosing betw. Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "architecture makes Claude execute one task reliably. The SKILL.md is the spec — Create or evaluate an architecture decision record (ADR). Use when choosing…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -213,9 +273,10 @@
             "artifactHeading": "Claude, Architecture.",
             "artifactLines": [
               "Skill: architecture — Claude reads SKILL.md before acting",
-              "Create or evaluate an architecture decision record (ADR). Use when choosing between techno",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "Create or evaluate an architecture decision record (ADR). Use when choosing between…",
+              "Capabilities: Create or evaluate an architecture decision record (ADR); Use when choosing between technologies (e.g.; Kafka vs SQS)",
+              "Constraint: State constraints upfront — \"We need to ship in 2 weeks\" or \"Must handle 10K rps\" shapes…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -225,18 +286,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 14.42,
+      "actual_duration_s": 13.99,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:51:40"
+        "at": "2026-09-05T23:33:44"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to create or evaluate an architecture decision record (adr). use when choosing betw. Read the architecture skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to create or evaluate an architecture decision record (adr). use when choosing. Read the architecture skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -248,7 +309,7 @@
             "greeting": "Your turn.",
             "topic": "ARCHITECTURE · ANTHROPIC SKILL",
             "segment": "Claude, Architecture.",
-            "command": "I want to create or evaluate an architecture decision record (adr). use when cho. Read the architecture skill and walk me through what you will do before you do it.",
+            "command": "I want to create or evaluate an architecture decision record (adr). use when. Read the architecture skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -262,12 +323,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 15.13,
+      "actual_duration_s": 14.68,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:51:40"
+        "at": "2026-09-05T23:33:44"
       }
     },
     {
@@ -298,7 +359,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:51:40"
+        "at": "2026-09-05T23:33:44"
       }
     }
   ]

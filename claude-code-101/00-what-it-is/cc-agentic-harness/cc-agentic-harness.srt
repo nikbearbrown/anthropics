@@ -1,0 +1,408 @@
+1
+00:00:00,000 --> 00:00:04,019
+This is Liam, in for Bear. Claude Code is
+an agentic harness. Everyone says it;
+
+2
+00:00:04,019 --> 00:00:08,190
+nobody shows it. So here's the model with
+the harness turned off — no tools, none.
+
+3
+00:00:08,190 --> 00:00:10,275
+One ask: make a file with one line in it.
+
+4
+00:00:10,275 --> 00:00:14,548
+It says: creating the file now. And then,
+nothing. List the folder: the README I put
+
+5
+00:00:14,548 --> 00:00:18,516
+there. No file. That sentence was the
+whole event. A model on its own can only
+
+6
+00:00:18,516 --> 00:00:18,770
+talk.
+
+7
+00:00:18,820 --> 00:00:22,870
+Here's the idea of this film. Claude Code
+is not a better model. It's the same model
+
+8
+00:00:22,870 --> 00:00:26,823
+you talk to in the chat window, wrapped in
+something: a list of what it may touch,
+
+9
+00:00:26,823 --> 00:00:30,680
+rules about touching it, and a loop that
+keeps asking what next. That wrapper is
+
+10
+00:00:30,680 --> 00:00:34,633
+the harness. I'm going to switch it off,
+half on, and on, so you can see the model
+
+11
+00:00:34,633 --> 00:00:37,670
+without it — and then build a tiny harness
+of my own around it.
+
+12
+00:00:37,720 --> 00:00:39,659
+Five words before we start. Headless:
+
+13
+00:00:39,659 --> 00:00:43,956
+Claude Code run from the shell with one
+prompt — it answers and exits. Tools list:
+
+14
+00:00:43,956 --> 00:00:48,357
+what the model may call — read, write, run
+a command, use a connector. Connector, or
+
+15
+00:00:48,357 --> 00:00:52,549
+MCP: an outside service plugged in as
+tools, like Google Drive. Permission mode:
+
+16
+00:00:52,549 --> 00:00:56,741
+the rule for which tool calls need your
+yes. Stream json: the whole session as a
+
+17
+00:00:56,741 --> 00:00:58,680
+log, one event per line. The receipt.
+
+18
+00:00:58,730 --> 00:01:02,300
+Turn the harness on and ask for the
+receipt — stream json. The first event
+
+19
+00:01:02,300 --> 00:01:05,871
+isn't the model. It's the harness
+introducing itself. A permission mode. A
+
+20
+00:01:05,871 --> 00:01:09,779
+tools list: thirty built in, and a hundred
+and forty more from connectors on this
+
+21
+00:01:09,779 --> 00:01:13,736
+Mac. Five MCP servers. Forty skills. Nine
+agents. The folder it's fenced to. Where
+
+22
+00:01:13,736 --> 00:01:17,451
+its memory lives. None of that is the
+model. All of it is what the model gets
+
+23
+00:01:17,451 --> 00:01:20,780
+handed before it reads my sentence. That's
+the harness, in one event.
+
+24
+00:01:20,830 --> 00:01:24,926
+Same model. Same sentence. Now Write is on
+the list. One tool call, one file, two
+
+25
+00:01:24,926 --> 00:01:28,517
+turns. Cat it: hello. The difference
+between run one and run two is not
+
+26
+00:01:28,517 --> 00:01:32,765
+intelligence. It's a list. That is what a
+harness is: the list of what the model can
+
+27
+00:01:32,765 --> 00:01:36,913
+touch, the rules for touching it, and the
+loop that keeps asking 'what next' until
+
+28
+00:01:36,913 --> 00:01:37,570
+it says done.
+
+29
+00:01:37,620 --> 00:01:41,593
+Here's the run I didn't plan. Built-in
+tools off — but the connectors on this Mac
+
+30
+00:01:41,593 --> 00:01:45,321
+were still attached. So with no way to
+write to disk, it reached for the one
+
+31
+00:01:45,321 --> 00:01:49,245
+write tool it had: my Google Drive. And
+the permission layer stopped it. Then it
+
+32
+00:01:49,245 --> 00:01:52,776
+tried Write anyway — not enabled. Two
+lessons in one run. The model uses
+
+33
+00:01:52,776 --> 00:01:56,750
+whatever tools the harness leaves on the
+table. And the harness has a second job:
+
+34
+00:01:56,750 --> 00:01:57,240
+saying no.
+
+35
+00:01:57,290 --> 00:02:01,320
+Now the part people call harness
+engineering — and it's ten lines. A task
+
+36
+00:02:01,320 --> 00:02:05,791
+file with three boxes. A prompt: read the
+file, do only the first unchecked task,
+
+37
+00:02:05,791 --> 00:02:10,208
+tick it, stop. And a shell loop that runs
+Claude Code three times. Each run is a
+
+38
+00:02:10,208 --> 00:02:14,900
+fresh session. Fresh context, no memory of
+the last one. The only memory is the file.
+
+39
+00:02:14,950 --> 00:02:19,724
+Iteration one. Read the file. Write a dot
+md. Edit one box. One line back: did task,
+
+40
+00:02:19,724 --> 00:02:24,327
+write a.md. It didn't do b, it didn't do c
+— the prompt said only the first. Four
+
+41
+00:02:24,327 --> 00:02:28,988
+turns, done, session over. Iteration two
+starts from zero and reads the file again
+
+42
+00:02:28,988 --> 00:02:30,920
+— and the file now says a is done.
+
+43
+00:02:30,970 --> 00:02:35,180
+Check it. Three boxes ticked. Three files,
+right contents. The diff: three lines
+
+44
+00:02:35,180 --> 00:02:37,233
+changed in the task file, nothing else.
+
+45
+00:02:37,233 --> 00:02:41,601
+And the receipt for 'fresh context': six
+session files on disk — one per run, three
+
+46
+00:02:41,601 --> 00:02:45,706
+for the loop. No iteration ever saw
+another's transcript. The loop didn't make
+
+47
+00:02:45,706 --> 00:02:49,390
+the model smarter. It made the job small
+enough to finish, every time.
+
+48
+00:02:49,440 --> 00:02:53,323
+So here's the picture, from the inside
+out. The model: it can only talk. Around
+
+49
+00:02:53,323 --> 00:02:57,157
+it, the prompt — the system prompt, your
+CLAUDE.md. That's prompt engineering.
+
+50
+00:02:57,157 --> 00:03:00,942
+Around that, context: the tools, the
+files, the memory — context engineering;
+
+51
+00:03:00,942 --> 00:03:04,825
+that's the tools list you saw in the
+manifest. Around that, the harness proper:
+
+52
+00:03:04,825 --> 00:03:08,413
+the loop that asks what next, the
+permission layer that said no to Google
+
+53
+00:03:08,413 --> 00:03:12,346
+Drive, the fence around the folder, a turn
+limit. That's Claude Code. And around
+
+54
+00:03:12,346 --> 00:03:16,426
+that, your loop — the shell for, the task
+file. Harness engineering is choosing the
+
+55
+00:03:16,426 --> 00:03:18,490
+outer rings so the inner ones can't drift.
+
+56
+00:03:18,540 --> 00:03:22,276
+Who did what. Step one, mine: one ask,
+three harness settings — that's the
+
+57
+00:03:22,276 --> 00:03:26,063
+experiment. Tools off, Claude said
+creating the file now; the handoff was a
+
+58
+00:03:26,063 --> 00:03:29,950
+file on disk, and it missed it. Step
+three, the dangerous middle: a confident
+
+59
+00:03:29,950 --> 00:03:34,040
+sentence with no tool call under it, and
+only reading the stream caught it. Tools
+
+60
+00:03:34,040 --> 00:03:38,028
+on: one Write, handoff met — cat says
+hello. Then I wrote the task file and the
+
+61
+00:03:38,028 --> 00:03:41,865
+loop — tool orchestration; that's the
+whole design. Claude ran three passes:
+
+62
+00:03:41,865 --> 00:03:45,702
+read, write, edit one box, handoff met
+three times. Two zeros — interpretive
+
+63
+00:03:45,702 --> 00:03:49,640
+judgment, executive integration. That's
+not a gap. The loop moved the judgment
+
+64
+00:03:49,640 --> 00:03:51,660
+into the task file, where I can read it.
+
+65
+00:03:51,710 --> 00:03:55,845
+So what was mine. I must decide the unit
+of work — one task per pass. I must choose
+
+66
+00:03:55,845 --> 00:03:59,931
+what's on the tools list; the model will
+use whatever's there, including my Drive.
+
+67
+00:03:59,931 --> 00:04:03,967
+I must check the disk, not the sentence. I
+should keep the memory in a file I can
+
+68
+00:04:03,967 --> 00:04:08,002
+read. Claude can do one small task per
+fresh context, reliably — three for three.
+
+69
+00:04:08,002 --> 00:04:12,188
+It can use any tool left on the table. It
+should say when it has no tool for the job
+
+70
+00:04:12,188 --> 00:04:16,223
+— it did, on the half-off run. It should
+stop when the prompt says stop — it did,
+
+71
+00:04:16,223 --> 00:04:20,010
+three times. The tools list is mine. The
+loop is mine. The model just talks.
+
+72
+00:04:20,060 --> 00:04:24,107
+Let's recap with Claude. A model alone
+said 'creating the file now' and created
+
+73
+00:04:24,107 --> 00:04:28,359
+nothing. The same model with Write on the
+list made the file in one call. Half-off,
+
+74
+00:04:28,359 --> 00:04:32,354
+it reached for Google Drive and the
+permission layer said no. A ten-line shell
+
+75
+00:04:32,354 --> 00:04:36,299
+loop ran it three times with a fresh
+context each pass, and the task file was
+
+76
+00:04:36,299 --> 00:04:40,346
+the only memory: three for three. The
+harness is the tools list, the rules, and
+
+77
+00:04:40,346 --> 00:04:44,546
+the loop — and Claude Code is one. What
+would prove this reel wrong: a run with an
+
+78
+00:04:44,546 --> 00:04:46,800
+empty tools list that leaves a file on
+disk.
+
+79
+00:04:46,850 --> 00:04:51,138
+Your turn. Open Claude Code in an empty
+folder and paste this: Write tasks.md with
+
+80
+00:04:51,138 --> 00:04:55,268
+three one-line tasks, and LOOP.md — a
+prompt that does only the first unchecked
+
+81
+00:04:55,268 --> 00:04:59,504
+task, ticks it, and stops. Then give me
+the shell loop that runs you three times,
+
+82
+00:04:59,504 --> 00:05:03,948
+a fresh session each pass, with only Read,
+Write and Edit allowed. Run it. Then check
+
+83
+00:05:03,948 --> 00:05:05,360
+the disk, not the sentence.
+
+84
+00:05:05,410 --> 00:05:09,480
+Claude Code Is an Agentic Harness. Liam,
+in for Bear.

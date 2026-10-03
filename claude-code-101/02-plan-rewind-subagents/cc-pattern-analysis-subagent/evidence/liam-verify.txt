@@ -1,0 +1,29 @@
+> ls -1 submissions/
+01-mira.md
+02-jules.md
+03-priya.md
+04-omar.md
+05-tao.md
+> wc -l submissions/*.md rubric.md
+      11 scratch/submissions/01-mira.md
+      11 scratch/submissions/02-jules.md
+       8 scratch/submissions/03-priya.md
+       9 scratch/submissions/04-omar.md
+      11 scratch/submissions/05-tao.md
+      16 scratch/rubric.md
+      66 total
+> wc -l feedback_focus.md          # inline run
+       5 scratch/feedback_focus.md
+> wc -l feedback_focus.md          # subagent run
+       3 scratch-sub/feedback_focus.md
+> grep -c 'midpoint\|overflow\|(lo + hi)' feedback_focus.md   # inline
+1
+> grep -c 'midpoint\|overflow\|(lo + hi)' feedback_focus.md   # subagent
+1
+> cat .claude/agents/pattern-analyzer.md | head -6   # the deployment file
+---
+name: pattern-analyzer
+description: Scans a batch of student submissions in submissions/ against the criteria in rubric.md, returns the top common misconceptions the batch is showing — severity first — WITHOUT ever loading a submission into the main session. Use whenever a batch of student work must be triaged for teaching focus.
+tools: Read, Grep, Glob
+---
+

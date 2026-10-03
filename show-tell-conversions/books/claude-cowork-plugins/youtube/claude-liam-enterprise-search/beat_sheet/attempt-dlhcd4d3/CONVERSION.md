@@ -1,0 +1,15 @@
+# Show-tell conversion
+
+Source: `books/claude-cowork-plugins/youtube/claude-liam-enterprise-search/beat_sheet.json`
+
+Structural checks passed. Narration, scenes, rendering, fact-checking, visual/audio QC and Bear review are still pending. No approval is implied.
+
+OBJECT CAST: Five objects carry the whole film — (1) kraft page (any document), (2) server stack (any source repository: Drive, Wiki, Chat), (3) kraft box (an archive box or connected source), (4) the central index box (B08), and (5) an open-top conversation box (B05). The question mark in B00 and the cursor in B10 are one-beat props. Continuity across beats: the three server stacks from B00 reappear in B03 and B08; the kraft box from B01 opens in B02; the conversation box in B05 is new to that beat. Every label is 1–3 words in ink.
+
+CARD CHOICES: All 11 body beats are isometric drawings — none required a ShowTellCard. B06 (five workflows) was considered for a dock card (cursor hoving five icons), but the pages-fanned-around-a-hub drawing keeps the established cast (pages ARE documents) and shows a spatial relationship a dock cannot. B03 (simultaneous search) was considered for a search card (results dropping in), but simultaneous reach is a spatial claim — sequential result-drop would misrepresent it. No ShowTellCard was used; a film with zero cards is a normal, complete show-tell film per the skill.
+
+GATE T MIDPOINT GUARDS: Each body beat places at least one label on screen before its midpoint. B00 'scattered' label appears at 0.1. B01 'Q3-notes' box label at 0.1. B02 inherits the 'Q3-notes' label from B01 continuity. B03 'all at once' at 0.15. B04 'archive' at 0.1. B05 both 'sources' and 'conversation' labels at 0.15. B06 hub box at 0.1. B07 'search' dot-label at 0.15. B08 'Drive/Wiki/Chat/index' labels at 0.1. B09 'sources' group label at 0.15. B10 'archive' label at 0.15. Check each class's midpoint frame before the final.
+
+OPEN FACT CHECKS: (1) The '110x MCP growth' figure from the original source (cited as ClaudeDevs post on X) was dropped from this conversion — it is not in the core chapter content and is a single-source social post. If restored, it requires spoken attribution ('Claude's developer team says') and an on-screen caption per Law 8. (2) 'Fable 5' model chip carried forward from source metadata on BHTF — verify this is still current before publishing; update modelLabel if not. (3) All substantive claims (content search reads inside documents; access boundary equals existing permissions; document-now compounds search value) derive from ch08-enterprise-search.txt and should be verified against current plugin documentation before the final. No claim has been freshly fact-checked in this conversion pass.
+
+TIMING: All estimated_duration_s values use word_count / 2.5 and are estimates until audio is measured. Update BDEFS durationSeconds prop and all beat estimated_duration_s from ffprobe output after generate_audio_kokoro.py run. BIDEA lead_silence_s: 0.8 is on the beat; re-pad BOUT with 1.0 s tail after any full audio run. Total estimated runtime: ~233 s (~3.9 min).

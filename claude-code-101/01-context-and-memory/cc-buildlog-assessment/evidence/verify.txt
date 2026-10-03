@@ -1,0 +1,25 @@
+> wc -l student-a/signup.html student-b/signup.html student-a/CLAUDE.md student-b/CLAUDE.md
+      54 student-a/signup.html
+      54 student-b/signup.html
+      36 student-a/CLAUDE.md
+       4 student-b/CLAUDE.md
+     148 total
+
+> diff -q student-a/signup.html student-b/signup.html
+
+> grep -c '^### 20' student-a/CLAUDE.md student-b/CLAUDE.md
+student-b/CLAUDE.md:0
+student-a/CLAUDE.md:3
+
+> grep -c 'Dangerous middle' student-a/CLAUDE.md student-b/CLAUDE.md
+student-b/CLAUDE.md:0
+student-a/CLAUDE.md:3
+
+> grep -c 'Constraint added' student-a/CLAUDE.md student-b/CLAUDE.md
+student-b/CLAUDE.md:0
+student-a/CLAUDE.md:3
+
+> grep -A0 '^### ' student-a/CLAUDE.md
+### 2026-08-14 — the email wall
+### 2026-08-21 — the server-side Thursday
+### 2026-08-28 — the welcome header

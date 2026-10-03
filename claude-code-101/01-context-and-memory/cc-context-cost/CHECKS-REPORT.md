@@ -1,0 +1,2 @@
+# CHECKS-REPORT — cc-context-cost
+12 beats · 12 SHOW · 0 CARD/HOLD/PUNT. Arc: prediction before reveal (B00 "I wanted the receipt"; B01 "watch the number"); concrete (receipts) before abstract; friction (B04 tests the slogan and halves it); falsifiable line in BVDT; handoff BHTF = /context + the largest-things prompt. IDEA + DEFINITIONS then CONDUCT + HUMAN ✓. Non-terminal: BIDEA, BDEFS, B02, B04 — reasoned. Gates: GATE F clean, BOOKEND ids, Gate V (BVDT 4 lines), GATE T; kit budgets asserted.

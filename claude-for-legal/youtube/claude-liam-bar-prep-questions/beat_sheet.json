@@ -20,11 +20,52 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-for-legal/law-student/skills/bar-prep-questions/SKILL.md",
+    "source_detail": {
+      "capabilities": [],
+      "constraints": [
+        "Exam-type gate (do not skip). If exam format or jurisdiction isn't in the practice profile, ask before generating anything. The NextGen Bar Exam and the traditional UBE…",
+        "Jurisdiction-rule gate. If the student's jurisdiction has a state-specific component (CA, LA, NY Law Exam, FL state essay, VA, etc.) AND the subject is one where…",
+        "## Exam type — ask first, do not assume",
+        "Do not assume the subject list. Before generating any questions:",
+        "Before generating questions, confirm structure via the ## Exam type gate above. Do not assume",
+        "If the specific rule tested has a material divergence, fire the Your jurisdiction (X) diverges: block per the format above. Do not use a subject-level tag when a…",
+        "Do NOT blanket-apply a subject-level tag like \"[CA does not materially diverge on this subject]\" across all questions in a subject. Contracts-as-a-subject has both…",
+        "When a question's answer differs between the majority/UBE rule and the student's jurisdiction's rule, the explanation must say so explicitly:"
+      ],
+      "referenced_files": [
+        "~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md",
+        "~/.claude/plugins/config/claude-for-legal/law-student/study-plan.yaml",
+        "[UBE/majority]",
+        "[CA-specific]",
+        "[NY-specific]",
+        "--session <n>",
+        "study-plan.yaml",
+        "session_history",
+        "[CA does not diverge on UCC § 2-207 — this answer holds on the CA bar.]",
+        "[MBE / UBE default]"
+      ],
+      "code_signals": [
+        "code block: markdown",
+        "code block: yaml"
+      ],
+      "sections": [
+        "Real-matter check",
+        "Purpose",
+        "Exam type — ask first, do not assume",
+        "Jurisdiction handling",
+        "Two things to distinguish",
+        "Rule when generating questions",
+        "Divergence tags — per-rule, not per-subject",
+        "Rule when the rules diverge",
+        "When unsure of the jurisdiction's rule",
+        "Confidence discipline"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T06:11:39",
+      "at": "2026-09-06T00:04:02",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -68,13 +109,13 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:11:39"
+        "at": "2026-09-06T00:04:02"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is bar-prep-questions. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is bar-prep-questions. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at ~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md, ~/.claude/plugins/config/claude-for-legal/law-student/study-plan.yaml, [UBE/majority], so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -106,18 +147,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.5,
+      "actual_duration_s": 29.23,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:11:39"
+        "at": "2026-09-06T00:04:02"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "bar-prep-questions is not a pipeline — it is a reference Claude reads and applies. > There are no numbered steps to walk; the instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -157,18 +198,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 9.0,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:11:39"
+        "at": "2026-09-06T00:04:02"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. bar-prep-questions is a specification written as an instruction set. Claude's job: >. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. Exam-type gate (do not skip). If exam format or jurisdiction isn't in the practice profile, ask before generating anything. The NextGen Bar Exam and the traditional UBE…. That is the constraint in bar-prep-questions — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +220,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": ">",
+            "body": "Exam-type gate (do not skip). If exam format or jurisdiction isn't in the practice profile, ask before generating anything. The NextGen Bar Exam and the traditional UBE…",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,12 +230,44 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 10.97,
+      "actual_duration_s": 17.66,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:11:39"
+        "at": "2026-09-06T00:04:02"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In bar-prep-questions, supporting material: ~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md, ~/.claude/plugins/config/claude-for-legal/law-student/study-plan.yaml, [UBE/majority], [CA-specific]; implementation signals: code block: markdown, code block: yaml; sections: Real-matter check, Purpose, Exam type — ask first, do not assume, Jurisdiction handling. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md; ~/.claude/plugins/config/claude-for-legal/law-student/study-plan.yaml; [UBE/majority]; code block: markdown; code block: yaml",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 32.19,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-06T00:04:02"
       }
     },
     {
@@ -214,6 +287,7 @@
             "artifactLines": [
               "Skill: bar-prep-questions — Claude reads SKILL.md before acting",
               ">",
+              "Constraint: Exam-type gate (do not skip). If exam format or jurisdiction isn't in the practice…",
               "Same input → same output, every run",
               "Limit: only what the SKILL.md specifies"
             ]
@@ -230,7 +304,7 @@
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:11:39"
+        "at": "2026-09-06T00:04:02"
       }
     },
     {
@@ -267,7 +341,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:11:39"
+        "at": "2026-09-06T00:04:02"
       }
     },
     {
@@ -298,7 +372,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:11:39"
+        "at": "2026-09-06T00:04:02"
       }
     }
   ]

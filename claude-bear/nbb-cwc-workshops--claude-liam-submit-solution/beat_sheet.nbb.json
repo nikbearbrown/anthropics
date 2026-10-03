@@ -1,0 +1,323 @@
+{
+ "metadata": {
+  "title": "Feedback Before The Commit.",
+  "subtitle": "A Feedback Task Wearing Git's Clothes",
+  "slug": "cwc-workshops--claude-liam-submit-solution",
+  "topic": "SUBMIT-SOLUTION · ANTHROPIC SKILL",
+  "purpose": "Take the submit-solution skill apart in the Teardown register: the whole shape is Claude running a fixed five-step list, front-loaded with three feedback questions before any git command touches the tree. Name the trade-off — they optimized for feedback that actually gets collected, and made it structurally impossible to submit code without answering. The cost: no shortcut.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/cwc-workshops/youtube/claude-liam-submit-solution/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "NB01 -> NB03 (the five-step list is introduced at NB01, then the last two steps — open PR, confirm — are paid off at NB03 as the dual-section PR body that IS the feedback form)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-01T02:08:31",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. You'd guess submitting a workshop solution is just a git task — commit, push, PR. It isn't. Here's what the skill actually makes Claude do first.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Claude, submit my solution — it's a git task, right?', hesitates on 'git', corrects to 'feedback', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude, submit\nmy solution —\nit's a git\ntask, right?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "git",
+      "replacementWords": "feedback",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "nbb-submit-solution"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('git' -> 'feedback') lands on screen and the full corrected question finishes typing before the clip ends.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T02:08:31"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Take submit-solution apart, and here's what you find. It's a folder Claude reads before it acts — one file inside, SKILL.md. That file lists five steps in a fixed order: ask about the workshop, show the diff, commit and push, open the PR, confirm. The order isn't decoration — Claude runs the list top to bottom, and can't skip ahead to committing.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FIVE STEPS, FIXED ORDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FIVE STEPS, FIXED ORDER",
+     "chips": [
+      "ask",
+      "diff",
+      "commit",
+      "PR",
+      "confirm"
+     ],
+     "arrows": true,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "the interview runs before git, not after",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T02:08:31"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Here's the mechanism. Step one runs before a single git command: three questions. Which subagent approach for cycle three — callable agents, spawn subagent, inline, something else? What was hardest about the workshop? One thing they'd change? Only then does Claude look at the diff. An empty diff doesn't mean finished — usually it means the wrong file was edited, so the skill has Claude ask, not assume. A full diff doesn't buy the PR either. The feedback comes first, every time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THREE QUESTIONS, THEN GIT",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THREE QUESTIONS, THEN GIT",
+     "chips": [
+      "approach",
+      "hardest part",
+      "one change",
+      "git"
+     ],
+     "arrows": true,
+     "accent": [
+      3
+     ],
+     "strike": [],
+     "caption": "git waits for all three answers",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T02:08:31"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Now the design choice. The PR body Claude writes carries two sections: the technical summary — subagent approach, eval score, tools dropped, skills enabled — and directly below it, the workshop feedback. Same document, both audiences. That's the whole trick — they made the git task carry the feedback form, so shipping the code and returning the notes are literally the same act. They optimized for feedback that actually gets collected. What that costs: you can't just push. Skip the three questions and the commit still lands — but the second half of that document stays blank, every time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 34,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "ONE PR, TWO SECTIONS",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "ONE PR, TWO SECTIONS",
+     "chips": [
+      "code summary",
+      "feedback"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "skip the questions, and this half stays blank",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T02:08:31"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Submit-solution isn't a git task with feedback tacked on. It's a feedback task wearing git's clothes — same PR, both audiences. Optimized for feedback that actually gets collected. The cost: you can't just push.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Submit-solution isn't a git task with feedback tacked on. It's a feedback task wearing git's clothes — same PR, both audiences. Optimized for feedback that actually gets collected. The cost: you can't just push.",
+      "attribution": "",
+      "sparkLine": "Feedback first. The PR is the form."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T02:08:31"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: ask it to write a short SKILL.md for a SUBMIT-SOLUTION skill — five numbered steps that put a three-question workshop-feedback interview before any git command, ending in a pull request whose body has both a code summary and the feedback. Then have it simulate running the skill on a made-up attendee. Go deeper: reorder the list so the commit happens first — what breaks about the design when you do?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "llm_exercise": {
+    "prompt": "I want to understand how a Claude skill controls the order of a technical task. A Claude 'skill' is a folder holding a SKILL.md — a numbered list of steps Claude reads and runs top to bottom. Write me a short SKILL.md for a SUBMIT-SOLUTION skill: five numbered steps that turn 'I finished my coding exercise' into an open pull request whose body has two sections — a code summary and workshop feedback. Put the feedback interview (three specific questions: which subagent approach was used, what was hardest, one thing they'd change) BEFORE any git command. Then simulate running the skill on a made-up attendee: play both roles, show me every question in order, and print the final PR body with both sections filled in.",
+    "dig_deeper": "Go deeper: now reorder the steps so the commit happens first and the three questions come after. What breaks about the design when you do that — and what does 'the PR is the feedback form' actually mean once the commit has already landed?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "SUBMIT-SOLUTION · ANTHROPIC SKILL",
+      "segment": "Feedback Before The Commit.",
+      "command": "I want to understand how a Claude skill controls the order of a technical task. Write me a short SKILL.md for a SUBMIT-SOLUTION skill: 5 numbered steps that put a three-question workshop-feedback interview BEFORE any git command, ending in an open PR whose body has both a code summary and the feedback. Then simulate running it on a made-up attendee and print the final PR body.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T02:08:31"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Feedback Before The Commit. The PR is the form. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Feedback Before The Commit. The PR is the form. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T02:08:31"
+   }
+  }
+ ]
+}

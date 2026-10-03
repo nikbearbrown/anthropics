@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Claude API",
+    "title": "Claude, Claude Api.",
     "slug": "claude-liam-claude-api",
-    "topic": "CLAUDE API · ANTHROPIC SKILL",
+    "topic": "CLAUDE-API · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,58 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Bonjour, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/skills/skills/claude-api/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/skills/skills/claude-api/SKILL.md",
+    "source_detail": {
+      "capabilities": [],
+      "constraints": [
+        "TRIGGER — read BEFORE opening the target file; don't skip because it \"looks like a one-liner\" — whenever: the prompt names Claude/Anthropic in any form (Claude…",
+        "SKIP only when another provider is being worked on (overrides all triggers): OpenAI/GPT/Gemini/Llama/Mistral/Cohere/Ollama named in the query; OR grep -rE…",
+        "Scan the target file (or, if no target file, the prompt and project) for non-Anthropic provider markers — import openai, from openai, langchain_openai, OpenAI(, gpt-4…",
+        "When the user asks you to add, modify, or implement a Claude feature, your code must call Claude through one of:",
+        "Raw HTTP (curl, requests, fetch, httpx, etc.) — only when the user explicitly asks for cURL/REST/raw HTTP, the project is a shell/cURL project, or the language has no…",
+        "Never mix the two — don't reach for requests/fetch in a Python or TypeScript project just because it feels lighter. Never fall back to OpenAI-compatible shims",
+        "Never guess SDK usage. Function names, class names, namespaces, method signatures, and import paths must come from explicit documentation — either the {lang}/ files in…",
+        "If WebFetch or repository access fails (network restricted, timeouts, clone blocked): do not keep retrying — write code from the patterns and namespace/package tables in…"
+      ],
+      "referenced_files": [
+        "@anthropic-ai",
+        "claude-*",
+        "us.anthropic.*",
+        "langchain_openai",
+        "gpt-4",
+        "gpt-5",
+        "agent-openai.py",
+        "*-generic.py",
+        "@anthropic-ai/sdk",
+        "com.anthropic.*"
+      ],
+      "code_signals": [
+        "code block: python"
+      ],
+      "sections": [
+        "Before You Start",
+        "Output Requirement",
+        "Defaults",
+        "⚠️ API Drift — Your Training Prior May Be Stale",
+        "Subcommands",
+        "Language Detection",
+        "Language-Specific Feature Support",
+        "Which Surface Should I Use?",
+        "Decision Tree",
+        "Should I Build an Agent?"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T13:16:56",
-      "cut": "master",
-      "filled": 9,
-      "of": 9,
+      "at": "2026-09-05T12:07:19",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +73,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Bonjour — this is Liam, in for Bear. Ask Claude to add adaptive thinking to your Python app. Before Claude writes a single line, a skill fires — reads a reference, checks a drift table, confirms the exact model ID. That skill is called claude-api, and today we tear it down.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is claude-api. |-. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 25,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Bonjour, Liam",
-            "topic": "CLAUDE API · ANTHROPIC SKILL",
-            "segment": "Claude API",
-            "command": "Add extended thinking to my Python app using the Claude API.",
+            "greeting": "Hola, Liam",
+            "topic": "CLAUDE-API · ANTHROPIC SKILL",
+            "segment": "Claude, Claude Api.",
+            "command": "Run the claude-api skill.",
             "runningText": "reading claude-api SKILL.md…",
             "output": [
-              "TRIGGER fires — checking model ID and API drift table",
-              "Default: claude-opus-4-8 · Extended thinking: adaptive mode",
-              "44 pitfalls documented. None enforced at call time."
+              "skill: claude-api",
+              "|-",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +103,90 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 15.04,
+      "actual_duration_s": 7.87,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:16:56"
+        "at": "2026-09-05T12:07:19"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — TRIGGER + languages + task reference",
-      "narration_text": "The claude-api skill is a pre-scan reference for the Anthropic Claude API. Its TRIGGER fires BEFORE Claude opens the target file — whenever the prompt names Claude or Anthropic in any form, asks about an LLM, or presents an LLM-shaped task with the provider unstated. Eight SDKs are covered: Python, TypeScript, Java, Go, Ruby, C-sharp, PHP, and cURL.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is claude-api. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at @anthropic-ai, claude-*, us.anthropic.*, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 26,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ClaudeApiAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Read before you open the file."
+            "skillName": "claude-api",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📝",
+                "name": "LICENSE.txt",
+                "size": "11k",
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "72k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "csharp",
+                "size": null,
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "curl",
+                "size": null,
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "go",
+                "size": null,
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "java",
+                "size": null,
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "php",
+                "size": null,
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "python",
+                "size": null,
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "8 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +195,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 21.03,
+      "actual_duration_s": 18.28,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:16:56"
+        "at": "2026-09-05T12:07:19"
       }
     },
     {
       "beat_id": "B02",
-      "act": "three API surfaces + decision criteria",
-      "narration_text": "The skill maps three API surfaces. Tier one: a single Claude API call — classification, summarization, extraction, batch processing. Tier two: Claude API plus tool use, where you control the loop. Tier three: Managed Agents, where Anthropic runs the loop and hosts the workspace. The decision rule is four questions: complexity, value, viability, cost of error. No to any one — stay at the simpler tier.",
+      "act": "pipeline",
+      "narration_text": "claude-api is not a pipeline — it is a reference Claude reads and applies. |- There are no numbered steps to walk; the instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ClaudeApiSurfaces",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Default to the simplest tier."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,27 +246,30 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 22.14,
+      "actual_duration_s": 8.73,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:16:56"
+        "at": "2026-09-05T12:07:19"
       }
     },
     {
       "beat_id": "B03",
-      "act": "self-demo — API drift table",
-      "narration_text": "Here is the most useful section of the skill: the API drift table. Claude's training prior may be stale. Extended thinking: the old pattern used budget-tokens as a named parameter — that now returns a 400 on current models. Web search and web fetch tool types updated to the 2026 versions. PHP parameter names shifted from snake-case to camelCase at the top level. The skill says: if you recall a pattern from training, verify it against the language files before writing.",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. TRIGGER — read BEFORE opening the target file; don't skip because it \"looks like a one-liner\" — whenever: the prompt names Claude/Anthropic in any form (Claude…. That is the constraint in claude-api — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 32,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ClaudeApiDrift",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Training data lags the API."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "TRIGGER — read BEFORE opening the target file; don't skip because it \"looks like a one-liner\" — whenever: the prompt names Claude/Anthropic in any form (Claude…",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
             "out": "media/B03.mp4",
@@ -149,27 +278,30 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 26.5,
+      "actual_duration_s": 16.06,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:16:56"
+        "at": "2026-09-05T12:07:19"
       }
     },
     {
       "beat_id": "B04",
-      "act": "self-demo — model table",
-      "narration_text": "The model table. Seven models, each with an exact ID string, context window, and per-token pricing. The default is claude-opus-4-8. The rule is non-negotiable: always use claude-opus-4-8 unless the user explicitly names a different model. And never append date suffixes — use claude-sonnet-4-6, not claude-sonnet-4-6-20251114. The ID is the contract.",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In claude-api, supporting material: @anthropic-ai, claude-*, us.anthropic.*, langchain_openai; implementation signals: code block: python; sections: Before You Start, Output Requirement, Defaults, ⚠️ API Drift — Your Training Prior May Be Stale. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ClaudeApiModels",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Use the exact ID. No date suffixes."
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "@anthropic-ai; claude-*; us.anthropic.*; code block: python",
+            "sparkLine": "Ground the reel in the file."
           },
           "rendered": {
             "out": "media/B04.mp4",
@@ -178,47 +310,18 @@
         }
       },
       "audio_file": "mp3/beat-B04.mp3",
-      "actual_duration_s": 24.58,
+      "actual_duration_s": 20.78,
       "build": {
         "status": "VIDEO",
         "src": "media/B04.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:16:56"
-      }
-    },
-    {
-      "beat_id": "B05",
-      "act": "teardown — TRIGGER architecture + 44 pitfalls",
-      "narration_text": "Here is the teardown moment. The TRIGGER is architecturally the most interesting feature. It fires before the file opens — a pre-scan gate, not a post-request lookup. The model's training data becomes the fallback, not the source of truth. What it gets right: the drift table makes the 400 error visible before it happens. Language-specific routing covers eight SDKs. What it costs: the 44 pitfalls require knowing they exist — there is no enforcement at call time.",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "estimated_duration_s": 36,
-      "shot": {
-        "type": "REMOTION",
-        "remotion": {
-          "pattern": "ClaudeApiTell",
-          "props": {
-            "sparkLine": "44 pitfalls. All preventable."
-          },
-          "rendered": {
-            "out": "media/B05.mp4",
-            "at": ""
-          }
-        }
-      },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 24.79,
-      "build": {
-        "status": "VIDEO",
-        "src": "media/B05.mp4",
-        "filled_by": "media",
-        "at": "2026-07-18T13:16:56"
+        "at": "2026-09-05T12:07:19"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. The claude-api skill is a drift-aware reference gate. The TRIGGER is the key mechanism — it fires before the file opens, not after. Use the exact model ID. Verify API shapes against the skill before writing. Forty-four pitfalls are documented; none are enforced automatically.",
+      "narration_text": "claude-api makes Claude execute one task reliably. The SKILL.md is the spec — |-. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -228,14 +331,13 @@
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "Claude API",
+            "artifactHeading": "Claude, Claude Api.",
             "artifactLines": [
-              "TRIGGER fires pre-scan — before the file opens, not after",
-              "Default model: claude-opus-4-8 (non-negotiable unless user names another)",
-              "Never append date suffixes to model IDs",
-              "Extended thinking: budget_tokens → adaptive (400 on current models)",
-              "Web search type: 20250305 → 20260209",
-              "44 pitfalls documented — zero enforced at call time"
+              "Skill: claude-api — Claude reads SKILL.md before acting",
+              "|-",
+              "Constraint: TRIGGER — read BEFORE opening the target file; don't skip because it \"looks like a…",
+              "Same input → same output, every run",
+              "Limit: only what the SKILL.md specifies"
             ]
           },
           "rendered": {
@@ -245,36 +347,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 16.62,
+      "actual_duration_s": 9.98,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:16:56"
+        "at": "2026-09-05T12:07:19"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Open a Claude session. Paste this: I want to call the Claude API from Python using extended thinking. Check the claude-api skill for the current thinking parameter shape, the exact model ID, and any drift from your training prior. Show me a working example. Run it. Watch whether Claude checks the skill before writing. That is the gate.",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to |-. Read the claude-api skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "CLAUDE API · HANDOFF",
-            "segment": "Claude API",
-            "command": "I want to call the Claude API from Python using extended thinking. Check the claude-api skill for the current thinking parameter shape, the exact model ID, and any drift from your training prior. Show me a working example.",
-            "runningText": "Does Claude check the skill before writing? That is the gate.",
-            "output": [
-              "Expected: TRIGGER fires before any code is written",
-              "Check: thinking param shape · model ID · drift table",
-              "Test: does the output match the SKILL.md specs?"
-            ],
+            "greeting": "Your turn.",
+            "topic": "CLAUDE-API · ANTHROPIC SKILL",
+            "segment": "Claude, Claude Api.",
+            "command": "I want to |-. Read the claude-api skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -286,27 +384,27 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 17.6,
+      "actual_duration_s": 11.01,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:16:56"
+        "at": "2026-09-05T12:07:19"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "Claude API. Liam, in for Bear.",
+      "narration_text": "Claude, Claude Api. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "Claude API",
+            "title": "Claude, Claude Api.",
             "handle": "@NikBearBrown",
             "subline": "claude-api · Anthropic Skills"
           },
@@ -317,12 +415,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 2.92,
+      "actual_duration_s": 3.22,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:16:56"
+        "at": "2026-09-05T12:07:19"
       }
     }
   ]

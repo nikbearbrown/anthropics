@@ -1,0 +1,306 @@
+{
+ "metadata": {
+  "title": "Claude, Investment Proposal.",
+  "slug": "financial-services--claude-liam-investment-proposal",
+  "topic": "INVESTMENT-PROPOSAL · CLAUDE SKILLS",
+  "purpose": "hai-simple redo of claude-liam-investment-proposal (Teardown, @NikBearBrown) into the Plain register for @HumanitariansAI: how a Claude Skill (a SKILL.md folder) runs, using investment-proposal as the concrete example.",
+  "skill": "hai-simple",
+  "register": "Teardown",
+  "audience": "NikBearBrown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "claude",
+  "ground": "#F3EBDD",
+  "channel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "folderLabel": "@HumanitariansAI",
+  "in_for_bear": true,
+  "playlist": "Claude Basics",
+  "modelLabel": "Opus 4.8",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-investment-proposal/beat_sheet.json",
+  "source_register": "Teardown",
+  "carry_out": "A Skill doesn't make Claude smarter — it makes Claude follow your steps, in order, every time.",
+  "build": {
+   "at": "2026-09-01T23:35:13",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer — cold open",
+   "narration_text": "People ask how the investment-proposal app picks the client's holdings on its own. That's the wrong noun. Liam here, in for Bear — investment-proposal isn't an app. It's a skill: a folder of instructions Claude reads before it starts. So the real question is how that folder drafts the proposal.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types the naive framing, hesitates on 'app', corrects to 'skill'",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "How does the\ninvestment-proposal app\nwrite our proposal?",
+      "triggerWords": "app",
+      "replacementWords": "skill",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "align": "center",
+      "face": "serif"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T23:35:13"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "anatomy",
+   "narration_text": "Take it apart. A skill is a folder Claude opens before it does any work. Inside investment-proposal there is one file that carries the whole load — SKILL.md. It's the full instruction set, written in plain English. No hidden logic, no compiled trickery. Claude reads it, then acts. That's the design bet: the file is the program.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "SkillTeardownAnatomy",
+     "props": {
+      "skillName": "investment-proposal",
+      "eyebrow": "SKILL · ANATOMY",
+      "title": "A skill is a folder.",
+      "files": [
+       {
+        "indent": 1,
+        "icon": "📄",
+        "name": "SKILL.md",
+        "size": "3k",
+        "accent": true
+       }
+      ],
+      "calloutText": "The SKILL.md is the instruction set.",
+      "calloutSub": "1 file total.",
+      "sparkLine": "The file is the program."
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T23:35:13"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "pipeline",
+   "narration_text": "Here's what's actually happening. The pipeline lives in the Steps section of SKILL.md. Claude reads each step in order and executes it — nothing else. No branching unless a step tells it to branch. They optimized for predictability at the expense of cleverness. The payoff is that the same request runs the same way, every time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "SkillTeardownPipeline",
+     "props": {
+      "eyebrow": "SKILL · PIPELINE",
+      "title": "How the skill works.",
+      "inputLabel": "YOUR REQUEST",
+      "outputLabel": "RESULT",
+      "phases": [
+       {
+        "label": "Read SKILL.md",
+        "desc": "load the instruction set",
+        "accent": true
+       },
+       {
+        "label": "Execute",
+        "desc": "run each step in order",
+        "accent": false
+       },
+       {
+        "label": "Return output",
+        "desc": "deliver the result",
+        "accent": false
+       }
+      ],
+      "footerNote": "Linear execution.",
+      "sparkLine": "Input in. Output out."
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T23:35:13"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "mechanism + scope",
+   "narration_text": "So what does the investment-proposal page actually say? Draft a professional investment proposal for a prospective client — cover the firm's approach, the proposed allocation, expected outcomes, and the fee structure. That's the whole spec. Because Claude executes exactly what's written, two things follow. The shape of the proposal is repeatable across every run. And it only covers what the page says. Ask for tax analysis and you get nothing — that section doesn't exist. This works if you value repeatability. It fails if you needed a section the author never wrote.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "SkillTeardownMechanism",
+     "props": {
+      "eyebrow": "SKILL · MECHANISM",
+      "heading": "What the page says, exactly.",
+      "body": "Create an investment proposal covering approach, allocation, outcomes, and fees.",
+      "sparkLine": "Same page, same result, every run."
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T23:35:13"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "carry-out",
+   "narration_text": "A Skill doesn't make Claude smarter — it makes Claude follow your steps, in order, every time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A Skill doesn't make Claude smarter — it makes Claude follow your steps, in order, every time.",
+      "attribution": "",
+      "sparkLine": "Steps, not smarts."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T23:35:13"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. Hand it a three-step SKILL.md for drafting a one-page investment proposal — step one asks the client for investable assets, time horizon, and risk tolerance; step two proposes an allocation across stocks, bonds, and cash; step three drafts the page with approach, allocation, outcomes, and fees. Before it drafts anything, make it restate each step in its own words and name what the skill can't do. Then feed it two hundred fifty thousand dollars, a twenty-year horizon, and moderate risk, and watch it walk the steps. That's how you see the mechanism instead of trusting the output. Go deeper: ask how you'd redesign that SKILL.md so it refuses to run when a required input is missing — and what that refusal costs the user. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 44,
+   "llm_exercise": {
+    "prompt": "I want to understand what a Claude Skill actually does versus what people assume it does. A Skill is a folder — one plain-English SKILL.md file plus optional helper files — that Claude reads before it starts working, then executes step by step, in order. Here is a three-step SKILL.md I want you to walk through:\n\nStep 1: Ask the client for investable assets, time horizon, and risk tolerance.\nStep 2: Propose an allocation across stocks, bonds, and cash that matches the answers.\nStep 3: Draft a one-page proposal covering the firm's approach, the proposed allocation, expected outcomes, and fees.\n\nBefore you draft anything, do two things. First, restate each step in your own words so I can see you've actually read it. Second, list what this skill cannot do — what a user might reasonably expect but that this page never mentions. Then run the skill with these inputs: $250,000 investable, 20-year horizon, moderate risk. Produce the one-page proposal.",
+    "dig_deeper": "Go deeper: if you had to redesign this SKILL.md so it refused to run when a required input was missing, what would you add — and what would that refusal cost the user experience?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE SKILLS",
+      "segment": "Your Turn",
+      "command": "Here is a three-step SKILL.md: (1) ask the client for investable assets, time horizon, risk tolerance; (2) propose a stocks/bonds/cash allocation that matches; (3) draft a one-page proposal — approach, allocation, outcomes, fees. Before drafting, restate each step in your own words and list what the skill can't do. Then run it with $250,000 investable, 20-year horizon, moderate risk, and produce the proposal.",
+      "runningText": "paste this into Claude…",
+      "output": [],
+      "folderLabel": "@HumanitariansAI",
+      "modelLabel": "Opus 4.8",
+      "effortLabel": "High"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T23:35:13"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro — NikBearBrown",
+   "narration_text": "Claude, Investment Proposal. Liam, in for Bear. Brutalist dot art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Investment Proposal. Liam, in for Bear. www.brutalist.art",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T23:35:13"
+   }
+  }
+ ]
+}

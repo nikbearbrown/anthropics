@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "pagerduty-api",
+    "title": "Claude, Pagerduty Api.",
     "slug": "claude-liam-pagerduty-api",
-    "topic": "PAGERDUTY-API · CLAUDE PLUGINS",
+    "topic": "PAGERDUTY-API · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,63 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Merhaba, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-tag-plugins/pagerduty/skills/pagerduty-api/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-tag-plugins/pagerduty/skills/pagerduty-api/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Query and manage PagerDuty — find out who's on call",
+        "list and manage incidents",
+        "read escalation policies and schedules",
+        "trace who got paged and why",
+        "acknowledge/resolve/snooze/escalate incidents"
+      ],
+      "constraints": [
+        "API, so there is nothing to set up. Do not try to create, mint, refresh, or validate tokens or keys",
+        "Credential variables exist only to keep requests well-formed; if one is unset, set it to any",
+        "only on user tokens; account-level tokens can verify with /abilities",
+        "email via /users?query= to user_ids[] (repeatable). Name lookups (here and --service) must",
+        "earliest returns only the next-up entry per policy",
+        "— Credential rejected. Body is empty — print the status. Header must be Authorization: Token token=.... If it persists, the credential isn't configured — report it",
+        "— Forbidden. Read-only credential mutating, or scoped to a team that doesn't own the resource"
+      ],
+      "referenced_files": [
+        "Q...",
+        "https://api.pagerduty.com",
+        "https://events.pagerduty.com",
+        "api.pagerduty.com",
+        "events.pagerduty.com",
+        "jq '.user | {id, name, email}'",
+        "/users/me",
+        "/abilities",
+        "-g",
+        "-w '%{http_code}'"
+      ],
+      "code_signals": [
+        "code block: bash"
+      ],
+      "sections": [
+        "Request setup",
+        "Core operations",
+        "1. Who's on call (scripts/pd_oncall.sh)",
+        "2. List open incidents",
+        "3. Get one incident",
+        "4. Who actually got paged? (log entries)",
+        "5. Acknowledge / resolve / escalate / snooze / note",
+        "6. Trace routing: service → escalation policy → schedule",
+        "7. Create an incident",
+        "8. Trigger an alert via Events API v2"
+      ]
+    },
     "build": {
-      "at": "2026-07-19T12:16:15",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T18:28:39",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +78,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Merhaba — this is Liam, in for Bear. You are working with the pagerduty-api skill. It connects Claude to PagerDuty — reading on-call schedules, tracing incidents, triggering alerts, and checking who got paged and why. The key distinction: there are two completely separate APIs on two different hosts with two different auth schemes. REST at api.pagerduty.com uses a Token header for reading and managing everything. Events v2 at events.pagerduty.com uses a routing key in the request body — no Authorization header at all — for triggering, acknowledging, and resolving alerts. Mix them up and you get silent 401s with empty response bodies. Let me walk you through the data model, the operations, and the gaps.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is pagerduty-api. Query and manage PagerDuty — find out who's on call, list and manage incidents, read escalation policies and schedules, trace who got paged and why, acknowledge/resolve/snooze/escalate incidents, and create or update services. Use this whenever the user mentions PagerDuty, on-call, paging, escalation, an incident ID like PXXXXXX or Q..., asks \"who's on call\", \"page the on-call\", \"ack this incident\", \"why wasn't I paged\", or pastes a pagerduty.com URL — even if they don't say \"API\". Always start from this skill when interacting with this service — its bundled scripts and recipes are the fastest path.. Its concrete surface area includes Query and manage PagerDuty — find out who's on call; list and manage incidents; read escalation policies and schedules. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 15,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Merhaba, Liam",
-            "topic": "PAGERDUTY-API · CLAUDE PLUGINS",
-            "segment": "PLUGINS",
-            "command": "Who is on call right now, and why did the payment-service alert page them at 2 AM?",
+            "greeting": "Hola, Liam",
+            "topic": "PAGERDUTY-API · ANTHROPIC SKILL",
+            "segment": "Claude, Pagerduty Api.",
+            "command": "Run the pagerduty-api skill.",
             "runningText": "reading pagerduty-api SKILL.md…",
             "output": [
-              "Two hosts, two auth schemes — REST Token header vs Events v2 routing_key in body",
-              "401 returns empty body — always print HTTP status with -w or -o /dev/null -w",
-              "From: header required on all mutations — omit it and get silent 400"
+              "skill: pagerduty-api",
+              "Query and manage PagerDuty — find out who's on call, list and manage incidents…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +108,55 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 38.14,
+      "actual_duration_s": 49.45,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T12:16:15"
+        "at": "2026-09-05T18:28:39"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — two APIs and the data model",
-      "narration_text": "The architecture has two layers. First: two distinct APIs. The REST API at api.pagerduty.com handles everything you read and manage — on-call schedules, services, escalation policies, incidents, log entries, and users. Auth is an Authorization header with the literal string Token then a space then your API key — not Bearer, not Basic. The Events v2 API at events.pagerduty.com handles the alert lifecycle — trigger, acknowledge, resolve. Auth is a routing_key field in the JSON request body. No Authorization header. Same PagerDuty account, two completely different auth models. Second: the data model is a chain. An alert fires on a service. The service routes through an escalation policy. The escalation policy targets schedules and users. That chain opens an incident. Log entries record exactly who was notified, when, and through which channel — phone, SMS, email, push — making them the authoritative answer to why someone got paged. The bundled script pd_oncall.sh calls the slash oncalls endpoint with the bracket-style user and schedule ID filters that need curl dash g to work correctly.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is pagerduty-api. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at Q..., https://api.pagerduty.com, https://events.pagerduty.com, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 55,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "PagerdutyApiAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Two hosts, two auth models. Alert → service → policy → schedule → incident. Log entries = paged-why."
+            "skillName": "pagerduty-api",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "12k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "references",
+                "size": null,
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "scripts",
+                "size": null,
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "3 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +165,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 60.5,
+      "actual_duration_s": 21.46,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T12:16:15"
+        "at": "2026-09-05T18:28:39"
       }
     },
     {
       "beat_id": "B02",
-      "act": "design — workflow and key patterns",
-      "narration_text": "Four patterns that matter. First: sanity check before anything. GET slash v1 slash users slash me with the Authorization Token header and the Accept application/json header. A 200 means your credential and host are correct. A 401 returns an empty body — you will see nothing unless you print the HTTP status code explicitly with curl dash w or dash o slash dev slash null dash w. Second: trace routing before querying incidents. GET the service to see its escalation policy, then GET the escalation policy to see which schedules and users it targets, then GET the slash oncalls endpoint with schedule ID filters to see who is currently on call. pd_oncall.sh handles the bracket URL encoding. Third: use log entries to answer why someone was paged. GET slash incidents slash ID slash log_entries shows every notification action with channel type, timestamp, and user. That is the ground truth for on-call investigations. Fourth: From header on every mutation. POST, PUT, PATCH, and DELETE all require a From header with a real email address. Omit it and the API returns 400 with a validation error. Key gotchas. Bracket-style query params like user underscore ids brackets equal need curl dash g or they get URL-encoded incorrectly. Reference objects in request bodies need a type field alongside the id — service underscore reference, escalation underscore policy underscore reference — or you get a 400 validation error. Events v2 error responses are plain text, not JSON, so a jq pipe on an error response breaks immediately. Rate limits are 960 requests per minute for REST with headers you can watch; Events v2 has no per-request rate limit header.",
+      "act": "pipeline",
+      "narration_text": "pagerduty-api is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Query and manage PagerDuty — find out who's on call; list and manage incidents; read escalation policies and schedules; trace who got paged and why. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 55,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "PagerdutyApiDesign",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Sanity check first. Trace routing before incidents. Log entries for paged-why. From: on every mutation."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +216,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 95.23,
+      "actual_duration_s": 17.71,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T12:16:15"
+        "at": "2026-09-05T18:28:39"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. The skill gets five things right. The two-API distinction is documented explicitly with different hosts, different auth schemes, and different use cases — REST for read and manage, Events v2 for trigger, ack, and resolve. Getting this wrong means calls to the right endpoint with the wrong auth scheme return silent 401s with empty bodies. The 401 empty body problem is called out directly: curl default shows nothing; the fix is curl dash w percent open brace http_code close brace or redirect output and print status separately. The bundled pd_oncall.sh script handles bracket URL encoding automatically — the most error-prone part of the slash oncalls endpoint. Rate limits are documented with specific numbers and the right headers to watch: ratelimit-remaining and ratelimit-reset for REST. The data model chain is fully explained: alert fires on service, routes through escalation policy, targets schedules and users, opens incident, log entries record notification detail. Where it bites. curl bracket parameters need dash g or dash dash globoff for any raw curl call outside the bundled script — missing it silently corrupts filters with no error message. The From header is required on all mutations — POST, PUT, PATCH, DELETE — and omitting it returns a 400 that can look like a permissions problem. Reference objects need both id and type — writing only the id field returns a 400 validation error naming the field. Events v2 error responses are plain text, not JSON — a jq pipe on error output throws a parse error and hides the actual message. The REST rate limit headers exist; Events v2 has no per-request rate limit header, so you must track event volume yourself.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. API, so there is nothing to set up. Do not try to create, mint, refresh, or validate tokens or keys. That is the constraint in pagerduty-api — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 60,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "PagerdutyApiTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Two-API split + 401 empty body + pd_oncall.sh + rate limits correct. curl -g + From: + type field bite."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "API, so there is nothing to set up. Do not try to create, mint, refresh, or validate tokens or keys",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 93.65,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 14.44,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T12:16:15"
+        "at": "2026-09-05T18:28:39"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In pagerduty-api, supporting material: Q..., https://api.pagerduty.com, https://events.pagerduty.com, api.pagerduty.com; implementation signals: code block: bash; sections: Request setup, Core operations, 1. Who's on call (scripts/pd_oncall.sh), 2. List open incidents. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Query and manage PagerDuty — find out who's on call; list and manage incidents; read escalation policies and schedules; Q...; https://api.pagerduty.com; https://events.pagerduty.com; code block: bash",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 26.3,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T18:28:39"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. pagerduty-api: two separate APIs, two hosts, two auth schemes. REST at api.pagerduty.com uses Authorization Token header — not Bearer. Events v2 at events.pagerduty.com uses routing_key in the request body. 401 returns empty body — always print HTTP status. pd_oncall.sh handles bracket URL encoding. From: header required on all mutations. Reference objects need id plus type field. Events v2 errors are plain text not JSON. Rate limits: REST 960 req/min with headers; Events v2 no per-request header. Log entries are the authoritative record for on-call investigations.",
+      "narration_text": "pagerduty-api makes Claude execute one task reliably. The SKILL.md is the spec — Query and manage PagerDuty — find out who's on call, list and manage incidents…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "pagerduty-api",
+            "artifactHeading": "Claude, Pagerduty Api.",
             "artifactLines": [
-              "Two APIs: REST api.pagerduty.com (Token header) · Events v2 events.pagerduty.com (routing_key in body)",
-              "401 = empty body — always print HTTP status with -w or -o /dev/null -w; curl default shows nothing",
-              "pd_oncall.sh handles bracket URL encoding · raw curl needs -g/--globoff for ?user_ids[]=",
-              "From: header required on all mutations (POST/PUT/PATCH/DELETE) · omit = 400 validation error",
-              "Reference objects need id + type field · Events v2 errors are plain text, not JSON",
-              "Rate limits: REST 960 req/min + headers · Events v2 ~120/min, no per-request header"
+              "Skill: pagerduty-api — Claude reads SKILL.md before acting",
+              "Query and manage PagerDuty — find out who's on call, list and manage incidents, read…",
+              "Capabilities: Query and manage PagerDuty — find out who's on call; list and manage incidents; read escalation policies and schedules",
+              "Constraint: API, so there is nothing to set up. Do not try to create, mint, refresh, or validate…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +317,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 38.53,
+      "actual_duration_s": 14.95,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T12:16:15"
+        "at": "2026-09-05T18:28:39"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Give Claude a task: find who is on call for the payments service, trigger a test incident, then acknowledge and resolve it. Watch five things. First: does it call the sanity check endpoint first — GET slash v1 slash users slash me with the Token header — before touching any data? Second: when it calls the REST API, does it use Authorization colon Token space key, or does it fall back to Bearer? Third: when it triggers the incident via Events v2, does it put the routing key in the request body, or does it mistakenly put it in an Authorization header? Fourth: does every mutation — the trigger, the acknowledge, the resolve — include a From header with a real email address? Fifth: when it queries the slash oncalls endpoint with schedule filters, does it pass curl dash g, or does it URL-encode the bracket parameters incorrectly?",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to query and manage pagerduty — find out who's on call, list and manage incidents. Read the pagerduty-api skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "PAGERDUTY-API · HANDOFF",
-            "segment": "PLUGINS",
-            "command": "Who is on call for payments? Trigger a test incident, then acknowledge and resolve it.",
-            "runningText": "Watch: sanity check? Token not Bearer? routing_key in body? From: on mutations? curl -g?",
-            "output": [
-              "Expected: sanity check first · REST = Token header · Events v2 = routing_key in body",
-              "Expected: From: on trigger + ack + resolve · curl -g for bracket params",
-              "Red flag: Bearer auth · routing_key in header · From: missing · bracket params URL-encoded"
-            ],
+            "greeting": "Your turn.",
+            "topic": "PAGERDUTY-API · ANTHROPIC SKILL",
+            "segment": "Claude, Pagerduty Api.",
+            "command": "I want to query and manage pagerduty — find out who's on call, list and manage. Read the pagerduty-api skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +354,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 42.5,
+      "actual_duration_s": 15.4,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T12:16:15"
+        "at": "2026-09-05T18:28:39"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "pagerduty-api. Liam, in for Bear.",
+      "narration_text": "Claude, Pagerduty Api. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "pagerduty-api",
+            "title": "Claude, Pagerduty Api.",
             "handle": "@NikBearBrown",
-            "subline": "pagerduty-api · Claude Plugins"
+            "subline": "pagerduty-api · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +385,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 3.03,
+      "actual_duration_s": 3.67,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T12:16:15"
+        "at": "2026-09-05T18:28:39"
       }
     }
   ]

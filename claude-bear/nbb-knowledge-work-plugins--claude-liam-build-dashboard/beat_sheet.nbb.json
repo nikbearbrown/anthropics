@@ -1,0 +1,290 @@
+{
+ "metadata": {
+  "title": "The Dashboard Isn't a Live App.",
+  "subtitle": "One File, Not a Server",
+  "slug": "knowledge-work-plugins--claude-liam-build-dashboard",
+  "topic": "BUILD DASHBOARD · ANTHROPIC SKILL",
+  "purpose": "Take the build-dashboard skill apart in the Teardown register: strip the word 'dashboard' back to the mechanism, show that the skill produces one self-contained HTML file wired from your data, and name the design choice — reliability inside a fixed set of four situations, at the expense of anything general beyond them.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/knowledge-work-plugins/youtube/claude-liam-build-dashboard/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED — CARRY-OUT.md",
+  "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A — source is skill-teardown format (anatomy -> pipeline -> constraint -> verdict), no anchor structure to preserve",
+  "build": {
+   "at": "2026-09-02T14:17:03",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Say 'Claude, build me a dashboard' and the phrase pulls hard toward a running app on a server. It isn't one. What Claude produces is one file — charts, filters, and a table already wired into a single HTML page you open in a browser. Let's take that file apart.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Can Claude build me a live dashboard app?', hesitates on 'app', corrects to 'file'",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Can Claude\nbuild me a\nlive dashboard\napp?",
+      "face": "serif",
+      "fontSize": 80,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "app",
+      "replacementWords": "file",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 46,
+      "jitter": 20,
+      "seed": "hai-build-dashboard"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('app' -> 'file') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T14:17:03"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 anatomy — a skill is a folder",
+   "narration_text": "Take a skill apart and it isn't code — it's a folder with one file inside, SKILL.md, written in plain English. Claude opens the folder before it does anything else, reads the file, then follows what it says. The design choice worth naming: put the routine on the page, not in the weights. Same file every run, same routine every run — the specification and the execution are the same thing.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A folder icon opening to reveal SKILL.md, references/, scripts/; SKILL.md highlighted"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A skill is a folder",
+     "mechanic": "A folder opens on cream to reveal three items: SKILL.md (highlighted in crimson), a references/ folder, a scripts/ folder. A caption below reads 'Claude reads it, then follows it.'",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T14:17:03"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "2 mechanism — the pipeline",
+   "narration_text": "The pipeline is three moves and nothing else: read the file, walk the steps top to bottom, return the result. No branching, no shortcuts — unless a step in the file itself says branch. Linear execution is what the design guarantees; anything cleverer would have to be written in.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Three-phase pipeline: Read SKILL.md -> Execute steps in order -> Return result"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Input in, output out",
+     "mechanic": "Three cards left to right joined by arrows: 'Read SKILL.md', 'Execute steps in order', 'Return result'. Linear, no branch points drawn.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T14:17:03"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "3 constraint — exactly four situations",
+   "narration_text": "The scope is drawn tight on purpose — four situations, no more: executive overview with KPI cards, a query result turned into a shareable report, a team's monitoring snapshot, or several charts with filters bundled into one file. Ask for anything outside that list and there's no template to answer with. They optimized for reliability inside the four at the expense of anything general beyond them.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 21,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Four situation cards: executive overview, query result, team snapshot, multi-chart filters; a boundary line with 'nothing outside this list' beyond it"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Exactly four situations",
+     "mechanic": "Four rows fill in one at a time with a checkmark: 'Executive overview — KPI cards', 'Query result — shareable report', 'Team snapshot — monitoring view', 'Multiple charts — filters, one file'. A dashed boundary line beneath the list, with a faint unlabelled field beyond it captioned 'nothing outside this list'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T14:17:03"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "4 CARRY-OUT",
+   "narration_text": "A dashboard here isn't a live app — it's one HTML file, built once from your data, with its charts, filters, and table already wired in to open and share.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A dashboard here isn't a live app — it's one HTML file, built once from your data, with its charts, filters, and table already wired in to open and share.",
+      "attribution": "",
+      "sparkLine": "One file, not a live app."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T14:17:03"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini. Take a table of data you already have — invoices, students, inventory, tickets, pick one — and ask the model to write you a SKILL.md for the dashboard you actually want. Tell it which of the four situations your case fits — executive overview, query result, team snapshot, or a filtered multi-chart file — and have it spell out three to five ordered steps: what to read from the data, which charts and filters to include, and what the final single HTML file should contain. Then have it read the file back to you and walk through exactly what it'll do, before it does it. Go deeper: after the walk-through, ask what happens when your dashboard need doesn't fit any of the four situations — is the answer a bigger skill, a different skill, or just doing it yourself without one?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42,
+   "llm_exercise": {
+    "prompt": "I want to understand how a skill file like 'build-a-dashboard' actually constrains what Claude produces. Skills in this pattern are a folder with one SKILL.md inside — a short, plain-English spec Claude reads before doing the work. The dashboard skill covers exactly four situations: executive overview with KPI cards, a query result turned into a shareable report, a team's monitoring snapshot, or several charts with filters bundled into one self-contained HTML file. Write me a SKILL.md for one specific dashboard I'd actually use. Take a table of data I already have (pick one: invoices, students, inventory, tickets) and spell out, in three to five ordered steps: what to read from the data, which of the four situations it fits, which charts and filters to include, and what the final single HTML file should contain. Then read the file back to me and walk through exactly what you'll do, in order, before you do it.",
+    "dig_deeper": "Go deeper: after the walk-through, ask what happens when your dashboard need doesn't fit any of the four situations — is the answer a bigger skill, a different skill, or just doing it yourself without one?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "BUILD DASHBOARD · ANTHROPIC SKILL",
+      "segment": "Your Turn",
+      "command": "Write me a SKILL.md for the dashboard I actually want. Take a table of data I already have, tell me which of the four situations it fits — executive overview, query result, team snapshot, or filtered multi-chart file — and spell out three to five ordered steps: what to read, which charts and filters to include, what the final single HTML file should contain. Then read the file back and walk through exactly what you'll do, before you do it.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T14:17:03"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "The Dashboard Isn't a Live App. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "The Dashboard Isn't a Live App. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T14:17:03"
+   }
+  }
+ ]
+}

@@ -1,0 +1,1226 @@
+{
+  "metadata": {
+    "slug": "cc-skill-development",
+    "title": "Claude, Skill Development.",
+    "subtitle": "Same one-line task, three ways. A skill is a folder, not a prompt — and the checker cannot see that.",
+    "topic": "CLAUDE CODE 101",
+    "skill": "cc-explainer",
+    "playlist": "Claude Code 101",
+    "tier": "03-hooks-skills-commands",
+    "audience": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "handle": "@NikBearBrown",
+    "brand": "claude",
+    "palette": "claude",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "persona": "liam",
+    "in_for_bear": true,
+    "operator": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "closing_voice": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "aspect": "16:9",
+    "fps": 30,
+    "session": "SESSION.md",
+    "build": {
+      "at": "2026-09-10T05:37:56",
+      "cut": "master",
+      "filled": 14,
+      "of": 14,
+      "slates": [],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'CCSession' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    },
+    "derived_from": "claude-code-101/03-hooks-skills-commands/claude-code--claude-liam-skill-development (the concept; the card body replaced by three real runs building the same skill three ways)",
+    "sources": [
+      "SESSION.md (three real runs; validate_skill.py; SKILL.{bare,rules,checker}.md)",
+      "anthropics/claude-code/plugins/plugin-dev/skills/skill-development/SKILL.md (the rules distilled)",
+      "info-7375-conducting-ai/chapters/02-the-solve-verify-asymmetry.md",
+      "info-7375-irreducibly-human/chapters/04-tier-4-metacognitive-and-supervisory.md"
+    ]
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN — BARE",
+      "lane": "TERMINAL",
+      "narration_text": "This is Liam, in for Bear. Four files in an empty folder, one ask: wrap this csv_shape.py script as a Claude Code skill so future sessions know when to run it. Watch what it decides on its own. It reads everything, writes one file, runs the checker. Pass. Six hundred thirty words in one file. Every rule the checker knows: satisfied. And the pattern Anthropic actually teaches: skipped.",
+      "estimated_duration_s": 24.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the bare run: four Reads, mkdir, Write, validate_skill.py PASS",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "csv-shape — bare",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Create a Claude Code skill at skills/csv-shape/SKILL.md that wraps csv_shape.py so future sessions know when to run it.",
+                "cue": 0,
+                "typeDuration": 70
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "README.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "csv_shape.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "validate_skill.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "mkdir -p skills/csv-shape",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "skills/csv-shape/SKILL.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "python3 validate_skill.py …",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "PASS — six rules satisfied."
+              },
+              {
+                "type": "text",
+                "text": "630 words. Third-person description."
+              },
+              {
+                "type": "text",
+                "text": "References csv_shape.py."
+              }
+            ],
+            "cues": [
+              0,
+              80,
+              105,
+              130,
+              155,
+              180,
+              215,
+              250,
+              270,
+              290
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Ask types"
+        },
+        {
+          "at": 0.55,
+          "event": "Write SKILL.md"
+        },
+        {
+          "at": 0.85,
+          "event": "PASS: 630 words"
+        }
+      ],
+      "actual_duration_s": 20.33,
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "THE IDEA",
+      "lane": "IDEA",
+      "narration_text": "Here's the idea of this film. You might picture a skill as a prompt Claude reads. It isn't. It's a folder Claude finds — SKILL.md at the root, references and scripts and assets beside it, loaded on demand. What lives in that folder decides whether Claude reaches for the skill at all, and whether the skill stays cheap to load or bloats every session it fires in.",
+      "estimated_duration_s": 24.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "BrutalistHesitantWriter — 'prompt' reconsidered into 'folder'",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "A skill is a prompt Claude reads.\nOne file, loaded every session.\nMore words, more context, always.\nProgressive disclosure needs a folder.",
+            "triggerWords": "prompt",
+            "replacementWords": "folder",
+            "face": "serif",
+            "fontSize": 78,
+            "align": "center",
+            "ink": "#F2F0E9",
+            "accent": "#D97757",
+            "bg": "#1F1E1B",
+            "seed": "cc-skill-development",
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 5,
+            "jitter": 20
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the idea of the film is not in any session; the writer types it and corrects the one word the film exists to fix"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Writer starts"
+        },
+        {
+          "at": 0.25,
+          "event": "'prompt' → 'folder'"
+        },
+        {
+          "at": 0.85,
+          "event": "Last line"
+        }
+      ],
+      "actual_duration_s": 19.03,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "DEFINITIONS",
+      "lane": "CARD",
+      "narration_text": "Five words before we go on. SKILL.md: the file at the root of a skill folder — YAML frontmatter, then markdown body. Frontmatter: the YAML block at the top, with name and description; always in context. Trigger phrase: a specific quoted phrase in the description that Claude matches user requests against. Progressive disclosure: metadata always loaded, SKILL.md body when triggered, references only when Claude asks. Imperative form: verb-first instructions — parse the CSV, not you should parse the CSV.",
+      "estimated_duration_s": 28.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCDefinitions — five terms",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCDefinitions",
+          "props": {
+            "title": "TERMS IN THIS FILM",
+            "terms": [
+              {
+                "term": "SKILL.md",
+                "meaning": "file at the root of a skill folder — YAML frontmatter, markdown body"
+              },
+              {
+                "term": "frontmatter",
+                "meaning": "YAML at the top of SKILL.md; name and description; always loaded"
+              },
+              {
+                "term": "trigger phrase",
+                "meaning": "quoted phrase Claude matches user requests against"
+              },
+              {
+                "term": "prog. disclosure",
+                "meaning": "metadata always; body when triggered; refs on demand"
+              },
+              {
+                "term": "imperative form",
+                "meaning": "verb-first instructions, no 'you should' or 'you can'"
+              }
+            ],
+            "startCue": 12,
+            "rowGap": 48
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "definitions for a chat-window audience"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "First term"
+        },
+        {
+          "at": 0.5,
+          "event": "Terms land"
+        },
+        {
+          "at": 0.9,
+          "event": "Hold"
+        }
+      ],
+      "actual_duration_s": 27.33,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "BARE — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "Check the bare skill by hand. One file. Six hundred thirty words. Frontmatter opens with 'this skill should be used when' — third person, four quoted trigger phrases. Body has zero second-person forms. Every rule the checker enforces, satisfied. And ls skills/csv-shape: one file, SKILL.md. No references folder. The whole skill is in the always-loaded part. Nothing hidden. Nothing deferred.",
+      "estimated_duration_s": 21.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — wc, ls, head; the always-loaded body",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "csv-shape — bare",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!wc -w skills/csv-shape/SKILL.md",
+                "cue": 0,
+                "typeDuration": 40
+              },
+              {
+                "type": "text",
+                "text": "     630 skills/csv-shape/SKILL.md"
+              },
+              {
+                "type": "prompt",
+                "text": "!ls skills/csv-shape/",
+                "cue": 0,
+                "typeDuration": 30
+              },
+              {
+                "type": "text",
+                "text": "SKILL.md"
+              },
+              {
+                "type": "prompt",
+                "text": "!head -3 skills/csv-shape/SKILL.md",
+                "cue": 0,
+                "typeDuration": 36
+              },
+              {
+                "type": "text",
+                "text": "---"
+              },
+              {
+                "type": "text",
+                "text": "name: csv-shape"
+              },
+              {
+                "type": "text",
+                "text": "description: This skill should be used …"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -Ec 'you should|you need' …",
+                "cue": 0,
+                "typeDuration": 40
+              },
+              {
+                "type": "text",
+                "text": "0"
+              }
+            ],
+            "cues": [
+              0,
+              40,
+              80,
+              105,
+              145,
+              180,
+              200,
+              220,
+              250,
+              290
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 630"
+        },
+        {
+          "at": 0.3,
+          "event": "ls → one file"
+        },
+        {
+          "at": 0.85,
+          "event": "no you-should"
+        }
+      ],
+      "actual_duration_s": 21.85,
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "THE MIDDLE CASE",
+      "lane": "TERMINAL",
+      "narration_text": "One more run I didn't plan for. Give Claude just the checker script and tell it to make the checker pass. Nothing else. It reads the checker, writes SKILL.md, runs the checker itself. Pass. Six hundred thirty-five words in one file. No references folder. The exact shape as the bare run. The letters, none of the spirit. The checker cannot see progressive disclosure — it can only count words and grep for 'you should'.",
+      "estimated_duration_s": 26.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the checker-only run: PASS but one monolith",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "csv-shape — checker only",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Create a skill at skills/csv-shape/SKILL.md that PASSES python3 validate_skill.py. Do not read any other guidance.",
+                "cue": 0,
+                "typeDuration": 70
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "validate_skill.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "skills/csv-shape/SKILL.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "python3 validate_skill.py",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "PASS: 635 words, six rules."
+              },
+              {
+                "type": "text",
+                "text": "Five quoted trigger phrases."
+              },
+              {
+                "type": "text",
+                "text": "No second-person forms."
+              },
+              {
+                "type": "prompt",
+                "text": "!ls skills/csv-shape/",
+                "cue": 0,
+                "typeDuration": 30
+              },
+              {
+                "type": "text",
+                "text": "SKILL.md"
+              }
+            ],
+            "cues": [
+              0,
+              90,
+              120,
+              170,
+              210,
+              235,
+              255,
+              290,
+              320
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Ask types"
+        },
+        {
+          "at": 0.45,
+          "event": "PASS: 635"
+        },
+        {
+          "at": 0.85,
+          "event": "ls → one file"
+        }
+      ],
+      "actual_duration_s": 19.78,
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THREE RULES — THE RUN",
+      "lane": "TERMINAL",
+      "narration_text": "Same task. Three rules added. Third-person description with quoted triggers. Imperative body. Keep SKILL.md under four hundred words — move the detail to references-slash-troubleshooting-dot-md, and reference it. Claude reads the same four files. Mkdir references. Two writes: SKILL.md, then references-slash-troubleshooting-dot-md. Runs the checker itself. Pass. Three hundred sixty-seven words.",
+      "estimated_duration_s": 17.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the rules run: two writes, checker PASS",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "csv-shape — three rules",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Same task, plus three rules: third-person description with quoted trigger phrases; imperative body; keep SKILL.md under 400 words by moving detail to references/troubleshooting.md.",
+                "cue": 0,
+                "typeDuration": 70
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "README.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "csv_shape.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "validate_skill.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "mkdir -p skills/csv-shape/references",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "skills/csv-shape/SKILL.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "references/troubleshooting.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "python3 validate_skill.py",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "PASS: 367 words, six rules."
+              }
+            ],
+            "cues": [
+              0,
+              80,
+              105,
+              130,
+              155,
+              190,
+              225,
+              260,
+              290
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Rules ask"
+        },
+        {
+          "at": 0.55,
+          "event": "Two writes"
+        },
+        {
+          "at": 0.9,
+          "event": "PASS: 367"
+        }
+      ],
+      "actual_duration_s": 21.7,
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THREE RULES — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "Check what changed. Three hundred sixty-seven words in SKILL.md — the always-loaded part. Five hundred fifty-two words in references-slash-troubleshooting — loaded only when Claude asks for it. Two files in the folder now. Same skill, half the context on every session that doesn't trip an edge case. The frontmatter still passes the checker. The body still points at csv_shape.py. What's different is the shape.",
+      "estimated_duration_s": 23.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — wc across both files; the reference pointer in SKILL.md",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "csv-shape — three rules",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!wc -w SKILL.md references/*.md",
+                "cue": 0,
+                "typeDuration": 50
+              },
+              {
+                "type": "text",
+                "text": "     367 SKILL.md"
+              },
+              {
+                "type": "text",
+                "text": "     552 references/troubleshooting.md"
+              },
+              {
+                "type": "prompt",
+                "text": "!ls skills/csv-shape/",
+                "cue": 0,
+                "typeDuration": 30
+              },
+              {
+                "type": "text",
+                "text": "SKILL.md   references"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -n references SKILL.md",
+                "cue": 0,
+                "typeDuration": 36
+              },
+              {
+                "type": "text",
+                "text": "46: consult `references/troubleshoot…"
+              }
+            ],
+            "cues": [
+              0,
+              40,
+              80,
+              120,
+              150,
+              185,
+              220
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 367 + 552"
+        },
+        {
+          "at": 0.4,
+          "event": "ls → two files"
+        },
+        {
+          "at": 0.85,
+          "event": "points at references/"
+        }
+      ],
+      "actual_duration_s": 20.74,
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "BFLOW1",
+      "act": "FOLDER SHAPE",
+      "lane": "CARD",
+      "narration_text": "Draw what got built. Skills-slash-csv-shape at the root. Inside it, four things a skill can hold — SKILL.md required, the rest optional. SKILL.md loads every time the description matches. References load only when Claude opens one. Scripts run without loading at all. Assets go into whatever Claude produces. Progressive disclosure isn't a rule you follow — it's what this folder shape does for free.",
+      "estimated_duration_s": 23.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CoworkFolderTree — the skill anatomy",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CoworkFolderTree",
+          "props": {
+            "rootName": "skills/csv-shape",
+            "folders": [
+              {
+                "name": "SKILL.md",
+                "accent": true
+              },
+              {
+                "name": "references/",
+                "accent": false
+              },
+              {
+                "name": "scripts/",
+                "accent": false
+              },
+              {
+                "name": "assets/",
+                "accent": false
+              }
+            ],
+            "caption": "SKILL.md required · everything else optional",
+            "sparkLine": "The folder is the skill.",
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BFLOW1.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "BFLOW: the folder anatomy the terminal only implied across two sessions"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Root"
+        },
+        {
+          "at": 0.5,
+          "event": "Subfolders land"
+        },
+        {
+          "at": 0.9,
+          "event": "Spark"
+        }
+      ],
+      "actual_duration_s": 20.69,
+      "audio_file": "mp3/beat-BFLOW1.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BFLOW1.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "BSHOW1",
+      "act": "THE FINISHED SKILL",
+      "lane": "SHELL",
+      "narration_text": "Read the finished skill. Description, third person, six quoted triggers — the phrases a user would actually say. Body, three hundred sixty-seven words. Line forty-six points at references-slash-troubleshooting-dot-md — a hand-off. If a session sees 'shape of this csv', it loads SKILL.md. If it hits a ragged row, it opens the reference. If it never trips an edge case, it never pays for one.",
+      "estimated_duration_s": 23.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCPlainShell — the rules skill's frontmatter and the reference pointer",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "zsh — skills/csv-shape",
+            "lines": [
+              "$ head -3 SKILL.md",
+              "---",
+              "name: csv-shape",
+              "description: This skill should be used …",
+              "$ grep -o '\"[^\"]*\"' SKILL.md | head -3",
+              "\"what's in this csv\"",
+              "\"shape of this csv\"",
+              "\"describe this csv\"",
+              "$ grep -n references SKILL.md",
+              "46: consult `references/troubleshooting.md`"
+            ],
+            "startCue": 12,
+            "lineGap": 22
+          },
+          "rendered": {
+            "out": "media/BSHOW1.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "BSHOW: the finished skill's frontmatter and reference pointer, plain-shell read"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "head -3"
+        },
+        {
+          "at": 0.5,
+          "event": "trigger phrases"
+        },
+        {
+          "at": 0.85,
+          "event": "references pointer"
+        }
+      ],
+      "actual_duration_s": 20.18,
+      "audio_file": "mp3/beat-BSHOW1.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BSHOW1.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "BCOND",
+      "act": "CONDUCT — THE BOONDOGGLE SCORE",
+      "lane": "TERMINAL",
+      "narration_text": "Who did what. Step one, mine: one-line task, wrap the helper. Claude did the bare run: six hundred thirty words, one file, checker passes. Step three, the dangerous middle: reading what Claude wrote — one file, no references — and noticing that the checker passing wasn't enough. Then the real work, mine: name the three rules a lean skill needs. Claude did the rules run: three hundred sixty-seven words plus a reference file, checker passes. Then interpretive judgment: the checker-only run passed the letters and missed the shape. Tool orchestration, zero; executive integration, zero. Honest score.",
+      "estimated_duration_s": 34.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCBoondoggleScore",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCBoondoggleScore",
+          "props": {
+            "system": "one-line task · three rules",
+            "steps": [
+              {
+                "n": 1,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "One-line task, wrap csv_shape.py"
+              },
+              {
+                "n": 2,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Bare: 630 words, one file",
+                "handoff": "validate_skill.py passes",
+                "dependsOn": [
+                  1
+                ]
+              },
+              {
+                "n": 3,
+                "phase": "C",
+                "labor": "human",
+                "capacity": "PA",
+                "text": "Read the folder: no references",
+                "dependsOn": [
+                  2
+                ]
+              },
+              {
+                "n": 4,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "Add three rules for a lean skill",
+                "dependsOn": [
+                  3
+                ]
+              },
+              {
+                "n": 5,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Rules: 367 words + references file",
+                "handoff": "checker passes; folder has two files",
+                "dependsOn": [
+                  4
+                ]
+              },
+              {
+                "n": 6,
+                "phase": "H",
+                "labor": "human",
+                "capacity": "IJ",
+                "text": "Checker-only: letters not shape",
+                "dependsOn": [
+                  2
+                ]
+              }
+            ],
+            "dangerousMiddle": 3,
+            "distribution": true,
+            "stepGap": 22
+          },
+          "rendered": {
+            "out": "media/BCOND.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Header"
+        },
+        {
+          "at": 0.4,
+          "event": "Step 3 rings"
+        },
+        {
+          "at": 0.9,
+          "event": "Tally"
+        }
+      ],
+      "actual_duration_s": 30.53,
+      "audio_file": "mp3/beat-BCOND.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BCOND.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "BHUM",
+      "act": "HUMAN — THE LEDGER",
+      "lane": "TERMINAL",
+      "narration_text": "So what was mine. I must name the trigger phrases a user would actually type — nobody else knows them. I must decide what belongs in SKILL.md and what belongs in references. I must read the folder, not just the checker output. Claude can fill a silence with one big file, and it will. It can honour rules once I name them. It should run the checker itself — and it did. It should point at its own references — and it did. What the folder holds is mine to decide.",
+      "estimated_duration_s": 32.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCHumanLedger",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCHumanLedger",
+          "props": {
+            "ai": [
+              {
+                "tier": "CAN",
+                "text": "fill silence with one big file"
+              },
+              {
+                "tier": "CAN",
+                "text": "honour rules once named"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "run the checker itself"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "point at its own references"
+              }
+            ],
+            "human": [
+              {
+                "tier": "MUST",
+                "text": "name the trigger phrases"
+              },
+              {
+                "tier": "MUST",
+                "text": "decide what belongs where"
+              },
+              {
+                "tier": "MUST",
+                "text": "read the folder, not the check"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "keep SKILL.md lean"
+              }
+            ],
+            "closing": "The checker sees letters. Folder shape is mine.",
+            "humanCue": 70,
+            "rowGap": 12
+          },
+          "rendered": {
+            "out": "media/BHUM.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "THE AI"
+        },
+        {
+          "at": 0.4,
+          "event": "THE HUMAN"
+        },
+        {
+          "at": 0.9,
+          "event": "Closing"
+        }
+      ],
+      "actual_duration_s": 22.21,
+      "audio_file": "mp3/beat-BHUM.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHUM.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "VERDICT",
+      "lane": "BOOKEND",
+      "narration_text": "Let's recap with Claude. Bare run: six hundred thirty words in one file, checker passes. Rules run: three hundred sixty-seven words in SKILL.md, five hundred fifty-two in references-slash-troubleshooting, checker passes, folder holds two files. Checker-only run passes too — six hundred thirty-five words, one file, no references. Same trap. What would prove this reel wrong: a bare run that writes a references folder on its own.",
+      "estimated_duration_s": 23.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeVerdictArtifact",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "verdict.md",
+            "artifactHeading": "Claude, Skill Development.",
+            "artifactLines": [
+              "Bare: 630 words, one file. Checker passes.",
+              "Rules: 367 words + references/troubleshooting.md 552 words. Two-file folder.",
+              "Checker-only passes too — 635 words, one file, no references. Same trap.",
+              "FALSIFIABLE: a bare run that writes a references/ folder on its own."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Artifact"
+        },
+        {
+          "at": 0.25,
+          "event": "Lines"
+        },
+        {
+          "at": 0.9,
+          "event": "Falsifiable"
+        }
+      ],
+      "lead_silence_s": 0.5,
+      "actual_duration_s": 22.08,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "YOUR TURN",
+      "lane": "BOOKEND",
+      "narration_text": "Your turn. Before your next Claude Code skill, open Claude Code and paste this: For a skill I'll describe in one sentence, ask me what a user would actually type to trigger it. Draft the frontmatter with those phrases in quotes. Then propose which sections belong in SKILL.md and which belong in references-slash-something-dot-md. Don't write the skill yet.",
+      "estimated_duration_s": 20.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeComposerAsk",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "For a skill I'll describe in one sentence, ask me what a user would actually type to trigger it. Draft the frontmatter with those phrases in quotes. Then propose which sections belong in SKILL.md and which in references/. Don't write the skill yet.",
+            "segment": "Claude, Skill Development.",
+            "topic": "YOUR TURN · CLAUDE CODE 101",
+            "runningText": "paste this into Claude Code…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Composer"
+        },
+        {
+          "at": 0.6,
+          "event": "Send arms"
+        }
+      ],
+      "actual_duration_s": 18.01,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "OUTRO",
+      "lane": "BOOKEND",
+      "narration_text": "Claude, Skill Development. Liam, in for Bear.",
+      "estimated_duration_s": 3.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeTitleOutro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Claude, Skill Development.",
+            "slug": "cc-skill-development",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Title"
+        },
+        {
+          "at": 0.35,
+          "event": "@NikBearBrown"
+        },
+        {
+          "at": 0.55,
+          "event": "Mascot"
+        }
+      ],
+      "actual_duration_s": 3.29,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T05:37:56"
+      }
+    }
+  ]
+}

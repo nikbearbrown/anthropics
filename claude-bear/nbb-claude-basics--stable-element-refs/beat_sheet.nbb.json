@@ -1,0 +1,322 @@
+{
+ "metadata": {
+  "title": "Stable Reference IDs Survive Viewport Chaos.",
+  "slug": "claude-basics--stable-element-refs",
+  "topic": "BROWSER AUTOMATION · COMPUTER USE",
+  "purpose": "Take apart the click-by-pixel case: explain why a coordinate is a fact about the viewport instead of a property of the button, evaluate the stable-ref fix that bolts identity onto the DOM node itself, and name what it doesn't cover (elements added after the stamping pass). Land the carry-out that a pixel coordinate describes a moment in one viewport, a stable ref describes the button itself, and that's why the ref survives a resize and the coordinate doesn't.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/youtube/claude-basics/stable-element-refs/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B04 (Confirm Order button at 960,540 on a 1920x1080 window; resized to 1440x900 it moves to 720,405 but its ref, confirm_order_1, never changes)",
+  "build": {
+   "at": "2026-08-28T09:54:07",
+   "cut": "master",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's what's actually happening. A pixel coordinate is a fact about the viewport, not a property of the button — resize the window and the button moves, the coordinate stays put, the click lands on nothing. So what handle can you give Claude that's attached to the element itself?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Pixel position is a stable way to find a button, right?', hesitates on 'stable', corrects to 'fragile', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Pixel position is a\nstable way to find\na button, right?",
+      "face": "serif",
+      "fontSize": 84,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "stable",
+      "replacementWords": "fragile",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-stable-element-refs"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('stable' -> 'fragile') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T09:54:07"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / wrong guess",
+   "narration_text": "Clicking by pixel coordinate ties a command to one spot in one viewport. Resize the window, collapse a sidebar, bump the font up, and the page reflows — CSS was designed to be responsive, so every element shifts to fit the new geometry. The coordinate doesn't shift with it. The click lands on empty space. They optimized this path for simplicity — one integer pair, no DOM lookup — at the expense of anything that touches the layout after the coordinate is captured.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A browser frame resizing; the same raw pixel plotted after the resize misses the button, marked with a cross"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Same pixel, moved button",
+     "mechanic": "A browser-frame outline labelled '1920 × 1080' with a button rectangle and a terracotta dot marking a click coordinate. The frame narrows to '1440 × 900' — the button rectangle shifts left and up. The same dot, carried straight across at its old (x, y), now sits off the button, marked with a cross.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T09:54:07"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "setup - ANCHOR PLANTED",
+   "narration_text": "Here's the concrete case. A 'Confirm Order' button sits at 960, 540 on a 1920 by 1080 window — dead center of the viewport. Resize down to 1440 by 900, the layout engine reflows, and that same button is now at 720, 405. The old coordinate lands on empty page. Same button, same DOM node, different pixel — because the pixel was a property of the frame, not the button. This is the anchor: the naked cost of picking a handle that lives outside the thing it's meant to identify.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR - browser frame at 1920x1080 with the button at (960,540); resized to 1440x900, the button now at (720,405), old coordinate crossed out"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR - Confirm Order, before and after",
+     "mechanic": "THE ANCHOR. Left: browser frame labelled '1920 × 1080' with a 'Confirm Order' button rectangle, a terracotta dot at its center captioned '(960, 540)'. Right: the same frame resized, labelled '1440 × 900', the button rectangle now smaller and shifted, a new dot at its center captioned '(720, 405)'. The old coordinate '(960, 540)' reappears faintly on the right frame, off the button, with a cross through it. THIS EXACT PAIR OF FRAMES RETURNS AT B04.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "SERB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T09:54:07"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "3 mechanism",
+   "narration_text": "The fix runs before Claude ever looks at the page. A script walks every clickable element in the DOM and stamps it with a stable reference id — 'confirm_order_1' — written as a data attribute bolted straight onto that node. Claude then targets the ref, not the pixel. The design choice is to bake identity into the page itself instead of asking Claude to guess it from geometry or fuzzy text. The trade-off: it's an opt-in pre-pass. Elements the script already saw get a handle; anything added later has to be stamped again.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Code card: element.setAttribute assigns the ref; 'Claude targets: ref=confirm_order_1'"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Stamped before Claude looks",
+     "mechanic": "A code line builds in ink mono on cream: 'element.setAttribute(\"data-ref\", \"confirm_order_1\")'. Beneath it, a second line in terracotta: 'Claude targets: ref=\"confirm_order_1\"'. A small caption bottom-right: 'runs once, before the page is read'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T09:54:07"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "4 ANCHOR PAYOFF - both directions",
+   "narration_text": "Back to the button. After the resize its pixel moved to 720, 405, but its ref, confirm_order_1, never changed — the attribute is glued to the element, not the frame. Claude targets the ref, the browser finds the node, the click lands every time. That's the whole payoff, and here's what it doesn't cover. Anything added to the page after the stamping pass — a modal that opens on click, an async widget, a dynamically rendered list item — has no ref yet, and no handle for Claude to grab. This works if you can pre-walk the DOM before Claude looks; it fails, quietly, if the interesting elements only appear at runtime.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS - same browser frame pair; the ref label stays glued to the button through the resize; a dashed, struck-through element beside it captions 'added after load - no ref yet'"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS - ref stays, click lands",
+     "mechanic": "THE B02 FRAME PAIR RETURNS, identical. This time both the '(960, 540)' and '(720, 405)' dots carry a terracotta label 'ref=confirm_order_1' glued to the button in both frames. A check mark and 'YES' appear beside the resized frame. Off to the side, a third element rectangle appears with a dashed outline and a strike-through, captioned 'added after load — no ref yet' in ink — the caveat, not the main case.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "SERB04Scene"
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T09:54:07"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A pixel coordinate describes a moment in one viewport; a stable ref describes the button itself — that's why the ref survives a resize and the coordinate doesn't.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A pixel coordinate describes a moment in one viewport; a stable ref describes the button itself — that's why the ref survives a resize and the coordinate doesn't.",
+      "attribution": "",
+      "sparkLine": "A moment vs. the thing itself."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T09:54:07"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. I'm building a browser automation with Claude that clicks by pixel coordinate, and every window resize breaks it — the button moves, my saved coordinate doesn't. (1) Explain how the DOM assigns identity to elements: tag, id, XPath, ARIA role, text content — which of those are stable across a re-render and which are not, and why. (2) Write a Playwright snippet that walks every clickable element on a page and stamps it with a data-ref attribute like 'confirm_order_1', so I can target by name instead of by pixel. (3) Handle the edge cases: duplicate ids, elements added after the initial pass, elements inside iframes and shadow DOM. Go deeper: ask the same model what happens when the page uses React or another framework that re-renders the DOM on state change — does your stamped data-ref survive a re-render, or does the framework wipe it, and where in the component lifecycle should the stamping actually live so the ref survives updates?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 48,
+   "llm_exercise": {
+    "prompt": "I'm building a browser automation with Claude that clicks by pixel coordinate, and every window resize breaks it — the button moves, my saved coordinate doesn't. (1) Explain how the DOM assigns identity to elements: tag, id, XPath, ARIA role, text content — which of those are stable across a re-render and which are not, and why. (2) Write a Playwright snippet that walks every clickable element on a page and stamps it with a data-ref attribute like 'confirm_order_1', so I can target by name instead of by pixel. (3) Handle the edge cases: duplicate ids, elements added after the initial pass, elements inside iframes and shadow DOM.",
+    "dig_deeper": "Go deeper: ask the same model what happens when the page uses React or another framework that re-renders the DOM on state change — does your stamped data-ref survive a re-render, or does the framework wipe it, and where in the component lifecycle should the stamping actually live so the ref survives updates?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "BROWSER AUTOMATION · COMPUTER USE",
+      "segment": "A Moment vs. the Thing Itself.",
+      "command": "I'm building a browser automation with Claude that clicks by pixel coordinate, and every window resize breaks it — the button moves, my saved coordinate doesn't. (1) Explain how the DOM assigns identity to elements: tag, id, XPath, ARIA role, text content — which of those are stable across a re-render and which are not. (2) Write a Playwright snippet that walks every clickable element on a page and stamps it with a data-ref attribute like 'confirm_order_1', so I can target by name instead of by pixel. (3) Handle the edge cases: duplicate ids, elements added after the initial pass, elements inside iframes and shadow DOM.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T09:54:07"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Stable Reference IDs Survive Viewport Chaos. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Stable Reference IDs Survive Viewport Chaos. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T09:54:07"
+   }
+  }
+ ]
+}

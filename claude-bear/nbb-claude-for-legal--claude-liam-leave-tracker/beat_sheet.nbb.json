@@ -1,0 +1,316 @@
+{
+ "metadata": {
+  "title": "Claude, Leave Tracker.",
+  "slug": "claude-for-legal--claude-liam-leave-tracker",
+  "topic": "CLAUDE BASICS · LEAVE-TRACKER SKILL",
+  "purpose": "Answer one real question in the Teardown register: when Claude runs the leave-tracker skill, is it approving your leave or running a fixed policy check? Lands the carry-out that Claude runs the written list — accrual, eligibility, blackout — and hands the approval decision back to you.",
+  "skill": "hai-simple",
+  "register": "Teardown",
+  "brand": "hai-fellows",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "in_for_bear": true,
+  "clock": "narration",
+  "bookend_exempt": [
+   "cold-open"
+  ],
+  "one_flag": "N/A — every claim in this reel is a confirmed, present-tense description of what the skill does, not an inference",
+  "gate_c": "SIGNED — CARRY-OUT.md",
+  "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "redo_of": "anthropics/claude-for-legal/youtube/claude-liam-leave-tracker/beat_sheet.json (Teardown, 7 beats, narration carries unfilled '>' template placeholders and a source_skill path that does not exist on this machine — reconstructed generically per QUESTION.md)",
+  "build": {
+   "at": "2026-08-30T13:04:06",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "The obvious guess is that Claude approves your leave request — the way a manager would. Wrong branch. It's running a written policy check. So what's actually on that check?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types the naive framing, hesitates on 'APPROVE', corrects to 'check', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Can Claude APPROVE\nmy leave\nrequest?",
+      "face": "serif",
+      "fontSize": 80,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "APPROVE",
+      "replacementWords": "check",
+      "mistakeRate": 8,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 50,
+      "jitter": 28,
+      "seed": "hai-leave-tracker"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md. Writer types the newcomer's wrong-guess word 'APPROVE' (implying Claude issues a final leave decision), hesitates, corrects to 'check' -> lands 'Can Claude check my leave request?'. The wrong guess is picked up directly by B03's stated scope (a policy check, not an approval). Narration is 31 words + lead_silence_s 0.8, giving the typing a >=9s window (TIMING LAW).",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T13:04:06"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "anatomy",
+   "narration_text": "A Skill isn't a plugin or an API — it's a folder. This one's called leave-tracker, and inside it is a single file, SKILL.md, written in plain English. That file is the whole program: the rules, the order, what to flag. The choice is deliberate — text you can read is text you can audit. No hidden logic sitting where the reviewer can't see it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "SkillTeardownAnatomy",
+     "props": {
+      "skillName": "leave-tracker",
+      "eyebrow": "SKILL · ANATOMY",
+      "title": "A skill is a folder.",
+      "files": [
+       {
+        "indent": 1,
+        "icon": "📄",
+        "name": "SKILL.md",
+        "size": "1k",
+        "accent": true
+       }
+      ],
+      "calloutText": "The SKILL.md is the instruction set.",
+      "calloutSub": "1 file total.",
+      "sparkLine": "The file is the program."
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T13:04:06"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "pipeline",
+   "narration_text": "The pipeline lives in a Steps section — a numbered list Claude runs top to bottom. Read the file, apply each step to your request, return the result. No branching, no jumping ahead, unless a step itself says otherwise. What that buys you is repeatability — the same request fed in twice goes through the same list, and the list can't quietly change its mind between runs.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "SkillTeardownPipeline",
+     "props": {
+      "eyebrow": "SKILL · PIPELINE",
+      "title": "How the skill works.",
+      "inputLabel": "YOUR REQUEST",
+      "outputLabel": "LEAVE REPORT",
+      "phases": [
+       {
+        "label": "Read SKILL.md",
+        "desc": "load the instruction set",
+        "accent": true
+       },
+       {
+        "label": "Execute",
+        "desc": "run each step in order",
+        "accent": false
+       },
+       {
+        "label": "Return output",
+        "desc": "deliver the leave report",
+        "accent": false
+       }
+      ],
+      "footerNote": "Linear execution.",
+      "sparkLine": "Input in. Leave report out."
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T13:04:06"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "3 mechanism",
+   "narration_text": "Here's what's actually happening on each item. Check the requested or logged absence against three things the file spells out — the accrual rules, the eligibility windows, and the blackout dates — and flag anything that doesn't line up. The design choice is to stay inside the written policy and only the written policy. What that costs you is judgment calls the policy didn't foresee. What you get is the same shape of report every time, from a check you can read line by line before you trust it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "SkillTeardownMechanism",
+     "props": {
+      "eyebrow": "SKILL · MECHANISM",
+      "heading": "The interesting constraint.",
+      "body": "Check the absence against the policy's accrual and eligibility rules; flag mismatches.",
+      "sparkLine": "Same policy, same report, every time."
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T13:04:06"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Claude isn't approving the leave — it's running a written list, one item at a time, checking your request against the accrual, the eligibility window, and the blackout dates. Same policy in, same report out, every time. Approving is still yours.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Claude isn't approving the leave — it's running a written list, one item at a time. Same policy in, same report out. Approving is still yours.",
+      "attribution": "",
+      "sparkLine": "Runs the list. Approving is still yours.",
+      "citation": ""
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T13:04:06"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I want to know whether a leave request will pass my company's PTO policy. Here's the request — paste the dates, the type of leave, and my remaining balance. Here's the policy — paste the accrual rules, the eligibility windows, and the blackout dates from the handbook. Walk me through it step by step. Does my accrued balance cover the requested days? Am I inside the eligibility window? Do any of the requested dates fall on a blackout date? If anything doesn't fit, tell me exactly which rule it fails and why. Show your reasoning; don't just give me a yes or no. Go deeper: ask the same model to draft three edge-case leave requests that look valid on paper but each fail a different rule — accrual, eligibility, or blackout — and name the tell in each one.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 60,
+   "llm_exercise": {
+    "prompt": "I want to know whether a leave request will pass my company's PTO policy. Here's the request: [paste dates, type of leave, remaining balance]. Here's the policy: [paste the accrual rules, eligibility windows, and blackout dates from your handbook]. Walk me through it step by step: (1) does my accrued balance cover the requested days? (2) am I inside the eligibility window? (3) do any of the requested dates fall on a blackout date? (4) if anything doesn't fit, tell me exactly which rule it fails and why. Show your reasoning; don't just give me a yes or no.",
+    "dig_deeper": "Go deeper: ask the same model to draft three edge-case leave requests that look valid on paper but each fail a different rule — accrual, eligibility, or blackout — and name the tell in each one."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "LEAVE-TRACKER · ANTHROPIC SKILL",
+      "segment": "Claude, Leave Tracker.",
+      "command": "I want to know whether a leave request will pass my company's PTO policy. Here's the request: [dates, type of leave, remaining balance]. Here's the policy: [accrual rules, eligibility windows, blackout dates]. Walk me through it step by step: (1) does my balance cover the requested days? (2) am I inside the eligibility window? (3) do any dates fall on a blackout? (4) if anything fails, name the exact rule and why. Show your reasoning; don't just give me a yes or no.",
+      "runningText": "paste this into Claude…",
+      "output": [],
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T13:04:06"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Leave Tracker — policy in, report out. Approving is still yours. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Leave Tracker — policy in, report out. Approving is still yours. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T13:04:06"
+   }
+  }
+ ]
+}

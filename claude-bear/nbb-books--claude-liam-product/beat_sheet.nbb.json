@@ -1,0 +1,1003 @@
+{
+ "metadata": {
+  "title": "Claude, Shipping",
+  "subtitle": "The Product Plugin",
+  "slug": "books--claude-liam-product",
+  "topic": "CLAUDE · COWORK PLUGINS",
+  "purpose": "Answer one real question in the Teardown register: what does the product plugin actually do, and who makes the final call? Take the plugin apart, explain the machinery — synthesis, spec, stories, ranking, notes, decision docs — name the design choices, and land the carry-out that it ranks, doesn't decide, so the pick at the desk stays yours.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/books/claude-cowork-plugins/youtube/claude-liam-product/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "NB11 -> NB18 (ten-ideas/few-hours constraint planted, resolved when the plugin narrows the ten but the human still picks)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md Register audit)",
+  "build": {
+   "at": "2026-08-28T17:51:51",
+   "cut": "master",
+   "filled": 23,
+   "of": 23,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. Here's the assumption: the product plugin decides what to build next for you. It doesn't — it ranks, and you decide. That's a design choice, and it changes how you use the whole thing. So what's the machinery actually doing?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'The product plugin decides what to build next for you.', hesitates on 'decides', corrects to 'narrows', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "The product plugin\ndecides what to build\nnext for you.\nWhat does it actually do?",
+      "face": "serif",
+      "fontSize": 68,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "decides",
+      "replacementWords": "narrows",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 12,
+      "charMs": 46,
+      "jitter": 26,
+      "seed": "hai-product-plugin"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('decides' -> 'narrows') lands on screen.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "1 stakes",
+   "narration_text": "Here's what's actually missing when you build solo. A product manager isn't a title — it's a job: someone asks who this is for, what problem it solves, and what you're deliberately not building. On a team, that job runs whether you want it or not. Solo, nobody's asking. The plugin is that discipline, installed — the questions, not a person to ask them.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14.5,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE MISSING PRODUCT MANAGER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE MISSING PRODUCT MANAGER",
+     "chips": [
+      "A TEAM HAS ONE",
+      "SOLO, YOU DON'T"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the discipline, installed",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "2 wrong-guess",
+   "narration_text": "Picture the solo builder: ten ideas on sticky notes, a few hours a week, and a steady pull toward whatever's most fun to build. That pull isn't laziness — it's how brains optimize for enjoyment when nobody's grading you on impact. The trade-off is real: fun builds momentum, but momentum toward the wrong feature is still the wrong direction. Discipline points the other way, and the plugin keeps pulling you back.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18.5,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FUN ISN'T THE SAME AS IMPORTANT",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FUN ISN'T THE SAME AS IMPORTANT",
+     "chips": [
+      "THE FUN IDEA",
+      "THE RIGHT IDEA"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [
+      0
+     ],
+     "caption": "discipline pulls you back",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's how it works: as the structured thinking partner you don't have alone. It's optimized against agreement — the design choice is refusal, not helpfulness. It pushes back, asks the awkward question, makes you justify the plan before you sink a week into building it. That friction is the whole product.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12.5,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "IT PUSHES BACK",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "IT PUSHES BACK",
+     "chips": [
+      "YOUR PLAN",
+      "THE AWKWARD QUESTION",
+      "JUSTIFY IT FIRST"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "a thinking partner, not a yes-man",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB04",
+   "act": "3 mechanism",
+   "narration_text": "Four questions, every time. Who is this for? What problem does it solve? How will you know it's working? What are you not building — and why? Miss any one and you're building blind on that axis. The plugin's job is to make sure none get skipped.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11.5,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FOUR HARD QUESTIONS",
+    "media": "manim/NB04.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FOUR HARD QUESTIONS",
+     "chips": [
+      "WHO'S IT FOR?",
+      "WHAT PROBLEM?",
+      "HOW MEASURE IT?",
+      "WHAT NOT TO BUILD?"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "what a good PM always asks",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB04Scene"
+   },
+   "audio_file": "mp3/beat-NB04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB05",
+   "act": "3 mechanism",
+   "narration_text": "The discipline lands as five documents you can actually act on: feature specs, user stories, feedback synthesis, a roadmap, release notes. They chose artifacts over conversations for a reason — a doc survives the week; a chat doesn't. This is paperwork with a job: keeping you from building blind.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FIVE THINGS IT SHIPS",
+    "media": "manim/NB05.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FIVE THINGS IT SHIPS",
+     "chips": [
+      "SPECS",
+      "USER STORIES",
+      "SYNTHESIS",
+      "ROADMAP",
+      "RELEASE NOTES"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "not paperwork for its own sake",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB05Scene"
+   },
+   "audio_file": "mp3/beat-NB05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB05.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB06",
+   "act": "3 mechanism",
+   "narration_text": "Watch the machinery. Feed it a rough idea — add booking to my site, people pick a slot and get a confirmation — and it returns a real spec: what the feature does, who it's for, the user flow, the edge cases, how you'll know it's done. The transformation is loose intent to structured artifact — the shape you need before you touch code.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "IDEA BECOMES SPEC",
+    "media": "manim/NB06.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "IDEA BECOMES SPEC",
+     "chips": [
+      "A ROUGH IDEA",
+      "USER FLOW + EDGE CASES",
+      "A REAL SPEC"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "structure, from a loose idea",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB06Scene"
+   },
+   "audio_file": "mp3/beat-NB06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB06.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB07",
+   "act": "3 mechanism",
+   "narration_text": "Here's what the spec actually saves you from. Edge cases — two people booking the same slot — get forced into the open before code, when the fix is a decision, not a rewrite. Discover it halfway through implementation and you're rebuilding what you already built. Pay the thinking cost early, or pay the debugging cost late.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13.5,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "DECIDE BEFORE YOU CODE",
+    "media": "manim/NB07.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "DECIDE BEFORE YOU CODE",
+     "chips": [
+      "TWO USERS, SAME SLOT?",
+      "EMAIL FAILS?",
+      "RESOLVED — BEFORE CODE"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "the edge case, forced into the open",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB07Scene"
+   },
+   "audio_file": "mp3/beat-NB07.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB07.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB08",
+   "act": "3 mechanism",
+   "narration_text": "Then it breaks the feature down. 'I want users to book calls' fans out into small, testable pieces: see the open slots, pick one, enter details, get a confirmation, reschedule if needed. Each one buildable in a single focused session. The trade-off is decomposition overhead — but a single-session unit ships; a week-long unit slips.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "ONE WANT, MANY STORIES",
+    "media": "manim/NB08.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "ONE WANT, MANY STORIES",
+     "chips": [
+      "I WANT BOOKING",
+      "SEE SLOTS",
+      "PICK ONE",
+      "CONFIRM",
+      "RESCHEDULE"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "each one buildable in a sitting",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB08Scene"
+   },
+   "audio_file": "mp3/beat-NB08.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB08.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB09",
+   "act": "3 mechanism",
+   "narration_text": "Written out, it reads like a checklist you can execute against — one story per line, each with a clear definition of done. You build story by story, testing as you go, instead of shipping the whole thing at once. What you get: known-good state after every step. What you lose: the drama of a big reveal.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "BUILD STORY BY STORY",
+    "media": "manim/NB09.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "BUILD STORY BY STORY",
+     "chips": [
+      "ONE STORY",
+      "TEST IT",
+      "NEXT STORY"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "a checklist you can execute",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB09Scene"
+   },
+   "audio_file": "mp3/beat-NB09.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB09.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB10",
+   "act": "3 mechanism",
+   "narration_text": "And the stories stack. Ship one, confirm it works, move to the next — the feature accretes from small wins instead of arriving as one risky big-bang launch that either works or doesn't. This works if you value being able to stop halfway with something shippable; it fails if you need a coordinated all-or-nothing launch.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SMALL WINS ACCRUE",
+    "media": "manim/NB10.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SMALL WINS ACCRUE",
+     "chips": [
+      "SHIP ONE",
+      "CONFIRM IT WORKS",
+      "SHIP THE NEXT"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "not one big-bang launch",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB10Scene"
+   },
+   "audio_file": "mp3/beat-NB10.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB10.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB11",
+   "act": "4 anchor planted",
+   "narration_text": "Here's the real bottleneck. Ten features you could build, a fixed slice of hours a month to build them. The math is unforgiving: you cannot do all ten. Something has to be first, something has to wait, and something should probably never get built at all. Everything else — the plugin, the specs, the stories — is scaffolding around that one constraint.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — TEN IDEAS, FEW HOURS",
+    "media": "manim/NB11.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — TEN IDEAS, FEW HOURS",
+     "chips": [
+      "10 FEATURES",
+      "YOUR HOURS THIS MONTH"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "something has to wait",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB11Scene"
+   },
+   "audio_file": "mp3/beat-NB11.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB11.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB12",
+   "act": "3 mechanism",
+   "narration_text": "First it synthesizes. Point it at three months of feedback — emails, surveys, support tickets — and it reads all of it, then ranks the patterns by how often they come up and how much they hurt. They optimized for reading everything over reading the loudest — the small teams that skip this step aren't lazy, they just don't have the hours.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FEEDBACK, RANKED",
+    "media": "manim/NB12.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FEEDBACK, RANKED",
+     "chips": [
+      "RAW FEEDBACK",
+      "FREQUENCY",
+      "SEVERITY",
+      "RANKED PATTERNS"
+     ],
+     "arrows": true,
+     "accent": [
+      3
+     ],
+     "strike": [],
+     "caption": "the analysis small teams skip",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB12Scene"
+   },
+   "audio_file": "mp3/beat-NB12.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB12.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB13",
+   "act": "3 mechanism",
+   "narration_text": "Here's the trap. A folder of feedback is a wall of voices, and the voice that shouts loudest always feels like the most urgent thing to fix. That's a bias, not a signal. Volume is a proxy for how upset one person is; frequency is a proxy for how many are affected. Confuse the two and you build for the shout.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13.5,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A WALL OF VOICES",
+    "media": "manim/NB13.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A WALL OF VOICES",
+     "chips": [
+      "LOUDEST VOICE",
+      "= MOST URGENT?"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the natural — and wrong — read",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB13Scene"
+   },
+   "audio_file": "mp3/beat-NB13.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB13.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB14",
+   "act": "3 mechanism",
+   "narration_text": "The plugin counts instead of listening for volume. Optimize for loud and you build for a handful of angry users; optimize for common and you build for the many who never wrote in. The quiet pattern — a dozen users sharing the same friction — is the one you'd miss straining to hear the shout. Counting isn't more scientific; it's just a different priority.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17.5,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "COMMON BEATS LOUD",
+    "media": "manim/NB14.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "COMMON BEATS LOUD",
+     "chips": [
+      "LOUDEST VOICE",
+      "MOST COMMON NEED"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [
+      0
+     ],
+     "caption": "count, don't just listen for volume",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB14Scene"
+   },
+   "audio_file": "mp3/beat-NB14.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB14.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB15",
+   "act": "3 mechanism",
+   "narration_text": "Release notes. You wrote 'optimized the rendering pipeline' — nobody outside your own head cares about that sentence. It rewrites it from their side: your dashboard now loads in under a second. Same change, different frame — and a quiet bug fix suddenly reads as 'they actually heard me.' The design choice is describe outcomes, not implementation.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THEIR SIDE, NOT YOURS",
+    "media": "manim/NB15.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THEIR SIDE, NOT YOURS",
+     "chips": [
+      "OPTIMIZED THE PIPELINE",
+      "LOADS UNDER A SECOND"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [
+      0
+     ],
+     "caption": "a reason to notice you shipped",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB15Scene"
+   },
+   "audio_file": "mp3/beat-NB15.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB15.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB16",
+   "act": "3 mechanism",
+   "narration_text": "Then document the decision itself. Building your own login system, or leaning on an outside service? It lays out the trade-offs — cost, complexity, flexibility, upkeep — in one clean comparison, and you make the call. The value shows up six months later, when you wonder why you went this way, and the reasoning is written down instead of a mystery to reverse-engineer from the code.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "WRITE DOWN THE WHY",
+    "media": "manim/NB16.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "WRITE DOWN THE WHY",
+     "chips": [
+      "COST",
+      "COMPLEXITY",
+      "FLEXIBILITY",
+      "UPKEEP"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "a gift to future-you",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB16Scene"
+   },
+   "audio_file": "mp3/beat-NB16.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB16.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB17",
+   "act": "3 mechanism",
+   "narration_text": "Be precise about the machinery. It gathers the feedback, structures the spec, ranks the options, drafts the notes. Four kinds of grunt work — the parts that consume hours and don't feel like building. Automating grunt work is where the honest gains are; the parts that felt like thinking still require thinking.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "IT DOES THE GRUNT WORK",
+    "media": "manim/NB17.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "IT DOES THE GRUNT WORK",
+     "chips": [
+      "GATHER",
+      "STRUCTURE",
+      "RANK",
+      "DRAFT"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "done fast, done well",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB17Scene"
+   },
+   "audio_file": "mp3/beat-NB17.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB17.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB18",
+   "act": "4 anchor payoff",
+   "narration_text": "But ranking is not deciding. It can tell you this feature scores higher on impact and feasibility — it cannot know your bet, your users, or your gut about where the product is going. Of the ten ideas from before, it narrows the field; the pick is still yours. That's not a limitation to route around — it's the design.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "RANKS, DOESN'T DECIDE",
+    "media": "manim/NB18.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "RANKS, DOESN'T DECIDE",
+     "chips": [
+      "MANY OPTIONS",
+      "A RANKED SHORTLIST",
+      "YOUR CALL"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "it narrows; it never picks",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB18Scene"
+   },
+   "audio_file": "mp3/beat-NB18.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB18.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "NB19",
+   "act": "5 both directions",
+   "narration_text": "So it hands you a shortlist, not a verdict. Prioritization is a judgment call, and the human at the desk still makes it. That caveat isn't fine print — it's the whole point. A tool that decided for you would also own the outcome; this one leaves both with you.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12.5,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "YOU KEEP THE CALL",
+    "media": "manim/NB19.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "YOU KEEP THE CALL",
+     "chips": [
+      "A VERDICT",
+      "A SHORTLIST"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [
+      0
+     ],
+     "caption": "the human at the desk decides",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB19Scene"
+   },
+   "audio_file": "mp3/beat-NB19.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB19.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "The product plugin ranks — it doesn't decide. It turns scattered ideas and feedback into a shortlist of what to build next, and leaves the call at the desk to you.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "The product plugin ranks — it doesn't decide. It turns scattered ideas and feedback into a shortlist of what to build next, and leaves the call at the desk to you.",
+      "attribution": "",
+      "sparkLine": "You keep the call."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T17:51:51"
+   }
+  },
+  {
+   "beat_id": "B_LLM",
+   "act": "LLM EXERCISE",
+   "narration_text": "Here's a prompt you can paste right now into Claude, ChatGPT, or Gemini — no product plugin required — that runs the four-question product-manager pass on your own list. Give it your ideas, your hours, and who your users are. It comes back with each one framed, a ranking by impact-per-hour, and the one hard question you probably haven't answered yet. Then push back on its ranking; the argument is where the thinking happens. Go deeper: pick the idea it flagged as a distraction and argue the other side — what version of you would be right to build that one first?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 34,
+   "llm_exercise": {
+    "prompt": "I build software solo and I have more product ideas than hours to build them. Features I'm considering for the next quarter: [paste 5–15 ideas, one line each]. Hours a month I can actually spend building: [N]. My users are [who they are, and the one job they hire the product to do]. Play the product manager I don't have. (1) For each idea, name who it serves and what problem it solves in one sentence. (2) Rank all of them by impact-per-hour — mark the top three, the middle bucket, and the ones that are distractions dressed up as good ideas. (3) For the top three, ask me the one hard question I probably haven't answered — the one that would kill or reshape the feature if I got it wrong. Push back on my framing where you see it.",
+    "dig_deeper": "Go deeper: pick the idea you flagged as 'a distraction dressed up as a good idea' and argue the other side — what version of me would be right to build that one first?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Paste-ready LLM prompt in the Claude composer — the product-manager pass on your own list",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE · COWORK PLUGINS",
+      "segment": "Claude, Shipping",
+      "command": "I build software solo and have more product ideas than hours. Features I'm considering next quarter: [paste 5–15 ideas]. Hours a month I can spend building: [N]. My users are [who they are + the one job they hire the product to do]. Play the product manager I don't have: (1) for each idea, name who it serves and what problem it solves in one sentence; (2) rank all of them by impact-per-hour — top three, middle bucket, and the distractions dressed up as good ideas; (3) for the top three, ask me the one hard question I probably haven't answered — the one that would kill or reshape the feature if I got it wrong. Push back on my framing where you see it.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/B_LLM.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B_LLM.mp3",
+   "build": {
+    "status": "PENDING",
+    "src": "media/B_LLM.mp4",
+    "filled_by": "",
+    "at": ""
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "This was the NikBearBrown cut of Claude, Shipping — the product plugin, taken apart. Liam, in for Bear. Full toolkit at brutalist.art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Shipping — the product plugin, taken apart. Liam, in for Bear. brutalist.art",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "PENDING",
+    "src": "media/BOUT.mp4",
+    "filled_by": "",
+    "at": ""
+   }
+  }
+ ]
+}

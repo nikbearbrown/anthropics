@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "Persisting Progress Across Context Windows.",
+  "slug": "claude-quickstarts--feature-list-checkpoint-persistence",
+  "topic": "AUTONOMOUS CODING · AGENTS",
+  "purpose": "Take apart the checkpoint-and-resume pattern for a long-running coding agent: explain why a stateless session model forces external state, evaluate the two-file design (feature_list.json + git ledger), and name what it does not cover (how the list is written, what counts as passing). Land the carry-out that a context window is a workspace, not memory — progress persists in a file and a git commit, not in the agent.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/claude-quickstarts/youtube/feature-list-checkpoint-persistence/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED — CARRY-OUT.md",
+  "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B03 -> BCRY (file-across-the-boundary visual planted at B03, referenced in BCRY's carry-out line, not replayed as a second full composition)",
+  "build": {
+   "at": "2026-08-31T10:10:41",
+   "cut": "master",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "This is Liam, in for Bear. Here's the assumption everyone makes: an agent picking up mid-project must remember where it left off. It doesn't. Nothing carries between sessions. What it does is reread a file that tracks the work. That file is what makes resumption work — not the agent.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Claude just remembers where it left off? How does it resume?', hesitates on 'remembers', corrects to 'rereads'",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude just\nremembers where\nit left off?\nHow does it resume?",
+      "face": "serif",
+      "fontSize": 80,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "remembers",
+      "replacementWords": "rereads",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 46,
+      "jitter": 20,
+      "seed": "hai-feature-list-checkpoint"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('remembers' -> 'rereads') is visible on a late frame.",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T10:10:41"
+   },
+   "audio_file": "mp3/beat-B00.mp3"
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes — the problem",
+   "narration_text": "A context window is a hard capacity limit. Fill it, and the session ends. The next one opens blank. That's the design — stateless sessions, so the server never has to hold anything for you. Here's what that choice costs. You can reread the whole history and burn half the new context. Or you can guess where you were and get it wrong. Neither counts as progress.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A session timeline: session one fills to the brim and stops, a boundary line, session two opens as an empty bar"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "The session boundary is a wipe",
+     "mechanic": "A horizontal bar labelled 'Session 1' fills left to right on cream, capped 'context full'. A crimson vertical boundary line, 'session boundary'. A second bar, 'Session 2', starts completely empty beside it. A small footer reads 'No memory carries across.'",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B01Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T10:10:41"
+   },
+   "audio_file": "mp3/beat-B01.mp3"
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism — external state",
+   "narration_text": "So the fix pushes the state out of the agent and onto disk. Two files hold it. feature underscore list dot json — two hundred entries, each an id plus a status: incomplete or passing. That's the source of truth. Git is the second file — the append-only ledger, one commit per finished feature, so the history can't be quietly rewritten. Each session runs the same loop. Read the file. Take the first incomplete entry. Implement. Test. Commit. Flip the status to passing.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "feature_list.json and a git log drawn side by side; a cycle arrow through read -> implement -> test -> commit -> mark passing"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Two files hold the truth",
+     "mechanic": "Two file cards side by side: 'feature_list.json' (entries with id + status) on the left, a git commit log on the right. Below, a five-step cycle arranged in a loop: Read -> Implement -> Test -> Commit -> Mark passing, the loop closing back to Read.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B02Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T10:10:41"
+   },
+   "audio_file": "mp3/beat-B02.mp3"
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR — the file across the boundary",
+   "narration_text": "Watch the file itself, across the boundary. Session one flips features one through fifty from incomplete to passing, one commit each. Then the context fills and the session ends. Session two opens the same file, scans for the first entry still marked incomplete, lands on fifty-one, and starts there. No replay of the first fifty. The file did the remembering. The agent just read it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR: a vertical list of two hundred rows flipping status badges; a session-boundary divider; session two's read head lands on row 51"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — the file across the boundary",
+     "mechanic": "THE ANCHOR. A vertical list of numbered rows (feature ids) with status badges. Rows 1-50 flip from 'incomplete' to a crimson 'passing' check one by one during 'Session 1'. A dashed boundary line labelled 'session boundary'. In 'Session 2' a read-head marker drops onto row 51, the first still marked incomplete, and starts flipping rows from there.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B03Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T10:10:41"
+   },
+   "audio_file": "mp3/beat-B03.mp3"
+  },
+  {
+   "beat_id": "B04",
+   "act": "5 scope — what this doesn't cover",
+   "narration_text": "This is only the checkpoint-and-resume mechanism — the file, the git ledger, the boundary, the first-incomplete lookup. It does not cover how the two hundred entries got written in the first place — that's a separate design step — or what exactly qualifies a feature as passing. Those are choices too, judged elsewhere.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "The same anchor list, boxed with a solid line; two dashed unlabelled items outside the box for what's out of scope"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Exactly this far, and no further",
+     "mechanic": "A miniature version of B03's row list sits inside a solid-outlined box captioned 'the checkpoint mechanism'. Outside the box, across a dashed boundary, two faint unlabelled cards sit in a grey field: 'how the list is written' and 'what counts as passing' — no verdict, just what the mechanism doesn't cover.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B04Scene"
+   },
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T10:10:41"
+   },
+   "audio_file": "mp3/beat-B04.mp3"
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A context window is a workspace, not memory — when it fills, the session ends, and what carries over is whatever got written to a file and a git commit, not anything the agent remembers.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A context window is a workspace, not memory — when it fills, the session ends, and what carries over is whatever got written to a file and a git commit, not anything the agent remembers.",
+      "attribution": "",
+      "sparkLine": "Written down, not remembered."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T10:10:41"
+   },
+   "audio_file": "mp3/beat-BCRY.mp3"
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. I'm building a Claude Code agent that has to work through about two hundred features across many independent sessions, because each session's context window fills and ends. Design a checkpoint scheme that uses one JSON file — each feature carrying an id and a status of incomplete or passing — and git commits as an append-only ledger of finished work. Specify the file schema, the resume algorithm a fresh session runs on startup, how tests decide when a feature flips to passing, what write and locking rules prevent two sessions from colliding, and what should happen if the file is missing or corrupted. Then explain in one paragraph what this design optimizes for and what it sacrifices. Go deeper: ask the same model what breaks if two sessions run in parallel on the same feature list, and how you would extend the schema — statuses, timestamps, or a lock file — to make concurrent resumption safe without losing the single-source-of-truth property.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 60,
+   "llm_exercise": {
+    "prompt": "I'm building a Claude Code agent that has to work through about 200 features across many independent sessions, because each session's context window fills and ends. Design a checkpoint scheme that uses (1) one JSON file where each feature has an id and a status of `incomplete` or `passing`, and (2) git commits as an append-only ledger of finished work. Specify: the exact file schema, the resume algorithm a fresh session runs on startup, how tests decide when a feature flips to `passing`, what atomic-write and locking rules prevent two sessions from colliding, and what should happen if the file is missing or corrupted. Include a minimal Python function that reads the file and returns the first incomplete id, plus an example git commit message convention. Then explain in one paragraph what this design optimizes for and what it sacrifices.",
+    "dig_deeper": "Go deeper: ask the same model what breaks if two sessions run in parallel on the same feature list, and how you would extend the schema — statuses, timestamps, or a lock file — to make concurrent resumption safe without losing the single-source-of-truth property."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "AUTONOMOUS CODING · AGENTS",
+      "segment": "Checkpoint, Then Resume.",
+      "command": "I'm building a Claude Code agent that has to work through ~200 features across many sessions, because each session's context window fills and ends. (1) Design a checkpoint scheme using one JSON file (id + status: incomplete | passing) plus git commits as an append-only ledger. (2) Specify the file schema, the resume algorithm, how tests flip a feature to passing, atomic-write and locking rules, and what happens if the file is missing or corrupted. (3) Give a minimal Python `first_incomplete()` and an example commit message. Then explain what this design optimizes for — and what it sacrifices.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T10:10:41"
+   },
+   "audio_file": "mp3/beat-BHTF.mp3"
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Persisting Progress Across Context Windows. Liam, in for Bear — brutalist dot art on YouTube at NikBearBrown.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Persisting Progress Across Context Windows. Liam, in for Bear — brutalist.art · @NikBearBrown.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T10:10:41"
+   },
+   "audio_file": "mp3/beat-BOUT.mp3"
+  }
+ ]
+}

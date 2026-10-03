@@ -1,0 +1,542 @@
+{
+ "metadata": {
+  "title": "Claude, Marketing Claims Review.",
+  "subtitle": "Claims, Not Verdicts",
+  "slug": "claude-for-legal--claude-liam-marketing-claims-review",
+  "topic": "MARKETING-CLAIMS-REVIEW · ANTHROPIC SKILL",
+  "purpose": "Answer one real question in the Teardown register: does Claude decide whether a marketing claim is legal when it runs the marketing-claims-review skill? Explain the machinery — classify, then substantiate, then flag — and land the carry-out that the skill sorts claims by what needs proof and never renders a legal verdict.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/claude-for-legal/youtube/claude-liam-marketing-claims-review/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B03 -> B07 (\"Trusted by 10,000 companies\": planted, then returned to)",
+  "one_flag": "N/A - no inference beat; every claim is read directly from the mirrored marketing-claims-review/SKILL.md",
+  "build": {
+   "at": "2026-08-30T15:28:08",
+   "cut": "master",
+   "filled": 13,
+   "of": 13,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "The obvious guess is Claude reads your ad copy and rules on it — legal, or not. Wrong branch. It's checking whether each claim is provable. So what's actually on that check?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Can Claude tell me if my ad copy is legal?', hesitates on 'legal', corrects to 'provable', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Can Claude tell me\nif my ad copy\nis legal?",
+      "face": "serif",
+      "fontSize": 74,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "legal",
+      "replacementWords": "provable",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 12,
+      "charMs": 46,
+      "jitter": 26,
+      "seed": "hai-marketing-claims-review"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('legal' -> 'provable') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T15:28:08"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes",
+   "narration_text": "The name promises what it doesn't deliver. Hear 'marketing-claims-review skill' and the mental model is a courtroom: Claude reads your ad, hands down a ruling — legal, or not.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SOUNDS LIKE A RULING",
+    "media": "manim/B01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SOUNDS LIKE A RULING",
+     "chips": [
+      "MARKETING-CLAIMS-REVIEW",
+      "LEGAL OR NOT?"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "that's the natural read",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T15:28:08"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "2 wrong guess, broken",
+   "narration_text": "Run it and no ruling comes out. Here's what's actually happening: each claim gets sorted into one of four buckets — fine, needs proof, needs a rewrite, or cut. That's the entire output. Nothing in the skill ever says 'this is legal' or 'this isn't.'",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SORTED, NOT RULED",
+    "media": "manim/B02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SORTED, NOT RULED",
+     "chips": [
+      "RUN THE SKILL",
+      "RULES LEGAL/ILLEGAL?",
+      "SORTS THE CLAIM"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [
+      1
+     ],
+     "caption": "no ruling, only a sort",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T15:28:08"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PLANTED",
+   "narration_text": "Take one real line — 'Trusted by ten thousand companies.' Watch what the skill actually does to it. Not to the ad. To that one claim.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR - ONE REAL CLAIM",
+    "media": "manim/B03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR - ONE REAL CLAIM",
+     "chips": [
+      "TRUSTED BY",
+      "10,000 COMPANIES"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "a real line from real copy",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T15:28:08"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "3 mechanism",
+   "narration_text": "First step: classify. The list has five buckets — puffery, factual, comparative, implied, absolute. 'Trusted by ten thousand' is a specific number a reader could actually count. That lands it in factual. The split reveals the priority: puffery like 'the best coffee in town' gets waved through because nobody sues over 'best'; factual has to hold up.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FIRST: CLASSIFY IT",
+    "media": "manim/B04.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FIRST: CLASSIFY IT",
+     "chips": [
+      "PUFFERY",
+      "FACTUAL",
+      "COMPARATIVE",
+      "IMPLIED",
+      "ABSOLUTE"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "classified: factual",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB04Scene"
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T15:28:08"
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "3 mechanism",
+   "narration_text": "Then substantiation. Not 'does a number exist somewhere' — that's the loose version, and it's easy to fake. The actual check is whether ten thousand matches the current count of companies using the product today. Written that way on purpose: old lifetime signups sitting in a spreadsheet would satisfy the loose version and mislead the reader. This one, they can't.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THEN: CHECK THE PROOF",
+    "media": "manim/B05.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THEN: CHECK THE PROOF",
+     "chips": [
+      "ACTUAL CURRENT COUNT?",
+      "OLD SIGNUP TOTAL?"
+     ],
+     "arrows": true,
+     "accent": [
+      0
+     ],
+     "strike": [
+      1
+     ],
+     "caption": "substantiation, not vibes",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB05Scene"
+   },
+   "audio_file": "mp3/beat-B05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B05.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T15:28:08"
+   }
+  },
+  {
+   "beat_id": "B06",
+   "act": "3 mechanism",
+   "narration_text": "The output is a call, never a verdict. Fine, needs proof, needs rewording, or cut — plus a suggested fix that keeps the marketing energy, so the copywriter isn't left with dead copy. Same four categories every single run — that repeatability is the design win, not the cleverness of any one call. And before any claim ships as 'ready,' one more hardcoded gate: has an attorney actually seen this? The skill knows what it isn't.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A CALL, NOT A VERDICT",
+    "media": "manim/B06.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A CALL, NOT A VERDICT",
+     "chips": [
+      "FINE",
+      "NEEDS PROOF",
+      "NEEDS REWORD",
+      "CUT"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "same categories, every run",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB06Scene"
+   },
+   "audio_file": "mp3/beat-B06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B06.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T15:28:08"
+   }
+  },
+  {
+   "beat_id": "B07",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "Back to 'trusted by ten thousand companies.' The skill doesn't say yes. It doesn't say no. It flags 'needs substantiation' and asks for the current count. Whether that count exists — and whether it's enough to ship — is a person's call. The skill deliberately stops one step short of the ruling.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS - FLAGGED, NOT RULED",
+    "media": "manim/B07.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS - FLAGGED, NOT RULED",
+     "chips": [
+      "TRUSTED BY",
+      "10,000 COMPANIES",
+      "NEEDS PROOF"
+     ],
+     "arrows": false,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "flagged, not ruled",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB07Scene"
+   },
+   "audio_file": "mp3/beat-B07.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B07.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T15:28:08"
+   }
+  },
+  {
+   "beat_id": "B08",
+   "act": "5 both directions",
+   "narration_text": "The output cuts two ways, and neither direction proves what it looks like it proves. A flag doesn't mean the claim is false — it can be entirely true and still land in 'needs proof' because nobody's put the number on file yet. A clean pass doesn't mean risk-free forever — the product can change a month after the copy ships, and nothing in this skill re-runs on its own to catch that. It's a review, not an alarm.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NEITHER IS PROOF",
+    "media": "manim/B08.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NEITHER IS PROOF",
+     "pairs": [
+      [
+       "FLAGGED",
+       "MEANS FALSE?"
+      ],
+      [
+       "CLEARED",
+       "RISK-FREE FOREVER?"
+      ]
+     ],
+     "strike": [
+      1,
+      3
+     ],
+     "caption": "neither is proof",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB08Scene"
+   },
+   "audio_file": "mp3/beat-B08.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B08.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T15:28:08"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Marketing-claims-review doesn't rule on your ad. It sorts each claim by what still needs proof, and hands the ship-decision back to a person. That's the whole trick.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Marketing-claims-review doesn't rule on your ad. It sorts each claim by what still needs proof, and hands the ship-decision back to a person. That's the whole trick.",
+      "attribution": "",
+      "sparkLine": "A sort, not a verdict."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T15:28:08"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I want to check whether a piece of ad copy is provable — not whether it's legal. Here's the line: 'Trusted by ten thousand companies, the fastest way to manage your projects.' Break it into individual claims. For each one, classify it as puffery, factual, comparative, implied, or absolute. Say which ones need substantiation and what evidence would actually satisfy that check — not that a number exists somewhere, but that it matches the current state today. Then suggest a rewrite that keeps the marketing energy for anything that needs it. Do not tell me whether it's legal — that's a lawyer's call. Go deeper: ask the same model to write you three ad lines that read as facts but are actually puffery, and three that read as puffery but sneak in an implied fact — and name the tell in each one.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 60,
+   "llm_exercise": {
+    "prompt": "I want to check whether a piece of ad copy is provable — not whether it's legal. Here's the line: 'Trusted by 10,000 companies — the fastest way to manage your projects.' Break it into individual claims. For each one, classify it as puffery, factual, comparative, implied, or absolute. Say which ones need substantiation and what evidence would actually satisfy that check — not that a number exists somewhere, but that it matches the current state today. Then suggest a rewrite that keeps the marketing energy for anything that needs it. Do not tell me whether it's legal — that's a lawyer's call.",
+    "dig_deeper": "Go deeper: ask the same model to write you three ad lines that read as facts but are actually puffery, and three that read as puffery but sneak in an implied fact — and name the tell in each one."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "MARKETING-CLAIMS-REVIEW · ANTHROPIC SKILL",
+      "segment": "Claude, Marketing Claims Review.",
+      "command": "I want to check whether a piece of ad copy is provable — not whether it's legal. Here's the line: 'Trusted by 10,000 companies — the fastest way to manage your projects.' Break it into individual claims. For each one, classify it as puffery, factual, comparative, implied, or absolute. Say which ones need substantiation and what evidence would actually satisfy that check — not that a number exists somewhere, but that it matches the current state today. Then suggest a rewrite that keeps the marketing energy for anything that needs it. Do not tell me whether it's legal — that's a lawyer's call.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T15:28:08"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Marketing Claims Review — a sort, not a verdict. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Marketing Claims Review — a sort, not a verdict. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T15:28:08"
+   }
+  }
+ ]
+}

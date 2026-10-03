@@ -18,13 +18,45 @@
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "modelLabel": "claude-opus-4-7",
+    "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/cwc-workshops/agent-decomposition/.claude/skills/notify-templates/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Fixed-format templates for Slack alerts",
+        "supplier emails",
+        "and escalations",
+        "Load this whenever the task is \"notify\"",
+        "or \"tell ops\"."
+      ],
+      "constraints": [
+        "Notifications are template fills, not creative writing. Do not spawn a subagent for this. Fill the slots from data you already have, then append the result to the outbox",
+        "| Finance | Only if open-PO balance for one supplier would exceed $100k, or suspected duplicate POs. Nothing routine. | |",
+        "+ days-of-cover. Do not echo the full alert text in your reply; it's already"
+      ],
+      "referenced_files": [
+        "action_line",
+        "PO {{po_id}} placed for {{qty}} units (ETA {{eta}})",
+        "send_slack_alert",
+        "/mnt/user/sinks/outbox.jsonl",
+        "json.dumps"
+      ],
+      "code_signals": [
+        "code block: bash"
+      ],
+      "sections": [
+        "Low-stock Slack alert",
+        "Supplier email",
+        "Escalation (human review needed)",
+        "Routing (who gets what)",
+        "Batch, don't spam",
+        "How to send"
+      ]
+    },
     "build": {
-      "at": "2026-08-26T07:00:52",
+      "at": "2026-09-05T21:34:19",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +65,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is notify-templates. Fixed-format templates for Slack alerts, supplier emails, and escalations. Load this whenever the task is \"notify\", \"alert\", \"email\", or \"tell ops\".. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is notify-templates. Fixed-format templates for Slack alerts, supplier emails, and escalations. Load this whenever the task is \"notify\", \"alert\", \"email\", or \"tell ops\".. Its concrete surface area includes Fixed-format templates for Slack alerts; supplier emails; and escalations. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,11 +81,11 @@
             "runningText": "reading notify-templates SKILL.md…",
             "output": [
               "skill: notify-templates",
-              "Fixed-format templates for Slack, email, escalations.",
+              "Fixed-format templates for Slack alerts, supplier emails, and escalations. Load…",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "claude-opus-4-7",
+            "modelLabel": "Opus 4.8",
             "effortLabel": "High"
           },
           "rendered": {
@@ -63,18 +95,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 16.02,
+      "actual_duration_s": 21.03,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T07:00:52"
+        "at": "2026-09-05T21:34:19"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is notify-templates. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is notify-templates. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at action_line, PO {{po_id}} placed for {{qty}} units (ETA {{eta}}), send_slack_alert, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -106,18 +138,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.59,
+      "actual_duration_s": 19.41,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T07:00:52"
+        "at": "2026-09-05T21:34:19"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "notify-templates is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Fixed-format templates for Slack alerts; supplier emails; and escalations; Load this whenever the task is \"notify\". The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -157,18 +189,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 15.72,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T07:00:52"
+        "at": "2026-09-05T21:34:19"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. notify-templates is a specification written as an instruction set. Claude's job: Fixed-format templates for Slack alerts, supplier emails, and escalations. Load this whenever the task is 'notify', 'alert', 'email', or 'tell ops'. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. Notifications are template fills, not creative writing. Do not spawn a subagent for this. Fill the slots from data you already have, then append the result to the outbox. That is the constraint in notify-templates — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +211,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Templates for Slack alerts, supplier emails, and escalations.",
+            "body": "Notifications are template fills, not creative writing. Do not spawn a subagent for this. Fill the slots from data you already have, then append the result to the outbox",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,18 +221,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 18.35,
+      "actual_duration_s": 17.11,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T07:00:52"
+        "at": "2026-09-05T21:34:19"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In notify-templates, supporting material: action_line, PO {{po_id}} placed for {{qty}} units (ETA {{eta}}), send_slack_alert, /mnt/user/sinks/outbox.jsonl; implementation signals: code block: bash; sections: Low-stock Slack alert, Supplier email, Escalation (human review needed), Routing (who gets what). That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Fixed-format templates for Slack alerts; supplier emails; and escalations; action_line; PO {{po_id}} placed for {{qty}} units (ETA {{eta}}); send_slack_alert; code block: bash",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 25.83,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T21:34:19"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "notify-templates makes Claude execute one task reliably. The SKILL.md is the spec — Fixed-format templates for Slack alerts, supplier emails, and escalations. Load it whenever the task is notify, alert, email, or tell ops. Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "notify-templates makes Claude execute one task reliably. The SKILL.md is the spec — Fixed-format templates for Slack alerts, supplier emails, and escalations. Load…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -213,9 +277,10 @@
             "artifactHeading": "Claude, Notify Templates.",
             "artifactLines": [
               "Skill: notify-templates — Claude reads SKILL.md before acting",
-              "Trigger: notify · alert · email · tell ops",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "Fixed-format templates for Slack alerts, supplier emails, and escalations. Load this…",
+              "Capabilities: Fixed-format templates for Slack alerts; supplier emails; and escalations",
+              "Constraint: Notifications are template fills, not creative writing. Do not spawn a subagent for this.…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -225,18 +290,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 17.69,
+      "actual_duration_s": 14.7,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T07:00:52"
+        "at": "2026-09-05T21:34:19"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to use fixed-format templates for slack alerts, supplier emails, and escalations. Read the notify-templates skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to fixed-format templates for slack alerts, supplier emails, and escalations. load. Read the notify-templates skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -248,11 +313,11 @@
             "greeting": "Your turn.",
             "topic": "NOTIFY-TEMPLATES · ANTHROPIC SKILL",
             "segment": "Claude, Notify Templates.",
-            "command": "I want to use fixed-format templates for slack alerts, supplier emails, and escalations. Read the notify-templates skill and walk me through what you will do before you do it.",
+            "command": "I want to fixed-format templates for slack alerts, supplier emails, and. Read the notify-templates skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "claude-opus-4-7",
+            "modelLabel": "Opus 4.8",
             "effortLabel": "High"
           },
           "rendered": {
@@ -262,12 +327,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 15.32,
+      "actual_duration_s": 15.47,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T07:00:52"
+        "at": "2026-09-05T21:34:19"
       }
     },
     {
@@ -298,7 +363,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T07:00:52"
+        "at": "2026-09-05T21:34:19"
       }
     }
   ]

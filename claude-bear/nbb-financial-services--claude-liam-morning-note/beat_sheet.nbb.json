@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "A File, Not a Mode.",
+  "subtitle": "The Morning-Note Skill (Financial Services)",
+  "slug": "financial-services--claude-liam-morning-note",
+  "topic": "MORNING-NOTE · ANTHROPIC SKILL",
+  "purpose": "Answer one real question in the Teardown register: when Claude drafts a morning trading note, is it running a special built-in mode, or just following a file? Take SKILL.md apart, show the mechanism — one file, plain-English wake phrases, fixed step order — then name the design choice: guaranteed reproducibility at 7am at the expense of any judgment about which overnight developments actually matter today.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-morning-note/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the morning-note skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair",
+  "one_flag": "N/A - direct mechanism description throughout; every claim is generic, verifiable skill mechanics carried over from the source",
+  "build": {
+   "at": "2026-09-02T02:56:29",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Someone reads 'morning-note skill' and assumes Claude has a trading mode wired in somewhere. It doesn't. What's actually happening is quieter: there's a file called SKILL.md, and Claude reads it before it drafts anything. The real question is what that file makes it do.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Is there a special mode for morning notes in Claude?', hesitates on 'mode', corrects to 'file', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Is there a\nspecial mode\nfor morning notes\nin Claude?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "mode",
+      "replacementWords": "file",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "hai-morning-note"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('mode' -> 'file') lands on screen and the full corrected question finishes typing before the clip ends.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T02:56:29"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Here's what's actually in there. A folder called morning-note, holding one file — SKILL.md. It says: draft concise notes on overnight developments, trade ideas, and key events, timed for the 7am morning meeting. Tight, opinionated, actionable. The wake phrases are plain English — 'morning note,' 'what happened overnight,' 'trade idea.' Say one, and Claude reads the file top to bottom before it types a word. The file is the program.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SKILL.md IS THE PROGRAM",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SKILL.md IS THE PROGRAM",
+     "chips": [
+      "SKILL.md",
+      "one file",
+      "wake phrase"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T02:56:29"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Once triggered, the routine is fixed. Claude walks the file in order: read the overnight news, name the trade ideas, note the key events for the coverage list, return one tight note ready for 7am. No branching unless the file itself says branch. That's the whole loop — same steps, same order, every single morning, because it's the same document every single morning.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 21,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "READ, THEN EXECUTE IN ORDER",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "READ, THEN EXECUTE IN ORDER",
+     "chips": [
+      "read file",
+      "run in order",
+      "return note"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "same steps, every time",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T02:56:29"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "That's the design tell, and the trade-off worth naming. They optimized for guaranteed reproducibility at 7am at the expense of any judgment about which overnight developments actually matter today. The spec is identical every run; the market isn't. It runs perfectly on exactly what SKILL.md wrote down — and stops at the edge of the file. Ask for anything the spec doesn't name, and the skill doesn't stretch to reach it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 21,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "REPEATABLE, BUT BOUNDED",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "REPEATABLE, BUT BOUNDED",
+     "chips": [
+      "same input",
+      "same output",
+      "only the spec"
+     ],
+     "arrows": false,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "repeatable, but bounded",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T02:56:29"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A skill is a file Claude reads, not a mode it flips into — that's what buys the same shape of note, in the same order, every 7am. It's also what fences you in: the spec only covers exactly what it spells out on the page.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A skill is a file Claude reads, not a mode it flips into — that's what buys the same shape of note, in the same order, every 7am. It's also what fences you in: the spec only covers exactly what it spells out on the page.",
+      "attribution": "",
+      "sparkLine": "A file, not a mode."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T02:56:29"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini. Ask the model to write you a SKILL.md for one repeatable morning routine you already run — the sequence you walk through before your first meeting, whatever shape it takes. Three to five steps, in order, plain English, each one specific enough that a stranger could execute it the same way every morning. Then have it read the file back and walk through exactly what it'll do before it drafts anything. Go deeper: after the walk-through, ask which step in the routine actually requires judgment that isn't written on the page — that's the seam between what the spec can guarantee and what still lands on you.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42,
+   "llm_exercise": {
+    "prompt": "I want a SKILL.md for one repeatable morning routine I already run — for example, [my daily brief before the first meeting: overnight news scan, watchlist check, key events lookup, one summary paragraph]. Write it as a folder-plus-single-file skill: three to five steps in order, in plain English, each one specific enough that a stranger could execute them the same way every morning. Say what to search, what to check, and what to produce at the end. Then read the file back to me and walk through exactly what you'll do, in order, before you draft anything.",
+    "dig_deeper": "Go deeper: after the walk-through, ask which step in the routine actually requires judgment that isn't written on the page — that's the seam between what a spec can guarantee and what still lands on you."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "MORNING-NOTE · ANTHROPIC SKILL",
+      "segment": "A File, Not a Mode.",
+      "command": "Write me a SKILL.md for one repeatable morning routine I already run — the sequence I walk through before my first meeting. Three to five steps, in order, plain English, each one specific enough that a stranger could execute it the same way every morning. Then read the file back and walk through exactly what you'll do, before you draft anything.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T02:56:29"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "A File, Not a Mode. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "A File, Not a Mode. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T02:56:29"
+   }
+  }
+ ]
+}

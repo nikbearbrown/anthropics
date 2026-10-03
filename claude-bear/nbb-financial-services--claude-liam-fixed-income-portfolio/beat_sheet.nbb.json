@@ -1,0 +1,264 @@
+{
+ "metadata": {
+  "title": "Is Claude's Duration Number Its Own Judgment?",
+  "subtitle": "The Fixed Income Portfolio Skill (Duration & DV01)",
+  "slug": "financial-services--claude-liam-fixed-income-portfolio",
+  "topic": "FIXED-INCOME-PORTFOLIO · ANTHROPIC SKILL",
+  "purpose": "Take the fixed-income-portfolio skill apart and show the mechanism: it reads coupon, maturity, and price for each bond, computes DV01 per bond and sums it across the portfolio, and reports dollar P&L against whatever rate shock you specify. Name the design choice — they built a calculator that runs the arithmetic the same way every time, at the expense of any opinion about whether the shock you picked or the holdings you handed it are the right ones. Lands the carry-out that duration and DV01 are computed sensitivities to a rate move you specify, not Claude's judgment of the portfolio's risk.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-fixed-income-portfolio/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 (DV01 summed across the portfolio, a rate shock driving one P&L readout) -> B03 (the same shock resized in the scenario analysis; both-directions split)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-01T18:16:04",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Ask if Claude judges how risky a bond portfolio is: it doesn't. It reads coupon, maturity, and price, and computes duration and DV01. Liam here, in for Bear — let's take the skill apart.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'What decides a portfolio's risk -- judgment?', hesitates on 'judgment', corrects to 'the numbers'",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "What decides\na portfolio's risk —\njudgment?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "judgment",
+      "replacementWords": "the numbers",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-fixed-income-portfolio"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('judgment' -> 'the numbers') is visible on a late frame. Settings copied from the proven-safe claude-liam-dcf-model sibling (charMs 55, mistakeRate 6, hesitateWithin 3, hesitateBetween 22).",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T18:16:04"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "The natural read is that Claude studies the portfolio and forms an opinion — the way an analyst weighs whether a bond is worth the risk. Here's what's actually happening: the skill has no opinion. It reads coupon, maturity, and current price for each bond, then runs the math for duration and DV01 from those three numbers. Feed it a different price and the outputs move without protest — it never argues back that your bond is too risky. That's the design choice worth naming: they built a calculator, not a critic.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "RISK JUDGMENT, OR THE NUMBERS?",
+    "media": "manim/B01.mp4"
+   },
+   "graphic": {
+    "manim": "FIPB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T18:16:04"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "Here's what the skill actually does. DV01 is the dollar change in a bond's price when rates move one basis point — one one-hundredth of a percent. The skill computes that number for every bond in the portfolio and sums it. Watch the anchor: shock the portfolio by a hundred basis points and the summed DV01 tells you exactly what that move costs — or gains. No opinion, just arithmetic. They turned rate risk into arithmetic on inputs you control, at the expense of any view on whether the shock you picked is the one that matters.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "ONE SHOCK, ONE NUMBER",
+    "media": "manim/B02.mp4"
+   },
+   "graphic": {
+    "manim": "FIPB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T18:16:04"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "Scenario analysis is that same shock, resized and rerun. Both directions matter. A portfolio that swings hard under one rate scenario isn't automatically poorly built — a large DV01 can be an intentional, hedged position; the ledger reads the exposure the same way whether you meant it or not. And a portfolio that barely moves under the shock you tested isn't automatically rate-safe. A bigger move, or a shift that isn't parallel across the curve — the short end moves, the long end doesn't — can still hurt it. The skill scores the scenarios you hand it. Which scenarios matter is judgment it doesn't have.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE SAME SHOCK, SIZED AGAIN",
+    "media": "manim/B03.mp4"
+   },
+   "graphic": {
+    "manim": "FIPB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T18:16:04"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A portfolio's duration and DV01 aren't Claude's judgment about how risky it is — they're computed sensitivities to a rate move you specify. Change the size of that move, and the numbers change with it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A portfolio's duration and DV01 aren't Claude's judgment about how risky it is — they're computed sensitivities to a rate move you specify. Change the size of that move, and the numbers change with it.",
+      "attribution": "",
+      "sparkLine": "State the shock. Not the verdict."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T18:16:04"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini. Hand it a small bond portfolio — coupon, maturity, and current price for two or three bonds — and ask it to compute duration and DV01 for each bond and for the whole book, then stress-test a hundred basis point parallel shift up and down. Then double the shock size and watch how the dollar impact scales. Go deeper: ask the model which of your two inputs — the specific bonds you picked, or the size and shape of the shock you specified — you trust the least, and why that matters more than the number DV01 spat back. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 40,
+   "llm_exercise": {
+    "prompt": "I want to understand what a fixed-income portfolio's duration and DV01 actually measure. Here is a small book of three bonds — for each one, a coupon rate, a maturity date, and today's clean price (make up plausible numbers if I haven't given them to you). Compute duration and DV01 for each bond and for the whole portfolio, and show your work. Then stress-test the portfolio for a parallel shift in the yield curve of one hundred basis points, up and down; report the dollar P&L in each case. Now double the shock to two hundred basis points and repeat. Before you give me the numbers, tell me in one sentence what you are computing and what you are not — i.e., what a portfolio's DV01 does and does not tell me about how risky the portfolio actually is.",
+    "dig_deeper": "Go deeper: ask the model which of your two inputs — the specific bonds you picked, or the size and shape of the shock you specified — you trust the least, and why that judgment matters more than the DV01 number the arithmetic spits back."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "FIXED-INCOME-PORTFOLIO · ANTHROPIC SKILL",
+      "segment": "Is Claude's Duration Number Its Own Judgment?",
+      "command": "Hand the model a small bond portfolio -- coupon, maturity, and current price for two or three bonds -- and ask it to compute duration and DV01 for each bond and for the whole book, then stress-test a 100 basis point parallel shift up and down. Then double the shock. Before it answers, have it say in one sentence what DV01 does and does not tell you about the portfolio's risk.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T18:16:04"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Is Claude's Duration Number Its Own Judgment? Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Is Claude's Duration Number Its Own Judgment? Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T18:16:04"
+   }
+  }
+ ]
+}

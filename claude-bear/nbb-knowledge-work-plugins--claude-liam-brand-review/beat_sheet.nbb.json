@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "Flagged, Not Fixed.",
+  "subtitle": "The Brand Review Skill",
+  "slug": "knowledge-work-plugins--claude-liam-brand-review",
+  "topic": "BRAND REVIEW · KNOWLEDGE WORK PLUGIN",
+  "purpose": "Teardown cut: take the brand-review skill apart, show it's just a SKILL.md file dispatched by semantic trigger, judge the report-not-rewrite design choice on its own terms. Lands the carry-out that brand-review is a flagged report with a suggested fix for each flag, not an automatic rewrite — the same way every time.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/knowledge-work-plugins/youtube/claude-liam-brand-review/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Extending Claude — Skills, Plugins & Connectors",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the brand-review skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-02T13:01:50",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. Someone thought brand-review meant Claude would fix the copy. It doesn't — it flags where the copy drifts. So: how do I get Claude to review my content for brand voice?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'How do I get Claude to fix my content for brand voice?', hesitates on 'fix', corrects to 'review', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "How do I get Claude\nto fix my content\nfor brand voice?",
+      "face": "serif",
+      "fontSize": 68,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "fix",
+      "replacementWords": "review",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "hai-brand-review"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('fix' -> 'review') lands on screen and the full corrected question finishes typing before the clip ends. Text is 54 chars across 3 lines, under the family's established-safe 60-char config, at the same charMs/mistakeRate/hesitate rates as the accessibility-review sibling.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T13:01:50"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Here's what's actually happening. A skill isn't a program you install — it's a folder Claude reads before it starts. brand-review is one file, SKILL.md, twelve kilobytes of plain English. No compiled code, no runtime, no hidden logic underneath. Claude reads the text, then does what the text says. They optimized for readability over enforcement: you can audit and change every rule, but nothing guarantees Claude follows it exactly. The file is the whole program.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A FOLDER, NOT A PROGRAM",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A FOLDER, NOT A PROGRAM",
+     "chips": [
+      "SKILL.md",
+      "plain-text",
+      "one-file"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T13:01:50"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Now: how does Claude know to run it? The trigger isn't a keyword match — it's semantic. The SKILL.md description says checking a draft before it ships, auditing copy for voice consistency and terminology, screening for unsubstantiated claims and missing disclaimers. Claude reads what you asked, matches it against that description, and decides. That choice matters. They optimized for natural phrasing at the expense of predictability: you don't have to memorize commands, but two nearly-identical asks can dispatch to different skills. Once triggered, Claude reads the Steps section and runs them in order — linear, no branching unless a step explicitly says so.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "HOW IT GETS PICKED UP",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "HOW IT GETS PICKED UP",
+     "chips": [
+      "description",
+      "trigger-match",
+      "steps-in-order"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "only runs when the words match",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T13:01:50"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's the design choice they made, and here's what it cost. The skill outputs a report — severity-tagged flags with before-and-after suggestions — and stops. It never touches your copy. Run the same draft twice, you get the same flags twice; that's the payoff of a report over a rewrite. But it only sees what your style guide and messaging pillars actually spell out. Anything outside that spec is invisible to it. They optimized for auditability at the expense of coverage. This works if you value a stable, reviewable report; it fails if you wanted Claude to just fix the thing.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A REPORT, NOT A REWRITE",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A REPORT, NOT A REWRITE",
+     "chips": [
+      "same-flags",
+      "every-time",
+      "spec-only"
+     ],
+     "arrows": false,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "it flags gaps, it doesn't close them",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T13:01:50"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "brand-review doesn't rewrite your copy — it flags where it drifts from your brand voice, by severity, with a suggested fix for each flag, the same way every time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "brand-review doesn't rewrite your copy — it flags where it drifts from your brand voice, by severity, with a suggested fix for each flag, the same way every time.",
+      "attribution": "",
+      "sparkLine": "Flagged, not fixed."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T13:01:50"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I want to review my content against our brand voice — read the brand-review skill and walk me through what you will do before you do it. Making the model narrate the Steps section before it runs shows you the instructions it's actually following, not just the output. Go deeper: ask it what your style guide would have to say for the flags to change.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "llm_exercise": {
+    "prompt": "I want to review my content against our brand voice — read the brand-review skill and walk me through what you will do before you do it.",
+    "dig_deeper": "Go deeper: ask it what your style guide would have to say for the flags to change."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "BRAND REVIEW · KNOWLEDGE WORK PLUGIN",
+      "segment": "Flagged, Not Fixed.",
+      "command": "I want to review my content against our brand voice — read the brand-review skill and walk me through what you will do before you do it.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T13:01:50"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Flagged, Not Fixed. Liam, in for Bear. Find it at brutalist.art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroSeries",
+     "props": {
+      "eyebrow": "BRAND REVIEW · @NikBearBrown",
+      "line": "Flagged, Not Fixed."
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T13:01:50"
+   }
+  }
+ ]
+}

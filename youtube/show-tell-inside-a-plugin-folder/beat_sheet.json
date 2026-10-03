@@ -1,0 +1,709 @@
+{
+  "metadata": {
+    "slug": "show-tell-inside-a-plugin-folder",
+    "title": "What's Inside a Plugin Folder",
+    "topic": "CLAUDE · PLUGINS",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Japanese (Konnichiwa)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Claude Code users who install plugins and want to know what each part of one can do before they trust it",
+    "source_doc": "anthropics/claude-plugins-official (README, plugins/plugin-dev/skills/plugin-structure/SKILL.md, real plugins commit-commands, code-simplifier, security-guidance, hookify, example-plugin, external_plugins/github, .claude-plugin/marketplace.json; HEAD 47ebd6a5, 2026-08-27) and anthropics/knowledge-work-plugins/README.md, read 2026-09-26",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude plugins",
+      "Claude Code",
+      "plugin.json",
+      "slash commands",
+      "sub-agents",
+      "Agent Skills",
+      "hooks",
+      "MCP",
+      "Model Context Protocol",
+      "plugin marketplace",
+      "plugin security",
+      "Anthropic",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-26T20:05:00",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Konnichiwa. This is Liam, in for Bear. Installing a plugin takes one command. So the question isn't how to install one. It's how to look inside it first.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I install a Claude plugin?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'install' -> 'look inside' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I install\na Claude plugin?",
+            "triggerWords": "install",
+            "replacementWords": "look inside",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-inside-a-plugin-folder",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-26T20:07:36.850480+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (how to install a plugin) and corrects it to the real one (how to look inside it).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 8.939,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 8.958333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-26T20:05:00"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Three terms. The manifest: a file called plugin dot json that names the plugin. A hook: a command that runs by itself when something happens in your session. And an MCP server: a program that plugs Claude into outside tools and data.",
+      "estimated_duration_s": 16.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "'manifest' lands"
+          },
+          {
+            "at": 0.45,
+            "event": "'hook' lands"
+          },
+          {
+            "at": 0.78,
+            "event": "'MCP server' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "manifest",
+                "meaning": "plugin.json, the file that names the plugin"
+              },
+              {
+                "term": "hook",
+                "meaning": "a command that runs by itself when something happens in your session"
+              },
+              {
+                "term": "MCP server",
+                "meaning": "a program that plugs Claude into outside tools and data"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-26T20:08:06.960065+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 14.016,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 14.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-26T20:05:00"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Here's the plugin box from last time. On disk, a plugin is just a folder. Open it, and each kind of part has its own place inside.",
+      "estimated_duration_s": 10.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The sealed kraft plugin box from the portal film drops in; a folder tab clips to its lid on 'just a folder'; the lid lifts off and the tops of the parts (a page, a dark block, a small crate) rise into view inside.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "box drops in"
+          },
+          {
+            "at": 0.4,
+            "event": "folder tab"
+          },
+          {
+            "at": 0.7,
+            "event": "lid lifts, parts peek out"
+          }
+        ],
+        "manim": {
+          "class": "B00_Folder"
+        },
+        "motion_claim": "The sealed kraft plugin box from the portal film drops in; a folder tab clips to its lid on 'just a folder'; the lid lifts off and the tops of the parts (a page, a dark block, a small crate) rise into view inside."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn plugin-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 7.829,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 7.833333333333333,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T20:05:00"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "First, the shipping label: a file called plugin dot json, in a folder named dot claude-plugin. It holds the plugin's name, a description, and sometimes a version. Only the name is required.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white shipping label rises out of the open box and slaps onto its front face; an enlarged copy slides out to the right and its three lines draw one by one; the first line (name) thickens to ink on 'Only the name is required'.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "label slaps on"
+          },
+          {
+            "at": 0.5,
+            "event": "name, description, version lines"
+          },
+          {
+            "at": 0.85,
+            "event": "name line is the required one"
+          }
+        ],
+        "manim": {
+          "class": "B01_Label"
+        },
+        "motion_claim": "A white shipping label rises out of the open box and slaps onto its front face; an enlarged copy slides out to the right and its three lines draw one by one; the first line (name) thickens to ink on 'Only the name is required'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn plugin-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.563,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 11.583333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T20:05:00"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Slash commands are the parts you trigger yourself. Each one is a markdown file in the commands folder. Type slash commit, and Claude follows the steps written in that file.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The box steps left; a command page rises out of it; a Claude Code window with a prompt bar types '/commit'; the page slides into the window and three step lines tick off.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "page rises"
+          },
+          {
+            "at": 0.55,
+            "event": "/commit typed"
+          },
+          {
+            "at": 0.8,
+            "event": "steps tick off"
+          }
+        ],
+        "manim": {
+          "class": "B02_Commands"
+        },
+        "motion_claim": "The box steps left; a command page rises out of it; a Claude Code window with a prompt bar types '/commit'; the page slides into the window and three step lines tick off."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn plugin-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.621,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 9.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T20:05:00"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Sub-agents are helpers with one job, and each one is a markdown file in the agents folder. Claude hands one a multi-step task. It works through it on its own, then reports back.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A small kraft helper crate rises out of the box, rides to a stack of task pages on the right, the pages clear one by one, and the crate rides back carrying one report card.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "helper crate rises"
+          },
+          {
+            "at": 0.5,
+            "event": "rides to the task"
+          },
+          {
+            "at": 0.75,
+            "event": "works through it"
+          },
+          {
+            "at": 0.9,
+            "event": "returns with a report"
+          }
+        ],
+        "manim": {
+          "class": "B03_SubAgent"
+        },
+        "motion_claim": "A small kraft helper crate rises out of the box, rides to a stack of task pages on the right, the pages clear one by one, and the crate rides back carrying one report card."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn plugin-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.432,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 10.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T20:05:00"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Skills are folders of know-how, each with a SKILL.md file. You don't have to type anything. Claude reads each skill's description, and opens one when the task matches.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three skill pages rise out of the box and fan out; a task card slides in from the right; the matching page lifts toward it and its dot lights terracotta.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "three pages fan out"
+          },
+          {
+            "at": 0.6,
+            "event": "task card arrives"
+          },
+          {
+            "at": 0.85,
+            "event": "the matching page lifts"
+          }
+        ],
+        "manim": {
+          "class": "B04_Skills"
+        },
+        "motion_claim": "Three skill pages rise out of the box and fan out; a task card slides in from the right; the matching page lifts toward it and its dot lights terracotta."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn plugin-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.86,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 9.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T20:05:00"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Hooks fire on events. The hooks file says: when Claude edits a file, or finishes a turn, run this command. The security-guidance plugin uses hooks to check each edit for risky code. That's a real program, running on your machine.",
+      "estimated_duration_s": 16.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An event belt with a hook gate; edit slabs ride along it; each time one passes the gate, the gate's light flashes and a dark command slab beside it lights up.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "belt and hook gate"
+          },
+          {
+            "at": 0.4,
+            "event": "an edit passes, the gate fires"
+          },
+          {
+            "at": 0.85,
+            "event": "the command slab runs"
+          }
+        ],
+        "manim": {
+          "class": "B05_Hooks"
+        },
+        "motion_claim": "An event belt with a hook gate; edit slabs ride along it; each time one passes the gate, the gate's light flashes and a dark command slab beside it lights up."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn plugin-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.056,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 13.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T20:05:00"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "MCP servers are listed in dot mcp dot json. They plug Claude into outside tools and data, and they start when the plugin is turned on. GitHub's plugin holds one entry: GitHub's own server, reached with your access token.",
+      "estimated_duration_s": 15.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A dark MCP block rises out of the box; a cable draws from it to a server stack on the right whose lights come on; a small ink key rides along the cable to the server.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "MCP block rises"
+          },
+          {
+            "at": 0.45,
+            "event": "cable to the server, lights on"
+          },
+          {
+            "at": 0.85,
+            "event": "the key rides the cable"
+          }
+        ],
+        "manim": {
+          "class": "B06_MCP"
+        },
+        "motion_claim": "A dark MCP block rises out of the box; a cable draws from it to a server stack on the right whose lights come on; a small ink key rides along the cable to the server."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn plugin-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.867,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 13.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T20:05:00"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "And a plugin carries only the parts it needs. Commit-commands is a label and three slash commands. GitHub's is a label and one MCP server. Nothing else.",
+      "estimated_duration_s": 10.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two smaller open boxes side by side, each with a label on its face: three command pages drop into the left one; one dark MCP block drops into the right one.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "two boxes"
+          },
+          {
+            "at": 0.45,
+            "event": "three pages drop in"
+          },
+          {
+            "at": 0.75,
+            "event": "one MCP block drops in"
+          }
+        ],
+        "manim": {
+          "class": "B07_OnlyWhatItNeeds"
+        },
+        "motion_claim": "Two smaller open boxes side by side, each with a label on its face: three command pages drop into the left one; one dark MCP block drops into the right one."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn plugin-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.301,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 9.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T20:05:00"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Plugins live in a marketplace, a catalog you install from. Anthropic's official one lists two hundred fifty-five. But the catalog's own README says: make sure you trust a plugin before you install it. Anthropic doesn't control what's inside.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A shelf unit of small plugin boxes and a big '255'; one box slides off the shelf toward the viewer and stops; a magnifier glides over it before anything else happens.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "shelves fill"
+          },
+          {
+            "at": 0.3,
+            "event": "255"
+          },
+          {
+            "at": 0.5,
+            "event": "one box slides out"
+          },
+          {
+            "at": 0.75,
+            "event": "magnifier: trust it first"
+          }
+        ],
+        "manim": {
+          "class": "B08_Marketplace"
+        },
+        "motion_claim": "A shelf unit of small plugin boxes and a big '255'; one box slides off the shelf toward the viewer and stops; a magnifier glides over it before anything else happens."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn plugin-box scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.611,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 13.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T20:05:00"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude Code: Before I install the Claude Code plugin [name], read its folder. List every part it ships: plugin dot json, commands, sub-agents, skills, hooks, and MCP servers. For each hook, give the event and the exact command it runs. For each MCP server, say where it connects and what keys it needs. Then list what it could read, change, or send off my machine. Don't install or run anything. Then check two things yourself. Open the hooks file and read every command it runs. And open dot mcp dot json. Does every server match what the plugin says it does?",
+      "estimated_duration_s": 42.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · YOUR TURN",
+            "segment": "Look Inside Before You Install",
+            "command": "Before I install the Claude Code plugin [name], read its folder. List every part it ships: plugin.json, commands, sub-agents, skills, hooks, and MCP servers. For each hook, give the event and the exact command it runs. For each MCP server, say where it connects and what keys it needs. Then list what it could read, change, or send off my machine. Don't install or run anything.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: open hooks/hooks.json and read every command it runs.",
+              "Check: open .mcp.json. Does every server match what the plugin says it does?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-26T20:09:10.653893+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 31.573,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 31.583333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-26T20:05:00"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "What's Inside a Plugin Folder. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "What's Inside a Plugin Folder",
+            "slug": "show-tell-inside-a-plugin-folder",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-26T20:09:24.894581+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.605,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-26T20:05:00"
+      }
+    }
+  ]
+}

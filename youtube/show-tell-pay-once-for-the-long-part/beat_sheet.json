@@ -1,0 +1,670 @@
+{
+  "metadata": {
+    "slug": "show-tell-pay-once-for-the-long-part",
+    "title": "Pay Once for the Long Part",
+    "topic": "CLAUDE · PROMPT CACHING",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "French (Bonjour)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Developers calling the Claude API who resend the same long context (a document, a system prompt, a conversation) on every request",
+    "source_doc": "anthropics/claude-cookbooks/misc/prompt_caching.ipynb (read in full, every cell and its saved outputs), read 2026-09-27; confirmed against platform.claude.com/docs/en/build-with-claude/prompt-caching, fetched 2026-09-27",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "prompt caching",
+      "Claude API",
+      "cache_control",
+      "Anthropic cookbook",
+      "cache breakpoints",
+      "automatic caching",
+      "latency",
+      "API cost",
+      "tokens",
+      "multi-turn conversation",
+      "Anthropic",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T01:03:46",
+      "cut": "master",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Bonjour. This is Liam, in for Bear. Claude doesn't remember your book between calls. You send it again, every time. So the real question is how to reuse the work on your book.",
+      "estimated_duration_s": 10.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'Can Claude remember my book?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'remember my book' -> 'reuse the work on my book' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Can Claude\nremember my book?",
+            "triggerWords": "remember my book",
+            "replacementWords": "reuse the work on my book",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-pay-once-for-the-long-part",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T04:53:08.685529+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (Claude remembers my book) and corrects it to the real one (reuse the work on my book).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 9.58,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 9.583333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T01:03:46"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A token: a small piece of text. Claude reads, and bills, in tokens. A prefix: the start of a prompt, up to a chosen point. And a cache: a short-lived store of work already done.",
+      "estimated_duration_s": 11.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "'token' lands"
+          },
+          {
+            "at": 0.45,
+            "event": "'prefix' lands"
+          },
+          {
+            "at": 0.72,
+            "event": "'cache' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "token",
+                "meaning": "a small piece of text; Claude reads and bills in tokens"
+              },
+              {
+                "term": "prefix",
+                "meaning": "the start of a prompt, up to a chosen point"
+              },
+              {
+                "term": "cache",
+                "meaning": "a short-lived store of work already done"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T04:53:46.851673+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 10.22,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 10.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T01:03:46"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Here's the notebook's example: a whole novel, Pride and Prejudice, about a hundred and eighty-seven thousand tokens, with one short question at the end. Book and question go to Claude together, in one request.",
+      "estimated_duration_s": 11.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A pale belt draws in toward a dark reader station; a thick book block (dark cover, white page edges) drops onto the belt ('~187k tokens'); a small white question card slides in behind it ('question'); the reader drops in at the belt's end ('Claude') and its light turns terracotta.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the belt"
+          },
+          {
+            "at": 0.3,
+            "event": "the novel lands"
+          },
+          {
+            "at": 0.55,
+            "event": "the question"
+          },
+          {
+            "at": 0.8,
+            "event": "one request to Claude"
+          }
+        ],
+        "manim": {
+          "class": "B00_Book"
+        },
+        "motion_claim": "A pale belt draws in toward a dark reader station; a thick book block (dark cover, white page edges) drops onto the belt ('~187k tokens'); a small white question card slides in behind it ('question'); the reader drops in at the belt's end ('Claude') and its light turns terracotta."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.78,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 11.791666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:03:46"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "With no caching, Claude reads every one of those tokens, on every call. In the notebook's run, that took four point eight nine seconds, just to answer with the book's title.",
+      "estimated_duration_s": 10.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A segmented time meter stands at the right; a terracotta scan line crawls the whole book and card while all ten grey segments fill ('4.89 s'); a small answer slip pops out of the reader.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "every token, every call"
+          },
+          {
+            "at": 0.45,
+            "event": "the meter fills"
+          },
+          {
+            "at": 0.85,
+            "event": "a one-line answer"
+          }
+        ],
+        "manim": {
+          "class": "B01_Slow"
+        },
+        "motion_claim": "A segmented time meter stands at the right; a terracotta scan line crawls the whole book and card while all ten grey segments fill ('4.89 s'); a small answer slip pops out of the reader."
+      },
+      "actual_duration_s": 9.43,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 9.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:03:46"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Now add one field at the top of the request: cache control. It sets a bookmark at the end of the prompt. The first call still reads everything, then writes it, up to the bookmark, to the cache. Four point two eight seconds: about the same.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The meter empties; a terracotta bookmark drops in behind the question card ('cache_control'); the scan line crawls the whole prompt as nine segments fill ('4.28 s'); a kraft shelf appears ('cache') and a copy of book, card and bookmark flies up onto it.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "one field: cache_control"
+          },
+          {
+            "at": 0.3,
+            "event": "the bookmark"
+          },
+          {
+            "at": 0.55,
+            "event": "read everything"
+          },
+          {
+            "at": 0.8,
+            "event": "written to the cache"
+          }
+        ],
+        "manim": {
+          "class": "B02_Write"
+        },
+        "motion_claim": "The meter empties; a terracotta bookmark drops in behind the question card ('cache_control'); the scan line crawls the whole prompt as nine segments fill ('4.28 s'); a kraft shelf appears ('cache') and a copy of book, card and bookmark flies up onto it."
+      },
+      "actual_duration_s": 12.25,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 12.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:03:46"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Send the exact same request again, whole book included. Its start matches what's in the cache, so that part comes off the shelf instead of being read from scratch. One point four eight seconds: three point three times faster, in that run.",
+      "estimated_duration_s": 13.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The meter empties; a fresh copy of the same request rides onto the belt; a dashed line joins the shelf copy to it and an ink check lands; the shelf copy slides down into the reader with no scan; only three segments fill ('1.48 s'); '3.3×'.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "the same request again"
+          },
+          {
+            "at": 0.35,
+            "event": "the start matches"
+          },
+          {
+            "at": 0.6,
+            "event": "off the shelf"
+          },
+          {
+            "at": 0.85,
+            "event": "3.3x faster in that run"
+          }
+        ],
+        "manim": {
+          "class": "B03_Hit"
+        },
+        "motion_claim": "The meter empties; a fresh copy of the same request rides onto the belt; a dashed line joins the shelf copy to it and an ink check lands; the shelf copy slides down into the reader with no scan; only three segments fill ('1.48 s'); '3.3×'."
+      },
+      "actual_duration_s": 12.76,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 12.791666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:03:46"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "It pays most in a conversation. Each turn resends the whole history, and the bookmark moves forward on its own. The book and the earlier turns come from the cache; only the new turn is fresh. After turn one, the notebook says, nearly all input comes from the cache.",
+      "estimated_duration_s": 15.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The meter leaves; answer and question cards line up behind the book ('conversation'); a new question card slides on and the bookmark hops forward past it; a short scan crosses only the new cards, which fly up to join the shelf copy; again for a third turn.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "a conversation"
+          },
+          {
+            "at": 0.3,
+            "event": "the bookmark moves forward"
+          },
+          {
+            "at": 0.6,
+            "event": "only the new turn is read"
+          },
+          {
+            "at": 0.85,
+            "event": "nearly all input from the cache"
+          }
+        ],
+        "manim": {
+          "class": "B04_Turns"
+        },
+        "motion_claim": "The meter leaves; answer and question cards line up behind the book ('conversation'); a new question card slides on and the bookmark hops forward past it; a short scan crosses only the new cards, which fly up to join the shelf copy; again for a third turn."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 14.04,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 14.041666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:03:46"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The bill has the same shape. Writing to the cache costs a quarter more than normal input. Reading from it costs a tenth, or less on some newer models. That's the notebook's headline: up to ninety percent cheaper, and more than twice as fast, for repeated work.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three iso columns rise from a slab: a ghost 'normal' column, a slightly taller 'write' column, and a tiny 'read' column; a dashed level line at normal height; the read column's top gets a terracotta dot.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "normal input"
+          },
+          {
+            "at": 0.3,
+            "event": "write: a quarter more"
+          },
+          {
+            "at": 0.5,
+            "event": "read: a tenth"
+          },
+          {
+            "at": 0.8,
+            "event": "up to 90% cheaper, >2x faster (notebook)"
+          }
+        ],
+        "manim": {
+          "class": "B05_Price"
+        },
+        "motion_claim": "Three iso columns rise from a slab: a ghost 'normal' column, a slightly taller 'write' column, and a tiny 'read' column; a dashed level line at normal height; the read column's top gets a terracotta dot."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.5,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 13.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:03:46"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Two rules. The start must match exactly: put a timestamp in front of the book, and every call is a miss, and a fresh write. And the cache is short-lived: five minutes by default, per the notebook, and every hit resets the clock.",
+      "estimated_duration_s": 13.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A request arrives with a small card in front of the book ('timestamp'); the dashed match line from the shelf ends at an ink cross ('miss') and the scan crawls the whole book again; a clock disc by the shelf ('5 min') drains; a hit refills it.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "the start must match exactly"
+          },
+          {
+            "at": 0.35,
+            "event": "a timestamp in front: miss"
+          },
+          {
+            "at": 0.65,
+            "event": "five minutes"
+          },
+          {
+            "at": 0.88,
+            "event": "a hit resets the clock"
+          }
+        ],
+        "manim": {
+          "class": "B06_Rules"
+        },
+        "motion_claim": "A request arrives with a small card in front of the book ('timestamp'); the dashed match line from the shelf ends at an ink cross ('miss') and the scan crawls the whole book again; a clock disc by the shelf ('5 min') drains; a hit refills it."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.16,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 12.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:03:46"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "For finer control, place the bookmarks yourself, on individual blocks. The notebook puts one after the book, in the system prompt, and one on the newest question. You get up to four. Its advice: start with automatic, and switch only when you need the control.",
+      "estimated_duration_s": 14.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Close-up: the prompt as a stack (the book as the system prompt, then turn cards); a cursor places one bookmark after the book ('explicit') and one on the newest question; two ghost bookmark slots appear ('up to 4').",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "explicit breakpoints"
+          },
+          {
+            "at": 0.35,
+            "event": "after the book, in the system prompt"
+          },
+          {
+            "at": 0.55,
+            "event": "on the newest question"
+          },
+          {
+            "at": 0.8,
+            "event": "up to four"
+          }
+        ],
+        "manim": {
+          "class": "B07_Explicit"
+        },
+        "motion_claim": "Close-up: the prompt as a stack (the book as the system prompt, then turn cards); a cursor places one bookmark after the book ('explicit') and one on the newest question; two ghost bookmark slots appear ('up to 4')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.72,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 13.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:03:46"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude Code: Find every place this project calls the Claude API with the same long context each time, like a big system prompt or a document. Turn on prompt caching with a top-level cache control, keep that long part first and unchanged, and move anything that changes, like a timestamp, after it. Then log cache creation input tokens and cache read input tokens for each call. Then check two things yourself. Run it twice: does the second call show cache read tokens? And does anything that changes still sit before the long part?",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · YOUR TURN",
+            "segment": "Pay Once for the Long Part",
+            "command": "Find every place this project calls the Claude API with the same long context each time, like a big system prompt or a document. Turn on prompt caching with a top-level cache_control, keep that long part first and unchanged, and move anything that changes, like a timestamp, after it. Then log cache_creation_input_tokens and cache_read_input_tokens for each call.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: run it twice. Does call two show cache reads?",
+              "Check: does anything that changes sit before the long part?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T04:55:02.608880+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 29.74,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 29.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T01:03:46"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Pay Once for the Long Part. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Pay Once for the Long Part",
+            "slug": "show-tell-pay-once-for-the-long-part",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T04:55:17.164965+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.35,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T01:03:46"
+      }
+    }
+  ]
+}

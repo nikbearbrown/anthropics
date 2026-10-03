@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Configure",
+    "title": "Claude, Configure.",
     "slug": "claude-liam-configure",
-    "topic": "CONFIGURE · DISCORD PLUGIN",
+    "topic": "CONFIGURE · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,51 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Ciao, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-plugins-official/external_plugins/discord/skills/configure/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-plugins-official/external_plugins/discord/skills/configure/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Set up the Discord channel — save the bot token and review access policy",
+        "Use when the user pastes a Discord bot token",
+        "asks to configure Discord",
+        "asks \"how do I set this up\" or \"who can reach me,\" or wants to check channel status."
+      ],
+      "constraints": [
+        "but that's not a substitute for locking the allowlist. Never frame pairing",
+        "Developer Portal → Bot → Reset Token; only shown once",
+        "Delete the DISCORD_BOT_TOKEN= line (or the file if that's the only line)"
+      ],
+      "referenced_files": [
+        "~/.claude/channels/discord/.env",
+        "$ARGUMENTS",
+        "DISCORD_BOT_TOKEN",
+        "~/.claude/channels/discord/access.json",
+        "/discord:configure <token>",
+        "/discord:access policy allowlist",
+        "/discord:access pair <code>",
+        "/discord:access allow <id>",
+        "mkdir -p ~/.claude/channels/discord",
+        ".env"
+      ],
+      "code_signals": [],
+      "sections": [
+        "Dispatch on arguments",
+        "No args — status and guidance",
+        "<token> — save it",
+        "clear — remove the token",
+        "Implementation notes"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T20:05:44",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T15:51:56",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +66,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Ciao — this is Liam, in for Bear. Paste a Discord bot token, ask to configure Discord, ask how to set this up, or ask who can reach you through the bot — and the configure skill fires. This skill has three modes: no arguments shows channel status and tells you your next step; a token argument saves the credential to disk; and the word clear removes the token. It writes to two state files and ends every setup interaction with a push toward locking the access policy to an allowlist. Let me walk you through the three modes, the two state files, the lockdown rule, and the teardown.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is configure. Set up the Discord channel — save the bot token and review access policy. Use when the user pastes a Discord bot token, asks to configure Discord, asks \"how do I set this up\" or \"who can reach me,\" or wants to check channel status.. Its concrete surface area includes Set up the Discord channel — save the bot token and review access policy; Use when the user pastes a Discord bot token; asks to configure Discord. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Ciao, Liam",
-            "topic": "CONFIGURE · DISCORD PLUGIN",
-            "segment": "DISCORD",
-            "command": "Configure my Discord bot — I just reset the token.",
+            "greeting": "Hola, Liam",
+            "topic": "CONFIGURE · ANTHROPIC SKILL",
+            "segment": "Claude, Configure.",
+            "command": "Run the configure skill.",
             "runningText": "reading configure SKILL.md…",
             "output": [
-              "3 modes: no-args (status) · <token> (save) · clear (remove)",
-              "2 files: ~/.claude/channels/discord/.env + access.json",
-              "Push toward lockdown: pairing → allowlist always"
+              "skill: configure",
+              "Set up the Discord channel — save the bot token and review access policy. Use…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +96,41 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 31.45,
+      "actual_duration_s": 29.23,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:05:44"
+        "at": "2026-09-05T15:51:56"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — three modes + two state files + three next-step states",
-      "narration_text": "The skill dispatches on the argument. No arguments shows the current status: it reads both state files and gives the user a complete picture — token set or not, DM policy, allowed senders, pending pairings, guild channels. It always ends with a concrete next step based on state. A token argument saves the credential: it trims whitespace, runs mkdir -p on the channels directory, reads any existing .env to preserve other keys, updates or adds the DISCORD_BOT_TOKEN line with no quotes around the value, writes it back, and then runs chmod 600 on the file. The word clear removes the token line or the file if it's the only line. The two state files are dot-env and access-dot-json. The .env file holds the bot token — a credential, read once at boot. The access.json file holds the access policy and is re-read on every inbound message. The three next-step states: no token set, tell the user to run configure with their token from the Developer Portal. Token set and policy is pairing with nobody allowed yet, tell the user to DM the bot to get a pair code. Token set and someone is in the allowlist, the bot is ready.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is configure. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at ~/.claude/channels/discord/.env, $ARGUMENTS, DISCORD_BOT_TOKEN, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 38,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ConfigureAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Three modes. Two files. Different restart rules for each."
+            "skillName": "configure",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "4k",
+                "accent": true
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "1 file total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +139,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 62.23,
+      "actual_duration_s": 19.82,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:05:44"
+        "at": "2026-09-05T15:51:56"
       }
     },
     {
       "beat_id": "B02",
-      "act": "design — push-toward-lockdown rule + policy flow + security hygiene",
-      "narration_text": "The design choice worth understanding is the lockdown rule. The skill is explicit: always push toward an allowlist policy. Pairing is a temporary state, not a policy to stay on. Its job is to capture Discord snowflakes — the IDs — that the user doesn't know in advance. Once those IDs are in the allowlist, pairing has done its job and should be turned off. The skill drives this conversation in six steps: read the allowlist, tell the user who's in it, ask if that's everyone, and if yes and policy is still pairing, offer to lock it down proactively — don't wait to be asked. If people are missing, tell the user to pair them first. If the allowlist is empty and they haven't paired themselves, tell them to DM the bot to capture their own ID first. Two implementation details are worth noting. The .env file change requires a session restart or slash-reload-plugins — the server reads it only once at boot. The access.json change takes effect immediately — the server re-reads it on every inbound message. This asymmetry is easy to miss: a user who saves a new token and doesn't restart will think the configuration worked but be running the old token.",
+      "act": "pipeline",
+      "narration_text": "configure is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Set up the Discord channel — save the bot token and review access policy; Use when the user pastes a Discord bot token; asks to configure Discord; asks \"how do I set this up\" or \"who can reach me,\" or wants to check channel status.. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 34,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ConfigureDesign",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Pairing captures IDs. Allowlist locks them. Close the loop."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +190,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 59.01,
+      "actual_duration_s": 20.52,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:05:44"
+        "at": "2026-09-05T15:51:56"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. The configure skill gets five things right. The three-mode dispatch covers all user entry points — status, save, and clear — with concrete behavior for each. The push-toward-lockdown rule is explicit and actionable: offer the allowlist flip proactively, not only when asked. chmod 600 on the dot-env file is built into the token-save flow — credential hygiene is not optional. The two different restart behaviors are clear: dot-env changes need a session restart; access.json changes take effect immediately on the next message. And the next-step guidance for each of the three states is concrete — not just a description of state, but a specific command for the user to run. Where it bites. No token format validation before saving — the skill writes any argument string to dot-env without checking that it looks like a Discord bot token. The skill says to preserve other keys in dot-env but never says what other valid keys exist — the user can't know if their existing file is correct. After saving a new token, the user is told to restart, but no restart command is given and no way to verify the restart is mentioned. The access.json structure is described by example — dmPolicy, allowlist, pending pairings — but the full schema is never stated, so the user can't build or repair the file from the skill alone. And Discord's own gates — the shared-server requirement and the Public Bot toggle — are mentioned as context but never explained, leaving users unable to evaluate whether their bot is already safely isolated.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. but that's not a substitute for locking the allowlist. Never frame pairing. That is the constraint in configure — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 44,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ConfigureTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Lockdown rule and credential hygiene solid. Token validation and schema gaps: surface them."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "but that's not a substitute for locking the allowlist. Never frame pairing",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 83.73,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 11.71,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:05:44"
+        "at": "2026-09-05T15:51:56"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In configure, supporting material: ~/.claude/channels/discord/.env, $ARGUMENTS, DISCORD_BOT_TOKEN, ~/.claude/channels/discord/access.json; sections: Dispatch on arguments, No args — status and guidance, <token> — save it, clear — remove the token. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Set up the Discord channel — save the bot token and review access policy; Use when the user pastes a Discord bot token; asks to configure Discord; ~/.claude/channels/discord/.env; $ARGUMENTS; DISCORD_BOT_TOKEN",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 23.17,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T15:51:56"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. Configure: Discord channel setup — 3 modes: no-args (status) · token (save+chmod 600) · clear. 2 files: .env (boot-read, credential) · access.json (per-message, immediate). Next steps: no token → reset-token path · pairing+nobody → pair code · allowlist → ready. Push toward lockdown: pairing is temporary, always offer allowlist flip proactively. Gaps: no token validation · other .env keys unspecified · restart command not given · access.json schema by example only · Discord gates unexplained.",
+      "narration_text": "configure makes Claude execute one task reliably. The SKILL.md is the spec — Set up the Discord channel — save the bot token and review access policy. Use…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 22,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "Configure",
+            "artifactHeading": "Claude, Configure.",
             "artifactLines": [
-              "3 modes: no-args (status) · <token> (save + chmod 600) · clear",
-              "2 files: .env (boot-read, credential) · access.json (immediate, per-message)",
-              "Next steps: no token → portal · pairing → pair code · allowlist → ready",
-              "Push toward lockdown: pairing captures IDs, then flip to allowlist always",
-              "Lockdown rule is proactive: offer without being asked",
-              "Gaps: no token validation · .env schema · no restart cmd · access.json schema"
+              "Skill: configure — Claude reads SKILL.md before acting",
+              "Set up the Discord channel — save the bot token and review access policy. Use when the…",
+              "Capabilities: Set up the Discord channel — save the bot token and review access policy; Use when the user pastes a Discord bot token; asks to configure Discord",
+              "Constraint: but that's not a substitute for locking the allowlist. Never frame pairing",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +291,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 35.43,
+      "actual_duration_s": 13.97,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:05:44"
+        "at": "2026-09-05T15:51:56"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Open a Claude Code session with access to the discord configure skill. Paste a fake token string — something that looks plausible but isn't real. Watch five things. First: does the skill validate the token format before saving, or does it write the string unconditionally? Second: does the no-args status output show the token as set after saving, masked to the first six characters? Third: does the skill offer to run slash-discord-access-policy-allowlist proactively after you say the allowlist is complete, or does it wait for you to ask? Fourth: after the skill tells you to restart for the token change to take effect, does it give you the restart command, or just say to restart? Fifth: if you run the no-args mode before saving a token, does the next-step guidance tell you exactly where in the Developer Portal to get the token — the Bot tab, Reset Token button?",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to set up the discord channel — save the bot token and review access policy. use. Read the configure skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "CONFIGURE · HANDOFF",
-            "segment": "DISCORD",
-            "command": "Configure my Discord bot — here's my token: [paste a fake token string]",
-            "runningText": "Watch: token validation? status masked? lockdown proactive? restart cmd?",
-            "output": [
-              "Expected: status shows masked token · lockdown offer proactive",
-              "Expected: restart note includes the command or clear path",
-              "Red flag: writes any string · waits to be asked to lock · no restart cmd"
-            ],
+            "greeting": "Your turn.",
+            "topic": "CONFIGURE · ANTHROPIC SKILL",
+            "segment": "Claude, Configure.",
+            "command": "I want to set up the discord channel — save the bot token and review access. Read the configure skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +328,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 43.63,
+      "actual_duration_s": 14.61,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:05:44"
+        "at": "2026-09-05T15:51:56"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "Configure. Liam, in for Bear.",
+      "narration_text": "Claude, Configure. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "Configure",
+            "title": "Claude, Configure.",
             "handle": "@NikBearBrown",
-            "subline": "configure · Discord Plugin"
+            "subline": "configure · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +359,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 2.54,
+      "actual_duration_s": 2.92,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:05:44"
+        "at": "2026-09-05T15:51:56"
       }
     }
   ]

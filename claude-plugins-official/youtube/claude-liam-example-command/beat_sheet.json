@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "example-command",
+    "title": "Claude, Example Command.",
     "slug": "claude-liam-example-command",
-    "topic": "EXAMPLE COMMAND · CLAUDE PLUGINS",
+    "topic": "EXAMPLE-COMMAND · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,38 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Olá, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-plugins-official/plugins/example-plugin/skills/example-command/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-plugins-official/plugins/example-plugin/skills/example-command/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "An example user-invoked skill that demonstrates frontmatter options and the skills/<name>/SKILL.md layout"
+      ],
+      "constraints": [
+        "argument-hint: <required-arg> [optional-arg]",
+        "This demonstrates the skills/<name>/SKILL.md layout for user-invoked slash commands. It is functionally identical to the legacy commands/example-command.md format — both…"
+      ],
+      "referenced_files": [
+        "skills/<name>/SKILL.md",
+        "commands/example-command.md"
+      ],
+      "code_signals": [],
+      "sections": [
+        "Arguments",
+        "Instructions",
+        "Frontmatter Options Reference",
+        "Example Usage"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T20:59:21",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T16:19:53",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +53,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Olá — this is Liam, in for Bear. You are building a slash command for Claude — the example-command skill is the reference template. It lives at skills slash name slash SKILL.md and shows the complete frontmatter schema: five fields, an argument injection point, and the three-step body pattern. It is not a working skill — it is the format. Let me walk you through what it demonstrates and where the gaps are.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is example-command. An example user-invoked skill that demonstrates frontmatter options and the skills/<name>/SKILL.md layout. Its concrete surface area includes An example user-invoked skill that demonstrates frontmatter options and the skills/<name>/SKILL.md layout. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 18,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Olá, Liam",
-            "topic": "EXAMPLE COMMAND · CLAUDE PLUGINS",
-            "segment": "PLUGINS",
-            "command": "/example-command my-argument",
+            "greeting": "Hola, Liam",
+            "topic": "EXAMPLE-COMMAND · ANTHROPIC SKILL",
+            "segment": "Claude, Example Command.",
+            "command": "Run the example-command skill.",
             "runningText": "reading example-command SKILL.md…",
             "output": [
-              "skills/<name>/SKILL.md layout — complete frontmatter schema",
-              "5 fields: name · description · argument-hint · allowed-tools · model",
-              "$ARGUMENTS injection point + legacy format equivalence"
+              "skill: example-command",
+              "An example user-invoked skill that demonstrates frontmatter options and the…",
+              "steps: 3 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +83,41 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 20.22,
+      "actual_duration_s": 21.29,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:59:21"
+        "at": "2026-09-05T16:19:53"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — frontmatter schema + skill body structure",
-      "narration_text": "The skill demonstrates two things side by side: the frontmatter schema and the body structure. Five frontmatter fields. Name matches the directory name — that's the identifier Claude uses. Description is the short string shown in slash help. Argument-hint is the hints text shown to the user when they invoke the command — it appears as syntax documentation. Allowed-tools is a list of pre-approved tools for this skill, which reduces permission prompts during invocation. Model overrides the model for this specific command — haiku, sonnet, or opus. In the body, dollar-sign ARGUMENTS is the injection point: whatever the user types after the slash command name arrives here verbatim. The body then shows a three-step pattern: parse the arguments, perform the action using allowed tools, and report results. This skill is functionally identical to the legacy commands slash example-command.md format — both are loaded the same way, the only difference is file layout.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is example-command. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at skills/<name>/SKILL.md, commands/example-command.md, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 34,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ExampleCommandAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Five frontmatter fields. $ARGUMENTS injection. Same loading as legacy commands/ format."
+            "skillName": "example-command",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "1k",
+                "accent": true
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "1 file total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +126,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 49.47,
+      "actual_duration_s": 19.37,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:59:21"
+        "at": "2026-09-05T16:19:53"
       }
     },
     {
       "beat_id": "B02",
-      "act": "design — format reference vs functional demo + allowed-tools tradeoffs",
-      "narration_text": "Two design points. This skill is a format reference, not a functional demo. Invoking it produces the three-step template — parse, perform, report — which is intentional. It is documentation you can copy. But copying it and filling in the body means you inherit the wide allowed-tools list including Bash without understanding the blast radius. Bash gives the skill full shell access. A minimal-permission approach would list only the tools the specific command actually needs. The second point is the allowed-tools pre-approval contract. Pre-approving a tool in frontmatter means Claude invokes it without a permission prompt during that skill's execution. The pre-approval is scope-limited to the skill's invocation — but the tools listed in the example are Read, Glob, Grep, and Bash, which is a broad set for an example that only needs to demonstrate frontmatter. A skill builder copying this template needs to narrow the list to what their command actually uses.",
+      "act": "pipeline",
+      "narration_text": "The pipeline has 3 steps. Parse the arguments provided by the user → Perform the requested action using allowed tools → Report results back to the user. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 36,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ExampleCommandDesign",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Format reference, not a demo. Allowed-tools: pre-approved but unscoped in the template."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Parse the arguments provided…",
+                "desc": "",
+                "accent": true
+              },
+              {
+                "label": "Perform the requested action…",
+                "desc": "",
+                "accent": false
+              },
+              {
+                "label": "Report results back to the…",
+                "desc": "",
+                "accent": false
+              }
+            ],
+            "footerNote": "3 steps. Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +177,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 49.28,
+      "actual_duration_s": 15.57,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:59:21"
+        "at": "2026-09-05T16:19:53"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. The skill gets five things right. All five frontmatter fields are present with their names and one-line purpose — it's a complete schema reference in four lines of YAML. Dollar-sign ARGUMENTS is shown in the body with no preamble — you see exactly where user input arrives. Argument-hint demonstrates the UX affordance: the string becomes the syntax hint shown to users who invoke the command. Allowed-tools pre-approval is stated with its practical implication: reduces permission prompts. And the legacy format equivalence is explicit — both layouts load identically, only the file path differs. Where it bites. The skill has no functional behavior: invoking it produces only the parse-perform-report template with no tool calls, so you can't watch it work. Model override lists haiku, sonnet, opus, but gives no guidance on when to use which, or what the cost and capability tradeoffs are. Dollar-sign ARGUMENTS parsing is entirely implicit — no example of how to split multiple arguments, handle optionals, or set defaults. Bash in the allowed-tools list has wide blast radius with no note on narrowing to minimal permissions. And there is no guidance on writing a good description for slash help display — no length limit, no phrasing examples.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. argument-hint: <required-arg> [optional-arg]. That is the constraint in example-command — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 42,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ExampleCommandTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Schema complete and $ARGUMENTS visible. Bash blast radius and $ARGUMENTS parsing: not shown."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "argument-hint: <required-arg> [optional-arg]",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 65.58,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 10.6,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:59:21"
+        "at": "2026-09-05T16:19:53"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In example-command, supporting material: skills/<name>/SKILL.md, commands/example-command.md; sections: Arguments, Instructions, Frontmatter Options Reference, Example Usage. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "An example user-invoked skill that demonstrates frontmatter options and the skills/<name>/SKILL.md layout; skills/<name>/SKILL.md; commands/example-command.md",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 17.83,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T16:19:53"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. example-command: skills/<name>/SKILL.md format reference. 5 frontmatter fields: name · description · argument-hint · allowed-tools · model. $ARGUMENTS: verbatim user input injection point. Body: parse → perform → report. Legacy commands/ equivalent. allowed-tools pre-approves tools scope-limited to invocation. Gaps: no functional behavior · model override no guidance · $ARGUMENTS parsing implicit · Bash wide blast radius · description no /help guidance.",
+      "narration_text": "example-command makes Claude execute one task reliably. The SKILL.md is the spec — An example user-invoked skill that demonstrates frontmatter options and the…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 22,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "example-command",
+            "artifactHeading": "Claude, Example Command.",
             "artifactLines": [
-              "skills/<name>/SKILL.md layout · 5 frontmatter fields: name · desc · arg-hint · tools · model",
-              "$ARGUMENTS: verbatim user input injection point in skill body",
-              "Body pattern: parse → perform → report (template only, no functional behavior)",
-              "allowed-tools: pre-approves tools, reduces prompts, scope-limited to invocation",
-              "Legacy commands/ equivalent — same load path, different file location",
-              "Gaps: no functional demo · model tradeoffs · $ARGUMENTS parsing · Bash blast radius"
+              "Skill: example-command — Claude reads SKILL.md before acting",
+              "An example user-invoked skill that demonstrates frontmatter options and the…",
+              "3-step pipeline: Parse the arguments provided by the user → Perform the requested action using allowed tools → Report results back to the user",
+              "Constraint: argument-hint: <required-arg> [optional-arg]",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +278,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 32.15,
+      "actual_duration_s": 14.42,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:59:21"
+        "at": "2026-09-05T16:19:53"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Copy the example-command skill and build a real slash command that takes a required argument and an optional flag. Watch five things. First: does it put the skill directory name and the name frontmatter field in sync? Second: does it write a description under sixty characters that will fit in slash help without truncation? Third: does it narrow the allowed-tools list to only what the command actually uses — not the full Read, Glob, Grep, Bash set from the template? Fourth: does it parse dollar-sign ARGUMENTS to handle the optional flag gracefully when it's absent? Fifth: does it use model override, and if so, does it explain why that model was chosen?",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to an example user-invoked skill that demonstrates frontmatter options and the. Read the example-command skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 26,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "EXAMPLE COMMAND · HANDOFF",
-            "segment": "PLUGINS",
-            "command": "Build a real slash command from example-command. Required arg + optional flag.",
-            "runningText": "Watch: name/dir sync? short description? minimal tools? $ARGUMENTS optional? model?",
-            "output": [
-              "Expected: name = dir name · description <60 chars · tools narrowed",
-              "Expected: $ARGUMENTS parsing handles absent optional · model justified",
-              "Red flag: Bash when not needed · full tool set copied · missing optional handling"
-            ],
+            "greeting": "Your turn.",
+            "topic": "EXAMPLE-COMMAND · ANTHROPIC SKILL",
+            "segment": "Claude, Example Command.",
+            "command": "I want to an example user-invoked skill that demonstrates frontmatter options. Read the example-command skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +315,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 33.75,
+      "actual_duration_s": 14.98,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:59:21"
+        "at": "2026-09-05T16:19:53"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "example-command. Liam, in for Bear.",
+      "narration_text": "Claude, Example Command. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "example-command",
+            "title": "Claude, Example Command.",
             "handle": "@NikBearBrown",
-            "subline": "example-command · Claude Plugins"
+            "subline": "example-command · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +346,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 2.86,
+      "actual_duration_s": 3.35,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T20:59:21"
+        "at": "2026-09-05T16:19:53"
       }
     }
   ]

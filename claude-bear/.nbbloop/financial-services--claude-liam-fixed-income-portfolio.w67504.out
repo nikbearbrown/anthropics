@@ -1,0 +1,11 @@
+Task tracking isn't warranted for this single-file conversion — the work is done.
+
+Conversion complete for `financial-services--claude-liam-fixed-income-portfolio`:
+
+- **`beat_sheet.nbb.json`** — all 7 narrations rewritten in the Teardown register (mechanism + design choice + trade-off), facts preserved; BCRY kept verbatim (WantQuote sync); B00 stays in the 20–35 word timing-law window at 34 words with locked hesitation props intact.
+- **LLM EXERCISE beat** is `BHTF` (preserving the source beat_id, per the sibling `nbb-financial-services--claude-liam-deal-sourcing` precedent), second-to-last, with structured `llm_exercise.prompt` + `dig_deeper`, and `ClaudeComposerAsk` flipped to `@NikBearBrown`.
+- **Outro** (`BOUT`) is last; handle flipped to `@NikBearBrown`.
+- **Metadata** — `_variant_todo` removed; `channel_title` / `folderLabel` flipped to `@NikBearBrown`; `purpose` rewritten in the Teardown lens.
+- **`CONVERT-LOG.md`** written beside the sheet: what changed + 6 judgement calls.
+
+Validated with `python3 -m json.tool` equivalent — JSON parses, order is body → LLM EXERCISE → outro, all handles are `@NikBearBrown`, `llm_exercise` object present. No audio, no compile, no render — per the invocation contract. Stopping.

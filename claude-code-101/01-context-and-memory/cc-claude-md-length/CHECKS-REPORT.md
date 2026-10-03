@@ -1,0 +1,2 @@
+# CHECKS-REPORT — cc-claude-md-length
+13 beats · 13 SHOW · 0 CARD/HOLD/PUNT. Arc: prediction before reveal (B00 "I wanted to see it get ignored"); concrete (three runs) before abstract (B06/B07); friction (the filler is generated on purpose and said so); falsifiable line in BVDT; handoff BHTF = B07's MUST rows. IDEA + DEFINITIONS then CONDUCT + HUMAN ✓. Three consecutive non-terminal beats at the top (BIDEA, BDEFS, B01) — each names its reason; B01 is a cross-repo comparison. Gates: GATE F clean, BOOKEND ids, Gate V, GATE T; kit budgets asserted in author_sheet.py.

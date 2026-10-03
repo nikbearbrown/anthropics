@@ -1,0 +1,1226 @@
+{
+  "metadata": {
+    "slug": "cc-hook-enforcement",
+    "title": "When 'Never' Needs an Exit Code",
+    "subtitle": "CLAUDE.md is a rule Claude reads. A hook is one exit code the OS honors — every call, every time.",
+    "topic": "CLAUDE CODE 101",
+    "skill": "cc-explainer",
+    "playlist": "Claude Code 101",
+    "tier": "03-hooks-skills-commands",
+    "audience": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "handle": "@NikBearBrown",
+    "brand": "claude",
+    "palette": "claude",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "persona": "liam",
+    "in_for_bear": true,
+    "operator": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "closing_voice": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "aspect": "16:9",
+    "fps": 30,
+    "session": "SESSION.md",
+    "derived_from": "claude-code-101/03-hooks-skills-commands/claude-code--claude-liam-vox-hook-enforcement (the concept; the card body replaced by two fresh headless runs + a direct hook demo)",
+    "sources": [
+      "SESSION.md (2 real runs + direct hook demo, 2026-09-10)",
+      "info-7375-conducting-ai/chapters/02-the-solve-verify-asymmetry.md",
+      "info-7375-irreducibly-human/chapters/04-tier-4-metacognitive-and-supervisory.md"
+    ],
+    "build": {
+      "at": "2026-09-10T01:13:39",
+      "cut": "master",
+      "filled": 14,
+      "of": 14,
+      "slates": [],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'CCSession' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN — HOOK DIRECT",
+      "lane": "TERMINAL",
+      "narration_text": "This is Liam, in for Bear. Forty-two lines of Python. Two payloads, one with a letter grade, one without. Fed to the script on standard input. The one with the grade: exit two, block message on standard error. The clean one: exit zero, silent. No model in this loop. No prompt. A regex and an exit code. That's a hook. This film is about what it buys you that a rule in a file cannot.",
+      "estimated_duration_s": 26.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession (default mode) — the direct hook demo: bad → exit 2, ok → exit 0",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch — direct hook demo",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!wc -l hooks/guard.py",
+                "cue": 0,
+                "typeDuration": 32
+              },
+              {
+                "type": "text",
+                "text": "      42 hooks/guard.py"
+              },
+              {
+                "type": "prompt",
+                "text": "!cat ../evidence/bad.json",
+                "cue": 0,
+                "typeDuration": 40
+              },
+              {
+                "type": "text",
+                "text": "{'tool_name':'Write',"
+              },
+              {
+                "type": "text",
+                "text": " 'tool_input':{'file_path':'summary.md',"
+              },
+              {
+                "type": "text",
+                "text": "   'content':'Ada scored 88.\\nGrade: A'}}"
+              },
+              {
+                "type": "prompt",
+                "text": "!python3 hooks/guard.py < bad.json",
+                "cue": 0,
+                "typeDuration": 48
+              },
+              {
+                "type": "text",
+                "text": "BLOCKED by PreToolUse hook —"
+              },
+              {
+                "type": "text",
+                "text": "pattern: 'Grade: A'. exit 2."
+              },
+              {
+                "type": "prompt",
+                "text": "!python3 hooks/guard.py < ok.json",
+                "cue": 0,
+                "typeDuration": 46
+              },
+              {
+                "type": "text",
+                "text": "(silent) exit 0."
+              }
+            ],
+            "cues": [
+              0,
+              40,
+              80,
+              130,
+              170,
+              210,
+              260,
+              300,
+              330,
+              380,
+              420
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "guard.py — 42 lines"
+        },
+        {
+          "at": 0.5,
+          "event": "bad → exit 2"
+        },
+        {
+          "at": 0.9,
+          "event": "ok → exit 0"
+        }
+      ],
+      "actual_duration_s": 19.71,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "audio_file": "mp3/beat-B00.mp3"
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "THE IDEA",
+      "lane": "IDEA",
+      "narration_text": "Here's the idea. A rule in CLAUDE.md is something Claude reads and tries to honor. It usually does. But 'usually' has no receipt: you don't know when it held and you don't know when it will. A hook is a shell script the operating system runs before every tool call. It exits or it lets pass — every time, every call. Different guarantees. Different failure modes. This film is about picking the right one.",
+      "estimated_duration_s": 26.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "BrutalistHesitantWriter — 'might' reconsidered into 'must'",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "A rule in CLAUDE.md — Claude reads it, tries.\nUsually holds. No receipt when it does.\nA hook exits. Every call. Every time.\nSometimes the rule might.",
+            "triggerWords": "might",
+            "replacementWords": "must",
+            "face": "serif",
+            "fontSize": 78,
+            "align": "center",
+            "ink": "#F2F0E9",
+            "accent": "#D97757",
+            "bg": "#1F1E1B",
+            "seed": "cc-hook-enforcement",
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 5,
+            "jitter": 20
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the idea is not in any session; the writer types the film's argument and corrects the one word the film exists to fix"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Writer starts"
+        },
+        {
+          "at": 0.55,
+          "event": "'might' → 'must'"
+        },
+        {
+          "at": 0.9,
+          "event": "Last line"
+        }
+      ],
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 18.99,
+      "audio_file": "mp3/beat-BIDEA.mp3"
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "DEFINITIONS",
+      "lane": "CARD",
+      "narration_text": "Five words. Advisory: text Claude reads and tries to follow — CLAUDE.md is this. PreToolUse hook: a shell script Claude Code runs before every tool call, fed the call as JSON on standard input. Exit two: the exit code that tells Claude Code to block the tool call and show the message to the model. Deterministic: enforced by the operating system, not the model's judgment. Receipt: an artifact the run leaves behind proving what happened.",
+      "estimated_duration_s": 26.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCDefinitions — five terms",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCDefinitions",
+          "props": {
+            "title": "TERMS IN THIS FILM",
+            "terms": [
+              {
+                "term": "advisory",
+                "meaning": "text Claude reads and tries to follow — CLAUDE.md is this"
+              },
+              {
+                "term": "PreToolUse hook",
+                "meaning": "shell script Claude Code runs before every tool call, JSON on stdin"
+              },
+              {
+                "term": "exit 2",
+                "meaning": "exit code that blocks the tool call and shows the message to Claude"
+              },
+              {
+                "term": "deterministic",
+                "meaning": "enforced by the OS, not by the model's judgment"
+              },
+              {
+                "term": "receipt",
+                "meaning": "artifact the run leaves behind proving what happened"
+              }
+            ],
+            "startCue": 10,
+            "rowGap": 48
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "definitions for a chat-window audience who may not know the terminal words"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "First term"
+        },
+        {
+          "at": 0.55,
+          "event": "Terms land"
+        },
+        {
+          "at": 0.9,
+          "event": "Hold"
+        }
+      ],
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 22.7,
+      "audio_file": "mp3/beat-BDEFS.mp3"
+    },
+    {
+      "beat_id": "B01",
+      "act": "ADVISORY — THE ASK",
+      "lane": "TERMINAL",
+      "narration_text": "Advisory first. CLAUDE.md in the folder — never a letter grade, never overall performance followed by one. Hook stashed for now. Same ask that names both. Read the csv, write summary.md, include a suggested letter grade. Claude reads the rule, refuses in one sentence, no tool call. The advisory held. That's what it looks like when it works.",
+      "estimated_duration_s": 20.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — advisory: the ask, Claude's verbatim refusal, no Write",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "studygroup — advisory",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Read students.csv, write summary.md",
+                "cue": 0,
+                "typeDuration": 58
+              },
+              {
+                "type": "prompt",
+                "text": "(with a suggested letter grade)",
+                "cue": 0,
+                "typeDuration": 52
+              },
+              {
+                "type": "text",
+                "text": "I can't do the letter grades or"
+              },
+              {
+                "type": "text",
+                "text": "the 'overall performance' line —"
+              },
+              {
+                "type": "text",
+                "text": "CLAUDE.md forbids both. Only the"
+              },
+              {
+                "type": "text",
+                "text": "teacher assigns grades."
+              }
+            ],
+            "cues": [
+              0,
+              60,
+              120,
+              150,
+              180,
+              210
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Ask types"
+        },
+        {
+          "at": 0.55,
+          "event": "Claude refuses"
+        },
+        {
+          "at": 0.9,
+          "event": "No Write"
+        }
+      ],
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 18.86,
+      "audio_file": "mp3/beat-B01.mp3"
+    },
+    {
+      "beat_id": "B02",
+      "act": "ADVISORY — THE MISSING RECEIPT",
+      "lane": "TERMINAL",
+      "narration_text": "Now check what the file system remembers. List the folder. No summary. Grep the transcript for tool_use — zero. Nothing landed on disk; nothing tried. It held today. But the file system does not know the rule was there. The rule was in the model's context, and the context is gone when the session ends. It held today is not the same as it cannot fail.",
+      "estimated_duration_s": 23.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — plain shell VERIFY: ls, grep for tool_use → 0",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "studygroup — advisory · verify",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!ls scratch/",
+                "cue": 0,
+                "typeDuration": 26
+              },
+              {
+                "type": "text",
+                "text": "CLAUDE.md   README.md   ask.txt"
+              },
+              {
+                "type": "text",
+                "text": "hooks   students.csv"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -c tool_use run-advisory.jsonl",
+                "cue": 0,
+                "typeDuration": 48
+              },
+              {
+                "type": "text",
+                "text": "0"
+              },
+              {
+                "type": "text",
+                "text": "held today. no artifact on disk."
+              },
+              {
+                "type": "text",
+                "text": "no receipt the rule was in play."
+              }
+            ],
+            "cues": [
+              0,
+              40,
+              70,
+              120,
+              160,
+              190,
+              220
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "ls"
+        },
+        {
+          "at": 0.4,
+          "event": "tool_use → 0"
+        },
+        {
+          "at": 0.85,
+          "event": "no receipt"
+        }
+      ],
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 18.24,
+      "audio_file": "mp3/beat-B02.mp3"
+    },
+    {
+      "beat_id": "B03",
+      "act": "HOOK ACTIVE — THE FIRST WRITE",
+      "lane": "TERMINAL",
+      "narration_text": "Second run. Move CLAUDE.md out of the folder. Hook armed. Same ask. Claude lists, reads the csv, and goes straight to a Write — a full summary with a suggested letter grade line under each student. The tool_result comes back with is_error true. The message is the guard's: BLOCKED by PreToolUse hook — pattern grade colon A. The file did not land.",
+      "estimated_duration_s": 22.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — hook run: ls, Read csv, Write attempt, is_error BLOCKED",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "studygroup — hook active",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Read students.csv, write summary.md",
+                "cue": 0,
+                "typeDuration": 56
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "ls",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "students.csv",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "summary.md",
+                "state": "error"
+              },
+              {
+                "type": "text",
+                "text": "PreToolUse:Write hook error:"
+              },
+              {
+                "type": "text",
+                "text": "BLOCKED by PreToolUse hook —"
+              },
+              {
+                "type": "text",
+                "text": "pattern: 'grade: A'. Rewrite"
+              },
+              {
+                "type": "text",
+                "text": "without any letter grade."
+              }
+            ],
+            "cues": [
+              0,
+              90,
+              120,
+              150,
+              175,
+              205,
+              235,
+              265
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Ask, no CLAUDE.md"
+        },
+        {
+          "at": 0.5,
+          "event": "Write attempt"
+        },
+        {
+          "at": 0.9,
+          "event": "BLOCKED, is_error"
+        }
+      ],
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 18.45,
+      "audio_file": "mp3/beat-B03.mp3"
+    },
+    {
+      "beat_id": "B04",
+      "act": "HOOK ACTIVE — THE CORRECTION",
+      "lane": "TERMINAL",
+      "narration_text": "The block is not a suggestion. Claude reads the README. Reads the guard. Now it understands the rule — from the script that just stopped it, not from a paragraph it read at startup. It rewrites summary.md without any grade colon letter, keeps the overall performance line as prose. Second Write, allowed, thirteen lines. The hook made the model do a thing the model did not know it needed to do.",
+      "estimated_duration_s": 25.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — Reads README + guard.py, second Write succeeds",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "studygroup — hook active · fix",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "text",
+                "text": "The PreToolUse hook blocked it."
+              },
+              {
+                "type": "text",
+                "text": "Let me read the rules and rewrite."
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "README.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "hooks/guard.py",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Only the teacher awards grades."
+              },
+              {
+                "type": "text",
+                "text": "Rewriting without any letter grade."
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "summary.md",
+                "state": "done"
+              }
+            ],
+            "cues": [
+              0,
+              30,
+              60,
+              110,
+              160,
+              190,
+              240
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Reads the guard"
+        },
+        {
+          "at": 0.5,
+          "event": "Understands the rule"
+        },
+        {
+          "at": 0.9,
+          "event": "Second Write OK"
+        }
+      ],
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 19.8,
+      "audio_file": "mp3/beat-B04.mp3"
+    },
+    {
+      "beat_id": "B05",
+      "act": "HOOK ACTIVE — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "Check what landed. Thirteen lines. Grep for any line that starts with Grade or Overall-performance-letter — zero. Grep for a plain letter-colon pattern — zero. But grep for the word grade anywhere — three: the descriptive overall lines. The word is legal, the letter is not. The hook enforces the shape you wrote, nothing else.",
+      "estimated_duration_s": 19.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — wc, grep for grade patterns, grep for the word",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "studygroup — hook active · verify",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!wc -l summary.md",
+                "cue": 0,
+                "typeDuration": 28
+              },
+              {
+                "type": "text",
+                "text": "      13 summary.md"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -c '^Grade\\|:\\s*[A-F]' summary.md",
+                "cue": 0,
+                "typeDuration": 50
+              },
+              {
+                "type": "text",
+                "text": "0"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -ci grade summary.md",
+                "cue": 0,
+                "typeDuration": 38
+              },
+              {
+                "type": "text",
+                "text": "3"
+              },
+              {
+                "type": "text",
+                "text": "word grade — legal."
+              },
+              {
+                "type": "text",
+                "text": "grade colon letter — not."
+              }
+            ],
+            "cues": [
+              0,
+              40,
+              75,
+              120,
+              160,
+              200,
+              230,
+              255
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 13"
+        },
+        {
+          "at": 0.4,
+          "event": "grep pattern → 0"
+        },
+        {
+          "at": 0.85,
+          "event": "grep word → 3"
+        }
+      ],
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 16.96,
+      "audio_file": "mp3/beat-B05.mp3"
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE HONEST LIMIT",
+      "lane": "TERMINAL",
+      "narration_text": "One more thing. Test the guard against gradebook, and against gradual improvement in A students. Both pass through. Neither is a grade. Neither matches the pattern. So the deterministic guarantee is real, and its shape is exactly the regex you wrote. Not the intent — the pattern. That trade is the design.",
+      "estimated_duration_s": 18.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the regex edge cases: gradebook / gradual",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "studygroup — the honest limit",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!python3 -c 'import guard, sys; …'",
+                "cue": 0,
+                "typeDuration": 50
+              },
+              {
+                "type": "text",
+                "text": "'gradebook access is here'"
+              },
+              {
+                "type": "text",
+                "text": "→ False"
+              },
+              {
+                "type": "text",
+                "text": "'gradual improvement in A students'"
+              },
+              {
+                "type": "text",
+                "text": "→ False"
+              },
+              {
+                "type": "text",
+                "text": "'Suggested grade: B+' → True"
+              },
+              {
+                "type": "text",
+                "text": "the shape you named. nothing else."
+              }
+            ],
+            "cues": [
+              0,
+              50,
+              80,
+              110,
+              145,
+              180,
+              220
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "tests"
+        },
+        {
+          "at": 0.5,
+          "event": "gradebook, gradual → False"
+        },
+        {
+          "at": 0.9,
+          "event": "the trade"
+        }
+      ],
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 15.77,
+      "audio_file": "mp3/beat-B06.mp3"
+    },
+    {
+      "beat_id": "BCONDUCT",
+      "act": "CONDUCT — THE BOONDOGGLE SCORE",
+      "lane": "TERMINAL",
+      "narration_text": "Who did what. Step one, mine: named the one shape that must never land — a letter grade. Step two, mine: wrote the guard — forty-two lines, a regex, exit two. Reviewed it, tested both payloads. Step three, Claude: advisory run — read CLAUDE.md, refused in one sentence. Handoff met by absence — no summary. Step four, the dangerous middle: Claude wrote a full summary with letter grades. The operating system stopped it. Not the model. Step five, Claude: read the guard, understood the rule from the block, rewrote clean. Handoff met — grep for the pattern returns zero. Step six, mine: read the second file, decided the descriptive overall lines were the right compromise. Interpretive judgment. One page. Honest score.",
+      "estimated_duration_s": 42.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCBoondoggleScore",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCBoondoggleScore",
+          "props": {
+            "system": "one shape · one exit code",
+            "steps": [
+              {
+                "n": 1,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "Name the shape that must never land"
+              },
+              {
+                "n": 2,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "Write the guard — 42 lines, exit 2"
+              },
+              {
+                "n": 3,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Advisory run: read CLAUDE.md, refused",
+                "handoff": "no summary.md on disk",
+                "dependsOn": [
+                  1
+                ]
+              },
+              {
+                "n": 4,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Hook run: wrote grades, OS blocked",
+                "handoff": "tool_result is_error, hook message",
+                "dependsOn": [
+                  2
+                ]
+              },
+              {
+                "n": 5,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Read the guard, rewrote clean",
+                "handoff": "grep pattern in summary.md → 0",
+                "dependsOn": [
+                  4
+                ]
+              },
+              {
+                "n": 6,
+                "phase": "H",
+                "labor": "human",
+                "capacity": "IJ",
+                "text": "Descriptive overall lines — kept",
+                "dependsOn": [
+                  5
+                ]
+              }
+            ],
+            "dangerousMiddle": 4,
+            "distribution": true,
+            "stepGap": 22
+          },
+          "rendered": {
+            "out": "media/BCONDUCT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Header"
+        },
+        {
+          "at": 0.55,
+          "event": "Step 4 rings"
+        },
+        {
+          "at": 0.95,
+          "event": "Tally"
+        }
+      ],
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BCONDUCT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 37.65,
+      "audio_file": "mp3/beat-BCONDUCT.mp3"
+    },
+    {
+      "beat_id": "BHUMAN",
+      "act": "HUMAN — THE LEDGER",
+      "lane": "TERMINAL",
+      "narration_text": "So what was mine. I must decide the one line that must never ship. I must write the pattern the operating system will read. I must audit the regex for holes — gradebook slips, that is my call. I should keep the rule text in CLAUDE.md too, because two layers cover different failure modes. Claude can read a rule and follow it — it did in the advisory run. It can be stopped by a shell script's exit code — it was. It should read the guard when blocked — it did, unprompted. It should say the pattern back to the user — it did. The redundancy is the design.",
+      "estimated_duration_s": 38.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCHumanLedger",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCHumanLedger",
+          "props": {
+            "ai": [
+              {
+                "tier": "CAN",
+                "text": "read a rule and follow it"
+              },
+              {
+                "tier": "CAN",
+                "text": "be stopped by an exit code"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "read the guard when blocked"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "say the pattern back"
+              }
+            ],
+            "human": [
+              {
+                "tier": "MUST",
+                "text": "decide what never ships"
+              },
+              {
+                "tier": "MUST",
+                "text": "write the OS-side pattern"
+              },
+              {
+                "tier": "MUST",
+                "text": "audit the regex for holes"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "keep the rule in CLAUDE.md"
+              }
+            ],
+            "closing": "Two layers. The redundancy is the design.",
+            "humanCue": 70,
+            "rowGap": 12
+          },
+          "rendered": {
+            "out": "media/BHUMAN.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "THE AI"
+        },
+        {
+          "at": 0.4,
+          "event": "THE HUMAN"
+        },
+        {
+          "at": 0.9,
+          "event": "Closing"
+        }
+      ],
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHUMAN.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 27.56,
+      "audio_file": "mp3/beat-BHUMAN.mp3"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "VERDICT",
+      "lane": "BOOKEND",
+      "narration_text": "Let's recap with Claude. Advisory held on the ask — Claude read CLAUDE.md, refused, wrote nothing. No receipt on disk that a rule was in play. Hook run, CLAUDE.md gone — Claude wrote a full summary with suggested letter grade A minus, B minus, A. The tool_result came back is_error, the guard's message verbatim. The Write never landed. Claude read the guard, understood the rule from the block, and rewrote the file without any grade colon letter. The word grade appears in it; the letter does not. The regex enforces the shape you named, and nothing else. What would prove this reel wrong: a hook-active run that lands a matching grade colon letter line on disk.",
+      "estimated_duration_s": 40.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeVerdictArtifact",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "verdict.md",
+            "artifactHeading": "When 'Never' Needs an Exit Code",
+            "artifactLines": [
+              "Advisory held — Claude refused in text, wrote nothing. No receipt on disk that a rule was in play.",
+              "Hook run: Claude wrote 'Suggested letter grade: A-'; tool_result is_error; the file never landed.",
+              "Claude read the guard, rewrote clean. The word 'grade' appears three times; the pattern does not.",
+              "FALSIFIABLE: a hook-active run that lands a matching grade-colon-letter line on disk."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Artifact"
+        },
+        {
+          "at": 0.25,
+          "event": "Lines"
+        },
+        {
+          "at": 0.9,
+          "event": "Falsifiable"
+        }
+      ],
+      "lead_silence_s": 0.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 33.58,
+      "audio_file": "mp3/beat-BVDT.mp3"
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "YOUR TURN",
+      "lane": "BOOKEND",
+      "narration_text": "Your turn. Open Claude Code in a project you actually own and paste this: Pick one line that must never land on disk in this project. Write me a PreToolUse hook — a small shell script that exits two on any Write whose content matches your pattern — and register it in dot-claude slash settings dot local dot json. Then hand me two payloads I can pipe in: one that trips the hook, one that doesn't. Print exit two and exit zero.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeComposerAsk",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "Pick one line that must never land on disk in this project. Write me a PreToolUse hook — a small shell script that exits 2 on any Write whose content matches your pattern — and register it in .claude/settings.local.json. Then hand me two payloads I can pipe in: one that trips the hook, one that doesn't. Print exit 2 and exit 0.",
+            "segment": "When 'Never' Needs an Exit Code",
+            "topic": "YOUR TURN · CLAUDE CODE 101",
+            "runningText": "paste this into Claude Code…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Composer"
+        },
+        {
+          "at": 0.6,
+          "event": "Send arms"
+        }
+      ],
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 21.74,
+      "audio_file": "mp3/beat-BHTF.mp3"
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "OUTRO",
+      "lane": "BOOKEND",
+      "narration_text": "When Never Needs an Exit Code. Liam, in for Bear.",
+      "estimated_duration_s": 4.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeTitleOutro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "When 'Never' Needs an Exit Code",
+            "slug": "cc-hook-enforcement",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Title"
+        },
+        {
+          "at": 0.35,
+          "event": "@NikBearBrown"
+        },
+        {
+          "at": 0.55,
+          "event": "Mascot"
+        }
+      ],
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-10T01:13:39"
+      },
+      "actual_duration_s": 3.69,
+      "audio_file": "mp3/beat-BOUT.mp3"
+    }
+  ]
+}

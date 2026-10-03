@@ -20,11 +20,56 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-agent-sdk-demos/email-agent/agent/.claude/skills/listener-creator/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Creates event-driven email listeners that monitor for specific conditions (like urgent emails from boss",
+        "newsletters to archive",
+        "package tracking) and execute custom actions",
+        "Use when user wants to be notified about emails",
+        "automatically handle certain emails"
+      ],
+      "constraints": [
+        "// 1. Basic filter (identity/sender only)",
+        "required: [\"isUrgent\", \"reason\"]",
+        "required: [\"field\"]",
+        "Notify Wisely: Only notify when truly important",
+        "Basic filter (sender only) → Notify → Optional star/label",
+        "Only use this when: The trigger is purely identity-based (e.g., \"notify me about ALL emails from X\")"
+      ],
+      "referenced_files": [
+        "agent/custom_scripts/listeners/",
+        "Urgent email: ${email.subject}\\n${analysis.reason}",
+        "boss-urgent-watcher.ts",
+        "auto-archive-newsletters.ts",
+        "package-tracking.ts",
+        "daily-summary.ts",
+        "context.callAgent()",
+        "Urgent: ${email.subject}\\n${analysis.reason}",
+        "email_received",
+        "[listener:filename.ts]"
+      ],
+      "code_signals": [
+        "code block: typescript",
+        "code block: markdown"
+      ],
+      "sections": [
+        "When to Use This Skill",
+        "How Listeners Work",
+        "Creating a Listener",
+        "1. Understand the User's Intent",
+        "2. Choose an Event Type",
+        "3. Write the Listener File",
+        "4. File Naming Convention",
+        "5. Available Context Methods",
+        "Recommended Approach: AI-Powered Classification",
+        "Examples and Templates"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T04:16:15",
+      "at": "2026-09-05T21:21:25",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +78,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is listener-creator. Creates event-driven email listeners that monitor for specific conditions (like urgent emails from boss, newsletters to archive, package tracking) and execute custom actions. Use when user wants to be notified about emails, automatically handle certain emails, or set up email automation workflows.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is listener-creator. Creates event-driven email listeners that monitor for specific conditions (like urgent emails from boss, newsletters to archive, package tracking) and execute custom actions. Use when user wants to be notified about emails, automatically handle certain emails, or set up email automation workflows.. Its concrete surface area includes Creates event-driven email listeners that monitor for specific conditions (like urgent emails from boss; newsletters to archive; package tracking) and execute custom actions. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,7 +94,7 @@
             "runningText": "reading listener-creator SKILL.md…",
             "output": [
               "skill: listener-creator",
-              "Creates event-driven email listeners that monitor for specific conditions (like ",
+              "Creates event-driven email listeners that monitor for specific conditions (like…",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
@@ -63,18 +108,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 22.91,
+      "actual_duration_s": 36.01,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:16:15"
+        "at": "2026-09-05T21:21:25"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is listener-creator. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is listener-creator. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at agent/custom_scripts/listeners/, Urgent email: ${email.subject}\\n${analysis.reason}, boss-urgent-watcher.ts, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -113,18 +158,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.42,
+      "actual_duration_s": 22.72,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:16:15"
+        "at": "2026-09-05T21:21:25"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "listener-creator is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Creates event-driven email listeners that monitor for specific conditions (like urgent emails from boss; newsletters to archive; package tracking) and execute custom actions; Use when user wants to be notified about emails. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -164,18 +209,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 20.54,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:16:15"
+        "at": "2026-09-05T21:21:25"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. listener-creator is a specification written as an instruction set. Claude's job: Creates event-driven email listeners that monitor for specific conditions (like urgent emails from b. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. // 1. Basic filter (identity/sender only). That is the constraint in listener-creator — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -186,7 +231,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Creates event-driven email listeners that monitor for specific conditions (like urgent emails from boss, newsletters to archive, package tracking) and execute custom actions. Use when user wants to be",
+            "body": "// 1. Basic filter (identity/sender only)",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -196,18 +241,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 16.38,
+      "actual_duration_s": 11.78,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:16:15"
+        "at": "2026-09-05T21:21:25"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In listener-creator, supporting material: agent/custom_scripts/listeners/, Urgent email: ${email.subject}\\n${analysis.reason}, boss-urgent-watcher.ts, auto-archive-newsletters.ts; implementation signals: code block: typescript, code block: markdown; sections: When to Use This Skill, How Listeners Work, Creating a Listener, 1. Understand the User's Intent. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Creates event-driven email listeners that monitor for specific conditions (like urgent emails from boss; newsletters to archive; package tracking) and execute custom actions; agent/custom_scripts/listeners/; Urgent…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 28.46,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T21:21:25"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "listener-creator makes Claude execute one task reliably. The SKILL.md is the spec — Creates event-driven email listeners that monitor for specific conditions (like . Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "listener-creator makes Claude execute one task reliably. The SKILL.md is the spec — Creates event-driven email listeners that monitor for specific conditions (like…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -220,9 +297,10 @@
             "artifactHeading": "Claude, Listener Creator.",
             "artifactLines": [
               "Skill: listener-creator — Claude reads SKILL.md before acting",
-              "Creates event-driven email listeners that monitor for specific conditions (like urgent ema",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "Creates event-driven email listeners that monitor for specific conditions (like urgent…",
+              "Capabilities: Creates event-driven email listeners that monitor for specific conditions (like urgent emails from boss; newsletters to archive; package tracking) and execute custom actions",
+              "Constraint: // 1. Basic filter (identity/sender only)",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -232,18 +310,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 14.49,
+      "actual_duration_s": 14.57,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:16:15"
+        "at": "2026-09-05T21:21:25"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to creates event-driven email listeners that monitor for specific conditions (like . Read the listener-creator skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to creates event-driven email listeners that monitor for specific conditions (like. Read the listener-creator skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -255,7 +333,7 @@
             "greeting": "Your turn.",
             "topic": "LISTENER-CREATOR · ANTHROPIC SKILL",
             "segment": "Claude, Listener Creator.",
-            "command": "I want to creates event-driven email listeners that monitor for specific conditi. Read the listener-creator skill and walk me through what you will do before you do it.",
+            "command": "I want to creates event-driven email listeners that monitor for specific. Read the listener-creator skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -274,7 +352,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:16:15"
+        "at": "2026-09-05T21:21:25"
       }
     },
     {
@@ -305,7 +383,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:16:15"
+        "at": "2026-09-05T21:21:25"
       }
     }
   ]

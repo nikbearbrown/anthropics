@@ -83,8 +83,8 @@ class Scene_B04_NbbHandoffCondition(Scene):
             line1.shift(UP * 0.3)
             self.play(Write(line1), run_time=0.5)
 
-        if "Step 2 FAILS - pytest finds 2 test files, condition expected":
-            line2 = Text("Step 2 FAILS - pytest finds 2 test files, condition expected", font_size=28, color="#2A1A0E", font=font)
+        if "Step 2 FAILS - condition expected 3 test files, found 2":
+            line2 = Text("Step 2 FAILS - condition expected 3 test files, found 2", font_size=28, color="#2A1A0E", font=font)
             line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
             line2.shift(DOWN * 0.6)
             self.play(Write(line2), run_time=0.4)
@@ -164,7 +164,7 @@ class Scene_B07_NbbHandoffCondition(Scene):
 
         # Build pipeline boxes that reveal left-to-right
         stages = []
-        labels_text = [t for t in ["A handoff condition is machine-checkable or it is not a hand", "The validator converts a process question - did Claude finis", ""] if t]
+        labels_text = [t for t in ["Machine-checkable", "Did the test pass?", "Handoff cleared"] if t]
         if not labels_text:
             labels_text = ["Input", "Process", "Output"]
 
@@ -202,7 +202,7 @@ class Scene_B07_NbbHandoffCondition(Scene):
 
 
 class Scene_B08_NbbHandoffCondition(Scene):
-    """Beat B08 — SHOW: concept illustration card. Narration: Next: detect and name dangerous middle tasks before delegating."""
+    """Beat B08 — SHOW: concept illustration card. Narration: Detect the dangerous middle first.ng."""
     def construct(self):
         self.camera.background_color = "#FFFFFF"
         font = "EB Garamond"
@@ -218,8 +218,8 @@ class Scene_B08_NbbHandoffCondition(Scene):
         self.play(Create(spark), run_time=0.2)
 
         # Primary concept text
-        if "Next: detect and name dangerous middle tasks before delegati":
-            line1 = Text("Next: detect and name dangerous middle tasks before delegati", font_size=36, color="#2A1A0E", font=font)
+        if "Detect the dangerous middle first.":
+            line1 = Text("Detect the dangerous middle first.", font_size=36, color="#2A1A0E", font=font)
             line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
             line1.shift(UP * 0.3)
             self.play(Write(line1), run_time=0.5)
@@ -237,8 +237,8 @@ class Scene_B08_NbbHandoffCondition(Scene):
             self.play(FadeIn(line3), run_time=0.3)
 
         # Terracotta underline on key term
-        if "Next: detect and name dangerous middle tasks before delegati":
-            uline = Line(LEFT * min(4.0, len("Next: detect and name dangerous middle tasks before delegati") * 0.18), RIGHT * min(4.0, len("Next: detect and name dangerous middle tasks before delegati") * 0.18),
+        if "Detect the dangerous middle first.":
+            uline = Line(LEFT * min(4.0, len("Detect the dangerous middle first.") * 0.18), RIGHT * min(4.0, len("Detect the dangerous middle first.") * 0.18),
                          color="#C8102E", stroke_width=2)
             uline.shift(UP * 0.1)
             self.play(Create(uline), run_time=0.3)

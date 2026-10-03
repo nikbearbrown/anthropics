@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "hook development",
+    "title": "Claude, Hook Development.",
     "slug": "claude-liam-hook-development",
-    "topic": "HOOK DEVELOPMENT · CLAUDE PLUGINS",
+    "topic": "HOOK-DEVELOPMENT · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,64 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Merhaba, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-plugins-official/plugins/plugin-dev/skills/hook-development/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-plugins-official/plugins/plugin-dev/skills/hook-development/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Enable strict validation only when needed",
+        "Temporary debugging hooks",
+        "Project-specific hook behavior",
+        "Feature flags for hooks",
+        "Best practice:: Document activation mechanism in plugin README so users know how to enable/disable temporary hooks."
+      ],
+      "constraints": [
+        "hooks field is required wrapper containing actual hook events",
+        "$CLAUDE_ENV_FILE - SessionStart only: persist env vars here",
+        "// Bash commands only",
+        "# Only active when flag file exists",
+        "Enable strict validation only when needed",
+        "Cannot hot-swap hooks:",
+        "Must restart Claude Code: exit and run claude again"
+      ],
+      "referenced_files": [
+        "hooks/hooks.json",
+        ".claude/settings.json",
+        "{\"hooks\": {...}}",
+        "$CLAUDE_ENV_FILE",
+        "examples/load-context.sh",
+        "tool_name",
+        "tool_input",
+        "tool_result",
+        "user_prompt",
+        "$TOOL_INPUT"
+      ],
+      "code_signals": [
+        "code block: json",
+        "code block: bash"
+      ],
+      "sections": [
+        "Overview",
+        "Hook Types",
+        "Prompt-Based Hooks (Recommended)",
+        "Command Hooks",
+        "Hook Configuration Formats",
+        "Plugin hooks.json Format",
+        "Settings Format (Direct)",
+        "Hook Events",
+        "PreToolUse",
+        "PostToolUse"
+      ]
+    },
     "build": {
-      "at": "2026-07-19T10:37:15",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T17:26:30",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +79,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Merhaba — this is Liam, in for Bear. You are building a Claude plugin that reacts to events. The hook development skill gives you two hook types — Prompt-Based and Command — and two places to put them: plugin hooks.json or the user settings file. The philosophy: hooks let your plugin intercept the session lifecycle, but the mechanisms differ in where they run, when they trigger, and how they fail. Let me walk you through the types, the events, and the gaps.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is hook-development. This skill should be used when the user asks to \"create a hook\", \"add a PreToolUse/PostToolUse/Stop hook\", \"validate tool use\", \"implement prompt-based hooks\", \"use ${CLAUDE_PLUGIN_ROOT}\", \"set up event-driven automation\", \"block dangerous commands\", or mentions hook events (PreToolUse, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd, UserPromptSubmit, PreCompact, Notification). Provides comprehensive guidance for creating and implementing Claude Code plugin hooks with focus on advanced prompt-based hooks API.. Its concrete surface area includes Enable strict validation only when needed; Temporary debugging hooks; Project-specific hook behavior. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 15,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Merhaba, Liam",
-            "topic": "HOOK DEVELOPMENT · CLAUDE PLUGINS",
-            "segment": "PLUGINS",
-            "command": "Add a hook that logs every file write to a JSON audit trail.",
+            "greeting": "Hola, Liam",
+            "topic": "HOOK-DEVELOPMENT · ANTHROPIC SKILL",
+            "segment": "Claude, Hook Development.",
+            "command": "Run the hook-development skill.",
             "runningText": "reading hook-development SKILL.md…",
             "output": [
-              "Two hook types: Prompt-Based (LLM-driven) · Command (bash, deterministic)",
-              "Two config formats: plugin hooks.json · user settings direct format",
-              "9 lifecycle events — prompt hooks only on 4 of them"
+              "skill: hook-development",
+              "This skill should be used when the user asks to \"create a hook\", \"add a…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +109,62 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 21.38,
+      "actual_duration_s": 42.43,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:37:15"
+        "at": "2026-09-05T17:26:30"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — hook types + config formats",
-      "narration_text": "The skill gives you two hook types and two places to put them. Prompt-Based hooks are the recommended type — they send context to Claude, who decides what to do. The matcher is a list of tool names or patterns; the prompt field tells Claude how to respond; timeout defaults to thirty seconds. Command hooks are deterministic — they run a bash script, capture stdout and stderr, and use the exit code to decide whether to block. Exit zero means success and stdout goes into the transcript. Exit two means block — Claude sees the stderr message and stops. Any other exit code is non-blocking. Timeout defaults to sixty seconds. For portability, always use the CLAUDE_PLUGIN_ROOT environment variable in command paths rather than a hardcoded absolute path. The two config formats differ in structure. Plugin hooks dot json wraps everything: the top level has description and hooks, and inside hooks you put the event names. The settings direct format omits the wrapper — event names sit at the top level. The most common mistake is putting plugin-format JSON into settings or vice versa — the structure looks similar enough that the error is silent.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is hook-development. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at hooks/hooks.json, .claude/settings.json, {\"hooks\": {...}}, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 40,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "HookDevelopmentAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Prompt-Based for judgment. Command for determinism. CLAUDE_PLUGIN_ROOT for portability."
+            "skillName": "hook-development",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "15k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "examples",
+                "size": null,
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "references",
+                "size": null,
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "scripts",
+                "size": null,
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "4 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +173,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 60.69,
+      "actual_duration_s": 18.56,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:37:15"
+        "at": "2026-09-05T17:26:30"
       }
     },
     {
       "beat_id": "B02",
-      "act": "design — events + execution model",
-      "narration_text": "Nine lifecycle events are available. PreToolUse fires before any tool call — the right place for prompt hooks that validate inputs or ask Claude to reconsider. PostToolUse fires after — command hooks can log here, but prompt hooks are not supported on this event. Stop fires when Claude is about to stop — prompt hooks can add a final check or summary. SubagentStop is the same but for subagents. UserPromptSubmit fires when the user submits — prompt hooks can pre-process the input. SessionStart and SessionEnd are lifecycle events — command hooks only; use CLAUDE_ENV_FILE to persist variables between hooks at session start. PreCompact fires before context compression; Notification fires for system alerts — both command-only. Four execution rules matter. All matching hooks run in parallel — there is no ordering guarantee and hooks cannot see each other's output, so do not build logic that depends on hook sequencing. Hooks load at session start — there is no hot-swap; you must restart Claude after changing hooks.json. Matchers are case-sensitive: Write is not write. Security defaults: always quote bash variables, validate inputs, and deny path traversal and access to sensitive files like dot-env and private keys.",
+      "act": "pipeline",
+      "narration_text": "hook-development is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Enable strict validation only when needed; Temporary debugging hooks; Project-specific hook behavior; Feature flags for hooks. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 42,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "HookDevelopmentDesign",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "9 events. 4 support prompt hooks. All hooks run in parallel — no ordering."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +224,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 65.26,
+      "actual_duration_s": 16.04,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:37:15"
+        "at": "2026-09-05T17:26:30"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. The skill gets five things right. Prompt-Based hooks as the recommended type is the correct call — they leverage Claude's judgment rather than brittle regex logic in bash. CLAUDE_PLUGIN_ROOT for command paths is the right portability pattern — hardcoded absolute paths break the moment the plugin moves to another machine. Exit code semantics are clear: zero, two, and other each have a distinct effect — this is the right level of specificity for a deterministic hook. The parallel execution model is documented — no ordering, no shared output — which prevents hook-sequencing bugs before they happen. Security patterns are named explicitly: quote bash variables, validate inputs, deny path traversal, keep sensitive files out of scope. Where it bites. Prompt hooks are the recommended type, but the skill does not state upfront that they only work on four of the nine events. A developer who reads the recommendation and then tries to add a prompt hook to PostToolUse will get silent failure — the hook simply won't run. The hot-swap restriction — hooks load at session start and cannot be reloaded — appears late in the skill and is easy to overlook. A developer spending twenty minutes tweaking hooks and wondering why nothing changes has hit this. Parallel execution is documented, but the implication is not spelled out: if you need hooks to collaborate — one hook's output feeding another — that is not possible. Each hook runs blind to the others. The two config formats look similar enough to confuse. Plugin hooks.json has a description wrapper; settings format does not — and the error is silent because malformed JSON is often still valid JSON in the other format. Matchers are case-sensitive, which is documented but easy to forget: Write and write are different matchers.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. hooks field is required wrapper containing actual hook events. That is the constraint in hook-development — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 55,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "HookDevelopmentTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Prompt hooks are right for judgment. But they only fire on 4 of 9 events — unstated."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "hooks field is required wrapper containing actual hook events",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 92.37,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 11.65,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:37:15"
+        "at": "2026-09-05T17:26:30"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In hook-development, supporting material: hooks/hooks.json, .claude/settings.json, {\"hooks\": {...}}, $CLAUDE_ENV_FILE; implementation signals: code block: json, code block: bash; sections: Overview, Hook Types, Prompt-Based Hooks (Recommended), Command Hooks. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Enable strict validation only when needed; Temporary debugging hooks; Project-specific hook behavior; hooks/hooks.json; .claude/settings.json; {\"hooks\": {...}}; code block: json; code block: bash",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 21.16,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T17:26:30"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. hook development: two types — Prompt-Based, recommended, LLM-driven; Command, bash, deterministic. Two config formats — plugin hooks.json with description wrapper; settings direct, no wrapper. Nine events — PreToolUse, PostToolUse, Stop, SubagentStop, UserPromptSubmit, SessionStart, SessionEnd, PreCompact, Notification. Prompt hooks supported on four only: PreToolUse, Stop, SubagentStop, UserPromptSubmit. Execution model: all matching hooks run in parallel, no ordering, no shared output; hooks load at session start, no hot-swap. Exit codes: zero success, two blocking, other non-blocking. Gaps: prompt hooks not labeled as four-event only; hot-swap restriction easy to miss; parallel means no hook-to-hook collaboration; two formats silently confusable; matchers case-sensitive.",
+      "narration_text": "hook-development makes Claude execute one task reliably. The SKILL.md is the spec — This skill should be used when the user asks to \"create a hook\", \"add a…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "hook development",
+            "artifactHeading": "Claude, Hook Development.",
             "artifactLines": [
-              "Two types: Prompt-Based (LLM-driven, recommended) · Command (bash, exit codes 0/2/other)",
-              "Two formats: plugin hooks.json (description wrapper) · settings direct (no wrapper)",
-              "9 events — prompt hooks on 4 only: PreToolUse · Stop · SubagentStop · UserPromptSubmit",
-              "Execution: all hooks run in parallel · no ordering · no shared output",
-              "Session-start load only — no hot-swap; CLAUDE_PLUGIN_ROOT for portability",
-              "Gaps: 4-event restriction unstated · hot-swap buried · formats silently confusable"
+              "Skill: hook-development — Claude reads SKILL.md before acting",
+              "This skill should be used when the user asks to \"create a hook\", \"add a…",
+              "Capabilities: Enable strict validation only when needed; Temporary debugging hooks; Project-specific hook behavior",
+              "Constraint: hooks field is required wrapper containing actual hook events",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +325,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 43.54,
+      "actual_duration_s": 13.31,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:37:15"
+        "at": "2026-09-05T17:26:30"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Give Claude a plugin that needs to log every Write tool call to a JSON file and block any Write to a dot-env file. Watch five things. First: does it use a Command hook or a Prompt-Based hook for the blocking case — and is that the right call for a deterministic check? Second: does it use CLAUDE_PLUGIN_ROOT in the command path, or does it hardcode an absolute path? Third: does it put the hook in the plugin hooks.json wrapper format, or does it accidentally use the flat settings format? Fourth: for the logging requirement — does it use PostToolUse, and if so does it realize prompt hooks won't work there? Fifth: after you change the hooks.json, does Claude remember to tell you to restart the session before testing?",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to this skill should be used when the user asks to \"create a hook\", \"add a. Read the hook-development skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "HOOK DEVELOPMENT · HANDOFF",
-            "segment": "PLUGINS",
-            "command": "Log every Write call to audit.json and block any Write to .env files.",
-            "runningText": "Watch: command vs prompt? CLAUDE_PLUGIN_ROOT? hooks.json wrapper? PostToolUse = command only? restart reminder?",
-            "output": [
-              "Expected: Command hook · $CLAUDE_PLUGIN_ROOT · plugin hooks.json wrapper format",
-              "Expected: PostToolUse = command only for logging · restart reminder after change",
-              "Red flag: hardcoded path · flat settings format · prompt hook on PostToolUse"
-            ],
+            "greeting": "Your turn.",
+            "topic": "HOOK-DEVELOPMENT · ANTHROPIC SKILL",
+            "segment": "Claude, Hook Development.",
+            "command": "I want to this skill should be used when the user asks to \"create a hook\", \"add. Read the hook-development skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +362,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 36.48,
+      "actual_duration_s": 13.72,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:37:15"
+        "at": "2026-09-05T17:26:30"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "hook development. Liam, in for Bear.",
+      "narration_text": "Claude, Hook Development. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "hook development",
+            "title": "Claude, Hook Development.",
             "handle": "@NikBearBrown",
-            "subline": "hook development · Claude Plugins"
+            "subline": "hook-development · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +393,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 2.82,
+      "actual_duration_s": 3.18,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:37:15"
+        "at": "2026-09-05T17:26:30"
       }
     }
   ]

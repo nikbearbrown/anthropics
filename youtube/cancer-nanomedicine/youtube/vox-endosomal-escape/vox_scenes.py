@@ -14,9 +14,15 @@ Gate B convention: every zero-width stroke is also zero-opacity, or the layout
 audit strikes it.
 """
 import sys, pathlib as _pl
-# Reel lives at books/<book>/youtube/<slug>/vox_scenes.py
-# parents[3] = books/  → vox toolkit is at books/vox/
-_vox_manim = _pl.Path(__file__).resolve().parents[3] / "vox/aspects/explainer/vox-explainer/manim"
+# Locate the vox toolkit by walking up from this file until we find books/vox/.
+_vox_manim = None
+for _p in _pl.Path(__file__).resolve().parents:
+    _cand = _p / "vox/aspects/explainer/vox-explainer/manim/vox_graphics.py"
+    if _cand.is_file():
+        _vox_manim = _cand.parent
+        break
+if _vox_manim is None:
+    raise RuntimeError("vox toolkit (books/vox/aspects/explainer/vox-explainer/manim) not found")
 if str(_vox_manim) not in sys.path:
     sys.path.insert(0, str(_vox_manim))
 from vox_graphics import *   # noqa: F401,F403

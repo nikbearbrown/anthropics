@@ -1,0 +1,39 @@
+diff --git a/index.html b/index.html
+index 6f43652..975a5ed 100644
+--- a/index.html
++++ b/index.html
+@@ -218,10 +218,6 @@
+ 
+   function render() {
+     var books = load();
+-    books.sort(function (a, b) {
+-      if (a.finished === b.finished) return b.added - a.added;
+-      return a.finished < b.finished ? 1 : -1;
+-    });
+ 
+     countEl.textContent = books.length;
+ 
+@@ -238,7 +234,6 @@
+             ' <span class="author">— ' + escapeHtml(b.author) + '</span></div>' +
+             '<div class="meta">Finished ' + escapeHtml(formatDate(b.finished)) + ' · ' + stars(b.rating) + '</div>' +
+           '</div>' +
+-          '<div><button class="link" data-id="' + b.id + '">remove</button></div>' +
+         '</li>'
+       );
+     }).join("");
+@@ -270,15 +265,6 @@
+     render();
+   });
+ 
+-  logEl.addEventListener("click", function (e) {
+-    var btn = e.target.closest("button.link");
+-    if (!btn) return;
+-    var id = btn.getAttribute("data-id");
+-    var books = load().filter(function (b) { return b.id !== id; });
+-    save(books);
+-    render();
+-  });
+-
+   render();
+ })();
+ </script>

@@ -1,8 +1,8 @@
 # SHARPNESS GATE — claude-liam-simple-delve
 
 Compiled master: `claude-liam-simple-delve.mp4`
-Median Laplacian variance: **308.3**
-Failure threshold: 154.1 (50% of median)
+Median Laplacian variance: **441.1**
+Failure threshold: 220.6 (50% of median)
 
 > Soft beats = rotation applied to `crispEdges` pixel-art.
 > Fix: use translation/scale only — never rotate. See PIXEL-ART LAW in
@@ -10,23 +10,23 @@ Failure threshold: 154.1 (50% of median)
 
 | Beat | LV | % of median | Status |
 |------|----|-------------|--------|
-| B00 | 32.7 | 11% | **FAIL** — 11% (below 50% floor and below abs floor 40) |
-| S01 | 250.0 | 81% | PASS — 81% |
-| S02 | 272.2 | 88% | PASS — 88% |
-| S03 | 155.9 | 51% | PASS — 51% |
-| S04 | 246.5 | 80% | PASS — 80% |
-| S05 | 242.9 | 79% | PASS — 79% |
-| S06 | 319.9 | 104% | PASS — 104% |
-| S07 | 105.1 | 34% | PASS — 34% |
-| S08 | 433.7 | 141% | PASS — 141% |
-| S09 | 460.4 | 149% | PASS — 149% |
-| S10 | 340.0 | 110% | PASS — 110% |
-| S11 | 290.4 | 94% | PASS — 94% |
-| S12 | 438.1 | 142% | PASS — 142% |
-| S13 | 323.6 | 105% | PASS — 105% |
-| S14 | 309.9 | 101% | PASS — 101% |
-| S15 | 359.6 | 117% | PASS — 117% |
-| S16 | 354.5 | 115% | PASS — 115% |
-| BCRY | 306.6 | 99% | PASS — 99% |
-| BHTF | 530.8 | 172% | PASS — 172% |
-| BOUT | 132.2 | 43% | PASS — 43% |
+| B00 | 61.9 | 14% | PASS — 14% |
+| S01 | 373.6 | 85% | PASS — 85% |
+| S02 | 408.5 | 93% | PASS — 93% |
+| S03 | 236.0 | 54% | PASS — 54% |
+| S04 | 355.6 | 81% | PASS — 81% |
+| S05 | 365.3 | 83% | PASS — 83% |
+| S06 | 476.9 | 108% | PASS — 108% |
+| S07 | 160.1 | 36% | PASS — 36% |
+| S08 | 638.5 | 145% | PASS — 145% |
+| S09 | 686.8 | 156% | PASS — 156% |
+| S10 | 502.1 | 114% | PASS — 114% |
+| S11 | 427.2 | 97% | PASS — 97% |
+| S12 | 643.7 | 146% | PASS — 146% |
+| S13 | 486.9 | 110% | PASS — 110% |
+| S14 | 455.1 | 103% | PASS — 103% |
+| S15 | 533.4 | 121% | PASS — 121% |
+| S16 | 526.9 | 119% | PASS — 119% |
+| BCRY | 306.6 | 70% | PASS — 70% |
+| BHTF | 530.8 | 120% | PASS — 120% |
+| BOUT | 132.2 | 30% | PASS — 30% |

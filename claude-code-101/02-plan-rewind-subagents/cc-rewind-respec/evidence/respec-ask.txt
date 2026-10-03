@@ -1,0 +1,1 @@
+The dedupe tests in test_dedupe.py fail. Fix dedupe.py so that: (1) order is preserved (first occurrence stays); (2) unhashable items like lists work; (3) equality is Python `==`, not `repr` — so dedupe([1, 1.0]) must return [1]. Use hashing with a linear-scan fallback via try/except. Do not modify the test.

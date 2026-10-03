@@ -1,0 +1,2 @@
+# CHECKS-REPORT — cc-clear-vs-compact
+11 beats · 11 SHOW · 0 CARD/HOLD/PUNT. Arc: prediction before reveal (B02 "so how does it answer?"); concrete before abstract; friction (B02: the summary had dropped the tests); falsifiable line in BVDT; handoff BHTF (/context → /compact or /clear → "how do you know?"). IDEA + DEFINITIONS then CONDUCT + HUMAN ✓. Non-terminal: BIDEA, BDEFS, B03 — reasoned. Gates: GATE F clean, BOOKEND ids, Gate V (BVDT 4 lines), GATE T; kit budgets asserted.

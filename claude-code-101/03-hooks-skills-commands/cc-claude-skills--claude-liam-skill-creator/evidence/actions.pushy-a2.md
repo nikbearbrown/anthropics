@@ -1,0 +1,4 @@
+- Priya — switch intake form address field to autocomplete — by Thursday 2026-09-17
+- Marcus — regenerate the calendar link every Monday morning until the underlying page is fixed — ongoing
+- Jonah — make a one-page seating map and print six copies — by Wednesday 2026-09-16
+- Priya — remove the email field from the sign-up form — by Thursday 2026-09-17

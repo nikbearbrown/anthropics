@@ -20,11 +20,51 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-cookbooks/.claude/skills/cookbook-audit/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Audit an Anthropic Cookbook notebook based on a rubric",
+        "Use whenever a notebook review or audit is requested."
+      ],
+      "constraints": [
+        "[ ] Lists required knowledge clearly",
+        "[ ] Lists required tools (Python version, API keys)",
+        "[ ] Stack traces only when demonstrating error handling",
+        "[ ] Uses non-dated model aliases (never dated IDs like claude-sonnet-4-6-20250514)",
+        "Cookbooks are not simple tips and tricks: We don't teach \"hacks\" that only work for the current model generation. We don't over-promise and under-deliver",
+        "Cookbooks are not production-ready code: They showcase use cases and capabilities, not production patterns. Excessive error handling is not required",
+        "#### 1. Introduction (Required)",
+        "Must include:"
+      ],
+      "referenced_files": [
+        "style_guide.md",
+        "python3 validate_notebook.py <path>",
+        "scripts/detect-secrets/plugins.py",
+        "scripts/detect-secrets/.secrets.baseline",
+        "tmp/",
+        "dotenv.load_dotenv()",
+        "os.environ",
+        "os.environ[\"API_KEY\"] = \"your_key\"",
+        "validate_notebook.py"
+      ],
+      "code_signals": [],
+      "sections": [
+        "Instructions",
+        "Workflow",
+        "Audit Report Format",
+        "Executive Summary",
+        "Detailed Scoring",
+        "Specific Recommendations",
+        "Examples & Suggestions",
+        "Quick Reference Checklist",
+        "Content Philosophy: Action + Understanding",
+        "What Makes a Good Cookbook"
+      ]
+    },
     "build": {
-      "at": "2026-08-25T23:15:47",
+      "at": "2026-09-05T20:08:56",
       "cut": "review",
-      "filled": 6,
-      "of": 6,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +73,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is cookbook-audit. Audit an Anthropic Cookbook notebook based on a rubric. Use whenever a notebook review or audit is requested.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is cookbook-audit. Audit an Anthropic Cookbook notebook based on a rubric. Use whenever a notebook review or audit is requested.. Its concrete surface area includes Audit an Anthropic Cookbook notebook based on a rubric; Use whenever a notebook review or audit is requested.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,8 +89,8 @@
             "runningText": "reading cookbook-audit SKILL.md…",
             "output": [
               "skill: cookbook-audit",
-              "Audit an Anthropic Cookbook notebook based on a rubric. Use whenever a notebook ",
-              "steps: 0 — executing."
+              "Audit an Anthropic Cookbook notebook based on a rubric. Use whenever a notebook…",
+              "steps: 4 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -63,18 +103,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 13.74,
+      "actual_duration_s": 20.44,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-08-25T23:15:47"
+        "at": "2026-09-05T20:08:56"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is cookbook-audit. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is cookbook-audit. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at style_guide.md, python3 validate_notebook.py <path>, scripts/detect-secrets/plugins.py, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -99,19 +139,19 @@
                 "icon": "📄",
                 "name": "style_guide.md",
                 "size": "5k",
-                "accent": false
+                "accent": true
               },
               {
                 "indent": 1,
                 "icon": "🐍",
                 "name": "validate_notebook.py",
                 "size": "17k",
-                "accent": false
+                "accent": true
               }
             ],
             "calloutText": "The SKILL.md is the instruction set.",
             "calloutSub": "3 files total.",
-            "sparkLine": "File is the program."
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -120,18 +160,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.14,
+      "actual_duration_s": 20.46,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-08-25T23:15:47"
+        "at": "2026-09-05T20:08:56"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "The pipeline has 4 steps. Problem-focused introductions with Terminal Learning Objectives (TLOs) and… → Prerequisites and setup patterns → Core content structure, plus 1 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -146,22 +186,27 @@
             "outputLabel": "RESULT",
             "phases": [
               {
-                "label": "Read SKILL.md",
-                "desc": "load the instruction set",
+                "label": "Problem-focused introductions…",
+                "desc": "",
                 "accent": true
               },
               {
-                "label": "Execute",
-                "desc": "run each step in order",
+                "label": "Prerequisites and setup…",
+                "desc": "",
                 "accent": false
               },
               {
-                "label": "Return output",
-                "desc": "deliver the result",
+                "label": "Core content structure",
+                "desc": "",
+                "accent": false
+              },
+              {
+                "label": "Conclusions that map back to…",
+                "desc": "",
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "4 steps. Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -171,18 +216,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 16.64,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-08-25T23:15:47"
+        "at": "2026-09-05T20:08:56"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. cookbook-audit is a specification written as an instruction set. Claude's job: Audit an Anthropic Cookbook notebook based on a rubric. Use whenever a notebook review or audit is requested. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. [ ] Lists required knowledge clearly. That is the constraint in cookbook-audit — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -193,10 +238,8 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Audit a Cookbook notebook against Anthropic's rubric.",
-            "verdictLabel": "REPEATABLE · SPEC-BOUND",
-            "verdictPositive": false,
-            "sparkLine": "Spec defines the limit."
+            "body": "[ ] Lists required knowledge clearly",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
             "out": "media/B03.mp4",
@@ -205,18 +248,87 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 16.26,
+      "actual_duration_s": 10.09,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-08-25T23:15:47"
+        "at": "2026-09-05T20:08:56"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In cookbook-audit, supporting material: style_guide.md, python3 validate_notebook.py <path>, scripts/detect-secrets/plugins.py, scripts/detect-secrets/.secrets.baseline; sections: Instructions, Workflow, Audit Report Format, Executive Summary. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Audit an Anthropic Cookbook notebook based on a rubric; Use whenever a notebook review or audit is requested.; style_guide.md; python3 validate_notebook.py <path>; scripts/detect-secrets/plugins.py",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 21.74,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T20:08:56"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "narration_text": "cookbook-audit makes Claude execute one task reliably. The SKILL.md is the spec — Audit an Anthropic Cookbook notebook based on a rubric. Use whenever a notebook…. Same input, same output, every run. Know the limit: only what the file says.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Verdict",
+            "artifactHeading": "Claude, Cookbook Audit.",
+            "artifactLines": [
+              "Skill: cookbook-audit — Claude reads SKILL.md before acting",
+              "Audit an Anthropic Cookbook notebook based on a rubric. Use whenever a notebook review or…",
+              "4-step pipeline: Problem-focused introductions with Terminal Learning Objectives (TLOs) and… → Prerequisites and setup patterns → Core content structure",
+              "Constraint: [ ] Lists required knowledge clearly",
+              "Same input → same output, every run"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 13.97,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T20:08:56"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to audit an anthropic cookbook notebook based on a rubric. Use whenever a notebook review or audit is requested. Read the cookbook-audit skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to audit an anthropic cookbook notebook based on a rubric. use whenever a notebook. Read the cookbook-audit skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -228,7 +340,7 @@
             "greeting": "Your turn.",
             "topic": "COOKBOOK-AUDIT · ANTHROPIC SKILL",
             "segment": "Claude, Cookbook Audit.",
-            "command": "I want to audit an anthropic cookbook notebook based on a rubric. Use whenever a notebook review or audit is requested. Read the cookbook-audit skill and walk me through what you will do before you do it.",
+            "command": "I want to audit an anthropic cookbook notebook based on a rubric. use whenever. Read the cookbook-audit skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -242,12 +354,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 16.19,
+      "actual_duration_s": 14.4,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-08-25T23:15:47"
+        "at": "2026-09-05T20:08:56"
       }
     },
     {
@@ -278,7 +390,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-08-25T23:15:47"
+        "at": "2026-09-05T20:08:56"
       }
     }
   ]

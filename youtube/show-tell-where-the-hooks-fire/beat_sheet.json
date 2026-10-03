@@ -1,0 +1,722 @@
+{
+  "metadata": {
+    "slug": "show-tell-where-the-hooks-fire",
+    "title": "Where the Hooks Fire",
+    "topic": "CLAUDE CODE · HOOKS",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Italian (Ciao)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Claude Code users and students who have heard of hooks and want the plain mechanism: where they fire, what they receive, and what exit code 2 does",
+    "source_doc": "anthropics/claude-code/plugins/plugin-dev/skills/hook-development/SKILL.md and anthropics/claude-code/examples/hooks/bash_command_validator_example.py (read in full 2026-09-27); code.claude.com/docs/en/hooks (fetched 2026-09-27)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude Code",
+      "hooks",
+      "PreToolUse",
+      "PostToolUse",
+      "UserPromptSubmit",
+      "SessionStart",
+      "Stop hook",
+      "PreCompact",
+      "exit code 2",
+      "matcher",
+      "settings.json",
+      "bash command validator",
+      "Anthropic",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T01:36:42",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Ciao. This is Liam, in for Bear. It's easy to think Claude decides when to run a hook. It doesn't. Claude Code runs your hook each time the session passes a set point. So the real question is when Claude passes a hook checkpoint.",
+      "estimated_duration_s": 12.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'When does Claude decide to run a hook?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'decide to run a hook' -> 'pass a hook checkpoint' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "When does Claude\ndecide to run a hook?",
+            "triggerWords": "decide to run a hook",
+            "replacementWords": "pass a hook checkpoint",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-where-the-hooks-fire",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T05:30:48.024730+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (when does Claude decide to run a hook) and corrects it to the real one (when does Claude pass a hook checkpoint).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 12.501,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 12.541666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T01:36:42"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A hook: a command Claude Code runs for you at a set point. An event: that named point, like pre tool use. A matcher: which tools a hook watches. And an exit code: the number your command ends with. Two means block.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "'hook' lands"
+          },
+          {
+            "at": 0.35,
+            "event": "'event' lands"
+          },
+          {
+            "at": 0.6,
+            "event": "'matcher' lands"
+          },
+          {
+            "at": 0.8,
+            "event": "'exit code' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "hook",
+                "meaning": "a command Claude Code runs for you at a set point"
+              },
+              {
+                "term": "event",
+                "meaning": "the named point where it runs, like PreToolUse"
+              },
+              {
+                "term": "matcher",
+                "meaning": "which tools a hook watches, like Bash"
+              },
+              {
+                "term": "exit code",
+                "meaning": "the number your command ends with; 2 blocks"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T05:31:25.615361+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: four prerequisites, one line each."
+      },
+      "actual_duration_s": 11.84,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 11.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T01:36:42"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Picture a Claude Code session as a belt. Your prompt rides in to Claude. Claude calls a tool, like Bash, and the result rides back. Then Claude answers, and the turn stops.",
+      "estimated_duration_s": 9.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A pale belt draws in, running right-up ('session'); Claude's dark block drops onto it ('Claude'); a spur belt runs toward the viewer to a dark tool machine ('tool'); a prompt slip rides in to Claude; a call slip rides down the spur, the machine's lights come on, and a result slip rides back; an answer slip rides on to the belt's far end.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the session is a belt"
+          },
+          {
+            "at": 0.3,
+            "event": "a prompt rides in to Claude"
+          },
+          {
+            "at": 0.55,
+            "event": "a tool call and its result"
+          },
+          {
+            "at": 0.85,
+            "event": "Claude answers and stops"
+          }
+        ],
+        "manim": {
+          "class": "B00_Belt"
+        },
+        "motion_claim": "A pale belt draws in, running right-up ('session'); Claude's dark block drops onto it ('Claude'); a spur belt runs toward the viewer to a dark tool machine ('tool'); a prompt slip rides in to Claude; a call slip rides down the spur, the machine's lights come on, and a result slip rides back; an answer slip rides on to the belt's far end."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn belt-and-gates scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.664,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 9.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:36:42"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "A hook is a checkpoint on that belt: a command you attach to a named point, called an event. Every time the session passes that point, Claude Code runs your command. Claude doesn't choose.",
+      "estimated_duration_s": 10.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An ink gate arch rises across the spur ('hook'); a script page clips on beside it ('your command'); a call slip rides through and the gate's lamp flashes terracotta; a second slip rides through and it flashes again; Claude's block stays still.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a hook: a checkpoint"
+          },
+          {
+            "at": 0.35,
+            "event": "a command at a named point"
+          },
+          {
+            "at": 0.65,
+            "event": "every pass, it runs"
+          },
+          {
+            "at": 0.9,
+            "event": "Claude doesn't choose"
+          }
+        ],
+        "manim": {
+          "class": "B01_Checkpoint"
+        },
+        "motion_claim": "An ink gate arch rises across the spur ('hook'); a script page clips on beside it ('your command'); a call slip rides through and the gate's lamp flashes terracotta; a second slip rides through and it flashes again; Claude's block stays still."
+      },
+      "actual_duration_s": 10.325,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 10.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:36:42"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Three events follow the turn. Session start, when a session begins or resumes. User prompt submit, when you send a prompt, before Claude reads it. And stop, when Claude finishes responding.",
+      "estimated_duration_s": 9.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three gates rise on the main belt in turn: at its start ('SessionStart'), before Claude ('UserPromptSubmit'), and after Claude ('Stop'); a slip rides through each as it is named and its lamp lights.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "events that follow the turn"
+          },
+          {
+            "at": 0.3,
+            "event": "SessionStart"
+          },
+          {
+            "at": 0.55,
+            "event": "UserPromptSubmit"
+          },
+          {
+            "at": 0.85,
+            "event": "Stop"
+          }
+        ],
+        "manim": {
+          "class": "B02_Turn"
+        },
+        "motion_claim": "Three gates rise on the main belt in turn: at its start ('SessionStart'), before Claude ('UserPromptSubmit'), and after Claude ('Stop'); a slip rides through each as it is named and its lamp lights."
+      },
+      "actual_duration_s": 10.773,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 10.791666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:36:42"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Two fire on every tool call: pre tool use, before the call runs, and post tool use, after it succeeds. Pre compact fires just before a long conversation is compacted. The docs list more.",
+      "estimated_duration_s": 10.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The spur gets two gates: one before the machine ('PreToolUse') and one after it on the way back ('PostToolUse'); a call and its result ride through them; a kraft press behind the belt lowers its plate onto a tray of slips ('PreCompact') and its lamp lights; two pale ghost gates appear at the belt's end (the docs list more).",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "every tool call"
+          },
+          {
+            "at": 0.25,
+            "event": "PreToolUse"
+          },
+          {
+            "at": 0.45,
+            "event": "PostToolUse"
+          },
+          {
+            "at": 0.75,
+            "event": "PreCompact"
+          },
+          {
+            "at": 0.92,
+            "event": "more in the docs"
+          }
+        ],
+        "manim": {
+          "class": "B03_Tools"
+        },
+        "motion_claim": "The spur gets two gates: one before the machine ('PreToolUse') and one after it on the way back ('PostToolUse'); a call and its result ride through them; a kraft press behind the belt lowers its plate onto a tray of slips ('PreCompact') and its lamp lights; two pale ghost gates appear at the belt's end (the docs list more)."
+      },
+      "actual_duration_s": 11.456,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 11.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:36:42"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Hooks live in a settings file, under their event. A matcher picks which tools a hook watches. With the matcher Bash, a Bash call trips it. An Edit call rides straight past.",
+      "estimated_duration_s": 9.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A settings card slides in ('settings.json'); the PreToolUse gate's label lands and its lamp flashes; a matcher line on the card gets a terracotta dot and an ink underline; a Bash slip rides in ('Bash') and the lamp flashes; an Edit slip rides in ('Edit') and passes with the lamp dark.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a settings file"
+          },
+          {
+            "at": 0.35,
+            "event": "a matcher"
+          },
+          {
+            "at": 0.6,
+            "event": "Bash trips it"
+          },
+          {
+            "at": 0.85,
+            "event": "Edit rides past"
+          }
+        ],
+        "manim": {
+          "class": "B04_Matcher"
+        },
+        "motion_claim": "A settings card slides in ('settings.json'); the PreToolUse gate's label lands and its lamp flashes; a matcher line on the card gets a terracotta dot and an ink underline; a Bash slip rides in ('Bash') and the lamp flashes; an Edit slip rides in ('Edit') and passes with the lamp dark."
+      },
+      "actual_duration_s": 9.643,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 9.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:36:42"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "When a hook fires, Claude Code hands your command a JSON note on standard input: the session, the event's name, and for a tool call, the tool's name and its input. Here, the exact command.",
+      "estimated_duration_s": 10.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A call slip stops at the PreToolUse gate; a JSON card grows out of it into the open lower right ('stdin'); its rows fill one by one; the tool-name row and the input row get ink ticks ('tool_name', 'tool_input'); the input row's bar lengthens (the exact command).",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a JSON note on stdin"
+          },
+          {
+            "at": 0.4,
+            "event": "session, event name"
+          },
+          {
+            "at": 0.7,
+            "event": "tool name and input"
+          },
+          {
+            "at": 0.9,
+            "event": "the exact command"
+          }
+        ],
+        "manim": {
+          "class": "B05_Stdin"
+        },
+        "motion_claim": "A call slip stops at the PreToolUse gate; a JSON card grows out of it into the open lower right ('stdin'); its rows fill one by one; the tool-name row and the input row get ink ticks ('tool_name', 'tool_input'); the input row's bar lengthens (the exact command)."
+      },
+      "actual_duration_s": 10.901,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 10.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:36:42"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Your command answers with an exit code. Zero: carry on. Two: block. At pre tool use, two stops the call, and what you print to standard error goes to Claude as the reason. Other codes don't block.",
+      "estimated_duration_s": 10.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A slip reaches the gate ('exit 0'): the lamp lights and it rides through. A second slip ('exit 2'): the kraft door drops, the slip stops, and a small note flies back up the spur to Claude. A third ('other'): the door stays up and it rides through.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "an exit code"
+          },
+          {
+            "at": 0.25,
+            "event": "0: carry on"
+          },
+          {
+            "at": 0.45,
+            "event": "2: block, stderr to Claude"
+          },
+          {
+            "at": 0.85,
+            "event": "other codes don't block"
+          }
+        ],
+        "manim": {
+          "class": "B06_Exit"
+        },
+        "motion_claim": "A slip reaches the gate ('exit 0'): the lamp lights and it rides through. A second slip ('exit 2'): the kraft door drops, the slip stops, and a small note flies back up the spur to Claude. A third ('other'): the door stays up and it rides through."
+      },
+      "actual_duration_s": 11.093,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 11.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:36:42"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Anthropic's example hook watches Bash. If a command starts with grep, it prints, use r g instead, and exits two. The call never runs. Claude reads the note, and can try again with r g.",
+      "estimated_duration_s": 10.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A slip labelled 'grep' rides to the PreToolUse gate; the door drops ('exit 2') and the slip fades where it stopped; a note flies back to Claude; Claude sends a new slip labelled 'rg'; the door lifts, it rides through, and the machine's lights come on.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Anthropic's example watches Bash"
+          },
+          {
+            "at": 0.35,
+            "event": "grep: exit 2"
+          },
+          {
+            "at": 0.6,
+            "event": "the call never runs"
+          },
+          {
+            "at": 0.85,
+            "event": "Claude can retry with rg"
+          }
+        ],
+        "manim": {
+          "class": "B07_Grep"
+        },
+        "motion_claim": "A slip labelled 'grep' rides to the PreToolUse gate; the door drops ('exit 2') and the slip fades where it stopped; a note flies back to Claude; Claude sends a new slip labelled 'rg'; the door lifts, it rides through, and the machine's lights come on."
+      },
+      "actual_duration_s": 11.051,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 11.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:36:42"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Exit code two means something different at each event. At user prompt submit, it blocks the prompt and erases it. At post tool use, the tool already ran, so Claude just sees the note. Session start can't block. And stop keeps Claude working, with your note as the reason.",
+      "estimated_duration_s": 14.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The UserPromptSubmit door drops and a prompt slip vanishes; at PostToolUse the machine's lights are already on as a note flies to Claude; at SessionStart the lamp lights but no door drops; at Stop the door drops, and the answer slip turns back to Claude, whose light comes on again.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "exit 2 differs by event"
+          },
+          {
+            "at": 0.25,
+            "event": "UserPromptSubmit: erased"
+          },
+          {
+            "at": 0.5,
+            "event": "PostToolUse: the tool already ran"
+          },
+          {
+            "at": 0.7,
+            "event": "SessionStart can't block"
+          },
+          {
+            "at": 0.9,
+            "event": "Stop keeps Claude working"
+          }
+        ],
+        "manim": {
+          "class": "B08_Stop"
+        },
+        "motion_claim": "The UserPromptSubmit door drops and a prompt slip vanishes; at PostToolUse the machine's lights are already on as a note flies to Claude; at SessionStart the lamp lights but no door drops; at Stop the door drops, and the answer slip turns back to Claude, whose light comes on again."
+      },
+      "actual_duration_s": 14.485,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 14.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T01:36:42"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude Code: Add a pre tool use hook to this project's dot claude slash settings dot json with the matcher Bash. It runs a Python script that reads the JSON on standard input. If tool input dot command starts with R M dash R F, it prints a reason to standard error and exits 2. Otherwise it exits 0. Then give me a one-line test that pipes a fake R M dash R F call into the script and prints the exit code. Then check two things yourself. Does the fake call exit with code two? And does the slash hooks menu list your hook under pre tool use?",
+      "estimated_duration_s": 33.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · YOUR TURN",
+            "segment": "Where the Hooks Fire",
+            "command": "Add a PreToolUse hook to this project's .claude/settings.json with the matcher Bash. It runs a Python script that reads the JSON on stdin. If tool_input.command starts with rm -rf, it prints a reason to stderr and exits 2. Otherwise it exits 0. Then give me a one-line test that pipes a fake rm -rf call into the script and prints the exit code.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: the fake rm -rf call exits 2?",
+              "Check: /hooks lists it under PreToolUse?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T05:32:25.119711+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 31.253,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 31.291666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T01:36:42"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Where the Hooks Fire. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Where the Hooks Fire",
+            "slug": "show-tell-where-the-hooks-fire",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T05:32:40.040038+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 3.88,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 3.9166666666666665,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T01:36:42"
+      }
+    }
+  ]
+}

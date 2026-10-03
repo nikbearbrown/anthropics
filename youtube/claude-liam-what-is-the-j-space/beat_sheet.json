@@ -1,0 +1,810 @@
+{
+  "metadata": {
+    "slug": "claude-liam-what-is-the-j-space",
+    "title": "What Is the J-Space?",
+    "topic": "THE J-SPACE — A MODEL'S WORKSPACE, DEFINED PLAINLY",
+    "purpose": "A simple, direct 'What is' explainer distilled from the six-episode workspace series: the Jacobian lens (one gradient per word), the space its directions span (a thin middle band, ~layers 38–92, ~25 slots, <10% of activity, ideas not items), the causal proof (swap and deletion), and the honest label (one-token vision, one vendor, no recurrence). Every claim is carried over from the already-fact-checked source reels.",
+    "register": "Teardown",
+    "channel": "claude-liam",
+    "skill": "deep-explainer",
+    "book": "anthropics",
+    "voice_default": "am_onyx",
+    "engine_default": "kokoro",
+    "sources": [
+      "SOURCES.md"
+    ],
+    "factcheck": "FACTCHECK.md",
+    "description_blurb": "Somewhere in the middle of a language model there is a thin slice of activity where the model holds what it is thinking about — before it says a word. Anthropic found it with one instrument: for every word in the vocabulary, the gradient that would push the model to say it. One vector per word; a dictionary of directions. Project the model's live activations onto that dictionary and you get a ranking — what this layer, right now, is most ABOUT.\n\nThe space those directions span is the J-space: a wide middle band (roughly layers 38–92 in one production model), about twenty-five sparse slots carrying under ten percent of everything the model computes. It stores ideas, not items — read it an eighty-word animal list and it holds the CATEGORY, which predicts the rest. And it is causally real: swap a held concept (spider → ant) and the model's answer follows; delete the space and flexible reasoning collapses while grammar keeps flowing.\n\nThe honest label, in the paper's own print: the lens reads one token at a time ('blackmail' registers as 'black'), every reading so far comes from one vendor's models, and a forward pass has no recurrence. Real, tested, young.\n\nBased on Anthropic's workspace research; distilled from our six-part series on the paper.",
+    "hashtags": [
+      "AI",
+      "Interpretability",
+      "Anthropic",
+      "Claude",
+      "NeuralNetworks",
+      "MachineLearning"
+    ],
+    "chapters": [
+      [
+        "B00",
+        "What is the J-Space?"
+      ],
+      [
+        "B01",
+        "Part I — The Instrument"
+      ],
+      [
+        "B05",
+        "Part II — The Space"
+      ],
+      [
+        "B09",
+        "The proof it's real"
+      ],
+      [
+        "B11",
+        "The honest label"
+      ],
+      [
+        "BVDT",
+        "Verdict"
+      ],
+      [
+        "BHTF",
+        "Your turn"
+      ]
+    ],
+    "build": {
+      "at": "2026-09-01T13:30:52",
+      "cut": "master",
+      "filled": 15,
+      "of": 15,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 20,
+      "narration_text": "Sawubona — this is Liam, in for Bear. Somewhere in the middle of a language model, there is a thin slice of activity where the model holds what it is thinking about — before it says a word. Anthropic found it, mapped it, and stress-tested it. They call it the J-space. Here is what that means, plainly.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "composer: greeting, the ask types, answer lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Sawubona, Liam.",
+            "topic": "INSIDE THE MODEL",
+            "segment": "What Is the J-Space?",
+            "command": "What is the J-Space?",
+            "runningText": "reading the middle layers…",
+            "output": [
+              "A thin, privileged slice of the model's activations.",
+              "It holds what the model is thinking about — not yet saying.",
+              "Found with one instrument: a gradient per word."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 15.42,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:30:52"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "THE INSTRUMENT",
+      "lane": "CARD",
+      "estimated_duration_s": 11,
+      "narration_text": "The name comes from an instrument. J for Jacobian — a gradient. To understand the space, you first need the lens that finds it. It takes one minute.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "segment card: PART I — THE INSTRUMENT"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "actLabel": "Part I",
+            "title": "The Instrument"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 8.45,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:30:52"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "THE INSTRUMENT",
+      "lane": "MANIM",
+      "estimated_duration_s": 14,
+      "narration_text": "A transformer builds its answer layer by layer, in a running scratch vector called the residual stream. The finished answer only exists at the top. The question is what is written in that vector mid-stack — long before the output.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: layer stack draws; scratch-vector chip climbs"
+          },
+          {
+            "at": 0.5,
+            "event": "RIGHT: LAYER counter climbs in sync; OUTPUT stays '?'"
+          },
+          {
+            "at": 0.85,
+            "event": "terracotta bracket lands mid-stack: 'what is written HERE?'"
+          }
+        ],
+        "graphic": {
+          "manim": "B02_ResidualStream",
+          "scene_class": "B02_ResidualStream",
+          "engine": "manim",
+          "production_viz": {
+            "label": "cream canvas",
+            "mechanic": "Cream canvas. LEFT: a vertical stack of ~14 thin layer bars; a highlighted 'scratch vector' chip climbs the stack, its contents (abstract tick marks) accumulating layer by layer; the TOP layer emits an answer chip. RIGHT: a ledger — LAYER counter climbing in sync with the chip, OUTPUT row showing '?' until the top layer, then 'answer'. A terracotta bracket lands on the MIDDLE of the stack on 'mid-stack' with the tag 'what is written HERE?'."
+          },
+          "scene": "B02_ResidualStream"
+        }
+      },
+      "actual_duration_s": 12.31,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-01T13:30:52"
+      },
+      "graphic": {
+        "manim": "B02_ResidualStream",
+        "scene_class": "B02_ResidualStream",
+        "engine": "manim",
+        "production_viz": {
+          "label": "cream canvas",
+          "mechanic": "Cream canvas. LEFT: a vertical stack of ~14 thin layer bars; a highlighted 'scratch vector' chip climbs the stack, its contents (abstract tick marks) accumulating layer by layer; the TOP layer emits an answer chip. RIGHT: a ledger — LAYER counter climbing in sync with the chip, OUTPUT row showing '?' until the top layer, then 'answer'. A terracotta bracket lands on the MIDDLE of the stack on 'mid-stack' with the tag 'what is written HERE?'."
+        },
+        "scene": "B02_ResidualStream"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE INSTRUMENT",
+      "lane": "MANIM",
+      "estimated_duration_s": 15,
+      "narration_text": "The Jacobian lens asks, for every word in the vocabulary: if the model were about to say this word, which direction in this layer's activations would push it harder? One gradient. One vector per word. Compute that for the whole vocabulary and you have a dictionary of directions.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: layer plane; word-tagged direction arrows grow one at a time"
+          },
+          {
+            "at": 0.5,
+            "event": "RIGHT: WORD/DIRECTION ledger fills in sync"
+          },
+          {
+            "at": 0.9,
+            "event": "footer: 'a dictionary of directions'"
+          }
+        ],
+        "graphic": {
+          "manim": "B03_OneGradientPerWord",
+          "scene_class": "B03_OneGradientPerWord",
+          "engine": "manim",
+          "production_viz": {
+            "label": "cream canvas",
+            "mechanic": "Cream canvas. LEFT: a layer plane (a large soft rectangle) with three labelled arrows growing out of it in distinct directions, each tagged with a word chip: 'orange', 'twenty-one', 'safe'. Each arrow draws on the phrase 'one vector per word'. RIGHT: a ledger — WORD column listing the three words, DIRECTION column gaining a small arrow glyph per row, in sync with the left arrows. Footer serif: 'a dictionary of directions'."
+          },
+          "scene": "B03_OneGradientPerWord"
+        }
+      },
+      "actual_duration_s": 15.02,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-01T13:30:52"
+      },
+      "graphic": {
+        "manim": "B03_OneGradientPerWord",
+        "scene_class": "B03_OneGradientPerWord",
+        "engine": "manim",
+        "production_viz": {
+          "label": "cream canvas",
+          "mechanic": "Cream canvas. LEFT: a layer plane (a large soft rectangle) with three labelled arrows growing out of it in distinct directions, each tagged with a word chip: 'orange', 'twenty-one', 'safe'. Each arrow draws on the phrase 'one vector per word'. RIGHT: a ledger — WORD column listing the three words, DIRECTION column gaining a small arrow glyph per row, in sync with the left arrows. Footer serif: 'a dictionary of directions'."
+        },
+        "scene": "B03_OneGradientPerWord"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE INSTRUMENT",
+      "lane": "MANIM",
+      "estimated_duration_s": 14,
+      "narration_text": "Now point it at the model while it works. Project the actual activations onto those directions and you get a ranking — the ten words this layer, at this token, is most about. Not what it will say. What it is thinking about. That ranked list is the whole readout.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B04.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: activation dot; projections drop onto the arrows"
+          },
+          {
+            "at": 0.45,
+            "event": "RIGHT: ranked list builds, bars matching projections"
+          },
+          {
+            "at": 0.9,
+            "event": "terracotta underline on rank 1"
+          }
+        ],
+        "graphic": {
+          "manim": "B04_TheReadout",
+          "scene_class": "B04_TheReadout",
+          "engine": "manim",
+          "production_viz": {
+            "label": "cream canvas",
+            "mechanic": "Cream canvas. LEFT: the layer plane returns with an activation dot on it; projection lines drop from the dot onto three direction arrows, each projection length different. RIGHT: a ranked TOP-OF-MIND list builds top-down — 1 orange, 2 lemon, 3 fruit — bar lengths matching the projection lengths on the left, drawn in sync. The #1 row gets the single terracotta underline. Footer: 'the readout: a ranking, not a prediction'."
+          },
+          "scene": "B04_TheReadout"
+        }
+      },
+      "actual_duration_s": 13.67,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-01T13:30:52"
+      },
+      "graphic": {
+        "manim": "B04_TheReadout",
+        "scene_class": "B04_TheReadout",
+        "engine": "manim",
+        "production_viz": {
+          "label": "cream canvas",
+          "mechanic": "Cream canvas. LEFT: the layer plane returns with an activation dot on it; projection lines drop from the dot onto three direction arrows, each projection length different. RIGHT: a ranked TOP-OF-MIND list builds top-down — 1 orange, 2 lemon, 3 fruit — bar lengths matching the projection lengths on the left, drawn in sync. The #1 row gets the single terracotta underline. Footer: 'the readout: a ranking, not a prediction'."
+        },
+        "scene": "B04_TheReadout"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE SPACE",
+      "lane": "CARD",
+      "estimated_duration_s": 11,
+      "narration_text": "Part two. The space. Because the discovery is not the lens. The discovery is what the lens keeps landing on.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "segment card: PART II — THE SPACE"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "actLabel": "Part II",
+            "title": "The Space"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 6.49,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:30:52"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE SPACE",
+      "lane": "MANIM",
+      "estimated_duration_s": 16,
+      "narration_text": "Compare the lens directions layer by layer, and the model splits into three regions. Early layers parse what was said — call them sensory. Late layers spell out what to say — motor. And in between sits a wide middle band where those directions live and do their work. For one production model, roughly layers thirty-eight to ninety-two. That band is the J-space.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B06.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: stack shades into three regions bottom-up"
+          },
+          {
+            "at": 0.55,
+            "event": "middle band fills terracotta: THE J-SPACE"
+          },
+          {
+            "at": 0.75,
+            "event": "RIGHT: ledger rows land; LAYERS ~38–92"
+          }
+        ],
+        "graphic": {
+          "manim": "B06_TheBand",
+          "scene_class": "B06_TheBand",
+          "engine": "manim",
+          "production_viz": {
+            "label": "cream canvas",
+            "mechanic": "Cream canvas. LEFT: the full layer stack redrawn as a tall column, then three-way shaded: bottom band labelled SENSORY (parsing), top band labelled MOTOR (spelling out), and a WIDE middle band that fills terracotta-tinted with the label THE J-SPACE. RIGHT: ledger — REGION / JOB rows landing in sync (sensory→parsing, motor→output, middle→'holds the thinking'), then a LAYERS row printing '~38–92' as the band shades. The band is the single terracotta moment."
+          },
+          "scene": "B06_TheBand"
+        }
+      },
+      "actual_duration_s": 18.45,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-01T13:30:52"
+      },
+      "graphic": {
+        "manim": "B06_TheBand",
+        "scene_class": "B06_TheBand",
+        "engine": "manim",
+        "production_viz": {
+          "label": "cream canvas",
+          "mechanic": "Cream canvas. LEFT: the full layer stack redrawn as a tall column, then three-way shaded: bottom band labelled SENSORY (parsing), top band labelled MOTOR (spelling out), and a WIDE middle band that fills terracotta-tinted with the label THE J-SPACE. RIGHT: ledger — REGION / JOB rows landing in sync (sensory→parsing, motor→output, middle→'holds the thinking'), then a LAYERS row printing '~38–92' as the band shades. The band is the single terracotta moment."
+        },
+        "scene": "B06_TheBand"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE SPACE",
+      "lane": "MANIM",
+      "estimated_duration_s": 15,
+      "narration_text": "And it is thin — on purpose. About twenty-five sparse slots, carrying less than ten percent of everything the model computes. A workspace that lived everywhere and held everything would not be a workspace. Most of the model's activity never enters it. What does enter is privileged.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B07.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: dot field; a few dots migrate into the J-space box"
+          },
+          {
+            "at": 0.55,
+            "event": "RIGHT: SLOTS ~25 · SHARE <10% with a small bar"
+          },
+          {
+            "at": 0.9,
+            "event": "footer: 'a thin, privileged slice'"
+          }
+        ],
+        "graphic": {
+          "manim": "B07_TheBudget",
+          "scene_class": "B07_TheBudget",
+          "engine": "manim",
+          "production_viz": {
+            "label": "cream canvas",
+            "mechanic": "Cream canvas. LEFT: a wide field of ~80 small gray dots (all the model computes); exactly a small cluster of ~10 dots migrate into a bordered box labelled THE J-SPACE and turn ink; the rest stay gray outside. RIGHT: ledger — SLOTS '~25', SHARE OF ACTIVITY '<10%', a bar showing the small share filling. Footer serif: 'a thin, privileged slice'."
+          },
+          "scene": "B07_TheBudget"
+        }
+      },
+      "actual_duration_s": 15.06,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-01T13:30:52"
+      },
+      "graphic": {
+        "manim": "B07_TheBudget",
+        "scene_class": "B07_TheBudget",
+        "engine": "manim",
+        "production_viz": {
+          "label": "cream canvas",
+          "mechanic": "Cream canvas. LEFT: a wide field of ~80 small gray dots (all the model computes); exactly a small cluster of ~10 dots migrate into a bordered box labelled THE J-SPACE and turn ink; the rest stay gray outside. RIGHT: ledger — SLOTS '~25', SHARE OF ACTIVITY '<10%', a bar showing the small share filling. Footer serif: 'a thin, privileged slice'."
+        },
+        "scene": "B07_TheBudget"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE SPACE",
+      "lane": "REMOTION",
+      "estimated_duration_s": 15,
+      "narration_text": "Careful with the word slots, though. Read the model an eighty-word list of animals and the space seems to hold all eighty — including animals it has not read yet. It is not holding the list. It is holding the category, and the category predicts the rest. It stores ideas, not items.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B08.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "two panels: the 80-item illusion vs the one held category"
+          }
+        ],
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "What a slot holds",
+            "left": {
+              "label": "Looks like",
+              "note": "Eighty animals, item by item — impossible in twenty-five slots."
+            },
+            "right": {
+              "label": "Actually is",
+              "note": "One category — 'animals' — and the category predicts the rest."
+            },
+            "sparkLine": "ideas, not items"
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 15.15,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:30:52"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "PROOF",
+      "lane": "MANIM",
+      "estimated_duration_s": 16,
+      "narration_text": "How do we know any of this is real, and not a pretty visualization? Because it is causal. In a riddle whose hidden middle step is spider, swap the spider coordinates for ant — and the model's answer about legs follows the swap. Plant one change, and every downstream task that touches the concept follows. Write once; every specialist reads it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B09.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: riddle → J-space(SPIDER) → 'eight legs'"
+          },
+          {
+            "at": 0.5,
+            "event": "the swap: SPIDER out, ANT in; answer re-prints 'six legs'"
+          },
+          {
+            "at": 0.85,
+            "event": "RIGHT ledger flips in sync; footer lands"
+          }
+        ],
+        "graphic": {
+          "manim": "B09_TheSwap",
+          "scene_class": "B09_TheSwap",
+          "engine": "manim",
+          "production_viz": {
+            "label": "cream canvas",
+            "mechanic": "Cream canvas. LEFT: a mini pipeline — RIDDLE chip → J-SPACE box holding a SPIDER chip → ANSWER chip reading 'eight legs'. On 'swap', the SPIDER chip physically lifts out and an ANT chip drops in; the ANSWER chip re-prints to 'six legs'. RIGHT: ledger — HELD CONCEPT row flipping spider→ant in sync, ANSWER row flipping 8→6. The swap is the terracotta moment. Footer: 'write once — everything downstream follows'."
+          },
+          "scene": "B09_TheSwap"
+        }
+      },
+      "actual_duration_s": 17.9,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-01T13:30:52"
+      },
+      "graphic": {
+        "manim": "B09_TheSwap",
+        "scene_class": "B09_TheSwap",
+        "engine": "manim",
+        "production_viz": {
+          "label": "cream canvas",
+          "mechanic": "Cream canvas. LEFT: a mini pipeline — RIDDLE chip → J-SPACE box holding a SPIDER chip → ANSWER chip reading 'eight legs'. On 'swap', the SPIDER chip physically lifts out and an ANT chip drops in; the ANSWER chip re-prints to 'six legs'. RIGHT: ledger — HELD CONCEPT row flipping spider→ant in sync, ANSWER row flipping 8→6. The swap is the terracotta moment. Footer: 'write once — everything downstream follows'."
+        },
+        "scene": "B09_TheSwap"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "PROOF",
+      "lane": "REMOTION",
+      "estimated_duration_s": 15,
+      "narration_text": "And the deletion test. Project the space out entirely, and watch what dies. Multi-step reasoning, ciphers, constrained writing — the flexible thinking collapses. Grammar and habit keep flowing untouched. That split — flexible cognition in, automatic habit out — is the signature of a workspace.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B10.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "two columns: what dies vs what survives deletion"
+          }
+        ],
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "Delete the J-space, and…",
+            "cols": 2,
+            "chips": [
+              "✗ multi-hop reasoning — collapses",
+              "✗ ciphers — collapse",
+              "✗ constrained writing — collapses",
+              "✓ grammar — keeps flowing",
+              "✓ habits — keep firing",
+              "✓ fluency — untouched"
+            ],
+            "sparkLine": "the workspace signature"
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 16.43,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:30:52"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE LABEL",
+      "lane": "REMOTION",
+      "estimated_duration_s": 15,
+      "narration_text": "Now the honest label. The lens reads one token at a time — in the paper's own case study, the word blackmail registers only as the fragment black. Every reading so far comes from one company's models. And unlike a brain, a transformer's forward pass has no recurrent loops. The J-space is real, tested, and still a young instrument. Hold both.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B11.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "three limit chips land one at a time"
+          }
+        ],
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "The honest label",
+            "cols": 1,
+            "chips": [
+              "one-token vision — 'blackmail' reads as 'black'",
+              "every reading so far: one vendor's models",
+              "no recurrence — the one piece of anatomy brains assume"
+            ],
+            "sparkLine": "real, tested, young"
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 18.6,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:30:52"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "closing",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 17,
+      "narration_text": "So — the J-space. A thin middle band of a language model where a dictionary of word-directions holds what the model is thinking about before it says it. About twenty-five slots, ideas rather than items, causally real under swap and deletion. And read, so far, one token at a time, on one vendor's models.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "verdict lines land with the narration"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "What Is the J-Space?",
+            "artifactHeading": "What the evidence supports",
+            "artifactLines": [
+              "A thin middle band — roughly layers 38–92 — where thinking is held before saying.",
+              "One gradient per word: a dictionary of directions, read as a ranking.",
+              "~25 slots, under 10% of activity — and it stores ideas, not items.",
+              "Causally real: swap a held concept and the answer follows; delete it and flexible thought dies.",
+              "Read one token at a time, on one vendor's models — real, tested, young."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 16.96,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:30:52"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "closing",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 22,
+      "narration_text": "Your turn. Open a Claude session and paste this: explain the difference between what a language model is about to say and what it is thinking about — then design the simplest experiment that could tell those two apart from the outside. If your experiment needs to read the middle of the model, you have just reinvented the lens.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Your turn composer; the prompt types as Liam reads it"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN — REINVENT THE LENS",
+            "segment": "What Is the J-Space?",
+            "command": "Explain the difference between what a language model is about to SAY and what it is THINKING ABOUT — then design the simplest experiment that could tell those apart from the outside.",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 16.68,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:30:52"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "closing",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 6,
+      "narration_text": "What is the J-space? Now you know. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "title outro"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "What Is the J-Space?",
+            "slug": "claude-liam-what-is-the-j-space",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 3.65,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:30:52"
+      }
+    }
+  ]
+}

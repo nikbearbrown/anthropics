@@ -1,0 +1,143 @@
+#!/usr/bin/env python3
+"""make_sheet.py — beat_sheet.json for show-tell-how-a-skill-loads.
+
+SHOW-TELL (Bear 2026-09-26): every body beat is ONE drawn isometric illustration in the
+Claude palette, labels only, Liam's voice explains. Card #2 in show-tell-ideas.md.
+Spine: BIDEA hesitant writer -> BDEFS terms -> B00..B07 drawn -> BHTF composer -> BOUT.
+
+Sources: anthropics/skills/ (README.md, spec/ -> agentskills.io/specification, template/SKILL.md,
+skills/skills/{pdf,skill-creator,mcp-builder,docx,brand-guidelines,webapp-testing}/SKILL.md).
+One filing-cabinet cast for the whole film: the cabinet (the installed skills), drawers (one
+skill each) with white label plates (name + description), hanging folders inside (SKILL.md,
+scripts, references, assets), a context tray (what Claude has loaded), a task card.
+"""
+import json
+from pathlib import Path
+HERE = Path(__file__).resolve().parent
+SLUG = HERE.name
+TITLE = "How a Skill Loads"
+
+
+def beat(bid, narration, cls, image, show):
+    return {"beat_id": bid, "act": "show-tell", "lane": "manim", "proof_gate": "SHOW",
+            "narration_text": narration, "estimated_duration_s": round(len(narration.split()) / 2.5, 1),
+            "voice": "am_onyx", "engine": "kokoro",
+            "shot": {"type": "GRAPHIC", "source": "own", "visual_intent": image, "show": show, "manim": {"class": cls},
+                     "motion_claim": image}}
+
+
+B = [
+ beat("B00", "Picture your skills as a filing cabinet. Each drawer is one skill. And on the front of every drawer, there's a label.",
+      "B00_Cabinet", "A kraft filing cabinet drops onto the stage and lands with a floor shadow; the four drawer fronts appear; a white label plate pops onto each drawer, one after another.",
+      [{"at": 0.1, "event": "cabinet lands"}, {"at": 0.4, "event": "drawers"}, {"at": 0.75, "event": "label plates pop on"}]),
+ beat("B01", "Pull one drawer out. Up front is the one file every skill needs: SKILL.md. Its top holds a name, and a description of what the skill does and when to use it. That's the label. Below it, the instructions.",
+      "B01_Drawer", "One drawer slides out; a white sheet (SKILL.md) rises from the front of it; the sheet's top band (two lines) lights, and a copy of it flies onto the drawer's label plate; body lines draw below.",
+      [{"at": 0.1, "event": "drawer slides out"}, {"at": 0.3, "event": "SKILL.md rises"}, {"at": 0.55, "event": "name + description band"}, {"at": 0.75, "event": "band flies to the label"}, {"at": 0.9, "event": "instructions"}]),
+ beat("B02", "Behind it, three optional folders. Scripts, code Claude can run. References, documents it can read. And assets, like templates and images.",
+      "B02_Folders", "Three hanging folders drop into the open drawer behind the sheet, one per phrase: a dark scripts block, a references page stack, an assets card; each gets its tab label.",
+      [{"at": 0.25, "event": "scripts"}, {"at": 0.5, "event": "references"}, {"at": 0.75, "event": "assets"}]),
+ beat("B03", "Here's the trick. When a session starts, Claude doesn't open the cabinet. It reads only the labels: every skill's name and description. That's all that's always in context.",
+      "B03_Labels", "The drawer slides shut; a context tray appears in front; a scan line sweeps down the drawer fronts, and one slip per label flies from the cabinet into the tray.",
+      [{"at": 0.15, "event": "drawer shuts"}, {"at": 0.4, "event": "scan"}, {"at": 0.65, "event": "slips fly to the tray"}, {"at": 0.9, "event": "context"}]),
+ beat("B04", "Then a task arrives: fill in this PDF form. Claude checks it against the labels. The PDF skill matches, so only that drawer slides open, and its instructions load.",
+      "B04_Match", "A task card slides in; a dashed line runs from it past the label slips and lands on one; a check; only that drawer slides open; its SKILL.md sheet lifts into the tray.",
+      [{"at": 0.1, "event": "task card"}, {"at": 0.4, "event": "dashed match line"}, {"at": 0.6, "event": "check, pdf drawer opens"}, {"at": 0.85, "event": "SKILL.md into the tray"}]),
+ beat("B05", "Those instructions point to more files, and Claude pulls one only when the job needs it. Filling a form? Read the forms guide. A script can even run without its code being loaded. Only its output comes back.",
+      "B05_OnDemand", "In the open pdf drawer: forms.md lifts out and slides into the tray; the other pages stay down; a dark script block lights up in place and sends only a small result slip to the tray.",
+      [{"at": 0.2, "event": "folders in the drawer"}, {"at": 0.45, "event": "forms.md into the tray"}, {"at": 0.7, "event": "script runs in place"}, {"at": 0.9, "event": "output slip to the tray"}]),
+ beat("B06", "Every other drawer stays shut. So you can install many skills, and each one costs little more than its label until a task needs it. That's progressive disclosure.",
+      "B06_Wall", "More cabinets slide in beside the first to make a wall; every drawer stays shut except the one that is open; the tray gains only a thin slip per cabinet.",
+      [{"at": 0.1, "event": "the rest stay shut"}, {"at": 0.4, "event": "more cabinets slide in"}, {"at": 0.7, "event": "only slips in the tray"}, {"at": 0.9, "event": "progressive disclosure"}]),
+ beat("B07", "So the description does the real work. It's the label that decides whether the drawer opens. The spec's own bad example is: helps with PDFs. Say what the skill does, and when to use it, in the words people actually type. And Anthropic's skill guide says Claude tends to under-use skills, so make it a little pushy.",
+      "B07_GoodLabel", "Two drawers side by side: one with a one-line label, one with a three-line label. A task line tries the vague one and misses (a cross); it tries the specific one and lands (a check), and that drawer slides open; the specific label grows one more line.",
+      [{"at": 0.15, "event": "two labels"}, {"at": 0.4, "event": "vague one misses"}, {"at": 0.65, "event": "specific one matches, drawer opens"}, {"at": 0.9, "event": "a little pushy: one more line"}]),
+]
+
+
+def remotion(bid, act, narration, pattern, props, show, gate="SHOW", **extra):
+    b = {"beat_id": bid, "act": act, "lane": "bookend", "proof_gate": gate,
+         "narration_text": narration, "estimated_duration_s": round(len(narration.split()) / 2.5, 1),
+         "voice": "am_onyx", "engine": "kokoro",
+         "shot": {"type": "REMOTION", "source": "own", "show": show, "remotion": {"pattern": pattern, "props": props}}}
+    b.update(extra)
+    return b
+
+
+OPEN = [
+ remotion("BIDEA", "the question",
+    "Hola. This is Liam, in for Bear. Claude can carry a lot of skills, but it doesn't read them all. So don't ask how Claude reads every skill. Ask how it knows which one to open.",
+    "BrutalistHesitantWriter",
+    {"text": "How does Claude\nread every skill?", "triggerWords": "read every skill", "replacementWords": "know which one to open",
+     "fontSize": 70, "charMs": 22, "hesitateBetween": 6, "hesitateWithin": 1, "mistakeRate": 2, "jitter": 20,
+     "seed": SLUG, "banner": ""},
+    [{"at": 0.0, "event": "types 'How does Claude read every skill?'"}, {"at": 0.6, "event": "backspaces 'read every skill' -> 'know which one to open' on the spoken correction"}],
+    lead_silence_s=0.8, motion_claim="The writer types the naive question (read every skill) and corrects it to the real one (know which one to open).",
+    qc={"sparse_by_design": True, "sparse_reason": "Hesitant-writer bookend: the correction is the motion."}),
+ remotion("BDEFS", "terms",
+    "Three terms. A skill: a folder of instructions, scripts, and resources that Claude loads for a task. SKILL.md: its one required file, with a name and description on top and instructions below. And progressive disclosure: more detail loads only as the task needs it.",
+    "ClaudeDefinitions",
+    {"title": "Terms In This Film",
+     "terms": [{"term": "skill", "meaning": "a folder of instructions, scripts, and resources Claude loads for a task"},
+               {"term": "SKILL.md", "meaning": "the one required file: name and description on top, instructions below"},
+               {"term": "progressive disclosure", "meaning": "more detail loads only as the task needs it"}],
+     "folderLabel": "@NikBearBrown"},
+    [{"at": 0.12, "event": "'skill' lands"}, {"at": 0.42, "event": "'SKILL.md' lands"}, {"at": 0.78, "event": "'progressive disclosure' lands"}], gate="CARD",
+    qc={"sparse_by_design": True, "sparse_reason": "TERMS card: three prerequisites, one line each."}),
+]
+
+YT_PROMPT = ("Here's a task I repeat every week: [describe it in two sentences]. Draft a SKILL.md for it. "
+             "Give it a short lowercase name with hyphens, and a description that says what it does and exactly when to use it, "
+             "in the words I'd actually type. Then write the steps below, and tell me what belongs in a separate reference file or script.")
+YOURTURN = remotion("BHTF", "your turn",
+    "Your turn. Paste this into Claude: " + YT_PROMPT + " Then check two things yourself. Write three different ways you'd ask "
+    "for this task. Does the description catch all three? And name one request that should not open it. Does the description stay out of the way?",
+    "ClaudeComposerAsk",
+    {"greeting": "Your turn.", "topic": "CLAUDE · YOUR TURN", "segment": "Draft Your Own SKILL.md", "command": YT_PROMPT,
+     "runningText": "paste this into Claude…",
+     "output": ["Check: write three ways you'd ask for it. Does the description catch all three?",
+                "Check: name one request that should not open it. Does it stay out of the way?"],
+     "folderLabel": "@NikBearBrown", "modelLabel": "Opus 5.5", "effortLabel": "High"},
+    [{"at": 0.0, "event": "Composer opens — 'Your turn.'"}, {"at": 0.1, "event": "the prompt types in full"}, {"at": 0.8, "event": "two check lines land"}])
+
+SPARSE_REASON = ("show-tell style (Bear, 2026-09-26): one drawn filing-cabinet scene on a cream stage per beat, minimal labels, "
+                 "with the voice carrying the explanation. The negative space is the style, so only underfill and clustered "
+                 "are waived; edge-bleed, empty-frame and contrast still apply.")
+FILLS_ON_ITS_OWN = set()   # beats measured to fill >= 55% without the waiver (set after the first Gate V pass)
+for b in B:
+    if b["beat_id"] not in FILLS_ON_ITS_OWN:
+        b["qc"] = {"sparse_by_design": True, "sparse_reason": SPARSE_REASON}
+B = OPEN + B + [YOURTURN]
+B.append({"beat_id": "BOUT", "act": "outro", "lane": "bookend", "proof_gate": "SHOW",
+          "narration_text": f"{TITLE}. At Nik Bear Brown.", "estimated_duration_s": 4.0, "voice": "am_onyx", "engine": "kokoro",
+          "shot": {"type": "REMOTION", "source": "own", "show": [{"at": 0.0, "event": "title restates; handle; mascot"}],
+                   "remotion": {"pattern": "ClaudeTitleOutro", "props": {"title": TITLE, "slug": SLUG, "handle": "@NikBearBrown", "subline": ""}}},
+          "kind": "outro_voice", "tail_silence_s": 1.0})
+
+sheet = {"metadata": {
+    "slug": SLUG, "title": TITLE, "topic": "CLAUDE · SKILLS", "skill": "show-tell", "style_preset": "show-tell",
+    "channel": "claude-liam", "persona": "Liam (in for Bear)", "voice": "am_onyx", "voice_kokoro": "am_onyx", "engine": "kokoro",
+    "clock": "narration", "palette": "claude", "register": "Teardown", "fps": 24, "aspect_ratio": "16:9", "width": 3840, "height": 2160,
+    "caption_policy": "none", "greeting_language": "Spanish (Hola)",
+    "bookend_exempt": ["cold-open", "bvdt"],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Claude users and builders who want to write their own Agent Skills",
+    "source_doc": "anthropics/skills (README.md, spec/agent-skills-spec.md -> agentskills.io/specification, template/SKILL.md, skills/skills/*/SKILL.md), read 2026-09-26",
+    "playlist": "Claude & Agentic AI", "chapter_number": 0,
+    "tags": ["Agent Skills", "Claude skills", "SKILL.md", "progressive disclosure", "skill description", "Claude Code",
+             "agentskills.io", "Anthropic", "Claude", "Nik Bear Brown"]},
+    "beats": B}
+
+# keep measured audio fields across re-runs (audio-first: never lose the clock)
+old = {}
+p = HERE / "beat_sheet.json"
+if p.exists():
+    for ob in json.load(open(p))["beats"]:
+        old[ob["beat_id"]] = ob
+for b in B:
+    ob = old.get(b["beat_id"])
+    if ob and ob.get("narration_text") == b["narration_text"]:
+        for k in ("actual_duration_s", "audio_file"):
+            if k in ob:
+                b[k] = ob[k]
+p.write_text(json.dumps(sheet, indent=2, ensure_ascii=False) + "\n")
+print(len(B), "beats; est", round(sum(b.get("actual_duration_s") or b["estimated_duration_s"] for b in B)), "s")

@@ -4,38 +4,25 @@
     "slug": "lnp-endosomal-escape",
     "topic": "CANCER NANOMEDICINE",
     "register": "Teardown",
-    "voice": "nbbhuman",
-    "voice_id": "TyW6NH39JcFb5M3xdIIk",
+    "voice": "am_onyx",
     "palette": "claude",
     "style_preset": "nikbearbrown",
     "style": "cli",
     "ground": "#FFFFFF",
     "color_semantics": "teardown: INK #2A1A0E neutral/normal; CRIMSON #C8102E key finding/vulnerability; SLATE #545454 structure/neutral",
-    "note": "CLI video REQUIRED spine: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT(manim B04_LNPEscape) · B05 CHANGE · B06 slate · B07 slate · B08 slate · B09 outro. Source: cancer-nanomedicine/chapters/09-nucleic-acid-and-gene-delivery.md",
-    "total_estimated_duration_seconds": 148,
+    "note": "CLI video spine: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT(manim B04_LNPEscape) · B05 CHANGE · B06/B07/B08 output/summary/next · BVDT verdict · BHTF your-turn · B09 outro. Source: cancer-nanomedicine/chapters/09-nucleic-acid-and-gene-delivery.md",
+    "total_estimated_duration_seconds": 178,
     "audience": "Claude",
-    "derived_from": "beat_sheet.json",
-    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "derived_from": "beat_sheet.pre-rebuild.json",
+    "outro_source": "NikBearBrownOutro (B09) — non-claude channel keeps its own skin per rebuild rule; verdict + your-turn (Claude bookends) inserted BEFORE the outro to preserve locked B09 narration",
     "engine": "kokoro",
     "voice_kokoro": "am_onyx",
-    "_variant_todo": [
-      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
-      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
-      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
-      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
-    ],
     "build": {
-      "at": "2026-07-16T04:07:57",
+      "at": "2026-08-30T20:46:09",
       "cut": "master",
-      "filled": 5,
-      "of": 10,
-      "slates": [
-        "B01",
-        "B04",
-        "B06",
-        "B07",
-        "B08"
-      ],
+      "filled": 12,
+      "of": 12,
+      "slates": [],
       "skin_warnings": [
         "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk",
         "B09: palette=claude but the outro is 'NikBearBrownOutro' — OUTRO LAW wants ClaudeTitleOutro"
@@ -73,7 +60,7 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:07:57"
+        "at": "2026-08-30T20:46:09"
       }
     },
     {
@@ -81,32 +68,32 @@
       "act": "PROBLEM",
       "role_note": "stakes/why before terminal -- <=60 words",
       "narration_text": "Only one to two percent of the mRNA in a lipid nanoparticle actually escapes the endosome and reaches the cytoplasm to make protein. The other ninety-eight to ninety-nine percent is degraded. This is the single biggest limiting factor in mRNA medicine — not formulation, not delivery to the tumor, but the cellular disposal mechanism that traps the cargo after delivery.",
-      "visual_intent": "SLATE — title card: LNP ENDOSOMAL ESCAPE: 1-2% SUCCESS RATE; the 98-99% degradation path vs the 1-2% cytoplasm escape; cellular hostility to foreign nucleic acid framed as evolved pathogen defense",
+      "visual_intent": "FormB: three enumerated points from the narration — the escape fraction, the degradation fraction, and the reason it is a cellular-defense problem",
       "shot": {
         "type": "REMOTION",
         "source": "own",
         "remotion": {
           "pattern": "FormBCard",
           "props": {
-            "title": "Research LNP Endosomal Escape: The Bottleneck That Limits mRNA Medicines",
+            "title": "The 1–2% ceiling",
             "items": [
               {
-                "label": "Key point one",
-                "sub": "",
+                "label": "1–2% escape",
+                "sub": "the fraction of mRNA that reaches the cytoplasm and makes protein",
                 "icon": "target",
                 "cueFrame": 20
               },
               {
-                "label": "Key point two",
-                "sub": "",
+                "label": "98–99% degraded",
+                "sub": "the rest is trafficked to the lysosome and destroyed",
                 "icon": "list-checks",
-                "cueFrame": 55
+                "cueFrame": 120
               },
               {
-                "label": "Key point three",
-                "sub": "",
+                "label": "The bottleneck",
+                "sub": "cellular defense, not formulation or tumor delivery",
                 "icon": "zap",
-                "cueFrame": 90
+                "cueFrame": 260
               }
             ]
           },
@@ -116,16 +103,19 @@
           }
         }
       },
-      "estimated_duration_s": 10,
+      "estimated_duration_s": 21,
       "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 21.35,
-      "build": {
-        "status": "SLATE"
-      },
-      "lane": "BOOKEND",
+      "lane": "BODY",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "voice_kokoro": "am_onyx"
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T20:46:09"
+      }
     },
     {
       "beat_id": "B02",
@@ -151,14 +141,14 @@
           }
         }
       },
-      "estimated_duration_s": 15,
+      "estimated_duration_s": 14,
       "audio_file": "mp3/beat-B02.mp3",
       "actual_duration_s": 13.63,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:07:57"
+        "at": "2026-08-30T20:46:09"
       }
     },
     {
@@ -184,40 +174,76 @@
           }
         }
       },
-      "estimated_duration_s": 15,
+      "estimated_duration_s": 20,
       "audio_file": "mp3/beat-B03.mp3",
       "actual_duration_s": 19.69,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:07:57"
+        "at": "2026-08-30T20:46:09"
       }
     },
     {
       "beat_id": "B04",
       "act": "OUTPUT — run",
-      "role_note": "OPEN vox slot → Manim video B04_LNPEscape",
+      "role_note": "OPEN vox slot → FormB mechanism sequence (Manim scene B04_LNPEscape not yet authored; TEMPLATE-MISSES logged in REBUILD-LOG.md)",
       "narration_text": "Run it. The LNP enters the bloodstream, is endocytosed by the target cell, and lands in the endosome. The pH drops to five-point-five. The ionizable lipid flips to cationic, disrupting the endosomal membrane. Then the split: on the left, the crimson path — ninety-eight to ninety-nine percent of cargo goes to the lysosome and is degraded. On the right, the gold path — one to two percent escapes to the cytoplasm and makes protein. That gold path is the entire basis of mRNA medicine.",
-      "visual_intent": "Manim B04_LNPEscape: LNP → bloodstream → endocytosis → endosome (pH drop, ionizable lipid ionizes) → branch: 98-99% lysosomal degradation (CRIMSON) vs 1-2% cytoplasm escape (GOLD); implication annotation at bottom",
+      "visual_intent": "FormB fallback: five-step mechanism enumeration (endocytosis → endosome landing → pH drop → ionizable-lipid flip → 98/2 branch) until a Manim scene B04_LNPEscape is authored",
       "shot": {
-        "type": "GRAPHIC",
-        "source": "manim",
-        "motion": "fade",
-        "manim": {
-          "scene_class": "B04_LNPEscape",
-          "file": "vox_scenes.py"
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The pH-triggered escape",
+            "items": [
+              {
+                "label": "Endocytosis",
+                "sub": "LNP crosses the cell membrane via endocytic uptake",
+                "icon": "target",
+                "cueFrame": 30
+              },
+              {
+                "label": "Endosomal pH → 5.5",
+                "sub": "the compartment acidifies; the ionizable lipid protonates",
+                "icon": "zap",
+                "cueFrame": 220
+              },
+              {
+                "label": "Membrane disruption",
+                "sub": "cationic lipid perturbs the endosomal bilayer",
+                "icon": "shield-alert",
+                "cueFrame": 400
+              },
+              {
+                "label": "98–99% → lysosome",
+                "sub": "the crimson path: cargo trafficked onward and degraded",
+                "icon": "circle-x",
+                "cueFrame": 500
+              },
+              {
+                "label": "1–2% → cytoplasm",
+                "sub": "the gold path: escaped mRNA reaches the ribosome and makes protein",
+                "icon": "circle-check",
+                "cueFrame": 600
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
         }
       },
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 27,
       "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 27.22,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:07:57",
-        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T20:46:09"
       }
     },
     {
@@ -244,14 +270,14 @@
           }
         }
       },
-      "estimated_duration_s": 14,
+      "estimated_duration_s": 15,
       "audio_file": "mp3/beat-B05.mp3",
       "actual_duration_s": 14.57,
       "build": {
         "status": "VIDEO",
         "src": "media/B05.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:07:57"
+        "at": "2026-08-30T20:46:09"
       }
     },
     {
@@ -259,22 +285,49 @@
       "act": "OUTPUT — revised",
       "role_note": "change result narration",
       "narration_text": "The three approaches: ionizable lipid library screening has pushed escape efficiency up by five to ten times in the best published cases — Moderna's SM-102 and next-generation lipids from the Siegwart lab. Fusogenic peptides like GALA mimic viral fusion proteins and improve membrane disruption. Endosome-disruptive polymers add a pH-responsive lytic element outside the LNP. None have cleared phase two for cancer gene therapy, but the COVID-19 vaccine LNPs are already the best-in-class baseline.",
-      "visual_intent": "SLATE — three-strategy table: ionizable lipid screening (5-10x improvement, Moderna SM-102) | fusogenic peptides (GALA, virus-mimetic) | endosome-disruptive polymers (pH-responsive lysis); clinical status column",
+      "visual_intent": "FormB: three enumerated escape-improvement strategies with best-published gain",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Three ways to move the ceiling",
+            "items": [
+              {
+                "label": "Ionizable lipid screening",
+                "sub": "5–10× gain in best published cases (Moderna SM-102, Siegwart lab)",
+                "icon": "crosshair",
+                "cueFrame": 40
+              },
+              {
+                "label": "Fusogenic peptides",
+                "sub": "GALA-class peptides mimic viral fusion to disrupt the endosome",
+                "icon": "zap",
+                "cueFrame": 240
+              },
+              {
+                "label": "Endosome-disruptive polymers",
+                "sub": "pH-responsive lytic element added outside the LNP",
+                "icon": "target",
+                "cueFrame": 460
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 18,
+      "estimated_duration_s": 30,
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 30.38,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:07:57",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B06.mp4)",
-        "suggested": "suggested prompt: The three approaches: ionizable lipid library screening has pushed escape efficiency up by five to ten times in the best published cases — Moderna's SM-102 and "
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T20:46:09"
       }
     },
     {
@@ -282,22 +335,49 @@
       "act": "SUMMARY",
       "role_note": "the lesson — one beat",
       "narration_text": "So the endosomal escape bottleneck reveals a fundamental biological hostility to foreign nucleic acid delivery. The cell evolved endolysosomal degradation as a pathogen defense. LNPs exploit the pH difference between endosome and cytoplasm — but only partially. The one to two percent that escapes is enough for vaccines and some therapeutics. For cancer gene therapy, the bottleneck is the problem to solve.",
-      "visual_intent": "SLATE — summary card: 1-2% escape = current ceiling for mRNA potency; cell evolved this as pathogen defense; COVID-19 vaccines work at this efficiency; cancer gene therapy requires more; ionizable lipid library = current best path",
+      "visual_intent": "FormB: three summary lines — the cell defense mechanism, the pH exploit, the enough-for-vaccines / not-enough-for-cancer split",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The lesson",
+            "items": [
+              {
+                "label": "Evolved defense",
+                "sub": "endolysosomal degradation is anti-pathogen machinery",
+                "icon": "shield",
+                "cueFrame": 40
+              },
+              {
+                "label": "The pH exploit",
+                "sub": "ionizable lipids weaponize the endosome/cytoplasm pH gap — partially",
+                "icon": "zap",
+                "cueFrame": 200
+              },
+              {
+                "label": "Vaccines: enough. Cancer: not",
+                "sub": "1–2% works for prophylactic dosing; solid-tumor gene therapy needs more",
+                "icon": "target",
+                "cueFrame": 380
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 16,
+      "estimated_duration_s": 23,
       "audio_file": "mp3/beat-B07.mp3",
       "actual_duration_s": 22.95,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:07:57",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
-        "suggested": "suggested prompt: So the endosomal escape bottleneck reveals a fundamental biological hostility to foreign nucleic acid delivery. The cell evolved endolysosomal degradation as a "
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T20:46:09"
       }
     },
     {
@@ -305,22 +385,130 @@
       "act": "NEXT STEPS",
       "role_note": "what to do next",
       "narration_text": "Your move: look up the ionizable lipid used in any LNP formulation you are studying — the pKa determines the endosomal escape efficiency. Optimal pKa is between six-point-two and six-point-five for systemic delivery. Then check whether the formulation uses PEG-lipid shedding — if PEG does not shed after endosomal entry, it blocks membrane contact and escape drops.",
-      "visual_intent": "SLATE — next steps card: 1) check ionizable lipid pKa (optimal 6.2-6.5 for systemic LNPs); 2) verify PEG-lipid shedding kinetics; 3) Onpattro (patisiran) as reference LNP for hepatic delivery",
+      "visual_intent": "FormB: three practical next-step probes — pKa optimum window, PEG shedding kinetics, reference LNP for hepatic delivery",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Your next probes",
+            "items": [
+              {
+                "label": "Check pKa",
+                "sub": "optimal 6.2–6.5 for systemic ionizable lipids",
+                "icon": "target",
+                "cueFrame": 40
+              },
+              {
+                "label": "Verify PEG shedding",
+                "sub": "no shedding → PEG blocks membrane contact → escape drops",
+                "icon": "circle-check",
+                "cueFrame": 200
+              },
+              {
+                "label": "Reference: Onpattro",
+                "sub": "patisiran, first LNP drug (2018), hepatic delivery baseline",
+                "icon": "clipboard-list",
+                "cueFrame": 380
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 17,
+      "estimated_duration_s": 22,
       "audio_file": "mp3/beat-B08.mp3",
       "actual_duration_s": 22.17,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:07:57",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
-        "suggested": "suggested prompt: Your move: look up the ionizable lipid used in any LNP formulation you are studying — the pKa determines the endosomal escape efficiency. Optimal pKa is between"
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T20:46:09"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "The verdict. Only one to two percent of the mRNA cargo escapes the endosome — a floor set by cell defense, not by the formulation. Ionizable lipid pKa between six-point-two and six-point-five is the tuning knob, and library screening has pushed escape five to ten times higher. Nothing has cleared phase two for cancer gene therapy.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 22,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "LNP endosomal escape — the ceiling and how it moves",
+            "artifactHeading": "What the reel showed",
+            "artifactLines": [
+              "1–2% of mRNA cargo escapes the endosome — a floor set by cell defense.",
+              "Ionizable lipid pKa 6.2–6.5 drives the pH-flip at endosomal pH 5.5.",
+              "Best published gain: 5–10× via ionizable-lipid library screening (SM-102, Siegwart lab).",
+              "Nothing has cleared phase 2 for cancer gene therapy; COVID vaccines are the baseline."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 19.41,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T20:46:09"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "Your turn. Pick any LNP formulation you are studying, pull the ionizable lipid, and check whether its pKa sits inside six-point-two to six-point-five. Then check whether the PEG-lipid sheds after endosomal entry. Post the two answers.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CANCER NANOMEDICINE",
+            "segment": "LNP endosomal escape",
+            "command": "Pick an LNP formulation you're studying. Pull the ionizable lipid, report its pKa, and confirm whether it sits inside 6.2–6.5. Then report whether the PEG-lipid sheds after endosomal entry.",
+            "runningText": "paste this into Claude and run it on the formulation you're working on…",
+            "output": [
+              "Ionizable lipid: <name> — pKa <value> — inside 6.2–6.5? <yes/no>",
+              "PEG-lipid: <name> — sheds after endosomal entry? <yes/no> (cite the source)",
+              "If pKa is outside the window, name the delivery target it IS tuned for."
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 14.46,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T20:46:09"
       }
     },
     {
@@ -346,108 +534,14 @@
           }
         }
       },
-      "estimated_duration_s": 8,
+      "estimated_duration_s": 7,
       "audio_file": "mp3/beat-B09.mp3",
       "actual_duration_s": 6.51,
       "build": {
         "status": "VIDEO",
         "src": "media/B09.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:07:57"
-      }
-    },
-    {
-      "beat_id": "BVDT",
-      "act": "verdict recap",
-      "lane": "BOOKEND",
-      "narration_text": "",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 20,
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeVerdictArtifact",
-          "props": {
-            "artifactTitle": "Research LNP Endosomal Escape: The Bottleneck That Limits mRNA Medicines",
-            "artifactHeading": "Key findings",
-            "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
-            ]
-          },
-          "rendered": {
-            "out": "media/BVDT.mp4",
-            "at": ""
-          }
-        }
-      },
-      "build": {
-        "status": "SLATE"
-      }
-    },
-    {
-      "beat_id": "BHTF",
-      "act": "your turn",
-      "lane": "BOOKEND",
-      "narration_text": "",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 20,
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeComposerAsk",
-          "props": {
-            "greeting": "Your turn.",
-            "topic": "YOUR TURN · CANCER NANOMEDICINE",
-            "segment": "Research LNP Endosomal Escape: The Bottleneck That…",
-            "command": "Take what you learned from [Research LNP Endosomal Escape: The Bottleneck That Limits mRNA Medicines] and apply it to your own work. What's one thing you'll try first?",
-            "runningText": "paste this into Claude and run it on your own work…",
-            "output": [],
-            "folderLabel": "@NikBearBrown"
-          },
-          "rendered": {
-            "out": "media/BHTF.mp4",
-            "at": ""
-          }
-        }
-      },
-      "build": {
-        "status": "SLATE"
-      }
-    },
-    {
-      "beat_id": "BOUT",
-      "act": "outro",
-      "lane": "BOOKEND",
-      "narration_text": "",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 8,
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "remotion": {
-          "pattern": "ClaudeTitleOutro",
-          "props": {
-            "title": "Research LNP Endosomal Escape: The Bottleneck That Limits mRNA Medicines",
-            "slug": "lnp-endosomal-escape"
-          },
-          "rendered": {
-            "out": "media/BOUT.mp4",
-            "at": ""
-          }
-        }
-      },
-      "build": {
-        "status": "SLATE"
+        "at": "2026-08-30T20:46:09"
       }
     }
   ]

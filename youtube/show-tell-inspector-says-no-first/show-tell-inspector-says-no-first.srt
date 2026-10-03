@@ -1,0 +1,159 @@
+1
+00:00:00,000 --> 00:00:04,430
+Namaste. This is Liam, in for Bear. A long-running agent will tell you it's done.
+
+2
+00:00:04,450 --> 00:00:07,397
+The real question is how you make it prove it.
+
+3
+00:00:07,467 --> 00:00:11,959
+Three terms. The builder: the agent session that writes the feature. The evaluator:
+
+4
+00:00:11,979 --> 00:00:16,471
+a separate agent that checks the work. And default-FAIL: every check starts as
+
+5
+00:00:16,491 --> 00:00:18,554
+failing, until evidence proves it passes.
+
+6
+00:00:18,624 --> 00:00:23,294
+Here's a long-running agent as a workshop. At the bench, a builder makes one feature
+
+7
+00:00:23,314 --> 00:00:28,297
+at a time. Left alone, it grades itself: after one unit test, it marks the part
+
+8
+00:00:28,317 --> 00:00:30,799
+passing, even when the screen is visibly broken.
+
+9
+00:00:30,869 --> 00:00:35,688
+Asking nicely doesn't reliably stop that. So the harness flips the default. Every
+
+10
+00:00:35,708 --> 00:00:40,527
+feature is a row in test-results dot json, and every row starts false.
+
+11
+00:00:40,597 --> 00:00:45,534
+A hook guards that file. The builder can't write to it until it has opened evidence:
+
+12
+00:00:45,554 --> 00:00:49,870
+a screenshot, a console log. Each read unlocks one write. The next change needs
+
+13
+00:00:49,890 --> 00:00:50,490
+fresh proof.
+
+14
+00:00:50,560 --> 00:00:54,937
+Then a second agent inspects the work, from its own booth, with a fresh context. It
+
+15
+00:00:54,957 --> 00:00:59,610
+never saw the build. It gets the spec, the diff and the screenshots, and it has no
+
+16
+00:00:59,630 --> 00:01:00,709
+Write or Edit tools.
+
+17
+00:01:00,779 --> 00:01:04,644
+Its instructions say plausibility is not correctness, and missing evidence means
+
+18
+00:01:04,664 --> 00:01:10,294
+needs work. So it answers PASS or needs work, and its findings become the next build
+
+19
+00:01:10,314 --> 00:01:11,354
+session's first prompt.
+
+20
+00:01:11,424 --> 00:01:15,744
+Each session starts cold. So the builder keeps its own handoff note, PROGRESS dot
+
+21
+00:01:15,764 --> 00:01:21,014
+md, and reads it first on every restart. It commits as it goes, and a hook commits
+
+22
+00:01:21,034 --> 00:01:22,874
+what's left when the session stops.
+
+23
+00:01:22,944 --> 00:01:27,745
+Put it together and it's a loop: build, inspect, rebuild, until no row says false, a
+
+24
+00:01:27,765 --> 00:01:31,963
+cycle changes nothing, or the budget runs out. Want true to mean the inspector
+
+25
+00:01:31,983 --> 00:01:34,373
+agreed? Let only its PASS write the row.
+
+26
+00:01:34,443 --> 00:01:39,395
+And you stay in charge. Create a file called agent stop, and every tool call halts.
+
+27
+00:01:39,415 --> 00:01:44,677
+Write a note in STEER dot md, and the agent sees it once, mid-run, with no restart.
+
+28
+00:01:44,747 --> 00:01:49,146
+Claude Code also has a built-in checker. Slash goal takes a condition, and after
+
+29
+00:01:49,166 --> 00:01:53,881
+every turn a separate fast model checks it until it's met. Write your own evaluator
+
+30
+00:01:53,901 --> 00:01:57,669
+dot md when you want your own inspector and the evidence gate.
+
+31
+00:01:57,739 --> 00:02:01,714
+Your turn. Paste this into Claude Code: Help me write a default-FAIL evaluator for
+
+32
+00:02:01,734 --> 00:02:05,995
+one long task: name your task. Save it as dot claude, slash agents, slash evaluator
+
+33
+00:02:06,015 --> 00:02:10,846
+dot md, with no Write or Edit tools. List the exact conditions it must see to pass,
+
+34
+00:02:10,866 --> 00:02:15,126
+and the evidence that proves each one: a screenshot, a console log, or a test
+
+35
+00:02:15,146 --> 00:02:19,121
+result. It reviews only the spec, the diff and that evidence, never the builder's
+
+36
+00:02:19,141 --> 00:02:23,116
+reasoning. Its first line is PASS or needs work; missing evidence is needs work.
+
+37
+00:02:23,136 --> 00:02:27,397
+Don't build the task. Then check two things yourself. Hand it a commit with no
+
+38
+00:02:27,417 --> 00:02:31,677
+screenshot. Does it say needs work? And open evaluator dot md. Does its tools line
+
+39
+00:02:31,697 --> 00:02:33,104
+leave out Write and Edit?
+
+40
+00:02:33,174 --> 00:02:37,645
+The Inspector Says No First. At Nik Bear Brown.

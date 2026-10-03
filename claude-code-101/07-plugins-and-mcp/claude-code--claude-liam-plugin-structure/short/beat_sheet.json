@@ -1,0 +1,228 @@
+{
+  "metadata": {
+    "title": "Plugin Structure",
+    "slug": "claude-liam-plugin-structure-short",
+    "topic": "PLUGIN STRUCTURE · CLAUDE CODE SKILL",
+    "register": "Teardown",
+    "audience": "Claude",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "greeting": "Guten Tag, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "playlist": "Claude",
+    "chapter_number": 1,
+    "modifier": "skill-teardown",
+    "source_skill": "../anthropics/claude-code/plugins/plugin-dev/skills/plugin-structure/SKILL.md",
+    "build": {
+      "at": "2026-08-20T09:28:29",
+      "cut": "master",
+      "filled": 5,
+      "of": 5,
+      "slates": [],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'ClaudeComposerAsk916' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "END: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "aspect_ratio": "9:16",
+    "fit": "crop",
+    "kind": "short",
+    "reformat": "center-cut, focus-aware; pantry/<bid>-916.* is the human replacement slot; -916 overrides honored",
+    "derived_from": "claude-liam-plugin-structure",
+    "dropped_beats": [
+      "B05",
+      "B02",
+      "B01"
+    ],
+    "playlist_short": "Shorts",
+    "total_estimated_duration_seconds": 156.42
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "narration_text": "Guten Tag — this is Liam, in for Bear. Ask Claude to create a plugin, scaffold a plugin structure, understand directory layout, set up plugin.json, or organize plugin components — the Plugin Structure skill fires. Claude Code plugins follow a standardized layout: a manifest in the dot-claude-plugin directory, and component directories — commands, agents, skills, hooks — at the plugin root. Auto-discovery means you add a file to the right directory and it loads; no registration step. Use dollar-sign CLAUDE_PLUGIN_ROOT for every path reference in hooks and MCP config so the plugin works regardless of where it's installed. Let me walk you through the directory layout, the five component types, and where this skill gets it right and where it bites.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 22,
+      "shot": {
+        "type": "REMOTION",
+        "form": "claude-code",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk916",
+          "props": {
+            "greeting": "Guten Tag, Liam",
+            "topic": "PLUGIN STRUCTURE · CLAUDE CODE SKILL",
+            "segment": "PLUGIN DEV",
+            "command": "Create a plugin that reviews code and runs tests — what structure do I need?",
+            "runningText": "reading plugin-structure SKILL.md…",
+            "output": [
+              "Manifest: .claude-plugin/plugin.json — only required field is name",
+              "Components at root: commands/ agents/ skills/ hooks/ — auto-discovered",
+              "All paths: ${CLAUDE_PLUGIN_ROOT}/... — never hardcode absolute paths"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 4.7",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 39.85,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-20T09:28:29"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "narration_text": "Verdict. Plugin Structure fires for creating plugins, understanding directory layout, setting up plugin.json, or organizing components. Manifest in .claude-plugin/plugin.json — required field: name in kebab-case. Components at plugin root: commands/ (slash commands .md), agents/ (.md), skills/ (SKILL.md subdirs), hooks/hooks.json, .mcp.json. Auto-discovery: no registration step, just file in the right place. ${CLAUDE_PLUGIN_ROOT} for all path references — never hardcode. Custom paths supplement defaults, not replace. Gaps: .claude-plugin vs root placement rule silent on failure; supplement not replace easily missed; restart inconsistency with hook-development; SKILL.md exact name undiscoverable; command collision no resolution.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "form": "slide-a",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact916",
+          "props": {
+            "artifactTitle": "Verdict",
+            "artifactHeading": "Plugin Structure",
+            "artifactLines": [
+              "Manifest: .claude-plugin/plugin.json — name required, all else optional metadata",
+              "Components at ROOT: commands/ · agents/ · skills/ · hooks/ · .mcp.json",
+              "Auto-discovery: .md → command/agent, SKILL.md subdir → skill, hooks.json → hooks",
+              "${CLAUDE_PLUGIN_ROOT} for all paths in hooks/MCP — never hardcode absolute paths",
+              "Custom paths supplement defaults — both directories scan, can double-load",
+              "Gaps: placement rule silent · SKILL.md exact name · restart inconsistency · collision"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 43.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-20T09:28:29"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "handoff",
+      "narration_text": "Your turn. Open a Claude Code session. Paste this: Create a plugin called code-review-assistant that has a review command, a code-reviewer agent, and an api-testing skill. Watch four things: first, does Claude place the manifest at .claude-plugin/plugin.json, not at the plugin root? Second, does Claude place commands, agents, and skills directories at the plugin root, not inside .claude-plugin? Third, does the skill directory contain a file named exactly SKILL.md — not README.md, not skill.md? And fourth, does any hook configuration use dollar-sign CLAUDE_PLUGIN_ROOT for its command path rather than a hardcoded or working-directory-relative path? If the manifest is at plugin.json at the root — placement is wrong. If a directory called .claude-plugin/commands exists — components are misplaced. If the skill file is named anything other than SKILL.md — it will not be discovered. Those are your gates.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 34,
+      "shot": {
+        "type": "REMOTION",
+        "form": "claude-code",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk916",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "PLUGIN STRUCTURE · HANDOFF",
+            "segment": "PLUGIN DEV",
+            "command": "Create a plugin called code-review-assistant with a review command, code-reviewer agent, and api-testing skill.",
+            "runningText": "Watch: .claude-plugin/plugin.json? components at root? SKILL.md exact? ${CLAUDE_PLUGIN_ROOT}?",
+            "output": [
+              "Expected: .claude-plugin/plugin.json · commands/ agents/ skills/ at root",
+              "Expected: skills/api-testing/SKILL.md (exact filename)",
+              "Red flag: manifest at root · components in .claude-plugin/ · README.md instead of SKILL.md"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 4.7",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": 47.57,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-20T09:28:29"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "That's the short version. The full video also covers The directory layout. Every plugin…, Five component types. Commands: markdown… and Here is the teardown. Plugin… — watch Plugin Structure for the whole story. The link is right below.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "shot": {
+        "type": "REMOTION",
+        "form": "slide-a",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro916",
+          "props": {
+            "title": "Plugin Structure",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": 12.95,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-20T09:28:29"
+      },
+      "short_outro_rewritten": true
+    },
+    {
+      "beat_id": "END",
+      "narration_text": "",
+      "actual_duration_s": 4.5,
+      "audio_file": "mp3/beat-END.mp3",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "treatment": "none"
+      },
+      "card": {
+        "handle": "@nikbearbrown",
+        "next": "",
+        "silent": true
+      },
+      "build": {
+        "status": "STILL",
+        "src": "media/END.png",
+        "filled_by": "still",
+        "at": "2026-08-20T09:28:29"
+      }
+    }
+  ]
+}

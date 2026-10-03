@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "project-artifact",
+    "title": "Claude, Project Artifact.",
     "slug": "claude-liam-project-artifact",
-    "topic": "PROJECT-ARTIFACT · CLAUDE PLUGINS",
+    "topic": "PROJECT-ARTIFACT · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,61 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Merhaba, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-plugins-official/plugins/project-artifact/skills/project-artifact/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-plugins-official/plugins/project-artifact/skills/project-artifact/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Generate and publish a project status artifact — an opinionated",
+        "tabbed status page for a project too big for one update (overview & success criteria",
+        "the workstream sequence",
+        "plus background",
+        "risks & open questions"
+      ],
+      "constraints": [
+        "description: Generate and publish a project status artifact — an opinionated, tabbed status page for a project too big for one update (overview & success criteria, the…",
+        "so everything is inlined; the only <script> is the tab switcher) and publishes it with",
+        "Pull whatever the domain gives you cheaply — always live, never from memory or earlier",
+        "Pick the tabs from the catalog below — only the ones with real content",
+        "Decisions/FAQ each earn a tab only when there's something substantive to put in it",
+        "(a simple, self-explanatory project may have just Overview + Workstreams; a big one ~6–8). Never",
+        "must scroll inside its own overflow-x:auto container, never the page body. After",
+        "updates and is only removed on uninstall). It is machine-local: a user who wants a config"
+      ],
+      "referenced_files": [
+        "https://claude.ai/code/artifact/<uuid>",
+        "swe.md",
+        "${CLAUDE_PLUGIN_DATA}/artifacts/<slug>/",
+        "config.md",
+        "page.html",
+        "artifacts/",
+        "claude.ai/code/artifact/...",
+        "template.html",
+        "prefers-color-scheme",
+        "${CLAUDE_PLUGIN_DATA}/artifacts/<slug>/page.html"
+      ],
+      "code_signals": [],
+      "sections": [
+        "Workflow",
+        "The artifact config (one per project)",
+        "Refreshing an artifact (deltas, not re-narratives)",
+        "Freshness and trust",
+        "Reading an existing artifact page",
+        "Tab catalog (domain-neutral)",
+        "Conventions (all domains)",
+        "Specializations",
+        "Files"
+      ]
+    },
     "build": {
-      "at": "2026-07-19T13:16:01",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T18:55:04",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +76,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Merhaba — this is Liam, in for Bear. You are working with the project-artifact skill. It builds tabbed HTML status pages for projects and publishes them via Claude's built-in Artifact tool. Two distinctions up front. First: the config file lives at CLAUDE underscore PLUGIN underscore DATA slash artifacts slash slug slash config dot md — that is machine-local, not synced across machines. Second: the artifact publishes to claude dot ai slash code slash artifact slash uuid — private by default; you share the URL. The tab catalog has two permanent tabs — Overview and Workstreams — and five conditional tabs that earn their place when there is material to put in them: Attention, Background, Plan, Risks and open questions, and Decisions slash FAQ. Let me walk you through the anatomy, the workflow, and the gaps.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is project-artifact. Generate and publish a project status artifact — an opinionated, tabbed status page for a project too big for one update (overview & success criteria, the workstream sequence, next steps, plus background, plan, risks & open questions, and decisions/FAQ when they earn a tab) — published with the built-in Artifact tool to a default-private claude.ai page the user can share with teammates. Use when a piece of work spans several workstreams and you want a shareable overview kept current. Each artifact is backed by a small per-project config in the plugin data dir, so refreshing it re-gathers live state, redeploys the same URL, and reports only the delta. For software projects whose workstreams are PRs, also read swe.md (the X.Y PR-numbering convention; pulling PR state with gh/git; a per-PR detail block). Needs the built-in Artifact tool (claude.ai login). Not for single-PR changes or public docs.. Its concrete surface area includes Generate and publish a project status artifact — an opinionated; tabbed status page for a project too big for one update (overview & success criteria; the workstream sequence. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 15,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Merhaba, Liam",
-            "topic": "PROJECT-ARTIFACT · CLAUDE PLUGINS",
-            "segment": "PLUGINS",
-            "command": "Build a live project status page for my API migration with workstreams, risks, and a decisions log.",
+            "greeting": "Hola, Liam",
+            "topic": "PROJECT-ARTIFACT · ANTHROPIC SKILL",
+            "segment": "Claude, Project Artifact.",
+            "command": "Run the project-artifact skill.",
             "runningText": "reading project-artifact SKILL.md…",
             "output": [
-              "Tabbed HTML page: Overview + Workstreams always · Attention/Background/Plan/Risks/Decisions earn tabs",
-              "Config at ${CLAUDE_PLUGIN_DATA}/artifacts/<slug>/config.md · state block for delta refresh",
-              "Published via Artifact tool → claude.ai/code/artifact/<uuid> · private by default"
+              "skill: project-artifact",
+              "Generate and publish a project status artifact — an opinionated, tabbed status…",
+              "steps: 8 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +106,55 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 69.08,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T13:16:01"
-      },
-      "actual_duration_s": 43.29
+        "at": "2026-09-05T18:55:04"
+      }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — tab catalog and config structure",
-      "narration_text": "The skill has two layers: the tab catalog and the config structure. The tab catalog has seven possible tabs. Overview is always present — it shows project name, status badge, last-updated timestamp, and a one-paragraph summary. Workstreams is always present — it shows the named work tracks, their status, owner, and key dates. Five tabs are conditional and only appear when the corresponding section in config dot md has content: Attention, for blockers and decisions needed now; Background, for context that readers need but that would bury the Overview; Plan, for upcoming milestones and timeline; Risks and open questions, for tracked uncertainties; Decisions and FAQ, for closed decisions and their rationale. The config file lives at CLAUDE underscore PLUGIN underscore DATA slash artifacts slash slug slash config dot md. Its four sections are Project — name, current-status, last-updated, summary; Artifact — a list of source files the skill reads before building; Sources — data files, API outputs, and documents to pull live at build time; People — names and roles shown in workstream ownership; and Notes — freeform guidance that shapes how Claude interprets ambiguous data. The state block is a JSON object embedded in the published HTML inside a script tag with type application slash json and id artifact-state. It stores the full rendered data so a subsequent refresh call can compute a delta — what changed — rather than re-narrating everything from scratch.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is project-artifact. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at https://claude.ai/code/artifact/<uuid>, swe.md, ${CLAUDE_PLUGIN_DATA}/artifacts/<slug>/, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 60,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ProjectArtifactAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Overview + Workstreams always. Five conditional tabs earn their place. State block enables delta refresh."
+            "skillName": "project-artifact",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "19k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "swe.md",
+                "size": "5k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "🌐",
+                "name": "template.html",
+                "size": "20k",
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "3 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +163,54 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 23.4,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T13:16:01"
-      },
-      "actual_duration_s": 79.42
+        "at": "2026-09-05T18:55:04"
+      }
     },
     {
       "beat_id": "B02",
-      "act": "design — workflow and key patterns",
-      "narration_text": "Four patterns that matter. First: gather live sources before building. The Artifact section of config dot md lists the files to read. The Sources section lists data files, API outputs, and any documents to pull at build time. Gather everything before writing a single tab — a status page built on stale data is worse than no status page. Second: pick tabs before generating HTML. Open config dot md, check which conditional sections have content, and decide the tab set. A five-tab page with half-empty tabs signals a misconfigured build; a two-tab page with dense content signals a well-configured one. Third: embed the state block in every publish. Every artifact HTML must include the state block — a JSON script tag with id artifact-state — even on the first publish. Without it, a refresh call has no prior state to diff against and must rebuild from template. Fourth: delta versus re-narrative on refresh. If a previous artifact is on disk, compute a delta: what workstreams changed status, what risks were added, what decisions closed since last publish. Surface the delta as a bulleted change summary at the top of the Overview tab before writing the full new content. Key gotchas. The Artifact tool requires claude dot ai login — a colleague without an account cannot open the URL. Config is machine-local — a config dot md on your laptop is not available on your colleague's machine. Delta requires the previous render on disk — if the HTML file was deleted or never written, the refresh call rebuilds from template with no change summary. Refresh rebuilds from template only on structure changes; for content-only updates, re-read sources and rewrite tab content in place.",
+      "act": "pipeline",
+      "narration_text": "The pipeline has 8 steps. Resolve the artifact config, then locate the project. → Pick the tabs → Generate the HTML, plus 5 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 60,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ProjectArtifactDesign",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Gather live sources first. Pick tabs before HTML. Embed state block always. Delta on refresh."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Resolve the artifact config…",
+                "desc": "Each project gets a directory at…",
+                "accent": true
+              },
+              {
+                "label": "Pick the tabs",
+                "desc": "from the catalog below — only the ones with real content.…",
+                "accent": false
+              },
+              {
+                "label": "Generate the HTML",
+                "desc": "from template.html in this skill directory (same folder as…",
+                "accent": false
+              },
+              {
+                "label": "Review the output for cut-off…",
+                "desc": "Before publishing, re-read the file and check that nothing…",
+                "accent": false
+              }
+            ],
+            "footerNote": "8 steps. Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +219,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 14.72,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T13:16:01"
-      },
-      "actual_duration_s": 91.07
+        "at": "2026-09-05T18:55:04"
+      }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. The skill gets five things right. The opinionated tab catalog solves the blank-page problem — you never decide from scratch what sections a project page needs, and the two-always plus five-conditional structure prevents both thin pages and overcrowded ones. The state block for delta computation is the right architecture — embedding the prior state in the artifact itself means the refresh call is self-contained and does not depend on a separate store or database. Freshness conventions are explicit — last-updated timestamp in Overview, per-workstream key dates, and a required re-read of Sources on every build, so stale data is a config error not a mystery. Entity-encoding security is built in — all fetched text passes through entity encoding, and less-than signs in JSON strings use their unicode escape, preventing prompt injection via a malicious document title or status field. CSP self-contained enforcement is practical — no external CDN, all styles and scripts inline, so the artifact works without a network call and cannot be broken by a CDN outage. Where it bites. The Artifact tool requires a claude dot ai account. A stakeholder without an account gets a login wall, not a status page — the skill does not offer an export-to-HTML-file fallback. Config is machine-local and not synced. If you maintain config dot md on your laptop and hand off the project, your colleague cannot refresh the artifact without reconstructing the config from scratch. Delta requires the previous render on disk. If the artifact HTML was never written to disk, or if it was deleted, the refresh call rebuilds from template with no change summary and no indication that the delta was skipped. Refresh rebuilds from template only on structure changes — a tab added or removed triggers a full rebuild; content-only updates rewrite tab content in place, which can cause the HTML structure to drift from the template over time. Prompt injection flagging is pattern-based — the skill summarizes and flags suspicious content rather than refusing to include it, which means a carefully crafted document title or status field can still appear in the published artifact.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. description: Generate and publish a project status artifact — an opinionated, tabbed status page for a project too big for one update (overview & success criteria, the…. That is the constraint in project-artifact — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 60,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ProjectArtifactTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Tab catalog + state block + freshness + entity-encoding correct. Machine-local config + delta prerequisite bite."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "description: Generate and publish a project status artifact — an opinionated, tabbed status page for a project too big for one update (overview & success criteria, the…",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 17.73,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T13:16:01"
+        "at": "2026-09-05T18:55:04"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In project-artifact, supporting material: https://claude.ai/code/artifact/<uuid>, swe.md, ${CLAUDE_PLUGIN_DATA}/artifacts/<slug>/, config.md; sections: Workflow, The artifact config (one per project), Refreshing an artifact (deltas, not re-narratives), Freshness and trust. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Generate and publish a project status artifact — an opinionated; tabbed status page for a project too big for one update (overview & success criteria; the workstream sequence; https://claude.ai/code/artifact/<uuid>…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
       },
-      "actual_duration_s": 117.44
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 25.73,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T18:55:04"
+      }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. project-artifact: tabbed HTML status pages published via Claude's Artifact tool to claude dot ai slash code slash artifact slash uuid — private by default. Tab catalog: Overview and Workstreams always; Attention, Background, Plan, Risks, Decisions conditional on config content. Config at CLAUDE underscore PLUGIN underscore DATA slash artifacts slash slug slash config dot md — four sections: Project, Artifact, Sources, People. State block embedded in every publish for delta refresh. Gaps: Artifact tool requires claude dot ai login — no HTML export fallback; config is machine-local, not synced; delta requires previous render on disk; refresh rebuilds from template on structure change only; prompt injection flagged but not blocked.",
+      "narration_text": "project-artifact makes Claude execute one task reliably. The SKILL.md is the spec — Generate and publish a project status artifact — an opinionated, tabbed status…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "project-artifact",
+            "artifactHeading": "Claude, Project Artifact.",
             "artifactLines": [
-              "Tabbed HTML status page · Artifact tool → claude.ai/code/artifact/<uuid> · private by default",
-              "Overview + Workstreams always · Attention/Background/Plan/Risks/Decisions conditional on config",
-              "Config: ${CLAUDE_PLUGIN_DATA}/artifacts/<slug>/config.md · Project/Artifact/Sources/People sections",
-              "State block in every publish · delta refresh computes what changed vs prior render on disk",
-              "Gaps: requires claude.ai login · config machine-local not synced · delta needs prior render",
-              "Refresh rebuilds from template on structure change · prompt injection flagged not blocked"
+              "Skill: project-artifact — Claude reads SKILL.md before acting",
+              "Generate and publish a project status artifact — an opinionated, tabbed status page for a…",
+              "8-step pipeline: Resolve the artifact config, then locate the project. → Pick the tabs → Generate the HTML",
+              "Constraint: description: Generate and publish a project status artifact — an opinionated, tabbed…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +320,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 14.74,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T13:16:01"
-      },
-      "actual_duration_s": 43.41
+        "at": "2026-09-05T18:55:04"
+      }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Ask Claude to build a project status page for a real project you are running — something with at least two active workstreams and one open risk. Watch five things. First: does it read the Sources listed in config before generating any tab content, or does it generate the page from memory? Second: does the published HTML include a state block — a script tag with type application slash json and id artifact-state — or is the state block missing? Third: does it pick tabs based on actual config content, or does it include all seven tabs regardless of whether they have anything to say? Fourth: if you ask it to refresh the page, does it compute a delta from the previous render on disk, or does it rebuild everything from scratch with no change summary? Fifth: does the Overview tab show a last-updated timestamp that matches the actual build time, not a placeholder or a date from a prior run?",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to generate and publish a project status artifact — an opinionated, tabbed status. Read the project-artifact skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "PROJECT-ARTIFACT · HANDOFF",
-            "segment": "PLUGINS",
-            "command": "Build a live project status page for my API migration — two workstreams, one open risk.",
-            "runningText": "Watch: reads Sources? state block present? tabs match config? delta on refresh? fresh timestamp?",
-            "output": [
-              "Expected: reads Sources before generating · state block in every publish · tabs match config content",
-              "Expected: delta computes changes vs prior render · last-updated is build-time not placeholder",
-              "Red flag: generates from memory · missing state block · all 7 tabs · no delta · stale timestamp"
-            ],
+            "greeting": "Your turn.",
+            "topic": "PROJECT-ARTIFACT · ANTHROPIC SKILL",
+            "segment": "Claude, Project Artifact.",
+            "command": "I want to generate and publish a project status artifact — an opinionated. Read the project-artifact skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +357,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": 15.62,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T13:16:01"
-      },
-      "actual_duration_s": 46.53
+        "at": "2026-09-05T18:55:04"
+      }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "project-artifact. Liam, in for Bear.",
+      "narration_text": "Claude, Project Artifact. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "project-artifact",
+            "title": "Claude, Project Artifact.",
             "handle": "@NikBearBrown",
-            "subline": "project-artifact · Claude Plugins"
+            "subline": "project-artifact · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,13 +388,13 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": 3.41,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T13:16:01"
-      },
-      "actual_duration_s": 3.05
+        "at": "2026-09-05T18:55:04"
+      }
     }
   ]
 }

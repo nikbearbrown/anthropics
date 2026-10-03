@@ -1,0 +1,514 @@
+{
+  "metadata": {
+    "slug": "three-check-deployment",
+    "title": "Run the Three-Check Deployment Verification Protocol with Claude Code",
+    "topic": "CLAUDE CODE FOR TEACHERS",
+    "style": "cli",
+    "palette": "claude",
+    "style_preset": "nikbearbrown",
+    "source": "claude-code-for-teachers/chapters/14-deploying-in-class.md",
+    "segment": "DEPLOYMENT VERIFICATION",
+    "ground": "#FFFFFF",
+    "total_estimated_duration_seconds": 118.0,
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "register": "Teardown",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "_variant_todo": [
+      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
+      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
+      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
+      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
+    ],
+    "build": {
+      "at": "2026-07-16T06:38:00",
+      "cut": "master",
+      "filled": 4,
+      "of": 10,
+      "slates": [
+        "B00",
+        "B01",
+        "B04",
+        "B06",
+        "B07",
+        "B08"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B09: palette=claude but the outro is 'NikBearBrownOutro' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "role": "INTRO",
+      "type": "SLATE",
+      "narration": "The simulator works on your laptop. The three-check protocol finds the font that won't load on the school network before thirty students hit a blank screen.",
+      "estimated_duration_s": 8.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THIS IS LIAM, IN",
+            "items": [
+              {
+                "label": "This is Liam, in for",
+                "sub": "This is Liam, in for Bear.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "This is Liam, in for Bear. ",
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 2.41,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "role": "PROBLEM",
+      "type": "SLATE",
+      "narration": "Three checks catch three different failure modes. Functional checks what runs. Environment checks what the school network allows. Pedagogical checks whether a ninth-grader can actually use it without reading the documentation.",
+      "estimated_duration_s": 12.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "THREE CHECKS CATCH THREE",
+            "items": [
+              {
+                "label": "Three checks catch three different",
+                "sub": "Three checks catch three different failure modes.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Functional checks what runs.",
+                "sub": "Functional checks what runs.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Environment checks what the school",
+                "sub": "Environment checks what the school network allows.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B01"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "role": "ASK",
+      "type": "SLATE",
+      "narration": "Ask Claude to generate the three-check deployment verification protocol for the sorting simulator.",
+      "estimated_duration_s": 12.0,
+      "shot": {
+        "source": null,
+        "motion": "hold",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Generate deployment verification for sorting simulator:\\n  (1) Functional: 5 browser-console tests,\\n    375px and 1024px rendering, all 3 algorithms\\n  (2) Environment: list external resource deps,\\n    network-sensitive elements, CORS requests\\n  (3) Pedagogical: 5 questions a ninth-grader\\n    should answer after 10 min unsupervised\"",
+            "topic": "CLAUDE CODE FOR TEACHERS",
+            "segment": "DEPLOYMENT VERIFICATION",
+            "runningText": "generating protocol…",
+            "greeting": "The ask,"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T06:38:00"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "role": "CODE",
+      "type": "SLATE",
+      "narration": "The protocol has three sections. Functional: five console tests. Environment: external resource audit — Google Fonts CDN flagged. Pedagogical: five questions answerable from on-screen annotations.",
+      "estimated_duration_s": 14.0,
+      "shot": {
+        "source": null,
+        "motion": "hold",
+        "remotion": {
+          "pattern": "NikBearBrownCodeBlock",
+          "props": {
+            "filename": "deploy-check.md",
+            "segment": "DEPLOYMENT VERIFICATION",
+            "topic": "CLAUDE CODE FOR TEACHERS",
+            "code": "# Deployment Verification Protocol\n\n## Functional Check\n1. console.log(errors) → expect []\n2. window.innerWidth=375 → layout intact\n3. bubbleSort([5,3,1]) → swap_count correct\n4. mergeSort([5,3,1]) → comparison_count correct\n5. quickSort([5,3,1]) → pivot displayed\n\n## Environment Check\n- fonts.googleapis.com ← school may block CDN\n- No external API calls detected\n- All assets inline ← PASS\n\n## Pedagogical Check\n1. Which sort made fewer comparisons?\n2. What does a swap mean visually?"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T06:38:00"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "role": "OUTPUT",
+      "type": "SLATE",
+      "narration": "Functional check: all five pass. Environment check: one failure — Google Fonts CDN blocked on the school network. The font falls back to system-serif, which is readable but breaks the design. Fix: inline the font or use a system font stack. Pedagogical check: five questions answerable from the on-screen annotations without reading source code.",
+      "estimated_duration_s": 20.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "FUNCTIONAL CHECK: ALL FIVE",
+            "items": [
+              {
+                "label": "Functional check: all five pass.",
+                "sub": "Functional check: all five pass.",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "Environment check: one failure —",
+                "sub": "Environment check: one failure —",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Google Fonts CDN blocked on the school network",
+                "sub": "Google Fonts CDN blocked on the school network.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B04"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "role": "CHANGE",
+      "type": "SLATE",
+      "narration": "Add a fourth accessibility check using axe-core in browser devtools.",
+      "estimated_duration_s": 10.0,
+      "shot": {
+        "source": null,
+        "motion": "hold",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Add fourth check: accessibility.\\n  Run axe-core in browser devtools.\\n  What does it catch?\\n  Fix any critical issues.\"",
+            "topic": "CLAUDE CODE FOR TEACHERS",
+            "segment": "DEPLOYMENT VERIFICATION",
+            "runningText": "running accessibility check…",
+            "greeting": "The ask,"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-16T06:38:00"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "role": "OUTPUT",
+      "type": "SLATE",
+      "narration": "Axe-core catches one critical issue: the step button has no aria-label — screen readers announce it as button with no context. Fix: add aria-label equal to Step forward one comparison. One line, added before deployment. The fourth check catches what the other three are blind to.",
+      "estimated_duration_s": 14.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "AXE-CORE CATCHES ONE CRITICAL",
+            "items": [
+              {
+                "label": "Axe-core catches one critical issue:",
+                "sub": "Axe-core catches one critical issue: the step button has no aria-label —",
+                "icon": "BOX",
+                "cueFrame": 0
+              },
+              {
+                "label": "screen readers announce it as button with no context",
+                "sub": "screen readers announce it as button with no context.",
+                "icon": "BOX",
+                "cueFrame": 24
+              },
+              {
+                "label": "Fix: add aria-label equal to Step forward one comparison",
+                "sub": "Fix: add aria-label equal to Step forward one comparison.",
+                "icon": "BOX",
+                "cueFrame": 48
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you're about to deploy a Claude Code build and you want to run the three-check protocol before it goes live. Ask Claude to walk you through the three checks — what each one verifies, in what order to run them, and what a fail on check two means for whether you proceed.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I'm about to deploy a Claude Code build and I want to run the three-check verification protocol before it goes live. Walk me through the three checks: what does each one verify, in what order do I run them, and what does a failure on check two mean for whether I should proceed with the deployment?",
+            "segment": "Run the Three-Check Deployment Verification Protocol with Claude Code",
+            "topic": "CLAUDE CODE · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your spec, CLAUDE.md, or build plan here…"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B07",
+      "role": "SUMMARY",
+      "type": "SLATE",
+      "narration": "The three-check protocol is fifteen minutes that prevents a forty-minute class where the demo doesn't work. Functional, environment, pedagogical — each catches a category of failure the others miss. Add accessibility as the fourth when the school has screen-reader users.",
+      "estimated_duration_s": 12.0,
+      "shot": {
+        "source": "own",
+        "media": "media/B07.mp4",
+        "manim": {
+          "scene_class": "Scene_B07_ClaudeLiamThree",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": "2026-07-25T10:07:43.052286"
+          }
+        },
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Run the Three-Check Deployment Verification Protocol with Claude Code",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-three-check-deployment"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B07"
+      },
+      "act": "OUTRO"
+    },
+    {
+      "beat_id": "B08",
+      "role": "NEXT",
+      "type": "SLATE",
+      "narration": "Next: write the post-build document that makes your workflow trustworthy.",
+      "estimated_duration_s": 8.0,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "NEXT: WRITE THE POST-BUILD",
+            "items": [
+              {
+                "label": "Next: write the post-build document that makes your workflow trustworthy",
+                "sub": "Next: write the post-build document that makes your workflow trustworthy.",
+                "icon": "BOX",
+                "cueFrame": 0
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-29T03:41:30",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B08"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Run the Three-Check Deployment Verification Protocol with Claude Code",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CLAUDE CODE FOR TEACHERS",
+            "segment": "Run the Three-Check Deployment Verification Protocol with…",
+            "command": "Take what you learned from [Run the Three-Check Deployment Verification Protocol with Claude Code] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Run the Three-Check Deployment Verification Protocol with Claude Code",
+            "slug": "three-check-deployment"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

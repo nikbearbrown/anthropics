@@ -1,0 +1,558 @@
+{
+  "metadata": {
+    "slug": "claude-liam-vercel-mcp",
+    "title": "Two Things Named Vercel MCP",
+    "topic": "The two distinct things called 'Vercel MCP' — the hosted account-access connector vs a server you deploy yourself — and the real question underneath: what's safe to hand an unattended agent",
+    "purpose": "ai-explainer from the Claude + Vercel MCP research doc",
+    "skill": "ai-explainer",
+    "channel": "claude-liam",
+    "persona": "Liam",
+    "folderLabel": "@NikBearBrown",
+    "greeting": "Halo, Liam",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude-liam",
+    "clock": "narration",
+    "audience": "practitioners and makers following the channel's Claude workflows",
+    "playlist": "Claude Cowork",
+    "source": "research doc 'Claude + Vercel MCP Best Practices'; load-bearing mechanisms re-verified — SOURCES.md",
+    "design_version": "v1",
+    "voice": "am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "OPEN",
+      "narration_text": "Halo — this is Liam, in for Bear. Today's ask: how do I set up Vercel MCP for Claude? And the honest first answer is a question back — which one? Because 'Vercel MCP' names two completely different things, and wiring up the wrong one is the single most common way this setup goes sideways.",
+      "new_visual_element": "Cold open — composer ask, answered",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Halo, Liam",
+            "command": "set up Vercel MCP for Claude",
+            "topic": "CLAUDE · VERCEL · MCP",
+            "segment": "Two Things Named Vercel MCP",
+            "runningText": "disambiguating…",
+            "output": [
+              "One: a hosted server that manages YOUR account",
+              "Two: a server YOU deploy to expose your own tools",
+              "The real question: what's safe for an unattended agent"
+            ],
+            "folderLabel": "@NikBearBrown"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "I — Two Things",
+      "narration_text": "Act one. The two things. Name them once and the confusion evaporates.",
+      "new_visual_element": "Act card I",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Two Things Named Vercel MCP",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "Act I — Two Things",
+          "mechanic": "segment card",
+          "note": ""
+        }
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 10,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "I — Two Things",
+      "narration_text": "Thing one is Vercel's own hosted server, living at a fixed public address. You don't build it — you connect to it. It hands Claude the keys to manage your Vercel account: projects, deployments, logs. You're a client plugging into their server.",
+      "new_visual_element": "The hosted connector — you are the client",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "hosted: you connect",
+          "mechanic": "SourceFlow: Claude → mcp.vercel.com → your account (projects, deploys, logs); Claude is the client node",
+          "note": "C3 illustration, terracotta on 'your account'"
+        }
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "I — Two Things",
+      "narration_text": "Thing two is the mirror image. You write an MCP server exposing your own tools — a pantry lookup, a render-status check — and deploy it on Vercel's serverless functions. Now Claude connects to a server you built. Same protocol, opposite direction of ownership.",
+      "new_visual_element": "The self-hosted server — you are the author",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "self-hosted: you build",
+          "mechanic": "mirror of B02: your code → your tools → deployed on Vercel functions → Claude connects in",
+          "note": "same layout flipped, so the pair reads as a mirror"
+        }
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "I — Two Things",
+      "narration_text": "One more pair that gets muddled: the Vercel plugin is not the MCP server. The plugin teaches Claude to reason well about the platform — docs, patterns, know-how. The MCP server gives Claude the power to act on your account. Knowledge versus access. You can have the first without the second.",
+      "new_visual_element": "Plugin (knowledge) vs MCP (access)",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "knowledge ≠ access",
+          "mechanic": "divergence: 'plugin → knows about Vercel' vs 'MCP → can touch Vercel'; terracotta on 'can touch'",
+          "note": "C2 pattern"
+        }
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "II — The Blast Radius",
+      "narration_text": "Act two. The blast radius — and why it grew.",
+      "new_visual_element": "Act card II",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "Act II — The Blast Radius",
+          "mechanic": "segment card",
+          "note": ""
+        }
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "II — The Blast Radius",
+      "narration_text": "Here's the part people skip. Granting the hosted connector gives Claude the exact same reach as your own login. Every project, every team, every deployment log. There's no read-only mode to hide behind — the grant is all or nothing.",
+      "new_visual_element": "The grant equals your whole account",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "same reach as you",
+          "mechanic": "the account tree lights up entirely as 'all or nothing' is spoken; no dimmed read-only branch",
+          "note": "SHOW-DON'T-TELL: the tree fills on the word"
+        }
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "II — The Blast Radius",
+      "narration_text": "And the surface keeps widening. It started at searching docs and reading logs. Then it grew to inspecting runtime logs. Then — the escalation that matters — it grew to spending money: upgrading plans, buying credits, registering domains. The read-only mental model is now just wrong.",
+      "new_visual_element": "The surface widens to money",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "read logs → spend money",
+          "mechanic": "scale pattern: capability bar grows left-to-right — docs, logs, deploys, then 'purchases · domains' in terracotta at the far end",
+          "note": "the growth IS the point; dates stripped, mechanism kept"
+        }
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "II — The Blast Radius",
+      "narration_text": "There is a guardrail on the spending: a quote-then-confirm handshake. The agent asks the price, then must echo that exact price back to commit — and if the price moved, the order dies. Real protection against a runaway charge. But read it carefully: the agent walks that handshake itself. Nothing in it requires a human to be watching.",
+      "new_visual_element": "Quote-then-confirm — but the agent walks it",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "quote → echo → commit",
+          "mechanic": "PredictCard: 'a human approves the charge' → reveal: the agent quotes AND confirms; no human in the loop",
+          "note": "the Teardown beat — the safety is real but self-driven"
+        }
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "III — The Unattended Agent",
+      "narration_text": "Act three. Which brings us to the real question. Not hosted versus self-hosted. What is safe to expose to an agent that nobody is watching?",
+      "new_visual_element": "Act card III + the reframe",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "Act III — The Unattended Agent",
+          "mechanic": "segment card, then the question replaces the old 'hosted vs self-hosted' framing",
+          "note": ""
+        }
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "III — The Unattended Agent",
+      "narration_text": "An overnight session — running in a terminal, permissions bypassed, nobody home — has a completely different risk profile from you sitting there clicking approve. The bypass flag removes the one layer that normally catches a bad tool call before it fires. The human checkpoint is the safety feature, and it's gone.",
+      "new_visual_element": "The missing human checkpoint",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "the checkpoint, removed",
+          "mechanic": "threshold pattern: attended run has a human gate before each tool call; unattended run — the gate is struck out, calls fire straight through",
+          "note": "terracotta on the struck-out gate"
+        }
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "III — The Unattended Agent",
+      "narration_text": "And the threat that exploits that gap isn't a hacker stealing a password. It's prompt injection — an instruction buried in something the agent reads. A scraped page, an uploaded doc, another tool's output, quietly saying: take the private logs, send them over there. The agent has legitimate access. It just uses it for someone else.",
+      "new_visual_element": "Prompt injection — the buried instruction",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "the poisoned input",
+          "mechanic": "flow: untrusted content → hidden instruction → agent's legit MCP tool → exfil arrow to 'elsewhere' in terracotta",
+          "note": "the dominant threat model, illustrated"
+        }
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "III — The Unattended Agent",
+      "narration_text": "The trap is combining two things in one session: broad account access, and a tool that swallows untrusted content. Either alone is fine. Together, with no human between them, is the whole exposure — the agent is a confused deputy carrying out an order it was tricked into reading.",
+      "new_visual_element": "The dangerous combination",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "access + ingestion = exposure",
+          "mechanic": "two chips ('account access', 'reads untrusted content') collide into a warn state; a human-gate chip would separate them",
+          "note": ""
+        }
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "IV — Hardening",
+      "narration_text": "Act four. So you harden in layers — and none of these hope the model behaves.",
+      "new_visual_element": "Act card IV",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "Act IV — Hardening",
+          "mechanic": "segment card",
+          "note": ""
+        }
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "IV — Hardening",
+      "narration_text": "Layer one, and the highest-leverage move there is: split your identities by privilege. Connect the unattended run with a stripped-down account that has no billing access at all. That one change deletes the entire spend-money risk without touching anything else. The overnight agent simply cannot buy a domain, because the hand it's using can't reach the wallet.",
+      "new_visual_element": "Split identities — starve the risk",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "read-only login for the night shift",
+          "mechanic": "two-column: 'attended, privileged' vs 'unattended, billing-stripped'; the purchase tool greys out on the right",
+          "note": "the single best mitigation, foregrounded"
+        }
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "IV — Hardening",
+      "narration_text": "Layer two: hard deny rules that live above the session. Rules in a user-wide or managed settings file sit higher than any bypass flag can unlock — blanket-block force-pushes, reads of your keys and secrets, the destructive commands, no matter how the session launched.",
+      "new_visual_element": "Deny rules above the bypass",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "deny sits above bypass",
+          "mechanic": "layer stack: session flags at bottom, managed deny rules on top blocking through them",
+          "note": "LayerStack starter template"
+        }
+      }
+    },
+    {
+      "beat_id": "B15B",
+      "act": "IV — Hardening",
+      "narration_text": "Layer three: a pre-tool hook. A script that inspects the arguments of a tool call before it runs and exits nonzero on the ones that matter — a production deploy, a domain purchase, anything hitting a write tool. It's enforced outside the model's reasoning, so it holds even when the model is confidently wrong.",
+      "new_visual_element": "PreToolUse hook — deterministic gate",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "the deterministic gate",
+          "mechanic": "code beat (ClaudeCodeBeat): a PreToolUse hook inspecting args, exit 1 on a purchase/deploy match",
+          "note": "real hook shape, not prose-as-code"
+        }
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "IV — Hardening",
+      "narration_text": "And layer four — the one that holds even if every other layer fails: sandbox the whole session. Run it in a container that can't see your home directory, your keys, or the Docker socket. Now even an unknown tool-handler bug caps out at a blast radius you drew on purpose.",
+      "new_visual_element": "The sandbox — last line that holds",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "cap the blast radius",
+          "mechanic": "nested boxes: session inside a container with no mounts to home/keys/socket; the outer wall holds",
+          "note": ""
+        }
+      }
+    },
+    {
+      "beat_id": "B17",
+      "act": "IV — Hardening",
+      "narration_text": "One aside for anyone building thing two — your own server. The protocol underneath is shifting toward stateless: every request self-contained, no session to hang onto. That's a gift for serverless, and a warning — build on the durable mechanisms, not the parts being deprecated out from under you. And verify the spec text yourself before you hardcode a header or an error code.",
+      "new_visual_element": "The protocol goes stateless",
+      "shot": {
+        "type": "SLATE",
+        "source": "own"
+      },
+      "graphic": {
+        "production_viz": {
+          "label": "stateless-leaning protocol",
+          "mechanic": "before/after: sticky-session server → stateless self-contained requests behind a plain load balancer",
+          "note": "version numbers stripped; 'verify before hardcoding' is the durable advice"
+        }
+      }
+    },
+    {
+      "beat_id": "B18",
+      "act": "CLOSE",
+      "narration_text": "Let's recap with Claude. 'Vercel MCP' is two things: a hosted connector that acts on your account, and a server you build to expose your own tools. The hosted one now reaches all the way to spending money — so the real question was never which one, it was what you'd hand an agent nobody is watching. Answer it in layers: a login that can't reach the wallet, deny rules above the bypass, a hook that gates the calls that matter, and a sandbox around all of it.",
+      "new_visual_element": "VERDICT recap",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Verdict",
+            "artifactHeading": "Two servers, one real question",
+            "artifactLines": [
+              "Hosted connector acts on your account — all or nothing.",
+              "The write surface now reaches money and domains.",
+              "The real question: what's safe when nobody's watching.",
+              "Split the login · deny above bypass · hook · sandbox."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Here's the prompt, word for word: audit my unattended Claude setup for blast radius. List every MCP tool the session can reach, flag the ones that can deploy, spend money, or read secrets, and propose the least-privilege account plus the deny rules and pre-tool hooks that would contain each one. That flag-then-contain shape is the whole discipline — you can't shrink a blast radius you haven't mapped. Run it before your next overnight session, not after.",
+      "new_visual_element": "YOUR TURN — the blast-radius audit",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "Audit my unattended Claude setup for blast radius. List every MCP tool the session can reach, flag the ones that can deploy, spend money, or read secrets, and propose the least-privilege account plus the deny rules and pre-tool hooks that would contain each one.",
+            "topic": "MCP · BLAST RADIUS",
+            "segment": "Map Before You Bypass",
+            "runningText": "paste this into Claude…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B20",
+      "act": "OUTRO",
+      "narration_text": "Two things named Vercel MCP. One real question. Liam, in for Bear.",
+      "new_visual_element": "Title re-read outro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Two Things Named Vercel MCP",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-vercel-mcp"
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "note": "design-v1: subline-removed,title-fixed,mascotSeed-added"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Two Things Named Vercel MCP",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · The two distinct things called 'Vercel MCP' — the hosted account-access connector vs a server you deploy yourself — and the real question underneath: what's safe to hand an unattended agent",
+            "segment": "Two Things Named Vercel MCP",
+            "command": "Take what you learned from [Two Things Named Vercel MCP] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@claude-liam"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Two Things Named Vercel MCP",
+            "slug": "claude-liam-vercel-mcp"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

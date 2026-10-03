@@ -1,0 +1,646 @@
+{
+  "metadata": {
+    "slug": "show-tell-half-price-if-you-can-wait",
+    "title": "Half Price If You Can Wait",
+    "topic": "CLAUDE API · MESSAGE BATCHES",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "French (Bonjour)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Students and developers who grade, label or summarise in bulk with the Claude API and don't need the answers right away",
+    "source_doc": "anthropics/claude-cookbooks/misc/batch_processing.ipynb (read in full 2026-09-27); checked against the raw live docs page platform.claude.com/docs/en/build-with-claude/batch-processing.md (fetched with curl 2026-09-27, saved in sources/)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude",
+      "Claude API",
+      "Message Batches",
+      "batch processing",
+      "custom_id",
+      "asynchronous",
+      "polling",
+      "50% discount",
+      "bulk",
+      "evaluation",
+      "Anthropic",
+      "cookbook",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T13:17:16",
+      "cut": "master",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Bonjour. This is Liam, in for Bear. Say you have a thousand questions for Claude. You could send them one at a time and wait on each. But if the answers can wait, you can send them all as one batch, at half the price. So the real question is how to hand Claude the whole pile at once.",
+      "estimated_duration_s": 23.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I send a thousand requests faster?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'send a thousand requests faster' -> 'hand Claude the whole pile at once' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I\nsend a thousand requests faster?",
+            "triggerWords": "send a thousand requests faster",
+            "replacementWords": "hand Claude the whole pile at once",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-half-price-if-you-can-wait",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T17:12:10.246416+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (how do I send a thousand requests faster) and corrects it to the real one (how do I hand Claude the whole pile at once).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 14.44,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 14.458333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T13:17:16"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A batch: a list of requests you send together and collect later. A custom ID: the tag you put on each request. And a result: what comes back for each one, saying whether it succeeded or errored.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "'batch' lands"
+          },
+          {
+            "at": 0.4,
+            "event": "'custom_id' lands"
+          },
+          {
+            "at": 0.75,
+            "event": "'result' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "batch",
+                "meaning": "a list of requests sent together, collected later"
+              },
+              {
+                "term": "custom_id",
+                "meaning": "the tag you put on each request"
+              },
+              {
+                "term": "result",
+                "meaning": "what comes back for each: succeeded or errored"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T17:12:41.232950+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 10.69,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 10.708333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T13:17:16"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The usual way is a loop. Send one request, wait for its answer, then send the next. A thousand questions means a thousand waits, and every one is billed at the standard price.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A pile of white envelopes at the left ('requests'), the big kraft Claude box at the right ('Claude'), a clock above ('one at a time'); the top envelope rides into the box's slot, the clock hand sweeps a full turn, an answer card slides back out of the box's mouth to the left; then the next envelope, the next wait, the next answer.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "one envelope rides into the slot"
+          },
+          {
+            "at": 0.35,
+            "event": "the clock sweeps; the answer comes back"
+          },
+          {
+            "at": 0.7,
+            "event": "the next one, the next wait"
+          }
+        ],
+        "manim": {
+          "class": "B00_Loop"
+        },
+        "motion_claim": "A pile of white envelopes at the left ('requests'), the big kraft Claude box at the right ('Claude'), a clock above ('one at a time'); the top envelope rides into the box's slot, the clock hand sweeps a full turn, an answer card slides back out of the box's mouth to the left; then the next envelope, the next wait, the next answer."
+      },
+      "actual_duration_s": 9.83,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 9.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:17:16"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "A batch is the same requests, in one list. Each one is an ordinary Messages request, plus a custom ID: a tag you choose, like question zero, question one. That tag is how you find its answer later.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The loose answers and the clock clear; four envelopes drop into a row on a kraft tray ('batch'); a kraft seal with an ink numeral lands on each, 0, 1, 2, 3, one after another ('custom_id').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "four envelopes on one tray"
+          },
+          {
+            "at": 0.4,
+            "event": "tags 0, 1, 2, 3 land"
+          },
+          {
+            "at": 0.8,
+            "event": "the tags pulse"
+          }
+        ],
+        "manim": {
+          "class": "B01_Batch"
+        },
+        "motion_claim": "The loose answers and the clock clear; four envelopes drop into a row on a kraft tray ('batch'); a kraft seal with an ink numeral lands on each, 0, 1, 2, 3, one after another ('custom_id')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn envelopes-box-and-tags scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.99,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 12.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:17:16"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "You submit the whole list in one call. It all goes in at once, and you get back a batch ID straight away, with its status: in progress.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The tray of sealed envelopes lifts over the Claude box and drops through the slot; a white ticket pops out of the slot and lands at the left ('batch ID'); a dark status board rises beside the box with a grey lamp ('in_progress').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the tray drops through the slot"
+          },
+          {
+            "at": 0.55,
+            "event": "the batch ID ticket"
+          },
+          {
+            "at": 0.8,
+            "event": "the status board, lamp grey"
+          }
+        ],
+        "manim": {
+          "class": "B02_Submit"
+        },
+        "motion_claim": "The tray of sealed envelopes lifts over the Claude box and drops through the slot; a white ticket pops out of the slot and lands at the left ('batch ID'); a dark status board rises beside the box with a grey lamp ('in_progress')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn envelopes-box-and-tags scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 7.85,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 7.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:17:16"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then it runs asynchronously. Each request is handled on its own, so one failing doesn't hold up the rest. The docs say most batches finish within an hour, and a batch that isn't done within twenty four hours expires.",
+      "estimated_duration_s": 15.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The Claude box sits at the left ('Claude'); four lanes run from it to the right; the sealed envelopes ride along them at different speeds and a lamp at the end of each lane lights terracotta as it arrives, in the order 2, 0, 3, 1; then 'most: under 1 hour' and '24 h limit' land at the top.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "four lanes, four envelopes"
+          },
+          {
+            "at": 0.3,
+            "event": "they finish out of order, lamps light"
+          },
+          {
+            "at": 0.7,
+            "event": "the time limits, per the docs"
+          }
+        ],
+        "manim": {
+          "class": "B03_Async"
+        },
+        "motion_claim": "The Claude box sits at the left ('Claude'); four lanes run from it to the right; the sealed envelopes ride along them at different speeds and a lamp at the end of each lane lights terracotta as it arrives, in the order 2, 0, 3, 1; then 'most: under 1 hour' and '24 h limit' land at the top."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn envelopes-box-and-tags scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.12,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 12.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:17:16"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Meanwhile, your code polls. Every so often it asks for the batch's status. It says in progress until every request has finished. Then it flips to ended, and the results are ready.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Your code (a kraft terminal) at the left ('your code'), the Claude box with its status board at the right; a small white slip rides from the terminal to the board and back, three times, while the clock hand advances; on the third the lamp turns terracotta and 'in_progress' becomes 'ended'.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a poll rides to the board and back"
+          },
+          {
+            "at": 0.45,
+            "event": "still in progress"
+          },
+          {
+            "at": 0.8,
+            "event": "the lamp lights: ended"
+          }
+        ],
+        "manim": {
+          "class": "B04_Poll"
+        },
+        "motion_claim": "Your code (a kraft terminal) at the left ('your code'), the Claude box with its status board at the right; a small white slip rides from the terminal to the board and back, three times, while the clock hand advances; on the third the lamp turns terracotta and 'in_progress' becomes 'ended'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn envelopes-box-and-tags scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.24,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 10.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:17:16"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The results come back as one list, but in any order. The docs say so plainly. So never match by position. Match by custom ID. The answer tagged two goes with the request tagged two.",
+      "estimated_duration_s": 14.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The four sealed envelopes in a row at the top ('requests'); four kraft answer cards slide out of the Claude box into a row below in the order 2, 0, 3, 1 ('results'); then each answer card moves under the envelope with the same tag ('by custom_id').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "answers arrive 2, 0, 3, 1"
+          },
+          {
+            "at": 0.55,
+            "event": "never by position"
+          },
+          {
+            "at": 0.75,
+            "event": "each moves under its tag"
+          }
+        ],
+        "manim": {
+          "class": "B05_Match"
+        },
+        "motion_claim": "The four sealed envelopes in a row at the top ('requests'); four kraft answer cards slide out of the Claude box into a row below in the order 2, 0, 3, 1 ('results'); then each answer card moves under the envelope with the same tag ('by custom_id')."
+      },
+      "actual_duration_s": 10.52,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 10.541666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:17:16"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Each result also says how it went. Most say succeeded, with Claude's message inside. One might say errored, and errored requests aren't billed. So you send just the failed ones again.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The matched pairs: ink checks land beside answers 0, 2 and 3 ('succeeded'); an ink cross lands beside answer 1 ('errored'); answer 1 clears, and envelope 1 rides back into the Claude box on its own.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "checks: succeeded"
+          },
+          {
+            "at": 0.45,
+            "event": "a cross: errored"
+          },
+          {
+            "at": 0.8,
+            "event": "only the failed one goes back"
+          }
+        ],
+        "manim": {
+          "class": "B06_Results"
+        },
+        "motion_claim": "The matched pairs: ink checks land beside answers 0, 2 and 3 ('succeeded'); an ink cross lands beside answer 1 ('errored'); answer 1 clears, and envelope 1 rides back into the Claude box on its own."
+      },
+      "actual_duration_s": 10.35,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 10.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:17:16"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "And the payoff. Anthropic's docs say all batch usage is charged at fifty percent of standard API prices. The trade is time, and results stay available for twenty nine days. If the answers can wait, they cost half.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two price bars in grey segments: 'standard' grows full height; 'batch' grows full, then its top half slides away; a hero '50%' lands with 'per Anthropic's docs' under it; a clock rises beside the batch bar and its hand sweeps.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the standard bar"
+          },
+          {
+            "at": 0.35,
+            "event": "the batch bar loses its top half"
+          },
+          {
+            "at": 0.5,
+            "event": "50%, per Anthropic's docs"
+          },
+          {
+            "at": 0.7,
+            "event": "the clock: the trade is time"
+          }
+        ],
+        "manim": {
+          "class": "B07_Half"
+        },
+        "motion_claim": "Two price bars in grey segments: 'standard' grows full height; 'batch' grows full, then its top half slides away; a hero '50%' lands with 'per Anthropic's docs' under it; a clock rises beside the batch bar and its hand sweeps."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn envelopes-box-and-tags scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.84,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 12.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:17:16"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude Code, in a repo with a script that calls Claude in a loop: Find the loop in this repo that calls the Claude API once per item. Rewrite it as a Message Batches job: give each request a valid custom ID built from the item's key, submit them as one batch, poll until processing status is ended, then match each result to its item by custom ID and print any that errored. Then check two things yourself. Does every item get exactly one result, matched by its custom ID? And are the errored ones printed, not silently dropped?",
+      "estimated_duration_s": 41.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · YOUR TURN",
+            "segment": "Half Price If You Can Wait",
+            "command": "Find the loop in this repo that calls the Claude API once per item. Rewrite it as a Message Batches job: give each request a valid custom_id built from the item's key, submit them as one batch, poll until processing_status is ended, then match each result to its item by custom_id and print any that errored.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: one result per item, matched by custom_id?",
+              "Check: are errored items printed, not dropped?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T17:13:50.098120+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 29.72,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 29.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T13:17:16"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Half Price If You Can Wait. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Half Price If You Can Wait",
+            "slug": "show-tell-half-price-if-you-can-wait",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T17:14:06.108978+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.26,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.291666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T13:17:16"
+      }
+    }
+  ]
+}

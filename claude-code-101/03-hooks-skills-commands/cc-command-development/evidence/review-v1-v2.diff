@@ -1,0 +1,21 @@
+--- evidence/review-v1.md	2026-09-10 02:44:37
++++ evidence/review-v2.md	2026-09-10 02:44:37
+@@ -1,5 +1,15 @@
+-This command reviews Python code in this repo for bugs and security issues.
++---
++description: Review every Python file for bugs by line number
++allowed-tools: Read, Glob, Grep
++argument-hint: [path]
++---
+ 
+-You will receive a report of any problems found, with severity ratings and suggested fixes. The review covers common Python pitfalls, security concerns, and correctness issues.
++Read every `.py` file at `$ARGUMENTS` (default: this repo). For each file, list bugs and security issues with the file path, line number, and one-sentence explanation. Rank each: HIGH, MEDIUM, LOW.
+ 
+-The output will include line numbers so you can find each issue quickly.
++Look for at least:
++- SQL injection or shell injection (string concatenation into `execute()` or `os.system`)
++- Mutable default arguments (`def f(x=[])`)
++- Bare `except:` that swallows errors
++- Off-by-one errors on slice bounds
++
++Output one row per issue as: `path:line — SEV — description`. End with a one-line count.

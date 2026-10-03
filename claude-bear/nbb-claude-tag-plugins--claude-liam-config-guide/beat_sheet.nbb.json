@@ -1,0 +1,320 @@
+{
+ "metadata": {
+  "title": "Four Layers, Not One File.",
+  "subtitle": "The Claude Config Guide Skill",
+  "slug": "claude-tag-plugins--claude-liam-config-guide",
+  "topic": "CLAUDE CONFIG GUIDE · INDEX SKILL",
+  "purpose": "Answer one real question in the Teardown register: when you ask Claude to change a setting, does the answer come from one settings file, or from something else? Lands the carry-out that Claude's settings live across four layers, not one file, and the guide's routing goes quiet rather than loud if a reference file is missing.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/claude-tag-plugins/youtube/claude-liam-config-guide/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the config-guide Skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-08-31T12:58:10",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's what someone assumed: Claude's settings live in a file you can grep. They don't. They live in four layered objects, and the skill is a router, not a database — it picks one of five reference files and opens that. So: which layer holds yours?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Where's the file with Claude's settings?', hesitates on 'file', corrects to 'layer', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Where's the file\nwith Claude's\nsettings?",
+      "face": "serif",
+      "fontSize": 76,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "file",
+      "replacementWords": "layer",
+      "mistakeRate": 6,
+      "hesitateWithin": 2,
+      "hesitateBetween": 14,
+      "charMs": 48,
+      "jitter": 26,
+      "seed": "hai-config-guide"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('file' -> 'layer') lands on screen.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T12:58:10"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Here's the actual machinery. Four layers, stacked. Agents sit on top — the actor Claude is playing. Underneath, agent scopes decide how each setting resolves and inherits, field by field, across a workspace. Then identity profiles carry scopes, rules, credentials, and repo permissions, bundled together. And at the bottom: presets, connections, GitHub repos, and custom instructions, each pinned to a profile. The skill file itself is empty of answers — it's an index. Ask a question, it opens one of five reference files: agents and scopes, identity profiles, connections and presets, GitHub and instructions, or best practices.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FOUR LAYERS, ONE INDEX",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FOUR LAYERS, ONE INDEX",
+     "chips": [
+      "agents",
+      "scopes",
+      "profiles",
+      "presets"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "routes each question to 1 of 5 reference files",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T12:58:10"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Five short files instead of one long one — that's the deliberate design choice. They optimized for a reference you can actually load into working memory; they sacrifice the coverage a single monolithic doc would give you. Right now, the guide only speaks to the Slack surface — what changes on desktop or in the API isn't in scope, and the skill won't hedge. And every answer closes the same way: run debug-plugins in a brand-new Slack thread. Fresh thread, fresh container — you see your live configuration, not whatever got cached in the old one.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 27,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SLACK ONLY — VERIFY FRESH",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SLACK ONLY — VERIFY FRESH",
+     "chips": [
+      "index of 5",
+      "Slack only",
+      "new thread"
+     ],
+     "arrows": false,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "new thread = fresh container, not cached state",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T12:58:10"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's the failure mode. The whole design leans on all five reference files actually being there. Delete one, and the skill goes quiet, not loud — it just won't answer that slice of your question, and nothing surfaces to tell you why. Silent failure is the price of keeping the router simple.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "QUIET WHEN A FILE'S MISSING",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "QUIET WHEN A FILE'S MISSING",
+     "chips": [
+      "file missing",
+      "no error",
+      "no answer"
+     ],
+     "arrows": false,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "nothing tells you why",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T12:58:10"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Claude's settings live across four layers, not one file — the guide's whole job is routing you to the right one, and it goes quiet, not loud, if that file is missing.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Claude's settings live across four layers, not one file — the guide's whole job is routing you to the right one, and it goes quiet, not loud, if that file is missing.",
+      "attribution": "",
+      "sparkLine": "Four layers. One router. Quiet, not loud."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T12:58:10"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I'm designing settings for an app with company-wide defaults, team overrides, and per-user overrides. Walk me through structuring that as layered objects — like agents, scopes, and profiles — so a user's change never gets silently overwritten by a team default. Show a concrete example of the resolution algorithm reading through all three layers. Then name one way the design could quietly fail if a layer file goes missing, and what to add so it fails loud instead. Go deeper: ask the same model to sketch the migration path if you ever need to fold two layers into one — what breaks, what stays, and how you'd A/B test the change without shipping a silent regression.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42,
+   "llm_exercise": {
+    "prompt": "I'm designing settings for an app with company-wide defaults, team overrides, and per-user overrides. Walk me through structuring that as layered objects — like agents, scopes, and profiles — so a user's change never gets silently overwritten by a team default. Show a concrete example of the resolution algorithm reading through all three layers. Then name one way the design could quietly fail if a layer file goes missing, and what to add so it fails loud instead.",
+    "dig_deeper": "Go deeper: ask the same model to sketch the migration path if you ever need to fold two layers into one — what breaks, what stays, and how you'd A/B test the change without shipping a silent regression."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE CONFIG GUIDE · INDEX SKILL",
+      "segment": "Four Layers, Not One File.",
+      "command": "I'm designing settings for an app with company-wide defaults, team overrides, and per-user overrides layered on top of each other. (1) Walk me through structuring that as layered objects — agents, scopes, profiles — so a user's change never gets silently overwritten by a team default. (2) Show a concrete example of the resolution algorithm reading through all three layers. (3) Name one way the design could quietly fail if a layer file goes missing, and what to add so it fails loud instead.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T12:58:10"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Four Layers, Not One File. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Four Layers, Not One File. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T12:58:10"
+   }
+  }
+ ]
+}

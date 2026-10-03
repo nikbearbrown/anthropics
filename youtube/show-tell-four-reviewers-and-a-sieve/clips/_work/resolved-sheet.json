@@ -1,0 +1,1033 @@
+{
+  "metadata": {
+    "slug": "show-tell-four-reviewers-and-a-sieve",
+    "title": "Five Reviewers and a Sieve",
+    "topic": "CLAUDE CODE · CODE REVIEW PLUGIN",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "German (Hallo)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Developers, team leads and students who use Claude Code on GitHub and want to see exactly how the official code-review plugin's /code-review command works: eligibility checks, five parallel reviewers with different angles, a separate 0-100 confidence score for every issue, the cut at 80, and the one linked comment it posts",
+    "source_doc": "anthropics/claude-plugins-official/plugins/code-review/ (README.md, commands/code-review.md, .claude-plugin/plugin.json), read in full 2026-09-27 and byte-compared with the raw files on GitHub main (sources/live_*)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "code review",
+      "Claude Code",
+      "code-review plugin",
+      "/code-review",
+      "pull request",
+      "confidence score",
+      "false positives",
+      "CLAUDE.md",
+      "git blame",
+      "parallel agents",
+      "Claude plugins",
+      "Claude",
+      "Anthropic",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T20:07:27",
+      "cut": "review",
+      "filled": 21,
+      "of": 21,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hallo. This is Liam, in for Bear. When Claude reviews a pull request, you might ask what it will flag. But Anthropic's code review plugin flags plenty, then throws most of it away. So the real question is: which flags survive?",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'What will Claude flag in my pull request?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'What will Claude flag' -> 'Which flags survive' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "What will Claude flag\nin my pull request?",
+            "triggerWords": "What will Claude flag",
+            "replacementWords": "Which flags survive",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-four-reviewers-and-a-sieve",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-28T00:04:25.464467+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (what will Claude flag in my pull request) and corrects it to the real one (which flags survive).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 12.76,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 12.791666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A pull request: a proposed change to a repository, waiting for review. Claude dot M D: a file of project rules that Claude reads. Git blame: a record of who last changed each line, and in which commit. And a false positive: a flag that looks like a problem, but isn't one.",
+      "estimated_duration_s": 20.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "'pull request' lands"
+          },
+          {
+            "at": 0.3,
+            "event": "'CLAUDE.md' lands"
+          },
+          {
+            "at": 0.55,
+            "event": "'git blame' lands"
+          },
+          {
+            "at": 0.8,
+            "event": "'false positive' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "pull request",
+                "meaning": "a proposed change, waiting for review"
+              },
+              {
+                "term": "CLAUDE.md",
+                "meaning": "a file of project rules Claude reads"
+              },
+              {
+                "term": "git blame",
+                "meaning": "who last changed each line, in which commit"
+              },
+              {
+                "term": "false positive",
+                "meaning": "a flag that looks like a problem but isn't"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-28T00:04:55.588478+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: four prerequisites, one line each."
+      },
+      "actual_duration_s": 15.38,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 15.416666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Anthropic's official plugin directory has a code review plugin. It adds one command, slash code review, and you run it on a pull request. It uses the GitHub command line tool to read the pull request and to post back to it.",
+      "estimated_duration_s": 16.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft table rises on dark legs; a stack of white pages (the pull request) slides onto it ('pull request'); the command label lands ('/code-review'); a grey cable draws from a small dark block to the stack.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the plugin"
+          },
+          {
+            "at": 0.4,
+            "event": "one command, run on a pull request"
+          },
+          {
+            "at": 0.8,
+            "event": "the GitHub command line tool"
+          }
+        ],
+        "manim": {
+          "class": "B00_Table"
+        },
+        "motion_claim": "A kraft table rises on dark legs; a stack of white pages (the pull request) slides onto it ('pull request'); the command label lands ('/code-review'); a grey cable draws from a small dark block to the stack."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the table with the pull request, its reviewers, the rail of finding slips, the ruler, the sieve and bin) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.14,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 13.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step one. A small, fast Haiku agent checks whether the pull request needs a review at all. If it's closed, a draft, automated or obviously simple, or it already has a review from Claude, the command stops right there.",
+      "estimated_duration_s": 15.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A gate arm drops across the table's front; a small grey checker figure stands by it ('eligible?'); four ghost boxes beside it fill with ink ticks as the four conditions are named; the arm lifts.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a Haiku agent checks"
+          },
+          {
+            "at": 0.45,
+            "event": "closed, draft, simple, reviewed"
+          },
+          {
+            "at": 0.85,
+            "event": "or it stops"
+          }
+        ],
+        "manim": {
+          "class": "B01_Eligible"
+        },
+        "motion_claim": "A gate arm drops across the table's front; a small grey checker figure stands by it ('eligible?'); four ghost boxes beside it fill with ink ticks as the four conditions are named; the arm lifts."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the table with the pull request, its reviewers, the rail of finding slips, the ruler, the sieve and bin) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.59,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 12.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step two. Another Haiku agent lists the project's Claude dot M D files: the one at the root, and any in the folders this pull request touched. It returns their paths, not their contents.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white list card lands below the table ('CLAUDE.md'); three path rows draw in, each with a small page icon; the page icons stay closed.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "another Haiku agent"
+          },
+          {
+            "at": 0.5,
+            "event": "root, and touched folders"
+          },
+          {
+            "at": 0.85,
+            "event": "paths, not contents"
+          }
+        ],
+        "manim": {
+          "class": "B02_Paths"
+        },
+        "motion_claim": "A white list card lands below the table ('CLAUDE.md'); three path rows draw in, each with a small page icon; the page icons stay closed."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the table with the pull request, its reviewers, the rail of finding slips, the ruler, the sieve and bin) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.69,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 10.708333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step three. A Haiku agent reads the pull request, and returns a short summary of the change.",
+      "estimated_duration_s": 6.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A small white summary card slides out of the page stack and lands on the table beside it ('summary').",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "reads the pull request"
+          },
+          {
+            "at": 0.7,
+            "event": "a short summary"
+          }
+        ],
+        "manim": {
+          "class": "B03_Summary"
+        },
+        "motion_claim": "A small white summary card slides out of the page stack and lands on the table beside it ('summary')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the table with the pull request, its reviewers, the rail of finding slips, the ruler, the sieve and bin) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 5.63,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 5.666666666666667,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step four is the review itself. Five Sonnet agents sit down at once, in parallel, and each one reviews the change on its own, from its own angle. Each returns a list of issues, and why it flagged each one.",
+      "estimated_duration_s": 16.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Five kraft reviewer figures pop up around the back of the table at once ('five reviewers'); a grey line draws from each to the page stack.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "step four"
+          },
+          {
+            "at": 0.35,
+            "event": "five agents, in parallel"
+          },
+          {
+            "at": 0.85,
+            "event": "issues, and why"
+          }
+        ],
+        "manim": {
+          "class": "B04_Five"
+        },
+        "motion_claim": "Five kraft reviewer figures pop up around the back of the table at once ('five reviewers'); a grey line draws from each to the page stack."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the table with the pull request, its reviewers, the rail of finding slips, the ruler, the sieve and bin) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.65,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 11.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Reviewer one checks the change against the Claude dot M D rules. The command reminds it that those rules were written for Claude as it writes code, so not every rule applies in a review.",
+      "estimated_duration_s": 14.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Reviewer one's head gets a terracotta dot; a page icon rises beside it ('rules'); a white finding slip flies from it into the rail.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "reviewer one: rules"
+          },
+          {
+            "at": 0.6,
+            "event": "written for writing code"
+          },
+          {
+            "at": 0.85,
+            "event": "a finding"
+          }
+        ],
+        "manim": {
+          "class": "B05_Rules"
+        },
+        "motion_claim": "Reviewer one's head gets a terracotta dot; a page icon rises beside it ('rules'); a white finding slip flies from it into the rail."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the table with the pull request, its reviewers, the rail of finding slips, the ruler, the sieve and bin) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.77,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 10.791666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Reviewer two reads only the changed lines, and does a shallow scan for obvious bugs. Large bugs only: no small issues, and no nitpicks.",
+      "estimated_duration_s": 9.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Reviewer two lights; a lens sweeps across the page stack ('bugs'); two finding slips fly into the rail.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "reviewer two: changed lines"
+          },
+          {
+            "at": 0.5,
+            "event": "obvious bugs"
+          },
+          {
+            "at": 0.85,
+            "event": "no nitpicks"
+          }
+        ],
+        "manim": {
+          "class": "B06_Bugs"
+        },
+        "motion_claim": "Reviewer two lights; a lens sweeps across the page stack ('bugs'); two finding slips fly into the rail."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the table with the pull request, its reviewers, the rail of finding slips, the ruler, the sieve and bin) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.51,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 8.541666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Reviewer three reads the git blame and history of the code that changed, looking for bugs that only show up in light of that history.",
+      "estimated_duration_s": 10.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Reviewer three lights; a short grey commit line with dots draws behind it ('git history'); one finding slip flies into the rail.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "reviewer three: git blame"
+          },
+          {
+            "at": 0.7,
+            "event": "bugs in light of history"
+          }
+        ],
+        "manim": {
+          "class": "B07_History"
+        },
+        "motion_claim": "Reviewer three lights; a short grey commit line with dots draws behind it ('git history'); one finding slip flies into the rail."
+      },
+      "actual_duration_s": 7.68,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 7.708333333333333,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Reviewer four reads earlier pull requests that touched the same files, and checks whether the comments left on them also apply here.",
+      "estimated_duration_s": 8.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Reviewer four lights; a small stack of older kraft PR cards slides in beside it ('old PRs'); one finding slip flies into the rail.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "reviewer four: earlier pull requests"
+          },
+          {
+            "at": 0.7,
+            "event": "old comments that apply"
+          }
+        ],
+        "manim": {
+          "class": "B08_OldPRs"
+        },
+        "motion_claim": "Reviewer four lights; a small stack of older kraft PR cards slides in beside it ('old PRs'); one finding slip flies into the rail."
+      },
+      "actual_duration_s": 7.38,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 7.416666666666667,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Reviewer five reads the code comments in the changed files, and checks that the change follows what those comments say.",
+      "estimated_duration_s": 8.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Reviewer five lights; a speech-bubble shape rises beside it ('code comments'); one finding slip flies into the rail, which now holds six.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "reviewer five: code comments"
+          },
+          {
+            "at": 0.7,
+            "event": "follows the comments"
+          }
+        ],
+        "manim": {
+          "class": "B09_Comments"
+        },
+        "motion_claim": "Reviewer five lights; a speech-bubble shape rises beside it ('code comments'); one finding slip flies into the rail, which now holds six."
+      },
+      "actual_duration_s": 7.0,
+      "audio_file": "mp3/beat-B09.mp3",
+      "render_duration_s": 7.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step five scores every issue. Each one gets its own Haiku agent, which scores its confidence that the issue is real, from zero to a hundred. For a rules issue, it double-checks that the Claude dot M D really calls it out.",
+      "estimated_duration_s": 16.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A small grey scorer disc pops beside each of the six slips at once ('confidence'); an ink score numeral lands next to each slip; a grey thread draws from the CLAUDE.md list card to the rules slip.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "one scorer per issue"
+          },
+          {
+            "at": 0.5,
+            "event": "zero to a hundred"
+          },
+          {
+            "at": 0.85,
+            "event": "rules issues double-checked"
+          }
+        ],
+        "manim": {
+          "class": "B10_Score"
+        },
+        "motion_claim": "A small grey scorer disc pops beside each of the six slips at once ('confidence'); an ink score numeral lands next to each slip; a grey thread draws from the CLAUDE.md list card to the rules slip."
+      },
+      "actual_duration_s": 12.95,
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 12.958333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The command hands every scoring agent the same scale, word for word. Zero: a false positive, or a pre-existing issue. Twenty five: it might be real. Fifty: real, but minor. Seventy five: highly confident, and important. A hundred: absolutely certain.",
+      "estimated_duration_s": 16.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A tall vertical ruler draws to the right of the rail; its five ticks land one at a time with ink numerals 0, 25, 50, 75, 100 as each is spoken; a grey marker climbs the ruler.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the same scale"
+          },
+          {
+            "at": 0.3,
+            "event": "0 and 25"
+          },
+          {
+            "at": 0.6,
+            "event": "50 and 75"
+          },
+          {
+            "at": 0.9,
+            "event": "100"
+          }
+        ],
+        "manim": {
+          "class": "B11_Scale"
+        },
+        "motion_claim": "A tall vertical ruler draws to the right of the rail; its five ticks land one at a time with ink numerals 0, 25, 50, 75, 100 as each is spoken; a grey marker climbs the ruler."
+      },
+      "actual_duration_s": 14.74,
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 14.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step six is the sieve. Any issue scoring under eighty is filtered out. Notice where that line sits: an issue at seventy five, highly confident, still falls through. Only what scores eighty or more stays on the mesh.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A terracotta dot marks 80 on the ruler ('80'); the sieve (a mesh tray on legs) rises with a bin under it; the six slips move onto the mesh; four drop through into the bin, the 75 last; two stay.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the sieve"
+          },
+          {
+            "at": 0.3,
+            "event": "under eighty, out"
+          },
+          {
+            "at": 0.6,
+            "event": "seventy five falls through"
+          },
+          {
+            "at": 0.9,
+            "event": "eighty and up stay"
+          }
+        ],
+        "manim": {
+          "class": "B12_Sieve"
+        },
+        "motion_claim": "A terracotta dot marks 80 on the ruler ('80'); the sieve (a mesh tray on legs) rises with a bin under it; the six slips move onto the mesh; four drop through into the bin, the 75 last; two stay."
+      },
+      "actual_duration_s": 11.8,
+      "audio_file": "mp3/beat-B12.mp3",
+      "render_duration_s": 11.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What scores low? The command lists false positives to drop, including pre-existing issues, nitpicks a senior engineer wouldn't raise, anything a linter, type checker or compiler would catch, and real issues on lines the pull request didn't change.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three more ghost slips drop through the mesh into the bin; three labels land beside the bin, one at a time ('pre-existing', 'nitpicks', 'linter's job').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "what scores low"
+          },
+          {
+            "at": 0.35,
+            "event": "pre-existing, nitpicks"
+          },
+          {
+            "at": 0.65,
+            "event": "what a linter catches"
+          },
+          {
+            "at": 0.9,
+            "event": "unchanged lines"
+          }
+        ],
+        "manim": {
+          "class": "B13_Noise"
+        },
+        "motion_claim": "Three more ghost slips drop through the mesh into the bin; three labels land beside the bin, one at a time ('pre-existing', 'nitpicks', 'linter's job')."
+      },
+      "actual_duration_s": 13.8,
+      "audio_file": "mp3/beat-B13.mp3",
+      "render_duration_s": 13.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "If nothing reaches eighty, the command stops there. If something does, step seven: one more Haiku agent repeats the first check, in case the pull request was closed or reviewed in the meantime.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The two surviving slips sit on the mesh; the gate arm at the table drops again and the checker figure's four boxes re-tick ('still eligible?'); the arm lifts.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "nothing reaches eighty: stop"
+          },
+          {
+            "at": 0.5,
+            "event": "repeat the first check"
+          },
+          {
+            "at": 0.85,
+            "event": "closed or reviewed meanwhile"
+          }
+        ],
+        "manim": {
+          "class": "B14_Recheck"
+        },
+        "motion_claim": "The two surviving slips sit on the mesh; the gate arm at the table drops again and the checker figure's four boxes re-tick ('still eligible?'); the arm lifts."
+      },
+      "actual_duration_s": 11.09,
+      "audio_file": "mp3/beat-B14.mp3",
+      "render_duration_s": 11.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step eight. It comments on the pull request, using the GitHub command line tool. The comment stays brief, uses no emojis, and cites each issue with a link to the exact lines, using the full commit hash.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white comment card rises above the sieve ('PR comment'); the two surviving slips fly into it as numbered rows 1 and 2; a grey link bar draws under each row; a grey thread runs from the card to the pull request stack.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "step eight: comment"
+          },
+          {
+            "at": 0.5,
+            "event": "brief, no emojis"
+          },
+          {
+            "at": 0.85,
+            "event": "a link to the exact lines"
+          }
+        ],
+        "manim": {
+          "class": "B15_Comment"
+        },
+        "motion_claim": "A white comment card rises above the sieve ('PR comment'); the two surviving slips fly into it as numbered rows 1 and 2; a grey link bar draws under each row; a grey thread runs from the card to the pull request stack."
+      },
+      "actual_duration_s": 11.54,
+      "audio_file": "mp3/beat-B15.mp3",
+      "render_duration_s": 11.541666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B15.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "One more thing. The plugin's readme describes four reviewers. The command file, which is what Claude actually follows, launches five. That file is also where the eighty lives, and the readme says to change the threshold there.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two white pages stand side by side below the comment ('README', 'command file'); four small figure marks draw on the first, five on the second; a cursor clicks the 80 on the ruler.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the readme: four"
+          },
+          {
+            "at": 0.45,
+            "event": "the command file: five"
+          },
+          {
+            "at": 0.8,
+            "event": "the eighty lives there"
+          }
+        ],
+        "manim": {
+          "class": "B16_TwoFiles"
+        },
+        "motion_claim": "Two white pages stand side by side below the comment ('README', 'command file'); four small figure marks draw on the first, five on the second; a cursor clicks the 80 on the ruler."
+      },
+      "actual_duration_s": 11.97,
+      "audio_file": "mp3/beat-B16.mp3",
+      "render_duration_s": 12.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B16.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. In Claude Code, on a branch with changes, paste this. Review my branch's changes against main the way the code review plugin does. Run five separate passes: Claude dot M D rules, obvious bugs in the changed lines, git blame and history, comments on earlier pull requests that touched these files, and code comments in the changed files. Score each issue from zero to a hundred for confidence that it is real. List every issue with its score, mark which ones survive a cut at eighty, and post nothing. Then check: is every issue that survived on a line you actually changed? And read one issue that fell below eighty. Was it really noise, or did the sieve lose something?",
+      "estimated_duration_s": 48.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · YOUR TURN",
+            "segment": "Five Reviewers and a Sieve",
+            "command": "Review my branch's changes against main the way the code-review plugin does. Run five separate passes: CLAUDE.md rules, obvious bugs in the changed lines, git blame and history, comments on earlier pull requests that touched these files, and code comments in the changed files. Score each issue 0-100 for confidence that it is real. List every issue with its score, mark which ones survive a cut at 80, and post nothing.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: is each survivor on a line you changed?",
+              "Check: read one dropped issue. Was it noise?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-28T00:05:58.981021+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 35.16,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 35.166666666666664,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T20:07:27"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Five Reviewers and a Sieve. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Five Reviewers and a Sieve",
+            "slug": "show-tell-four-reviewers-and-a-sieve",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-28T00:06:13.966187+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.48,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T20:07:27"
+      }
+    }
+  ]
+}

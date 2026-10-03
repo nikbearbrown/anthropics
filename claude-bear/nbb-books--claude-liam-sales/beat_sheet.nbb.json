@@ -1,0 +1,957 @@
+{
+ "metadata": {
+  "title": "Claude, Closing",
+  "subtitle": "The Sales Plugin",
+  "slug": "books--claude-liam-sales",
+  "topic": "CLAUDE · COWORK PLUGINS",
+  "purpose": "Teardown-register conversion: take the sales plugin apart, explain the machinery, judge the design choices. Lands the carry-out that it does the homework — research, prep, follow-up, pipeline — and never has the conversation for you, so the relationship stays yours.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/books/claude-cowork-plugins/youtube/claude-liam-sales/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Extending Claude — Skills, Plugins & Connectors",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "NB02 -> NB08-NB11 (freelancer-with-one-lead planted, Meridian walkthrough resolves it at three-days-to-five-minutes)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md Register audit)",
+  "build": {
+   "at": "2026-08-28T20:24:53",
+   "cut": "master",
+   "filled": 22,
+   "of": 22,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown (default channel: brutalist.art)",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "The name sends most people the wrong direction. 'Sales plugin' sounds like something you'd install next to a Salesforce dashboard. It's not. What it actually is — a bundle of Claude skills for the work around a client conversation. Optimized for someone with no CRM, no team, no admin behind them. So who's it actually built for?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18.0,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'The sales plugin is only for professional salespeople.', hesitates on 'professional salespeople', corrects to 'anyone who needs clients', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "The sales plugin\nis only for\nsalespeople.\nWho's it actually for?",
+      "face": "serif",
+      "fontSize": 68,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "salespeople",
+      "replacementWords": "freelancers",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 12,
+      "charMs": 46,
+      "jitter": 26,
+      "seed": "hai-sales-plugin"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "lead_silence_s": 0.8,
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. Component matches triggerWords per single whitespace-delimited token (comma-separated list) -- a two-word phrase never matches, so the correction is a single-word swap: 'salespeople' -> 'freelancers' (ties to NB02's freelancer-with-one-lead anchor). TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verified media/B00.mp4 >= 8s and that the correction lands on screen.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "1 stakes",
+   "narration_text": "Consultants, freelancers, agency owners, builders. The design choice is to optimize for the person who needs clients but never studied pipeline management and never wanted to. A sales team with a full-time admin gets served incidentally — the primary user is someone alone at a laptop the moment before a call, the moment after one, or the day they realize they've stopped following up.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "WHO IT'S ACTUALLY FOR",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "WHO IT'S ACTUALLY FOR",
+     "chips": [
+      "CONSULTANTS",
+      "FREELANCERS",
+      "AGENCY OWNERS",
+      "BUILDERS"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "people who need clients, not a CRM",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "2 wrong-guess payoff / anchor planted",
+   "narration_text": "The concrete case: a freelancer with one lead they don't know how to work. No CRM, no playbook, nobody looking over their shoulder. That's the reference user — everything else is derived from there. This isn't a system for people who already have a sales process. It's a collaborator for the people who don't, and it's honest about that.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "AT THE KITCHEN TABLE",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "AT THE KITCHEN TABLE",
+     "chips": [
+      "ONE LEAD",
+      "NO CRM",
+      "NO PLAYBOOK",
+      "NO MANAGER"
+     ],
+     "arrows": false,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "that's exactly where this starts",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's what the bundle actually does. Research. Prep. Follow-up. Pipeline. Outreach. Five discrete jobs — and if you're the reference user, five jobs you're doing badly, doing late, or not doing at all.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FIVE KINDS OF HELP",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FIVE KINDS OF HELP",
+     "chips": [
+      "RESEARCH",
+      "PREP",
+      "FOLLOW-UP",
+      "PIPELINE",
+      "OUTREACH"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "work you're doing badly, late, or not at all",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB04",
+   "act": "3 mechanism",
+   "narration_text": "How the research piece actually works: you point it at a company or a person and it returns a structured briefing — what they do, recent news, needs you could address, key contacts. The mechanism runs on public information alone; a CRM makes the briefing richer but isn't a prerequisite. That's the design choice — no lock-in on infrastructure you don't have.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A STRUCTURED BRIEFING",
+    "media": "manim/NB04.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A STRUCTURED BRIEFING",
+     "chips": [
+      "PUBLIC INFO",
+      "+ YOUR CRM",
+      "A BRIEFING"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "richer with a CRM, works without one",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB04Scene"
+   },
+   "audio_file": "mp3/beat-NB04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB05",
+   "act": "3 mechanism",
+   "narration_text": "Prep sheet: for any client conversation coming up, it assembles the relevant context, the talking points worth raising, the questions worth asking. If you've kept notes from prior calls, those get woven in. One document you scan before you dial in.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE PREP SHEET",
+    "media": "manim/NB05.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE PREP SHEET",
+     "chips": [
+      "CONTEXT",
+      "TALKING POINTS",
+      "QUESTIONS"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "and it weaves in your old notes",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB05Scene"
+   },
+   "audio_file": "mp3/beat-NB05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB05.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB06",
+   "act": "3 mechanism",
+   "narration_text": "Follow-up mechanism: hand it the notes from the call and it drafts the message. Not a template — a draft that references the specific things you discussed and proposes a concrete next step. That choice reveals what it's optimized for: relevance over reusability.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NOT A TEMPLATE",
+    "media": "manim/NB06.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NOT A TEMPLATE",
+     "chips": [
+      "YOUR NOTES",
+      "A REAL FOLLOW-UP"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "references what you actually discussed",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB06Scene"
+   },
+   "audio_file": "mp3/beat-NB06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB06.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB07",
+   "act": "3 mechanism",
+   "narration_text": "Pipeline view: even if your pipeline is a spreadsheet or a list in your head, it maps where everything stands — who's waiting on you, what's gone quiet. Works on whatever data you already have, in whatever shape it's in.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "WHERE THINGS STAND",
+    "media": "manim/NB07.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "WHERE THINGS STAND",
+     "chips": [
+      "SCATTERED PROSPECTS",
+      "ORDERED PIPELINE"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [
+      0
+     ],
+     "caption": "even if it's a spreadsheet, or a list in your head",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB07Scene"
+   },
+   "audio_file": "mp3/beat-NB07.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB07.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB08",
+   "act": "3 mechanism / anchor walkthrough",
+   "narration_text": "Walk it through end to end. Discovery call in an hour with an agency you barely know. What you type is one sentence: research Meridian Design Studio — what they do, who they serve, recent news, and what they might need from someone like me. That's the whole invocation.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "AN HOUR OUT",
+    "media": "manim/NB08.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "AN HOUR OUT",
+     "chips": [
+      "/PROSPECT-BRIEF",
+      "MERIDIAN DESIGN STUDIO"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "what they do, who they serve, recent news",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB08Scene"
+   },
+   "audio_file": "mp3/beat-NB08.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB08.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB09",
+   "act": "3 mechanism / anchor walkthrough",
+   "narration_text": "A minute later, a one-page briefing you can scan in five. You walk in informed instead of improvising — present, not scrambling. The distinction matters, and it's the whole design philosophy in one sentence: the plugin doesn't sit at the table with you. It gets you ready for the table. That's where the machine ends and the human begins.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "WALK IN INFORMED",
+    "media": "manim/NB09.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "WALK IN INFORMED",
+     "chips": [
+      "ONE-PAGE BRIEFING",
+      "FIVE-MINUTE SCAN",
+      "PRESENT, NOT SCRAMBLING"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "the plugin got you ready; it doesn't sit at the table",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB09Scene"
+   },
+   "audio_file": "mp3/beat-NB09.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB09.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB10",
+   "act": "3 mechanism / anchor walkthrough",
+   "narration_text": "Call ends. While it's fresh, you dump what actually happened — their timeline, their real concern, who actually decides. Five minutes of notes now, instead of a fog by Friday. The cost is small; the return compounds on every conversation after this one.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "CAPTURE IT FRESH",
+    "media": "manim/NB10.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "CAPTURE IT FRESH",
+     "chips": [
+      "THEIR TIMELINE",
+      "THEIR REAL CONCERN",
+      "WHO DECIDES"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "five minutes now, not forgotten by Friday",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB10Scene"
+   },
+   "audio_file": "mp3/beat-NB10.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB10.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB11",
+   "act": "4 anchor payoff",
+   "narration_text": "From those notes it drafts a follow-up that hits every point and proposes a logical next step, in a warm, professional tone. The mechanism turns raw notes into a sendable email. The email that used to sit on your list for three days is done in five minutes. That's the trade the design is making: it does the assembly, you keep the sending.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THREE DAYS TO FIVE MINUTES",
+    "media": "manim/NB11.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THREE DAYS TO FIVE MINUTES",
+     "chips": [
+      "THREE DAYS ON THE LIST",
+      "FIVE MINUTES, SENT"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [
+      0
+     ],
+     "caption": "hits every point, suggests the next step",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB11Scene"
+   },
+   "audio_file": "mp3/beat-NB11.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB11.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB12",
+   "act": "3 mechanism",
+   "narration_text": "Hand it the whole prospect list and ask the hard questions: which conversations need a nudge, what's gone cold, where this week's energy should go. Functionally, it plays the role a sales manager plays — the accountability layer — without the reporting relationship. Works if you value the honesty; fails if what you actually needed was the coaching.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "HONEST, NO MANAGER",
+    "media": "manim/NB12.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "HONEST, NO MANAGER",
+     "chips": [
+      "NEEDS FOLLOW-UP",
+      "GONE COLD",
+      "THIS WEEK"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "like a sales manager, without the awkwardness",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB12Scene"
+   },
+   "audio_file": "mp3/beat-NB12.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB12.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB13",
+   "act": "3 mechanism",
+   "narration_text": "Need new names? Ask it to scout a market — agencies in a region that might need what you offer. It returns a list with context on each entry, not just company names. Selection stays with you: the mechanism narrows the search space; it doesn't make the call.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NAMES WITH CONTEXT",
+    "media": "manim/NB13.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NAMES WITH CONTEXT",
+     "chips": [
+      "A MARKET QUESTION",
+      "A CONTEXTUAL SHORTLIST"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "you decide who's worth pursuing",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB13Scene"
+   },
+   "audio_file": "mp3/beat-NB13.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB13.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB14",
+   "act": "3 mechanism",
+   "narration_text": "Cold outreach mechanism: it drafts a message that references the recipient's actual situation and offers a conversation rather than a hard sell. Personal enough to feel human, structured enough to say something worth reading. That's the target the draft is aimed at — reply rate, not volume.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "HUMAN, NOT SPAMMY",
+    "media": "manim/NB14.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "HUMAN, NOT SPAMMY",
+     "chips": [
+      "A HARD SELL",
+      "A REAL CONVERSATION"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [
+      0
+     ],
+     "caption": "references their actual situation",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB14Scene"
+   },
+   "audio_file": "mp3/beat-NB14.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB14.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB15",
+   "act": "3 mechanism",
+   "narration_text": "Configuration is three inputs: what you sell, how your process works, who your ideal client is. Give it those and it stops guessing and starts sounding like you. Connect a CRM — even a free one — and the research gets richer still. Not required. The design floors the barrier to entry, then rewards you for adding structure.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THREE THINGS, THEN A CRM IF YOU WANT",
+    "media": "manim/NB15.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THREE THINGS, THEN A CRM IF YOU WANT",
+     "chips": [
+      "WHAT YOU SELL",
+      "YOUR PROCESS",
+      "YOUR IDEAL CLIENT"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "a CRM makes it richer; it isn't required",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB15Scene"
+   },
+   "audio_file": "mp3/beat-NB15.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB15.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB16",
+   "act": "3 mechanism",
+   "narration_text": "After you close a deal, tell it what worked — what resonated, which objection came up, what actually sealed it. Over time that data becomes the institutional memory of a company of one. Every future suggestion runs on your own history, not a generic model of how sales is supposed to go.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FEED IT YOUR WINS",
+    "media": "manim/NB16.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FEED IT YOUR WINS",
+     "chips": [
+      "WHAT RESONATED",
+      "THE OBJECTION",
+      "WHAT SEALED IT"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "builds judgment over time",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB16Scene"
+   },
+   "audio_file": "mp3/beat-NB16.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB16.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB17",
+   "act": "5 both directions",
+   "narration_text": "Where the design fails on its own terms: automating the relationship. It's excellent at preparation and at follow-through. It's not a substitute for being present in the room. Push the admin at it instead — activity logging, note formatting, follow-up scheduling — the chores you skip when you're busy. That leaves the human load exactly where it belongs.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 21.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "TAKE THE CHORES, NOT THE ROOM",
+    "media": "manim/NB17.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "TAKE THE CHORES, NOT THE ROOM",
+     "chips": [
+      "ACTIVITY LOGGING",
+      "NOTE FORMATTING",
+      "FOLLOW-UP SCHEDULING"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "so you can be fully present in the room",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB17Scene"
+   },
+   "audio_file": "mp3/beat-NB17.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB17.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "NB18",
+   "act": "5 both directions",
+   "narration_text": "The other failure mode: sparse inputs. It can only work with what it knows. Sparse notes make sparse briefings — garbage in, garbage out isn't a metaphor here, it's mechanical. Five minutes of honest notes after each call pays dividends in every conversation after.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15.0,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "IT ONLY KNOWS WHAT YOU TELL IT",
+    "media": "manim/NB18.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "IT ONLY KNOWS WHAT YOU TELL IT",
+     "chips": [
+      "SPARSE NOTES",
+      "SPARSE BRIEFINGS"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "five minutes now pays off every time after",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB18Scene"
+   },
+   "audio_file": "mp3/beat-NB18.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB18.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Here's the whole design in one sentence: the plugin does the homework — research, prep, follow-up, pipeline — and never has the conversation for you. That line is where the machine ends and the human begins. The relationship stays yours.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14.0,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "The sales plugin does the homework — research, prep, follow-up, pipeline. It never has the conversation for you: the relationship stays yours.",
+      "attribution": "",
+      "sparkLine": "The relationship stays yours."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "lead_silence_s": 0.6,
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini — no plugin required. I have a client conversation coming up. Here's who it's with: name the company or person. Research them from public information — what they do, recent news, and what they might need from someone who offers what I offer. Then give me a one-page prep sheet: the context I should know, three talking points, and three questions to ask. End with the one thing most likely to move this conversation forward. Fill in your own prospect and your own offer, and run it before your next call. Go deeper: after the call, hand the model your raw notes and ask it to draft the follow-up email — then compare its draft against what you'd have written cold, and name what actually changed.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42.0,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE · COWORK PLUGINS",
+      "segment": "Claude, Closing",
+      "command": "I have a client conversation coming up. Here's who it's with: [company or person]. Research them from public information — what they do, recent news, and what they might need from someone who offers [what you do]. Then give me a one-page prep sheet: the context I should know, three talking points, and three questions to ask. End with the one thing most likely to move this conversation forward.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "llm_exercise": {
+    "prompt": "I have a client conversation coming up. Here's who it's with: [company or person]. Research them from public information — what they do, recent news, and what they might need from someone who offers [what you do]. Then give me a one-page prep sheet: the context I should know, three talking points, and three questions to ask. End with the one thing most likely to move this conversation forward.",
+    "dig_deeper": "Go deeper: after the call, hand the model your raw notes and ask it to draft the follow-up email — then compare its draft against what you'd have written cold, and name what actually changed."
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T20:24:53"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Closing — the sales plugin. Liam, in for Bear. More reels at brutalist dot art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6.0,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Closing — the sales plugin. Liam, in for Bear. More reels at brutalist.art.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "tail_silence_s": 1.0,
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T20:24:53"
+   }
+  }
+ ]
+}

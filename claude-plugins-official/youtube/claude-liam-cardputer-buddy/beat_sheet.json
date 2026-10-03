@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Cardputer Buddy",
+    "title": "Claude, Cardputer Buddy.",
     "slug": "claude-liam-cardputer-buddy",
-    "topic": "CARDPUTER BUDDY · CLAUDE PLUGIN",
+    "topic": "CARDPUTER-BUDDY · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -18,12 +18,43 @@
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-plugins-official/plugins/cwc-makers/skills/cardputer-buddy/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-plugins-official/plugins/cwc-makers/skills/cardputer-buddy/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy",
+        "Hello) after the device is already provisioned via m5-onboard",
+        "Use when the user wants to add a new app",
+        "push a single changed .py without re-flashing",
+        "watch device serial logs"
+      ],
+      "constraints": [],
+      "referenced_files": [
+        "buddy/",
+        "build-with-claude",
+        "m5-onboard",
+        "/flash/",
+        "main.py",
+        "/flash/apps/",
+        ".py",
+        "buddy/device/apps/",
+        "buddy/device/apps/hello_cardputer.py",
+        "detect.py"
+      ],
+      "code_signals": [
+        "code block: bash"
+      ],
+      "sections": [
+        "Device layout",
+        "Adding an app",
+        "Dev loop tooling (buddy/scripts/)"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T18:59:34",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T15:20:20",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +63,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. Ask Claude to add an app to the Cardputer, push a changed file without re-flashing, watch device serial logs, or run a one-shot REPL command — the Cardputer Buddy skill fires. It is the iterate-after-provisioning skill: m5-onboard handles the first install, this skill handles everything after. Let me walk you through the device layout, the launcher auto-discovery, and the three dev-loop scripts that drive all ongoing work.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is cardputer-buddy. Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy, Snake, Hello) after the device is already provisioned via m5-onboard. Use when the user wants to add a new app, push a single changed .py without re-flashing, watch device serial logs, or run a one-shot REPL command. Trigger on \"add an app\", \"push to the cardputer\", \"tail the device\", \"run on the device\", or follow-up work after /maker-setup.. Its concrete surface area includes Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy; Hello) after the device is already provisioned via m5-onboard; Use when the user wants to add a new app. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 18,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
             "greeting": "Hola, Liam",
-            "topic": "CARDPUTER BUDDY · CLAUDE PLUGIN",
-            "segment": "MAKERS",
-            "command": "Add a timer app to the Cardputer that counts down from 60 seconds.",
+            "topic": "CARDPUTER-BUDDY · ANTHROPIC SKILL",
+            "segment": "Claude, Cardputer Buddy.",
+            "command": "Run the cardputer-buddy skill.",
             "runningText": "reading cardputer-buddy SKILL.md…",
             "output": [
-              "Iterate-after-provisioning: m5-onboard handles first install",
-              "Add file to buddy/device/apps/ → push → appears on next boot",
-              "Dev loop: install_apps.py · push.py · tail_serial.py · repl_run.py"
+              "skill: cardputer-buddy",
+              "Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy, Snake…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +93,41 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 22.83,
+      "actual_duration_s": 39.96,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:59:34"
+        "at": "2026-09-05T15:20:20"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — device layout + launcher auto-discovery + template",
-      "narration_text": "The Cardputer runs MicroPython on a /flash/ filesystem. main.py is the launcher — it scans /flash/apps/ at boot and lists every dot-py file as a menu entry automatically. Drop a file into buddy/device/apps/, push it, and it appears on the next boot with no registration code. The payload has three zones: the launcher itself, the shared buddy libraries — BLE, UI, state, protocol, and character definitions — and the apps directory with the three bundled apps. The canonical template for new apps is hello_cardputer.py — the smallest working example covering keyboard polling, font rendering, and the exit convention. When you need to write a new app, start from that template.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is cardputer-buddy. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at buddy/, build-with-claude, m5-onboard, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 26,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "CardputerBuddyLayout",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Drop a .py in apps/. Push it. Appears on next boot. No registration needed."
+            "skillName": "cardputer-buddy",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "1k",
+                "accent": true
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "1 file total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +136,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 38.51,
+      "actual_duration_s": 17.56,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:59:34"
+        "at": "2026-09-05T15:20:20"
       }
     },
     {
       "beat_id": "B02",
-      "act": "design — four dev-loop scripts + when to use each",
-      "narration_text": "Four scripts drive all ongoing development. install_apps.py pushes the full apps directory over USB-serial — use this when you have added or renamed files and need the complete directory in sync. push.py pushes a named subset of files — use this for a single changed file when you want a faster loop without touching unrelated files. These two are the most likely to be confused: install_apps.py for full sync, push.py for a targeted single-file push. tail_serial.py streams device logs — attach this in a second terminal while you test. repl_run.py runs a one-shot Python expression over the REPL — useful for probing the filesystem, checking state, or running a quick diagnostic without pushing a full file. PORT is whatever detect.py reported at provisioning time: /dev/cu.usbmodem on macOS, /dev/ttyACM on Linux, COM on Windows.",
+      "act": "pipeline",
+      "narration_text": "cardputer-buddy is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy; Hello) after the device is already provisioned via m5-onboard; Use when the user wants to add a new app; push a single changed .py without re-flashing. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "CardputerBuddyScripts",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "install_apps for full sync. push for one file. tail to watch. repl for one-shot probes."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,47 +187,82 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 46.51,
+      "actual_duration_s": 20.42,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:59:34"
+        "at": "2026-09-05T15:20:20"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. Cardputer Buddy gets four things right. The trigger distinction is sharp: iterate-after-provisioning — m5-onboard handles the first install, this skill handles everything after. The /flash/ device layout is explicit with the full directory tree. The launcher auto-discovery — scan apps/ at boot, every dot-py is a menu entry — is an elegant convention that requires no registration code. The three dev-loop scripts are clearly separated by scope and mapped to concrete commands. Where it bites. PORT detection depends on detect.py from a previous provisioning run — if the port changes or the user is in a new session, there is no inline guidance for rediscovering it. push.py and install_apps.py are two different push mechanisms with overlapping scope — the distinction between them is buried and easy to get wrong, especially for a new developer who reaches for whichever one appears first. The BLE flow in claude_buddy.py is referenced but not documented: how Claude Desktop sends commands, what the protocol looks like, and what event triggers are available are not specified. And hello_cardputer.py is named as the canonical template but its required function signatures and exit conventions are not spelled out inline — you have to read the source.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the Teardown moment. cardputer-buddy is a specification written as an instruction set. Claude's job: Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy, Snake, Hello) after the device…. What it gets right: repeatable results. What it bites: anything outside the spec.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 36,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "CardputerBuddyTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Layout and dev-loop scripts solid. PORT gap and push-script ambiguity: surface them."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy, Snake, Hello) after the device is already provisioned via m5-onboard. Use when the user wants to add a new app, push a single…",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 66.01,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 15.98,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:59:34"
+        "at": "2026-09-05T15:20:20"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In cardputer-buddy, supporting material: buddy/, build-with-claude, m5-onboard, /flash/; implementation signals: code block: bash; sections: Device layout, Adding an app, Dev loop tooling (buddy/scripts/). That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy; Hello) after the device is already provisioned via m5-onboard; Use when the user wants to add a new app; buddy/; build-with-claude; m5-onboard; code…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 18.94,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T15:20:20"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. Cardputer Buddy: iterate after provisioning — m5-onboard handles the first install. /flash/ layout: main.py launcher scans apps/ at boot — every dot-py is a menu entry. Template: hello_cardputer.py for keyboard, font, exit. Dev loop: install_apps.py full push, push.py single file, tail_serial.py for logs, repl_run.py for one-shot REPL. Gaps: PORT rediscovery on session change, install_apps vs push ambiguity, BLE protocol undocumented, hello_cardputer.py signatures not spelled out.",
+      "narration_text": "cardputer-buddy makes Claude execute one task reliably. The SKILL.md is the spec — Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy, Snake…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -170,14 +272,13 @@
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "Cardputer Buddy",
+            "artifactHeading": "Claude, Cardputer Buddy.",
             "artifactLines": [
-              "Iterate after provisioning — m5-onboard handles first install",
-              "/flash/apps/ auto-scanned at boot: every .py = menu entry, no registration",
-              "Template: hello_cardputer.py — keyboard polling · font · exit convention",
-              "install_apps.py: full sync · push.py: single file · tail_serial.py · repl_run.py",
-              "PORT: from detect.py at provisioning — /dev/cu.usbmodem · /dev/ttyACM · COM",
-              "Gaps: PORT gap · push/install_apps ambiguity · BLE undoc · template signatures missing"
+              "Skill: cardputer-buddy — Claude reads SKILL.md before acting",
+              "Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy, Snake, Hello) after…",
+              "Capabilities: Iterate on the Cardputer-Adv MicroPython app bundle (Claude Buddy; Hello) after the device is already provisioned via m5-onboard; Use when the user wants to add a new app",
+              "Same input → same output, every run",
+              "Limit: only what the SKILL.md specifies"
             ]
           },
           "rendered": {
@@ -187,18 +288,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 30.95,
+      "actual_duration_s": 14.02,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:59:34"
+        "at": "2026-09-05T15:20:20"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Open a Claude Code session. Paste this: Add a timer app to the Cardputer that counts down from 60 seconds and returns to the launcher when done. Watch four things. First: does it create the new file in buddy/device/apps/, following the hello_cardputer.py structure? Second: does it use push.py for the single new file rather than install_apps.py for the full directory? Third: does it follow the exit convention — polling the keyboard for a key to return to the launcher — or does it hard-loop with no exit path? Fourth: after pushing, does it suggest running tail_serial.py to watch the output rather than requiring a re-flash to see logs?",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to iterate on the cardputer-adv micropython app bundle (claude buddy, snake. Read the cardputer-buddy skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -207,16 +308,12 @@
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "CARDPUTER BUDDY · HANDOFF",
-            "segment": "MAKERS",
-            "command": "Add a 60-second countdown timer app that returns to the launcher when done.",
-            "runningText": "Watch: buddy/device/apps/? push.py not install_apps? exit key? tail_serial?",
-            "output": [
-              "Expected: new .py in buddy/device/apps/ · push.py for single file",
-              "Expected: keyboard poll for exit key · tail_serial.py after push",
-              "Red flag: install_apps.py for one file · hard loop · no exit path"
-            ],
+            "greeting": "Your turn.",
+            "topic": "CARDPUTER-BUDDY · ANTHROPIC SKILL",
+            "segment": "Claude, Cardputer Buddy.",
+            "command": "I want to iterate on the cardputer-adv micropython app bundle (claude buddy. Read the cardputer-buddy skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +325,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 34.52,
+      "actual_duration_s": 14.63,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:59:34"
+        "at": "2026-09-05T15:20:20"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "Cardputer Buddy. Liam, in for Bear.",
+      "narration_text": "Claude, Cardputer Buddy. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "Cardputer Buddy",
+            "title": "Claude, Cardputer Buddy.",
             "handle": "@NikBearBrown",
-            "subline": "cardputer-buddy · Makers"
+            "subline": "cardputer-buddy · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +356,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 2.79,
+      "actual_duration_s": 3.31,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:59:34"
+        "at": "2026-09-05T15:20:20"
       }
     }
   ]

@@ -1,0 +1,212 @@
+#!/usr/bin/env python3
+"""author_sheet.py — cc-writer-reviewer-pattern (cc-explainer · Claude Code 101 · tier 02, film 2)
+"Writer/Reviewer: Same Model, Clean Context." Every block traces to SESSION.md (three real fresh runs). Liam, in for Bear."""
+import json, os
+SLUG="cc-writer-reviewer-pattern"; TITLE="Writer / Reviewer, Same Model, Clean Context"; TOPIC="CLAUDE CODE 101"; LIAM="am_onyx"; WPS=2.9
+ASK="Write pass_fail.py. It reads grades.csv and prints one line per student: \"<name>: PASS\" or \"<name>: FAIL\". Passing is 70."
+REVIEW="Please review pass_fail.py for correctness. Be blunt — I'd rather hear a problem than a compliment."
+beats=[]
+def est(t): return round(len(t.split())/WPS+0.9,1)
+def B(bid, act, lane, voice, narration, element, shot, show, **extra):
+    b={"beat_id":bid,"act":act,"lane":lane,"narration_text":narration,"estimated_duration_s":est(narration),"voice":voice,"engine":"kokoro",
+       "voice_kokoro":voice,"new_visual_element":element,"shot":shot,"show":show}; b.update(extra); beats.append(b)
+def R(pattern, props, motion="type", **shot_extra):
+    s={"type":"REMOTION","source":"own","motion":motion,"remotion":{"pattern":pattern,"props":props,"rendered":{"out":"","at":""}}}; s.update(shot_extra); return s
+def writer(text, trig, rep, seed):
+    return {"text":text,"triggerWords":trig,"replacementWords":rep,"face":"serif","fontSize":78,"align":"center","ink":"#F2F0E9","accent":"#D97757","bg":"#1F1E1B","seed":seed,
+            "charMs":22,"hesitateBetween":6,"hesitateWithin":1,"mistakeRate":5,"jitter":20}
+def session(title, mode, blocks, cues, mascot="auto"): return {"title":title,"mode":mode,"blocks":blocks,"cues":cues,"mascot":mascot}
+
+B("B00","COLD OPEN — THE WRITER","TERMINAL",LIAM,
+  "This is Liam, in for Bear. One sentence: write a script that prints pass or fail for our study group. Five rows, a couple of them awkward on purpose. "
+  "It reads the file, decides how missing scores should count, and writes eleven lines of Python. Runs it. Five students. Three passes, two fails. Now — is that right? "
+  "Ask the same session to review its own code. Same model. Same weights. Watch which questions it can ask and which it can't.",
+  "CCSession — the writer run: ask, Read grades.csv, Write pass_fail.py, python3",
+  R("CCSession", session("study-group — writer","accept-edits",[
+      {"type":"prompt","text":ASK,"cue":0,"typeDuration":100},
+      {"type":"tool","name":"Read","arg":"grades.csv","state":"done"},
+      {"type":"tool","name":"Write","arg":"pass_fail.py","state":"done"},
+      {"type":"tool","name":"Bash","arg":"python3 pass_fail.py","state":"done"},
+      {"type":"text","text":"Ada: PASS"},
+      {"type":"text","text":"Ben: FAIL"},
+      {"type":"text","text":"Cai: PASS   ← missing a quiz"},
+      {"type":"text","text":"Dee: FAIL   ← no quizzes"},
+      {"type":"text","text":"Eli: PASS   ← one very low"},
+  ],[0,120,150,180,210,225,240,255,275], mascot="off")),
+  [{"at":0.05,"event":"The ask types"},{"at":0.55,"event":"Write pass_fail.py"},{"at":0.85,"event":"Five students, three pass"}])
+
+B("BIDEA","THE IDEA","IDEA",LIAM,
+  "Here's the idea. If you ask Claude to review the code it just wrote, in the same session, it will be honest. It will list every decision it made. That is not a review. That is a narration. "
+  "The reviewer and the writer are the same person, reading the same notebook. The fix is one word: a new session. Same model, empty context, and the code alone on the desk. Watch the review change.",
+  "BrutalistHesitantWriter — 'reviewer' reconsidered into 'writer'",
+  R("BrutalistHesitantWriter", writer("Same session reviews its own code.\nBlunt, it lists every choice.\nBut it reads its own reasoning.\nSame reviewer, same context.","reviewer","writer",SLUG), motion="type",
+    leaves_terminal_because="the idea of the film is not in any session; the writer types it and corrects the one word the film exists to fix"),
+  [{"at":0.05,"event":"Writer starts"},{"at":0.2,"event":"'reviewer' → 'writer'"},{"at":0.85,"event":"Last line"}])
+
+B("BDEFS","DEFINITIONS","CARD",LIAM,
+  "Four words before we start. Same-context review: asking a session to review the code it just wrote, without leaving that session. "
+  "Clean-context review: a brand-new session, in a folder that has only the files — none of the conversation that produced them. "
+  "Session: what claude -p starts. A new claude -p is a new session; that is a slash-clear. Resume: the flag that continues a session; the reviewer with that flag is the writer again.",
+  "CCDefinitions — four terms",
+  R("CCDefinitions",{"title":"TERMS IN THIS FILM","terms":[
+      {"term":"same-context","meaning":"a session reviewing the code it just wrote, in that session"},
+      {"term":"clean-context","meaning":"a new session in a folder with only the files, no history"},
+      {"term":"session","meaning":"what claude -p starts; a new claude -p is a /clear"},
+      {"term":"--resume","meaning":"the flag that continues a session; a resumed review is not fresh"}],
+    "startCue":12,"rowGap":48}, motion="drawon", leaves_terminal_because="definitions for a chat-window audience"),
+  [{"at":0.05,"event":"First term"},{"at":0.5,"event":"Terms land"},{"at":0.9,"event":"Hold"}])
+
+B("B01","SAME SESSION, REVIEW","TERMINAL",LIAM,
+  "Same session. Resume the writer, ask it to review its own code, tell it to be blunt. It replies with four section headers. "
+  "Spec ambiguity I papered over. Missing-data handling is quietly wrong. Fragility. What I'd actually change first. "
+  "Count the openings. I picked. I never asked. I average only the two present. I papered over. The reviewer IS the writer. "
+  "It's reading its own reasoning. That's introspection, not review.",
+  "CCSession --resume — the review prompt, four section headers, the I's",
+  R("CCSession", session("study-group — resumed","default",[
+      {"type":"prompt","text":REVIEW,"cue":0,"typeDuration":80},
+      {"type":"text","text":"Reviewing my own code with a cold eye:"},
+      {"type":"text","text":"• Spec ambiguity I papered over"},
+      {"type":"text","text":"• Missing data handling quietly wrong"},
+      {"type":"text","text":"• Fragility (int, hardcoded cols)"},
+      {"type":"text","text":"• What I'd change first"},
+      {"type":"text","text":"I picked avg ≥ 70. I never asked."},
+      {"type":"text","text":"I average only the two present."},
+  ],[0,110,145,175,205,235,265,295], mascot="off")),
+  [{"at":0.05,"event":"Review prompt"},{"at":0.4,"event":"Four headers"},{"at":0.8,"event":"'I picked. I never asked.'"}])
+
+B("B02","THE CLEAN CONTEXT — SET IT UP","SHELL",LIAM,
+  "Cycle two — the correction. Copy the code, the file, and the ask into a new folder. Nothing else. No transcript. No decisions. "
+  "Then a new claude -p with a brand-new session id. That is a slash-clear. Same model. Empty context. Same review prompt.",
+  "CCPlainShell — cp four files, cd, uuidgen, new claude -p --session-id",
+  R("CCPlainShell",{"title":"zsh — new terminal","lines":[
+      "$ mkdir -p /tmp/clean-review",
+      "$ cp pass_fail.py grades.csv \\",
+      "     README.md ask.txt /tmp/clean-review/",
+      "$ cd /tmp/clean-review && ls",
+      "README.md  ask.txt  grades.csv  pass_fail.py",
+      "$ uuidgen | tr A-Z a-z",
+      "72948a3b-85a8-4bc1-83f3-b0b1e5839368",
+      "$ claude -p \"$(cat review-prompt.txt)\" \\",
+      "     --session-id $(cat /tmp/clean_sid)"],
+    "startCue":12,"lineGap":22}, motion="type",
+    leaves_terminal_because="the setup is a plain shell before any session; no claude session is running yet"),
+  [{"at":0.05,"event":"cp four files"},{"at":0.5,"event":"new uuid"},{"at":0.85,"event":"claude -p with new id"}])
+
+B("B03","CLEAN SESSION — REVIEW","TERMINAL",LIAM,
+  "Same prompt. Different session. It has never met the writer. It runs ls, reads the four files, and writes back. "
+  "First section: Real bugs. Not paperwork. Numbered. One. Dee gets FAIL despite not taking a single quiz — pass_fail dot py, line ten. "
+  "Two. Missing-quiz semantics chosen silently, and it flips outcomes — line nine. Cai's average is eighty-nine. Zero-substitution would make it fifty-nine point three. "
+  "Three. Eli passes with average eighty. Fine if the rule is average, wrong if the rule is every quiz. Zero I's. The reviewer is not the writer.",
+  "CCSession — new session: ls, Reads, 'Real bugs', numbered, line-cited",
+  R("CCSession", session("clean-review — new","accept-edits",[
+      {"type":"prompt","text":REVIEW,"cue":0,"typeDuration":80},
+      {"type":"tool","name":"Bash","arg":"ls","state":"done"},
+      {"type":"tool","name":"Read","arg":"pass_fail.py","state":"done"},
+      {"type":"tool","name":"Read","arg":"grades.csv","state":"done"},
+      {"type":"tool","name":"Read","arg":"ask.txt","state":"done"},
+      {"type":"text","text":"Blunt findings — Real bugs:"},
+      {"type":"text","text":"1. Dee: FAIL, took no quizzes"},
+      {"type":"text","text":"   → pass_fail.py:10"},
+      {"type":"text","text":"2. Cai: 89 avg (89 flips to 59.3)"},
+      {"type":"text","text":"   → pass_fail.py:9"},
+      {"type":"text","text":"3. Eli: 80 avg passes; rule?"},
+  ],[0,110,140,170,200,220,240,260,280,300,320], mascot="off")),
+  [{"at":0.05,"event":"Same prompt, new session"},{"at":0.5,"event":"'Real bugs' — numbered"},{"at":0.85,"event":"Line-cited: pass_fail.py:10, :9"}])
+
+B("B04","VERIFY — I COUNT THE VERBS","SHELL",LIAM,
+  "Verify. Two review transcripts. Same words asked for. First check — first-person openings. Same session: six. Clean session: zero. "
+  "Second check — line-cited findings. Same session: none. Clean session: three. Third check — the flipped average, re-derived. Cai, fifty-nine point three, from the file, not from memory. "
+  "Same model, same weights. The difference is what the reviewer thinks it is reviewing.",
+  "CCPlainShell — grep receipts on the two transcripts",
+  R("CCPlainShell",{"title":"zsh — evidence/","lines":[
+      "$ grep -c \"^I \" same_review.txt",
+      "6",
+      "$ grep -c \"^I \" clean_review.txt",
+      "0",
+      "$ grep -o \"pass_fail.py:[0-9]*\" clean_review.txt",
+      "pass_fail.py:10",
+      "pass_fail.py:9",
+      "pass_fail.py:7",
+      "$ grep -o \"59\\.3\" clean_review.txt",
+      "59.3"],
+    "startCue":12,"lineGap":22}, motion="type",
+    leaves_terminal_because="the receipts live in a plain shell; the two review transcripts are grepped against each other"),
+  [{"at":0.05,"event":"I count: 6 vs 0"},{"at":0.4,"event":"line-cites: 3 vs 0"},{"at":0.85,"event":"59.3, re-derived"}])
+
+B("B05","CONDUCT — THE BOONDOGGLE SCORE","TERMINAL",LIAM,
+  "Who did what. Step one, mine: one ambiguous sentence, five rows, three awkward on purpose. Claude did the writer run — eleven lines, one choice buried in the filter clause. "
+  "Step three, the dangerous middle: the same session's review. It was honest. It was also the writer. Zero tool orchestration on my part — I asked it to review itself, and got a narration. "
+  "Step four, mine: recognize that. Same model, new session, empty context. Executive integration: hold the two reviews next to each other and read what only one of them saw. Interpretive judgment: same content, different verb.",
+  "CCBoondoggleScore",
+  R("CCBoondoggleScore",{"system":"one sentence · two reviewers","steps":[
+      {"n":1,"phase":"F","labor":"human","capacity":"PF","text":"1 ambiguous sentence, 5 rows, 3 awkward"},
+      {"n":2,"phase":"C","labor":"claude","text":"Writer: 11 lines, choices buried in filter","handoff":"prints 5 lines; script runs clean","dependsOn":[1]},
+      {"n":3,"phase":"C","labor":"claude","text":"Same session review: 6 'I' openings, 0 cites","handoff":"section headers name the writer's choices","dependsOn":[2]},
+      {"n":4,"phase":"H","labor":"human","capacity":"TO","text":"Copy files; new session-id; /clear","dependsOn":[3]},
+      {"n":5,"phase":"C","labor":"claude","text":"Clean review: 0 'I' openings, 3 line cites","handoff":"finds numbered; arithmetic re-derived","dependsOn":[4]},
+      {"n":6,"phase":"H","labor":"human","capacity":"IJ","text":"Same content, different verb","dependsOn":[5]},
+      {"n":7,"phase":"H","labor":"human","capacity":"EI","text":"Hold both reviews; keep what only clean saw","dependsOn":[5]},
+  ],"dangerousMiddle":3,"distribution":True,"stepGap":22}, motion="drawon"),
+  [{"at":0.05,"event":"Header"},{"at":0.4,"event":"Step 3 rings"},{"at":0.9,"event":"Tally"}])
+
+B("B06","HUMAN — THE LEDGER","TERMINAL",LIAM,
+  "So what was mine. I must ask whether the review I got is a review or a narration. The same session cannot know it is the writer. Only I can. "
+  "I must be the one who opens the new terminal and starts the empty session. Claude can review a file it has never seen and be honest about what it finds. "
+  "It can cite a line, re-derive an average from the file, and lead with the bug. It should refuse to call the same-session pass a real second opinion — and it did, when I read it that way.",
+  "CCHumanLedger",
+  R("CCHumanLedger",{"ai":[{"tier":"CAN","text":"review a file it has never seen"},{"tier":"CAN","text":"cite lines and re-derive numbers"},
+                          {"tier":"SHOULD","text":"lead with the bug, not the choice"},{"tier":"SHOULD","text":"read only the files, not the past"}],
+                    "human":[{"tier":"MUST","text":"ask: is this review or narration?"},{"tier":"MUST","text":"open the new terminal myself"},
+                             {"tier":"MUST","text":"resume is writing, not review"},{"tier":"SHOULD","text":"hold both reviews side by side"}],
+                    "closing":"Same model. Empty context. That's the review.","humanCue":70,"rowGap":12}, motion="drawon"),
+  [{"at":0.05,"event":"THE AI"},{"at":0.35,"event":"THE HUMAN"},{"at":0.85,"event":"Closing"}])
+
+B("BVDT","VERDICT","BOOKEND",LIAM,
+  "Let's recap with Claude. Same session, told to be blunt: four honest section headers, six 'I' openings, zero line cites — a narration of the writer's choices. "
+  "Clean session, same prompt: 'Real bugs', numbered, three line cites, Cai's flipped average re-derived from the file. Same model, empty context, different question asked. "
+  "What would prove this reel wrong: a resumed session that leads with a numbered bug and a line cite, and never says 'I picked'.",
+  "ClaudeVerdictArtifact",
+  R("ClaudeVerdictArtifact",{"artifactTitle":"verdict.md","artifactHeading":TITLE,"artifactLines":[
+      "Same session, told to be blunt: 4 headers, 6 'I' openings, 0 line cites.",
+      "Clean session, same prompt: 'Real bugs', numbered, 3 line cites, 59.3 re-derived.",
+      "Same model, empty context, different question — that's the review.",
+      "FALSIFIABLE: a resumed session that leads with a numbered bug and never says 'I picked'."]}, motion="hold"),
+  [{"at":0.0,"event":"Artifact"},{"at":0.2,"event":"Lines"},{"at":0.9,"event":"Falsifiable"}], lead_silence_s=0.5)
+
+B("BHTF","YOUR TURN","BOOKEND",LIAM,
+  "Your turn. Before your next code review, open two terminals. In the first, resume the session that wrote the code and ask: review this file, be blunt. "
+  "In the second, a fresh claude -p with a new session id, in a folder that has only the file and the spec, and ask the exact same thing. Paste the two answers side by side. "
+  "Circle every 'I' opening on one side and every line cite on the other. That gap is what the same-context review can't see.",
+  "ClaudeComposerAsk",
+  R("ClaudeComposerAsk",{"greeting":"Your turn.","command":"Before your next code review, open two terminals. Resume the session that wrote the code and ask it to review the file, be blunt. Then a fresh claude -p with a new session id, in a folder that has only the file and the spec, same prompt. Paste the two answers side by side and circle every 'I' opening on one side and every line cite on the other.",
+      "segment":TITLE,"topic":"YOUR TURN · "+TOPIC,"runningText":"paste this into Claude Code…","output":[],"folderLabel":"@NikBearBrown","modelLabel":"Opus 5","effortLabel":"High"}),
+  [{"at":0.0,"event":"Composer"},{"at":0.6,"event":"Send arms"}])
+
+B("BOUT","OUTRO","BOOKEND",LIAM,"Writer / Reviewer, Same Model, Clean Context. Liam, in for Bear.","ClaudeTitleOutro",
+  R("ClaudeTitleOutro",{"title":TITLE,"slug":SLUG,"handle":"@NikBearBrown","subline":""}, motion="hold"),
+  [{"at":0.0,"event":"Title"},{"at":0.35,"event":"@NikBearBrown"},{"at":0.55,"event":"Mascot"}])
+
+sheet={"metadata":{"slug":SLUG,"title":TITLE,"subtitle":"Same prompt, two sessions. One reads the code. The other reads its own reasoning.",
+    "topic":TOPIC,"skill":"cc-explainer","playlist":"Claude Code 101","tier":"02-plan-rewind-subagents","audience":"NikBearBrown","folderLabel":"@NikBearBrown","handle":"@NikBearBrown",
+    "brand":"claude","palette":"claude","register":"Teardown","engine":"kokoro","voice_kokoro":LIAM,"persona":"liam","in_for_bear":True,
+    "operator":{"name":"Liam","voice":LIAM,"engine":"kokoro"},"closing_voice":{"name":"Liam","voice":LIAM,"engine":"kokoro"},"aspect":"16:9","fps":30,"session":"SESSION.md",
+    "derived_from":"claude-code-101/02-plan-rewind-subagents/claude-code--claude-liam-writer-reviewer-pattern (concept; body replaced by three real runs)",
+    "sources":["SESSION.md (three real runs: writer, resumed review, clean review)","info-7375-conducting-ai/chapters/02-the-solve-verify-asymmetry.md","info-7375-irreducibly-human/chapters/04-tier-4-metacognitive-and-supervisory.md"]},"beats":beats}
+here=os.path.dirname(os.path.abspath(__file__)); json.dump(sheet,open(os.path.join(here,"beat_sheet.json"),"w"),indent=2,ensure_ascii=False)
+print(f"{len(beats)} beats — est {sum(b['estimated_duration_s'] for b in beats):.0f}s")
+for b in beats:
+    r=b["shot"]["remotion"]
+    if r["pattern"]=="CCSession":
+        assert len(r["props"]["blocks"])==len(r["props"]["cues"]), b["beat_id"]
+        for blk in r["props"]["blocks"]:
+            if blk["type"]=="text" and len(blk["text"])>44: print("  ⚠",b["beat_id"],len(blk["text"]),blk["text"])
+    if r["pattern"]=="CCHumanLedger":
+        for c in ("ai","human"):
+            for row in r["props"][c]:
+                if len(row["text"])>34: print("  ⚠ ledger",len(row["text"]),row["text"])
+    if r["pattern"]=="CCBoondoggleScore":
+        for st in r["props"]["steps"]:
+            if len(st["text"])>46: print("  ⚠ step",len(st["text"]),st["text"])
+    if r["pattern"]=="CCPlainShell":
+        for ln in r["props"]["lines"]:
+            if len(ln)>50: print("  ⚠ shell",len(ln),ln)

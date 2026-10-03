@@ -1,143 +1,86 @@
 from manim import *
 import numpy as np
-import math
 
 BG    = "#FFFFFF"
 INK   = "#2A1A0E"
 TERRA = "#C8102E"
-FONT  = "EB Garamond"
+FONT  = "Helvetica"
 config.background_color = BG
 
 
-class Scene_B01_NbbWriterReviewer(Scene):
-    """Beat B01 — SHOW: concept illustration card. Narration: Same-context review is the most common subagent failure to notice. The reviewer """
-    def construct(self):
-        self.camera.background_color = "#FFFFFF"
-        font = "EB Garamond"
-
-        if "SAME-CONTEXT-PROBLEM":
-            act = Text("SAME-CONTEXT-PROBLEM", font_size=24, color="#2A1A0E", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
-
-        # Spark line — terracotta accent
-        spark = Line(LEFT * 0.6, RIGHT * 0.6, color="#C8102E", stroke_width=3)
-        spark.shift(UP * 1.2)
-        self.play(Create(spark), run_time=0.2)
-
-        # Primary concept text
-        if "Same-context review is the most common subagent failure to n":
-            line1 = Text("Same-context review is the most common subagent failure to n", font_size=36, color="#2A1A0E", font=font)
-            line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
-            line1.shift(UP * 0.3)
-            self.play(Write(line1), run_time=0.5)
-
-        if "The reviewer is the writer":
-            line2 = Text("The reviewer is the writer", font_size=28, color="#2A1A0E", font=font)
-            line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
-            line2.shift(DOWN * 0.6)
-            self.play(Write(line2), run_time=0.4)
-
-        if "It re-reads the code in the context of every decision that p":
-            line3 = Text("It re-reads the code in the context of every decision that p", font_size=22, color="#2A1A0E", font=font)
-            line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
-            line3.shift(DOWN * 1.4)
-            self.play(FadeIn(line3), run_time=0.3)
-
-        # Terracotta underline on key term
-        if "Same-context review is the most common subagent failure to n":
-            uline = Line(LEFT * min(4.0, len("Same-context review is the most common subagent failure to n") * 0.18), RIGHT * min(4.0, len("Same-context review is the most common subagent failure to n") * 0.18),
-                         color="#C8102E", stroke_width=2)
-            uline.shift(UP * 0.1)
-            self.play(Create(uline), run_time=0.3)
-
-        self.wait(max(0.01, 10.00))
-
-
 class Scene_B02_NbbWriterReviewer(Scene):
-    """Beat B02 — SHOW: concept illustration card. Narration: A subagent is a Claude session spawned with its own context window, its own syst"""
+    """B02 — SUBAGENT-MECHANICS: main session -> isolated subagent -> summary."""
     def construct(self):
-        self.camera.background_color = "#FFFFFF"
-        font = "EB Garamond"
+        self.camera.background_color = BG
 
-        if "SUBAGENT-MECHANICS":
-            act = Text("SUBAGENT-MECHANICS", font_size=24, color="#2A1A0E", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
+        act = Text("SUBAGENT-MECHANICS", font_size=36, color=INK, font=FONT)
+        act.to_edge(UP, buff=0.5)
+        self.play(FadeIn(act), run_time=0.3)
 
-        # Spark line — terracotta accent
-        spark = Line(LEFT * 0.6, RIGHT * 0.6, color="#C8102E", stroke_width=3)
-        spark.shift(UP * 1.2)
-        self.play(Create(spark), run_time=0.2)
+        labels = ["Main session", "Subagent", "Summary"]
+        n = len(labels)
+        spacing = 3.9
+        start_x = -(n - 1) * spacing / 2
 
-        # Primary concept text
-        if "A subagent is a Claude session spawned with its own context ":
-            line1 = Text("A subagent is a Claude session spawned with its own context ", font_size=36, color="#2A1A0E", font=font)
-            line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
-            line1.shift(UP * 0.3)
-            self.play(Write(line1), run_time=0.5)
+        boxes = []
+        for i, lbl in enumerate(labels):
+            box = Rectangle(width=3.6, height=2.0,
+                            color=INK, stroke_width=5,
+                            fill_color=BG, fill_opacity=1)
+            box.move_to(np.array([start_x + i * spacing, 0.4, 0]))
+            txt = Text(lbl, font_size=40, color=INK, font=FONT)
+            txt.move_to(box)
+            grp = VGroup(box, txt)
+            boxes.append(grp)
 
-        if "It reads what it needs, returns a summary to the main sessio":
-            line2 = Text("It reads what it needs, returns a summary to the main sessio", font_size=28, color="#2A1A0E", font=font)
-            line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
-            line2.shift(DOWN * 0.6)
-            self.play(Write(line2), run_time=0.4)
+        for i, grp in enumerate(boxes):
+            self.play(FadeIn(grp), run_time=0.5)
+            if i < len(boxes) - 1:
+                arr = Arrow(boxes[i].get_right(), boxes[i + 1].get_left(),
+                            buff=0.2, color=TERRA, stroke_width=10,
+                            max_tip_length_to_length_ratio=0.35,
+                            max_stroke_width_to_length_ratio=8)
+                self.play(GrowArrow(arr), run_time=0.3)
 
-        if "The main session never sees the subagent\'s intermediate work":
-            line3 = Text("The main session never sees the subagent\'s intermediate work", font_size=22, color="#2A1A0E", font=font)
-            line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
-            line3.shift(DOWN * 1.4)
-            self.play(FadeIn(line3), run_time=0.3)
+        caption = Text("OWN CONTEXT — MAIN SESSION STAYS CLEAN",
+                       font_size=32, color=INK, font=FONT)
+        caption.to_edge(DOWN, buff=1.0)
+        self.play(FadeIn(caption), run_time=0.4)
 
-        # Terracotta underline on key term
-        if "A subagent is a Claude session spawned with its own context ":
-            uline = Line(LEFT * min(4.0, len("A subagent is a Claude session spawned with its own context ") * 0.18), RIGHT * min(4.0, len("A subagent is a Claude session spawned with its own context ") * 0.18),
-                         color="#C8102E", stroke_width=2)
-            uline.shift(UP * 0.1)
-            self.play(Create(uline), run_time=0.3)
-
-        self.wait(max(0.01, 10.00))
+        self.wait(max(0.01, 15.0))
 
 
 class Scene_B03_NbbWriterReviewer(Scene):
-    """Beat B03 — SHOW: cycle / feedback loop. Narration: The reviewer subagent catches what same-context review misses: assumptions the w"""
+    """B03 — WHAT-IT-CATCHES: three categories the cold reviewer surfaces."""
     def construct(self):
-        self.camera.background_color = "#FFFFFF"
-        font = "EB Garamond"
+        self.camera.background_color = BG
 
-        if "WHAT-IT-CATCHES":
-            act = Text("WHAT-IT-CATCHES", font_size=24, color="#2A1A0E", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
+        act = Text("WHAT-IT-CATCHES", font_size=36, color=INK, font=FONT)
+        act.to_edge(UP, buff=0.5)
+        self.play(FadeIn(act), run_time=0.3)
 
-        import numpy as np
-        stages = [t for t in ["The reviewer subagent catches what same-context review misse", "It also catches the implicit design decisions - the rubric p", "That assumption is invisible in the writer session"] if t]
-        if not stages:
-            stages = ["Input", "Process", "Output"]
-        n = len(stages)
-        radius = 2.5
-        colors = ["#2A1A0E", "#C8102E"] + ["#2A1A0E"] * 10
+        labels = ["Assumptions", "Edge cases", "Off-by-one"]
+        colors = [INK, INK, TERRA]
 
-        nodes = []
-        for i, lbl in enumerate(stages):
-            angle = np.pi / 2 - 2 * np.pi * i / n
-            pos = np.array([radius * np.cos(angle), radius * np.sin(angle), 0])
-            circle = Circle(radius=0.55, color=colors[i % 2], stroke_width=2.5,
-                            fill_color="#FFFFFF", fill_opacity=1)
-            circle.move_to(pos)
-            txt = Text(lbl[:20], font_size=18, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, 0.9 / max(0.1, txt.width)))
-            txt.move_to(circle)
-            grp = VGroup(circle, txt)
-            nodes.append((grp, pos))
-            self.play(FadeIn(grp), run_time=0.4)
+        n = len(labels)
+        spacing = 4.0
+        start_x = -(n - 1) * spacing / 2
 
-        # Draw curved arrows between nodes
-        for i in range(n):
-            start_pos = nodes[i][1]
-            end_pos = nodes[(i + 1) % n][1]
-            arr = CurvedArrow(start_pos, end_pos, color="#C8102E", stroke_width=2.5,
-                              angle=-np.pi / 6)
-            self.play(Create(arr), run_time=0.4)
+        groups = []
+        for i, (lbl, col) in enumerate(zip(labels, colors)):
+            box = Rectangle(width=3.7, height=2.0,
+                            color=col, stroke_width=5,
+                            fill_color=BG, fill_opacity=1)
+            box.move_to(np.array([start_x + i * spacing, 0.4, 0]))
+            txt = Text(lbl, font_size=36, color=INK, font=FONT)
+            txt.move_to(box)
+            grp = VGroup(box, txt)
+            groups.append(grp)
+            self.play(FadeIn(grp), run_time=0.45)
 
-        self.wait(max(0.01, 11.00))
+        caption = Text("INVISIBLE TO THE WRITER — VISIBLE ON A COLD READ",
+                       font_size=32, color=INK, font=FONT)
+        caption.to_edge(DOWN, buff=1.0)
+        self.play(FadeIn(caption), run_time=0.4)
+
+        self.wait(max(0.01, 18.0))

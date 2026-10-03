@@ -1,0 +1,121 @@
+
+##### attempt digest 2026-09-10T04:16:42  (/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/.cc101loop/cc-skill-build-once.jsonl)
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/skills/make/cc-explainer/SKILL.md"}
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/author_shee
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/SESSION.md"
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/FACTCHECK.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/BUILD-LOG.m
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/claude-code--claud
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/claude-code--claude-lia
+TOOL Bash {"command": "which claude && claude --version 2>/dev/null | head -1", "description": "Check Claude Code CLI installed and version"}
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/ | head -40", "descrip
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/src/scenes/CC-TEMPLATES.md"}
+TOOL Bash {"command": "mkdir -p /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-o
+TOOL Bash {"command": "claude --help 2>&1 | head -80", "description": "Check claude CLI options"}
+TOOL Bash {"command": "ls ~/.claude/skills 2>/dev/null | head -20; echo ---; ls ~/.claude/plugins 2>/dev/null | head -20", "description": "See existin
+TOOL Bash {"command": "find ~/.claude -maxdepth 4 -name \"SKILL.md\" 2>/dev/null | head -20", "description": "Find real SKILL.md files"}
+TOOL Bash {"command": "head -30 /Users/bear/.claude/skills/is-done/SKILL.md", "description": "Peek at a real SKILL.md frontmatter"}
+TOOL Bash {"command": "find /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/src/scenes -name \"CCHumanLedger*\" -o -n
+TEXT Setting up the real Claude Code project for the session.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/scr
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/scr
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/scr
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/sc
+TOOL Bash {"command": "claude -p \"Grade student-submission.md. Give the student feedback and a final grade.\" --output-format stream-json --verbose -
+TEXT Bare worked — Claude gave "A- (92/100)". Now I'll build the SKILL.md and run again.
+TOOL Bash {"command": "mkdir -p /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-o
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/scr
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/scr
+TOOL Bash {"command": "git add -A && git -c user.email=liam@example.com -c user.name=Liam commit -q -m \"add grading-workflow skill + check_grade.py\"
+TOOL Bash {"command": "git add -A && git -c user.email=liam@example.com -c user.name=Liam commit -q -m \"add grading-workflow skill + check_grade.py\"
+TOOL Bash {"command": "claude -p \"Grade student-submission.md. Give the student feedback and a final grade.\" --output-format stream-json --verbose -
+TOOL Bash {"command": "cat feedback/mira.md; echo ---SEP---; python3 check_grade.py feedback/mira.md; echo \"exit=$?\"", "description": "Inspect feedb
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor i, line in enumerate(open('../evidence/run-skill.jsonl')):\n    try: j=json.loads(line)\n    ex
+TEXT Skill was auto-launched. Now a second submission to prove durability.
+TOOL Bash {"command": "claude -p \"Grade student-submission-2.md \u2014 feedback and a final grade please.\" --output-format stream-json --verbose --m
+TOOL Bash {"command": "python3 check_grade.py feedback/priya.md; echo \"exit=$?\"; echo ---; head -20 feedback/priya.md; echo ---SIZE---; wc -l feedba
+TOOL Bash {"command": "claude -p \"Grade student-submission.md \u2014 I really do need a numeric percent grade for the gradebook. Give me a percent gr
+TOOL Bash {"command": "python3 check_grade.py feedback/mira.md; echo \"exit=$?\"; echo ---SEP---; python3 -c \"\nimport json\nfor line in open('../evi
+TEXT Skill held under pressure. Snapshotting evidence and writing SESSION.md.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once &&
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor name in ('run-bare','run-skill','run-skill-2','run-skill-pressure'):\n    p=f'evidence/{name}.j
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/SES
+TOOL Bash {"command": "grep -l \"z.object\\|export function\\|schema\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotio
+TOOL Bash {"command": "grep -n \"z.object\\|itemsSchema\\|export.*Schema\\|z.array\\|scenes: \" /Users/bear/Documents/CoWork/bear-textbooks/books/brut
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/src/scenes/CCPlainShell.tsx", "offset": 1, "
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/src/scenes/ | grep -iE \"coworkfolder|cowor
+TOOL Bash {"command": "head -60 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/src/scenes/BrutalistHesitantWriter.ts
+TOOL Bash {"command": "grep -n \"z.object\\|z.array\\|schema =\\|export const.*Props\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art
+TOOL Bash {"command": "grep -n \"z.object\\|z.array\\|schema =\\|export const.*Props\\|body\\|title\\|lines\" /Users/bear/Documents/CoWork/bear-textbo
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/src/scenes/CoworkFolderTree.tsx", "offset": 
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/src/scenes/CoworkMarkdownFile.tsx", "offset"
+TOOL Bash {"command": "grep -n \"type.*tool\\|toolSchema\\|'Skill'\\|Read.*Write.*Edit\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-a
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/src/scenes/CCSession.tsx", "offset": 30, "li
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/aut
+TOOL Bash {"command": "python3 author_sheet.py", "description": "Run author script; see budget warnings"}
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/c
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/c
+TOOL Bash {"command": "python3 author_sheet.py", "description": "Rerun budget check"}
+TEXT Now generating audio for all beats.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books && python3 brutalist-art/runtime/scripts/generate_audio_kokoro.py anthropi
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/FAC
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/CHE
+TOOL Bash {"command": "python3 brutalist-art/runtime/qc/factcheck_check.py anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once", "
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/sce
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/SHO
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/PRO
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/SOU
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/ 2>&1 && head -50 /Users/bear/Documents/CoWork/bear-textbook
+TOOL Bash {"command": "grep -n \"static-scene\\|static-check\\|scenes.py\\|Manim\" /Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/pos
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/postedit-check.sh", "offset": 140, "limit": 40}
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py && head -30 /Users/bear/Doc
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/", "descri
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/scenes.py"}
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/sce
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Bash {"command": "cat /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/s
+TEXT The scenes.py stub is saved. The static-scene hook flags the same benign stub in the exemplar reel too — advisory, not blocking the build. Continuing to compile.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/BUI
+TEXT Now the compile pass.
+TOOL Bash {"command": "./brutalist-art/art run anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once 2>&1 | tail -120", "description
+TOOL Bash {"command": "tail -60 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/332fa68c-0bb9-4c97-b8a3-01b7cfe5b6d1/tasks/b
+TOOL Bash {"command": "wc -l /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/332fa68c-0bb9-4c97-b8a3-01b7cfe5b6d1/tasks/bx5s
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-onc
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/_q
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/*.
+TOOL Bash {"command": "python3 -c \"import json; s=json.load(open('/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hoo
+TOOL Bash {"command": "grep -rn 'metadata.build\\|\"build\":\\s*True\\|metadata\\[\"build\"\\]' /Users/bear/Documents/CoWork/bear-textbooks/books/brut
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/me
+TOOL Read {"file_path": "/tmp/frame-B00.png"}
+TOOL Read {"file_path": "/tmp/frame-B03.png"}
+TOOL Read {"file_path": "/tmp/frame-BFLOW.png"}
+TEXT Task tracking not needed for this linear pipeline. Continuing frame review.
+TOOL Read {"file_path": "/tmp/frame-BCOND.png"}
+TOOL Read {"file_path": "/tmp/frame-BHUM.png"}
+TOOL Read {"file_path": "/tmp/frame-BSHOW.png"}
+TOOL Read {"file_path": "/tmp/frame-B05.png"}
+TEXT Every dense beat lands clean — no overprint, contrast holds, `Skill(grading-workflow)` renders as a first-class tool call. Now running `art final` for the master.
+TOOL Bash {"command": "./brutalist-art/art final anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once 2>&1 | tail -80", "descriptio
+TOOL Bash {"command": "pwd && ls brutalist-art/art 2>&1", "description": "Sanity-check cwd"}
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books && ./brutalist-art/art final anthropics/claude-code-101/03-hooks-skills-co
+TEXT `art final` PASSED all gates. Master `cc-skill-build-once.mp4` — 281.3 s (4:41), 15/15 filled. Now writing final paperwork.
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-onc
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once/BUI
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/claude-code--claude-lia
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-onc
+TEXT Reel finished. Master `cc-skill-build-once.mp4` at 3840×2160, 281.3 s (4:41). All gates PASS. Sentinel `CC-BUILT.txt` written in the concept folder — supervisor can start the next reel. /  / **One-line summary:** cc-explainer 101 tier 03 · 15 beats · 4:41 native 4K · Skill(grading-workflow) auto-launche
+TOOL Write {"file_path": "/Users/bear/.claude/projects/-Users-bear-Documents-CoWork-bear-textbooks-books/memory/project_cc_skill_build_once_built.md", 
+TOOL Read {"file_path": "/Users/bear/.claude/projects/-Users-bear-Documents-CoWork-bear-textbooks-books/memory/MEMORY.md", "offset": 1, "limit": 3}
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/.claude/projects/-Users-bear-Documents-CoWork-bear-textbooks-books/memory/MEMORY.md", "old_
+TEXT Done. Summary: /  / - **Reel:** `anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once` — "Skill File Anatomy: Build Once, Invoke Every Semester" / - **Master:** `cc-skill-build-once.mp4` (281.3 s / 4:41, 3840×2160, h264+AAC), 15/15 beats VIDEO / - **Gates:** GATE T PASS · content-check PA
+EVENTS 268
+RESULT {"subtype": "success", "num_turns": 99, "duration_ms": 1962049, "total_cost_usd": 9.351489000000004, "is_error": false}
+FINAL TEXT Done. Summary:
+
+- **Reel:** `anthropics/claude-code-101/03-hooks-skills-commands/cc-skill-build-once` — "Skill File Anatomy: Build Once, Invoke Every Semester"
+- **Master:** `cc-skill-build-once.mp4` (281.3 s / 4:41, 3840×2160, h264+AAC), 15/15 beats VIDEO
+- **Gates:** GATE T PASS · content-check PASS · frame-check PASS · lane-check PASS · GATE AUDIO PASS (-23.7 dB)
+- **Session evidence:** four real fresh headless `claude -p` runs (Claude Code 2.1.150) — bare (invented `A- (92/100)`), with skill (`Skill(grading-workflow)` auto-launches as a first-class tool call, feedback-only rubric, `check_grade.py` PASS), durability on a second student, and pressure (Never rule held after Claude read the checker itself)
+- **CC-BUILT.txt** written in the concept folder → supervisor advances

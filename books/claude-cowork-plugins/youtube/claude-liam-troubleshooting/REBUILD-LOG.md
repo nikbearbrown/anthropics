@@ -103,3 +103,69 @@ No model names, version numbers, prices, or rotted "as of" phrasing found in nar
 - `engine: "kokoro"` ✓  
 - `voice: "am_onyx"` ✓  
 - No dead ElevenLabs fields (no `voice_id`, `voice_env`, ElevenLabs `clock` prose) ✓
+
+---
+
+## Follow-up session 2026-08-30 — placeholder fix + GATE T fixes
+
+### 6. BHTF — placeholder command/output/narration replaced
+
+**Old command** (bracket placeholder, PHASE-1 §5c violation):
+`"Take what you learned from [Claude, Unstuck] and apply it to your own work.
+What's one thing you'll try first?"`
+
+**Old output:** `[]` (empty)
+**Old narration_text:** `""` (empty)
+
+**New command** (authored from the reel's method — the /plugins toggle move):
+`"Open /plugins right now. Note which are active. Pick one you rely on,
+disable it, then re-enable it. If it comes back cleaner, that's the toggle
+move — save it for the next time something acts up."`
+
+**New output:**
+- `"/plugins — see the active list"`
+- `"toggle one off, then on — clears most transient glitches"`
+- `"if the fix stuck, you just learned the durable move"`
+
+**New narration_text:** `"Your turn. Open slash-plugins right now. Note which
+ones are active. Pick one you rely on, disable it, then re-enable it — if it
+comes back cleaner, that's the toggle move. Save it for the next time
+something acts up."`
+
+**Why:** Bracket-template placeholders wear the shape of an exercise without
+naming one — 3,472 sheets carry the same template. BHTF's exercise is a
+distinct DIY complement to H01's paste-into-Claude ask; both draw from the
+reel's own method.
+
+`generate_audio_kokoro.py --only BHTF` → 11.78s @ am_onyx.
+`remotion_scenes.py --only BHTF` → media/BHTF.mp4.
+
+### 7. B02 (Manim) — min-size fix
+
+Scene_B02_ClaudeLiamTroubleshooting: bumped every Text() below the type
+floor at 720p. SURFACE/BEDROCK tags 18→26; three rotating surface labels
+26→30 (also replaced " · " middle-dot separators with " — " em-dashes —
+the mid-dot glyph registers as a sub-floor blob); base_label 28→32; note
+text 22→28 and trimmed to fit.
+
+### 8. B10 (Manim) — kerning fix + box growth
+
+Scene_B10_ClaudeLiamTroubleshooting: bumped num digits 34→44; step labels
+20→32; boxes 2.6×1.6→2.8×1.8; step labels shortened
+("Simpler request"→"Simpler?", "Restart Cowork"→"Restart?") so single-word
+labels don't feed inter-word gaps into the inter-glyph kern check. Note
+text 22→28.
+
+### 9. B08 (Remotion FormACard) — min-size fix
+
+Lines: 3-line `["Type slash, look.", "/ → all commands", "/plugins → active
+list"]` → 2-line `["Type slash, look.", "The single slash lists every
+command."]`. The Unicode arrow "→" was rendering as sub-glyph strokes below
+the physical type floor. Re-rendered.
+
+### Verification (2026-08-30)
+
+- `type_check.py`: **PASS** (was FAIL 3 pixel beats before this session)
+- `compile.py`: frame-check PASS, lane-check PASS, 27/27 filled, no slates
+- GATE AUDIO: PASS (mean_volume −25.3 dB)
+- Master `claude-liam-troubleshooting.mp4`: 306.6s, 4K, aac, newer than sheet.

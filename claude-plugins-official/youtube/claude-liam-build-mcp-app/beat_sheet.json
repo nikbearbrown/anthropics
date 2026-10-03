@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Build MCP App",
+    "title": "Claude, Build Mcp App.",
     "slug": "claude-liam-build-mcp-app",
-    "topic": "BUILD MCP APP · CLAUDE PLUGIN",
+    "topic": "BUILD-MCP-APP · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,68 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Salve, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-plugins-official/plugins/mcp-server-dev/skills/build-mcp-app/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-plugins-official/plugins/mcp-server-dev/skills/build-mcp-app/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "This skill should be used when the user wants to build an \"MCP app\"",
+        "add \"interactive UI\" or \"widgets\" to an MCP server",
+        "\"render components in chat\"",
+        "build \"MCP UI resources\"",
+        "make a tool that shows a \"form\""
+      ],
+      "constraints": [
+        "| visibility: [\"app\"] | tool | Hide a widget-only helper tool (e.g. geometry/image fetcher called via callServerTool) from Claude's tool list. |",
+        "Directory submission requires OAuth or authless (none) — static bearer is private-deploy only and blocks listing — plus tool annotations and 3–5 PNG screenshots; see…",
+        "| User must pick from a list Claude can't rank (files, contacts, records) | Picker / table |",
+        "The URI scheme ui:// is convention. The mime type MUST be RESOURCE_MIME_TYPE (\"text/html;profile=mcp-app\") — this is how the host knows to render it as an interactive…",
+        "The /__EXT_APPS_BUNDLE__/ placeholder gets replaced by the server at startup with the contents of @modelcontextprotocol/ext-apps/app-with-deps — see…",
+        "sendMessage is the typical \"user picked something, tell Claude\" path. updateModelContext is for state that Claude should know about but shouldn't clutter the chat.…",
+        "What widgets cannot do:",
+        "For local-only widget apps (driving a desktop app, reading local files), swap the transport to StdioServerTransport and package via the build-mcpb skill"
+      ],
+      "referenced_files": [
+        "build-mcp-server",
+        "_meta.ui.*",
+        "ui://",
+        "csp.{connectDomains, resourceDomains, baseUriDomains}",
+        "hostContext.safeAreaInsets: {top, right, bottom, left}",
+        "references/directory-checklist.md",
+        "../build-mcp-server/references/elicitation.md",
+        "build-mcpb",
+        "_meta.ui.resourceUri",
+        "RESOURCE_MIME_TYPE"
+      ],
+      "code_signals": [
+        "code block: typescript",
+        "code block: html",
+        "code block: bash",
+        "code block: json",
+        "code block: ts"
+      ],
+      "sections": [
+        "Claude host specifics",
+        "When a widget beats plain text",
+        "Widgets vs Elicitation — route correctly",
+        "Architecture: two deployment shapes",
+        "Remote MCP app (most common)",
+        "MCPB-packaged MCP app (local + UI)",
+        "How widgets attach to tools",
+        "Widget runtime — the App class",
+        "Scaffold: minimal picker widget",
+        "Design notes that save you a rewrite"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T18:28:08",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T15:02:21",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +83,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Salve — this is Liam, in for Bear. Ask Claude to build an MCP app, add interactive UI to an MCP server, make a form or picker that renders in chat, or use the apps SDK — the Build MCP App skill fires. An MCP app is a standard MCP server that also serves UI resources — interactive components rendered inline in the chat surface as iframes. The UI layer is additive: under the hood it's still tools and resources and the same wire protocol. Two things make this work: a two-part registration pattern — tool plus resource — and a mandatory bundle-inlining step that CSP requires. Let me walk you through when to add UI at all, how the two parts connect, and where this skill gets it right and where it leaves traps.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is build-mcp-app. This skill should be used when the user wants to build an \"MCP app\", add \"interactive UI\" or \"widgets\" to an MCP server, \"render components in chat\", build \"MCP UI resources\", make a tool that shows a \"form\", \"picker\", \"dashboard\" or \"confirmation dialog\" inline in the conversation, or mentions \"apps SDK\" in the context of MCP. Use AFTER the build-mcp-server skill has settled the deployment model, or when the user already knows they want UI widgets.. Its concrete surface area includes This skill should be used when the user wants to build an \"MCP app\"; add \"interactive UI\" or \"widgets\" to an MCP server; \"render components in chat\". A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 22,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Salve, Liam",
-            "topic": "BUILD MCP APP · CLAUDE PLUGIN",
-            "segment": "PLUGIN DEV",
-            "command": "Add an interactive contact picker widget to my MCP server.",
+            "greeting": "Hola, Liam",
+            "topic": "BUILD-MCP-APP · ANTHROPIC SKILL",
+            "segment": "Claude, Build Mcp App.",
+            "command": "Run the build-mcp-app skill.",
             "runningText": "reading build-mcp-app SKILL.md…",
             "output": [
-              "MCP app = MCP server + UI resources rendered as iframes",
-              "Two-part registration: tool (declares resourceUri) + resource (serves HTML)",
-              "Bundle inlining mandatory: CSP blocks CDN fetches — use __EXT_APPS_BUNDLE__"
+              "skill: build-mcp-app",
+              "This skill should be used when the user wants to build an \"MCP app\", add…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +113,48 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 40.98,
+      "actual_duration_s": 42.11,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:28:08"
+        "at": "2026-09-05T15:02:21"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — two-part registration + App class",
-      "narration_text": "The two-part registration is the core pattern. Part one: the tool. It declares a UI resource via underscore-meta dot ui dot resourceUri and its handler returns plain data — not the HTML. Part two: the resource. It's registered separately and serves the widget HTML with the exact MIME type text/html;profile=mcp-app. When Claude calls the tool, the host sees the resource URI, fetches that resource, renders it in an iframe, and pipes the tool's return value into the iframe via the ontoolresult event. Inside the iframe, the App class from at-modelcontextprotocol-slash-ext-apps is the bridge. Set handlers before calling connect. Key methods: ontoolresult to receive the tool's data, sendMessage to inject a user message into the conversation, updateModelContext to update Claude's state silently, callServerTool to call another tool on your server, and openLink for outbound navigation — sandbox blocks window.open. The bundle inlining step: the iframe's CSP blocks CDN script fetches. The ext-apps browser bundle must be inlined into the HTML at startup by replacing the comment placeholder slash-star-star-__EXT_APPS_BUNDLE__-star-star with the bundle contents rewritten as a globalThis assignment.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is build-mcp-app. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at build-mcp-server, _meta.ui.*, ui://, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 34,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "BuildMcpAppAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Tool returns data. Resource serves HTML. App bridges them. Bundle must be inlined."
+            "skillName": "build-mcp-app",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "18k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "references",
+                "size": null,
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "2 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +163,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 68.33,
+      "actual_duration_s": 18.75,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:28:08"
+        "at": "2026-09-05T15:02:21"
       }
     },
     {
       "beat_id": "B02",
-      "act": "design — when to add UI + decision routing",
-      "narration_text": "Before building a widget, route correctly. Elicitation is spec-native, zero UI code, works in any compliant host — use it for yes-no confirmation, short enum picks, and flat forms. Build a widget only when the need can't be met by elicitation: large or searchable lists that need scrolling, visual previews before choosing, charts and maps, and live-updating progress. If none of those apply, skip the widget entirely — text is faster to build and faster for the user. Five design rules that save rewrites. One: one widget per tool — a picker picks, a chart displays, don't build a sub-app inside an iframe. Two: tool description must mention the widget — Claude only sees the description when deciding what to call; 'opens an interactive picker' is what makes Claude reach for it. Three: graceful degradation is automatic — hosts that don't support the apps surface ignore underscore-meta-dot-ui and render the tool's text content directly. Four: don't block on widget results for display-only tools — return a text summary alongside the widget so Claude can continue reasoning without waiting. Five: follow host theme — getHostContext returns the theme after connect; toggle a dark class and use CSS custom props.",
+      "act": "pipeline",
+      "narration_text": "build-mcp-app is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: This skill should be used when the user wants to build an \"MCP app\"; add \"interactive UI\" or \"widgets\" to an MCP server; \"render components in chat\"; build \"MCP UI resources\". The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 34,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "BuildMcpAppDecision",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Elicitation first. Widget for searchable lists, visuals, live progress. Text if none apply."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +214,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 64.15,
+      "actual_duration_s": 19.03,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:28:08"
+        "at": "2026-09-05T15:02:21"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. Build MCP App gets five things right. The widget-versus-elicitation routing table is explicit before any widget code — with clear signal-to-widget-type mapping and explicit elicitation-coverage cases with checkmarks and X marks. The two-part registration is documented with working TypeScript: tool declares resource URI, resource serves HTML with the exact MIME type constant. The bundle-inlining requirement is called out as mandatory with the rewrite snippet — CSP blocks CDN, inline is the only option. The App class API is complete: eight methods with direction, what each does, and which to use when. And the design rules are concrete: one widget per tool, description must mention widget, degradation is automatic. Where it bites. The Claude Desktop cache flush — you must fully quit with Command-Q, not window close — is buried in the testing section and easy to miss; widgets silently serve stale HTML otherwise. The CSP failure mode is blank rectangle with no error in the main console — documented in a reference file, not inline where you build. The frameDomains restriction in Claude is mentioned in a footnote-sized table cell. The MIME type must be exactly RESOURCE_MIME_TYPE — wrong mime means the host doesn't render the widget, no explicit error path documented. And the sendMessage versus updateModelContext distinction — when to inject a visible message versus update silently — is documented after the method list rather than at the decision point.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. | visibility: [\"app\"] | tool | Hide a widget-only helper tool (e.g. geometry/image fetcher called via callServerTool) from Claude's tool list. |. That is the constraint in build-mcp-app — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 40,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "BuildMcpAppTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Two-part reg and bundle-inlining documented. Cache flush and CSP blank: surface them earlier."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "| visibility: [\"app\"] | tool | Hide a widget-only helper tool (e.g. geometry/image fetcher called via callServerTool) from Claude's tool list. |",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 80.66,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 16.15,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:28:08"
+        "at": "2026-09-05T15:02:21"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In build-mcp-app, supporting material: build-mcp-server, _meta.ui.*, ui://, csp.{connectDomains, resourceDomains, baseUriDomains}; implementation signals: code block: typescript, code block: html, code block: bash; sections: Claude host specifics, When a widget beats plain text, Widgets vs Elicitation — route correctly, Architecture: two deployment shapes. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "This skill should be used when the user wants to build an \"MCP app\"; add \"interactive UI\" or \"widgets\" to an MCP server; \"render components in chat\"; build-mcp-server; _meta.ui.*; ui://; code block: typescript; code…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 28.31,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T15:02:21"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. Build MCP App: MCP server plus UI resources as iframes. Two-part registration: tool declares resourceUri, resource serves HTML with RESOURCE_MIME_TYPE. Bundle inlining mandatory: CSP blocks CDN, replace __EXT_APPS_BUNDLE__ placeholder. App class: ontoolresult, sendMessage, updateModelContext, callServerTool, openLink. Route first: elicitation for simple inputs, widget for searchable lists and visuals. Design: one widget per tool, description mentions widget, degradation automatic. Gaps: Desktop cache flush (full quit not window-close), CSP blank rectangle in reference not inline, frameDomains restricted, wrong MIME silent failure.",
+      "narration_text": "build-mcp-app makes Claude execute one task reliably. The SKILL.md is the spec — This skill should be used when the user wants to build an \"MCP app\", add…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 22,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "Build MCP App",
+            "artifactHeading": "Claude, Build Mcp App.",
             "artifactLines": [
-              "MCP app: MCP server + UI resources (iframes) with RESOURCE_MIME_TYPE",
-              "Two-part: tool declares resourceUri · resource serves HTML",
-              "Bundle inlining: replace __EXT_APPS_BUNDLE__ — CSP blocks all CDN fetches",
-              "App class: ontoolresult · sendMessage · updateModelContext · callServerTool · openLink",
-              "Route: elicitation for simple inputs · widget for large lists/visuals/progress",
-              "Gaps: Desktop cache flush · CSP blank silent · frameDomains restricted · wrong MIME silent"
+              "Skill: build-mcp-app — Claude reads SKILL.md before acting",
+              "This skill should be used when the user wants to build an \"MCP app\", add \"interactive UI\"…",
+              "Capabilities: This skill should be used when the user wants to build an \"MCP app\"; add \"interactive UI\" or \"widgets\" to an MCP server; \"render components in chat\"",
+              "Constraint: | visibility: [\"app\"] | tool | Hide a widget-only helper tool (e.g. geometry/image…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +315,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 39.08,
+      "actual_duration_s": 13.91,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:28:08"
+        "at": "2026-09-05T15:02:21"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Open a Claude Code session. Paste this: Build an MCP app with a file picker widget that lets users select a file from a list returned by a directory scan tool. Watch four things. First: does it use the two-part registration — tool with _meta.ui.resourceUri and a separate resource registration? Second: does the resource MIME type use the RESOURCE_MIME_TYPE constant — not a hand-typed string? Third: does the widget HTML replace the __EXT_APPS_BUNDLE__ placeholder at server startup — not import from a CDN? Fourth: does the tool handler return meaningful text content alongside the widget data, so hosts without the apps surface see something useful? If the MIME type is wrong, the widget renders blank. If the bundle isn't inlined, the widget renders blank. Two ways to get the same silent failure.",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to this skill should be used when the user wants to build an \"mcp app\", add. Read the build-mcp-app skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "BUILD MCP APP · HANDOFF",
-            "segment": "PLUGIN DEV",
-            "command": "Build an MCP app with a file picker widget that lets users select from a directory scan.",
-            "runningText": "Watch: two-part reg? RESOURCE_MIME_TYPE? bundle inlined? text fallback?",
-            "output": [
-              "Expected: tool _meta.ui.resourceUri + separate resource registration",
-              "Expected: RESOURCE_MIME_TYPE constant · __EXT_APPS_BUNDLE__ replaced at startup",
-              "Red flag: hand-typed MIME string · CDN import · no text content fallback"
-            ],
+            "greeting": "Your turn.",
+            "topic": "BUILD-MCP-APP · ANTHROPIC SKILL",
+            "segment": "Claude, Build Mcp App.",
+            "command": "I want to this skill should be used when the user wants to build an \"mcp app\". Read the build-mcp-app skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +352,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 42.37,
+      "actual_duration_s": 14.31,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:28:08"
+        "at": "2026-09-05T15:02:21"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "Build MCP App. Liam, in for Bear.",
+      "narration_text": "Claude, Build Mcp App. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "Build MCP App",
+            "title": "Claude, Build Mcp App.",
             "handle": "@NikBearBrown",
-            "subline": "build-mcp-app · Plugin Dev"
+            "subline": "build-mcp-app · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +383,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 3.18,
+      "actual_duration_s": 3.71,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:28:08"
+        "at": "2026-09-05T15:02:21"
       }
     }
   ]

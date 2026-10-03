@@ -1,0 +1,991 @@
+{
+  "metadata": {
+    "slug": "show-tell-green-yellow-red",
+    "title": "Green, Yellow, Red",
+    "topic": "LEGAL AI · NDA TRIAGE",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Italian (Ciao)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "In-house legal teams, contracts managers, sales and BD staff, law students and developers who want to see how Anthropic's open NDA-review skill (claude-for-legal, commercial-legal plugin) triages NDAs into green, yellow and red against a playbook the cold-start interview writes, and why green needs attorney-reviewed positions; the output is a draft for attorney review, not legal advice",
+    "source_doc": "anthropics/claude-for-legal/commercial-legal/skills/nda-review/SKILL.md, commercial-legal/skills/cold-start-interview/SKILL.md, commercial-legal/README.md and README.md, read in full 2026-09-27 and byte-compared with the raw upstream files (sources/live_*)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "NDA review",
+      "NDA triage",
+      "legal AI",
+      "Claude for Legal",
+      "contract review",
+      "playbook",
+      "cold-start interview",
+      "commercial contracts",
+      "in-house legal",
+      "attorney review",
+      "not legal advice",
+      "Claude",
+      "Anthropic",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T19:12:31",
+      "cut": "master",
+      "filled": 20,
+      "of": 20,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Ciao. This is Liam, in for Bear. You might hope Claude can tell you whether to sign an NDA. But Anthropic's NDA review skill has a narrower job. It doesn't negotiate. It sorts. So the real question is: can Claude tell you which NDAs need a lawyer?",
+      "estimated_duration_s": 18.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'Can Claude tell me whether to sign this NDA?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'whether to sign this NDA' -> 'which NDAs need a lawyer' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Can Claude tell me\nwhether to sign this NDA?",
+            "triggerWords": "whether to sign this NDA",
+            "replacementWords": "which NDAs need a lawyer",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-green-yellow-red",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T23:04:39.782789+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (can Claude tell me whether to sign this NDA) and corrects it to the real one (which NDAs need a lawyer).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 14.208,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 14.208333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "An NDA: a non-disclosure agreement, a contract to keep shared information confidential. A playbook: your team's written positions on each contract term. The cold-start interview: the plugin's first-run setup, which writes that playbook. And triage: sorting by urgency, here into green, yellow and red.",
+      "estimated_duration_s": 17.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "'NDA' lands"
+          },
+          {
+            "at": 0.3,
+            "event": "'playbook' lands"
+          },
+          {
+            "at": 0.55,
+            "event": "'cold-start' lands"
+          },
+          {
+            "at": 0.8,
+            "event": "'triage' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "NDA",
+                "meaning": "a contract to keep shared information confidential"
+              },
+              {
+                "term": "playbook",
+                "meaning": "your team's written positions on each term"
+              },
+              {
+                "term": "cold-start",
+                "meaning": "the first-run interview that writes the playbook"
+              },
+              {
+                "term": "triage",
+                "meaning": "sorting by urgency: green, yellow, red"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T23:05:10.709371+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: four prerequisites, one line each."
+      },
+      "actual_duration_s": 16.576,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 16.583333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Anthropic's Claude for Legal repo has a commercial legal plugin, and inside it, an NDA review skill. Its premise is simple. Most inbound NDAs are fine. A few have landmines. The skill sorts them, so legal only reads the ones that matter.",
+      "estimated_duration_s": 16.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A pale belt draws across the upper left; white NDA pages ride in along it one by one ('inbound NDAs'); on 'landmines' one page gets a terracotta dot.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the NDA review skill"
+          },
+          {
+            "at": 0.5,
+            "event": "most NDAs are fine"
+          },
+          {
+            "at": 0.75,
+            "event": "a few have landmines"
+          }
+        ],
+        "manim": {
+          "class": "B00_Belt"
+        },
+        "motion_claim": "A pale belt draws across the upper left; white NDA pages ride in along it one by one ('inbound NDAs'); on 'landmines' one page gets a terracotta dot."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the belt of NDA pages, the sorter with its playbook binder, three chutes into three bins, and one object in the work area) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 14.187,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 14.208333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Every NDA leaves down one of three chutes. Green should need nothing more than a signature. Yellow needs a lawyer's eyes on one or two specific things. Red stops, before anyone wastes time. It's built for sales and business development to use themselves, before they ping legal.",
+      "estimated_duration_s": 18.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A grey sorter rises at the belt's end ('NDA review'); three chutes drop from it into three kraft bins, labelled in ink 'green', 'yellow', 'red'; one page falls into each bin as its tier is named.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "three chutes"
+          },
+          {
+            "at": 0.3,
+            "event": "green: a signature"
+          },
+          {
+            "at": 0.5,
+            "event": "yellow: a lawyer's eyes"
+          },
+          {
+            "at": 0.7,
+            "event": "red: stop"
+          }
+        ],
+        "manim": {
+          "class": "B01_Chutes"
+        },
+        "motion_claim": "A grey sorter rises at the belt's end ('NDA review'); three chutes drop from it into three kraft bins, labelled in ink 'green', 'yellow', 'red'; one page falls into each bin as its tier is named."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (the belt of NDA pages, the sorter with its playbook binder, three chutes into three bins, and one object in the work area) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 15.147,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 15.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Sorted against what? The skill ships with no default positions on NDA terms. It says the law, the market, and each team's risk tolerance all vary too much for hardcoded defaults to be safe. The positions live in your team's playbook, and the skill reads it before triaging anything.",
+      "estimated_duration_s": 19.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft binder on a dark plinth lands on top of the sorter ('playbook'); it opens beside the belt: its pages are blank, dashed outlines ('no defaults'); a grey thread draws from the binder into the sorter.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "sorted against what?"
+          },
+          {
+            "at": 0.3,
+            "event": "no default positions"
+          },
+          {
+            "at": 0.8,
+            "event": "the team's playbook, read first"
+          }
+        ],
+        "manim": {
+          "class": "B02_NoDefaults"
+        },
+        "motion_claim": "A kraft binder on a dark plinth lands on top of the sorter ('playbook'); it opens beside the belt: its pages are blank, dashed outlines ('no defaults'); a grey thread draws from the binder into the sorter."
+      },
+      "actual_duration_s": 15.467,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 15.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "That playbook is written by the cold-start interview. The first time you use the plugin, it interviews your team, like a sharp new paralegal asking the right questions: your positions, your escalation rules, and the one thing that would make you refuse to sign.",
+      "estimated_duration_s": 17.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "In the lower-left work area three kraft team figures stand; question cards (white, grey lines) pop from the sorter toward them one at a time ('cold-start interview'); answer cards come back and land as pages in the binder.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cold-start interview"
+          },
+          {
+            "at": 0.45,
+            "event": "it interviews the team"
+          },
+          {
+            "at": 0.8,
+            "event": "positions, escalation, the one thing"
+          }
+        ],
+        "manim": {
+          "class": "B03_Interview"
+        },
+        "motion_claim": "In the lower-left work area three kraft team figures stand; question cards (white, grey lines) pop from the sorter toward them one at a time ('cold-start interview'); answer cards come back and land as pages in the binder."
+      },
+      "actual_duration_s": 13.632,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 13.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then it asks for recent signed agreements, five to ten, and reads them. What a team says it accepts and what it actually signs can differ. Where they differ, the skill's own words are: the delta is the real playbook.",
+      "estimated_duration_s": 16.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A stack of signed agreements (pages with ink signatures) slides in ('signed'); a stated-position bar and a signed-position bar stand side by side; the gap between them is marked in ink ('delta'); a page carrying the gap flies into the binder.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "five to ten signed agreements"
+          },
+          {
+            "at": 0.5,
+            "event": "stated vs signed"
+          },
+          {
+            "at": 0.85,
+            "event": "the delta is the real playbook"
+          }
+        ],
+        "manim": {
+          "class": "B04_Delta"
+        },
+        "motion_claim": "A stack of signed agreements (pages with ink signatures) slides in ('signed'); a stated-position bar and a signed-position bar stand side by side; the gap between them is marked in ink ('delta'); a page carrying the gap flies into the binder."
+      },
+      "actual_duration_s": 11.712,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 11.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "It writes what it learns into a plain-English practice profile, a Claude dot M D file that every skill in the plugin reads before it does anything. You edit the document, not a config file.",
+      "estimated_duration_s": 14.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The team clears; a white profile page opens large in the work area ('CLAUDE.md') and its grey lines fill in one by one; a grey thread runs from the page up into the binder.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a plain-English practice profile"
+          },
+          {
+            "at": 0.5,
+            "event": "every skill reads it first"
+          },
+          {
+            "at": 0.85,
+            "event": "edit the document"
+          }
+        ],
+        "manim": {
+          "class": "B05_Profile"
+        },
+        "motion_claim": "The team clears; a white profile page opens large in the work area ('CLAUDE.md') and its grey lines fill in one by one; a grey thread runs from the page up into the binder."
+      },
+      "actual_duration_s": 10.901,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 10.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The profile keeps two playbooks: sales-side, for when you're the vendor, and purchasing-side, for when you're the customer. The NDA review reads the side that matches, and stops if that side isn't set up.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two kraft tabs slide out of the binder ('sales', 'purchasing'); one tab lifts and a grey thread runs from it into the sorter; the other stays down.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "two playbooks"
+          },
+          {
+            "at": 0.5,
+            "event": "sales side, purchasing side"
+          },
+          {
+            "at": 0.85,
+            "event": "reads the matching side"
+          }
+        ],
+        "manim": {
+          "class": "B06_Sides"
+        },
+        "motion_claim": "Two kraft tabs slide out of the binder ('sales', 'purchasing'); one tab lifts and a grey thread runs from it into the sorter; the other stays down."
+      },
+      "actual_duration_s": 11.435,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 11.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Now an NDA arrives. First, a scope check: is the document doing more than its name suggests? A non-solicit, exclusivity, an IP assignment, a license grant. If it carries obligations beyond confidentiality, it goes to yellow automatically, whatever the rest says, and is routed for attorney review.",
+      "estimated_duration_s": 18.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A page rides to the sorter; it is lifted into the work area and enlarged; a terracotta scan line sweeps it and reveals a dark extra clause band ('more than an NDA'); the page drops straight down the yellow chute.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "an NDA arrives"
+          },
+          {
+            "at": 0.4,
+            "event": "more than an NDA?"
+          },
+          {
+            "at": 0.85,
+            "event": "auto-yellow"
+          }
+        ],
+        "manim": {
+          "class": "B07_Scope"
+        },
+        "motion_claim": "A page rides to the sorter; it is lifted into the work area and enlarged; a terracotta scan line sweeps it and reveals a dark extra clause band ('more than an NDA'); the page drops straight down the yellow chute."
+      },
+      "actual_duration_s": 17.131,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 17.166666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then the checks. The playbook typically covers things like mutuality, the term, the survival period, the carve-outs and governing law. Each one is checked against your team's position, for the side you're on.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A fresh page stands enlarged in the work area beside a column of five check rows ('checks'); as each is named, its row lights and an ink check lands, matched by a grey tick on the binder.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the checks"
+          },
+          {
+            "at": 0.5,
+            "event": "mutuality, term, survival, carve-outs, governing law"
+          },
+          {
+            "at": 0.9,
+            "event": "each against the team's position"
+          }
+        ],
+        "manim": {
+          "class": "B08_Checks"
+        },
+        "motion_claim": "A fresh page stands enlarged in the work area beside a column of five check rows ('checks'); as each is named, its row lights and an ink check lands, matched by a grey tick on the binder."
+      },
+      "actual_duration_s": 10.965,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 11.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "If the NDA satisfies every position, and nothing triggers a red flag, it's green: route to signature. A clean NDA gets no long report. The summary says only: No red flags identified. Route for signature per standard process.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "All five rows checked; the page drops down the green chute; a white signature card rises beside the green bin and an ink signature draws on its line ('signature'); a one-line summary slip lands.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "every position satisfied"
+          },
+          {
+            "at": 0.35,
+            "event": "green: route to signature"
+          },
+          {
+            "at": 0.8,
+            "event": "one line for a clean NDA"
+          }
+        ],
+        "manim": {
+          "class": "B09_Green"
+        },
+        "motion_claim": "All five rows checked; the page drops down the green chute; a white signature card rises beside the green bin and an ink signature draws on its line ('signature'); a one-line summary slip lands."
+      },
+      "actual_duration_s": 14.165,
+      "audio_file": "mp3/beat-B09.mp3",
+      "render_duration_s": 14.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "If a term deviates from the playbook but isn't a deal-breaker, or the playbook doesn't address it, it's yellow. Each flagged item is listed on its own, with the position it hits and a likely resolution, for a named approver. The skill doesn't make the call on yellow items. It surfaces them for a human.",
+      "estimated_duration_s": 22.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A page in the work area; two of its rows get grey flags; it drops down the yellow chute; a kraft approver figure stands by the yellow bin ('approver') and the two flags line up in front of it, one by one.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a deviation, or a gap"
+          },
+          {
+            "at": 0.45,
+            "event": "each item on its own"
+          },
+          {
+            "at": 0.85,
+            "event": "a human makes the call"
+          }
+        ],
+        "manim": {
+          "class": "B10_Yellow"
+        },
+        "motion_claim": "A page in the work area; two of its rows get grey flags; it drops down the yellow chute; a kraft approver figure stands by the yellow bin ('approver') and the two flags line up in front of it, one by one."
+      },
+      "actual_duration_s": 15.829,
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 15.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "And when the playbook is silent on a term, say, a residuals clause, the skill asks you for your default position: when it should be green, when yellow, when red. Then it records your answer in the playbook, so the next review is consistent.",
+      "estimated_duration_s": 17.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A page with one blank, dashed row ('residuals'); a question card pops from the sorter to a team figure; three short answer bars come back; the answer page flies into the binder, which grows by one page.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the playbook is silent"
+          },
+          {
+            "at": 0.5,
+            "event": "it asks for your position"
+          },
+          {
+            "at": 0.85,
+            "event": "recorded for next time"
+          }
+        ],
+        "manim": {
+          "class": "B11_Silent"
+        },
+        "motion_claim": "A page with one blank, dashed row ('residuals'); a question card pops from the sorter to a team figure; three short answer bars come back; the answer page flies into the binder, which grows by one page."
+      },
+      "actual_duration_s": 12.117,
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 12.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Red means the NDA hits the playbook's never-accept list, or its structure doesn't fit: say, a one-way NDA where your playbook requires mutual, or a perpetual term where your playbook caps it. Stop, and talk to legal first. No contract record is created, and nobody tells the other side you'll sign.",
+      "estimated_duration_s": 20.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A page with a one-way arrow ('one-way') drops down the red chute; a grey gate arm swings down across the red bin ('legal first'); a ghost record card beside it stays empty.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "never-accept list"
+          },
+          {
+            "at": 0.45,
+            "event": "one-way, or perpetual"
+          },
+          {
+            "at": 0.75,
+            "event": "stop: legal first"
+          }
+        ],
+        "manim": {
+          "class": "B12_Red"
+        },
+        "motion_claim": "A page with a one-way arrow ('one-way') drops down the red chute; a grey gate arm swings down across the red bin ('legal first'); a ghost record card beside it stays empty."
+      },
+      "actual_duration_s": 16.576,
+      "audio_file": "mp3/beat-B12.mp3",
+      "render_duration_s": 16.583333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "One rule guards the green chute. Green is the only path to signature without a lawyer's review, so it can't be issued against default or missing positions. It needs attorney-reviewed positions in the playbook. Without them, yellow is the right call. In the skill's words: issuing green against defaults means a non-lawyer set the positions the next non-lawyer relies on.",
+      "estimated_duration_s": 24.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft padlock closes on the green chute ('locked'); a page heading for green is turned to yellow; an attorney figure presses a stamp onto the binder, leaving a terracotta seal ('attorney-reviewed'); the padlock opens.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "one rule guards green"
+          },
+          {
+            "at": 0.4,
+            "event": "no green on defaults"
+          },
+          {
+            "at": 0.6,
+            "event": "attorney-reviewed positions"
+          },
+          {
+            "at": 0.85,
+            "event": "the skill's own words"
+          }
+        ],
+        "manim": {
+          "class": "B13_Lock"
+        },
+        "motion_claim": "A kraft padlock closes on the green chute ('locked'); a page heading for green is turned to yellow; an attorney figure presses a stamp onto the binder, leaving a terracotta seal ('attorney-reviewed'); the padlock opens."
+      },
+      "actual_duration_s": 18.816,
+      "audio_file": "mp3/beat-B13.mp3",
+      "render_duration_s": 18.833333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Even after green, if the person using it isn't a lawyer, it pauses before signature. Countersigning an NDA binds the company. So it asks: have you reviewed this with an attorney? If not, it writes a one-page brief to bring to one, and it won't go past that gate without an explicit yes.",
+      "estimated_duration_s": 21.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The signature card stands by the green bin, its line blank; a grey gate arm drops in front of it ('attorney?'); a one-page brief slides out toward a kraft attorney figure; an ink check ('yes') lands and the arm lifts.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "a non-lawyer pauses at signature"
+          },
+          {
+            "at": 0.45,
+            "event": "reviewed with an attorney?"
+          },
+          {
+            "at": 0.75,
+            "event": "a one-page brief"
+          },
+          {
+            "at": 0.9,
+            "event": "an explicit yes"
+          }
+        ],
+        "manim": {
+          "class": "B14_Gate"
+        },
+        "motion_claim": "The signature card stands by the green bin, its line blank; a grey gate arm drops in front of it ('attorney?'); a one-page brief slides out toward a kraft attorney figure; an ink check ('yes') lands and the arm lifts."
+      },
+      "actual_duration_s": 15.467,
+      "audio_file": "mp3/beat-B14.mp3",
+      "render_duration_s": 15.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Every output carries the same limit. In the repo's own words, every output from these plugins is a draft for attorney review, not legal advice. A non-lawyer's triage opens with the header: research notes, not legal advice. The skill sorts. A lawyer decides.",
+      "estimated_duration_s": 17.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An output page opens large in the work area with a grey header band ('draft for attorney review'); a second label lands by the band ('not legal advice'); the whole belt, sorter, chutes and bins settle, and an attorney figure stands at the end.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "every output"
+          },
+          {
+            "at": 0.4,
+            "event": "a draft for attorney review"
+          },
+          {
+            "at": 0.7,
+            "event": "research notes, not legal advice"
+          },
+          {
+            "at": 0.9,
+            "event": "the skill sorts, a lawyer decides"
+          }
+        ],
+        "manim": {
+          "class": "B15_Draft"
+        },
+        "motion_claim": "An output page opens large in the work area with a grey header band ('draft for attorney review'); a second label lands by the band ('not legal advice'); the whole belt, sorter, chutes and bins settle, and an attorney figure stands at the end."
+      },
+      "actual_duration_s": 14.933,
+      "audio_file": "mp3/beat-B15.mp3",
+      "render_duration_s": 14.958333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B15.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude. Write three playbook positions for a residuals clause in an NDA: what makes it green, what makes it yellow, and what makes it red. Then triage this sample clause against them: The receiving party may use information retained in the unaided memory of its employees. Say green, yellow or red, name the position it hits, and flag what an attorney should decide. Mark it all as a draft for attorney review. Then check: does every flag name the position it hits, or say the playbook is silent? And before anyone relies on a green, have an attorney review your three positions.",
+      "estimated_duration_s": 42.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · YOUR TURN",
+            "segment": "Green, Yellow, Red",
+            "command": "Write three playbook positions for a residuals clause in an NDA: what makes it GREEN, what makes it YELLOW, and what makes it RED. Then triage this sample clause against them: \"The receiving party may use information retained in the unaided memory of its employees.\" Say GREEN, YELLOW or RED, name the position it hits, and flag what an attorney should decide. Mark it all as a draft for attorney review.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: does each flag name its position?",
+              "Check: have an attorney review the positions."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T23:06:09.188403+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 30.848,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 30.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T19:12:31"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Green, Yellow, Red. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Green, Yellow, Red",
+            "slug": "show-tell-green-yellow-red",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T23:06:24.883182+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 3.99,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T19:12:31"
+      }
+    }
+  ]
+}

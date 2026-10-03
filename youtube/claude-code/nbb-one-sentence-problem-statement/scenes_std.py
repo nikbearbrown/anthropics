@@ -1,144 +1,102 @@
 from manim import *
-import numpy as np
-import math
 
-BG    = "#FFFFFF"
-INK   = "#2A1A0E"
-TERRA = "#C8102E"
+BG    = "#FAF9F5"
+INK   = "#3D3929"
+TERRA = "#D97757"
 FONT  = "EB Garamond"
 config.background_color = BG
 
 
+def _write_lines(scene, lines, sizes, y_positions, run_times):
+    for text, size, y, rt in zip(lines, sizes, y_positions, run_times):
+        t = Text(text, font_size=size, color=INK, font=FONT)
+        t.scale(min(1.0, 13.0 / max(0.1, t.width)))
+        t.move_to([0, y, 0])
+        scene.play(Write(t), run_time=rt)
+
+
 class Scene_B02_NbbOneSentence(Scene):
-    """Beat B02 — SHOW: concept illustration card. Narration: Writing one sentence should be fast. Seth had been thinking about this project f"""
+    """B02 — THE QUESTION. Duration target ~9.6s."""
     def construct(self):
-        self.camera.background_color = "#FFFFFF"
-        font = "EB Garamond"
+        self.camera.background_color = BG
+        act = Text("THE QUESTION", font_size=32, color=INK, font=FONT)
+        act.to_edge(UP, buff=0.5)
+        self.play(FadeIn(act), run_time=0.4)
 
-        if "THE QUESTION":
-            act = Text("THE QUESTION", font_size=24, color="#2A1A0E", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
+        spark = Line(LEFT * 0.6, RIGHT * 0.6, color=TERRA, stroke_width=4)
+        spark.shift(UP * 1.6)
+        self.play(Create(spark), run_time=0.3)
 
-        # Spark line — terracotta accent
-        spark = Line(LEFT * 0.6, RIGHT * 0.6, color="#C8102E", stroke_width=3)
-        spark.shift(UP * 1.2)
-        self.play(Create(spark), run_time=0.2)
-
-        # Primary concept text
-        if "Writing one sentence should be fast":
-            line1 = Text("Writing one sentence should be fast", font_size=36, color="#2A1A0E", font=font)
-            line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
-            line1.shift(UP * 0.3)
-            self.play(Write(line1), run_time=0.5)
-
-        if "Seth had been thinking about this project for three days":
-            line2 = Text("Seth had been thinking about this project for three days", font_size=28, color="#2A1A0E", font=font)
-            line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
-            line2.shift(DOWN * 0.6)
-            self.play(Write(line2), run_time=0.4)
-
-        if "Why did it take fourteen minutes and two refusals to produce":
-            line3 = Text("Why did it take fourteen minutes and two refusals to produce", font_size=22, color="#2A1A0E", font=font)
-            line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
-            line3.shift(DOWN * 1.4)
-            self.play(FadeIn(line3), run_time=0.3)
-
-        # Terracotta underline on key term
-        if "Writing one sentence should be fast":
-            uline = Line(LEFT * min(4.0, len("Writing one sentence should be fast") * 0.18), RIGHT * min(4.0, len("Writing one sentence should be fast") * 0.18),
-                         color="#C8102E", stroke_width=2)
-            uline.shift(UP * 0.1)
-            self.play(Create(uline), run_time=0.3)
-
-        self.wait(max(0.01, 3.00))
+        _write_lines(
+            self,
+            [
+                "One sentence should be fast.",
+                "Why did it take 14 minutes?",
+            ],
+            [72, 56],
+            [0.4, -1.2],
+            [0.9, 0.9],
+        )
+        self.wait(6.0)
 
 
 class Scene_B03_NbbOneSentence(Scene):
-    """Beat B03 — SHOW: concept illustration card. Narration: The one-sentence constraint is not about writing style. It is an elevator test f"""
+    """B03 — THE MECHANISM. Duration target ~21.4s."""
     def construct(self):
-        self.camera.background_color = "#FFFFFF"
-        font = "EB Garamond"
+        self.camera.background_color = BG
+        act = Text("THE MECHANISM", font_size=32, color=INK, font=FONT)
+        act.to_edge(UP, buff=0.5)
+        self.play(FadeIn(act), run_time=0.4)
 
-        if "THE MECHANISM":
-            act = Text("THE MECHANISM", font_size=24, color="#2A1A0E", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
+        spark = Line(LEFT * 0.6, RIGHT * 0.6, color=TERRA, stroke_width=4)
+        spark.shift(UP * 1.9)
+        self.play(Create(spark), run_time=0.3)
 
-        # Spark line — terracotta accent
-        spark = Line(LEFT * 0.6, RIGHT * 0.6, color="#C8102E", stroke_width=3)
-        spark.shift(UP * 1.2)
-        self.play(Create(spark), run_time=0.2)
+        _write_lines(
+            self,
+            [
+                "One sentence with two ands",
+                "= two projects disguised as one.",
+                "The 'and' is a tell.",
+            ],
+            [72, 60, 60],
+            [0.9, -0.4, -1.9],
+            [1.0, 1.0, 1.0],
+        )
 
-        # Primary concept text
-        if "The one-sentence constraint is not about writing style":
-            line1 = Text("The one-sentence constraint is not about writing style", font_size=36, color="#2A1A0E", font=font)
-            line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
-            line1.shift(UP * 0.3)
-            self.play(Write(line1), run_time=0.5)
-
-        if "It is an elevator test for whether you know what you\'re buil":
-            line2 = Text("It is an elevator test for whether you know what you\'re buil", font_size=28, color="#2A1A0E", font=font)
-            line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
-            line2.shift(DOWN * 0.6)
-            self.play(Write(line2), run_time=0.4)
-
-        if "A sentence with two ands is two systems dressed as one - dif":
-            line3 = Text("A sentence with two ands is two systems dressed as one - dif", font_size=22, color="#2A1A0E", font=font)
-            line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
-            line3.shift(DOWN * 1.4)
-            self.play(FadeIn(line3), run_time=0.3)
-
-        # Terracotta underline on key term
-        if "The one-sentence constraint is not about writing style":
-            uline = Line(LEFT * min(4.0, len("The one-sentence constraint is not about writing style") * 0.18), RIGHT * min(4.0, len("The one-sentence constraint is not about writing style") * 0.18),
-                         color="#C8102E", stroke_width=2)
-            uline.shift(UP * 0.1)
-            self.play(Create(uline), run_time=0.3)
-
-        self.wait(max(0.01, 3.00))
+        underline = Line(
+            LEFT * 3.5, RIGHT * 3.5, color=TERRA, stroke_width=3
+        ).shift(UP * 0.2)
+        self.play(Create(underline), run_time=0.5)
+        self.wait(15.5)
 
 
 class Scene_B04_NbbOneSentence(Scene):
-    """Beat B04 — SHOW: concept illustration card. Narration: The sentence that passes names one system, one user, one done-condition — and co"""
+    """B04 — THE PRACTICE. Duration target ~17.7s."""
     def construct(self):
-        self.camera.background_color = "#FFFFFF"
-        font = "EB Garamond"
+        self.camera.background_color = BG
+        act = Text("THE PRACTICE", font_size=32, color=INK, font=FONT)
+        act.to_edge(UP, buff=0.5)
+        self.play(FadeIn(act), run_time=0.4)
 
-        if "THE PRACTICE":
-            act = Text("THE PRACTICE", font_size=24, color="#2A1A0E", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
+        spark = Line(LEFT * 0.6, RIGHT * 0.6, color=TERRA, stroke_width=4)
+        spark.shift(UP * 1.9)
+        self.play(Create(spark), run_time=0.3)
 
-        # Spark line — terracotta accent
-        spark = Line(LEFT * 0.6, RIGHT * 0.6, color="#C8102E", stroke_width=3)
-        spark.shift(UP * 1.2)
-        self.play(Create(spark), run_time=0.2)
+        _write_lines(
+            self,
+            [
+                "One system. One user. One done-condition.",
+                "No ands.",
+                "That sentence is your project.",
+            ],
+            [64, 72, 60],
+            [0.9, -0.4, -1.9],
+            [1.1, 0.9, 1.0],
+        )
 
-        # Primary concept text
-        if "The sentence that passes names one system, one user, one don":
-            line1 = Text("The sentence that passes names one system, one user, one don", font_size=36, color="#2A1A0E", font=font)
-            line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
-            line1.shift(UP * 0.3)
-            self.play(Write(line1), run_time=0.5)
-
-        if "The sentence that passes is the moment you take ownership of":
-            line2 = Text("The sentence that passes is the moment you take ownership of", font_size=28, color="#2A1A0E", font=font)
-            line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
-            line2.shift(DOWN * 0.6)
-            self.play(Write(line2), run_time=0.4)
-
-        if "Everything Claude produces from there gets measured against ":
-            line3 = Text("Everything Claude produces from there gets measured against ", font_size=22, color="#2A1A0E", font=font)
-            line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
-            line3.shift(DOWN * 1.4)
-            self.play(FadeIn(line3), run_time=0.3)
-
-        # Terracotta underline on key term
-        if "The sentence that passes names one system, one user, one don":
-            uline = Line(LEFT * min(4.0, len("The sentence that passes names one system, one user, one don") * 0.18), RIGHT * min(4.0, len("The sentence that passes names one system, one user, one don") * 0.18),
-                         color="#C8102E", stroke_width=2)
-            uline.shift(UP * 0.1)
-            self.play(Create(uline), run_time=0.3)
-
-        self.wait(max(0.01, 3.00))
+        underline = Line(
+            LEFT * 3.5, RIGHT * 3.5, color=TERRA, stroke_width=3
+        ).shift(UP * 0.2)
+        self.play(Create(underline), run_time=0.5)
+        self.wait(11.5)

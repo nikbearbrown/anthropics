@@ -18,13 +18,42 @@
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "modelLabel": "Opus 4.7",
+    "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/cwc-workshops/agent-decomposition/.claude/skills/submit-solution/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Guide a workshop attendee through committing their starter-agent decomposition and opening a PR with their solution + workshop feedback",
+        "Invoke when the user says \"submit\"",
+        "or asks how to share their solution."
+      ],
+      "constraints": [],
+      "referenced_files": [
+        "agents/starter/agent.py",
+        "anthropics/cwc-workshops",
+        "gh repo fork --clone=false",
+        "evals/reports/",
+        ".stockpilot_ids.json"
+      ],
+      "code_signals": [
+        "code block: bash",
+        "code block: markdown"
+      ],
+      "sections": [
+        "Step 1 — Ask about their experience first",
+        "Step 2 — Show them what they're submitting",
+        "Step 3 — Commit and push",
+        "Step 4 — Open the PR with feedback in the body",
+        "My decomposition",
+        "Workshop feedback",
+        "Step 5 — Confirm",
+        "Don't"
+      ]
+    },
     "build": {
-      "at": "2026-08-26T05:35:36",
+      "at": "2026-09-05T21:48:20",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +62,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is submit-solution. Guide a workshop attendee through committing their starter-agent decomposition and opening a PR with their solution + workshop feedback. Invoke when the user says \"submit\", \"I'm done\", \"open a PR\", or asks how to share their solution.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is submit-solution. Guide a workshop attendee through committing their starter-agent decomposition and opening a PR with their solution + workshop feedback. Invoke when the user says \"submit\", \"I'm done\", \"open a PR\", or asks how to share their solution.. Its concrete surface area includes Guide a workshop attendee through committing their starter-agent decomposition and opening a PR with their solution + workshop feedback; Invoke when the user says \"submit\"; or…. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,11 +78,11 @@
             "runningText": "reading submit-solution SKILL.md…",
             "output": [
               "skill: submit-solution",
-              "task: commit starter-agent decomposition, open PR with workshop feedback",
-              "steps: 0 — executing."
+              "Guide a workshop attendee through committing their starter-agent decomposition…",
+              "steps: 5 — executing."
             ],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "Opus 4.7",
+            "modelLabel": "Opus 4.8",
             "effortLabel": "High"
           },
           "rendered": {
@@ -63,18 +92,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 19.31,
+      "actual_duration_s": 30.72,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:35:36"
+        "at": "2026-09-05T21:48:20"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is submit-solution. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is submit-solution. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at agents/starter/agent.py, anthropics/cwc-workshops, gh repo fork --clone=false, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -106,18 +135,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.46,
+      "actual_duration_s": 21.01,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:35:36"
+        "at": "2026-09-05T21:48:20"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "The pipeline has 5 steps. Ask about their experience first → Show them what they're submitting → Commit and push, plus 2 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -132,22 +161,27 @@
             "outputLabel": "RESULT",
             "phases": [
               {
-                "label": "Read SKILL.md",
-                "desc": "load the instruction set",
+                "label": "Ask about their experience…",
+                "desc": "Before touching git, ask these three questions (use…",
                 "accent": true
               },
               {
-                "label": "Execute",
-                "desc": "run each step in order",
+                "label": "Show them what they're…",
+                "desc": "Walk through the diff briefly: which tools they dropped…",
                 "accent": false
               },
               {
-                "label": "Return output",
-                "desc": "deliver the result",
+                "label": "Commit and push",
+                "desc": "Ask for their name/handle if you don't have it. If they…",
+                "accent": false
+              },
+              {
+                "label": "Open the PR with feedback in…",
+                "desc": "PR body template (fill from step 1 + step 2): `markdown",
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "5 steps. Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -157,18 +191,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 13.55,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:35:36"
+        "at": "2026-09-05T21:48:20"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. submit-solution is a specification written as an instruction set. Claude's job: Guide a workshop attendee through committing their starter-agent decomposition and opening a PR with their solution. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the Teardown moment. submit-solution is a specification written as an instruction set. Claude's job: Guide a workshop attendee through committing their starter-agent decomposition and opening a PR…. What it gets right: repeatable results. What it bites: anything outside the spec.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +213,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "The SKILL.md is the spec — outside it, Claude stops.",
+            "body": "Guide a workshop attendee through committing their starter-agent decomposition and opening a PR with their solution + workshop feedback. Invoke when the user says \"submit\", \"I'm done\", \"open a PR\"…",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,18 +223,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 16.81,
+      "actual_duration_s": 15.74,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:35:36"
+        "at": "2026-09-05T21:48:20"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In submit-solution, supporting material: agents/starter/agent.py, anthropics/cwc-workshops, gh repo fork --clone=false, evals/reports/; implementation signals: code block: bash, code block: markdown; sections: Step 1 — Ask about their experience first, Step 2 — Show them what they're submitting, Step 3 — Commit and push, Step 4 — Open the PR with feedback in the body. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Guide a workshop attendee through committing their starter-agent decomposition and opening a PR with their solution + workshop feedback; Invoke when the user says \"submit\"; or asks how to share their solution.…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 29.03,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T21:48:20"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "submit-solution makes Claude execute one task reliably. The SKILL.md is the spec — commit the starter-agent decomposition, open the PR. Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "submit-solution makes Claude execute one task reliably. The SKILL.md is the spec — Guide a workshop attendee through committing their starter-agent decomposition…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -213,7 +279,8 @@
             "artifactHeading": "Claude, Submit Solution.",
             "artifactLines": [
               "Skill: submit-solution — Claude reads SKILL.md before acting",
-              "Task: commit starter-agent decomposition, open PR with workshop feedback",
+              "Guide a workshop attendee through committing their starter-agent decomposition and…",
+              "5-step pipeline: Ask about their experience first → Show them what they're submitting → Commit and push",
               "Same input → same output, every run",
               "Limit: only what the SKILL.md specifies"
             ]
@@ -225,18 +292,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 13.14,
+      "actual_duration_s": 14.25,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:35:36"
+        "at": "2026-09-05T21:48:20"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to guide a workshop attendee through committing their starter-agent decomposition a. Read the submit-solution skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to guide a workshop attendee through committing their starter-agent decomposition. Read the submit-solution skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -248,11 +315,11 @@
             "greeting": "Your turn.",
             "topic": "SUBMIT-SOLUTION · ANTHROPIC SKILL",
             "segment": "Claude, Submit Solution.",
-            "command": "I want to guide a workshop attendee through committing their starter-agent decomposition and opening a PR. Read the submit-solution skill and walk me through what you will do before you do it.",
+            "command": "I want to guide a workshop attendee through committing their starter-agent. Read the submit-solution skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "Opus 4.7",
+            "modelLabel": "Opus 4.8",
             "effortLabel": "High"
           },
           "rendered": {
@@ -262,12 +329,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 15.0,
+      "actual_duration_s": 14.66,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:35:36"
+        "at": "2026-09-05T21:48:20"
       }
     },
     {
@@ -298,7 +365,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T05:35:36"
+        "at": "2026-09-05T21:48:20"
       }
     }
   ]

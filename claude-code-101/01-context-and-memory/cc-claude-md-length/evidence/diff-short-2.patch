@@ -1,0 +1,60 @@
+diff --git a/src/gradebook.py b/src/gradebook.py
+index fb3dad5..53ea7f0 100644
+--- a/src/gradebook.py
++++ b/src/gradebook.py
+@@ -40,6 +40,17 @@ def remove(name):
+     print(f"removed {name}")
+ 
+ 
++def clear(name):
++    data = load()
++    if name not in data:
++        print(f"no such student: {name}")
++        return
++    data[name] = []
++    save(data)
++    audit(name, "clear")
++    print(f"cleared {name}")
++
++
+ def report():
+     for name, scores in load().items():
+         avg = sum(scores) / len(scores) if scores else 0.0
+@@ -48,4 +59,4 @@ def report():
+ 
+ if __name__ == "__main__":
+     cmd, *args = sys.argv[1:] or ["report"]
+-    {"add": add, "score": score, "remove": remove, "report": report}[cmd](*args)
++    {"add": add, "score": score, "remove": remove, "clear": clear, "report": report}[cmd](*args)
+diff --git a/tests/test_gradebook.py b/tests/test_gradebook.py
+index 14a43d3..b8f60e6 100644
+--- a/tests/test_gradebook.py
++++ b/tests/test_gradebook.py
+@@ -47,5 +47,27 @@ class TestGradebook(unittest.TestCase):
+                 gradebook.DB = original_db
+ 
+ 
++    def test_clear(self):
++        with tempfile.TemporaryDirectory() as tmp:
++            original_db = gradebook.DB
++            gradebook.DB = Path(tmp) / "grades.json"
++            try:
++                gradebook.add("ada")
++                gradebook.score("ada", 90)
++                gradebook.score("ada", 80)
++                buf = io.StringIO()
++                with redirect_stdout(buf):
++                    gradebook.clear("ada")
++                self.assertIn("cleared ada", buf.getvalue())
++                self.assertEqual(gradebook.load(), {"ada": []})
++
++                buf = io.StringIO()
++                with redirect_stdout(buf):
++                    gradebook.clear("nobody")
++                self.assertIn("no such student", buf.getvalue())
++            finally:
++                gradebook.DB = original_db
++
++
+ if __name__ == "__main__":
+     unittest.main()

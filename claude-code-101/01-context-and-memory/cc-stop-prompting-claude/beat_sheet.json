@@ -1,0 +1,1025 @@
+{
+  "metadata": {
+    "slug": "cc-stop-prompting-claude",
+    "title": "Let the Files Do the Prompting",
+    "subtitle": "One 26-line file replaces a 900-byte paragraph you retype every session. Same voice, less typing, the rules survive.",
+    "topic": "CLAUDE CODE 101",
+    "skill": "cc-explainer",
+    "playlist": "Claude Code 101",
+    "tier": "01-context-and-memory",
+    "audience": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "handle": "@NikBearBrown",
+    "brand": "claude",
+    "palette": "claude",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "persona": "liam",
+    "in_for_bear": true,
+    "operator": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "closing_voice": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "aspect": "16:9",
+    "fps": 30,
+    "session": "SESSION.md",
+    "derived_from": "claude-code-101/01-context-and-memory/claude-cowork--claude-liam-stop-prompting-claude (concept; the Obsidian/Cowork specifics dropped, replaced by four real headless runs)",
+    "sources": [
+      "SESSION.md (four fresh headless runs, bare vs files, two tasks each)",
+      "info-7375-conducting-ai/chapters/02-the-solve-verify-asymmetry.md",
+      "info-7375-irreducibly-human/chapters/04-tier-4-metacognitive-and-supervisory.md"
+    ],
+    "build": {
+      "at": "2026-09-09T18:05:57",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'CCSession' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN — BARE",
+      "lane": "TERMINAL",
+      "narration_text": "This is Liam, in for Bear. Same person, same voice, two ways to get Claude to speak it. Here's the first way. Bear types a paragraph of himself — his voice rules, his banned words, how he signs off — every session, before the ask. Nine hundred bytes of preamble for a class note about weather. It writes the note. It also invents a link nobody mentioned. The rule was in the prompt.",
+      "estimated_duration_s": 26.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — bare-A: the long paragraph, one Read, one Bash, the invented 'link'",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "bear — bare",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "You are drafting a short note in Bear's voice…",
+                "cue": 0,
+                "typeDuration": 80
+              },
+              {
+                "type": "text",
+                "text": "[…full preamble: no exclamations,]"
+              },
+              {
+                "type": "text",
+                "text": "[banned words, sign as — Bear,]"
+              },
+              {
+                "type": "text",
+                "text": "[do not invent URLs …]"
+              },
+              {
+                "type": "text",
+                "text": "Class, Wednesday's guest lecture is"
+              },
+              {
+                "type": "text",
+                "text": "moved to next Friday because of the"
+              },
+              {
+                "type": "text",
+                "text": "weather. Same time, same link."
+              },
+              {
+                "type": "text",
+                "text": "Nothing you need to do. See you then."
+              },
+              {
+                "type": "text",
+                "text": "— Bear"
+              }
+            ],
+            "cues": [
+              0,
+              90,
+              110,
+              130,
+              160,
+              180,
+              200,
+              220,
+              240
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Paragraph types"
+        },
+        {
+          "at": 0.55,
+          "event": "Note lands"
+        },
+        {
+          "at": 0.9,
+          "event": "'same link' — invented"
+        }
+      ],
+      "actual_duration_s": 19.14,
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "THE IDEA",
+      "lane": "IDEA",
+      "narration_text": "Here's the idea of this film. The rule you retype every session is the rule you can lose — Claude just proved it. You do not need a longer prompt. You need a shorter one, and a file behind it. One file, written once, that Claude reads before every session in the folder. Same voice, less typing, and the rules survive the sentence you forget to type.",
+      "estimated_duration_s": 24.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "BrutalistHesitantWriter — 'prompt' reconsidered into 'file'",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "You retype your voice every session.\nThe prompt is what carries the rules.\nNine hundred bytes. Every time.\nThe file is where it belongs.",
+            "triggerWords": "prompt",
+            "replacementWords": "file",
+            "face": "serif",
+            "fontSize": 78,
+            "align": "center",
+            "ink": "#F2F0E9",
+            "accent": "#D97757",
+            "bg": "#1F1E1B",
+            "seed": "cc-stop-prompting-claude",
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 5,
+            "jitter": 20
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the misconception the film exists to fix is not in any session; the writer types it and corrects the word"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Writer starts"
+        },
+        {
+          "at": 0.2,
+          "event": "'prompt' → 'file'"
+        },
+        {
+          "at": 0.85,
+          "event": "Last line"
+        }
+      ],
+      "actual_duration_s": 17.64,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "DEFINITIONS",
+      "lane": "CARD",
+      "narration_text": "Four words before we start. CLAUDE.md: a plain text file in the folder — Claude reads it before every session, no import, no command. Prompt: what you type into the box on this run — throwaway. Context: everything Claude sees before the prompt — the file, the folder, and any set-up. Headless run: one Claude Code session from the terminal, no interactive chat — Bear used four of them for this film.",
+      "estimated_duration_s": 25.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCDefinitions — four terms",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCDefinitions",
+          "props": {
+            "title": "TERMS IN THIS FILM",
+            "terms": [
+              {
+                "term": "CLAUDE.md",
+                "meaning": "plain text file in the folder — read every session, no import"
+              },
+              {
+                "term": "prompt",
+                "meaning": "what you type on this run — throwaway; gone at session end"
+              },
+              {
+                "term": "context",
+                "meaning": "everything Claude sees before the prompt — file, folder, set-up"
+              },
+              {
+                "term": "headless run",
+                "meaning": "one Claude Code session from the terminal, no interactive chat"
+              }
+            ],
+            "startCue": 12,
+            "rowGap": 48
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "definitions for a chat-window audience"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "First term"
+        },
+        {
+          "at": 0.5,
+          "event": "Terms land"
+        },
+        {
+          "at": 0.9,
+          "event": "Hold"
+        }
+      ],
+      "actual_duration_s": 20.14,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "BARE — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "Check the bare condition. Nine hundred seventy-five bytes typed for the class note. Nine hundred ninety-nine typed for a reply to a student. The checker — a script that just says pass or fail on his voice rules — passes both. Voice is fine. But grep for the word 'link' in the class note: it's there. The bare prompt literally said 'do not invent URLs'. It got ignored. A rule that lives in a sentence you type is a rule Claude sometimes eats.",
+      "estimated_duration_s": 29.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCPlainShell — wc -c bare asks; check.py PASS; grep link → 1",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "zsh — /tmp/cc-stop-scratch",
+            "lines": [
+              "$ wc -c bare/ask-a.txt bare/ask-b.txt",
+              "     975 bare/ask-a.txt",
+              "     999 bare/ask-b.txt",
+              "$ python3 check.py note-bare-a.txt note-bare-b.txt",
+              "PASS: note-bare-a.txt",
+              "PASS: note-bare-b.txt",
+              "$ grep -c link note-bare-a.txt note-bare-b.txt",
+              "note-bare-a.txt:1",
+              "note-bare-b.txt:0",
+              "# the rule was in the prompt: 'do not invent URLs'"
+            ],
+            "startCue": 12,
+            "lineGap": 22
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the shell that verifies bare's typing cost sits outside any Claude session"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 975 / 999"
+        },
+        {
+          "at": 0.5,
+          "event": "check.py PASS both"
+        },
+        {
+          "at": 0.85,
+          "event": "grep link → 1"
+        }
+      ],
+      "actual_duration_s": 21.59,
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "THE FILE",
+      "lane": "SHELL",
+      "narration_text": "Same rules, one file. Twenty-six lines of CLAUDE.md — voice, banned words, sign-off, how to address the class, how to reply to a student, and, in bold at the top: don't invent names, dates, URLs. Twelve hundred fifty-six bytes, written once, sitting in the folder. Nobody types it again. Claude Code reads it at the start of every session in that folder — because that's what CLAUDE.md is for.",
+      "estimated_duration_s": 24.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCPlainShell — wc, and CLAUDE.md's hard rules",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "zsh — /tmp/cc-stop-scratch/files",
+            "lines": [
+              "$ wc -l CLAUDE.md",
+              "      26 CLAUDE.md",
+              "$ wc -c CLAUDE.md",
+              "    1256 CLAUDE.md",
+              "$ grep '^- ' CLAUDE.md | head -5",
+              "- Plain English. Short sentences.",
+              "- Never: exclamation marks; emoji;",
+              "  the words \"delve\", \"leverage\", …",
+              "- Address his class as `class`.",
+              "- Never invent a name, date, URL."
+            ],
+            "startCue": 12,
+            "lineGap": 22
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "reading a file in a plain shell before any session; no session contains this view"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 26 lines, 1256 bytes"
+        },
+        {
+          "at": 0.55,
+          "event": "the rules"
+        }
+      ],
+      "actual_duration_s": 20.27,
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "FILES — THE RUN",
+      "lane": "TERMINAL",
+      "narration_text": "Second way. Same class note. This time Bear types a hundred forty-six bytes — the ask, nothing else. Claude Code opens the session, loads CLAUDE.md automatically, and writes the note. No paragraph of himself. No 'do not invent URLs'. And the note comes out clean.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — files-A: short ask, one Bash, the clean note",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "bear — files",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Note to the class: Wednesday's guest",
+                "cue": 0,
+                "typeDuration": 60
+              },
+              {
+                "type": "prompt",
+                "text": "lecture is rescheduled to next Friday",
+                "cue": 0,
+                "typeDuration": 40
+              },
+              {
+                "type": "prompt",
+                "text": "because of weather. Nothing to do.",
+                "cue": 0,
+                "typeDuration": 36
+              },
+              {
+                "type": "text",
+                "text": "Class, Wednesday's guest lecture is"
+              },
+              {
+                "type": "text",
+                "text": "moved to next Friday because of the"
+              },
+              {
+                "type": "text",
+                "text": "weather. Nothing to do on your end."
+              },
+              {
+                "type": "text",
+                "text": "— Bear"
+              }
+            ],
+            "cues": [
+              0,
+              45,
+              85,
+              130,
+              155,
+              180,
+              210
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "146-byte ask"
+        },
+        {
+          "at": 0.55,
+          "event": "Note lands"
+        },
+        {
+          "at": 0.9,
+          "event": "No 'link'"
+        }
+      ],
+      "actual_duration_s": 14.55,
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "FILES — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "Check the files condition against the bare one. Ask size: a hundred forty-six bytes for the class note, a hundred seventy-one for the student reply. Six point two times less typing than bare, and it stays that way — the file is written once, the asks stay small. Checker passes both. And grep for 'link' in the files run: zero. The rule that survived the sentence Bear forgot to type is the rule that lived in the file.",
+      "estimated_duration_s": 27.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCPlainShell — wc -c, ratio, check.py PASS, grep link 0",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "zsh — /tmp/cc-stop-scratch",
+            "lines": [
+              "$ wc -c files/ask-a.txt files/ask-b.txt",
+              "     146 files/ask-a.txt",
+              "     171 files/ask-b.txt",
+              "$ python3 - <<< 'print(1974/317)'",
+              "6.2271293375394326",
+              "$ python3 check.py note-files-a.txt note-files-b.txt",
+              "PASS: note-files-a.txt",
+              "PASS: note-files-b.txt",
+              "$ grep -c link note-files-a.txt note-files-b.txt",
+              "note-files-a.txt:0",
+              "note-files-b.txt:0"
+            ],
+            "startCue": 12,
+            "lineGap": 22
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the shell that verifies files' typing cost sits outside any Claude session"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "wc → 146 / 171"
+        },
+        {
+          "at": 0.4,
+          "event": "6.2× less typing"
+        },
+        {
+          "at": 0.75,
+          "event": "grep link → 0"
+        }
+      ],
+      "actual_duration_s": 21.23,
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE INVENTED LINK",
+      "lane": "TERMINAL",
+      "narration_text": "Look at the two notes side by side. Bare on the left: 'same time, same link'. Files on the right: 'nothing to do on your end'. Same task, same person, same voice-fluent model. The bare prompt carried the rule about not inventing URLs — it just carried it once, buried in nine hundred bytes of preamble. The file carried it in its own line, in the folder, before the ask. The difference isn't intelligence. It's what Claude read first.",
+      "estimated_duration_s": 28.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the two outputs side by side; the invented 'link' underlined",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "bear — the two notes",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "text",
+                "text": "BARE (975-byte preamble):"
+              },
+              {
+                "type": "text",
+                "text": "…moved to next Friday because of the"
+              },
+              {
+                "type": "text",
+                "text": "weather. Same time, same link. Nothing"
+              },
+              {
+                "type": "text",
+                "text": "you need to do. — Bear"
+              },
+              {
+                "type": "text",
+                "text": ""
+              },
+              {
+                "type": "text",
+                "text": "FILES (146-byte ask, CLAUDE.md loaded):"
+              },
+              {
+                "type": "text",
+                "text": "…moved to next Friday because of the"
+              },
+              {
+                "type": "text",
+                "text": "weather. Nothing to do on your end."
+              },
+              {
+                "type": "text",
+                "text": "— Bear"
+              }
+            ],
+            "cues": [
+              0,
+              25,
+              50,
+              80,
+              110,
+              120,
+              150,
+              175,
+              205
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "a side-by-side diff of two outputs is not visible inside either session"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "BARE"
+        },
+        {
+          "at": 0.35,
+          "event": "'same link'"
+        },
+        {
+          "at": 0.55,
+          "event": "FILES"
+        },
+        {
+          "at": 0.85,
+          "event": "no link"
+        }
+      ],
+      "actual_duration_s": 21.08,
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "CONDUCT — THE BOONDOGGLE SCORE",
+      "lane": "TERMINAL",
+      "narration_text": "Who did what. Step one, Bear's: name the voice — every rule, plain. Claude wrote both bare notes; the handoff was that the voice checker passes, and it did. Step three, the dangerous middle: reading the output — 'same link' in a note nobody mentioned a link. Then step four, Bear's real work: move the rules into a file. Twenty-six lines, written once. Claude wrote the files notes; handoff met — checker passes and the file's URL rule held. Six steps. Honest score.",
+      "estimated_duration_s": 29.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCBoondoggleScore",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCBoondoggleScore",
+          "props": {
+            "system": "one voice · one folder",
+            "steps": [
+              {
+                "n": 1,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "Name the voice — every rule, plain"
+              },
+              {
+                "n": 2,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Bare: two notes, voice-fluent",
+                "handoff": "check.py passes on both",
+                "dependsOn": [
+                  1
+                ]
+              },
+              {
+                "n": 3,
+                "phase": "C",
+                "labor": "human",
+                "capacity": "PA",
+                "text": "Read the output: 'same link' — invented",
+                "dependsOn": [
+                  2
+                ]
+              },
+              {
+                "n": 4,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "Move the rules into CLAUDE.md — 26 lines",
+                "dependsOn": [
+                  3
+                ]
+              },
+              {
+                "n": 5,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Files: two notes, 6.2× less typing",
+                "handoff": "check.py passes; no invented URL",
+                "dependsOn": [
+                  4
+                ]
+              },
+              {
+                "n": 6,
+                "phase": "H",
+                "labor": "human",
+                "capacity": "IJ",
+                "text": "Same voice both ways; the file is durable",
+                "dependsOn": [
+                  5
+                ]
+              }
+            ],
+            "dangerousMiddle": 3,
+            "distribution": true,
+            "stepGap": 22
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Header"
+        },
+        {
+          "at": 0.45,
+          "event": "Step 3 rings"
+        },
+        {
+          "at": 0.9,
+          "event": "Tally"
+        }
+      ],
+      "actual_duration_s": 22.83,
+      "audio_file": "mp3/beat-B06.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "HUMAN — THE LEDGER",
+      "lane": "TERMINAL",
+      "narration_text": "So what was Bear's. He must name the voice — nobody else's voice will do. He must read the output, or Claude eats a rule and he ships it anyway. He must decide when the file is done. Claude can write in the voice — from a paragraph or from a file, it does. It can be told a rule and forget it under a long prompt — it did. It should read the file first — it did. It should tell him what changed — it did.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCHumanLedger",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCHumanLedger",
+          "props": {
+            "ai": [
+              {
+                "tier": "CAN",
+                "text": "write in a voice from a file"
+              },
+              {
+                "tier": "CAN",
+                "text": "lose a rule in a long prompt"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "read the file before the ask"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "say what it changed and why"
+              }
+            ],
+            "human": [
+              {
+                "tier": "MUST",
+                "text": "name the voice himself"
+              },
+              {
+                "tier": "MUST",
+                "text": "read the output every time"
+              },
+              {
+                "tier": "MUST",
+                "text": "decide when the file is done"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "put the rule in the file"
+              }
+            ],
+            "closing": "Twenty-six lines. Written once. The voice lives there.",
+            "humanCue": 70,
+            "rowGap": 12
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "THE AI"
+        },
+        {
+          "at": 0.35,
+          "event": "THE HUMAN"
+        },
+        {
+          "at": 0.85,
+          "event": "Closing"
+        }
+      ],
+      "actual_duration_s": 18.94,
+      "audio_file": "mp3/beat-B07.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "VERDICT",
+      "lane": "BOOKEND",
+      "narration_text": "Let's recap with Claude. Bare: a nine-hundred-byte paragraph of Bear, retyped every session, and Claude still invented a link nobody asked for. Files: one twelve-hundred-byte CLAUDE.md written once, and each ask under two hundred bytes — six-point-two times less typing, and the URL rule held. Same voice, same checker, same model. What would prove this reel wrong: a bare run that refuses the invented link on its own, ten times in a row.",
+      "estimated_duration_s": 26.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeVerdictArtifact",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "verdict.md",
+            "artifactHeading": "Let the Files Do the Prompting",
+            "artifactLines": [
+              "Bare: a 900-byte paragraph, retyped every session — and Claude still invented a link.",
+              "Files: 150-byte ask + one CLAUDE.md written once — 6.2× less typing, URL rule held.",
+              "Same voice, same checker, same model. The difference is what Claude read first.",
+              "FALSIFIABLE: a bare run that refuses the invented link on its own, ten times in a row."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Artifact"
+        },
+        {
+          "at": 0.2,
+          "event": "Lines"
+        },
+        {
+          "at": 0.9,
+          "event": "Falsifiable"
+        }
+      ],
+      "lead_silence_s": 0.5,
+      "actual_duration_s": 22.66,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "YOUR TURN",
+      "lane": "BOOKEND",
+      "narration_text": "Your turn. Open Claude Code in a folder you write from, and paste this: Interview me about my voice — how I address people, how I sign off, what I never say, what I never invent — and write my answers into CLAUDE.md, in my words, one paragraph. Don't draft anything yet.",
+      "estimated_duration_s": 18.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeComposerAsk",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "Interview me about my voice — how I address people, how I sign off, what I never say, what I never invent — and write my answers into CLAUDE.md, in my words, one paragraph. Don't draft anything yet.",
+            "segment": "Let the Files Do the Prompting",
+            "topic": "YOUR TURN · CLAUDE CODE 101",
+            "runningText": "paste this into Claude Code…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Composer"
+        },
+        {
+          "at": 0.6,
+          "event": "Send arms"
+        }
+      ],
+      "actual_duration_s": 14.55,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "OUTRO",
+      "lane": "BOOKEND",
+      "narration_text": "Let the Files Do the Prompting. Liam, in for Bear.",
+      "estimated_duration_s": 4.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeTitleOutro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Let the Files Do the Prompting",
+            "slug": "cc-stop-prompting-claude",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Title"
+        },
+        {
+          "at": 0.35,
+          "event": "@NikBearBrown"
+        },
+        {
+          "at": 0.55,
+          "event": "Mascot"
+        }
+      ],
+      "actual_duration_s": 3.56,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T18:05:57"
+      }
+    }
+  ]
+}

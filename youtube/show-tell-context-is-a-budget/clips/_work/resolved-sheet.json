@@ -1,0 +1,708 @@
+{
+  "metadata": {
+    "slug": "show-tell-context-is-a-budget",
+    "title": "Context Is a Budget",
+    "topic": "CLAUDE · CONTEXT ENGINEERING",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Italian (Ciao)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Claude users and agent builders who run long tasks and want to manage what goes into the context window",
+    "source_doc": "Anthropic Engineering, 'Effective context engineering for AI agents' (Sep 29, 2025); saved page anthropics/youtube/Effective context engineering for AI agents _ Anthropic.html, read 2026-09-26",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "context engineering",
+      "context window",
+      "context rot",
+      "attention budget",
+      "compaction",
+      "agentic memory",
+      "sub-agents",
+      "just-in-time retrieval",
+      "AI agents",
+      "Claude Code",
+      "Anthropic",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-26T15:46:22",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Ciao. This is Liam, in for Bear. When an agent loses the thread, the instinct is to give it more. So don't ask how to give your agent more context. Ask how to give it the right context.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I give my agent more context?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'more context' -> 'the right context' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I give my agent\nmore context?",
+            "triggerWords": "more context",
+            "replacementWords": "the right context",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-context-is-a-budget",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-26T19:23:22.361065+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (more context) and corrects it to the real one (the right context).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 10.24,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 10.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-26T15:46:22"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Three terms. The context window: everything the model sees at once, from instructions and tools to history and data. Context rot: as that window fills, the model recalls what's in it less accurately. And context engineering: choosing what goes in, every time the model is called.",
+      "estimated_duration_s": 18.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "'context window' lands"
+          },
+          {
+            "at": 0.45,
+            "event": "'context rot' lands"
+          },
+          {
+            "at": 0.78,
+            "event": "'context engineering' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "context window",
+                "meaning": "everything the model sees at once: instructions, tools, history, data"
+              },
+              {
+                "term": "context rot",
+                "meaning": "as the window fills, the model recalls what's in it less accurately"
+              },
+              {
+                "term": "context engineering",
+                "meaning": "choosing what goes in, every time the model is called"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-26T19:23:55.907208+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 15.637,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 15.666666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-26T15:46:22"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Picture the context window as a tray. Everything the model sees has to fit in it: the instructions, the tools, the message history, and any data it pulls in.",
+      "estimated_duration_s": 11.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft tray slides onto the stage (context window); one block drops in per phrase: a white instruction page, dark tool blocks, kraft message blocks, a kraft data box.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "tray slides in"
+          },
+          {
+            "at": 0.45,
+            "event": "instructions, tools"
+          },
+          {
+            "at": 0.75,
+            "event": "history, data"
+          }
+        ],
+        "manim": {
+          "class": "B00_Tray"
+        },
+        "motion_claim": "A kraft tray slides onto the stage (context window); one block drops in per phrase: a white instruction page, dark tool blocks, kraft message blocks, a kraft data box."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn tray scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.237,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 9.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T15:46:22"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "An agent working in a loop keeps adding to it. Every tool call, every result, lands in the tray. But more isn't better. As the tray fills, the model recalls what's inside less accurately. Anthropic calls this context rot.",
+      "estimated_duration_s": 15.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Rows of message blocks and white result slabs drop in until the tray is full; a small card with a terracotta dot (the fact that matters) gets buried; then every block pales, the dot fades to grey, and 'context rot' lands.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "blocks pile in"
+          },
+          {
+            "at": 0.55,
+            "event": "more isn't better"
+          },
+          {
+            "at": 0.75,
+            "event": "blocks pale, the dot fades"
+          },
+          {
+            "at": 0.9,
+            "event": "context rot"
+          }
+        ],
+        "manim": {
+          "class": "B01_Rot"
+        },
+        "motion_claim": "Rows of message blocks and white result slabs drop in until the tray is full; a small card with a terracotta dot (the fact that matters) gets buried; then every block pales, the dot fades to grey, and 'context rot' lands."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn tray scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.651,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 12.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T15:46:22"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Why? Attention is a budget. Every token attends to every other token, so n tokens make n squared pairs. Add more, and each one gets a thinner share.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Above a small tray, four token dots link to each other with ink lines; four more dots pop in and the web redraws with many more, thinner links; 'n²' sits beside it.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "four tokens, every pair linked"
+          },
+          {
+            "at": 0.5,
+            "event": "n²"
+          },
+          {
+            "at": 0.7,
+            "event": "more tokens, thinner links"
+          }
+        ],
+        "manim": {
+          "class": "B02_Budget"
+        },
+        "motion_claim": "Above a small tray, four token dots link to each other with ink lines; four more dots pop in and the web redraws with many more, thinner links; 'n²' sits beside it."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn tray scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.96,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 9.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T15:46:22"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "So the goal is the smallest set of high-signal tokens that gets the job done. A clear prompt. A few tools that don't overlap. A handful of good examples, not a laundry list of edge cases.",
+      "estimated_duration_s": 14.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The full, pale tray: the pale blocks lift out and slide away; a duplicate tool block leaves; a tall stack of thin edge-case slips is swapped for three example cards; what stays gets a terracotta dot each ('high signal').",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "pale blocks lift out"
+          },
+          {
+            "at": 0.5,
+            "event": "overlapping tool leaves"
+          },
+          {
+            "at": 0.8,
+            "event": "laundry list -> three examples"
+          }
+        ],
+        "manim": {
+          "class": "B03_Curate"
+        },
+        "motion_claim": "The full, pale tray: the pale blocks lift out and slide away; a duplicate tool block leaves; a tall stack of thin edge-case slips is swapped for three example cards; what stays gets a terracotta dot each ('high signal')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn tray scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.795,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 10.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T15:46:22"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Next, don't load everything up front. Keep lightweight references, like file paths and links, and load the data just in time. Claude Code does this, using commands like head and tail to read big data without loading all of it.",
+      "estimated_duration_s": 16.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A tall data crate stands outside the tray; in the tray, only a small white tag tied to it by a dashed line ('file path'); on 'just in time' one thin slice slides from the crate into the tray; on 'head and tail' the top and bottom slices light, and only they come in.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "crate stays outside"
+          },
+          {
+            "at": 0.35,
+            "event": "a reference tag in the tray"
+          },
+          {
+            "at": 0.55,
+            "event": "one slice loads"
+          },
+          {
+            "at": 0.85,
+            "event": "head and tail"
+          }
+        ],
+        "manim": {
+          "class": "B04_JustInTime"
+        },
+        "motion_claim": "A tall data crate stands outside the tray; in the tray, only a small white tag tied to it by a dashed line ('file path'); on 'just in time' one thin slice slides from the crate into the tray; on 'head and tail' the top and bottom slices light, and only they come in."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn tray scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.672,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 12.708333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T15:46:22"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Long tasks outgrow any tray, and Anthropic describes three fixes. First, compaction. Near the limit, the history gets summarized. In Claude Code, that keeps decisions and unresolved bugs, and drops redundant tool outputs. Then a fresh window starts from the summary.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A full tray; two blocks with terracotta dots are marked (decisions, bugs); the pale result slabs slide away; a dark press plate comes down and squeezes what's left into one summary block, which sits alone in the fresh tray.",
+        "show": [
+          {
+            "at": 0.25,
+            "event": "full tray"
+          },
+          {
+            "at": 0.5,
+            "event": "keep / drop"
+          },
+          {
+            "at": 0.75,
+            "event": "press -> one summary block"
+          }
+        ],
+        "manim": {
+          "class": "B05_Compaction"
+        },
+        "motion_claim": "A full tray; two blocks with terracotta dots are marked (decisions, bugs); the pale result slabs slide away; a dark press plate comes down and squeezes what's left into one summary block, which sits alone in the fresh tray."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn tray scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 15.019,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 15.041666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T15:46:22"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Second, structured note-taking. The agent writes notes to a file outside the window, like a to-do list. After the context resets, it reads them back and carries on.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A notebook sits beside the tray; slips fly from the tray into it and its lines fill; the tray empties (reset); one note page flies back into the tray, and a check lands.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "notes written outside"
+          },
+          {
+            "at": 0.6,
+            "event": "context resets"
+          },
+          {
+            "at": 0.8,
+            "event": "notes read back"
+          }
+        ],
+        "manim": {
+          "class": "B06_Notes"
+        },
+        "motion_claim": "A notebook sits beside the tray; slips fly from the tray into it and its lines fill; the tray empties (reset); one note page flies back into the tray, and a check lands."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn tray scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.685,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 9.708333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T15:46:22"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Third, sub-agents. The main agent keeps the plan and hands focused jobs to sub-agents with clean windows. Each may use tens of thousands of tokens exploring, but returns only a condensed summary, often one to two thousand tokens.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The main tray holds a plan page; three small crates slide out from it; each fills with many small blocks; then each sends back one summary card to the main tray.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "three crates go out"
+          },
+          {
+            "at": 0.45,
+            "event": "each fills"
+          },
+          {
+            "at": 0.75,
+            "event": "one summary card back each"
+          }
+        ],
+        "manim": {
+          "class": "B07_SubAgents"
+        },
+        "motion_claim": "The main tray holds a plan page; three small crates slide out from it; each fills with many small blocks; then each sends back one summary card to the main tray."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn tray scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.845,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 13.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T15:46:22"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Whichever you use, the rule is the same. Context is a budget. Spend it on the smallest set of high-signal tokens that gets the next step right.",
+      "estimated_duration_s": 10.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The tray with three dotted blocks sits centre stage; the press, the notebook and a small crate arrive around it; a terracotta check lands on the tray.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "the three tools around the tray"
+          },
+          {
+            "at": 0.5,
+            "event": "context is a budget"
+          },
+          {
+            "at": 0.85,
+            "event": "check"
+          }
+        ],
+        "manim": {
+          "class": "B08_Rule"
+        },
+        "motion_claim": "The tray with three dotted blocks sits centre stage; the press, the notebook and a small crate arrive around it; a terracotta check lands on the tray."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn tray scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.299,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 8.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T15:46:22"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude: Here's a long task I run with an AI agent: [describe it in two sentences]. List everything that lands in its context. Mark each item: keep, load only when needed, compact, move to a notes file, or hand to a sub-agent. Then write the summary you'd keep if the context reset right now. Then check two things yourself. For each item you kept, does the next step use it? If not, cut it. And paste only the summary into a fresh chat. Can Claude say what's done and what's next?",
+      "estimated_duration_s": 38.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · YOUR TURN",
+            "segment": "Audit One Agent's Context",
+            "command": "Here's a long task I run with an AI agent: [describe it in two sentences]. List everything that lands in its context. Mark each item: keep, load only when needed, compact, move to a notes file, or hand to a sub-agent. Then write the summary you'd keep if the context reset right now.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: for each item you kept, does the next step use it? If not, cut it.",
+              "Check: paste only the summary into a fresh chat. Can Claude say what's done and what's next?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-26T19:25:00.760432+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 26.091,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 26.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-26T15:46:22"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Context Is a Budget. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Context Is a Budget",
+            "slug": "show-tell-context-is-a-budget",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-26T19:25:16.715815+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.157,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.166666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-26T15:46:22"
+      }
+    }
+  ]
+}

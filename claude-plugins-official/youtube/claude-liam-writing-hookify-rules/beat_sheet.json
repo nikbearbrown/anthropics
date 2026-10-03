@@ -20,11 +20,58 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-plugins-official/plugins/hookify/skills/writing-rules/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "This skill should be used when the user asks to \"create a hookify rule\"",
+        "\"write a hook rule\"",
+        "\"configure hookify\"",
+        "\"add a hookify rule\"",
+        "or needs guidance on hookify rule syntax and patterns."
+      ],
+      "constraints": [
+        "name (required): Unique identifier for the rule",
+        "enabled (required): Boolean to activate/deactivate",
+        "event (required): Which hook event to trigger on",
+        "not_contains: Substring must NOT be present",
+        "All conditions must match for rule to trigger",
+        "Reminders about required steps",
+        "pattern: rm -rf /tmp # Only matches exact path"
+      ],
+      "referenced_files": [
+        ".claude/hookify.{rule-name}.local.md",
+        "warn-dangerous-rm",
+        "block-console-log",
+        "file_path",
+        "new_text",
+        "old_text",
+        "regex_match",
+        "not_contains",
+        "starts_with",
+        "ends_with"
+      ],
+      "code_signals": [
+        "code block: markdown",
+        "code block: yaml",
+        "code block: bash"
+      ],
+      "sections": [
+        "Overview",
+        "Rule File Format",
+        "Basic Structure",
+        "Frontmatter Fields",
+        "Advanced Format (Multiple Conditions)",
+        "Message Body",
+        "Event Type Guide",
+        "bash Events",
+        "file Events",
+        "stop Events"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T03:05:21",
+      "at": "2026-09-05T19:41:30",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +80,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is writing-hookify-rules. This skill should be used when the user asks to \"create a hookify rule\", \"write a hook rule\", \"configure hookify\", \"add a hookify rule\", or needs guidance on hookify rule syntax and patterns.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is writing-hookify-rules. This skill should be used when the user asks to \"create a hookify rule\", \"write a hook rule\", \"configure hookify\", \"add a hookify rule\", or needs guidance on hookify rule syntax and patterns.. Its concrete surface area includes This skill should be used when the user asks to \"create a hookify rule\"; \"write a hook rule\"; \"configure hookify\". A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,7 +96,7 @@
             "runningText": "reading writing-hookify-rules SKILL.md…",
             "output": [
               "skill: writing-hookify-rules",
-              "This skill should be used when the user asks to \"create a hookify rule\", \"write ",
+              "This skill should be used when the user asks to \"create a hookify rule\", \"write…",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
@@ -63,18 +110,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 17.45,
+      "actual_duration_s": 24.32,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:05:21"
+        "at": "2026-09-05T19:41:30"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is writing-hookify-rules. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is writing-hookify-rules. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at .claude/hookify.{rule-name}.local.md, warn-dangerous-rm, block-console-log, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -106,18 +153,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.76,
+      "actual_duration_s": 20.33,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:05:21"
+        "at": "2026-09-05T19:41:30"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "writing-hookify-rules is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: This skill should be used when the user asks to \"create a hookify rule\"; \"write a hook rule\"; \"configure hookify\"; \"add a hookify rule\". The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -157,18 +204,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 16.0,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:05:21"
+        "at": "2026-09-05T19:41:30"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. writing-hookify-rules is a specification written as an instruction set. Claude's job: This skill should be used when the user asks to \"create a hookify rule\", \"write a hook rule\", \"confi. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. name (required): Unique identifier for the rule. That is the constraint in writing-hookify-rules — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +226,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "This skill should be used when the user asks to \"create a hookify rule\", \"write a hook rule\", \"configure hookify\", \"add a hookify rule\", or needs guidance on hookify rule syntax and patterns.",
+            "body": "name (required): Unique identifier for the rule",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,18 +236,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 15.79,
+      "actual_duration_s": 11.33,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:05:21"
+        "at": "2026-09-05T19:41:30"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In writing-hookify-rules, supporting material: .claude/hookify.{rule-name}.local.md, warn-dangerous-rm, block-console-log, file_path; implementation signals: code block: markdown, code block: yaml, code block: bash; sections: Overview, Rule File Format, Basic Structure, Frontmatter Fields. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "This skill should be used when the user asks to \"create a hookify rule\"; \"write a hook rule\"; \"configure hookify\"; .claude/hookify.{rule-name}.local.md; warn-dangerous-rm; block-console-log; code block: markdown; code…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 22.53,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T19:41:30"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "writing-hookify-rules makes Claude execute one task reliably. The SKILL.md is the spec — This skill should be used when the user asks to \"create a hookify rule\", \"write . Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "writing-hookify-rules makes Claude execute one task reliably. The SKILL.md is the spec — This skill should be used when the user asks to \"create a hookify rule\", \"write…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -213,9 +292,10 @@
             "artifactHeading": "Claude, Writing Hookify Rules.",
             "artifactLines": [
               "Skill: writing-hookify-rules — Claude reads SKILL.md before acting",
-              "This skill should be used when the user asks to \"create a hookify rule\", \"write a hook rul",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "This skill should be used when the user asks to \"create a hookify rule\", \"write a hook…",
+              "Capabilities: This skill should be used when the user asks to \"create a hookify rule\"; \"write a hook rule\"; \"configure hookify\"",
+              "Constraint: name (required): Unique identifier for the rule",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -225,18 +305,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 14.04,
+      "actual_duration_s": 14.06,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:05:21"
+        "at": "2026-09-05T19:41:30"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to this skill should be used when the user asks to \"create a hookify rule\", \"write . Read the writing-hookify-rules skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to this skill should be used when the user asks to \"create a hookify rule\", \"write. Read the writing-hookify-rules skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -248,7 +328,7 @@
             "greeting": "Your turn.",
             "topic": "WRITING-HOOKIFY-RULES · ANTHROPIC SKILL",
             "segment": "Claude, Writing Hookify Rules.",
-            "command": "I want to this skill should be used when the user asks to \"create a hookify rule. Read the writing-hookify-rules skill and walk me through what you will do before you do it.",
+            "command": "I want to this skill should be used when the user asks to \"create a hookify. Read the writing-hookify-rules skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -267,7 +347,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:05:21"
+        "at": "2026-09-05T19:41:30"
       }
     },
     {
@@ -298,7 +378,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T03:05:21"
+        "at": "2026-09-05T19:41:30"
       }
     }
   ]

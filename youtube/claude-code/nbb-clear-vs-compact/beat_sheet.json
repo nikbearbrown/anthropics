@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "slug": "clear-vs-compact",
+    "slug": "nbb-clear-vs-compact",
     "variant": "nbb",
     "title": "/clear vs. /compact: Context Window Hygiene",
-    "topic": "CONTEXT HYGIENE · CAPS",
+    "topic": "CONTEXT HYGIENE",
     "audience": "NikBearBrown",
     "engine": "kokoro",
     "voice": "am_onyx",
@@ -11,7 +11,6 @@
     "register": "Teardown",
     "derived_from": "beat_sheet.json",
     "source_reel": "../clear-vs-compact",
-    "source_video": "../clear-vs-compact/clear-vs-compact-cut.mp4",
     "body_beats": [
       "B00",
       "B01",
@@ -20,64 +19,36 @@
       "B04",
       "B05"
     ],
-    "body_duration_s": 113.97,
-    "old_outro_beats": [
-      "B06"
-    ],
-    "built_at": "2026-07-16T21:55:05.706039"
+    "rebuilt_at": "2026-08-31",
+    "build": {
+      "at": "2026-08-31T18:38:00",
+      "cut": "master",
+      "filled": 9,
+      "of": 9,
+      "slates": [],
+      "skin_warnings": []
+    }
   },
   "beats": [
     {
-      "beat_id": "NBB00",
-      "act": "COLD OPEN",
-      "title": "Liam cold open — ClaudeComposerAsk",
-      "engine": "kokoro",
-      "voice": "am_onyx",
-      "narration_text": "What reframed it for me is that quality dropped because the context still held the failed attempt and the two abandoned approaches, biasing every next turn, not because the model changed. I want a clean rule for reaching for each command. Help me: (1) give me a concrete test for whether my current history is still load-bearing or just in the way, (2) explain exactly what slash-clear discards versus what CLAUDE.md safely preserves and reloads, and (3) walk me through a case where slash-compact is correct because the history holds why the next output will be right.",
-      "shot": {
-        "type": "CARD",
-        "source": "remotion",
-        "motion": "hold",
-        "remotion": {
-          "pattern": "ClaudeComposerAsk",
-          "provenance": "proven-core/ClaudeComposerAsk",
-          "version": "1",
-          "props": {
-            "command": "What reframed it for me is that quality dropped because the context still held the failed attempt and the two abandoned approaches, biasing every next turn, not because the model changed. I want a clean rule for reaching for each command. Help me: (1) give me a concrete test for whether my current history is still load-bearing or just in the way, (2) explain exactly what slash-clear discards versus what CLAUDE.md safely preserves and reloads, and (3) walk me through a case where slash-compact is correct because the history holds why the next output will be right.",
-            "topic": "CONTEXT HYGIENE · CAPS",
-            "segment": "/clear vs. /compact: Context Window Hygiene",
-            "greeting": "Your turn.",
-            "runningText": "explaining the mechanism…",
-            "output": [],
-            "folderLabel": "@NikBearBrown",
-            "modelLabel": "Fable 5",
-            "effortLabel": "High"
-          },
-          "rendered": {
-            "out": "media/NBB00.mp4",
-            "at": ""
-          }
-        }
-      },
-      "estimated_duration_s": 9.0,
-      "audio_file": "mp3/beat-NBB00.mp3",
-      "actual_duration_s": 5.312
-    },
-    {
       "beat_id": "B00",
       "act": "ASK",
+      "lane": "BOOKEND",
       "narration_text": "Three hours into the build. The context window is full of the failed first attempt, the corrected version, a thousand lines of test output, and two approaches they talked themselves out of. Quality is dropping. Claude is referencing a constraint they dropped two rows ago. The student thinks the model is getting worse. The model is fine. The context is not. This is Cześć, Liam — in for Bear.",
+      "engine": "kokoro",
+      "voice": "am_onyx",
       "shot": {
         "type": "REMOTION",
         "source": "own",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/ClaudeComposerAsk",
           "props": {
-            "greeting": "Liam",
-            "topic": "CONTEXT HYGIENE · CAPS",
+            "greeting": "Cześć, Liam",
+            "topic": "CONTEXT HYGIENE",
             "segment": "/clear vs. /compact: Context Window Hygiene",
-            "command": "What is: /clear vs. /compact: Context Window Hygiene?",
-            "runningText": "building the answer…",
+            "command": "continue implementing the filter function from where we left off",
+            "runningText": "re-reading three hours of context…",
             "output": [],
             "folderLabel": "@NikBearBrown"
           },
@@ -87,61 +58,49 @@
           }
         }
       },
-      "new_visual_element": "ClaudeComposerAsk — cold open, continuing build with stale filled context",
-      "remotion": {
-        "pattern": "ClaudeComposerAsk",
-        "props": {
-          "greeting": "Cześć, Liam",
-          "topic": "CONTEXT HYGIENE · CAPS",
-          "segment": "/clear vs. /compact",
-          "command": "continue implementing the filter function from where we left off",
-          "runningText": "re-reading context…",
-          "folderLabel": "@NikBearBrown"
-        }
-      },
-      "estimated_duration_s": 15,
-      "audio_file": "../clear-vs-compact/mp3/beat-B00.mp3",
+      "spark_line": "Context is not the model.",
+      "estimated_duration_s": 22,
+      "audio_file": "mp3/beat-B00.mp3",
       "actual_duration_s": 19.2,
-      "locked": true,
-      "source_clip": "../clear-vs-compact/clips/B00.mp4",
-      "source_audio": "../clear-vs-compact/mp3/beat-B00.mp3",
-      "lane": "BOOKEND",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T18:38:00"
       }
     },
     {
       "beat_id": "B01",
       "act": "WHAT-CONTEXT-DOES",
       "narration_text": "The context window is the running transcript of every prompt, output, tool call, and result Claude re-reads from the top on every turn. Everything in it does two things: it consumes the budget, and it conditions the next output. The failed first attempt is still in there. The abandoned approach is still in there. They are not just eating space — they are biasing the model. Quality degrades because the context contains the problem, not because the model changed.",
+      "engine": "kokoro",
+      "voice": "am_onyx",
       "shot": {
         "type": "REMOTION",
         "source": "own",
         "remotion": {
           "pattern": "FormBCard",
+          "provenance": "proven-core/FormBCard",
           "props": {
-            "title": "/clear vs. /compact: Context Window Hygiene",
+            "title": "What the context does",
             "items": [
               {
-                "label": "Key point one",
-                "sub": "",
-                "icon": "target",
-                "cueFrame": 20
+                "label": "Re-read each turn",
+                "sub": "The whole transcript replays from the top.",
+                "icon": "layers",
+                "cueFrame": 40
               },
               {
-                "label": "Key point two",
-                "sub": "",
-                "icon": "list-checks",
-                "cueFrame": 55
-              },
-              {
-                "label": "Key point three",
-                "sub": "",
+                "label": "Eats the budget",
+                "sub": "Every prompt and output counts against the cap.",
                 "icon": "zap",
-                "cueFrame": 90
+                "cueFrame": 200
+              },
+              {
+                "label": "Biases the next output",
+                "sub": "Failed attempts still condition the model.",
+                "icon": "crosshair",
+                "cueFrame": 380
               }
             ]
           },
@@ -151,246 +110,177 @@
           }
         }
       },
-      "new_visual_element": "Context window — re-read every turn / consumes budget / biases next output",
       "spark_line": "Stale context biases output.",
-      "estimated_duration_s": 10,
-      "audio_file": "../clear-vs-compact/mp3/beat-B01.mp3",
+      "estimated_duration_s": 22,
+      "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 22.04,
-      "locked": true,
-      "source_clip": "../clear-vs-compact/clips/B01.mp4",
-      "source_audio": "../clear-vs-compact/mp3/beat-B01.mp3",
-      "lane": "BOOKEND",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T18:38:00"
       }
     },
     {
       "beat_id": "B02",
       "act": "CLEAR-MECHANICS",
       "narration_text": "slash-clear wipes the conversation. The code on disk stays. CLAUDE.md stays. Project files stay. Only the chat disappears — and that is safe because durable instructions do not live in the chat. They live in CLAUDE.md, which Claude reloads at the start of the next turn. The stack, the conventions, the negative constraints, the things-never-to-improvise — all reread from the file. The transient conversation is discarded. It does not need to be preserved.",
+      "engine": "kokoro",
+      "voice": "am_onyx",
       "shot": {
-        "type": "REMOTION",
+        "type": "MANIM",
         "source": "own",
-        "motion": "callout-reveal",
-        "media": "media/B02.mp4",
         "manim": {
           "scene_class": "Scene_B02_NbbClearVs",
-          "scenes_file": "scenes_std.py",
-          "rendered": {
-            "out": "media/B02.mp4",
-            "at": "2026-07-25T10:15:35.589489"
-          }
+          "scenes_file": "scenes_std.py"
         }
       },
-      "new_visual_element": "/clear mechanics — chat gone / code on disk stays / CLAUDE.md reloaded next turn",
       "spark_line": "Chat gone. Code stays.",
-      "estimated_duration_s": 13,
-      "audio_file": "../clear-vs-compact/mp3/beat-B02.mp3",
+      "estimated_duration_s": 23,
+      "audio_file": "mp3/beat-B02.mp3",
       "actual_duration_s": 23.17,
-      "locked": true,
-      "source_clip": "../clear-vs-compact/clips/B02.mp4",
-      "source_audio": "../clear-vs-compact/mp3/beat-B02.mp3"
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:Scene_B02_NbbClearVs",
+        "at": "2026-08-31T18:38:00"
+      }
     },
     {
       "beat_id": "B03",
       "act": "COMPACT-VS-CLEAR",
       "narration_text": "slash-compact summarizes the conversation instead of erasing it. Use compact when the context is long but still load-bearing — the history contains why the next output will be correct. Use clear when the context is finished and in the way — between two unrelated tasks, after repeated corrections on the same issue, after you abandoned an approach and started fresh. The test: is the conversation still doing work? Yes: compact. No: clear.",
+      "engine": "kokoro",
+      "voice": "am_onyx",
       "shot": {
-        "type": "REMOTION",
+        "type": "MANIM",
         "source": "own",
-        "motion": "callout-reveal",
-        "media": "media/B03.mp4",
         "manim": {
           "scene_class": "Scene_B03_NbbClearVs",
-          "scenes_file": "scenes_std.py",
-          "rendered": {
-            "out": "media/B03.mp4",
-            "at": "2026-07-25T10:15:38.116243"
-          }
+          "scenes_file": "scenes_std.py"
         }
       },
-      "new_visual_element": "/compact vs /clear decision — still load-bearing → compact / finished and in the way → clear",
       "spark_line": "Load-bearing: compact. Done: clear.",
-      "estimated_duration_s": 13,
-      "audio_file": "../clear-vs-compact/mp3/beat-B03.mp3",
+      "estimated_duration_s": 22,
+      "audio_file": "mp3/beat-B03.mp3",
       "actual_duration_s": 22.08,
-      "locked": true,
-      "source_clip": "../clear-vs-compact/clips/B03.mp4",
-      "source_audio": "../clear-vs-compact/mp3/beat-B03.mp3"
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim:Scene_B03_NbbClearVs",
+        "at": "2026-08-31T18:38:00"
+      }
     },
     {
       "beat_id": "B04",
       "act": "VERDICT",
       "narration_text": "slash-clear feels expensive. The conversation feels like progress; clearing it feels like losing progress. The progress is not in the chat — it is in the code on disk and the instructions in CLAUDE.md. If Claude has corrected the same issue more than twice, the context is polluted. Clear and rewrite the spec with the misunderstanding written out. The cleared session starts from a state where the only things Claude sees are the things you chose to put in CLAUDE.md.",
+      "engine": "kokoro",
+      "voice": "am_onyx",
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "stagger"
+        "remotion": {
+          "pattern": "FormBCard",
+          "provenance": "proven-core/FormBCard",
+          "props": {
+            "title": "When to /clear",
+            "items": [
+              {
+                "label": "Chat is not progress",
+                "sub": "Progress lives on disk and in CLAUDE.md.",
+                "icon": "circle-x",
+                "cueFrame": 40
+              },
+              {
+                "label": "Two corrections = polluted",
+                "sub": "Fix the spec, then clear.",
+                "icon": "shield-alert",
+                "cueFrame": 260
+              },
+              {
+                "label": "Cleared = CLAUDE.md only",
+                "sub": "Claude sees exactly what you chose.",
+                "icon": "clipboard-list",
+                "cueFrame": 460
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
       },
-      "new_visual_element": "Artifact view — /clear rule: twice-corrected = polluted / clear + rewrite spec",
       "spark_line": "Progress is on disk.",
-      "estimated_duration_s": 13,
-      "audio_file": "../clear-vs-compact/mp3/beat-B04.mp3",
+      "estimated_duration_s": 22,
+      "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 22.4,
-      "locked": true,
-      "source_clip": "../clear-vs-compact/clips/B04.mp4",
-      "source_audio": "../clear-vs-compact/mp3/beat-B04.mp3"
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T18:38:00"
+      }
     },
     {
       "beat_id": "B05",
       "act": "HANDOFF",
       "narration_text": "Next session, clear before you start a new task. Paste this into the fresh context.",
+      "engine": "kokoro",
+      "voice": "am_onyx",
       "shot": {
         "type": "REMOTION",
         "source": "own",
-        "motion": "type-on"
-      },
-      "new_visual_element": "HANDOFF — clean context restart prompt",
-      "remotion": {
-        "pattern": "ClaudeComposerAsk",
-        "props": {
-          "greeting": "Your turn.",
-          "topic": "CONTEXT HYGIENE · CAPS",
-          "segment": "/clear vs. /compact",
-          "command": "[After /clear] Read CLAUDE.md. Then read the current state of these files: [list files relevant to next task]. Tell me what you see in these files and what you would expect the next task to involve — before I tell you what it is. This calibrates us before any change.",
-          "runningText": "paste after /clear…",
-          "folderLabel": "@NikBearBrown"
-        }
-      },
-      "estimated_duration_s": 9,
-      "audio_file": "../clear-vs-compact/mp3/beat-B05.mp3",
-      "actual_duration_s": 5.08,
-      "locked": true,
-      "source_clip": "../clear-vs-compact/clips/B05.mp4",
-      "source_audio": "../clear-vs-compact/mp3/beat-B05.mp3"
-    },
-    {
-      "beat_id": "NBB01",
-      "act": "VERDICT",
-      "title": "Liam verdict — ClaudeVerdictArtifact",
-      "engine": "kokoro",
-      "voice": "am_onyx",
-      "narration_text": "Let's recap with Claude. Here's what the body just demonstrated. slash-clear feels expensive. The conversation feels like progress; clearing it feels like losing progress. The progress is not in the chat — it is in the code on disk and the instructions in CLAUDE.md. If Claude has corrected the same issue more than twice, the context is polluted. Clear and rewrite the spec with the misunderstanding written out. The cleared session starts from a state where the only things Claude sees are the things you chose to put in CLAUDE.md. Next session, clear before you start a new task. Paste this into the fresh context.",
-      "shot": {
-        "type": "CARD",
-        "source": "remotion",
-        "motion": "hold",
-        "remotion": {
-          "pattern": "ClaudeVerdictArtifact",
-          "provenance": "proven-core/ClaudeVerdictArtifact",
-          "version": "1",
-          "props": {
-            "artifactTitle": "Verdict",
-            "artifactHeading": "/clear vs. /compact: Context Window Hygiene",
-            "artifactLines": [
-              "slash-compact summarizes the conversation instead of erasing it.",
-              "slash-clear feels expensive.",
-              "Next session, clear before you start a new task."
-            ]
-          },
-          "rendered": {
-            "out": "media/NBB01.mp4",
-            "at": ""
-          }
-        }
-      },
-      "estimated_duration_s": 30.0,
-      "audio_file": "mp3/beat-NBB01.mp3",
-      "actual_duration_s": 30.784,
-      "lead_silence_s": 0.5
-    },
-    {
-      "beat_id": "NBB02",
-      "act": "YOUR TURN",
-      "title": "Your turn handoff — ClaudeComposerAsk",
-      "engine": "kokoro",
-      "voice": "am_onyx",
-      "narration_text": "Take this prompt, run it on your own — pick any cancer type or clinical scenario you know about and ask how this mechanism applies there.",
-      "shot": {
-        "type": "CARD",
-        "source": "remotion",
-        "motion": "hold",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "provenance": "proven-core/ClaudeComposerAsk",
-          "version": "1",
           "props": {
-            "command": "Explain how [/clear vs. /compact: Context Window Hygiene] applies to a specific cancer type or clinical case you're studying. What proteins are involved, what goes wrong at the molecular level, and what is the therapeutic or diagnostic significance?",
-            "topic": "CONTEXT HYGIENE · CAPS",
-            "segment": "/clear vs. /compact: Context Window Hygiene",
-            "greeting": "Your turn.",
-            "runningText": "paste this into Claude…",
+            "greeting": "Paste after /clear.",
+            "topic": "CONTEXT HYGIENE",
+            "segment": "/clear vs. /compact",
+            "command": "Read CLAUDE.md. Then read the current state of these files: [list files relevant to the next task]. Tell me what you see and what you would expect the next task to involve — before I tell you what it is. This calibrates us before any change.",
+            "runningText": "paste after /clear…",
             "output": [],
-            "folderLabel": "@NikBearBrown",
-            "modelLabel": "Fable 5",
-            "effortLabel": "High"
+            "folderLabel": "@NikBearBrown"
           },
           "rendered": {
-            "out": "media/NBB02.mp4",
+            "out": "media/B05.mp4",
             "at": ""
           }
         }
       },
-      "estimated_duration_s": 8.0,
-      "audio_file": "mp3/beat-NBB02.mp3",
-      "actual_duration_s": 7.765
-    },
-    {
-      "beat_id": "NBB03",
-      "act": "OUTRO",
-      "title": "Claude title outro — ClaudeTitleOutro",
-      "silent": true,
-      "shot": {
-        "type": "CARD",
-        "source": "remotion",
-        "motion": "fade",
-        "remotion": {
-          "pattern": "ClaudeTitleOutro",
-          "provenance": "proven-core/ClaudeTitleOutro",
-          "version": "1",
-          "props": {
-            "title": "/clear vs. /compact: Context Window Hygiene",
-            "handle": "@NikBearBrown",
-            "subline": "paste this into the fresh context"
-          },
-          "rendered": {
-            "out": "media/NBB03.mp4",
-            "at": ""
-          }
-        }
-      },
-      "estimated_duration_s": 6.0,
-      "audio_file": "mp3/beat-NBB03.mp3",
-      "silence_s": 6.0,
-      "actual_duration_s": 6.03,
-      "engine": "kokoro",
-      "voice": "am_onyx",
-      "narration_text": "/clear vs. /compact: Context Window Hygiene"
+      "spark_line": "Paste after /clear.",
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 5.08,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T18:38:00"
+      }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict recap",
       "lane": "BOOKEND",
-      "narration_text": "",
-      "voice": "am_onyx",
       "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 20,
+      "voice": "am_onyx",
+      "narration_text": "The verdict. Slash-compact summarizes what slash-clear wipes. CLAUDE.md is what survives a clear — the chat is not where progress lives. The test: is the conversation still doing work? Yes, compact. No, clear. And if the same issue has been corrected twice, the context is polluted — clear, then rewrite the spec with the misunderstanding written out.",
       "shot": {
         "type": "REMOTION",
         "source": "own",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/ClaudeVerdictArtifact",
           "props": {
-            "artifactTitle": "/clear vs. /compact: Context Window Hygiene",
-            "artifactHeading": "Key findings",
+            "artifactTitle": "Verdict",
+            "artifactHeading": "/clear vs. /compact — the rule",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "/compact summarizes; /clear wipes. CLAUDE.md reloads on the next turn.",
+              "Test: is the conversation still doing work? Yes → /compact. No → /clear.",
+              "Same issue corrected twice → context polluted → /clear + rewrite the spec."
             ]
           },
           "rendered": {
@@ -399,30 +289,35 @@
           }
         }
       },
+      "estimated_duration_s": 20,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 17.88,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T18:38:00"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "your turn",
       "lane": "BOOKEND",
-      "narration_text": "",
-      "voice": "am_onyx",
       "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 20,
+      "voice": "am_onyx",
+      "narration_text": "Your turn. Open your longest current Claude session. Scan the transcript and mark every block: still shaping the next output, or dead weight. If nothing in it is still doing work — slash-clear. If the same issue has been corrected twice, rewrite the spec into CLAUDE.md and slash-clear. Report back which choice the transcript earned.",
       "shot": {
         "type": "REMOTION",
         "source": "own",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/ClaudeComposerAsk",
           "props": {
             "greeting": "Your turn.",
-            "topic": "YOUR TURN · CONTEXT HYGIENE · CAPS",
+            "topic": "YOUR TURN · CONTEXT HYGIENE",
             "segment": "/clear vs. /compact: Context Window Hygiene",
-            "command": "Take what you learned from [/clear vs. /compact: Context Window Hygiene] and apply it to your own work. What's one thing you'll try first?",
-            "runningText": "paste this into Claude and run it on your own work…",
+            "command": "Open your longest current Claude session. Read the transcript top-to-bottom and label every block: still shaping the next output, or dead weight. If nothing is still doing work, run /clear. If any single issue has been corrected more than twice, rewrite the spec into CLAUDE.md and /clear. Report which choice the transcript earned.",
+            "runningText": "audit your longest Claude session…",
             "output": [],
             "folderLabel": "@NikBearBrown"
           },
@@ -432,27 +327,34 @@
           }
         }
       },
+      "estimated_duration_s": 18,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": 17.09,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T18:38:00"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
       "lane": "BOOKEND",
-      "narration_text": "",
-      "voice": "am_onyx",
+      "silent": true,
       "engine": "kokoro",
-      "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 8,
+      "voice": "am_onyx",
+      "narration_text": "/clear vs. /compact: Context Window Hygiene",
       "shot": {
         "type": "REMOTION",
         "source": "own",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
+          "provenance": "proven-core/ClaudeTitleOutro",
           "props": {
             "title": "/clear vs. /compact: Context Window Hygiene",
-            "slug": "clear-vs-compact"
+            "handle": "@NikBearBrown",
+            "subline": "clear before the next task"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -460,8 +362,15 @@
           }
         }
       },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "silence_s": 6.0,
+      "actual_duration_s": 4.27,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T18:38:00"
       }
     }
   ]

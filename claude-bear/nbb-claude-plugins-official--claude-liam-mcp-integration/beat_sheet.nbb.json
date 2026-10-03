@@ -1,0 +1,335 @@
+{
+ "metadata": {
+  "title": "Match The Transport, Not The Key.",
+  "subtitle": "The MCP Integration Skill (Transports & Tool Names)",
+  "slug": "claude-plugins-official--claude-liam-mcp-integration",
+  "topic": "MCP INTEGRATION · CLAUDE PLUGINS",
+  "purpose": "Answer one real question in the Teardown register: when you wire an external service into a Claude Code plugin over MCP, is there one standard way to hook it up — or does the right setup depend on where the service actually runs? Lands the carry-out that the transport is matched to where the service lives, and the pre-allowed tool name has to match character for character or it fails silently.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/claude-plugins-official/youtube/claude-liam-mcp-integration/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Extending Claude — Skills, Plugins & Connectors",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the mcp-integration skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-08-31T04:02:16",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "You reach for 'key,' as if the credential is the choice that matters. It isn't — a plugin picks a transport, and that decides everything else. So: what transport does my plugin need for a service?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'What kind of key does my plugin need for a service?', hesitates on 'key', corrects to 'transport', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "What kind of\nkey does my plugin\nneed for\na service?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "key",
+      "replacementWords": "transport",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "hai-mcp-integration"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 1.0 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('key' -> 'transport') lands on screen and the full corrected question finishes typing before the clip ends. Params (42ms/char, 8% hesitateBetween, 4% mistakeRate, 4-line/~49-char text) follow the fixed pattern established on the claude-plugins-official--claude-liam-agent-development sibling after its first-attempt overrun.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T04:02:16"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Four transport types, and every server picks exactly one. Here's what each one actually does. Stdio — Claude Code spawns a local process, talks to it over standard input and output, and shuts it down when it's done; that's for custom servers you wrote and local tools. SSE — a long-lived connection to a hosted server with OAuth handled for you: you log in once in a browser, and Claude Code manages the tokens after that; that's the shape for official hosted services like GitHub or Linear. HTTP — a REST call with a token in the request headers, for stateless one-off work, no session held open. WebSocket — a live, two-way socket for real-time updates. Here's the design choice worth naming: all four load lazily. Nothing connects until you actually use one of that server's tools, and a config change doesn't take effect until you restart. They optimized for cheap startup at the expense of fast feedback when a config is wrong.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FOUR TRANSPORT TYPES",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FOUR TRANSPORT TYPES",
+     "chips": [
+      "stdio",
+      "SSE",
+      "HTTP",
+      "WebSocket"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "one per server, matched to where it lives",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T04:02:16"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "A few patterns keep a multi-server plugin from turning into a mess. Put server config in its own .mcp.json file instead of burying it inline in plugin.json — the config stays isolated, and adding servers doesn't churn the plugin manifest. Use CLAUDE_PLUGIN_ROOT for every file path, never a hardcoded one — that variable resolves at load time, so the plugin still works after it's installed somewhere else. And when a command pre-allows tools, list the exact tool names instead of a wildcard — the format is mcp, double underscore, the plugin name, the server name, double underscore, the tool name, all stitched together. Here's what's actually happening: those names come from the running server, not from your config, so the only way to know them is to run slash-mcp first and read them off the live system.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "PORTABLE PATHS, EXACT NAMES",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "PORTABLE PATHS, EXACT NAMES",
+     "chips": [
+      ".mcp.json",
+      "CLAUDE_PLUGIN_ROOT",
+      "exact tool names"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "scoped permissions, no hardcoded paths",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T04:02:16"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's the catch, and it's the one worth naming: that tool name has to match character for character. Get one letter wrong in the pre-allow list, and the tool doesn't show up. No error, no warning — it's just not there. Same shape for credentials: for stdio or HTTP servers, they're plain environment variables, and nothing checks them until the first real call. A completely broken setup can look perfectly healthy right up until that moment. This works if you value cheap startup; it fails if you want config errors surfaced the moment you save the file.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "WRONG BY ONE CHARACTER",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "WRONG BY ONE CHARACTER",
+     "chips": [
+      "exact match",
+      "one typo",
+      "no error"
+     ],
+     "arrows": false,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "a mismatch fails silently, not loudly",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T04:02:16"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Match the transport to where the service actually lives — stdio for local, SSE for hosted OAuth, HTTP for tokens, WebSocket for real-time. Then pre-allow the exact tool name, because one character off and it fails silently, not loudly.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Match the transport to where the service actually lives — stdio for local, SSE for hosted OAuth, HTTP for tokens, WebSocket for real-time. Then pre-allow the exact tool name, because one character off and it fails silently, not loudly.",
+      "attribution": "",
+      "sparkLine": "Match the transport. Name it exactly."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T04:02:16"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff",
+   "narration_text": "Your turn. Paste this into Claude Code: Add a GitHub SSE MCP server and a local custom stdio server to my plugin. Then run the design-check — three things. Did it put server config in its own .mcp.json, kept separate from plugin.json? Does every path use CLAUDE_PLUGIN_ROOT instead of something hardcoded? And before it pre-allowed any tools, did it tell you to run slash-mcp first, to read the exact names off the running server? Fail one of those and the plugin isn't portable; fail the last, and the tools will look configured but never fire.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "MCP INTEGRATION · CLAUDE PLUGINS",
+      "segment": "Match The Transport, Not The Key.",
+      "command": "Add a GitHub SSE MCP server and a local custom stdio server to my plugin.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T04:02:16"
+   }
+  },
+  {
+   "beat_id": "B_LLM",
+   "act": "LLM EXERCISE",
+   "narration_text": "Here is a prompt you can paste directly into Claude, ChatGPT, or Gemini. It gives any frontier LLM the full transport map from the video — the four transports, the .mcp.json layout, the CLAUDE_PLUGIN_ROOT rule, and the exact-tool-name format — and asks it to draft a working two-server config: an SSE server for GitHub, and a local stdio server for a script the plugin ships. Go deeper: how would you add a WebSocket transport for real-time updates without breaking the lazy-load contract the other three depend on, and what handshake would the local stdio server carry so it knows when to hand a long-running job off to that socket instead of blocking a stdio call?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32.0,
+   "llm_exercise": {
+    "prompt": "I want to add MCP servers to a Claude Code plugin. A Claude Code plugin extends the CLI, and each MCP server it declares picks exactly one of four transports: stdio (Claude Code spawns a local process and talks to it over standard input and output — for custom servers or local tools), SSE (a long-lived connection to a hosted server with OAuth handled for you — for official hosted services like GitHub or Linear), HTTP (a plain REST call with a token in a request header — for stateless one-off work), or WebSocket (a live, two-way socket for real-time updates). Server config goes in its own .mcp.json file, not inline in plugin.json. Every file path uses the CLAUDE_PLUGIN_ROOT variable, never a hardcoded path. Commands that use tools pre-allow them by their exact name, in the shape mcp__<pluginname>__<servername>__<toolname>; there is no wildcard, and one wrong character makes the tool silently unavailable. Draft the .mcp.json for a plugin that wires up two servers: (1) the official GitHub MCP server over SSE, and (2) a local custom server over stdio that runs a Python script the plugin ships (script path built from CLAUDE_PLUGIN_ROOT). Then draft a plugin.json command block that pre-allows exactly the GitHub read-issue tool and the local server's one Python tool — leave the tool names as placeholders in the correct mcp__<plugin>__<server>__<tool> shape, and add a comment saying to run /mcp against a live install to fill in the real names before shipping.",
+    "dig_deeper": "Go deeper: how would you add a WebSocket transport for real-time updates without breaking the lazy-load contract the other three depend on, and what specific handshake would you write into the local stdio server's body so it knows when to hand a long-running job off to a WebSocket instead of blocking a stdio call?"
+   },
+   "shot": {
+    "type": "CARD",
+    "source": "own",
+    "motion": "hold"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Match The Transport, Not The Key. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroSeries",
+     "props": {
+      "eyebrow": "MCP INTEGRATION · @HumanitariansAI",
+      "line": "Match The Transport, Not The Key."
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T04:02:16"
+   }
+  }
+ ]
+}

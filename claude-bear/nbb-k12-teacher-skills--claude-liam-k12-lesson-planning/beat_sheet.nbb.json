@@ -1,0 +1,319 @@
+{
+ "metadata": {
+  "title": "Claude, K12 Lesson Planning.",
+  "subtitle": "A List, Not a Freshly-Reasoned Plan",
+  "slug": "k12-teacher-skills--claude-liam-k12-lesson-planning",
+  "topic": "K12-LESSON-PLANNING · ANTHROPIC SKILL",
+  "purpose": "Take a Claude skill apart in the Teardown register: when Claude plans a K-12 lesson, it isn't reasoning the plan fresh — it's running the k12-lesson-planning skill's written steps out of SKILL.md, backed by a references folder of source material and a scripts folder of runnable code. Name the trade-off: they optimized for repeatability at the expense of coverage — anything the list doesn't cover falls back to Claude's own judgment, not the skill's playbook.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/k12-teacher-skills/youtube/claude-liam-k12-lesson-planning/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the k12-lesson-planning Skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-02T08:24:42",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. You'd guess Claude improvises a lesson plan — reads the topic, freestyles a syllabus. It doesn't. Ask it to plan a K-12 lesson and it opens a written file first, then runs the list. Here's what's actually happening under the hood.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'When Claude plans a lesson for my class, does it improvise?', hesitates on 'improvise', corrects to 'follow written steps', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "When Claude plans\na lesson for my class,\ndoes it improvise?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "improvise",
+      "replacementWords": "follow written steps",
+      "mistakeRate": 6,
+      "hesitateWithin": 2,
+      "hesitateBetween": 14,
+      "charMs": 48,
+      "jitter": 26,
+      "seed": "nbb-k12-lesson-planning"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. triggerWords/replacementWords must be a SINGLE whitespace token each (the component matches trigger against one split token's punctuation-stripped core; a multi-word trigger never matches and the correction silently never fires — confirmed as a defect on the k12-lesson-differentiation sibling built earlier this batch) and the trigger should be the LAST content word before terminal punctuation so nothing trails the replacement ungrammatically. 'improvise' is a single token immediately before the terminal '?', so this reel does not repeat that defect. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('improvise' -> 'follow written steps') lands on screen.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T08:24:42"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Take a Claude skill apart, and here's what you find. It's a folder — Claude reads it before it acts. This one is called k12-lesson-planning. Inside: a SKILL.md file, in plain language, no hidden logic, no secret sauce. The file is the program.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A SKILL IS A FOLDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A SKILL IS A FOLDER",
+     "chips": [
+      "FOLDER: k12-lesson-plan",
+      "SKILL.md",
+      "CLAUDE ACTS"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T08:24:42"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Here's the mechanism, in full. Inside SKILL.md sits a Steps section — a numbered list Claude runs top to bottom. Read a step, execute it, return the result, next step. No branching, unless a step itself says to branch.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "READ, EXECUTE, RETURN",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "READ, EXECUTE, RETURN",
+     "chips": [
+      "READ SKILL.md",
+      "EXECUTE STEPS",
+      "RETURN RESULT"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "linear — no branching unless a step says so",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T08:24:42"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's what's different about this particular skill: it isn't only prose. Alongside SKILL.md, the folder ships two more things — a references folder of source material, and a scripts folder of runnable code. Where a step can run as code, it does. That's what they optimized for: the same input, the same output, every run — not a freshly-reasoned answer typed out each time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 19,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NOT ONLY PROSE",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NOT ONLY PROSE",
+     "chips": [
+      "SKILL.md",
+      "REFERENCES/",
+      "SCRIPTS/"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "code where it can — not reasoned fresh each time",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T08:24:42"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Claude isn't improvising the lesson plan. It's running the k12-lesson-planning skill's written list of steps, in order — repeatable to a fault. Ask for something the list doesn't cover, and you get Claude's own judgment, not the skill's playbook.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Claude isn't improvising the lesson plan. It's running the k12-lesson-planning skill's written list of steps, in order — repeatable to a fault. Ask for something the list doesn't cover, and you get Claude's own judgment, not the skill's playbook.",
+      "attribution": "",
+      "sparkLine": "A list, not improvisation."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T08:24:42"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: ask it to write a short SKILL.md for a K12-LESSON-PLANNING skill — three to five numbered steps that turn a grade level, a subject, and a topic into a complete lesson plan with objectives, activities, and an assessment. Then run it twice on the same inputs and check the two plans come out the same shape. Then run it on a case the list clearly doesn't cover — say, a mixed-grade special-education class — and watch exactly where it stops. Go deeper: add a sixth step that says 'use your judgment on prerequisites,' and see whether the list still behaves like a list, or has just handed the whole decision back to the model.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "llm_exercise": {
+    "prompt": "I want to understand how Claude runs a written skill. A Claude 'skill' is a folder holding SKILL.md — a numbered list of steps Claude reads and runs top to bottom, with no judgment step. Write me a short SKILL.md for a K12-LESSON-PLANNING skill: three to five numbered steps that turn a grade level, subject, and topic into a complete lesson plan (objectives, activities, assessment). Then run it twice on the same inputs (grade 7, science, water cycle) and show the two outputs come out the same shape. Then run it on a case the list clearly doesn't cover — a mixed-grade special-education class studying the water cycle — and show me exactly where it stops.",
+    "dig_deeper": "Go deeper: add a sixth step that says 'use your judgment on prerequisites.' Does the list still behave like a list — or has it just handed the whole decision back to the model?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "K12-LESSON-PLANNING · ANTHROPIC SKILL",
+      "segment": "Claude, K12 Lesson Planning.",
+      "command": "I want to understand how Claude runs a written skill. Write me a short SKILL.md for a K12-LESSON-PLANNING skill: 3–5 numbered steps turning grade level, subject, and topic into a complete lesson plan (objectives, activities, assessment). Run it twice on the same inputs — the two plans should come out the same shape. Then run it on a case the list doesn't cover (a mixed-grade special-ed class), and show me exactly where it stops.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T08:24:42"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, K12 Lesson Planning. A list, not improvisation. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, K12 Lesson Planning. A list, not improvisation. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T08:24:42"
+   }
+  }
+ ]
+}

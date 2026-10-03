@@ -18,14 +18,47 @@
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "modelLabel": "Opus 4.7",
+    "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/cwc-workshops/agent-decomposition/.claude/skills/weekly-report/SKILL.md",
-    "verdict_stripped": "BVDT removed: body too thin (3 beats, ~106 words < 5 beats/180 words threshold) — a placeholder verdict is worse than none.",
+    "source_detail": {
+      "capabilities": [
+        "Structure and data sources for the weekly inventory report",
+        "Load this when the task is \"weekly report\"",
+        "\"Monday report\"",
+        "or \"summarize inventory status\"."
+      ],
+      "constraints": [
+        "Generate the report by writing one Python script via code execution that reads the CSVs and emits markdown. Do not make per-SKU tool calls",
+        "## Aging-PO check (weekly only)"
+      ],
+      "referenced_files": [
+        "lead_time_days",
+        "/mnt/user/data/stock_levels.csv",
+        "/mnt/user/data/products.csv",
+        "on_hand / avg_daily_sales",
+        "/mnt/user/data/sales_history.csv",
+        "/mnt/user/sinks/purchase_orders.jsonl"
+      ],
+      "code_signals": [
+        "code block: markdown"
+      ],
+      "sections": [
+        "Structure",
+        "Stockouts (on_hand = 0)",
+        "Low Stock (below reorder point)",
+        "Open POs",
+        "Forecast Risk",
+        "Operating cadence (which report is being asked for)",
+        "Aging-PO check (weekly only)",
+        "Data sources",
+        "Do this in code"
+      ]
+    },
     "build": {
-      "at": "2026-08-26T00:42:37",
-      "cut": "master",
-      "filled": 6,
-      "of": 6,
+      "at": "2026-09-05T22:03:08",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -34,7 +67,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is weekly-report. Structure and data sources for the weekly inventory report. Load this when the task is \"weekly report\", \"Monday report\", or \"summarize inventory status\".. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is weekly-report. Structure and data sources for the weekly inventory report. Load this when the task is \"weekly report\", \"Monday report\", or \"summarize inventory status\".. Its concrete surface area includes Structure and data sources for the weekly inventory report; Load this when the task is \"weekly report\"; \"Monday report\". A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -50,11 +83,11 @@
             "runningText": "reading weekly-report SKILL.md…",
             "output": [
               "skill: weekly-report",
-              "Structure and data sources for the weekly inventory report.",
+              "Structure and data sources for the weekly inventory report. Load this when the…",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "Opus 4.7",
+            "modelLabel": "Opus 4.8",
             "effortLabel": "High"
           },
           "rendered": {
@@ -64,18 +97,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 15.77,
+      "actual_duration_s": 22.08,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:42:37"
+        "at": "2026-09-05T22:03:08"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is weekly-report. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is weekly-report. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at lead_time_days, /mnt/user/data/stock_levels.csv, /mnt/user/data/products.csv, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -107,18 +140,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.22,
+      "actual_duration_s": 22.55,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:42:37"
+        "at": "2026-09-05T22:03:08"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "weekly-report is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Structure and data sources for the weekly inventory report; Load this when the task is \"weekly report\"; \"Monday report\"; or \"summarize inventory status\".. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -148,7 +181,7 @@
                 "accent": false
               }
             ],
-            "footerNote": "Artifact: SKILL.md → World: weekly inventory state. Format, not facts.",
+            "footerNote": "Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -158,18 +191,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 16.85,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:42:37"
+        "at": "2026-09-05T22:03:08"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. weekly-report is a specification written as an instruction set. Claude's job: Structure and data sources for the weekly inventory report. Load this when the task is \"weekly report\". What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. Generate the report by writing one Python script via code execution that reads the CSVs and emits markdown. Do not make per-SKU tool calls. That is the constraint in weekly-report — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -180,12 +213,8 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Structure and data sources: weekly inventory report.",
-            "quote": "\"weekly report\" · \"Monday report\" · \"summarize inventory status\"",
-            "cite": "Trigger phrases",
-            "verdictLabel": "What it bites: anything outside the spec.",
-            "verdictPositive": false,
-            "sparkLine": "The spec bites."
+            "body": "Generate the report by writing one Python script via code execution that reads the CSVs and emits markdown. Do not make per-SKU tool calls",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
             "out": "media/B03.mp4",
@@ -194,18 +223,87 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 15.72,
+      "actual_duration_s": 16.23,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:42:37"
+        "at": "2026-09-05T22:03:08"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In weekly-report, supporting material: lead_time_days, /mnt/user/data/stock_levels.csv, /mnt/user/data/products.csv, on_hand / avg_daily_sales; implementation signals: code block: markdown; sections: Structure, Stockouts (on_hand = 0), Low Stock (below reorder point), Open POs. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Structure and data sources for the weekly inventory report; Load this when the task is \"weekly report\"; \"Monday report\"; lead_time_days; /mnt/user/data/stock_levels.csv; /mnt/user/data/products.csv; code block: markdown",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 27.24,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T22:03:08"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "narration_text": "weekly-report makes Claude execute one task reliably. The SKILL.md is the spec — Structure and data sources for the weekly inventory report. Load this when the…. Same input, same output, every run. Know the limit: only what the file says.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Verdict",
+            "artifactHeading": "Claude, Weekly Report.",
+            "artifactLines": [
+              "Skill: weekly-report — Claude reads SKILL.md before acting",
+              "Structure and data sources for the weekly inventory report. Load this when the task is…",
+              "Capabilities: Structure and data sources for the weekly inventory report; Load this when the task is \"weekly report\"; \"Monday report\"",
+              "Constraint: Generate the report by writing one Python script via code execution that reads the CSVs…",
+              "Same input → same output, every run"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 13.89,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T22:03:08"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to structure and data sources for the weekly inventory report. load this when the t. Read the weekly-report skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to structure and data sources for the weekly inventory report. load this when the. Read the weekly-report skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -217,11 +315,11 @@
             "greeting": "Your turn.",
             "topic": "WEEKLY-REPORT · ANTHROPIC SKILL",
             "segment": "Claude, Weekly Report.",
-            "command": "Read the weekly-report skill. Walk me through each step you will take before you start — what data sources you will check and what the output will look like.",
+            "command": "I want to structure and data sources for the weekly inventory report. load this. Read the weekly-report skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
-            "modelLabel": "Opus 4.7",
+            "modelLabel": "Opus 4.8",
             "effortLabel": "High"
           },
           "rendered": {
@@ -231,12 +329,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 15.0,
+      "actual_duration_s": 14.74,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:42:37"
+        "at": "2026-09-05T22:03:08"
       }
     },
     {
@@ -252,7 +350,8 @@
           "pattern": "ClaudeTitleOutro",
           "props": {
             "title": "Claude, Weekly Report.",
-            "handle": "@NikBearBrown"
+            "handle": "@NikBearBrown",
+            "subline": "weekly-report · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -266,7 +365,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-08-26T00:42:37"
+        "at": "2026-09-05T22:03:08"
       }
     }
   ]

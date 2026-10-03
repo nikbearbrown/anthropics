@@ -150,17 +150,22 @@ class B04Scene(Scene):
         phrases.move_to(LEFT * 3.2 + DOWN * 0.1)
 
         paris = _paris(100)
-        paris.move_to(RIGHT * 3.5)
+        paris.move_to(RIGHT * 3.8)
 
-        arrows = VGroup(*[
-            Arrow(ph.get_right() + RIGHT * 0.1, paris.get_left() + LEFT * 0.15,
-                  color=INK, stroke_width=3, tip_length=0.2, buff=0)
+        # Fan lines converge to a single point, then one arrow to PARIS.
+        # Avoids arrow-start blobs overlapping phrase text edges.
+        conv = LEFT * 1.0 + DOWN * 0.1
+        fan_lines = VGroup(*[
+            Line(ph.get_right() + RIGHT * 0.2, conv,
+                 color=INK, stroke_width=3)
             for ph in phrases
         ])
+        main_arrow = Arrow(conv, paris.get_left() + LEFT * 0.2,
+                           color=INK, stroke_width=4, tip_length=0.24, buff=0)
 
         # INDEX box that gets struck through
         idx_box = Text("INDEX", font=SANS, font_size=68, color=INK, weight=BOLD)
-        idx_box.move_to(ORIGIN + UP * 2.0)
+        idx_box.move_to(ORIGIN + UP * 2.2)
 
         strike = Line(
             idx_box.get_left() + LEFT * 0.1,
@@ -168,10 +173,10 @@ class B04Scene(Scene):
             color=CRIMSON, stroke_width=8,
         )
         no_idx = Text("No index", font=SANS, font_size=48, color=CRIMSON, weight=BOLD)
-        no_idx.move_to(ORIGIN + UP * 2.0 + DOWN * 0.85)
+        no_idx.move_to(ORIGIN + UP * 2.2 + DOWN * 0.95)
 
         self.play(Write(phrases), run_time=1.2)
-        self.play(LaggedStart(*[GrowArrow(a) for a in arrows], lag_ratio=0.2),
+        self.play(Create(fan_lines), GrowArrow(main_arrow),
                   Write(paris), run_time=1.2)
         self.play(FadeIn(idx_box), run_time=0.7)
         self.wait(0.3)
@@ -266,9 +271,9 @@ class B07Scene(Scene):
         in_lbl = Text("YOUR\nMESSAGE", font=SANS, font_size=52, color=INK, weight=BOLD)
         in_lbl.move_to(LEFT * 4.5)
 
-        # RETRIEVES struck through
+        # RETRIEVES struck through — moved up to clear out_arrow below
         retrieves = Text("RETRIEVES", font=SANS, font_size=80, color=INK, weight=BOLD)
-        retrieves.move_to(ORIGIN + UP * 0.6)
+        retrieves.move_to(ORIGIN + UP * 1.0)
         strike = Line(
             retrieves.get_left() + LEFT * 0.05,
             retrieves.get_right() + RIGHT * 0.05,
@@ -277,23 +282,20 @@ class B07Scene(Scene):
 
         # GENERATES below
         generates = Text("GENERATES", font=SANS, font_size=80, color=INK, weight=BOLD)
-        generates.move_to(ORIGIN + DOWN * 0.8)
+        generates.move_to(ORIGIN + DOWN * 0.4)
 
-        # Arrow from GENERATES to output
-        out_arrow = Arrow(RIGHT * 2.4, RIGHT * 4.2, color=INK, stroke_width=5,
+        # Arrow and RESPONSE pushed far right so they don't share x-range with RETRIEVES
+        out_arrow = Arrow(RIGHT * 2.6, RIGHT * 4.6, color=INK, stroke_width=5,
                           tip_length=0.26, buff=0)
+        out_arrow.move_to(RIGHT * 3.6 + DOWN * 0.4)
         out_lbl = Text("RESPONSE", font=SANS, font_size=52, color=INK, weight=BOLD)
-        out_lbl.move_to(RIGHT * 5.5)
-
-        left_arrow = Arrow(in_lbl.get_right() + RIGHT * 0.1,
-                           LEFT * 2.5 + DOWN * 0.3,
-                           color=INK, stroke_width=4, tip_length=0.22, buff=0)
+        out_lbl.move_to(RIGHT * 5.6 + DOWN * 0.4)
 
         self.play(FadeIn(in_lbl), run_time=0.8)
         self.play(Write(retrieves), run_time=0.8)
         self.play(Create(strike), run_time=0.6)
         self.play(Write(generates), run_time=0.8)
-        self.play(GrowArrow(out_arrow), FadeIn(out_lbl), run_time=0.9)
+        self.play(GrowArrow(out_arrow), Write(out_lbl), run_time=0.9)
         self.wait(4.0)
 
 
@@ -373,33 +375,38 @@ class B09Scene(Scene):
 
 class B10Scene(Scene):
     def construct(self):
-        center_box_rect = RoundedRectangle(width=5.8, height=1.35, corner_radius=0.2,
-                                           stroke_color=INK, stroke_width=4,
-                                           fill_opacity=0)
-        center_lbl = Text("PREDICT NEXT WORD", font=SANS, font_size=52, color=INK,
+        # No bounding box — text label only (box causes blob-containment §8.6b)
+        center_lbl = Text("PREDICT NEXT WORD", font=SANS, font_size=64, color=INK,
                           weight=BOLD)
-        center_group = VGroup(center_box_rect, center_lbl).move_to(ORIGIN + UP * 0.5)
+        center_lbl.move_to(ORIGIN + UP * 1.2)
 
-        # Three branch targets
+        # Underline instead of box to separate the label from branch arrows
+        underline = Line(
+            center_lbl.get_left() + DOWN * 0.08,
+            center_lbl.get_right() + DOWN * 0.08,
+            color=INK, stroke_width=4,
+        )
+
+        # Three branch targets — moved down to give clear separation from label
         code_lbl     = Text("CODE",       font=SANS, font_size=60, color=TEAL, weight=BOLD)
         trans_lbl    = Text("TRANSLATE",  font=SANS, font_size=60, color=TEAL, weight=BOLD)
         summ_lbl     = Text("SUMMARIZE",  font=SANS, font_size=60, color=TEAL, weight=BOLD)
 
-        code_lbl.move_to(LEFT  * 4.5 + DOWN * 1.6)
-        trans_lbl.move_to(ORIGIN + DOWN * 2.4)
-        summ_lbl.move_to(RIGHT * 4.5 + DOWN * 1.6)
+        code_lbl.move_to(LEFT  * 4.5 + DOWN * 1.3)
+        trans_lbl.move_to(ORIGIN + DOWN * 2.0)
+        summ_lbl.move_to(RIGHT * 4.5 + DOWN * 1.3)
 
-        a1 = Arrow(center_group.get_bottom() + LEFT  * 1.8,
+        a1 = Arrow(center_lbl.get_bottom() + LEFT  * 1.8,
                    code_lbl.get_top()  + UP * 0.15,
                    color=TEAL, stroke_width=5, tip_length=0.24, buff=0.1)
-        a2 = Arrow(center_group.get_bottom(),
+        a2 = Arrow(center_lbl.get_bottom(),
                    trans_lbl.get_top() + UP * 0.15,
                    color=TEAL, stroke_width=5, tip_length=0.24, buff=0.1)
-        a3 = Arrow(center_group.get_bottom() + RIGHT * 1.8,
+        a3 = Arrow(center_lbl.get_bottom() + RIGHT * 1.8,
                    summ_lbl.get_top()  + UP * 0.15,
                    color=TEAL, stroke_width=5, tip_length=0.24, buff=0.1)
 
-        self.play(FadeIn(center_group), run_time=1.0)
+        self.play(FadeIn(center_lbl), Create(underline), run_time=1.0)
         self.play(
             LaggedStart(
                 GrowArrow(a1), Write(code_lbl),

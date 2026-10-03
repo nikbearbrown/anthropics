@@ -1,0 +1,333 @@
+{
+ "metadata": {
+  "title": "Persisting Progress Across Context Windows",
+  "slug": "claude-basics--feature-list-checkpoint-persistence",
+  "topic": "CLAUDE BASICS · AGENT CHECKPOINTING",
+  "purpose": "Take the checkpoint-file design apart in the Teardown register: explain the actual machinery (feature_list.json + one commit per feature), reveal what it was optimized for (any fresh session can locate the first gap in three reads), and judge the trade (disk-and-commit friction traded for surviving a context reset). Lands the carry-out that the context window is a workspace, not memory — the file plus git is the memory.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/youtube/claude-basics/feature-list-checkpoint-persistence/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B04 (feature 51, the first-incomplete lookup across the session boundary)",
+  "build": {
+   "at": "2026-08-28T07:55:12",
+   "cut": "master",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here is what people assume — an agent with two hundred features to build remembers where it left off. It does not. The context window resets every session; there is no memory carrying over. Something else is doing the resuming. So how does it know to start at feature fifty-one instead of feature one?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'An agent with 200 features just remembers where it left off. How does it resume at feature 51, not feature 1?', hesitates on 'remembers', corrects to 'checks'",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "An agent with 200 features\njust remembers where it left off.\nHow does it resume at feature 51,\nnot feature 1?",
+      "face": "serif",
+      "fontSize": 74,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "remembers",
+      "replacementWords": "checks",
+      "mistakeRate": 0,
+      "hesitateWithin": 0,
+      "hesitateBetween": 0,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "hai-feature-list-checkpoint"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('remembers' -> 'checks') is visible on a late frame.",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T07:55:12"
+   },
+   "audio_file": "mp3/beat-B00.mp3"
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 the problem",
+   "narration_text": "Here is what is actually happening. A context window is a fixed slab of tokens — a working scratch pad, not a mind. Fill it, and the session ends. The next session opens with nothing: no memory of what shipped, no memory of what broke. From inside that fresh session, the agent has two moves. Re-read the whole codebase and log — that burns half the new context before any work starts. Or guess where it was — that is a coin flip that rebuilds finished work. Both fail on the same point: the state was never in memory to begin with.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A filled 'Session 1' bar next to an empty 'Session 2' bar, two dim arrows branching to 'RE-READ EVERYTHING' and 'GUESS', both struck"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Two bad options",
+     "mechanic": "Left: a filled bar labeled 'SESSION 1 — context full'. A vertical divider labeled 'session boundary'. Right: an empty bar labeled 'SESSION 2 — blank'. Two arrows branch from it toward 'RE-READ EVERYTHING' (dim, costly) and 'GUESS' (crimson, struck through).",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T07:55:12"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "4 ANCHOR PLANTED",
+   "narration_text": "The fix is a design choice: do not hold the state in memory at all. Put it in a file. feature_list.json holds two hundred rows, each with an id and one of two statuses — incomplete or passing. Git commits one row-change at a time, so the file's own history becomes an immutable ledger of what got done and when. Session one runs through features one to fifty. Each finished feature flips to passing and lands as its own commit. Feature fifty-one stays marked incomplete — the first row the session never got to.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — a vertical list of 200 rows; rows 1-50 flip from incomplete to passing during session 1; row 51 stays lit as 'first incomplete'"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — feature 51, first incomplete",
+     "mechanic": "A tall vertical list of numbered rows on cream, status badges reading 'incomplete' (INK) or 'passing' (teal check). Rows 1-50 flip to passing in sequence under a 'SESSION 1' label, each accompanied by a small git-commit tick. Row 51 stays on 'incomplete', ringed in crimson with the label 'first incomplete'. THIS EXACT LIST COMPOSITION RETURNS AT B04.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T07:55:12"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "3 mechanism",
+   "narration_text": "Every new session runs the same loop, and the loop only has to know three things. Open feature_list.json. Scan top-to-bottom for the first row still marked incomplete. Start there. Then implement the feature, run the tests, commit the code, flip that row to passing. Read, find the gap, fill it. The session itself does not have to remember anything — the file is doing the remembering.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Four-step loop diagram: OPEN FILE -> FIND FIRST INCOMPLETE -> IMPLEMENT + TEST + COMMIT -> MARK PASSING, looping back"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "The loop",
+     "mechanic": "Four boxes in a cycle, connected by arrows: 'OPEN feature_list.json' -> 'FIND FIRST INCOMPLETE' -> 'IMPLEMENT + TEST + COMMIT' -> 'MARK PASSING', with the last arrow curving back to the first box.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T07:55:12"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "Session two opens the same file — the one session one left behind — and runs the same three-line loop. First incomplete row: fifty-one. So session two starts at fifty-one. No re-reading the first fifty, no guessing which one is next; the file already said. By the time session two hits its context ceiling, features fifty-one through one hundred are passing too. Here is the trade this design makes. Every read is a disk read, and every commit is friction — slower than in-memory context. What that buys is that no session ever burns tokens rebuilding what a prior one already shipped.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — same 200-row list as B02; row 51 highlighted as where session 2 resumes; rows 51-100 flip to passing"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — session 2 resumes at 51",
+     "mechanic": "THE B02 LIST COMPOSITION RETURNS, identical. Row 51 (still ringed crimson from B02) is where a 'SESSION 2' label enters and starts reading. Rows 51-100 flip to passing in sequence with commit ticks, mirroring B02's animation exactly. No motion touches rows 1-50.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "B04Scene"
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T07:55:12"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "The context window is not the agent's memory — it is a workspace. Move the state out to a file plus git, and every new session just reads it, finds the first gap, and fills it. The file is the memory.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "The context window is not the agent's memory — it is a workspace. Move the state out to a file plus git, and every new session just reads it, finds the first gap, and fills it.",
+      "attribution": "",
+      "sparkLine": "The file is the memory."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T07:55:12"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff",
+   "narration_text": "Your turn. Here is the prompt — read it with me. Externalize my agent's progress to a feature_list.json plus git, so it can resume across sessions — then prove it picks up exactly where it left off, without replaying finished work. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE BASICS · AGENT CHECKPOINTING",
+      "segment": "Your Turn",
+      "command": "Externalize my agent's progress to a feature_list.json plus git, so it can resume across sessions — then prove it picks up exactly where it left off, without replaying finished work.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T07:55:12"
+   }
+  },
+  {
+   "beat_id": "B_LLM",
+   "act": "LLM EXERCISE",
+   "narration_text": "Here is a prompt you can paste directly into Claude, ChatGPT, or Gemini. I am building an AI coding agent that has two hundred features to implement, but it keeps hitting its context window ceiling and losing track of where it was. Design an externalized progress ledger — a feature list JSON plus a git commit protocol — that lets a fresh session locate the first unfinished feature in three reads, without re-scanning the finished ones. Specify the JSON schema, the commit-message convention, and the exact three steps a new session runs on startup. Go deeper: what does this scheme have to add once two agents run in parallel and race to claim the same first-incomplete feature?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 34,
+   "llm_exercise": {
+    "prompt": "I am building an AI coding agent that has 200 features to implement, but it keeps hitting its context window ceiling and losing track of where it was. Design an externalized progress ledger — a feature_list.json plus a git commit protocol — that lets a fresh session locate the first unfinished feature in three reads, without re-scanning the finished ones. Specify the JSON schema, the commit-message convention, and the exact three steps a new session runs on startup.",
+    "dig_deeper": "Go deeper: what does this scheme have to add once two agents run in parallel and race to claim the same first-incomplete feature?"
+   },
+   "shot": {
+    "type": "CARD",
+    "source": "own",
+    "motion": "hold"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Persisting Progress Across Context Windows. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Persisting Progress Across Context Windows. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T07:55:12"
+   }
+  }
+ ]
+}

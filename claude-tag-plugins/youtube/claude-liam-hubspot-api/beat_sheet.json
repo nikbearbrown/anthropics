@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "hubspot api",
+    "title": "Claude, Hubspot Api.",
     "slug": "claude-liam-hubspot-api",
-    "topic": "HUBSPOT API · CLAUDE PLUGINS",
+    "topic": "HUBSPOT-API · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,63 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Merhaba, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-tag-plugins/hubspot/skills/hubspot-api/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-tag-plugins/hubspot/skills/hubspot-api/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Object types are identified by name (contacts, companies, deals, tickets) or by numeric",
+        "Properties are opt-in on reads. List/get calls return only a handful of default properties",
+        "Each object type has its own primary display property and dedup key. Contacts dedup on email;",
+        "Associations are typed. The common ones (contact_to_company, deal_to_contact, etc.) have"
+      ],
+      "constraints": [
+        "(HubSpot is rolling out date-based path versions — /crm/objects/2026-03/... — as the successor naming. The v3/v4 paths below all still work; HubSpot has announced v4…",
+        "Properties are opt-in on reads. List/get calls return only a handful of default properties",
+        "API, so there is nothing to set up. Do not try to create, mint, refresh, or validate tokens or keys",
+        "Credential variables exist only to keep requests well-formed; if one is unset, set it to any",
+        "PATCH only the properties you want to change. Everything else is untouched",
+        "object TYPE (required) is contacts, companies, deals, tickets, or any object type",
+        "the values must be lowercase), BETWEEN takes low,high (amount:BETWEEN:100,500 → value +",
+        "(email,firstname,lastname,createdate for contacts, etc.) and required for any other type"
+      ],
+      "referenced_files": [
+        "https://api.hubapi.com/crm/v3/objects/{objectType}",
+        "/crm/objects/2026-03/...",
+        "0-1",
+        "0-2",
+        "0-3",
+        "0-5",
+        "2-<n>",
+        "p_<name>",
+        "hs_object_id",
+        "contact_to_company"
+      ],
+      "code_signals": [
+        "code block: bash"
+      ],
+      "sections": [
+        "Request setup",
+        "Core operations",
+        "1. List records",
+        "2. Get one record",
+        "3. Create a record",
+        "4. Update a record",
+        "5. Archive / delete a record",
+        "6. Search records (scripts/hs_search.sh)",
+        "7. Batch read / create / update / upsert",
+        "8. List and create associations"
+      ]
+    },
     "build": {
-      "at": "2026-07-19T10:47:27",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T17:33:48",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +78,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Merhaba — this is Liam, in for Bear. You are working with HubSpot CRM. The hubspot-api skill gives you one uniform path pattern for every object type — contacts, companies, deals, tickets, and custom objects — plus a bundled helper and search script. The philosophy: properties are opt-in on every read, associations are typed, and authentication is injected. Let me walk you through the model, the operations, and the gaps.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is hubspot-api. Read, create, update, search, and associate HubSpot CRM records — contacts, companies, deals, tickets, and custom objects. Use this whenever the user wants to look up a contact, create a deal, update a company, search the CRM, link two records, or asks \"what's in HubSpot\" — even if they don't say \"API\". Also use it for any URL under app.hubspot.com or a mention of a HubSpot object/record ID. Always start from this skill when interacting with this service — its bundled scripts and recipes are the fastest path.. Its concrete surface area includes Object types are identified by name (contacts, companies, deals, tickets) or by numeric; Properties are opt-in on reads. List/get calls return only a handful of default…. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 14,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Merhaba, Liam",
-            "topic": "HUBSPOT API · CLAUDE PLUGINS",
-            "segment": "PLUGINS",
-            "command": "Find all contacts created in the last 30 days who are in the 'lead' stage.",
+            "greeting": "Hola, Liam",
+            "topic": "HUBSPOT-API · ANTHROPIC SKILL",
+            "segment": "Claude, Hubspot Api.",
+            "command": "Run the hubspot-api skill.",
             "runningText": "reading hubspot-api SKILL.md…",
             "output": [
-              "Uniform v3 URL: /crm/v3/objects/{objectType} for all five record types",
-              "Properties opt-in: reads without properties= return near-empty records",
-              "hs_search.sh handles filter/sort/pagination — search hard-capped at 10,000"
+              "skill: hubspot-api",
+              "Read, create, update, search, and associate HubSpot CRM records — contacts…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +108,55 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 22.06,
+      "actual_duration_s": 46.51,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:47:27"
+        "at": "2026-09-05T17:33:48"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — CRM data model + query primitives",
-      "narration_text": "The data model has four concepts. First, the uniform path: every object type — contacts, companies, deals, tickets, and custom objects — lives under slash crm slash v3 slash objects slash objectType. The same list, get, create, patch, archive, batch, and search endpoints work for all of them — just swap the type segment. Second, properties are opt-in. A list or get call without a properties parameter returns only a handful of defaults: hs_object_id, createdate, lastmodifieddate, and a few type-specific fields like email and firstname for contacts. Always pass properties= with the fields you actually need or your records will look empty. Third, each object type has its own primary dedup key. Contacts dedup on email — creating a contact that already exists by email returns a 409 conflict, not a new record. Companies dedup on domain. Deals and tickets have no dedup key. Know the key before you create. Fourth, associations are typed. The common pairs — contact to company, deal to contact — have built-in association type IDs. Use the v4 associations endpoints to discover labels and create links. The bundled hsapi helper handles the bearer header and content type on every request. hs_search.sh wraps the search endpoint with filter, sort, and pagination — it follows the paging.next.after cursor automatically and emits TSV or JSONL. Two things to watch: search is eventually consistent, so a record you just created may not appear yet. And search is hard-capped at ten thousand total results per query — narrow the filter if you need more.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is hubspot-api. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at https://api.hubapi.com/crm/v3/objects/{objectType}, /crm/objects/2026-03/..., 0-1, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 42,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "HubSpotApiAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Uniform v3 path. Properties opt-in. Dedup by email/domain. Search capped at 10,000."
+            "skillName": "hubspot-api",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "13k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "references",
+                "size": null,
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "scripts",
+                "size": null,
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "3 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +165,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 86.7,
+      "actual_duration_s": 27.48,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:47:27"
+        "at": "2026-09-05T17:33:48"
       }
     },
     {
       "beat_id": "B02",
-      "act": "design — operations + key patterns",
-      "narration_text": "Four patterns matter. First: sanity check before any real work. The skill includes a one-liner — GET contacts with limit one — to confirm the workspace is wired up. A 403 means the credential authenticated but lacks the scope for what you tried; report the missing scope rather than debugging auth. Second: discover the schema before you write. Property names are the most common source of 400 validation errors. Use GET /crm/v3/properties/{objectType} to read the catalog before creating or filtering — it shows field names, types, and the option values for enumerated fields like pipeline stages and lifecycle stages. Guess a property name and you get a VALIDATION_ERROR that names the offending field but not the correct value. Third: always pass properties= on reads. The default set is minimal — contacts get email and firstname but not phone or company. Without explicit properties, you get records that look empty. The complete default list per object type is in references/api.md, not in the main skill text. Fourth: use batch endpoints for bulk work. One batch call of up to 100 records counts as one request. Private app tokens get 100 requests per 10 seconds on Free/Starter and 190 on Professional/Enterprise. Search endpoints have their own stricter limit — 5 requests per second per account — and that limit is not reflected in the rate-limit headers on search responses.",
+      "act": "pipeline",
+      "narration_text": "hubspot-api is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Object types are identified by name (contacts, companies, deals, tickets) or by numeric; Properties are opt-in on reads. List/get calls return only a handful of default properties; Each object type has its own primary display property and dedup key. Contacts dedup on email;; Associations are typed. The common ones (contact_to_company, deal_to_contact, etc.) have. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 42,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "HubSpotApiDesign",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Sanity check first. Discover schema before write. properties= on every read. Batch for bulk."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +216,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 79.0,
+      "actual_duration_s": 29.63,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:47:27"
+        "at": "2026-09-05T17:33:48"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. The skill gets five things right. The uniform v3 URL model is the central insight: one path pattern for all object types means you learn the operations once and apply them everywhere — the skill makes this explicit up front. The properties opt-in contract is documented clearly with the instruction to always pass properties= — this prevents the most common beginner mistake of getting records that look empty. The bundled hsapi helper and hs_search.sh script remove boilerplate and handle pagination correctly — the script follows the cursor and respects the 200-row page size. Error handling is specific: each HTTP status code maps to a named category with a concrete action — check .status before projecting .results, read errors[] on a 400, switch to upsert on a 409. Rate limit headers are documented per endpoint, including the separate 5 requests per second limit for search. Where it bites. Search eventual consistency is mentioned — a record created or updated seconds ago may not appear — but the skill gives no guidance on how long to wait or when to give up. A developer relying on read-after-write through search will hit this silently. The default property set per object type is deferred to references/api.md. The main skill text says a handful of defaults, but you have to open a second file to know which fields come free without properties=. The v3 end-of-support date is not yet set — the skill says no migration required for now but gives no advice on when or how to check, leaving the developer to monitor HubSpot's changelog. The 18-filter total cap for search — 5 groups, 6 filters per group — is stated correctly but the workaround for exceeding it is just post the raw body, with no example of an OR-grouped query. Association type IDs are documented via a table in references/api.md and a live-discovery command, but the main skill text names only one example ID — 341 for deal to company — and you need the file or a live call for the rest.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. (HubSpot is rolling out date-based path versions — /crm/objects/2026-03/... — as the successor naming. The v3/v4 paths below all still work; HubSpot has announced v4…. That is the constraint in hubspot-api — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 52,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "HubSpotApiTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Uniform model and properties= contract both correct. Default property set deferred to references/api.md."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "(HubSpot is rolling out date-based path versions — /crm/objects/2026-03/... — as the successor naming. The v3/v4 paths below all still work; HubSpot has announced v4…",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 109.33,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 20.12,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:47:27"
+        "at": "2026-09-05T17:33:48"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In hubspot-api, supporting material: https://api.hubapi.com/crm/v3/objects/{objectType}, /crm/objects/2026-03/..., 0-1, 0-2; implementation signals: code block: bash; sections: Request setup, Core operations, 1. List records, 2. Get one record. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Object types are identified by name (contacts, companies, deals, tickets) or by numeric; Properties are opt-in on reads. List/get calls return only a handful of default properties; Each object type has its own primary…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 28.71,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T17:33:48"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. hubspot api: uniform v3 URL — slash crm slash v3 slash objects slash objectType — same ops for contacts, companies, deals, tickets, custom objects. Properties opt-in: always pass properties= or reads return near-empty records. Dedup keys: contacts on email, companies on domain, deals and tickets none. Associations: typed, v4 endpoints for labels. hsapi() helper + hs_search.sh for pagination. Rate limits: 100 or 190 req/10s; search 5 req/s separate, no headers on search responses. Error categories: VALIDATION_ERROR, MISSING_SCOPES, OBJECT_NOT_FOUND, CONFLICT, RATE_LIMITS. Gaps: search eventual consistency, no retry guidance; default property set in references/api.md not inline; v3 EOL date unset; 18-filter cap workaround thin; association type IDs mostly in external table.",
+      "narration_text": "hubspot-api makes Claude execute one task reliably. The SKILL.md is the spec — Read, create, update, search, and associate HubSpot CRM records — contacts…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "hubspot api",
+            "artifactHeading": "Claude, Hubspot Api.",
             "artifactLines": [
-              "Uniform v3 URL: /crm/v3/objects/{objectType} — same ops for all five record types",
-              "Properties opt-in: reads without properties= return near-empty records — always pass it",
-              "Dedup: contacts→email · companies→domain · deals+tickets none · associations v4 for labels",
-              "Rate limits: 100/190 req/10s · search 5 req/s separate limit (no headers on search)",
-              "Error categories: VALIDATION_ERROR · MISSING_SCOPES · CONFLICT (upsert) · RATE_LIMITS",
-              "Gaps: search eventual consistency no retry guide · default props in references/api.md · v3 EOL unset"
+              "Skill: hubspot-api — Claude reads SKILL.md before acting",
+              "Read, create, update, search, and associate HubSpot CRM records — contacts, companies…",
+              "Capabilities: Object types are identified by name (contacts, companies, deals, tickets) or by numeric; Properties are opt-in on reads. List/get calls return only a handful of default properties; Each object type has its own primary display property and dedup key. Contacts dedup on email;",
+              "Constraint: (HubSpot is rolling out date-based path versions — /crm/objects/2026-03/... — as the…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +317,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 51.24,
+      "actual_duration_s": 14.89,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:47:27"
+        "at": "2026-09-05T17:33:48"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Give Claude a task: find all HubSpot contacts whose lifecycle stage is lead and who were created in the last 30 days, then export them as a CSV. Watch five things. First: does it pass properties= with the fields it actually needs, or does it omit properties= and then wonder why the records look empty? Second: does it use hs_search.sh with the correct filter syntax — lifecyclestage colon EQ colon lead — or does it try to build the filter body by hand? Third: does it page through all results or stop at the first page? Fourth: does it know that search is eventually consistent and note that very recent records might be missing? Fifth: does it check the rate limit — five requests per second for search — or fire requests in a tight loop?",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to read, create, update, search, and associate hubspot crm records — contacts. Read the hubspot-api skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "HUBSPOT API · HANDOFF",
-            "segment": "PLUGINS",
-            "command": "Export all 'lead' lifecycle contacts from the last 30 days to CSV.",
-            "runningText": "Watch: properties= set? hs_search.sh filter syntax? pagination? eventual consistency noted? rate limit?",
-            "output": [
-              "Expected: properties=email,firstname,... · hs_search.sh --filter lifecyclestage:EQ:lead",
-              "Expected: paging cursor followed · eventual consistency caveat · 5 req/s search limit",
-              "Red flag: missing properties= · manual filter body · first-page only · tight loop"
-            ],
+            "greeting": "Your turn.",
+            "topic": "HUBSPOT-API · ANTHROPIC SKILL",
+            "segment": "Claude, Hubspot Api.",
+            "command": "I want to read, create, update, search, and associate hubspot crm records. Read the hubspot-api skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +354,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 38.42,
+      "actual_duration_s": 15.51,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:47:27"
+        "at": "2026-09-05T17:33:48"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "hubspot api. Liam, in for Bear.",
+      "narration_text": "Claude, Hubspot Api. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "hubspot api",
+            "title": "Claude, Hubspot Api.",
             "handle": "@NikBearBrown",
-            "subline": "hubspot api · Claude Plugins"
+            "subline": "hubspot-api · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +385,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 3.18,
+      "actual_duration_s": 3.37,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-19T10:47:27"
+        "at": "2026-09-05T17:33:48"
       }
     }
   ]

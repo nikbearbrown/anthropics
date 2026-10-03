@@ -12,10 +12,19 @@ Color law:
 EXCLUSIONS: diffusion limit derivation, four-barrier list, 30-vs-150nm debate,
 radiation resistance. Kept: outward-pressure mechanism + inside-out regrowth.
 """
-import sys, pathlib
-sys.path.insert(0, str(pathlib.Path(__file__).resolve()
-                       .parents[3] / "vox/aspects/explainer/vox-explainer/manim"))
-from vox_graphics import *
+import sys, pathlib as _pl
+# Locate the vox toolkit by walking up from this file until we find books/vox/.
+_vox_manim = None
+for _p in _pl.Path(__file__).resolve().parents:
+    _cand = _p / "vox/aspects/explainer/vox-explainer/manim/vox_graphics.py"
+    if _cand.is_file():
+        _vox_manim = _cand.parent
+        break
+if _vox_manim is None:
+    raise RuntimeError("vox toolkit (books/vox/aspects/explainer/vox-explainer/manim) not found")
+if str(_vox_manim) not in sys.path:
+    sys.path.insert(0, str(_vox_manim))
+from vox_graphics import *   # noqa: F401,F403
 from vox_graphics import _quote_scene
 import json, os
 import numpy as np
@@ -174,11 +183,11 @@ class B06_PressureFlow(Scene):
         core = Circle(radius=1.1)
         core.set_fill(CRIMSON, 0.25).set_stroke(CRIMSON, 1.5)
 
-        # Labels
-        rim_label = Text("drug accumulates", font=DISPLAY, font_size=14, color=TEAL)
+        # Labels — chips so arrows can pass behind without striking through the text
+        rim_label = LabelChip("drug accumulates", accent=TEAL, size=16)
         rim_label.move_to(RIGHT * 1.9 + UP * 1.85)
-        core_label = Text("unreached core", font=DISPLAY, font_size=14, color=CRIMSON)
-        core_label.move_to(ORIGIN)
+        core_label = LabelChip("unreached core", accent=CRIMSON, size=16)
+        core_label.move_to(DOWN * 1.35)
 
         # Outward pressure arrows (CRIMSON) — from center outward
         arrows = VGroup()
@@ -220,8 +229,8 @@ class B07_ParticlesPushedBack(Scene):
         core = Circle(radius=1.1)
         core.set_fill(CRIMSON, 0.30).set_stroke(CRIMSON, 1.5)
 
-        core_label = Text("particle-free core", font=DISPLAY, font_size=13, color=CRIMSON)
-        core_label.move_to(ORIGIN)
+        core_label = LabelChip("particle-free core", accent=CRIMSON, size=16)
+        core_label.move_to(DOWN * 1.35)
 
         # Outward pressure arrows
         out_arrows = VGroup()

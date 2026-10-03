@@ -1,0 +1,271 @@
+{
+ "metadata": {
+  "title": "Snapshot, Not Sensor.",
+  "subtitle": "The Project Artifact Skill (Status Pages)",
+  "slug": "claude-plugins-official--claude-liam-project-artifact",
+  "topic": "PROJECT ARTIFACT · CLAUDE CODE PLUGIN",
+  "purpose": "Take a Claude-built project status page apart in the Teardown register. Explain the actual machinery — two always-on tabs, five that only appear when there is something to put in them; one config file in four parts; a stored block saved inside every published page. Judge the design choice: the page never watches your data, it waits, and the incremental refresh is only possible because the page carries its own memory forward. Land the carry-out that this is a passive artifact by design — snapshot, not sensor.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/claude-plugins-official/youtube/claude-liam-project-artifact/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Extending Claude — Skills, Plugins & Connectors",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the project-artifact skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Someone assumed a status page watches your data and updates itself. Take it apart — it doesn't watch. It waits, until you ask. So: does my project page wait for my data, and update only when I ask?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'My project page watches my data and updates itself?', hesitates on 'watches' and 'itself', corrects to 'waits for' and 'when I ask', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "My project page\nwatches my data\nand updates\nitself?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "watches, itself",
+      "replacementWords": "waits for, when I ask",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "nbb-project-artifact"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter). TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that both corrections ('watches' -> 'waits for', 'itself' -> 'when I ask') land on screen and the full corrected question finishes typing before the clip ends.",
+   "audio_file": "mp3/beat-B00.mp3"
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Here's what's actually happening when you open a project page: two tabs are always there — Overview, with the project name, a status badge, and a one-line summary; and Workstreams, the named tracks of work with their status, owner, and dates. Five more tabs exist — Attention, for blockers that need a decision now; Background, for context that would clutter the Overview; Plan, for what's coming; Risks and open questions; and Decisions and FAQ, for choices already made and why — but they only appear when there's something to put in them. They optimized for tabs that earn their place. Empty structure is the thing they refused to ship.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "TWO TABS, ALWAYS ON",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "TWO TABS, ALWAYS ON",
+     "chips": [
+      "2, always",
+      "5 conditional",
+      "included"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "tabs earn their place",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3"
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Take it apart: it's all one config file, in four parts. Project holds the name and a running summary. Sources lists exactly what to read before writing a single tab — documents, data, anything live — and everything gets gathered before any tab gets written. People lists who owns what. Then every time the page publishes, one more thing gets saved with it: a block of stored data, tucked inside the page itself, recording exactly what was shown. That stored block is the design choice. The page carries its own memory forward, so the next update has something to compare against.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "ONE CONFIG FILE, A SAVED RECORD",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "ONE CONFIG FILE, A SAVED RECORD",
+     "chips": [
+      "config.md",
+      "4 sections",
+      "stored state block"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "the record that enables a later refresh",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3"
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's the design choice under everything else: nothing updates on its own. The page doesn't watch your data — it waits. You have to ask for a refresh. When you do, it looks for that stored block from last time. If it's there, the page compares old to new and shows only what changed. If it isn't — because the page was never saved, or got deleted — there's nothing to compare against, and the whole page gets rebuilt from scratch, with no change summary at all. They optimized for a page that costs nothing to sit there; the trade-off is that lose the stored block and you lose the delta.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NOTHING UPDATES ON ITS OWN",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NOTHING UPDATES ON ITS OWN",
+     "chips": [
+      "you ask",
+      "stored block found",
+      "delta, not rebuild"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "no stored block, no delta",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3"
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A project status page is a snapshot, not a sensor — it never watches your data on its own. It only updates when you ask, and it only knows what changed because it saved a record of what it looked like last time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A project status page is a snapshot, not a sensor — it never watches your data on its own. It only updates when you ask, and it only knows what changed because it saved a record of what it looked like last time.",
+      "attribution": "",
+      "sparkLine": "Snapshot, not sensor."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3"
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini. Build a project status page for my API migration, with workstreams, an open risk, and a decisions log. Once it's built, ask for a refresh without changing anything — does it say nothing changed, or does it silently rewrite the whole page? Then close out that risk and refresh again. Does it call out exactly that change, or does it act like it's starting from zero? That's the real test of whether the page remembers. Go deeper: delete the stored block from the file by hand and refresh — see what the page can and cannot recover without its own memory.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "llm_exercise": {
+    "prompt": "I want to see whether a Claude-built project status page keeps itself in sync with my data or only updates when I ask. Build one for a hypothetical API migration project: give it workstreams (frontend cutover, dual-run, deprecation), one open risk (schema mismatch between v1 and v2 payloads), and a decisions log with two entries. Publish the page, then simulate two refresh cycles: (1) refresh with no changes and describe exactly what the update summary shows; (2) close the risk and refresh — describe exactly how the update summary handles that change. Show me the config file you used, the stored block it saved inside the published page, and both refresh outputs so I can see where the memory of what changed actually lives.",
+    "dig_deeper": "Go deeper: delete the stored block from the published file by hand and ask for another refresh. What does the page recover, what does it lose, and what does that tell you about where a status page's memory actually lives — in the data, in the config, or in the file itself?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "PROJECT ARTIFACT · CLAUDE CODE PLUGIN",
+      "segment": "Snapshot, Not Sensor.",
+      "command": "Build a project status page for my API migration, with workstreams, an open risk, and a decisions log.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3"
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Snapshot, Not Sensor. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroSeries",
+     "props": {
+      "eyebrow": "PROJECT ARTIFACT · @NikBearBrown",
+      "line": "Snapshot, Not Sensor."
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3"
+  }
+ ]
+}

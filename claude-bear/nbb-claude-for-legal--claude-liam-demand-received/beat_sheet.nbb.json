@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "Claude, Demand Received.",
+  "subtitle": "The Demand-Received Skill",
+  "slug": "claude-for-legal--claude-liam-demand-received",
+  "topic": "DEMAND-RECEIVED · ANTHROPIC SKILL",
+  "purpose": "Take the demand-received Skill apart in the Teardown register: explain the folder-plus-plain-English mechanism, name the design choice (linear steps over clever branching, hand-off over resolution), and judge where that trade-off holds. Lands the carry-out that Claude isn't the one deciding to escalate — the assessment step is; Claude just does what the checklist said.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/claude-for-legal/youtube/claude-liam-demand-received/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the demand-received Skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-08-29T20:54:40",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's the wrong guess about this Skill — that Claude just fires off a reply when a demand letter shows up. It doesn't. It runs a triage — extract, cross-check, assess, recommend — and only then decides who touches the response. So: when a demand letter arrives, does Claude just reply?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'A demand letter arrives. Does Claude just reply?', hesitates on 'reply', corrects to 'triage it', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "A demand letter arrives.\nDoes Claude just\nreply?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "reply",
+      "replacementWords": "triage it",
+      "mistakeRate": 6,
+      "hesitateWithin": 2,
+      "hesitateBetween": 14,
+      "charMs": 48,
+      "jitter": 26,
+      "seed": "hai-demand-received"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('reply' -> 'triage it', landing 'does it just reply?' -> 'does it just triage it?') lands on screen. NOTE (sibling-learned bug): triggerWords must be a SINGLE whitespace-delimited token — the component matches per-token, not phrase-wise.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T20:54:40"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Here's what a Skill actually is: a folder Claude reads before it does any work. This one is named demand-received. Inside sits one file — SKILL.md — and the whole instruction set lives there in plain English. No hidden logic, no compiled step. They optimized for read-and-edit-by-a-lawyer over anything you couldn't audit. Claude reads the file, then acts. The file is the program.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A SKILL IS A FOLDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A SKILL IS A FOLDER",
+     "chips": [
+      "FOLDER: demand-received",
+      "SKILL.md",
+      "CLAUDE ACTS"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T20:54:40"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "The instructions live under a Steps section. Claude reads each step in order and runs it — read the file, execute each step, return the result. Linear by default: no branching unless a step explicitly asks for it. They chose predictable over clever. The trade: you always know what it will try next; you give up on the tricks the model might have reached for on its own.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 19,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "READ, EXECUTE, RETURN",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "READ, EXECUTE, RETURN",
+     "chips": [
+      "READ SKILL.md",
+      "EXECUTE STEPS",
+      "RETURN RESULT"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "linear — predictable over clever",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T20:54:40"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "One instruction inside spells out the pipeline. Pull the letter's key fields; cross-check them against the portfolio you already have; score the merit; hand back response options with a recommendation attached. And if the assessment says this needs escalating, the Skill doesn't try to close it — it passes the ball to matter-intake or demand-intake. The output here is a decision about who touches this thing next, not the response itself.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE TRIAGE PIPELINE",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE TRIAGE PIPELINE",
+     "chips": [
+      "EXTRACT",
+      "CROSS-CHECK",
+      "ASSESS MERIT",
+      "RECOMMEND",
+      "ESCALATE"
+     ],
+     "arrows": true,
+     "accent": [
+      4
+     ],
+     "strike": [],
+     "caption": "the output is who touches it, not the reply",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T20:54:40"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Claude isn't deciding whether to escalate — the assessment step is. When that step returns escalate, the Skill hands the letter off to matter-intake or demand-intake instead of writing the reply itself. The judgment lives in the checklist; Claude is just doing what the checklist said.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Claude isn't deciding whether to escalate — the assessment step is. The judgment lives in the checklist; Claude is just doing what the checklist said.",
+      "attribution": "",
+      "sparkLine": "Escalation hands off. Not Claude's call."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T20:54:40"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini — no plugin required. I have an inbound demand letter I need to triage before I decide how to respond. Act as a first-pass triage layer, not my lawyer: name the fields you'd extract from the letter — sender, counterparty, product or matter, claim summary, dates, requested remedy; tell me what to cross-check those against in my own records; score the merit on your read of what I paste; hand back three response options — the safe one, the strong one, the escalate — and say which you'd pick and why; then name the exact conditions under which I should stop and route this to real outside counsel instead. Go deeper: run the same prompt against one of your own past demand letters that already got resolved, and compare the model's recommendation to what actually happened — where did it see the escalation coming, and where did it miss?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 46,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "DEMAND-RECEIVED · ANTHROPIC SKILL",
+      "segment": "Claude, Demand Received.",
+      "command": "I have an inbound demand letter I need to triage before I decide how to respond. Act as a first-pass triage layer, not my lawyer: (1) name the fields you'd extract from the letter — sender, counterparty, product or matter, claim summary, dates, requested remedy; (2) tell me what to cross-check those against in my own records; (3) score the merit on your read of what I paste; (4) hand back three response options — the safe one, the strong one, the escalate — and say which you'd pick and why; (5) name the exact conditions under which I should stop and route this to real outside counsel instead.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "llm_exercise": {
+    "prompt": "I have an inbound demand letter I need to triage before I decide how to respond. Act as a first-pass triage layer, not my lawyer: (1) name the fields you'd extract from the letter — sender, counterparty, product or matter, claim summary, dates, requested remedy; (2) tell me what to cross-check those against in my own records; (3) score the merit on your read of what I paste; (4) hand back three response options — the safe one, the strong one, the escalate — and say which you'd pick and why; (5) name the exact conditions under which I should stop and route this to real outside counsel instead.",
+    "dig_deeper": "Go deeper: run the same prompt against one of your own past demand letters that already got resolved, and compare the model's recommendation to what actually happened — where did it see the escalation coming, and where did it miss?"
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T20:54:40"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Demand Received — the demand-received Skill, taken apart. Liam, in for Bear. More reels at brutalist.art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Demand Received — the demand-received Skill, taken apart. Liam, in for Bear. More reels at brutalist.art.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T20:54:40"
+   }
+  }
+ ]
+}

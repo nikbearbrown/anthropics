@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "It Updates the Model. Not Itself.",
+  "subtitle": "The Model-Update Skill (Financial Model Refresh)",
+  "slug": "financial-services--claude-liam-model-update",
+  "topic": "MODEL-UPDATE · FINANCIAL MODEL REFRESH SKILL",
+  "purpose": "Answer one real question in the Teardown register: when a Claude Skill called \"model update\" runs, does it update Claude itself, or a financial model? Lands the carry-out that a model update doesn't make Claude smarter — it makes the model current, and the decision still belongs to a person.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-model-update/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the model-update skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-02T02:29:44",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "People hear \"model update\" and assume Claude itself just got smarter. It didn't. Liam here, in for Bear — let's take this skill apart. What actually updates when new numbers land is a spreadsheet, not Claude. So what's really running in there?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Does a model update mean Claude just got smarter?', hesitates on 'smarter', corrects to 'new numbers', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Does a model\nupdate mean\nClaude just got\nsmarter?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "smarter",
+      "replacementWords": "new numbers",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "hai-model-update"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 1.0 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('smarter' -> 'new numbers') lands on screen and the full corrected question finishes typing before the clip ends. Rates reused from the financial-services--claude-liam-kyc-rules sibling's proven working configuration (42ms/char, 8% hesitateBetween, 4% mistakeRate, short 4-line text).",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T02:29:44"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Here's what's actually happening. A skill is a folder Claude reads before it lifts a finger. This one is called model-update. Open it and there's exactly one file inside — SKILL.md — written in plain English. No hidden branches, no compiled code. Claude reads the file, then does what it says. That's a design choice: the file is the whole program. Anyone can open it. Anyone can change it. Nothing is hiding behind a wrapper.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A SKILL IS A FOLDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A SKILL IS A FOLDER",
+     "chips": [
+      "SKILL.md",
+      "1 file",
+      "plain language"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BKNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T02:29:44"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Inside SKILL.md the instructions are a numbered list, and Claude runs them top to bottom. Step one: take the new data in — an earnings print, revised guidance, a changed assumption. Step two: adjust the estimates and recalculate the valuation. Step three: flag whatever changed enough to matter. No branching, unless a step itself tells it to branch. That's the trade they picked — reproducibility over cleverness. Same list, same order, same result, every run.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "LINEAR PIPELINE",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "LINEAR PIPELINE",
+     "chips": [
+      "data arrives",
+      "adjust + recalc",
+      "flag changes"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "no branching unless told to",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BKNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T02:29:44"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "This is why the skill exists — so nobody redoes the same update by hand every time new numbers land. Model-update takes what changed — quarterly earnings, new guidance, a revised assumption — and runs it through: new estimates, a recalculated valuation, a flag on anything material. And here's what it does not touch. Claude isn't updated. The weights, the training — untouched. What updates is the model, using data Claude is handed for that one run. Nothing carries over to the next. The investment call still belongs to a person: the skill flags what changed, it doesn't decide what to do about it. They optimized for a repeatable refresh at the expense of an automated call — the human is doing the judgment on purpose.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 34,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "UPDATES THE MODEL, NOT CLAUDE",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "UPDATES THE MODEL, NOT CLAUDE",
+     "chips": [
+      "data arrives",
+      "model current",
+      "checked by a person"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the investment call stays human",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BKNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T02:29:44"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A model update doesn't make Claude smarter — it makes the model current, and the decision still belongs to a person.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A model update doesn't make Claude smarter — it makes the model current, and the decision still belongs to a person.",
+      "attribution": "",
+      "sparkLine": "Current. Never decided."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T02:29:44"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. Hand it your estimates — say, 8% revenue growth, a 22% operating margin, a DCF you already built — then throw new numbers at it: an earnings print that beat on revenue but missed on margin by 200 basis points, guidance cut from 8% growth to 6%, and capex stepping up 15%. Before it touches a cell, ask it to walk you through exactly which estimates it would adjust, how the valuation changes, and what it would flag as material — then wait for you to say go. That's the model-update loop, run by hand: update, flag, stop. Go deeper: ask it to name three sets of new numbers where the model still ties out cleanly and still hands a person the wrong call — and describe what the skill would need to do to catch each one.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42,
+   "llm_exercise": {
+    "prompt": "I want to run the model-update loop by hand and see what it actually does. Pretend I own a valuation of a public company with these estimates: revenue growth of 8% next year, operating margin of 22%, and a discounted-cash-flow valuation I already built off those. New numbers just landed: an earnings print that beat on revenue but missed on operating margin by 200 basis points, revised guidance that lowers next year's growth from 8% to 6%, and a changed assumption that capex will step up by 15%. Before you touch a single cell, walk me through exactly which estimates you would adjust, how the valuation changes as a result, and which line items you would flag as material — then wait for me to say go. Do not decide the investment call. Just do the update, flag what matters, and stop.",
+    "dig_deeper": "Go deeper: name three sets of new numbers where a model-update pass would tie out cleanly, look freshly updated, and still hand a person the wrong investment call — and for each one describe what the skill would need to do to catch it."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "MODEL-UPDATE · FINANCIAL MODEL REFRESH SKILL",
+      "segment": "Your Turn",
+      "command": "Pretend I own a valuation with these estimates: 8% revenue growth next year, 22% operating margin, a DCF built off those. New numbers land: an earnings beat on revenue but a 200 bps margin miss, guidance cut from 8% growth to 6%, capex stepping up 15%. Before you touch a cell, walk me through exactly which estimates you would adjust, how the valuation changes, and what you would flag as material — then wait for me to say go. Do the update, flag what matters, and stop.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T02:29:44"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "It Updates the Model. Not Itself. Liam, in for Bear. Brutalist dot art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "It Updates the Model. Not Itself. Liam, in for Bear. www.brutalist.art",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T02:29:44"
+   }
+  }
+ ]
+}

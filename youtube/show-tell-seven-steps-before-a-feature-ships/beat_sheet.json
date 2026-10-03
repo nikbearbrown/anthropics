@@ -1,0 +1,713 @@
+{
+  "metadata": {
+    "slug": "show-tell-seven-steps-before-a-feature-ships",
+    "title": "Seven Steps Before a Feature Ships",
+    "topic": "CLAUDE CODE · FEATURE-DEV PLUGIN",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Italian (Ciao)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Students and developers who use Claude Code on real codebases and want it to understand, ask and design before it builds",
+    "source_doc": "anthropics/claude-plugins-official/plugins/feature-dev/ (README.md, commands/feature-dev.md, agents/code-explorer.md, code-architect.md, code-reviewer.md; read in full 2026-09-27, identical to the raw live files on GitHub main)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude",
+      "Claude Code",
+      "feature-dev",
+      "plugin",
+      "slash command",
+      "subagents",
+      "code-explorer",
+      "code-architect",
+      "code-reviewer",
+      "clarifying questions",
+      "software design",
+      "code review",
+      "Anthropic",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T13:48:27",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Ciao. This is Liam, in for Bear. Ask Claude Code to build a new feature, and it may start coding straight away. The feature dev plugin slows it down first. So the real question isn't how to get the feature coded faster. It's how to make Claude understand it before building.",
+      "estimated_duration_s": 20.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I get this feature coded faster?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'get this feature coded faster' -> 'make Claude understand it before building' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I\nget this feature coded faster?",
+            "triggerWords": "get this feature coded faster",
+            "replacementWords": "make Claude understand it before building",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-seven-steps-before-a-feature-ships",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T17:42:57.998687+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (how do I get this feature coded faster) and corrects it to the real one (how do I make Claude understand it before building).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 14.78,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 14.791666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T13:48:27"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Slash feature dev: the plugin's one command. An agent: a helper Claude sends off on one job, which reports back. And a blueprint: an architect agent's plan, naming the files to create or change.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "'/feature-dev' lands"
+          },
+          {
+            "at": 0.4,
+            "event": "'agent' lands"
+          },
+          {
+            "at": 0.75,
+            "event": "'blueprint' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "/feature-dev",
+                "meaning": "the plugin's one command"
+              },
+              {
+                "term": "agent",
+                "meaning": "a helper Claude sends off on one job; it reports back"
+              },
+              {
+                "term": "blueprint",
+                "meaning": "an architect's plan: the files to create or change"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T17:43:29.174436+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 11.56,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 11.583333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T13:48:27"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Type slash feature dev, then the feature in plain words. The command walks it through seven phases, in order, and several of them stop and wait for you.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The feature ticket (a white slip with a terracotta dot) sits top left ('/feature-dev'); seven open kraft rooms drop into a row with ink numerals 1-7 under them; the ticket hops over the rooms from 1 to 7 in order; terracotta stop lamps light over rooms 1, 3, 4, 5 and 6 ('waits for you').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the ticket, '/feature-dev'"
+          },
+          {
+            "at": 0.35,
+            "event": "seven rooms, 1 to 7"
+          },
+          {
+            "at": 0.55,
+            "event": "the ticket hops through them in order"
+          },
+          {
+            "at": 0.85,
+            "event": "stop lamps: waits for you"
+          }
+        ],
+        "manim": {
+          "class": "B00_Corridor"
+        },
+        "motion_claim": "The feature ticket (a white slip with a terracotta dot) sits top left ('/feature-dev'); seven open kraft rooms drop into a row with ink numerals 1-7 under them; the ticket hops over the rooms from 1 to 7 in order; terracotta stop lamps light over rooms 1, 3, 4, 5 and 6 ('waits for you')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn corridor-Claude-and-agents scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.47,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 8.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:48:27"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Phase one, discovery. If the request is unclear, Claude asks what problem it solves, what it should do, and any constraints. Then it sums up what it understood, and checks with you.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The corridor clears; the Claude box at the right ('Claude'), you (a kraft terminal) at the left ('you') with your signal board, lamp grey; the ticket drops into Claude's slot; three white question slips ride from Claude's mouth to you; a white summary card comes out between you; your lamp turns terracotta and an ink check lands on the card ('discovery').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the ticket goes in"
+          },
+          {
+            "at": 0.35,
+            "event": "three questions ride to you"
+          },
+          {
+            "at": 0.75,
+            "event": "the summary; your lamp lights; a check"
+          }
+        ],
+        "manim": {
+          "class": "B01_Discover"
+        },
+        "motion_claim": "The corridor clears; the Claude box at the right ('Claude'), you (a kraft terminal) at the left ('you') with your signal board, lamp grey; the ticket drops into Claude's slot; three white question slips ride from Claude's mouth to you; a white summary card comes out between you; your lamp turns terracotta and an ink check lands on the card ('discovery')."
+      },
+      "actual_duration_s": 9.77,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 9.791666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:48:27"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Phase two, exploration. Two or three code explorer agents go out in parallel, each tracing a different part of the codebase. Each brings back a list of five to ten key files, and Claude reads them all.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Claude moves left; a grid of white file cards at the right ('codebase'); three small copies of the Claude box ride out of Claude's mouth in parallel ('code-explorer'), one per row; a terracotta beam sweeps each row; each agent comes back with a file card; the cards stack beside Claude ('key files') and slide into its slot.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the codebase"
+          },
+          {
+            "at": 0.3,
+            "event": "three explorers go out in parallel"
+          },
+          {
+            "at": 0.6,
+            "event": "each returns with files"
+          },
+          {
+            "at": 0.85,
+            "event": "Claude reads them"
+          }
+        ],
+        "manim": {
+          "class": "B02_Explore"
+        },
+        "motion_claim": "Claude moves left; a grid of white file cards at the right ('codebase'); three small copies of the Claude box ride out of Claude's mouth in parallel ('code-explorer'), one per row; a terracotta beam sweeps each row; each agent comes back with a file card; the cards stack beside Claude ('key files') and slide into its slot."
+      },
+      "actual_duration_s": 11.65,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 11.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:48:27"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Phase three, clarifying questions. The command calls it critical: do not skip. Claude lists every gap, like edge cases and error handling, and waits for your answers before designing anything.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Claude top left, you and your board bottom left; four white question slips with kraft seals 1-4 slide out of Claude into a row ('questions'); slips 1 and 2 pulse; your lamp stays grey and pulses (Claude waits); four kraft answer cards with the same seals ride from your terminal into the row below ('your answers'); your lamp turns terracotta.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "four questions in a row"
+          },
+          {
+            "at": 0.45,
+            "event": "edge cases, error handling"
+          },
+          {
+            "at": 0.65,
+            "event": "Claude waits for you"
+          },
+          {
+            "at": 0.85,
+            "event": "your answers; the lamp lights"
+          }
+        ],
+        "manim": {
+          "class": "B03_Questions"
+        },
+        "motion_claim": "Claude top left, you and your board bottom left; four white question slips with kraft seals 1-4 slide out of Claude into a row ('questions'); slips 1 and 2 pulse; your lamp stays grey and pulses (Claude waits); four kraft answer cards with the same seals ride from your terminal into the row below ('your answers'); your lamp turns terracotta."
+      },
+      "actual_duration_s": 11.11,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 11.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:48:27"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Phase four, architecture. Two or three code architect agents each draw one blueprint: minimal changes, clean architecture, or a pragmatic balance. Claude recommends one, says why, and asks which you prefer.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three small architect agents drop in a row; a kraft blueprint sheet with grey layout blocks slides out under each ('minimal', 'clean', 'pragmatic'); a terracotta dot lands on one (recommended); your cursor clicks it; it lifts and the other two fade back.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "three architects"
+          },
+          {
+            "at": 0.35,
+            "event": "three blueprints, one approach each"
+          },
+          {
+            "at": 0.7,
+            "event": "the recommended one"
+          },
+          {
+            "at": 0.85,
+            "event": "you pick; it lifts"
+          }
+        ],
+        "manim": {
+          "class": "B04_Design"
+        },
+        "motion_claim": "Three small architect agents drop in a row; a kraft blueprint sheet with grey layout blocks slides out under each ('minimal', 'clean', 'pragmatic'); a terracotta dot lands on one (recommended); your cursor clicks it; it lifts and the other two fade back."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn corridor-Claude-and-agents scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.05,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 12.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:48:27"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Phase five, the build, and it doesn't start until you approve. Claude follows the blueprint you chose, sticks to the codebase's conventions, and ticks off its to-do list as it goes.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Your board's lamp is grey beside the chosen blueprint; it turns terracotta ('your go'); an open kraft box (the feature) appears; file cards drop into it one by one while ink checks land on a white to-do card ('to-dos'); the box closes and terracotta tape lands on it.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "your lamp lights: go"
+          },
+          {
+            "at": 0.4,
+            "event": "files drop into the feature"
+          },
+          {
+            "at": 0.6,
+            "event": "to-dos tick off"
+          },
+          {
+            "at": 0.85,
+            "event": "the box is taped"
+          }
+        ],
+        "manim": {
+          "class": "B05_Build"
+        },
+        "motion_claim": "Your board's lamp is grey beside the chosen blueprint; it turns terracotta ('your go'); an open kraft box (the feature) appears; file cards drop into it one by one while ink checks land on a white to-do card ('to-dos'); the box closes and terracotta tape lands on it."
+      },
+      "actual_duration_s": 9.96,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 10.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:48:27"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Phase six, quality review. Three code reviewer agents check the new code in parallel: for simplicity, for bugs, and for the project's conventions. Each rates its confidence in every issue from zero to a hundred, and reports only those at eighty or above. Then you choose: fix now, fix later, or proceed as is.",
+      "estimated_duration_s": 21.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The taped feature box at the centre; three small reviewer agents above it ('code-reviewer'); terracotta scan lines sweep the box; five finding slips pop out, each with a grey score bar; a threshold line ('≥ 80'); the short-bar slips fade; your board's lamp lights and one finding goes back into the box.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "three reviewers in parallel"
+          },
+          {
+            "at": 0.3,
+            "event": "scan lines sweep"
+          },
+          {
+            "at": 0.5,
+            "event": "findings with scores"
+          },
+          {
+            "at": 0.7,
+            "event": "only 80 and above stay"
+          },
+          {
+            "at": 0.9,
+            "event": "you choose"
+          }
+        ],
+        "manim": {
+          "class": "B06_Review"
+        },
+        "motion_claim": "The taped feature box at the centre; three small reviewer agents above it ('code-reviewer'); terracotta scan lines sweep the box; five finding slips pop out, each with a grey score bar; a threshold line ('≥ 80'); the short-bar slips fade; your board's lamp lights and one finding goes back into the box."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn corridor-Claude-and-agents scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 16.73,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 16.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:48:27"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Phase seven, the summary. Claude marks every to-do done, then writes up what was built, the key decisions, the files it changed, and suggested next steps.",
+      "estimated_duration_s": 10.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The feature box at the left; the to-do card gets its last check; a white summary card slides out beside it ('summary') with four grey lines, and an ink check lands on each line in turn.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "every to-do done"
+          },
+          {
+            "at": 0.35,
+            "event": "the summary card"
+          },
+          {
+            "at": 0.5,
+            "event": "four lines tick, one by one"
+          }
+        ],
+        "manim": {
+          "class": "B07_Summary"
+        },
+        "motion_claim": "The feature box at the left; the to-do card gets its last check; a white summary card slides out beside it ('summary') with four grey lines, and an ink check lands on each line in turn."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn corridor-Claude-and-agents scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.7,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 8.708333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:48:27"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The plugin's read me says it's for features that touch several files or need an architecture decision. Not for one-line bug fixes, trivial changes, or urgent hotfixes.",
+      "estimated_duration_s": 10.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The corridor of seven rooms returns across the top; a big feature (the ticket with three file cards) rides into room 1 ('several files'); below, a single small slip ('one-line fix') rides straight past, under the corridor.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the corridor returns"
+          },
+          {
+            "at": 0.3,
+            "event": "a multi-file feature goes in"
+          },
+          {
+            "at": 0.7,
+            "event": "a one-line fix skips it"
+          }
+        ],
+        "manim": {
+          "class": "B08_When"
+        },
+        "motion_claim": "The corridor of seven rooms returns across the top; a big feature (the ticket with three file cards) rides into room 1 ('several files'); below, a single small slip ('one-line fix') rides straight past, under the corridor."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn corridor-Claude-and-agents scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.45,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 10.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:48:27"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Install the feature dev plugin, open Claude Code in a repo you know, and paste this: Slash feature dev. Add a dash dash dry run flag to this repo's main script that prints what it would change, without changing anything. Run discovery, exploration and your clarifying questions, then stop and wait for my answers. Don't design or write any code yet. Then check two things yourself. Do its questions point at files it actually read? And does git status show that nothing has changed yet?",
+      "estimated_duration_s": 34.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · YOUR TURN",
+            "segment": "Seven Steps Before a Feature Ships",
+            "command": "/feature-dev Add a --dry-run flag to this repo's main script that prints what it would change without changing anything. Run discovery, exploration and your clarifying questions, then stop and wait for my answers. Don't design or write any code yet.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: do the questions cite files it read?",
+              "Check: git status shows no changes yet?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T17:44:33.971887+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 25.39,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 25.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T13:48:27"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Seven Steps Before a Feature Ships. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Seven Steps Before a Feature Ships",
+            "slug": "show-tell-seven-steps-before-a-feature-ships",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T17:44:50.539503+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.8,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.833333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T13:48:27"
+      }
+    }
+  ]
+}

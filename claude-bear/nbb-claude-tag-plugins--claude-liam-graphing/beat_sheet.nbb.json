@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "Claude, Graphing.",
+  "slug": "claude-tag-plugins--claude-liam-graphing",
+  "topic": "CLAUDE BASICS · GRAPHING SKILL",
+  "purpose": "Answer one real question in the Teardown register: does Claude already know how to make a good chart, or does a kit have to hand it judgement defaults? Take the graphing kit apart — five primitives, three data helpers, a four-step workflow — and judge where it succeeds on its own terms and where it silently doesn't. Lands the carry-out that Claude only dodges the edges the kit actually marks.",
+  "skill": "hai-simple",
+  "register": "Teardown",
+  "brand": "hai-fellows",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "in_for_bear": true,
+  "clock": "narration",
+  "bookend_exempt": [
+   "cold-open"
+  ],
+  "one_flag": "N/A — every claim in this reel is carried directly from the source Teardown's own stated facts about the graphing skill, not an inference this build is making",
+  "gate_c": "SIGNED — CARRY-OUT.md",
+  "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "redo_of": "anthropics/claude-tag-plugins/youtube/claude-liam-graphing/beat_sheet.json (Teardown, 7 beats, fully-written narration — no source_skill file present on this machine, see QUESTION.md)",
+  "build": {
+   "at": "2026-08-31T17:08:53",
+   "cut": "master",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Assumption: Claude already knows how to make a good chart. It doesn't — it reads a kit before drawing that tells it what to check. Here's what the kit spells out, and where it stops helping.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types the naive framing, hesitates on 'KNOWS', corrects to 'has to be told', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude already\nKNOWS how to\nmake a good\nchart, right?",
+      "face": "serif",
+      "fontSize": 80,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "KNOWS",
+      "replacementWords": "has to be told",
+      "mistakeRate": 8,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 50,
+      "jitter": 28,
+      "seed": "hai-graphing"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md. Writer types the newcomer's wrong-guess word 'KNOWS' (implying Claude already has innate design taste), hesitates, corrects to 'has to be told' -> lands 'Claude already has to be told how to make a good chart, right?'. Teardown rewrite: 35 words, inside the 20-35 TIMING LAW window; lead_silence_s 0.8 preserves the >=9s typing window.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T17:08:53"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "anatomy — chartkit primitives + data helpers",
+   "narration_text": "Here's what's actually in the kit. Five primitives and three data helpers. theme sets matplotlib rcParams and returns resolved colors — the key move is that foreground colors derive from background luminance, so pass a dark background and you get a correct dark chart automatically, no override. palette builds n colors from a base hex, cycles a list, or falls back to the series defaults. finish adds the typographic frame — left-aligned bold title, muted subtitle, provenance caption. save writes PNG, SVG, or both and returns paths. write_html produces a self-contained interactive page by inlining React, ReactDOM, react-is, and Recharts from a local third-party directory — the file opens offline, no CDN dependency. That last choice is a philosophy: they optimized for a chart that still works when the network doesn't, at the cost of a bigger single file. The three data helpers each target a specific failure mode. zero_fill_days fills calendar gaps in a timeseries — skip it when zeros would be a lie because the data is sparsely sampled, not absent. rolling_mean is trailing; early points average whatever exists so far — do not center it. log_floor gives a lower bound for bar charts on log scales, value equal to the axis minimum. All three are optional; use them only when they fit. And the absolute path to graphing's scripts directory has to go into sys.path — not relative, because the working directory is the user's project, not the kit's.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 78,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "GraphingAnatomy",
+     "props": {
+      "sparkLine": "theme() derives colors from luminance. write_html inlines offline. zero_fill_days: skip if zeros would lie."
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T17:08:53"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "design — four-step workflow + judgement defaults",
+   "narration_text": "Now the workflow. Four steps: look at the data and decide what it deserves; infer colors from context — tailwind config, CSS variables, brand guidelines, semantic meaning; write the script; render and look at the result before handing it over. The render-and-look step is explicit: check labels for legibility, nothing overlapping, colors distinguishable, the story of the data visible. Fix and re-render until it's right. That last step is the honesty test — most tools stop at 'the script ran'; this one insists you look at the pixels. The judgement section gives defaults with explicit permission to deviate when the data argues for it, which is the right shape — a rule that names its exceptions is a rule you can trust. Five defaults worth knowing. Rotate x labels only when they would otherwise collide — short labels stay horizontal. Cap bar width when there are few categories. Label bars with their values when there are roughly a dozen or fewer. Rank categorical bars by value unless the categories have a natural order. A title states what the chart shows — not the chart type, not the column name. Legends only when there is more than one series. Annotate the chart with what matters — a deploy line, a threshold, the peak, the anomaly. An annotation the reader did not need is clutter.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 66,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "GraphingDesign",
+     "props": {
+      "sparkLine": "Four steps: look, infer, write, look again. Rank bars. Label small datasets. Annotate what matters."
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T17:08:53"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "5 both directions",
+   "narration_text": "So does the kit fix Claude's chart problems? Not exactly. Where it spells something out plainly — the first-step judgment call, colors that adapt to the background, an offline file that just works — Claude follows it and skips the mistake entirely. Where the guidance is a placeholder string swapped by hand, or one phrase covering an edge case, Claude can still get it wrong, the same way a person skimming the same page would. The pattern is worth naming: clarity is contagious, and so is ambiguity. What the kit marks, Claude notices; what it buries, Claude misses.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Two columns: what the skill spells out plainly, what it leaves easy to miss — no verdict frame, per-item facts only",
+    "remotion": {
+     "pattern": "MedhavyTwoColumnCard",
+     "props": {
+      "sparkLine": "Clear defaults get followed. Buried ones don't.",
+      "leftHeader": "documented plainly",
+      "leftItems": [
+       "\"look at the data, decide what it deserves\" forces chart-type judgment from shape",
+       "theme() derives colors from background luminance — dark bg, correct dark chart, no override",
+       "write_html inlines React + Recharts locally — opens offline, no CDN",
+       "each data helper states exactly when to skip it"
+      ],
+      "rightHeader": "easy to miss",
+      "rightItems": [
+       "sys.path needs an absolute path — the example itself shows /path/to/graphing/scripts",
+       "GRID and ACCENT in the interactive template are literal strings, not variables",
+       "\"render and look\" is four criteria in one sentence — no rubric for what passes",
+       "rolling_mean's edge behavior for windows smaller than w is one phrase"
+      ]
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T17:08:53"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "The honest verdict: a charting kit doesn't give Claude good taste. It hands Claude judgement defaults to start from and a few sharp edges marked — and Claude only dodges the edges the kit actually marks.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A charting kit doesn't give Claude good taste. It hands Claude judgement defaults to start from and a few sharp edges marked — and Claude only dodges the edges the kit actually marks.",
+      "attribution": "",
+      "sparkLine": "Defaults, not taste — and only where it's marked.",
+      "citation": ""
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T17:08:53"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini. Give it a small dataset you want to chart. Before it writes any chart code, ask what shape the data is — categorical, timeseries, distribution, comparison — what chart type that shape deserves, where the colors should come from, and whether there are any gaps where a zero would be a lie. Then have it render the PNG, look at the image itself, and say what it would fix before handing it back. Go deeper: swap the same data into a chart type its shape doesn't deserve — a bar for a timeseries, a pie for a comparison — and ask Claude what specifically breaks and why.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42,
+   "llm_exercise": {
+    "prompt": "I have a small dataset I want to chart — [paste the CSV, or describe the columns and a few rows]. Before you write any chart code, tell me: (1) what shape is the data — categorical, timeseries, distribution, or comparison; (2) what chart type does that shape deserve, and why; (3) where should the colors come from — a brand palette, semantic meaning, or a sensible default; (4) are there gaps where a zero would be a lie (sparsely sampled, not actually absent). Then write the script, render a PNG, and open the image. Look at it and tell me what you'd fix — label collisions, missing annotations, a legend that shouldn't be there, a title that names the chart type instead of what it shows — before handing it to me.",
+    "dig_deeper": "Go deeper: swap the same data into a chart type its shape doesn't deserve — a bar for a timeseries, a pie for a four-way comparison — and ask Claude what specifically breaks and why. That's the fastest way to see what the kit's judgement defaults are actually protecting you from."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN · A CHART CLAUDE HASN'T SEEN",
+      "segment": "Your Turn",
+      "command": "I have a small dataset I want to chart. Before you write any code, tell me what shape the data is — categorical, timeseries, distribution, comparison — what chart type that shape deserves, where the colors should come from, and whether there are gaps where a zero would be a lie. Then render the PNG, look at the image itself, and say what you'd fix before handing it back.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "output": [],
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T17:08:53"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro series",
+   "narration_text": "Claude, Graphing.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 4,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroSeries",
+     "props": {
+      "eyebrow": "CLAUDE BASICS · NIKBEARBROWN",
+      "line": "Claude, Graphing."
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T17:08:53"
+   }
+  },
+  {
+   "beat_id": "BCTA",
+   "act": "outro cta",
+   "narration_text": "…Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 4,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "…Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BCTA.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCTA.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCTA.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T17:08:53"
+   }
+  }
+ ]
+}

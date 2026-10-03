@@ -1,0 +1,833 @@
+{
+ "metadata": {
+  "title": "Claude, Unstuck",
+  "subtitle": "Troubleshooting and Staying Current",
+  "slug": "books--claude-liam-troubleshooting",
+  "topic": "CLAUDE · COWORK PLUGINS",
+  "purpose": "Answer one real question in the Teardown register: when a plugin breaks, does the fix live in the screenshot or in the concept? Explain the machinery — five durable failure shapes and a four-step diagnostic loop — and judge the ecosystem trade-off that dates the interface while leaving the mental model intact. Lands the carry-out: return to what the plugin is for, then check the docs for what's current.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/books/claude-cowork-plugins/youtube/claude-liam-troubleshooting/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Extending Claude — Skills, Plugins & Connectors",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "NB08 -> NB09/NB10 (checking /plugins is both the command-not-found fix and the opening move of the four-step loop)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-08-28T21:51:13",
+   "cut": "master",
+   "filled": 19,
+   "of": 19,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's what breaks first — the instinct. You hunt for a fix that matches your exact screen. Wrong target. The interface moves weekly; the concept underneath does not. Where's the fix that matches the concept?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'My plugin's broken. Where's the fix that matches the screen?', hesitates on 'screen', corrects to 'concept'",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "My plugin's broken.\nWhere's the fix that\nmatches the screen?",
+      "face": "serif",
+      "fontSize": 74,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "screen",
+      "replacementWords": "concept",
+      "mistakeRate": 0,
+      "hesitateWithin": 0,
+      "hesitateBetween": 0,
+      "charMs": 38,
+      "jitter": 26,
+      "seed": "hai-troubleshooting"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('screen' -> 'concept') lands on screen. NOTE: triggerWords/replacementWords match per single whitespace-split token (BrutalistHesitantWriter.tsx buildActs), so a multi-word trigger like 'my screen' never matches and silently no-ops — single words only.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "1 stakes",
+   "narration_text": "Things break — plugin misbehaves, connection drops, output disappoints. Here's what's actually at stake — not the bug, but the failure mode where frustration accumulates until you quietly stop reaching for the tool. Diagnosing is the counter-move that keeps you in the game.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FRUSTRATION, NOT THE BUG",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FRUSTRATION, NOT THE BUG",
+     "chips": [
+      "A GLITCH",
+      "QUIET FRUSTRATION",
+      "GIVING UP"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "diagnosing keeps you in the game",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "2 wrong guess payoff",
+   "narration_text": "Here's the discipline. The interface — buttons, menus, wording — churns constantly because product teams optimize for polish and iteration. Underneath sits something durable: what the plugin is actually for, what it can and can't do. Troubleshoot from there.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SURFACE VS. BEDROCK",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SURFACE VS. BEDROCK",
+     "chips": [
+      "INTERFACE: CHANGES",
+      "CONCEPT: HOLDS"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "troubleshoot from the concept",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's what's actually happening — most breakage collapses into five shapes: won't appear, won't authenticate, results feel generic, runs slow, or a command isn't recognized. Each has a durable cause underneath the specific error text, and a durable fix that outlives the current UI.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FIVE FAMILIAR SHAPES",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FIVE FAMILIAR SHAPES",
+     "chips": [
+      "WON'T APPEAR",
+      "WON'T AUTHENTICATE",
+      "GENERIC RESULTS",
+      "TOO SLOW",
+      "COMMAND NOT FOUND"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "each has a durable cause",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB04",
+   "act": "3 mechanism",
+   "narration_text": "Plugin missing after you installed it? Here's the mechanism — plugins load once at app startup, not continuously. A mid-session install sits on disk but isn't registered until the next boot. Close the app completely, reopen it, and it loads. Still missing? Reinstall from the sidebar.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "REOPEN TO RELOAD",
+    "media": "manim/NB04.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "REOPEN TO RELOAD",
+     "chips": [
+      "INSTALLED MID-SESSION",
+      "CLOSE & REOPEN",
+      "LOADS"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "still missing? reinstall it",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB04Scene"
+   },
+   "audio_file": "mp3/beat-NB04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB05",
+   "act": "3 mechanism",
+   "narration_text": "A service that won't authenticate — almost always stale credentials. Tokens expire on a schedule, passwords rotate, access gets revoked when someone leaves. The fix is a fresh handshake: disconnect the service, then reconnect. If your company gates outside access, you'll need IT to sign off before the loop closes.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "CREDENTIALS GO STALE",
+    "media": "manim/NB05.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "CREDENTIALS GO STALE",
+     "chips": [
+      "TOKEN EXPIRED",
+      "DISCONNECT",
+      "RECONNECT"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "IT approval may be required",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB05Scene"
+   },
+   "audio_file": "mp3/beat-NB05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB05.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB06",
+   "act": "3 mechanism",
+   "narration_text": "Results feel generic? That's not a bug — that's the design. Defaults are deliberately broad so the plugin ships useful to everyone, specific to nobody. Feed it your context: brand voice, process, standards. The output sharpens well past the useful threshold — once it has something to specialize on.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "BROAD BY DEFAULT",
+    "media": "manim/NB06.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "BROAD BY DEFAULT",
+     "chips": [
+      "GENERIC DEFAULT",
+      "YOUR CONTEXT"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "sharpens past the useful threshold",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB06Scene"
+   },
+   "audio_file": "mp3/beat-NB06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB06.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB07",
+   "act": "3 mechanism",
+   "narration_text": "Slow operations almost always reach outside your machine — a database lookup, a web search, a CRM query. Each buys network latency you can't optimize away because the roundtrip isn't local. Here's the fix: shrink the scope. One date range, one folder, not everything everywhere.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SHRINK THE SCOPE",
+    "media": "manim/NB07.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SHRINK THE SCOPE",
+     "chips": [
+      "EVERYTHING, EVERYWHERE",
+      "ONE SLICE"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [
+      0
+     ],
+     "caption": "latency drops with scope",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB07Scene"
+   },
+   "audio_file": "mp3/beat-NB07.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB07.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB08",
+   "act": "3 mechanism",
+   "narration_text": "A slash command not recognized? Here's what's actually happening — the command list is registered by active plugins only. Confirm the plugin is installed and enabled, then type a single slash to see everything available right now. Still missing? Restart it — the registry rebuilds on load.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "TYPE SLASH, LOOK",
+    "media": "manim/NB08.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "TYPE SLASH, LOOK",
+     "chips": [
+      "/",
+      "ALL COMMANDS",
+      "/PLUGINS: ACTIVE LIST"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "still missing? restart it",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB08Scene"
+   },
+   "audio_file": "mp3/beat-NB08.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB08.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB09",
+   "act": "3 mechanism",
+   "narration_text": "Two diagnostics run first — cheap and high-yield. Check the plugins list to see what's installed and active; it's the opening move for anything plugin-related. If one's misbehaving, disable it, then re-enable it. That forces a fresh config load and clears most transient glitches.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "CHECK, THEN TOGGLE",
+    "media": "manim/NB09.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "CHECK, THEN TOGGLE",
+     "chips": [
+      "/PLUGINS: WHAT'S ACTIVE",
+      "DISABLE",
+      "RE-ENABLE"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "clears most transient glitches",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB09Scene"
+   },
+   "audio_file": "mp3/beat-NB09.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB09.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB10",
+   "act": "3 mechanism",
+   "narration_text": "Then the loop that resolves most problems, in a specific order. One: is the plugin installed and active? Two: are its connections authorized? Three: try a simpler request to isolate where it fails. Four: restart. The order matters — most trouble dies inside those four steps.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "FOUR STEPS, IN ORDER",
+    "media": "manim/NB10.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "FOUR STEPS, IN ORDER",
+     "chips": [
+      "ACTIVE?",
+      "AUTHORIZED?",
+      "SIMPLER REQUEST?",
+      "RESTART"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "most trouble dies here",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB10Scene"
+   },
+   "audio_file": "mp3/beat-NB10.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB10.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB11",
+   "act": "3 mechanism",
+   "narration_text": "That third step carries more weight than its size suggests. Shrink the request until it works, then grow it back one dimension at a time. The exact point it breaks again is a bisection — it names precisely where the problem lives.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "ISOLATE BY SHRINKING",
+    "media": "manim/NB11.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "ISOLATE BY SHRINKING",
+     "chips": [
+      "SHRINK UNTIL IT WORKS",
+      "GROW IT BACK",
+      "BREAKS HERE = THE CAUSE"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "the break point is the diagnosis",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB11Scene"
+   },
+   "audio_file": "mp3/beat-NB11.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB11.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB12",
+   "act": "5 both directions (a)",
+   "narration_text": "Plugins don't sit still. Anthropic improves the official ones on their release cadence; community creators ship their own updates whenever they're ready. Each release can add capabilities, fix bugs, or run faster — so what you learned last month may behave differently today.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NOTHING SITS STILL",
+    "media": "manim/NB12.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NOTHING SITS STILL",
+     "chips": [
+      "OFFICIAL UPDATES",
+      "COMMUNITY UPDATES",
+      "BEHAVIOR SHIFTS"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "what you learned may already differ",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB12Scene"
+   },
+   "audio_file": "mp3/beat-NB12.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB12.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB13",
+   "act": "5 both directions (b)",
+   "narration_text": "And that's the catch. Updates apply automatically, so the interface shifts underneath you — freshness optimized at the expense of stability. Anything written down about the screen starts dating the moment it's written. The concept underneath does not.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE SCREEN DATES",
+    "media": "manim/NB13.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE SCREEN DATES",
+     "chips": [
+      "INTERFACE: RE-VERSIONS",
+      "CONCEPT: UNBROKEN"
+     ],
+     "arrows": false,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "written screenshots age; the concept doesn't",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB13Scene"
+   },
+   "audio_file": "mp3/beat-NB13.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB13.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB14",
+   "act": "3 mechanism",
+   "narration_text": "So verify specifics against sources that stay current. Each plugin's own docs — on its page and inside the app, the authoritative source. The plugin directory, where others have already worked through your problem. And the official channels — the Anthropic blog and release notes — for what actually changed.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "CHECK THE LIVE SOURCES",
+    "media": "manim/NB14.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "CHECK THE LIVE SOURCES",
+     "chips": [
+      "PLUGIN'S OWN DOCS",
+      "THE DIRECTORY",
+      "OFFICIAL CHANNELS"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "for what's true today",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB14Scene"
+   },
+   "audio_file": "mp3/beat-NB14.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB14.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "NB15",
+   "act": "3 mechanism",
+   "narration_text": "Make it a habit. Set a monthly reminder to browse the directory — the ecosystem moves whether you're watching or not. When a plugin you rely on changes, read the changelog: a new feature might be exactly what you were missing, or the workaround you were building around.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A MONTHLY HABIT",
+    "media": "manim/NB15.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A MONTHLY HABIT",
+     "chips": [
+      "MONTHLY: BROWSE THE DIRECTORY",
+      "READ THE CHANGELOG"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "a new feature might be the fix",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB15Scene"
+   },
+   "audio_file": "mp3/beat-NB15.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB15.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "When something breaks, don't chase the screen. Return to what the plugin is for, then check the docs for what's current. The interface dates; the mental model doesn't.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "When something breaks, don't chase the screen. Return to what the plugin is for, then check the docs for what's current. The interface dates; the mental model doesn't.",
+      "attribution": "",
+      "sparkLine": "The interface dates. The model doesn't."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt — paste it into Claude, ChatGPT, or Gemini. I'm learning to troubleshoot AI plugins from the concept up, not from a specific screenshot. Walk me through the five most common failure modes — won't appear, won't authenticate, results feel generic, runs slow, and command not recognized. For each one, explain the durable underlying cause, give me the first check to run, and name the design trade-off that made this failure mode possible. Then hand me a four-step diagnostic loop I can run on any plugin issue in any product, in the order I should run it. Go deeper: which of these failure modes is most likely to get worse — not better — as plugin ecosystems mature and add community contributors, and why? Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 45,
+   "llm_exercise": {
+    "prompt": "I'm learning to troubleshoot AI plugins from the concept up rather than from a specific screenshot. Walk me through the five most common plugin failure modes: (1) won't appear, (2) won't authenticate, (3) results feel generic, (4) runs slow, and (5) a command isn't recognized. For each failure mode, do three things: explain the durable underlying cause in one or two sentences, tell me the first specific check to run, and name the design trade-off that made this failure possible in the first place. Then hand me a four-step diagnostic loop I can run on any plugin issue in any product — the order to run the steps in matters, so number them.",
+    "dig_deeper": "Go deeper: which of these five failure modes is most likely to get worse — not better — as plugin ecosystems mature and add community contributors, and why?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE · COWORK PLUGINS",
+      "segment": "Claude, Unstuck",
+      "command": "I'm learning to troubleshoot AI plugins from the concept up rather than from a specific screenshot. Walk me through the five most common plugin failure modes: (1) won't appear, (2) won't authenticate, (3) results feel generic, (4) runs slow, and (5) a command isn't recognized. For each failure mode, do three things: explain the durable underlying cause in one or two sentences, tell me the first specific check to run, and name the design trade-off that made this failure possible in the first place. Then hand me a four-step diagnostic loop I can run on any plugin issue in any product — the order to run the steps in matters, so number them.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T21:51:13"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Unstuck — troubleshooting and staying current. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Unstuck — troubleshooting and staying current. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T21:51:13"
+   }
+  }
+ ]
+}

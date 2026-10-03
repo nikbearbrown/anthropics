@@ -20,11 +20,56 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-for-legal/litigation-legal/skills/brief-section-drafter/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Draft a brief section in house style",
+        "consistent with the case theory — every fact cited",
+        "every case checked",
+        "every argument tied to the theory",
+        "Use when the user says \"draft the [section]\""
+      ],
+      "constraints": [
+        "If the user's jurisdiction includes England & Wales and they're asking for a trial witness statement for the Business & Property Courts (or any CPR-governed proceeding)…",
+        "Verbatim quotes from the record must be verbatim. Never put quotation marks around words attributed to opposing counsel, a witness, the court, or any record document…",
+        "Never fill the gap. An invented quote, even one word, is a fabrication. The reviewer note must flag every [verify exact quote] in the output",
+        "Pinpoint cites must support the whole proposition. If the argument is \"opposing counsel said X, Y, and Z\" and you're citing one pinpoint, verify the pinpoint supports X…",
+        "Asserting a weak argument without flagging it erodes the lawyer's credibility with the tribunal and creates a candor problem (MR 3.1 — a lawyer must have a basis in law…",
+        "When this draft is cite-checked — by you, by another skill, or by a reviewer running through what you produced — the check must be exhaustive, not selective:",
+        "When source text is unavailable, say \"could not check,\" never \"confirmed.\" A false positive (\"this cite is fine\" when you couldn't read the source) is worse than…",
+        "Do not proceed on an unintaken matter. Intake is what runs conflicts, sets up matter.md / history.md, and writes the _log.yaml row this skill reads from. Skipping it…"
+      ],
+      "referenced_files": [
+        "~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md",
+        "CLAUDE.md",
+        "[verify against record — Tr. p. __]",
+        "~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml",
+        "_log.yaml",
+        "/litigation-legal:matter-intake",
+        "matter.md",
+        "history.md",
+        "[CITE NEEDED: specific cite — fact/rule believed but cite not yet pinned]"
+      ],
+      "code_signals": [
+        "code block: markdown"
+      ],
+      "sections": [
+        "Witness statements for England & Wales — PD 57AC",
+        "Purpose",
+        "Written or oral?",
+        "Record fidelity — quotes and pinpoints",
+        "Candor about weak arguments",
+        "Citation extraction coverage",
+        "Echo vs repeat",
+        "Load context",
+        "Workflow",
+        "Step 1: Which section?"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T06:51:59",
+      "at": "2026-09-06T00:55:21",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +78,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is brief-section-drafter. Draft a brief section in house style, consistent with the case theory — every fact cited, every case checked, every argument tied to the theory. Use when the user says \"draft the [section]\", \"write the statement of facts\", \"argument section on [issue]\", or needs a first draft of a brief section.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is brief-section-drafter. Draft a brief section in house style, consistent with the case theory — every fact cited, every case checked, every argument tied to the theory. Use when the user says \"draft the [section]\", \"write the statement of facts\", \"argument section on [issue]\", or needs a first draft of a brief section.. Its concrete surface area includes Draft a brief section in house style; consistent with the case theory — every fact cited; every case checked. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,8 +94,8 @@
             "runningText": "reading brief-section-drafter SKILL.md…",
             "output": [
               "skill: brief-section-drafter",
-              "Draft a brief section in house style, consistent with the case theory — every fa",
-              "steps: 0 — executing."
+              "Draft a brief section in house style, consistent with the case theory — every…",
+              "steps: 5 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -63,18 +108,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 21.5,
+      "actual_duration_s": 29.91,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:51:59"
+        "at": "2026-09-06T00:55:21"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is brief-section-drafter. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is brief-section-drafter. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at ~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md, CLAUDE.md, [verify against record — Tr. p. __], so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -106,18 +151,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.59,
+      "actual_duration_s": 23.57,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:51:59"
+        "at": "2026-09-06T00:55:21"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "The pipeline has 5 steps. Which section? → Theory check → Draft in house style, plus 2 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -132,22 +177,27 @@
             "outputLabel": "RESULT",
             "phases": [
               {
-                "label": "Read SKILL.md",
-                "desc": "load the instruction set",
+                "label": "Which section?",
+                "desc": "| Section | What it does | Inputs needed | |---|---|---| |…",
                 "accent": true
               },
               {
-                "label": "Execute",
-                "desc": "run each step in order",
+                "label": "Theory check",
+                "desc": "Before writing: what does this section need to accomplish…",
                 "accent": false
               },
               {
-                "label": "Return output",
-                "desc": "deliver the result",
+                "label": "Draft in house style",
+                "desc": "Research the forum's local rules and the judge's standing…",
+                "accent": false
+              },
+              {
+                "label": "Cite everything",
+                "desc": "Every fact → record cite (Bates, depo page:line, exhibit).…",
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "5 steps. Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -157,18 +207,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 12.05,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:51:59"
+        "at": "2026-09-06T00:55:21"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. brief-section-drafter is a specification written as an instruction set. Claude's job: Draft a brief section in house style, consistent with the case theory — every fact cited, every case. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. If the user's jurisdiction includes England & Wales and they're asking for a trial witness statement for the Business & Property Courts (or any CPR-governed proceeding)…. That is the constraint in brief-section-drafter — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +229,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Draft a brief section in house style, consistent with the case theory — every fact cited, every case checked, every argument tied to the theory. Use when the user says \"draft the [section]\", \"write th",
+            "body": "If the user's jurisdiction includes England & Wales and they're asking for a trial witness statement for the Business & Property Courts (or any CPR-governed proceeding)…",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,18 +239,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 15.68,
+      "actual_duration_s": 17.34,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:51:59"
+        "at": "2026-09-06T00:55:21"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In brief-section-drafter, supporting material: ~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md, CLAUDE.md, [verify against record — Tr. p. __], ~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml; implementation signals: code block: markdown; sections: Witness statements for England & Wales — PD 57AC, Purpose, Written or oral?, Record fidelity — quotes and pinpoints. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Draft a brief section in house style; consistent with the case theory — every fact cited; every case checked; ~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md; CLAUDE.md; [verify against record — Tr.…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 35.61,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-06T00:55:21"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "brief-section-drafter makes Claude execute one task reliably. The SKILL.md is the spec — Draft a brief section in house style, consistent with the case theory — every fa. Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "brief-section-drafter makes Claude execute one task reliably. The SKILL.md is the spec — Draft a brief section in house style, consistent with the case theory — every…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -213,9 +295,10 @@
             "artifactHeading": "Claude, Brief Section Drafter.",
             "artifactLines": [
               "Skill: brief-section-drafter — Claude reads SKILL.md before acting",
-              "Draft a brief section in house style, consistent with the case theory — every fact cited, ",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "Draft a brief section in house style, consistent with the case theory — every fact cited…",
+              "5-step pipeline: Which section? → Theory check → Draft in house style",
+              "Constraint: If the user's jurisdiction includes England & Wales and they're asking for a trial…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -225,18 +308,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 14.49,
+      "actual_duration_s": 14.1,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:51:59"
+        "at": "2026-09-06T00:55:21"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to draft a brief section in house style, consistent with the case theory — every fa. Read the brief-section-drafter skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to draft a brief section in house style, consistent with the case theory — every. Read the brief-section-drafter skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -248,7 +331,7 @@
             "greeting": "Your turn.",
             "topic": "BRIEF-SECTION-DRAFTER · ANTHROPIC SKILL",
             "segment": "Claude, Brief Section Drafter.",
-            "command": "I want to draft a brief section in house style, consistent with the case theory . Read the brief-section-drafter skill and walk me through what you will do before you do it.",
+            "command": "I want to draft a brief section in house style, consistent with the case theory. Read the brief-section-drafter skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -262,12 +345,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 15.04,
+      "actual_duration_s": 14.53,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:51:59"
+        "at": "2026-09-06T00:55:21"
       }
     },
     {
@@ -298,7 +381,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:51:59"
+        "at": "2026-09-06T00:55:21"
       }
     }
   ]

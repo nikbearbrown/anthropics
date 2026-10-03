@@ -1,0 +1,289 @@
+{
+ "metadata": {
+  "title": "Claude, Snowflake Api.",
+  "slug": "claude-tag-plugins--claude-liam-snowflake-api",
+  "topic": "SNOWFLAKE API · CLAUDE TAG PLUGIN",
+  "purpose": "Answer what actually comes back when Claude submits SQL to Snowflake through the snowflake-api skill, using the skill's own documented description as the concrete case. Lands the carry-out that a submit call is a receipt, not an answer — poll the handle to a terminal state, then fetch results one partition at a time. Teardown register.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/claude-tag-plugins/youtube/claude-liam-snowflake-api/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (the 'what tables are in this schema' query, submitted via the SQL API for its handle, then polled to a terminal state and fetched in partitions)",
+  "build": {
+   "at": "2026-08-31T21:50:09",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "People assume Snowflake's SQL API hands back the answer the moment they submit. Wrong branch. Submit returns only a statement handle — a pointer to check later, not the rows. So what's actually in the response?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'I submit SQL to Snowflake and get my answer back. Right?', hesitates on 'answer', corrects to 'handle', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "I submit SQL to\nSnowflake and get\nmy answer back.\nRight?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "answer",
+      "replacementWords": "handle",
+      "mistakeRate": 3,
+      "hesitateWithin": 2,
+      "hesitateBetween": 10,
+      "charMs": 40,
+      "jitter": 22,
+      "seed": "hai-snowflake-api"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('answer' -> 'handle') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T21:50:09"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "Submit a query to Snowflake's SQL API and here's what actually comes back — a statement handle. Not rows. Not an error, even if the SQL is garbage. They optimized for asynchronous compute where a query might run for minutes, at the expense of the obvious contract: the response to the call that submitted it can't tell you whether it succeeded. A typo returns the same handle a clean query returns. Only polling that handle afterward flips it to FAILED — the submit response never sees the failure.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A clean query and a typo'd query both submit and both come back with a handle, identical; only a later poll on the typo'd one flips to FAILED"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Submit returns a handle, not rows",
+     "mechanic": "Two request cards submit side by side — CLEAN SQL and SQL WITH A TYPO. Both return an identical statement handle. A second poll appears beneath each: the clean one reads FINISHED; the typo'd one reads FAILED, appearing only on the poll, never on the original submit response.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "SFB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T21:50:09"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "Before any query runs at all, Claude has to pick the compute — a warehouse — separately from the data it's asking about. Warehouses, databases, schemas, and tables all sit as separate browsable lists; Snowflake keeps compute detached from storage on purpose, so you can scale one without touching the other. Pay the price on every session: pick a warehouse first, always. Then submit the real question — what tables are in this schema — and the SQL API hands back exactly one thing: a statement handle. Not the table list. Just a handle to check later.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 33,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — a warehouse chosen from the browsable list, the 'what tables are in this schema' query submitted, the API returns one handle"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — warehouse, then submit",
+     "mechanic": "THE ANCHOR. A browsable list — WAREHOUSES, DATABASES, SCHEMAS, TABLES — with one warehouse highlighted as chosen. Below, a query card 'what tables are in this schema' submits and returns a single handle stamp, nothing else. THIS EXACT QUERY AND HANDLE RETURN AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "SFB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T21:50:09"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "Poll that same handle until it reaches a terminal state — and here's where the design choice lands its bill. Terminal doesn't mean succeeded; that field reads FAILED as easily as FINISHED, and the failure only ever shows on the poll, never on the submit response. RUNNING isn't stuck — that's what polling is for, and it's the moment you can cancel if you need to stop early. When it does finish, the result can arrive across more than one partition, so a single fetch isn't always the whole answer. What the decoupling buys: long queries that don't hold a connection open. What it costs you: three habits you can never skip — check status, don't trust FINISHED alone, fetch every partition.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — the same handle polled to a finished, partitioned result, beside the same handle polled to failed instead; a cancel option and a partitions note break out to the side"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — terminal state isn't proof, then partitions",
+     "mechanic": "THE B02 HANDLE RETURNS, identical, polled for status. One branch reads FINISHED, result ready, rows paged across PARTITION 1 / PARTITION 2. A second branch, same shape, reads FAILED instead — flagged terracotta, never visible on the original submit. A third small state, RUNNING, sits mid-poll with a CANCEL option beside it, unstuck, just waiting. A card breaks off to the side: 'fetch every partition, not just the first' with a struck-through single-fetch assumption beside it.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "SFB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T21:50:09"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Every Snowflake query Claude runs turns on one habit — treat the submit call as a receipt, not an answer: poll the handle to a terminal state, then fetch the result one partition at a time — get that right and a response from the SQL API stops meaning anything it doesn't.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Every Snowflake query Claude runs turns on one habit — treat the submit call as a receipt, not an answer: poll the handle to a terminal state, then fetch the result one partition at a time — get that right and a response from the SQL API stops meaning anything it doesn't.",
+      "attribution": "",
+      "sparkLine": "Submit is a receipt. Poll, then fetch."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T21:50:09"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I know Snowflake is a data warehouse but I've never used its SQL API. Walk me through how it actually works — why compute is separated from storage and how the warehouse pick fits, why submitting SQL returns a statement handle instead of rows, and the exact call sequence to list every table in a schema I have access to, from warehouse pick through polling to fetching every partition. Go deeper: ask the same model which failure mode would cost a real team more — treating FINISHED as proof the query succeeded when it might read FAILED, or fetching only the first partition and calling it the whole answer. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 50,
+   "llm_exercise": {
+    "prompt": "I know Snowflake is a data warehouse but I've never used its SQL API. Walk me through how it actually works from an API perspective: (1) explain why Snowflake keeps compute separated from storage — how warehouses, databases, schemas, and tables sit as separate browsable objects, and why you have to pick a warehouse before you can run any query at all; (2) explain why submitting SQL returns a statement handle instead of the rows, and what that design choice buys — how the API supports asynchronous queries that might run for minutes without holding a connection open; (3) show me the exact call sequence to list every table in a schema I have access to, from picking a warehouse to submitting the query, polling the handle to a terminal state, checking whether that state is FINISHED or FAILED, and fetching the results across every partition.",
+    "dig_deeper": "Go deeper: ask the same model which failure mode would cost a real team more — treating a FINISHED status as proof the query succeeded when the same field can read FAILED, or fetching only the first partition of a paged result and calling it the whole answer — and explain what makes one silently worse than the other."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "SNOWFLAKE API · YOUR TURN",
+      "segment": "Paste this into Claude",
+      "command": "I know Snowflake is a data warehouse but I've never used its SQL API. Walk me through how it actually works from an API perspective: (1) explain why Snowflake keeps compute separated from storage — how warehouses, databases, schemas, and tables sit as separate browsable objects, and why you have to pick a warehouse before you can run any query at all; (2) explain why submitting SQL returns a statement handle instead of the rows, and what that design choice buys — how the API supports asynchronous queries that might run for minutes without holding a connection open; (3) show me the exact call sequence to list every table in a schema I have access to, from picking a warehouse to submitting the query, polling the handle to a terminal state, checking whether that state is FINISHED or FAILED, and fetching the results across every partition.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T21:50:09"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Snowflake Api. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Snowflake Api. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T21:50:09"
+   }
+  }
+ ]
+}

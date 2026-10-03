@@ -1,0 +1,337 @@
+{
+ "metadata": {
+  "title": "Claude, Doc Extract.",
+  "slug": "healthcare--claude-liam-doc-extract",
+  "topic": "DOC-EXTRACT · ANTHROPIC SKILL",
+  "purpose": "Take doc-extract apart in the Teardown register: it doesn't read the file for you — it turns it into plain text. Name the trade-off: they optimized for a single, clean, mechanical job at the expense of doing anything you'd call understanding.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/healthcare/youtube/claude-liam-doc-extract/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "gate_p": "PENDING - SCRIPT.md",
+  "build": {
+   "at": "2026-09-02T05:24:30",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. Reasonable guess: a document skill reads the file for you — summarizes it, tells you what's inside. That's not what this one does. Take doc-extract apart.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'A document skill just summarizes the PDF.', hesitates on 'summarizes', corrects to 'extracts text from', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "A document skill just\nsummarizes the PDF.\nWait — what does\nit actually do?",
+      "face": "serif",
+      "fontSize": 78,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "summarizes",
+      "replacementWords": "extracts text from",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 12,
+      "charMs": 46,
+      "jitter": 26,
+      "seed": "nbb-doc-extract"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('summarizes' -> 'extracts text from') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T05:24:30"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "anatomy",
+   "narration_text": "A Claude skill is a folder Claude reads before it acts. Open doc-extract and the whole method is sitting there in SKILL.md — plain language, no hidden logic, no secret sauce. Read the file, then act on the file. That's the shape of the thing.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "File tree, SKILL.md accented",
+    "remotion": {
+     "pattern": "SkillTeardownAnatomy",
+     "props": {
+      "skillName": "doc-extract",
+      "eyebrow": "SKILL · ANATOMY",
+      "title": "A skill is a folder.",
+      "files": [
+       {
+        "indent": 1,
+        "icon": "📋",
+        "name": "package.json",
+        "size": "160b",
+        "accent": false
+       },
+       {
+        "indent": 1,
+        "icon": "📄",
+        "name": "SKILL.md",
+        "size": "2k",
+        "accent": true
+       },
+       {
+        "indent": 1,
+        "icon": "📋",
+        "name": "tsconfig.json",
+        "size": "278b",
+        "accent": false
+       },
+       {
+        "indent": 1,
+        "icon": "📁",
+        "name": "scripts",
+        "size": null,
+        "accent": false
+       }
+      ],
+      "calloutText": "The SKILL.md is the instruction set.",
+      "calloutSub": "4 files total.",
+      "sparkLine": "The file is the program."
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T05:24:30"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "pipeline",
+   "narration_text": "Here's the mechanism, in full. The instructions live in a Steps section — Claude reads each step top to bottom and runs it. No branching, unless a step itself says to branch. One document in, one plain-text result out. Nothing weighs anything.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Read SKILL.md -> Execute -> Return output",
+    "remotion": {
+     "pattern": "SkillTeardownPipeline",
+     "props": {
+      "eyebrow": "SKILL · PIPELINE",
+      "title": "How the skill works.",
+      "inputLabel": "YOUR DOCUMENT",
+      "outputLabel": "PLAIN TEXT",
+      "phases": [
+       {
+        "label": "Read SKILL.md",
+        "desc": "load the instruction set",
+        "accent": true
+       },
+       {
+        "label": "Execute",
+        "desc": "run each step in order",
+        "accent": false
+       },
+       {
+        "label": "Return output",
+        "desc": "deliver the plain text",
+        "accent": false
+       }
+      ],
+      "footerNote": "Linear execution.",
+      "sparkLine": "Document in. Text out."
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T05:24:30"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "mechanism",
+   "narration_text": "Here's the actual job — the whole job. Turn a document into plain text. PDF, DOCX, XLSX, PPTX, RTF, or already-text formats: plain text, markdown, HTML. Not a summary, not an analysis — just the words, pulled out. They optimized for one clean, mechanical task, done the same way every time. Ask for anything past that, and you've stepped out of doc-extract into a different skill.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Just the words, extracted",
+    "remotion": {
+     "pattern": "SkillTeardownMechanism",
+     "props": {
+      "eyebrow": "SKILL · MECHANISM",
+      "heading": "Just the words, extracted.",
+      "body": "PDF, DOCX, XLSX, PPTX, RTF, TXT/MD/HTML",
+      "sparkLine": "Not a summary. Just the text."
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T05:24:30"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Turning a document into text, and understanding that text, are two different jobs. Doc-extract does the first one — cleanly, and only that one.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Turning a document into text, and understanding that text, are two different jobs. Doc-extract does the first one — cleanly, and only that one.",
+      "attribution": "",
+      "sparkLine": "Extraction, not understanding."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T05:24:30"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: hand it a document — a PDF contract, a DOCX report, a spreadsheet — and ask it to pretend it's running doc-extract on the file. Before it does anything, walk you through the plan in numbered steps. Then run it, and show you the raw plain-text output. Watch where the plan stops. That's exactly where doc-extract stops too. Go deeper: hand yourself the same file, and now ask 'summarize what's in this document.' Point at the seam — the moment you stop extracting and start understanding.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "llm_exercise": {
+    "prompt": "I want to understand what a Claude 'skill' actually does. A Claude 'skill' is a folder holding SKILL.md — a plain-language instruction set Claude reads and runs, step by step, before it acts. The skill I want to poke at is doc-extract: it takes a document (PDF, DOCX, XLSX, PPTX, RTF, or plain text / markdown / HTML) and returns the raw plain text inside. Take a sample document of your choice. Pretend you're running doc-extract on it. Step 1: before doing anything, walk me through the plan as a numbered list of steps. Step 2: run it and show me the raw plain-text output. Step 3: point at exactly where your plan stops. That stopping point is what doc-extract's boundary looks like.",
+    "dig_deeper": "Go deeper: hand yourself the same document and now ask, 'summarize what's in this document.' Point at the seam — the moment you stop extracting text and start understanding it. Is that seam inside doc-extract, or is it a second job entirely?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "DOC-EXTRACT · ANTHROPIC SKILL · YOUR TURN",
+      "segment": "Claude, Doc Extract.",
+      "command": "I want to understand what a Claude 'skill' actually does. Take a sample document — PDF, DOCX, or XLSX — and pretend you're running doc-extract on it. Step 1: walk me through the plan as a numbered list of steps before you do anything. Step 2: run it, show me the raw plain-text output. Step 3: point at exactly where your plan stops. That stopping point is doc-extract's boundary.",
+      "runningText": "paste this into Claude…",
+      "output": [],
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T05:24:30"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Doc Extract. Text out, not understanding. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Doc Extract. Text out, not understanding. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T05:24:30"
+   }
+  }
+ ]
+}

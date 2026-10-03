@@ -1,6 +1,15 @@
 import sys, json, os, pathlib
-sys.path.insert(0, str(pathlib.Path(__file__).resolve()
-                       .parents[3] / "vox/aspects/explainer/vox-explainer/manim"))
+
+# Walk up from this file looking for books/vox/aspects/explainer/vox-explainer/manim
+# (reels can sit at any depth under a book — the hard-coded parents[3] was fragile)
+_here = pathlib.Path(__file__).resolve()
+for _p in _here.parents:
+    _cand = _p / "vox" / "aspects" / "explainer" / "vox-explainer" / "manim"
+    if _cand.is_dir() and (_cand / "vox_graphics.py").exists():
+        sys.path.insert(0, str(_cand))
+        break
+else:
+    raise ImportError("vox_graphics.py not found walking up from " + str(_here))
 from vox_graphics import *
 
 _bs = os.path.join(os.path.dirname(__file__), "beat_sheet.json")
@@ -315,13 +324,14 @@ class B08_TargetingFix(Scene):
         step4_group = VGroup(step4_box, step4_num)
         step4_group.move_to(step_boxes[3])
 
-        # Targeting label under step 4
-        targeting_label = SerifLabel("targeting ligand helps here", accent=TEAL, size=22)
-        targeting_label.next_to(step4_group, DOWN, buff=0.38)
-
-        # "Still lost" label under steps 1-3
-        lost_label = SerifLabel("still lost at earlier steps", accent=CRIMSON, size=22)
-        lost_label.next_to(step_boxes[1], DOWN, buff=0.38)
+        # Labels stacked BELOW all the step boxes, one above the other,
+        # so the two long serif phrases can't collide sideways at step 2 vs step 4.
+        targeting_label = SerifLabel("step 4: targeting ligand helps here",
+                                     accent=TEAL, size=22)
+        lost_label = SerifLabel("steps 1-3, 5: still lost — targeting cannot rescue",
+                                accent=CRIMSON, size=22)
+        label_stack = VGroup(targeting_label, lost_label).arrange(DOWN, buff=0.20)
+        label_stack.next_to(step_boxes, DOWN, buff=0.55)
 
         self.play(FadeIn(title, shift=DOWN * 0.1), run_time=0.5)
         self.play(LaggedStart(*[FadeIn(c, scale=0.9) for c in step_boxes],
@@ -379,11 +389,16 @@ class B10_Example(Scene):
             ("55 units", "reach non-tumor tissue"),
         ]
 
+        # Fixed-width MONO number column so descriptions line up cleanly
         left_items = VGroup()
+        num_col_width = 1.7
         for num_text, desc_text in loss_rows:
             num = Text(num_text, font=MONO, color=CRIMSON, font_size=24)
             desc = Text(desc_text, font=SERIF, color=INK, font_size=20)
-            row = VGroup(num, desc).arrange(RIGHT, buff=0.28, aligned_edge=LEFT)
+            num_slot = VGroup(num).move_to(LEFT * (num_col_width / 2))
+            num.align_to(num_slot, LEFT)
+            desc.move_to(RIGHT * 0.05).align_to(num_slot, LEFT).shift(RIGHT * num_col_width)
+            row = VGroup(num, desc)
             left_items.add(row)
         left_items.arrange(DOWN, buff=0.25, aligned_edge=LEFT)
 

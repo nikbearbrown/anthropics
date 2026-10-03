@@ -1,0 +1,370 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code when working with code in this repository. It is long because the course has accumulated conventions over several terms; all of it applies.
+
+## Project overview
+
+gradebook is a small command-line tool for one course.
+Read the tests before the code.
+Prefer clarity over cleverness.
+Do not optimise without a measurement.
+It stores scores in a JSON file next to where it is run.
+Keep changes small and reviewable.
+Ask before restructuring.
+Delete dead code when you see it.
+It has no dependencies beyond the Python standard library.
+Ask before restructuring.
+Read the tests before the code.
+One idea per function.
+It is intentionally small; keep it that way.
+Keep changes small and reviewable.
+Delete dead code when you see it.
+When in doubt, do less.
+Read this whole file before changing anything.
+Keep changes small and reviewable.
+Ask before restructuring.
+Do not optimise without a measurement.
+
+## Commands
+
+- Run the CLI: `python3 src/gradebook.py [add NAME | score NAME VALUE | remove NAME | report]`
+  Do not optimise without a measurement.
+  Ask before restructuring.
+  When in doubt, do less.
+- Run tests: `python3 tests/test_gradebook.py`
+  Ask before restructuring.
+  Delete dead code when you see it.
+  Do not optimise without a measurement.
+- Run a single test: `python3 tests/test_gradebook.py TestGradebook.test_average`
+  Keep changes small and reviewable.
+  One idea per function.
+  Ask before restructuring.
+
+## Code style
+
+- Four-space indentation, no tabs.
+  When in doubt, do less.
+  One idea per function.
+  Keep changes small and reviewable.
+- Maximum line length 100.
+  One idea per function.
+  One idea per function.
+  Do not optimise without a measurement.
+- Double quotes for strings unless the string contains a double quote.
+  Keep changes small and reviewable.
+  When in doubt, do less.
+  Keep changes small and reviewable.
+- One blank line between functions inside a class, two between top-level definitions.
+  Delete dead code when you see it.
+  Prefer clarity over cleverness.
+  Leave the code better than you found it.
+- Prefer f-strings over `%` formatting and `str.format`.
+  Do not optimise without a measurement.
+  Prefer clarity over cleverness.
+  Delete dead code when you see it.
+- Never use wildcard imports.
+  Ask before restructuring.
+  One idea per function.
+  Leave the code better than you found it.
+- Sort imports: standard library first, then third party, then local.
+  Delete dead code when you see it.
+  Prefer clarity over cleverness.
+  Ask before restructuring.
+- Type hints are welcome but not required.
+  One idea per function.
+  One idea per function.
+  When in doubt, do less.
+- Docstrings: one line, imperative mood, ending with a period.
+  Read the tests before the code.
+  Ask before restructuring.
+  Delete dead code when you see it.
+- Avoid nested functions unless there is a closure you actually need.
+  Ask before restructuring.
+  One idea per function.
+  Keep changes small and reviewable.
+- Do not leave commented-out code behind.
+  One idea per function.
+  When in doubt, do less.
+  Names should say what a thing is, not how it works.
+- Constants in UPPER_SNAKE_CASE at module top.
+  Delete dead code when you see it.
+  Do not optimise without a measurement.
+  Read the tests before the code.
+- Do not shadow built-ins (`id`, `list`, `input`).
+  Names should say what a thing is, not how it works.
+  One idea per function.
+  Names should say what a thing is, not how it works.
+- Keep functions under 30 lines; split if longer.
+  Read the tests before the code.
+  Leave the code better than you found it.
+  When in doubt, do less.
+- No print debugging left in committed code.
+  Prefer clarity over cleverness.
+  When in doubt, do less.
+  Ask before restructuring.
+
+## Git etiquette
+
+- One logical change per commit.
+  One idea per function.
+  Leave the code better than you found it.
+  Delete dead code when you see it.
+- Commit messages: imperative, under 72 characters, no trailing period.
+  Names should say what a thing is, not how it works.
+  Read the tests before the code.
+  Names should say what a thing is, not how it works.
+- Never force-push to main.
+  Leave the code better than you found it.
+  One idea per function.
+  Ask before restructuring.
+- Do not commit `grades.json` or `audit.log`; they are gitignored on purpose.
+  Ask before restructuring.
+  Delete dead code when you see it.
+  Do not optimise without a measurement.
+- Rebase small branches; merge large ones.
+  Prefer clarity over cleverness.
+  Read the tests before the code.
+  Prefer clarity over cleverness.
+- Reference an issue number when there is one.
+  Names should say what a thing is, not how it works.
+  Do not optimise without a measurement.
+  Keep changes small and reviewable.
+- Squash fixup commits before opening a pull request.
+  Ask before restructuring.
+  Delete dead code when you see it.
+  One idea per function.
+- Do not amend commits that have been pushed.
+  Read the tests before the code.
+  Read the tests before the code.
+  Read the tests before the code.
+- Tag releases as `vMAJOR.MINOR.PATCH`.
+  One idea per function.
+  Names should say what a thing is, not how it works.
+  One idea per function.
+- Keep the main branch green at all times.
+  Names should say what a thing is, not how it works.
+  Ask before restructuring.
+  Ask before restructuring.
+
+## Error handling
+
+- Fail loudly on bad input; do not silently coerce.
+  Leave the code better than you found it.
+  Names should say what a thing is, not how it works.
+  Ask before restructuring.
+- User-facing errors go to stdout as one line, no stack trace.
+  Keep changes small and reviewable.
+  Leave the code better than you found it.
+  One idea per function.
+- Internal errors may raise; the CLI wrapper catches nothing.
+  Names should say what a thing is, not how it works.
+  Leave the code better than you found it.
+  Do not optimise without a measurement.
+- Never catch bare `Exception`.
+  Read the tests before the code.
+  Keep changes small and reviewable.
+  Names should say what a thing is, not how it works.
+- Do not swallow `KeyError`; a missing student is a message, not a crash.
+  Read the tests before the code.
+  Prefer clarity over cleverness.
+  One idea per function.
+- Validate numbers with `float()` and let `ValueError` surface.
+  Ask before restructuring.
+  Names should say what a thing is, not how it works.
+  Keep changes small and reviewable.
+- Keep error strings lowercase and specific.
+  When in doubt, do less.
+  Leave the code better than you found it.
+  Prefer clarity over cleverness.
+- Do not add retries; there is nothing to retry.
+  When in doubt, do less.
+  Do not optimise without a measurement.
+  Do not optimise without a measurement.
+
+## Testing
+
+- `unittest` only; no pytest, no fixtures, no plugins.
+  Names should say what a thing is, not how it works.
+  Ask before restructuring.
+  Prefer clarity over cleverness.
+- Every command has at least one test in `tests/test_gradebook.py`.
+  Names should say what a thing is, not how it works.
+  Do not optimise without a measurement.
+  Delete dead code when you see it.
+- Use the tempfile pattern from `test_average` to redirect `gradebook.DB`.
+  Leave the code better than you found it.
+  Prefer clarity over cleverness.
+  Do not optimise without a measurement.
+- Capture stdout with `contextlib.redirect_stdout`.
+  Delete dead code when you see it.
+  Leave the code better than you found it.
+  Do not optimise without a measurement.
+- Tests must not touch the real `grades.json`.
+  Read the tests before the code.
+  Do not optimise without a measurement.
+  When in doubt, do less.
+- Test both the happy path and the missing-student branch.
+  Prefer clarity over cleverness.
+  Ask before restructuring.
+  Prefer clarity over cleverness.
+- Keep test names `test_<command>`.
+  Prefer clarity over cleverness.
+  When in doubt, do less.
+  When in doubt, do less.
+- Do not mock time; the audit log timestamp is not asserted.
+  Keep changes small and reviewable.
+  Names should say what a thing is, not how it works.
+  One idea per function.
+- Run the full file before every commit.
+  Prefer clarity over cleverness.
+  Leave the code better than you found it.
+  Leave the code better than you found it.
+- A failing test blocks the commit; fix it or revert.
+  Keep changes small and reviewable.
+  Prefer clarity over cleverness.
+  Do not optimise without a measurement.
+
+## Rules
+
+- **Every function that writes grades.json must call `audit(name, action)` from `src/audit.py` right after `save(data)`.** No exceptions.
+  Delete dead code when you see it.
+  Read the tests before the code.
+  One idea per function.
+- New subcommands: a top-level function plus an entry in the dispatch dict at the bottom of `src/gradebook.py`.
+  One idea per function.
+  Read the tests before the code.
+  Prefer clarity over cleverness.
+- Keep the dispatch dict in alphabetical order? No — keep it in the order the commands were added.
+  Delete dead code when you see it.
+  One idea per function.
+  Keep changes small and reviewable.
+
+## Performance notes
+
+- The JSON file is re-read on every command; that is fine at classroom scale.
+  Names should say what a thing is, not how it works.
+  Delete dead code when you see it.
+  Do not optimise without a measurement.
+- Do not add caching.
+  Do not optimise without a measurement.
+  Do not optimise without a measurement.
+  Do not optimise without a measurement.
+- Do not add a database.
+  Ask before restructuring.
+  Names should say what a thing is, not how it works.
+  Do not optimise without a measurement.
+- Do not add threads.
+  Keep changes small and reviewable.
+  When in doubt, do less.
+  Ask before restructuring.
+- If the file grows past a few thousand students, revisit; not before.
+  When in doubt, do less.
+  Names should say what a thing is, not how it works.
+  Prefer clarity over cleverness.
+
+## Documentation
+
+- README.md is the user-facing doc; keep it under a screen.
+  Ask before restructuring.
+  Read the tests before the code.
+  One idea per function.
+- This file is the contributor-facing doc.
+  Keep changes small and reviewable.
+  Ask before restructuring.
+  Keep changes small and reviewable.
+- Docstrings describe what, comments describe why.
+  One idea per function.
+  Prefer clarity over cleverness.
+  Delete dead code when you see it.
+- Do not duplicate the README here.
+  Ask before restructuring.
+  Read the tests before the code.
+  One idea per function.
+- Update the command list above when you add a command.
+  Keep changes small and reviewable.
+  Ask before restructuring.
+  When in doubt, do less.
+
+## Dependencies
+
+- None. Do not add any.
+  One idea per function.
+  Do not optimise without a measurement.
+  Prefer clarity over cleverness.
+- If you think you need one, write it down in an issue first.
+  Leave the code better than you found it.
+  Read the tests before the code.
+  One idea per function.
+- The standard library has what this project needs.
+  Read the tests before the code.
+  Names should say what a thing is, not how it works.
+  Ask before restructuring.
+- No `requirements.txt`, no `pyproject.toml`, on purpose.
+  Ask before restructuring.
+  Names should say what a thing is, not how it works.
+  Names should say what a thing is, not how it works.
+
+## Security
+
+- Student names are passed on the command line; do not log anything else.
+  Names should say what a thing is, not how it works.
+  Names should say what a thing is, not how it works.
+  Leave the code better than you found it.
+- Do not send data anywhere.
+  Ask before restructuring.
+  Prefer clarity over cleverness.
+  Ask before restructuring.
+- The audit log is local and append-only.
+  Read the tests before the code.
+  Leave the code better than you found it.
+  Names should say what a thing is, not how it works.
+- Do not add authentication; this runs on one machine.
+  Prefer clarity over cleverness.
+  Delete dead code when you see it.
+  Keep changes small and reviewable.
+
+## Release checklist
+
+- Tests pass.
+  When in doubt, do less.
+  Delete dead code when you see it.
+  Read the tests before the code.
+- README command list matches the dispatch dict.
+  Prefer clarity over cleverness.
+  Delete dead code when you see it.
+  Keep changes small and reviewable.
+- CHANGELOG entry added.
+  Delete dead code when you see it.
+  Leave the code better than you found it.
+  Ask before restructuring.
+- Tag pushed.
+  Leave the code better than you found it.
+  Delete dead code when you see it.
+  Read the tests before the code.
+- Announce in the course channel.
+  Prefer clarity over cleverness.
+  Read the tests before the code.
+  When in doubt, do less.
+
+## FAQ
+
+- Why JSON? Because it is readable and needs no library.
+  Delete dead code when you see it.
+  Delete dead code when you see it.
+  Delete dead code when you see it.
+- Why no classes? Because there is one file and four functions.
+  Read the tests before the code.
+  When in doubt, do less.
+  One idea per function.
+- Why unittest? Because it ships with Python.
+  When in doubt, do less.
+  When in doubt, do less.
+  Do not optimise without a measurement.
+- Why an audit log? Because grade changes must be traceable.
+  When in doubt, do less.
+  When in doubt, do less.
+  Delete dead code when you see it.
+- Why not argparse? Because the dispatch dict is enough for four commands.
+  Names should say what a thing is, not how it works.
+  Read the tests before the code.
+  Keep changes small and reviewable.

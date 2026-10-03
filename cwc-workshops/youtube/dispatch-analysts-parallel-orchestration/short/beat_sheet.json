@@ -1,0 +1,409 @@
+{
+ "metadata": {
+  "slug": "dispatch-analysts-parallel-orchestration-short",
+  "title": "Fan Out: Coordinating Dozens of Agents in Parallel Without Blocking",
+  "channel": "claude-liam",
+  "persona": "Liam",
+  "brand": "claude-liam",
+  "audience": "Claude",
+  "engine": "kokoro",
+  "voice": "am_onyx",
+  "voice_kokoro": "am_onyx",
+  "palette": "claude",
+  "typography": {
+   "serif": "Tiempos/EB Garamond",
+   "ui": "system sans",
+   "mono": "SF Mono"
+  },
+  "register": "Teardown",
+  "format": "16:9",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "source": "research-desk/ — Code with Claude 2026 Workshop",
+  "build": {
+   "at": "2026-08-28T01:49:41",
+   "cut": "master",
+   "filled": 14,
+   "of": 14,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "aspect_ratio": "9:16",
+  "fit": "crop",
+  "kind": "short",
+  "reformat": "center-cut, focus-aware; pantry/<bid>-916.* is the human replacement slot; -916 overrides honored",
+  "derived_from": "dispatch-analysts-parallel-orchestration",
+  "dropped_beats": [
+   "B03",
+   "B09",
+   "B07",
+   "B06"
+  ],
+  "playlist_short": "Shorts",
+  "total_estimated_duration_seconds": 176.2
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold-open",
+   "narration_text": "One agent can't analyze 50 SEC filings in parallel. But dispatch them separately — and have the main agent wait for all three to finish at once. This is Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk916",
+     "props": {
+      "greeting": "Bonjour, Liam",
+      "topic": "CLAUDE MANAGED AGENTS · ORCHESTRATION",
+      "segment": "Fan Out: Coordinating Dozens of Agents in Parallel Without Blocking",
+      "command": "Sweep NVDA, AMD, and MU. Rank them by margin durability. Run the analysts in parallel — I don't want to wait for each one to finish before starting the next.",
+      "runningText": "dispatching analysts…",
+      "output": [
+       "✓ NVDA analyst: score 9 — strong margin durability",
+       "✓ AMD analyst: score 6 — moderate risk",
+       "✓ MU analyst: score 4 — inventory pressure"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "claude-sonnet-4-6",
+      "effortLabel": "High"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "actual_duration_s": 10.79,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T01:49:41"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "the-question",
+   "narration_text": "The question: how does a single agent coordinate long-running parallel sub-agents — without resorting to multiple separate conversations, or blocking the whole flow?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "CwcOrchestrationQuestion",
+     "props": {
+      "sparkLine": "One orchestrator, N sessions."
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "actual_duration_s": 9.62,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T01:49:41"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "core-idea",
+   "narration_text": "A custom tool becomes the orchestration trigger. When the head agent calls dispatch underscore analysts with a list of tickers, the server intercepts that call. It doesn't run the analysis itself — it spawns three independent analyst sessions, each with its own full context window, each running in parallel. The head agent pauses. The server monitors the sessions. When all three finish, the server resumes the head with the accumulated results. Fan out, fan in.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "CwcFanOutConcept",
+     "props": {
+      "sparkLine": "Custom tool. Server intercepts."
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "actual_duration_s": 22.95,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T01:49:41"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "spread-move",
+   "narration_text": "The spread is the mechanism. One call fans out into N parallel sessions. Each session is fully isolated — its own context, its own tools, its own errors. They converge when they finish, not when the head decides to check. The server is the coordinator, not the agent.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "CwcSpreadMechanism",
+     "props": {
+      "sparkLine": "Server coordinates. Agent decides."
+     },
+     "rendered": {
+      "out": "media/B04.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "actual_duration_s": 14.53,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B04.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T01:49:41"
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "fan-out-speed",
+   "narration_text": "The timing difference is not incremental — it is categorical. Serial execution: fifty analysts, each taking thirty seconds, one after another. That is twenty-five minutes. You are not waiting for the analysis — you are waiting for the queue. Parallel fan-out: fifty analysts dispatched simultaneously. They all start at the same moment. All fifty finish in thirty seconds. The timeline collapses from twenty-five minutes to the duration of the slowest single analyst. Serial is a queue. Parallel is a wave. The wave does not wait.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "fade",
+    "remotion": {
+     "pattern": "CwcFanOutSpeedGain",
+     "props": {
+      "sparkLine": "Serial queues. Parallel waves."
+     },
+     "rendered": {
+      "out": "media/B05.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B05.mp3",
+   "actual_duration_s": 27.09,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B05.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T01:49:41"
+   }
+  },
+  {
+   "beat_id": "B08",
+   "act": "verdict",
+   "narration_text": "Let's recap with Claude. A custom tool becomes the orchestration trigger — when the head calls dispatch analysts, the server intercepts and spawns independent sessions. Each analyst runs in parallel with its own context window. The server fans them in when all finish. The head never blocked — it waited while the server did the coordination.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeVerdictArtifact916",
+     "props": {
+      "artifactTitle": "Parallel orchestration",
+      "artifactHeading": "The fan-out shape",
+      "artifactLines": [
+       "A custom tool call is the trigger — the server intercepts and spawns sessions.",
+       "Each analyst session runs in parallel with its own full context window.",
+       "The server monitors sessions and fans them in when all complete.",
+       "The head agent waits without blocking — it resumes with the merged results."
+      ]
+     },
+     "rendered": {
+      "out": "media/B08.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B08.mp3",
+   "actual_duration_s": 18.09,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B08.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T01:49:41"
+   }
+  },
+  {
+   "beat_id": "B10",
+   "act": "outro",
+   "narration_text": "Fan Out: Coordinating Dozens of Agents in Parallel Without Blocking",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro916",
+     "props": {
+      "title": "Fan Out: Coordinating Dozens of Agents in Parallel Without Blocking",
+      "handle": "@NikBearBrown",
+      "subline": "Liam, in for Bear."
+     },
+     "rendered": {
+      "out": "media/B10.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B10.mp3",
+   "actual_duration_s": 4.63,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B10.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T01:49:41"
+   }
+  },
+  {
+   "beat_id": "BVDT",
+   "act": "verdict recap",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeVerdictArtifact916",
+     "props": {
+      "artifactTitle": "Fan Out: Coordinating Dozens of Agents in Parallel Without Blocking",
+      "artifactHeading": "The fan-out pattern",
+      "artifactLines": [
+       "Fan out collapses 25 minutes of serial work to 30 seconds — the slowest analyst sets the clock, not the count.",
+       "The tool call is the intercept: the server spawns isolated sessions with independent context windows, then fans them in when all finish.",
+       "The schema contract — fixed input and output fields — is what prevents one failed session from corrupting the others."
+      ]
+     },
+     "rendered": {
+      "out": "media/BVDT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BVDT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T01:49:41"
+   },
+   "actual_duration_s": 20.0
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk916",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE MANAGED AGENTS · ORCHESTRATION",
+      "segment": "Fan Out: Coordinating Dozens of Agents in…",
+      "command": "Fan this workload out across parallel sub-agents, then merge their results into one ranked decision.",
+      "runningText": "paste this into Claude to run your own fan-out…",
+      "output": [],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "claude-sonnet-4-6",
+      "effortLabel": "High"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T01:49:41"
+   },
+   "actual_duration_s": 20.0
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "lane": "BOOKEND",
+   "narration_text": "That's the short version. The full video also covers Here is the flow. Head…, When the analysts finish, their… and What makes parallel agents safe… — watch Fan Out: Coordinating Dozens of Agents in Parallel Without Blocking for the whole story. The link is right below.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 8,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro916",
+     "props": {
+      "title": "Fan Out: Coordinating Dozens of Agents in Parallel Without Blocking",
+      "handle": "@NikBearBrown",
+      "subline": "Liam, in for Bear.",
+      "slug": "dispatch-analysts-parallel-orchestration"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-28T01:49:41"
+   },
+   "actual_duration_s": 0,
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "short_outro_rewritten": true
+  },
+  {
+   "beat_id": "BEND",
+   "narration_text": "",
+   "actual_duration_s": 4.5,
+   "audio_file": "mp3/beat-BEND.mp3",
+   "shot": {
+    "type": "SLATE",
+    "source": "own",
+    "motion": "hold",
+    "treatment": "none"
+   },
+   "card": {
+    "handle": "@nikbearbrown",
+    "next": "",
+    "silent": true
+   }
+  }
+ ]
+}

@@ -1,0 +1,286 @@
+{
+ "metadata": {
+  "title": "Claude Doesn't Answer Your Zoom Calls — It Builds the Integration.",
+  "slug": "knowledge-work-plugins--claude-liam-build-zoom-phone-integration",
+  "topic": "BUILD ZOOM PHONE INTEGRATION · ANTHROPIC SKILL",
+  "purpose": "Take the Zoom Phone integration apart in the Teardown register: Claude is not the thing on the call. What it builds is the plumbing around the call — OAuth, webhooks, CRM/CTI dialer code — bounded to a seven-item SKILL.md list. Name the trade-off: they optimized for a repeatable, code-writing surface at the expense of any live call-handling.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/knowledge-work-plugins/youtube/claude-liam-build-zoom-phone-integration/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Extending Claude — Skills, Plugins & Connectors",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED — CARRY-OUT.md",
+  "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A — source is skill-teardown format (anatomy -> pipeline -> constraint -> verdict), no anchor structure to preserve",
+  "build": {
+   "at": "2026-09-02T16:20:45",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. Someone reads 'Zoom Phone Integration' and assumes Claude is the thing answering the call. Take it apart, and it isn't. What Claude actually builds is the wiring around the call.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Can Claude be my Zoom phone integration?', hesitates on 'be', corrects to 'build'",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Can Claude\nbe my\nZoom phone\nintegration?",
+      "face": "serif",
+      "fontSize": 80,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "be",
+      "replacementWords": "build",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 46,
+      "jitter": 20,
+      "seed": "nbb-zoom-phone"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('be' -> 'build') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T16:20:45"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 anatomy — a skill is a folder",
+   "narration_text": "Take the thing apart, and here's what's inside. Not code — a folder called build-zoom-phone-integration, with one file: SKILL.md. Plain text, no hidden logic. It names exactly what Claude is allowed to touch — OAuth, the Phone APIs, webhooks, Smart Embed, URI schemes, CRM and CTI dialer wiring. Claude reads the file, then follows it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A folder icon opening to reveal SKILL.md, examples/, troubleshooting/; SKILL.md highlighted"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A skill is a folder",
+     "mechanic": "A folder opens on cream to reveal three items: SKILL.md (highlighted in crimson), an examples/ folder, a troubleshooting/ folder. A caption below reads 'Claude reads it, then follows it.'",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "B01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T16:20:45"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "2 mechanism — the pipeline",
+   "narration_text": "Here's the mechanism, in full. Claude reads SKILL.md, works each step in the order it's written, and hands back the result. Nothing branches unless a step tells it to branch. Read the step, run the step, next step. That's it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Three-phase pipeline: Read SKILL.md -> Execute steps in order -> Return result"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Input in, output out",
+     "mechanic": "Three cards left to right joined by arrows: 'Read SKILL.md', 'Execute steps in order', 'Return result'. Linear, no branch points drawn.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "B02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T16:20:45"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "3 constraint — a reference, not a single build",
+   "narration_text": "Here's the trade-off. They optimized for repeatability — a bounded reference that only fires once a request already smells like Zoom Phone. The list is seven items long: OAuth, Phone APIs, webhooks, Smart Embed events, URI schemes, CRM and CTI dialer wiring, call-handling automation. That's the whole surface. Ask for anything past that boundary, and there's no step left to run.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Seven-item checklist: OAuth, Phone APIs, Webhooks, Smart Embed events, URI schemes, CRM/CTI dialers, Call handling automation; a boundary line with 'nothing outside this list' beyond it"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Seven areas, not one build",
+     "mechanic": "A compact seven-row checklist fills in together with a lagged fade and checkmarks: 'OAuth', 'Phone APIs', 'Webhooks', 'Smart Embed events', 'URI schemes', 'CRM / CTI dialers', 'Call handling automation'. A dashed boundary line beneath the list, with a faint unlabelled field beyond it captioned 'nothing outside this list'.",
+     "colors": [
+      "#FFFFFF",
+      "#2A1A0E",
+      "#C8102E"
+     ]
+    },
+    "manim": "B03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T16:20:45"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "4 CARRY-OUT",
+   "narration_text": "Build Zoom Phone Integration doesn't put Claude on the call. It has Claude write the plumbing around the call — the OAuth, the webhooks, and the CRM or CTI dialer code that handles the call. Bounded to that list. Blind to anything else.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Build Zoom Phone Integration doesn't put Claude on the call. It has Claude write the plumbing around the call — the OAuth, the webhooks, and the CRM or CTI dialer code that handles the call. Bounded to that list. Blind to anything else.",
+      "attribution": "",
+      "sparkLine": "It wires the plumbing. It doesn't answer the call."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T16:20:45"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: ask it to sketch the four moving parts of a Zoom Phone to CRM integration — the OAuth flow, the incoming-call webhook and its event payload, the phone-number-to-customer lookup, and the CTI Smart Embed that pops the record inside the agent's screen. For each part, tell me what runs where, which credential or scope it uses, and one thing that commonly breaks. Go deeper: which of those four pieces is the one Claude, the model, can never actually execute at runtime — and why that constraint is exactly what forces you to build the wiring instead of asking the model to handle the call live?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 44,
+   "llm_exercise": {
+    "prompt": "I want to understand what a Zoom Phone to CRM integration actually looks like when you wire it yourself, rather than when a vendor's SaaS handles it. Sketch the four moving parts I would need to build so that when an inbound call rings on Zoom Phone, my CRM automatically pops the caller's record on the agent's screen: (1) the OAuth flow that lets my app act on the Zoom account, (2) the webhook subscription and event payload that tells my backend a call is ringing, (3) the phone-number-to-customer lookup, and (4) the CTI / Smart Embed step that surfaces the record inside the agent's Zoom Phone UI. For each part, tell me what runs where, which credential or OAuth scope is used, and one thing that commonly breaks in production.",
+    "dig_deeper": "Go deeper: which of those four pieces is the one Claude — the model — can never actually execute at runtime, and why does that constraint push the whole design toward pre-wired code rather than on-demand reasoning?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "BUILD ZOOM PHONE INTEGRATION · ANTHROPIC SKILL",
+      "segment": "Claude, Zoom Phone Integration.",
+      "command": "I want to understand what a Zoom Phone to CRM integration actually looks like when you wire it yourself. Sketch the four moving parts: (1) the OAuth flow, (2) the incoming-call webhook and event payload, (3) phone-number-to-customer lookup, (4) the CTI / Smart Embed that pops the record inside the agent's UI. For each: what runs where, which scope is used, and one thing that commonly breaks.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T16:20:45"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Zoom Phone Integration. It wires the plumbing. It doesn't answer the call. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Zoom Phone Integration. It wires the plumbing. It doesn't answer the call. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T16:20:45"
+   }
+  }
+ ]
+}

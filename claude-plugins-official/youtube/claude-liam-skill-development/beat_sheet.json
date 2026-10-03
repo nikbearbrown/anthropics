@@ -20,11 +20,59 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-plugins-official/plugins/plugin-dev/skills/skill-development/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "This skill should be used when the user wants to \"create a skill\"",
+        "\"add a skill to plugin\"",
+        "\"write a new skill\"",
+        "\"improve skill description\"",
+        "\"organize skill content\""
+      ],
+      "constraints": [
+        "Every skill consists of a required SKILL.md file and optional bundled resources:",
+        "├── SKILL.md (required)",
+        "│ ├── YAML frontmatter metadata (required)",
+        "│ │ ├── name: (required)",
+        "│ │ └── description: (required)",
+        "│ └── Markdown instructions (required)",
+        "#### SKILL.md (required)",
+        "Benefits: Keeps SKILL.md lean, loaded only when Claude determines it's needed"
+      ],
+      "referenced_files": [
+        "scripts/",
+        "scripts/rotate_pdf.py",
+        "references/",
+        "references/finance.md",
+        "references/mnda.md",
+        "references/policies.md",
+        "references/api_docs.md",
+        "assets/",
+        "assets/logo.png",
+        "assets/slides.pptx"
+      ],
+      "code_signals": [
+        "code block: bash",
+        "code block: yaml",
+        "code block: markdown"
+      ],
+      "sections": [
+        "About Skills",
+        "What Skills Provide",
+        "Anatomy of a Skill",
+        "Progressive Disclosure Design Principle",
+        "Skill Creation Process",
+        "Step 1: Understanding the Skill with Concrete Examples",
+        "Step 2: Planning the Reusable Skill Contents",
+        "Step 3: Create Skill Structure",
+        "Step 4: Edit the Skill",
+        "Additional Resources"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T02:55:12",
+      "at": "2026-09-05T19:28:08",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +81,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is skill-development. This skill should be used when the user wants to \"create a skill\", \"add a skill to plugin\", \"write a new skill\", \"improve skill description\", \"organize skill content\", or needs guidance on skill structure, progressive disclosure, or skill development best practices for Claude Code plugins.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is skill-development. This skill should be used when the user wants to \"create a skill\", \"add a skill to plugin\", \"write a new skill\", \"improve skill description\", \"organize skill content\", or needs guidance on skill structure, progressive disclosure, or skill development best practices for Claude Code plugins.. Its concrete surface area includes This skill should be used when the user wants to \"create a skill\"; \"add a skill to plugin\"; \"write a new skill\". A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,8 +97,8 @@
             "runningText": "reading skill-development SKILL.md…",
             "output": [
               "skill: skill-development",
-              "This skill should be used when the user wants to \"create a skill\", \"add a skill ",
-              "steps: 0 — executing."
+              "This skill should be used when the user wants to \"create a skill\", \"add a skill…",
+              "steps: 6 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -63,18 +111,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 20.54,
+      "actual_duration_s": 28.44,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T02:55:12"
+        "at": "2026-09-05T19:28:08"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is skill-development. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is skill-development. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at scripts/, scripts/rotate_pdf.py, references/, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -113,18 +161,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.37,
+      "actual_duration_s": 18.71,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T02:55:12"
+        "at": "2026-09-05T19:28:08"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "The pipeline has 6 steps. Understanding the Skill with Concrete Examples → Planning the Reusable Skill Contents → Create Skill Structure, plus 3 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -139,22 +187,27 @@
             "outputLabel": "RESULT",
             "phases": [
               {
-                "label": "Read SKILL.md",
-                "desc": "load the instruction set",
+                "label": "Understanding the Skill with…",
+                "desc": "Skip this step only when the skill's usage patterns are…",
                 "accent": true
               },
               {
-                "label": "Execute",
-                "desc": "run each step in order",
+                "label": "Planning the Reusable Skill…",
+                "desc": "To turn concrete examples into an effective skill, analyze…",
                 "accent": false
               },
               {
-                "label": "Return output",
-                "desc": "deliver the result",
+                "label": "Create Skill Structure",
+                "desc": "For Claude Code plugins, create the skill directory…",
+                "accent": false
+              },
+              {
+                "label": "Edit the Skill",
+                "desc": "When editing the (newly-created or existing) skill…",
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "6 steps. Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -164,18 +217,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 15.21,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T02:55:12"
+        "at": "2026-09-05T19:28:08"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. skill-development is a specification written as an instruction set. Claude's job: This skill should be used when the user wants to \"create a skill\", \"add a skill to plugin\", \"write a. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. Every skill consists of a required SKILL.md file and optional bundled resources:. That is the constraint in skill-development — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -186,7 +239,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "This skill should be used when the user wants to \"create a skill\", \"add a skill to plugin\", \"write a new skill\", \"improve skill description\", \"organize skill content\", or needs guidance on skill struc",
+            "body": "Every skill consists of a required SKILL.md file and optional bundled resources:",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -196,18 +249,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 15.04,
+      "actual_duration_s": 13.44,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T02:55:12"
+        "at": "2026-09-05T19:28:08"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In skill-development, supporting material: scripts/, scripts/rotate_pdf.py, references/, references/finance.md; implementation signals: code block: bash, code block: yaml, code block: markdown; sections: About Skills, What Skills Provide, Anatomy of a Skill, Progressive Disclosure Design Principle. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "This skill should be used when the user wants to \"create a skill\"; \"add a skill to plugin\"; \"write a new skill\"; scripts/; scripts/rotate_pdf.py; references/; code block: bash; code block: yaml",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 23.66,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T19:28:08"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "skill-development makes Claude execute one task reliably. The SKILL.md is the spec — This skill should be used when the user wants to \"create a skill\", \"add a skill . Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "skill-development makes Claude execute one task reliably. The SKILL.md is the spec — This skill should be used when the user wants to \"create a skill\", \"add a skill…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -220,9 +305,10 @@
             "artifactHeading": "Claude, Skill Development.",
             "artifactLines": [
               "Skill: skill-development — Claude reads SKILL.md before acting",
-              "This skill should be used when the user wants to \"create a skill\", \"add a skill to plugin\"",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "This skill should be used when the user wants to \"create a skill\", \"add a skill to…",
+              "6-step pipeline: Understanding the Skill with Concrete Examples → Planning the Reusable Skill Contents → Create Skill Structure",
+              "Constraint: Every skill consists of a required SKILL.md file and optional bundled resources:",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -232,18 +318,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 13.72,
+      "actual_duration_s": 13.7,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T02:55:12"
+        "at": "2026-09-05T19:28:08"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to this skill should be used when the user wants to \"create a skill\", \"add a skill . Read the skill-development skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to this skill should be used when the user wants to \"create a skill\", \"add a skill. Read the skill-development skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -255,7 +341,7 @@
             "greeting": "Your turn.",
             "topic": "SKILL-DEVELOPMENT · ANTHROPIC SKILL",
             "segment": "Claude, Skill Development.",
-            "command": "I want to this skill should be used when the user wants to \"create a skill\", \"ad. Read the skill-development skill and walk me through what you will do before you do it.",
+            "command": "I want to this skill should be used when the user wants to \"create a skill\". Read the skill-development skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -274,7 +360,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T02:55:12"
+        "at": "2026-09-05T19:28:08"
       }
     },
     {
@@ -305,7 +391,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T02:55:12"
+        "at": "2026-09-05T19:28:08"
       }
     }
   ]

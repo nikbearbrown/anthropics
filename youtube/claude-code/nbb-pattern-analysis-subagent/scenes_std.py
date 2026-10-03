@@ -1,6 +1,5 @@
 from manim import *
 import numpy as np
-import math
 
 BG    = "#FFFFFF"
 INK   = "#2A1A0E"
@@ -9,231 +8,128 @@ FONT  = "EB Garamond"
 config.background_color = BG
 
 
-class Scene_B01_NbbPatternAnalysis(Scene):
-    """Beat B01 — SHOW: concept illustration card. Narration: A subagent is the discipline of keeping the main build clean by delegating conte"""
-    def construct(self):
-        self.camera.background_color = "#FFFFFF"
-        font = "EB Garamond"
-
-        if "PROBLEM":
-            act = Text("PROBLEM", font_size=24, color="#2A1A0E", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
-
-        # Spark line — terracotta accent
-        spark = Line(LEFT * 0.6, RIGHT * 0.6, color="#C8102E", stroke_width=3)
-        spark.shift(UP * 1.2)
-        self.play(Create(spark), run_time=0.2)
-
-        # Primary concept text
-        if "A subagent is the discipline of keeping the main build clean":
-            line1 = Text("A subagent is the discipline of keeping the main build clean", font_size=36, color="#2A1A0E", font=font)
-            line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
-            line1.shift(UP * 0.3)
-            self.play(Write(line1), run_time=0.5)
-
-        if "The summary that comes back is all the main session needs - ":
-            line2 = Text("The summary that comes back is all the main session needs - ", font_size=28, color="#2A1A0E", font=font)
-            line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
-            line2.shift(DOWN * 0.6)
-            self.play(Write(line2), run_time=0.4)
-
-        if "":
-            line3 = Text("", font_size=22, color="#2A1A0E", font=font)
-            line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
-            line3.shift(DOWN * 1.4)
-            self.play(FadeIn(line3), run_time=0.3)
-
-        # Terracotta underline on key term
-        if "A subagent is the discipline of keeping the main build clean":
-            uline = Line(LEFT * min(4.0, len("A subagent is the discipline of keeping the main build clean") * 0.18), RIGHT * min(4.0, len("A subagent is the discipline of keeping the main build clean") * 0.18),
-                         color="#C8102E", stroke_width=2)
-            uline.shift(UP * 0.1)
-            self.play(Create(uline), run_time=0.3)
-
-        self.wait(max(0.01, 10.00))
-
-
 class Scene_B04_NbbPatternAnalysis(Scene):
-    """Beat B04 — SHOW: pipeline / handoff flow. Narration: Subagent invoked on three submissions. It runs in isolation — Read, Grep, Glob o"""
+    """B04 — pipeline: 3 submissions → isolated subagent → 3-field summary."""
     def construct(self):
-        self.camera.background_color = "#FFFFFF"
-        font = "EB Garamond"
+        self.camera.background_color = BG
+        act = Text("OUTPUT", font_size=28, color=INK, font=FONT)
+        act.to_edge(UP, buff=0.4)
+        self.play(FadeIn(act), run_time=0.3)
 
-        # Act label at top
-        if "OUTPUT":
-            act = Text("OUTPUT", font_size=24, color="#2A1A0E", font=font, slant=NORMAL)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
-
-        # Build pipeline boxes that reveal left-to-right
-        stages = []
-        labels_text = [t for t in ["Subagent invoked on three submissions", "It runs in isolation - Read, Grep, Glob only, no Write or Ed", "The main session context meter stays flat while the subagent"] if t]
-        if not labels_text:
-            labels_text = ["Input", "Process", "Output"]
-
-        n = len(labels_text)
-        spacing = 8.0 / n
+        labels = ["3 submissions", "Read/Grep/Glob only", "3-field summary"]
+        n = len(labels)
+        spacing = 4.0
         start_x = -(n - 1) * spacing / 2
 
-        boxes = VGroup()
-        arrows = VGroup()
-        box_mobs = []
-        for i, lbl in enumerate(labels_text):
-            box = RoundedRectangle(width=spacing * 0.85, height=1.6,
-                                   color="#2A1A0E", stroke_width=2,
-                                   fill_color="#FFFFFF", fill_opacity=1)
-            box.move_to(RIGHT * (start_x + i * spacing))
-            txt = Text(lbl, font_size=20, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, (spacing * 0.8 - 0.3) / max(0.1, txt.width)))
+        boxes = []
+        for i, lbl in enumerate(labels):
+            box = RoundedRectangle(width=3.4, height=1.7,
+                                   color=INK, stroke_width=3,
+                                   fill_color=BG, fill_opacity=1,
+                                   corner_radius=0.15)
+            box.move_to(np.array([start_x + i * spacing, 0, 0]))
+            txt = Text(lbl, font_size=32, color=INK, font=FONT)
             txt.move_to(box)
             grp = VGroup(box, txt)
-            box_mobs.append(grp)
-            boxes.add(grp)
-            if i > 0:
-                arr = Arrow(box_mobs[i-1].get_right(), box.get_left(),
-                            buff=0.1, color="#C8102E", stroke_width=3,
-                            max_tip_length_to_length_ratio=0.15)
-                arrows.add(arr)
+            boxes.append(grp)
 
-        # Reveal stages with arrows
-        for i, mob in enumerate(box_mobs):
-            self.play(FadeIn(mob), run_time=0.5)
-            if i < len(arrows):
-                self.play(GrowArrow(arrows[i]), run_time=0.3)
+        for i, grp in enumerate(boxes):
+            self.play(FadeIn(grp), run_time=0.5)
+            if i < len(boxes) - 1:
+                arr = Arrow(boxes[i].get_right(), boxes[i + 1].get_left(),
+                            buff=0.15, color=TERRA, stroke_width=6,
+                            max_tip_length_to_length_ratio=0.2)
+                self.play(GrowArrow(arr), run_time=0.3)
 
-        self.wait(max(0.01, 18.00))
+        caption = Text("Main session context stays flat.",
+                       font_size=28, color=INK, font=FONT)
+        caption.to_edge(DOWN, buff=0.6)
+        self.play(FadeIn(caption), run_time=0.4)
+        self.wait(max(0.01, 14.0))
 
 
 class Scene_B06_NbbPatternAnalysis(Scene):
-    """Beat B06 — SHOW: cycle / feedback loop. Narration: The reviewer subagent catches one error: the first subagent flagged loop termina"""
+    """B06 — reviewer subagent: cycle with terracotta correction node."""
     def construct(self):
-        self.camera.background_color = "#FFFFFF"
-        font = "EB Garamond"
+        self.camera.background_color = BG
+        act = Text("REVIEWER", font_size=28, color=INK, font=FONT)
+        act.to_edge(UP, buff=0.4)
+        self.play(FadeIn(act), run_time=0.3)
 
-        if "OUTPUT":
-            act = Text("OUTPUT", font_size=24, color="#2A1A0E", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
-
-        import numpy as np
-        stages = [t for t in ["The reviewer subagent catches one error: the first subagent ", "Fresh context, different reading", "The WriterReviewer pattern improves accuracy without touchin"] if t]
-        if not stages:
-            stages = ["Input", "Process", "Output"]
-        n = len(stages)
+        labels = ["Analyzer", "Reviewer", "Correction"]
+        colors = [INK, INK, TERRA]
         radius = 2.5
-        colors = ["#2A1A0E", "#C8102E"] + ["#2A1A0E"] * 10
-
         nodes = []
-        for i, lbl in enumerate(stages):
-            angle = np.pi / 2 - 2 * np.pi * i / n
+        for i, lbl in enumerate(labels):
+            angle = np.pi / 2 - 2 * np.pi * i / len(labels)
             pos = np.array([radius * np.cos(angle), radius * np.sin(angle), 0])
-            circle = Circle(radius=0.55, color=colors[i % 2], stroke_width=2.5,
-                            fill_color="#FFFFFF", fill_opacity=1)
+            circle = Circle(radius=0.9, color=colors[i], stroke_width=3,
+                            fill_color=BG, fill_opacity=1)
             circle.move_to(pos)
-            txt = Text(lbl[:20], font_size=18, color="#2A1A0E", font=font)
-            txt.scale(min(1.0, 0.9 / max(0.1, txt.width)))
+            txt = Text(lbl, font_size=26, color=INK, font=FONT)
             txt.move_to(circle)
             grp = VGroup(circle, txt)
             nodes.append((grp, pos))
             self.play(FadeIn(grp), run_time=0.4)
 
-        # Draw curved arrows between nodes
-        for i in range(n):
-            start_pos = nodes[i][1]
-            end_pos = nodes[(i + 1) % n][1]
-            arr = CurvedArrow(start_pos, end_pos, color="#C8102E", stroke_width=2.5,
+        for i in range(len(labels)):
+            start = nodes[i][1]
+            end = nodes[(i + 1) % len(labels)][1]
+            arr = CurvedArrow(start, end, color=TERRA, stroke_width=3,
                               angle=-np.pi / 6)
-            self.play(Create(arr), run_time=0.4)
+            self.play(Create(arr), run_time=0.3)
 
-        self.wait(max(0.01, 12.00))
+        caption = Text("Fresh context, different reading.",
+                       font_size=28, color=INK, font=FONT)
+        caption.to_edge(DOWN, buff=0.6)
+        self.play(FadeIn(caption), run_time=0.4)
+        self.wait(max(0.01, 12.0))
 
 
 class Scene_B07_NbbPatternAnalysis(Scene):
-    """Beat B07 — SHOW: concept illustration card. Narration: A subagent definition is three things: a tool whitelist, a structured output for"""
+    """B07 — three-part concept card: whitelist, output format, isolation."""
     def construct(self):
-        self.camera.background_color = "#FFFFFF"
-        font = "EB Garamond"
+        self.camera.background_color = BG
+        act = Text("SUMMARY", font_size=28, color=INK, font=FONT)
+        act.to_edge(UP, buff=0.4)
+        self.play(FadeIn(act), run_time=0.3)
 
-        if "SUMMARY":
-            act = Text("SUMMARY", font_size=24, color="#2A1A0E", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
+        title = Text("A subagent is three things", font_size=44, color=INK, font=FONT)
+        title.next_to(act, DOWN, buff=0.7)
+        self.play(Write(title), run_time=0.5)
 
-        # Spark line — terracotta accent
-        spark = Line(LEFT * 0.6, RIGHT * 0.6, color="#C8102E", stroke_width=3)
-        spark.shift(UP * 1.2)
-        self.play(Create(spark), run_time=0.2)
+        items = ["Tool whitelist", "Structured output", "Isolation contract"]
+        y0 = -0.2
+        rows = VGroup()
+        for i, item in enumerate(items):
+            dot = Dot(radius=0.12, color=TERRA)
+            txt = Text(item, font_size=38, color=INK, font=FONT)
+            txt.next_to(dot, RIGHT, buff=0.4)
+            row = VGroup(dot, txt)
+            row.move_to(np.array([-2.2, y0 - i * 1.1, 0]), aligned_edge=LEFT)
+            rows.add(row)
 
-        # Primary concept text
-        if "A subagent definition is three things: a tool whitelist, a s":
-            line1 = Text("A subagent definition is three things: a tool whitelist, a s", font_size=36, color="#2A1A0E", font=font)
-            line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
-            line1.shift(UP * 0.3)
-            self.play(Write(line1), run_time=0.5)
+        for row in rows:
+            self.play(FadeIn(row), run_time=0.4)
 
-        if "The main session delegates the context-heavy work, receives ":
-            line2 = Text("The main session delegates the context-heavy work, receives ", font_size=28, color="#2A1A0E", font=font)
-            line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
-            line2.shift(DOWN * 0.6)
-            self.play(Write(line2), run_time=0.4)
-
-        if "":
-            line3 = Text("", font_size=22, color="#2A1A0E", font=font)
-            line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
-            line3.shift(DOWN * 1.4)
-            self.play(FadeIn(line3), run_time=0.3)
-
-        # Terracotta underline on key term
-        if "A subagent definition is three things: a tool whitelist, a s":
-            uline = Line(LEFT * min(4.0, len("A subagent definition is three things: a tool whitelist, a s") * 0.18), RIGHT * min(4.0, len("A subagent definition is three things: a tool whitelist, a s") * 0.18),
-                         color="#C8102E", stroke_width=2)
-            uline.shift(UP * 0.1)
-            self.play(Create(uline), run_time=0.3)
-
-        self.wait(max(0.01, 10.00))
+        self.wait(max(0.01, 10.0))
 
 
 class Scene_B08_NbbPatternAnalysis(Scene):
-    """Beat B08 — SHOW: concept illustration card. Narration: Next: build a simulation with the three-file system."""
+    """B08 — next-up: three-file simulation."""
     def construct(self):
-        self.camera.background_color = "#FFFFFF"
-        font = "EB Garamond"
+        self.camera.background_color = BG
+        act = Text("NEXT", font_size=28, color=INK, font=FONT)
+        act.to_edge(UP, buff=0.4)
+        self.play(FadeIn(act), run_time=0.3)
 
-        if "NEXT":
-            act = Text("NEXT", font_size=24, color="#2A1A0E", font=font)
-            act.to_edge(UP, buff=0.3)
-            self.play(FadeIn(act), run_time=0.3)
+        line1 = Text("Three-file simulation.", font_size=52, color=INK, font=FONT)
+        line1.move_to(ORIGIN + UP * 0.3)
+        self.play(Write(line1), run_time=0.5)
 
-        # Spark line — terracotta accent
-        spark = Line(LEFT * 0.6, RIGHT * 0.6, color="#C8102E", stroke_width=3)
-        spark.shift(UP * 1.2)
-        self.play(Create(spark), run_time=0.2)
+        underline = Line(LEFT * 2.5, RIGHT * 2.5,
+                         color=TERRA, stroke_width=4)
+        underline.next_to(line1, DOWN, buff=0.25)
+        self.play(Create(underline), run_time=0.3)
 
-        # Primary concept text
-        if "Next: build a simulation with the three-file system":
-            line1 = Text("Next: build a simulation with the three-file system", font_size=36, color="#2A1A0E", font=font)
-            line1.scale(min(1.0, 13.0 / max(0.1, line1.width)))
-            line1.shift(UP * 0.3)
-            self.play(Write(line1), run_time=0.5)
-
-        if "":
-            line2 = Text("", font_size=28, color="#2A1A0E", font=font)
-            line2.scale(min(1.0, 13.0 / max(0.1, line2.width)))
-            line2.shift(DOWN * 0.6)
-            self.play(Write(line2), run_time=0.4)
-
-        if "":
-            line3 = Text("", font_size=22, color="#2A1A0E", font=font)
-            line3.scale(min(1.0, 13.0 / max(0.1, line3.width)))
-            line3.shift(DOWN * 1.4)
-            self.play(FadeIn(line3), run_time=0.3)
-
-        # Terracotta underline on key term
-        if "Next: build a simulation with the three-file system":
-            uline = Line(LEFT * min(4.0, len("Next: build a simulation with the three-file system") * 0.18), RIGHT * min(4.0, len("Next: build a simulation with the three-file system") * 0.18),
-                         color="#C8102E", stroke_width=2)
-            uline.shift(UP * 0.1)
-            self.play(Create(uline), run_time=0.3)
-
-        self.wait(max(0.01, 6.00))
+        self.wait(max(0.01, 4.0))

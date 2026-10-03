@@ -4,8 +4,7 @@
     "slug": "psma-theranostic-loop",
     "topic": "CANCER NANOMEDICINE",
     "register": "Teardown",
-    "voice": "nbbhuman",
-    "voice_id": "TyW6NH39JcFb5M3xdIIk",
+    "voice": "am_onyx",
     "palette": "claude",
     "style_preset": "nikbearbrown",
     "style": "cli",
@@ -25,21 +24,12 @@
       "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
     ],
     "build": {
-      "at": "2026-07-16T04:15:48",
+      "at": "2026-08-28T14:48:24",
       "cut": "master",
-      "filled": 5,
-      "of": 10,
-      "slates": [
-        "B01",
-        "B04",
-        "B06",
-        "B07",
-        "B08"
-      ],
-      "skin_warnings": [
-        "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk",
-        "B09: palette=claude but the outro is 'NikBearBrownOutro' — OUTRO LAW wants ClaudeTitleOutro"
-      ]
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": []
     }
   },
   "beats": [
@@ -52,13 +42,14 @@
         "source": "remotion",
         "motion": "fade",
         "remotion": {
-          "pattern": "NikBearBrownOpen",
+          "pattern": "ClaudeComposerAsk",
           "props": {
-            "topic": "NIK BEAR BROWN",
-            "lines": [
-              "Nik Bear Brown",
-              "Image it. Treat it. Image it again."
-            ]
+            "greeting": "Zdravo, Liam.",
+            "topic": "CANCER NANOMEDICINE",
+            "segment": "PSMA Theranostic Loop",
+            "command": "claude \"Research the PSMA radioligand theranostic pair — one PSMA-617 scaffold, Ga-68 for imaging, Lu-177 for therapy. Explain VISION trial and how DOTATATE mirrors the pattern.\"",
+            "runningText": "opening the image-then-treat loop...",
+            "folderLabel": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/B00.mp4",
@@ -73,7 +64,7 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:15:48"
+        "at": "2026-08-28T14:48:24"
       }
     },
     {
@@ -81,31 +72,30 @@
       "act": "PROBLEM",
       "role_note": "stakes/why before terminal -- <=60 words",
       "narration_text": "The same molecule can be used to image a cancer and to treat it — just swap the radioisotope. Gallium-68-PSMA-617 shows you every prostate cancer metastasis. Lutetium-177-PSMA-617 kills them. Treat only what you can see. This is what rational cancer therapy looks like: dose the patient only when the target is confirmed, and confirm efficacy by imaging again after.",
-      "visual_intent": "SLATE — title card: PSMA THERANOSTICS: IMAGE-THEN-TREAT; Ga-68 (imaging) vs Lu-177 (therapy) paired on same PSMA-617 scaffold; VISION trial result summary",
       "shot": {
         "type": "REMOTION",
         "source": "own",
         "remotion": {
           "pattern": "FormBCard",
           "props": {
-            "title": "Research Radioligand Theranostics: PSMA-617 and the Image-Then-Treat Loop",
+            "title": "Same scaffold, two isotopes",
             "items": [
               {
-                "label": "Key point one",
-                "sub": "",
+                "label": "Ga-68-PSMA-617",
+                "sub": "Images every PSMA-positive metastasis.",
                 "icon": "target",
                 "cueFrame": 20
               },
               {
-                "label": "Key point two",
-                "sub": "",
-                "icon": "list-checks",
+                "label": "Lu-177-PSMA-617 (Pluvicto)",
+                "sub": "Delivers targeted beta radiation to the same cells.",
+                "icon": "zap",
                 "cueFrame": 55
               },
               {
-                "label": "Key point three",
-                "sub": "",
-                "icon": "zap",
+                "label": "VISION trial (NEJM 2021)",
+                "sub": "OS 15.3 vs 11.3 mo in metastatic castration-resistant prostate cancer.",
+                "icon": "list-checks",
                 "cueFrame": 90
               }
             ]
@@ -120,9 +110,11 @@
       "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 22.76,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T14:48:24"
       },
-      "lane": "BOOKEND",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx"
@@ -143,7 +135,7 @@
             "topic": "CANCER NANOMEDICINE",
             "segment": "PSMA THERANOSTIC LOOP",
             "runningText": "researching PSMA theranostics...",
-            "greeting": "The ask,"
+            "greeting": "Research the pair."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -158,7 +150,7 @@
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:15:48"
+        "at": "2026-08-28T14:48:24"
       }
     },
     {
@@ -191,7 +183,7 @@
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:15:48"
+        "at": "2026-08-28T14:48:24"
       }
     },
     {
@@ -199,25 +191,55 @@
       "act": "OUTPUT — run",
       "role_note": "OPEN vox slot → Manim video B04_TheranosticLoop",
       "narration_text": "Run it. The four-box loop: Ga-68 PSMA PET imaging selects eligible patients, Lu-177 therapy treats them, post-therapy imaging assesses the response. If response is confirmed, the loop repeats. If not, it can escalate to Ac-225. The VISION trial result sits below the loop — lutetium-177 improved overall survival by four months in PSMA-positive metastatic castration-resistant prostate cancer.",
-      "visual_intent": "Manim B04_TheranosticLoop: 4-box loop IMAGE → SELECT → TREAT → ASSESS → back to IMAGE; return arrow in GOLD with escalation note; VISION trial result annotation below",
       "shot": {
-        "type": "GRAPHIC",
-        "source": "manim",
-        "motion": "fade",
-        "manim": {
-          "scene_class": "B04_TheranosticLoop",
-          "file": "vox_scenes.py"
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Image-then-treat loop",
+            "items": [
+              {
+                "label": "IMAGE",
+                "sub": "Ga-68 PSMA PET selects eligible patients.",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "TREAT",
+                "sub": "Lu-177 PSMA-617 delivers targeted beta radiation.",
+                "icon": "zap",
+                "cueFrame": 55
+              },
+              {
+                "label": "ASSESS",
+                "sub": "Post-therapy imaging confirms response.",
+                "icon": "list-checks",
+                "cueFrame": 90
+              },
+              {
+                "label": "REPEAT or ESCALATE",
+                "sub": "Repeat if responding, escalate to Ac-225 if not.",
+                "icon": "target",
+                "cueFrame": 130
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
         }
       },
       "estimated_duration_s": 20,
       "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 27.69,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:15:48",
-        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T14:48:24"
       }
     },
     {
@@ -236,7 +258,7 @@
             "topic": "CANCER NANOMEDICINE",
             "segment": "PSMA THERANOSTIC LOOP",
             "runningText": "comparing theranostic pairs...",
-            "greeting": "The ask,"
+            "greeting": "Compare the pairs."
           },
           "rendered": {
             "out": "media/B05.mp4",
@@ -251,7 +273,7 @@
         "status": "VIDEO",
         "src": "media/B05.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:15:48"
+        "at": "2026-08-28T14:48:24"
       }
     },
     {
@@ -259,22 +281,49 @@
       "act": "OUTPUT — revised",
       "role_note": "change result narration",
       "narration_text": "The DOTATATE pair mirrors the PSMA pair exactly: Ga-68-DOTATATE images somatostatin-receptor-positive neuroendocrine tumors; Lu-177-DOTATATE (Lutathera) treats them. The NETTER-1 trial showed the same loop principle at work — image to confirm target, treat, image to confirm response. Two validated pairs define the rule: the loop works when the target is quantifiable by the same ligand scaffold.",
-      "visual_intent": "SLATE — comparison table: PSMA pair (prostate cancer) vs DOTATATE pair (neuroendocrine); same loop structure, different target; shared requirements: quantifiable imaging, membrane-facing target, selective biodistribution",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "DOTATATE mirrors PSMA",
+            "items": [
+              {
+                "label": "Ga-68-DOTATATE",
+                "sub": "Images somatostatin-receptor-positive neuroendocrine tumors.",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Lu-177-DOTATATE (Lutathera)",
+                "sub": "Treats the same tumors on the same DOTATATE scaffold.",
+                "icon": "zap",
+                "cueFrame": 55
+              },
+              {
+                "label": "NETTER-1 trial",
+                "sub": "Same loop principle: image target, treat, image response.",
+                "icon": "list-checks",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
       },
       "estimated_duration_s": 18,
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 22.91,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:15:48",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B06.mp4)",
-        "suggested": "suggested prompt: The DOTATATE pair mirrors the PSMA pair exactly: Ga-68-DOTATATE images somatostatin-receptor-positive neuroendocrine tumors; Lu-177-DOTATATE (Lutathera) treats "
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T14:48:24"
       }
     },
     {
@@ -282,22 +331,49 @@
       "act": "SUMMARY",
       "role_note": "the lesson — one beat",
       "narration_text": "So theranostics is the explicit integration of precision oncology and targeted therapy. You do not treat unless you can confirm the target is there. The image-then-treat loop turns imaging from a diagnostic tool into a treatment eligibility filter — and potentially a response monitoring tool in the same patient visit.",
-      "visual_intent": "SLATE — summary card: THERANOSTIC RULE: confirm target → treat → confirm response; loop vs. line model of cancer treatment; VISION trial as the proof of concept",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The theranostic rule",
+            "items": [
+              {
+                "label": "CONFIRM TARGET",
+                "sub": "Image before treating — no target seen, no dose given.",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "TREAT ONLY THE CONFIRMED",
+                "sub": "Radioligand delivered only where the ligand binds.",
+                "icon": "zap",
+                "cueFrame": 55
+              },
+              {
+                "label": "CONFIRM RESPONSE",
+                "sub": "Image again — treatment eligibility becomes response readout.",
+                "icon": "list-checks",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
       },
       "estimated_duration_s": 16,
       "audio_file": "mp3/beat-B07.mp3",
       "actual_duration_s": 17.88,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:15:48",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
-        "suggested": "suggested prompt: So theranostics is the explicit integration of precision oncology and targeted therapy. You do not treat unless you can confirm the target is there. The image-t"
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T14:48:24"
       }
     },
     {
@@ -305,22 +381,49 @@
       "act": "NEXT STEPS",
       "role_note": "what to do next",
       "narration_text": "Your move: check whether the tumor you are studying has a membrane-facing target that is overexpressed on cancer and low in dose-limiting normal tissue. That is the requirement for a theranostic pair. Then check whether there is an imaging isotope on the same scaffold. If both are true, the theranostic loop is possible.",
-      "visual_intent": "SLATE — next steps card: 1) identify membrane-facing overexpressed target; 2) verify low normal tissue expression (salivary glands and kidneys as PSMA off-target example); 3) check for imaging isotope on same scaffold",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Is your tumor a candidate?",
+            "items": [
+              {
+                "label": "Membrane-facing target",
+                "sub": "Overexpressed on the cancer cell surface.",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Low in normal tissue",
+                "sub": "Dose-limiting off-targets stay under threshold.",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Imaging isotope on same scaffold",
+                "sub": "The imaging and therapy pair share a ligand.",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
       },
       "estimated_duration_s": 17,
       "audio_file": "mp3/beat-B08.mp3",
       "actual_duration_s": 17.73,
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:15:48",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
-        "suggested": "suggested prompt: Your move: check whether the tumor you are studying has a membrane-facing target that is overexpressed on cancer and low in dose-limiting normal tissue. That is"
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T14:48:24"
       }
     },
     {
@@ -338,7 +441,7 @@
             "tagline": "Brutalist + Educational AI",
             "handle": "@NikBearBrown",
             "url": "nikbearbrown.com",
-            "title": "Research Radioligand Theranostics: PSMA-617 and the Image-Then-Treat Loop"
+            "title": "PSMA Theranostics: Image, Then Treat"
           },
           "rendered": {
             "out": "media/B09.mp4",
@@ -353,14 +456,14 @@
         "status": "VIDEO",
         "src": "media/B09.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:15:48"
+        "at": "2026-08-28T14:48:24"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict recap",
       "lane": "BOOKEND",
-      "narration_text": "",
+      "narration_text": "Two isotopes, one scaffold. Gallium sixty-eight images the tumor; lutetium one seventy-seven treats it. The VISION trial added four months of overall survival in metastatic castration-resistant prostate cancer. DOTATATE mirrors the pattern in neuroendocrine tumors — two validated pairs, one rule: image to confirm the target, treat only what you can see, then image the response.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
@@ -371,12 +474,13 @@
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
-            "artifactTitle": "Research Radioligand Theranostics: PSMA-617 and the Image-Then-Treat Loop",
-            "artifactHeading": "Key findings",
+            "artifactTitle": "PSMA Theranostics: Image, Then Treat",
+            "artifactHeading": "Verdict",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "PSMA-617: Ga-68 for imaging, Lu-177 for therapy — one scaffold, two isotopes.",
+              "VISION trial (NEJM 2021): Lu-177-PSMA-617 improved OS by ~4 months in mCRPC.",
+              "DOTATATE mirrors it in neuroendocrine tumors — two validated pairs, one rule.",
+              "The loop works when a quantifiable membrane target shares its scaffold with an imaging isotope."
             ]
           },
           "rendered": {
@@ -386,8 +490,13 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T14:48:24"
+      },
+      "actual_duration_s": 21.1,
+      "audio_file": "mp3/beat-BVDT.mp3"
     },
     {
       "beat_id": "BHTF",
@@ -406,7 +515,7 @@
           "props": {
             "greeting": "Your turn.",
             "topic": "YOUR TURN · CANCER NANOMEDICINE",
-            "segment": "Research Radioligand Theranostics: PSMA-617 and the Image-Then-Treat…",
+            "segment": "PSMA Theranostics: Image, Then Treat…",
             "command": "Take what you learned from [Research Radioligand Theranostics: PSMA-617 and the Image-Then-Treat Loop] and apply it to your own work. What's one thing you'll try first?",
             "runningText": "paste this into Claude and run it on your own work…",
             "output": [],
@@ -419,8 +528,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T14:48:24"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BOUT",
@@ -437,7 +550,7 @@
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "Research Radioligand Theranostics: PSMA-617 and the Image-Then-Treat Loop",
+            "title": "PSMA Theranostics: Image, Then Treat",
             "slug": "psma-theranostic-loop"
           },
           "rendered": {
@@ -447,8 +560,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T14:48:24"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

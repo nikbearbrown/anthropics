@@ -1,0 +1,676 @@
+{
+  "metadata": {
+    "slug": "show-tell-let-the-code-make-the-calls",
+    "title": "Let the Code Make the Calls",
+    "topic": "CLAUDE COOKBOOK · PROGRAMMATIC TOOL CALLING",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Spanish (Hola)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Developers building agents on the Claude API whose tools return large results, who want to know why tool-heavy tasks burn tokens and how programmatic tool calling keeps raw results out of Claude's context",
+    "source_doc": "anthropics/claude-cookbooks/tool_use/programmatic_tool_calling_ptc.ipynb (every cell and output read in full 2026-09-27), checked against the raw live docs page platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling.md (sources/live_programmatic-tool-calling-2026-09-27.md)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude",
+      "Claude API",
+      "programmatic tool calling",
+      "tool use",
+      "code execution",
+      "sandbox",
+      "allowed_callers",
+      "context window",
+      "tokens",
+      "agents",
+      "claude-cookbooks",
+      "Anthropic",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T13:39:00",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hola. This is Liam, in for Bear. When Claude calls a tool again and again, it's tempting to ask how to make each tool call faster. But the real cost is what comes back: every result passes through Claude. So the real question is how to let the code make the calls.",
+      "estimated_duration_s": 20.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I make each tool call faster?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'make each tool call faster' -> 'let the code make the calls' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I\nmake each tool call faster?",
+            "triggerWords": "make each tool call faster",
+            "replacementWords": "let the code make the calls",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-let-the-code-make-the-calls",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T17:33:18.236090+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (how do I make each tool call faster) and corrects it to the real one (how do I let the code make the calls).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 14.17,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 14.208333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T13:39:00"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A tool call: Claude asking your app to run a function. A round trip: one pass from Claude to your app and back. Context: everything Claude reads, counted in tokens. And a sandbox: a sealed container where code runs.",
+      "estimated_duration_s": 15.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "'tool call' lands"
+          },
+          {
+            "at": 0.3,
+            "event": "'round trip' lands"
+          },
+          {
+            "at": 0.55,
+            "event": "'context' lands"
+          },
+          {
+            "at": 0.8,
+            "event": "'sandbox' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "tool call",
+                "meaning": "Claude asking your app to run a function"
+              },
+              {
+                "term": "round trip",
+                "meaning": "one pass from Claude to your app and back"
+              },
+              {
+                "term": "context",
+                "meaning": "everything Claude reads, counted in tokens"
+              },
+              {
+                "term": "sandbox",
+                "meaning": "a sealed container where code runs"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T17:33:55.806230+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: four prerequisites, one line each."
+      },
+      "actual_duration_s": 12.29,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 12.291666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T13:39:00"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Anthropic's cookbook asks Claude which engineers went over their quarterly travel budget. Its three tools run in your app: one lists the team, one fetches expenses, one checks for a custom budget.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Claude, a kraft block with a terracotta spark on a dark plinth, drops in at the left ('Claude') with a question card beside it ('?'); at the right a dark server stack rises slab by slab ('your app'), and each slab's light turns terracotta as its tool is named.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Claude and the question"
+          },
+          {
+            "at": 0.45,
+            "event": "your app rises"
+          },
+          {
+            "at": 0.6,
+            "event": "one light per tool"
+          }
+        ],
+        "manim": {
+          "class": "B00_Setup"
+        },
+        "motion_claim": "Claude, a kraft block with a terracotta spark on a dark plinth, drops in at the left ('Claude') with a question card beside it ('?'); at the right a dark server stack rises slab by slab ('your app'), and each slab's light turns terracotta as its tool is named."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (Claude and its context gauge, your app's server stack, a code-execution sandbox, request slips and result reams) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.2,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 11.208333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:39:00"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Normally, each tool call is a round trip. Claude asks for a tool, your app runs it, and the whole result comes back into Claude's context, before Claude picks the next step.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft context gauge rises beside Claude ('context'); a white request slip arcs over from Claude to the server ('round trip'); the middle slab lights; a thick white result ream arcs back and drops into the gauge, which gains a grey segment.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the request goes over"
+          },
+          {
+            "at": 0.45,
+            "event": "your app runs the tool"
+          },
+          {
+            "at": 0.75,
+            "event": "the whole result lands in the context"
+          }
+        ],
+        "manim": {
+          "class": "B01_RoundTrip"
+        },
+        "motion_claim": "A kraft context gauge rises beside Claude ('context'); a white request slip arcs over from Claude to the server ('round trip'); the middle slab lights; a thick white result ream arcs back and drops into the gauge, which gains a grey segment."
+      },
+      "actual_duration_s": 9.51,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 9.541666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:39:00"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The expense tool sends back every line item, with receipt links, approval chains and merchant details. Eight engineers means eight big results, all in Claude's context.",
+      "estimated_duration_s": 10.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A result ream grows large at centre and its grey page edges draw in one by one ('line items'); it shrinks away; eight reams arc from the server into the gauge one after another, and the gauge fills almost to the top ('8 results').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "one result, many line items"
+          },
+          {
+            "at": 0.55,
+            "event": "eight results"
+          },
+          {
+            "at": 0.85,
+            "event": "the context gauge is nearly full"
+          }
+        ],
+        "manim": {
+          "class": "B02_Pile"
+        },
+        "motion_claim": "A result ream grows large at centre and its grey page edges draw in one by one ('line items'); it shrinks away; eight reams arc from the server into the gauge one after another, and the gauge fills almost to the top ('8 results')."
+      },
+      "actual_duration_s": 10.24,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 10.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:39:00"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Programmatic tool calling moves the calls into code. Turn it on per tool: add Anthropic's code execution tool, and give each tool that code may call a field named allowed callers.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The gauge empties; a kraft open box on a dark plinth drops in between Claude and the server ('sandbox'); a dashed ink cable draws from the box to the server; each slab's port turns terracotta in turn ('allowed callers').",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "the code execution sandbox"
+          },
+          {
+            "at": 0.6,
+            "event": "each tool is marked, one by one"
+          }
+        ],
+        "manim": {
+          "class": "B03_Switch"
+        },
+        "motion_claim": "The gauge empties; a kraft open box on a dark plinth drops in between Claude and the server ('sandbox'); a dashed ink cable draws from the box to the server; each slab's port turns terracotta in turn ('allowed callers')."
+      },
+      "actual_duration_s": 10.62,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 10.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:39:00"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Claude writes a short Python script, and it runs in the sandbox, a sealed container Anthropic manages. To the script, each tool is just a function, and it can call several at once.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white script page arcs from Claude down into the sandbox ('script'); grey code lines draw on it one by one; three small ink call ticks pop along its edge (several calls at once).",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Claude writes a script"
+          },
+          {
+            "at": 0.45,
+            "event": "it runs in the sandbox"
+          },
+          {
+            "at": 0.8,
+            "event": "tools are functions"
+          }
+        ],
+        "manim": {
+          "class": "B04_Script"
+        },
+        "motion_claim": "A white script page arcs from Claude down into the sandbox ('script'); grey code lines draw on it one by one; three small ink call ticks pop along its edge (several calls at once)."
+      },
+      "actual_duration_s": 10.62,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 10.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:39:00"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "When the script calls a tool, it pauses. Your app runs the tool and hands the result back to the script, not to Claude. The eight results pile up in the sandbox; Claude's context stays empty.",
+      "estimated_duration_s": 14.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Request slips shuttle from the sandbox to the server; the middle slab lights; result reams come back into the sandbox, not to Claude, and stack up inside the open box ('results'); the context gauge beside Claude stays empty.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the script pauses on a call"
+          },
+          {
+            "at": 0.4,
+            "event": "your app runs it"
+          },
+          {
+            "at": 0.75,
+            "event": "results pile up in the sandbox"
+          }
+        ],
+        "manim": {
+          "class": "B05_Calls"
+        },
+        "motion_claim": "Request slips shuttle from the sandbox to the server; the middle slab lights; result reams come back into the sandbox, not to Claude, and stack up inside the open box ('results'); the context gauge beside Claude stays empty."
+      },
+      "actual_duration_s": 10.77,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 10.791666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:39:00"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then the code does the sums. It keeps approved travel, totals each person, and prints just the three engineers over five thousand dollars. Only that printout goes back to Claude.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A terracotta scan line sweeps down through the sandbox and the reams sink away; a small printout card with three grey lines rises out ('printout'); it arcs to the context gauge, which gains one thin segment.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the code does the sums"
+          },
+          {
+            "at": 0.5,
+            "event": "three names printed"
+          },
+          {
+            "at": 0.85,
+            "event": "only the printout reaches Claude"
+          }
+        ],
+        "manim": {
+          "class": "B06_Filter"
+        },
+        "motion_claim": "A terracotta scan line sweeps down through the sandbox and the reams sink away; a small printout card with three grey lines rises out ('printout'); it arcs to the context gauge, which gains one thin segment."
+      },
+      "actual_duration_s": 10.15,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 10.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:39:00"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "In the notebook's run, on a made-up API built for big results, the normal way used over a hundred and ten thousand tokens; the script, under sixteen thousand. Eighty-five point six percent fewer, in that one run.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two grey bars grow side by side, one beside a ream ('110,473') and one beside a printout card ('15,919'); the second bar shrinks; the hero number lands ('85.6%', 'per Anthropic's notebook').",
+        "show": [
+          {
+            "at": 0.25,
+            "event": "two token bars"
+          },
+          {
+            "at": 0.6,
+            "event": "the script bar shrinks"
+          },
+          {
+            "at": 0.85,
+            "event": "85.6%, per Anthropic's notebook"
+          }
+        ],
+        "manim": {
+          "class": "B07_Tokens"
+        },
+        "motion_claim": "Two grey bars grow side by side, one beside a ream ('110,473') and one beside a printout card ('15,919'); the second bar shrinks; the hero number lands ('85.6%', 'per Anthropic's notebook')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn scene (Claude and its context gauge, your app's server stack, a code-execution sandbox, request slips and result reams) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.5,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 12.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:39:00"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "It pays with many calls and big results. The docs say it gains little when each step needs Claude to think about the last result, or the calls are few and small. Only open it to tools that are safe to run again and again.",
+      "estimated_duration_s": 18.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The sandbox fans dashed lines out to the server's three slabs and an ink check lands beside it ('many calls'); then a single slip crosses from Claude straight to the server and back, and the sandbox fades to ghost ('one at a time'); the server's lights pulse.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "many calls, big results: a check"
+          },
+          {
+            "at": 0.55,
+            "event": "step by step: little gain"
+          },
+          {
+            "at": 0.85,
+            "event": "only safe tools"
+          }
+        ],
+        "manim": {
+          "class": "B08_Fit"
+        },
+        "motion_claim": "The sandbox fans dashed lines out to the server's three slabs and an ink check lands beside it ('many calls'); then a single slip crosses from Claude straight to the server and back, and the sandbox fades to ghost ('one at a time'); the server's lights pulse."
+      },
+      "actual_duration_s": 12.35,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 12.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T13:39:00"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. In Claude Code, paste this. Read the live docs for programmatic tool calling, then write a Python script with a mock get orders tool that returns long Jason orders. Let code execution call it for ten customers, find who spent over a thousand dollars, and print each call's caller and the input tokens. Then rerun it with direct calls only. Then check: does every get orders call come from code execution? And did the script use far fewer input tokens?",
+      "estimated_duration_s": 32.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · YOUR TURN",
+            "segment": "Let the Code Make the Calls",
+            "command": "Read the live docs for programmatic tool calling, then write a Python script with a mock get_orders tool that returns long JSON orders. Let code execution call it for ten customers, find who spent over a thousand dollars, and print each call's caller and the input tokens. Then rerun it with direct calls only.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: every get_orders call from code execution?",
+              "Check: far fewer input tokens than direct?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T17:35:19.731874+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 24.58,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 24.583333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T13:39:00"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Let the Code Make the Calls. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Let the Code Make the Calls",
+            "slug": "show-tell-let-the-code-make-the-calls",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T17:35:39.303285+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.26,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.291666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T13:39:00"
+      }
+    }
+  ]
+}

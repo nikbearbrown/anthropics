@@ -1,0 +1,316 @@
+{
+  "metadata": {
+    "title": "Claude, Matter Close.",
+    "slug": "claude-for-legal--claude-liam-matter-close",
+    "topic": "CLAUDE BASICS · MATTER-CLOSE SKILL",
+    "purpose": "Answer one real question in the Teardown register: does closing a matter delete it? Take the skill apart, explain how it archives the record out of the active portfolio without deleting it — capturing only what the file tells it to — and judge the design choice (reversibility over cleanliness).",
+    "skill": "hai-simple",
+    "register": "Teardown",
+    "brand": "hai-fellows",
+    "persona": "Liam (in for Bear)",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "teardown",
+    "style_preset": "humanitarians",
+    "ground": "#F3EBDD",
+    "folderLabel": "@HumanitariansAI",
+    "channel_title": "@HumanitariansAI",
+    "in_for_bear": true,
+    "clock": "narration",
+    "bookend_exempt": [
+      "cold-open"
+    ],
+    "one_flag": "N/A — every claim in this reel is a confirmed, present-tense description of what the skill does, not an inference",
+    "gate_c": "SIGNED — CARRY-OUT.md",
+    "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+    "redo_of": "anthropics/claude-for-legal/youtube/claude-liam-matter-close/beat_sheet.json (Teardown, 7 beats, narration fully filled — no placeholder gaps; source_skill path does not exist on this machine, see QUESTION.md)",
+    "build": {
+      "at": "2026-08-30T16:37:53",
+      "cut": "master",
+      "filled": 7,
+      "of": 7,
+      "slates": [],
+      "skin_warnings": []
+    },
+    "audience": "NikBearBrown",
+    "derived_from": "beat_sheet.json",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "typography": {
+      "display": "Montserrat",
+      "serif": "EB Garamond",
+      "mono": "PT Mono"
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "hesitant writer cold open",
+      "narration_text": "Liam here, in for Bear. Someone asked: can Claude delete a closed matter? No — the skill archives it. It pulls the record out of your active list and keeps it. Here is what actually runs.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "lead_silence_s": 0.8,
+      "shot": {
+        "type": "REMOTION",
+        "new_visual_element": "Writer types the naive framing, hesitates on 'DELETE', corrects to 'archive', lands the real question",
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Can Claude DELETE\na closed matter\nwhen it's done?",
+            "face": "serif",
+            "fontSize": 80,
+            "lineSpacing": 1.3,
+            "align": "center",
+            "ink": "#2F2A26",
+            "accent": "#E4572E",
+            "bg": "#F3EBDD",
+            "triggerWords": "DELETE",
+            "replacementWords": "archive",
+            "mistakeRate": 8,
+            "hesitateWithin": 3,
+            "hesitateBetween": 22,
+            "charMs": 50,
+            "jitter": 28,
+            "seed": "hai-matter-close"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md. Writer types the newcomer's wrong-guess word 'DELETE' (implying closing a matter erases it), hesitates, corrects to 'archive' -> lands 'Can Claude archive a closed matter when it's done?'. The NBB cold open opens with the IN-FOR-BEAR sign-in.",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T16:37:53"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "anatomy",
+      "narration_text": "Here is what a skill actually is: a folder Claude reads before it works. This one is matter-close. The whole instruction set sits in one file — SKILL.md, plain language, no hidden logic, no code path you cannot inspect. They optimized for legibility over cleverness. The file is the program.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownAnatomy",
+          "props": {
+            "skillName": "matter-close",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "6k",
+                "accent": true
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "1 file total.",
+            "sparkLine": "The file is the program."
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T16:37:53"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "pipeline",
+      "narration_text": "The pipeline lives in the Steps section. Claude reads each step in order, then runs it. Linear — no branching unless a step says so. What that buys you is predictability; what it costs is cleverness. Same request in, same trace out.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownPipeline",
+          "props": {
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "CLOSE REPORT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the close report",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Close report out."
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T16:37:53"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "3 mechanism",
+      "narration_text": "Here is the interesting constraint. Capture three things — outcome, final exposure, lessons. Archive the record out of your active portfolio. Never delete it. They chose reversibility over cleanliness: the archive stays lightly cluttered, but nothing you might need later is gone. Same scope in, same shape out, every time.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · MECHANISM",
+            "heading": "The interesting constraint.",
+            "body": "Capture outcome, final exposure, and lessons, then archive — never delete.",
+            "sparkLine": "Same scope, same result, every time."
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T16:37:53"
+      }
+    },
+    {
+      "beat_id": "BCRY",
+      "act": "6 CARRY-OUT",
+      "narration_text": "The carry-out. Closing a matter archives it out of the active list, every time — the record survives. What lands in the archive is only what the file says to capture. The file is the boundary; the file is the promise.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13,
+      "lead_silence_s": 0.6,
+      "shot": {
+        "type": "REMOTION",
+        "new_visual_element": "The carry-out sentence, alone",
+        "remotion": {
+          "pattern": "WantQuote",
+          "props": {
+            "quote": "Closing a matter archives it out of the active list, every time — it never deletes the record. What gets captured is only what the file tells it to.",
+            "attribution": "",
+            "sparkLine": "Archived, not deleted — scoped to the file.",
+            "citation": ""
+          },
+          "rendered": {
+            "out": "media/BCRY.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BCRY.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BCRY.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T16:37:53"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "LLM EXERCISE",
+      "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. I want to close a completed legal matter. Here's the matter — paste your summary in. Walk me through it step by step: one, the outcome — how did it resolve, in one sentence? Two, the final exposure — money paid, money at risk, obligations that outlive closure? Three, three lessons a future matter like this one should carry forward. Then draft the archive record as a short markdown file — outcome, exposure, lessons, plus the smallest set of pointers I would need to reopen it. Do not delete anything; do not summarize away detail I might need. Go deeper: ask the same model what changes if this matter is subject to a seven-year privilege-log retention rule — what does the archive record need to include that it would not otherwise?",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 55,
+      "llm_exercise": {
+        "prompt": "I want to close a completed legal matter. Here's the matter: [paste your summary]. Walk me through it step by step: (1) the outcome — how did it resolve, in one sentence? (2) the final exposure — money paid, money at risk, obligations that outlive closure? (3) three lessons a future matter like this one should carry forward. Then draft the archive record as a short markdown file — outcome, exposure, lessons, plus the smallest set of pointers I'd need to reopen it. Do not delete anything; do not summarize away detail I might need.",
+        "dig_deeper": "Go deeper: ask the same model what changes if this matter is subject to a seven-year privilege-log retention rule — what does the archive record need to include that it wouldn't otherwise?"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE BASICS · MATTER-CLOSE SKILL",
+            "segment": "Claude, Matter Close.",
+            "command": "I want to close a completed legal matter. Here's the matter: [paste your summary]. Walk me through it step by step: (1) the outcome — one sentence, how did it resolve? (2) the final exposure — money paid, money at risk, obligations that outlive closure? (3) three lessons a future matter like this one should carry forward. Then draft the archive record as a short markdown file — outcome, exposure, lessons, plus the smallest set of pointers I'd need to reopen it. Do not delete anything; do not summarize away detail I might need.",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@HumanitariansAI",
+            "output": []
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T16:37:53"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "Claude, Matter Close — archived, not deleted. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "tail_silence_s": 1.0,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "OutroCTA",
+          "props": {
+            "line": "Claude, Matter Close — archived, not deleted. Liam, in for Bear.",
+            "handle": "@HumanitariansAI"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T16:37:53"
+      }
+    }
+  ]
+}

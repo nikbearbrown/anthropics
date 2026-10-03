@@ -1,0 +1,130 @@
+
+##### attempt digest 2026-09-09T21:49:22  (/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/.cc101loop/cc-writer-reviewer-pattern.jsonl)
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/skills/make/cc-explainer/SKILL.md"}
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/author_shee
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/SESSION.md"
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/FACTCHECK.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/BUILD-LOG.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/claude-code--claude-lia
+TEXT I have the picture. Let me start executing — create the folder, then design and run a real session that shows same-context vs clean-context review.
+TOOL Bash {"command": "mkdir -p /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-review
+TOOL Bash {"command": "which claude && claude --version 2>&1 | head -5", "description": "Verify claude CLI is available"}
+TEXT Now I'll design the real experiment: a small pass/fail grader utility with a genuine ambiguous spec, then run three real Claude Code sessions — writer, same-context reviewer, and clean-context reviewer.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pat
+TOOL ToolSearch {"query": "select:TaskCreate,TaskUpdate,TaskList", "max_results": 3}
+TOOL TaskCreate {"subject": "Run 3 real Claude Code sessions", "description": "Writer, same-context reviewer, clean-context reviewer \u2014 save evidence/*.
+TOOL TaskCreate {"subject": "Write SESSION.md from evidence", "description": "Distil the three runs into the source of truth for every CCSession block", "ac
+TOOL TaskCreate {"subject": "Author beat_sheet.json via author_sheet.py", "description": "CC-explainer spine: B00, BIDEA, BDEFS, cycles, CONDUCT, HUMAN, BVD
+TOOL TaskCreate {"subject": "Write FACTCHECK.md and SHOTLIST/PROMPTS/SOURCES/CHECKS/BUILD-PROMPT", "description": "Every claim traced to SESSION.md; factche
+TOOL TaskCreate {"subject": "Generate audio (Kokoro am_onyx)", "description": "generate_audio_kokoro.py; do NOT re-run author_sheet.py in-place after this",
+TOOL TaskCreate {"subject": "art run \u2192 art final; frame QC; write CC-BUILT.txt", "description": "Compile, fix at source on any failure, produce cc-writ
+TOOL TaskUpdate {"taskId": "1", "status": "in_progress"}
+TEXT Running the first session — writer.
+TOOL Bash {"command": "\\\nuuidgen | tr 'A-Z' 'a-z' > /tmp/writer_sid.txt && cat /tmp/writer_sid.txt && \\\nclaude -p \"$(cat ask.txt)\" \\\n  --sessi
+TOOL Bash {"command": "pwd && cat pass_fail.py && echo \"---\" && python3 pass_fail.py; echo \"---git status---\"; git status --short", "description":
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor line in open('../evidence/run-writer.jsonl'):\n    ev=json.loads(line)\n    t=ev.get('type','')
+TOOL Bash {"command": "\\\nclaude -p \"Please carefully review pass_fail.py for correctness. Point out any bugs, edge cases, or design choices you'd c
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor line in open('../evidence/run-review-same.jsonl'):\n    ev=json.loads(line)\n    t=ev.get('type
+TOOL Bash {"command": "\\\nmkdir -p /tmp/clean-review && cp pass_fail.py grades.csv README.md ask.txt /tmp/clean-review/ && cd /tmp/clean-review && \\
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor line in open('/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-p
+TEXT Both reviews caught the same major issues, but the framing diverged sharply — same-context narrates as the writer ("I picked", "I never asked"), clean-context reads as an outsider ("Dee gets FAIL despite..."). That's a real, subtle finding — the film's honest claim is about *framing*, not "one catch
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pat
+TOOL TaskUpdate {"taskId": "1", "status": "completed"}
+TOOL TaskUpdate {"taskId": "2", "status": "in_progress"}
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-patt
+TOOL TaskUpdate {"taskId": "2", "status": "completed"}
+TOOL TaskUpdate {"taskId": "3", "status": "in_progress"}
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-patt
+TOOL Bash {"command": "python3 author_sheet.py", "description": "Run author_sheet.py to emit beat_sheet.json"}
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/c
+TOOL Bash {"command": "python3 author_sheet.py", "description": "Re-run author_sheet.py after budget fix"}
+TOOL Bash {"command": "python3 -c \"\nimport json\nsh=json.load(open('beat_sheet.json'))\nprint('beats:', len(sh['beats']))\nfor b in sh['beats']:\n  
+TOOL TaskUpdate {"taskId": "3", "status": "completed"}
+TOOL TaskUpdate {"taskId": "4", "status": "in_progress"}
+TEXT Now writing FACTCHECK.md and the paperwork.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-patt
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/factcheck_check.py /Users/bear/Documents/CoW
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-patt
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-patt
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-patt
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-patt
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-patt
+TOOL TaskUpdate {"taskId": "4", "status": "completed"}
+TOOL TaskUpdate {"taskId": "5", "status": "in_progress"}
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/scripts/generate_audio_kokoro.py /Users/bear/Do
+TEXT Audio generated. Total ~4:09. Now compiling.
+TOOL TaskUpdate {"taskId": "5", "status": "completed"}
+TOOL TaskUpdate {"taskId": "6", "status": "in_progress"}
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books && pgrep -fl \"cc-writer-reviewer-pattern\" | grep -v $$ | grep -v \"claud
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books && ./brutalist-art/art run anthropics/claude-code-101/02-plan-rewind-subag
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/scenes.py 
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-patt
+TOOL Bash {"command": "bash brutalist-art/runtime/qc/static_scene_check.sh anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-patt
+TOOL Bash {"command": "find /Users/bear/Documents/CoWork/bear-textbooks/books -name \"postedit-check.sh\" -path \"*/.claude/hooks/*\" 2>/dev/null | he
+TOOL Bash {"command": "grep -n static-scene /Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/postedit-check.sh; echo \"---\"; grep -n \
+TOOL Bash {"command": "find /Users/bear/Documents/CoWork/bear-textbooks/books -name \"static_scene_check.py\" 2>/dev/null | head -3", "description": "
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Bash {"command": "head -80 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py", "description": "Ins
+TOOL Bash {"command": "grep -n \"BearsDoodlesVideo\\|class not found\\|not found\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/run
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/postedit-check.sh", "offset": 120, "limit": 80}
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py", "offset": 600, "limit": 12
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-patt
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TEXT Warning only — good. Now compile.
+TOOL Bash {"command": "./brutalist-art/art run anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pattern 2>&1 | tail -100", "desc
+TOOL Bash {"command": "sleep 30 && tail -30 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/2bf57b54-4f8b-49c2-b504-81c3f084
+TOOL ToolSearch {"query": "select:Monitor", "max_results": 1}
+TEXT Task list is current — the compile is the last remaining task. Waiting on the background `art run` to finish.
+TOOL Monitor {"command": "tail -f /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/2bf57b54-4f8b-49c2-b504-81c3f084f60e/tasks/bc
+TOOL Bash {"command": "tail -100 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/2bf57b54-4f8b-49c2-b504-81c3f084f60e/tasks/
+TOOL Bash {"command": "ls -la /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/2bf57b54-4f8b-49c2-b504-81c3f084f60e/tasks/", 
+TOOL Bash {"command": "pgrep -fl \"art run\\|run.sh\\|remotion\\|compile.py\" | grep -v grep | head -20 && echo \"---\" && ls -la anthropics/claude-co
+TOOL Bash {"command": "ls -la anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pattern/mp4/ 2>&1; echo \"---\"; ls anthropics/cl
+TOOL Bash {"command": "ls anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pattern/_qc/ 2>&1 | head; echo \"---\"; find anthropi
+TOOL Bash {"command": "ls anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pattern/clips/ && echo --- && ls anthropics/claude-co
+TOOL Bash {"command": "ps aux | grep -E \"art|remotion|ffmpeg|compile|node\" | grep -v grep | head -15", "description": "Check what's still running"}
+TOOL ToolSearch {"query": "select:TaskStop", "max_results": 1}
+TEXT Task list is current.
+TOOL TaskStop {"task_id": "byt52fz46"}
+TOOL Bash {"command": "until [ ! -f anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pattern/.render.lock ] && ! pgrep -f \"cc-w
+TOOL Bash {"command": "cat /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/2bf57b54-4f8b-49c2-b504-81c3f084f60e/tasks/be0g7b
+TOOL Bash {"command": "pgrep -fl \"cc-writer-reviewer\\|remotion\" | grep -v grep | head; echo \"---\"; ls anthropics/claude-code-101/02-plan-rewind-s
+TOOL Bash {"command": "python3 -c \"\nimport json\nsh=json.load(open('anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pattern/b
+TOOL Bash {"command": "find anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pattern -maxdepth 2 -name \"*.mp4\" -newer anthropi
+TOOL Bash {"command": "ls -la anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pattern/*.mp4 && echo \"---\" && ls -la anthropic
+TOOL Bash {"command": "ps aux | grep -E \"cc-writer-reviewer|ffmpeg.*slate|compile\\.py\" | grep -v grep | head -10 && echo \"---\" && ls -la anthropi
+TOOL Bash {"command": "until ! kill -0 55901 2>/dev/null; do sleep 15; done; echo \"ffmpeg 55901 done\"; until ! kill -0 55664 2>/dev/null; do sleep 1
+TEXT Task list is current.
+TOOL Bash {"command": "cat /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/2bf57b54-4f8b-49c2-b504-81c3f084f60e/tasks/bk4oib
+TOOL Bash {"command": "ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,duration:format=duration -of default=noprin
+TEXT Review cut done at 3840×2160, 4:10. Let me inspect key frames before running `art final`.
+TOOL Bash {"command": "mkdir -p /tmp/cwr_frames && cd anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pattern/media && for b in
+TOOL Read {"file_path": "/tmp/cwr_frames/B00_85pct.jpg"}
+TOOL Read {"file_path": "/tmp/cwr_frames/B01_85pct.jpg"}
+TOOL Read {"file_path": "/tmp/cwr_frames/B03_85pct.jpg"}
+TOOL Read {"file_path": "/tmp/cwr_frames/B05_85pct.jpg"}
+TOOL Read {"file_path": "/tmp/cwr_frames/B06_85pct.jpg"}
+TEXT Task list is current. Frames are clean — B00 sessions read well, B03 the numbered "Real bugs" section pops with line cites, B05 boondoggle score renders in full with all 7 rows visible, B06 ledger both columns balanced. B01 shows the six "I" openings framing.
+TOOL Read {"file_path": "/tmp/cwr_frames/BVDT_85pct.jpg"}
+TEXT BVDT verdict card renders clean (2/2 page with lines 3 and 4, exact title on the heading, FALSIFIABLE last). All frames pass. Running `art final` for the clean master.
+TOOL Bash {"command": "./brutalist-art/art final anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pattern 2>&1 | tail -40", "des
+TOOL Bash {"command": "cat /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/2bf57b54-4f8b-49c2-b504-81c3f084f60e/tasks/bc5o58
+TOOL Bash {"command": "pwd && /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/art final /Users/bear/Documents/CoWork/bear-textbooks/bo
+TEXT That was the earlier `art run` finally completing its wrapping process. Waiting on the `art final` (bsi7kpcei).
+TOOL Bash {"command": "tail -50 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/2bf57b54-4f8b-49c2-b504-81c3f084f60e/tasks/b
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer
+TEXT Master done — 3840×2160, 250s (4:10), h264. Writing BUILD-LOG.md and CC-BUILT.txt.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-patt
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/02-plan-rewind-subagents/claude-code--claude-lia
+TOOL TaskUpdate {"taskId": "6", "status": "completed"}
+TEXT Reel done. Master at `anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pattern/cc-writer-reviewer-pattern.mp4` — 3840×2160, 4:10, 12 beats. /  / **What was built.** Three real headless Claude Code sessions on a small `pass_fail.py` grader with an ambiguous ask and a `grades.csv` wi
+EVENTS 314
+RESULT {"subtype": "success", "num_turns": 6, "duration_ms": 50902, "total_cost_usd": 12.474304, "is_error": false}
+FINAL TEXT Reel done. Master at `anthropics/claude-code-101/02-plan-rewind-subagents/cc-writer-reviewer-pattern/cc-writer-reviewer-pattern.mp4` — 3840×2160, 4:10, 12 beats.
+
+**What was built.** Three real headless Claude Code sessions on a small `pass_fail.py` grader with an ambiguous ask and a `grades.csv` with three deliberately awkward rows. Same-context review (via `--resume`) framed every finding as "I picked / I never asked" — six paragraphs opening with "I", zero line cites. Clean-context review (fresh `--session-id` in a folder with only the four files) led with **Real bugs**, three numbered findings, three line cites, and re-derived Cai's flipped average (89 → 59.3) from the CSV. Same model, same weights — different starting context, different question asked.
+
+**Gates.** GATE T PASS, content-check PASS, frame-check PASS, lane-check PASS, GATE AUDIO PASS. Two non-blocking advisories: BVDT §8.10 0.84 (verdict beat is designed to recite the artifact) and SKIN LINT on B00 (CCSession cold open is explicitly permitted by the cc-explainer SKILL).
+
+**Not published.** Master stays in the reel folder; `CC-BUILT.txt` written into the concept folder. Supervisor starts the next.

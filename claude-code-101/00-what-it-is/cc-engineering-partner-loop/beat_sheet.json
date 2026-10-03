@@ -1,0 +1,1407 @@
+{
+  "metadata": {
+    "slug": "cc-engineering-partner-loop",
+    "title": "Run the Engineering Partner Loop with Claude Code",
+    "subtitle": "Same tiny bug, two loops. In the bare loop, you read the diff after it lands. In the partner loop, you approve the plan before the diff exists.",
+    "topic": "CLAUDE CODE 101",
+    "skill": "cc-explainer",
+    "playlist": "Claude Code 101",
+    "chapter_number": 3,
+    "tier": "00-what-it-is",
+    "audience": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "handle": "@NikBearBrown",
+    "brand": "claude",
+    "palette": "claude",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "persona": "liam",
+    "in_for_bear": true,
+    "operator": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "closing_voice": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "aspect": "16:9",
+    "fps": 30,
+    "session": "SESSION.md",
+    "build": {
+      "at": "2026-09-15T13:53:43",
+      "cut": "master",
+      "filled": 16,
+      "of": 16,
+      "slates": [],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'CCSession' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    },
+    "derived_from": "claude-code-101/00-what-it-is/claude-code--claude-liam-engineering-partner-loop (concept; body replaced by real headless runs)",
+    "sources": [
+      "SESSION.md (two real sessions)",
+      "info-7375-conducting-ai/chapters/02-the-solve-verify-asymmetry.md",
+      "info-7375-irreducibly-human/chapters/04-tier-4-metacognitive-and-supervisory.md"
+    ]
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN — BARE LOOP",
+      "lane": "TERMINAL",
+      "narration_text": "This is Liam, in for Bear. Two failing tests in a tiny file. One sentence — fix them. Claude reads the test, reads the code, edits, runs. Green. That's the whole loop. It worked. But I only saw the diff after it landed. That's the film.",
+      "estimated_duration_s": 16.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — bare cycle: ask, tools, edit, tests pass",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch — bare",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Fix the failing tests.",
+                "cue": 0,
+                "typeDuration": 40
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "ranges.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "test_ranges.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "python3 -m unittest -v",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Two failures — reversed and extra"
+              },
+              {
+                "type": "text",
+                "text": "dashes both need to raise."
+              },
+              {
+                "type": "tool",
+                "name": "Edit",
+                "arg": "ranges.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "python3 -m unittest -v",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Ran 5 tests. OK."
+              }
+            ],
+            "cues": [
+              0,
+              45,
+              60,
+              75,
+              110,
+              130,
+              150,
+              175,
+              205
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "ask types"
+        },
+        {
+          "at": 0.45,
+          "event": "Edit lands"
+        },
+        {
+          "at": 0.9,
+          "event": "OK"
+        }
+      ],
+      "actual_duration_s": 13.18,
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "THE IDEA",
+      "lane": "IDEA",
+      "narration_text": "Here's the idea of this film. Claude Code is not a code generator. It's an engineering partner — if you run it as a loop with a gate you can approve. Oracle first: the test that says done. Then the plan, before the diff. Then the diff, before you run it. Then the oracle again. Same fix, different job for you: not debugging after, approving scope before.",
+      "estimated_duration_s": 24.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "BrutalistHesitantWriter — 'generator' reconsidered into 'partner'",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Claude Code is a code generator.\nType a wish, get a change.\nRun it as a loop, with a gate.\nApprove scope before the diff, not after.",
+            "triggerWords": "generator",
+            "replacementWords": "partner",
+            "face": "serif",
+            "fontSize": 78,
+            "align": "center",
+            "ink": "#F2F0E9",
+            "accent": "#D97757",
+            "bg": "#1F1E1B",
+            "seed": "cc-engineering-partner-loop",
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 5,
+            "jitter": 20
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the idea of the film is not in any session; the writer types it and corrects the one word the film exists to fix"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Writer starts"
+        },
+        {
+          "at": 0.2,
+          "event": "'generator' → 'partner'"
+        },
+        {
+          "at": 0.85,
+          "event": "Last line"
+        }
+      ],
+      "actual_duration_s": 17.73,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "DEFINITIONS",
+      "lane": "CARD",
+      "narration_text": "Five words before we start. Oracle: a check you can run — here, a failing test that flips to pass when done. Plan: what Claude will change, in text, before any edit. Minimal diff: the smallest patch that makes the oracle green, nothing else. Scope: what may change and what may not, named up front. Engineering partner loop: oracle, ask, plan, diff, verify, decide — the five steps.",
+      "estimated_duration_s": 24.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCDefinitions — five terms",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCDefinitions",
+          "props": {
+            "title": "TERMS IN THIS FILM",
+            "terms": [
+              {
+                "term": "oracle",
+                "meaning": "a check you can run; here a failing test that flips to pass when done"
+              },
+              {
+                "term": "plan",
+                "meaning": "what Claude will change, in text, before any edit is made"
+              },
+              {
+                "term": "minimal diff",
+                "meaning": "the smallest patch that makes the oracle green — nothing else"
+              },
+              {
+                "term": "scope",
+                "meaning": "what may change and what may not, named up front"
+              },
+              {
+                "term": "partner loop",
+                "meaning": "oracle, ask, plan, diff, verify, decide — the five gates"
+              }
+            ],
+            "startCue": 12,
+            "rowGap": 48
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "definitions for a chat-window audience"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "First term"
+        },
+        {
+          "at": 0.5,
+          "event": "Terms land"
+        },
+        {
+          "at": 0.9,
+          "event": "Hold"
+        }
+      ],
+      "actual_duration_s": 19.73,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "BARE — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "My verify. Five green. Two guards added, seven lines changed. All fine. But watch when it happened: after the edit. I read the diff after Claude wrote it. If Claude had touched a second file, or picked a wrong scope, I would learn now. The gate I want is before the diff, not after.",
+      "estimated_duration_s": 19.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — Liam's plain-shell verify of the bare fix",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch — bare",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "!python3 -m unittest -v",
+                "cue": 0,
+                "typeDuration": 36
+              },
+              {
+                "type": "text",
+                "text": "Ran 5 tests in 0.000s"
+              },
+              {
+                "type": "text",
+                "text": "OK"
+              },
+              {
+                "type": "prompt",
+                "text": "!git diff --stat ranges.py",
+                "cue": 0,
+                "typeDuration": 36
+              },
+              {
+                "type": "text",
+                "text": " ranges.py | 7 +++++--"
+              },
+              {
+                "type": "text",
+                "text": " 1 file changed, 6 ins, 1 del"
+              },
+              {
+                "type": "prompt",
+                "text": "!grep -c 'raise ValueError'",
+                "cue": 0,
+                "typeDuration": 36
+              },
+              {
+                "type": "text",
+                "text": "2"
+              }
+            ],
+            "cues": [
+              0,
+              40,
+              60,
+              80,
+              120,
+              140,
+              155,
+              195
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "tests OK"
+        },
+        {
+          "at": 0.4,
+          "event": "stat"
+        },
+        {
+          "at": 0.8,
+          "event": "grep 2"
+        }
+      ],
+      "actual_duration_s": 14.89,
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "PARTNER — ASK",
+      "lane": "TERMINAL",
+      "narration_text": "Reset. Same folder, same tests. Different ask. Read the oracle. Read the code. Do not edit yet. Give me the plan, and the exact diff, in fences. Stop after that. The plan is the gate. The edit is not allowed to happen until I say the word.",
+      "estimated_duration_s": 17.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the partner ask; Edit tool withheld",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch — partner",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Oracle is test_ranges.py. Don't edit. Give me the plan + exact diff.",
+                "cue": 0,
+                "typeDuration": 100
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "test_ranges.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "ranges.py",
+                "state": "done"
+              },
+              {
+                "type": "status",
+                "verb": "Planning",
+                "elapsed": "0m 8s",
+                "tokens": "1.4k tokens"
+              }
+            ],
+            "cues": [
+              0,
+              130,
+              155,
+              180
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "ask types"
+        },
+        {
+          "at": 0.7,
+          "event": "Reads land"
+        },
+        {
+          "at": 0.95,
+          "event": "Planning"
+        }
+      ],
+      "actual_duration_s": 13.01,
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "PARTNER — PLAN + DIFF",
+      "lane": "TERMINAL",
+      "narration_text": "The plan comes back. Four steps. If parts is not one or two, raise. If start is more than end, raise. Leave the one-part branch alone — the empty case already raises inside int. Nothing outside parse_range. And under the plan, the exact diff, in fences. Five added lines, one removed. I can approve this before it exists on disk.",
+      "estimated_duration_s": 21.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — plan block with the 4-step plan",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch — partner",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "plan",
+                "sections": [
+                  {
+                    "title": "MINIMAL CHANGE TO parse_range",
+                    "numbered": true,
+                    "items": [
+                      {
+                        "text": "If len(parts) is not 1 or 2, raise ValueError",
+                        "path": "ranges.py"
+                      },
+                      {
+                        "text": "On the 2-part branch, raise if start > end",
+                        "path": "ranges.py"
+                      },
+                      {
+                        "text": "Leave the 1-part branch — int('') already raises"
+                      },
+                      {
+                        "text": "No changes outside parse_range"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "Diff (5 added, 1 removed):"
+              },
+              {
+                "type": "diff",
+                "file": "ranges.py",
+                "addCount": 5,
+                "delCount": 1,
+                "lines": [
+                  {
+                    "gutter": "-",
+                    "text": "return (int(parts[0]), int(parts[1]))",
+                    "kind": "del"
+                  },
+                  {
+                    "gutter": "+",
+                    "text": "if len(parts) != 2:",
+                    "kind": "add"
+                  },
+                  {
+                    "gutter": "+",
+                    "text": "    raise ValueError('invalid range')",
+                    "kind": "add"
+                  },
+                  {
+                    "gutter": "+",
+                    "text": "start, end = int(parts[0]), int(parts[1])",
+                    "kind": "add"
+                  },
+                  {
+                    "gutter": "+",
+                    "text": "if start > end:",
+                    "kind": "add"
+                  },
+                  {
+                    "gutter": "+",
+                    "text": "    raise ValueError('reversed range')",
+                    "kind": "add"
+                  }
+                ]
+              }
+            ],
+            "cues": [
+              0,
+              180,
+              210
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Plan lands"
+        },
+        {
+          "at": 0.6,
+          "event": "Diff lands"
+        },
+        {
+          "at": 0.95,
+          "event": "Ready to approve"
+        }
+      ],
+      "actual_duration_s": 17.17,
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "PARTNER — APPLY",
+      "lane": "TERMINAL",
+      "narration_text": "Approved. Apply the diff exactly as shown. Then run the oracle. Report only the summary line. Edit is now allowed. One tool call, one shell call, one line back.",
+      "estimated_duration_s": 10.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — Edit + Bash unittest",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch — partner",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Plan approved. Apply the diff exactly.",
+                "cue": 0,
+                "typeDuration": 60
+              },
+              {
+                "type": "tool",
+                "name": "Edit",
+                "arg": "ranges.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "python3 -m unittest -v",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Ran 5 tests in 0.000s"
+              },
+              {
+                "type": "text",
+                "text": "OK"
+              }
+            ],
+            "cues": [
+              0,
+              75,
+              105,
+              135,
+              155
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "approve types"
+        },
+        {
+          "at": 0.5,
+          "event": "Edit"
+        },
+        {
+          "at": 0.9,
+          "event": "OK"
+        }
+      ],
+      "actual_duration_s": 9.47,
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "CORRECTION — VERIFY CATCHES DRIFT",
+      "lane": "SHELL",
+      "narration_text": "One more verify. Grep the docstring. It still says empty or reversed is an error. It does not mention extra dashes — the second guard we just added. Docstring and code disagree. That is a defect the oracle cannot see, and I can. Re-prompt.",
+      "estimated_duration_s": 16.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCPlainShell — grep on ranges.py; the docstring/code drift",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "zsh — scratch",
+            "lines": [
+              "$ grep '\"\"\"' ranges.py",
+              "    \"\"\"Parse '1-5' -> (1, 5). '7' -> (7, 7).",
+              "     '' or reversed is an error.\"\"\"",
+              "$ grep -n 'raise ValueError' ranges.py",
+              "7:        raise ValueError('invalid range')",
+              "10:       raise ValueError('reversed range')",
+              "# docstring: 2 errors named",
+              "# code: 2 errors raised — a DIFFERENT 2",
+              "# drift"
+            ],
+            "startCue": 12,
+            "lineGap": 22
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "Liam's plain shell audit; not a session — the drift is what the session cannot see about itself"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "grep docstring"
+        },
+        {
+          "at": 0.45,
+          "event": "grep raises"
+        },
+        {
+          "at": 0.9,
+          "event": "Drift"
+        }
+      ],
+      "actual_duration_s": 13.35,
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "CORRECTION — RE-PROMPT",
+      "lane": "TERMINAL",
+      "narration_text": "New ask. Update only the docstring. No logic change. Show the diff. Run the oracle. Scope: one line. And that is what lands. Docstring now names the real errors. Green still.",
+      "estimated_duration_s": 11.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — docstring-only Edit + verify",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "scratch — partner",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Docstring is stale. Update only the docstring. No logic change.",
+                "cue": 0,
+                "typeDuration": 80
+              },
+              {
+                "type": "tool",
+                "name": "Edit",
+                "arg": "ranges.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "git diff ranges.py",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "-  '' or reversed is an error"
+              },
+              {
+                "type": "text",
+                "text": "+  '', reversed, or extra dashes"
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "python3 -m unittest -v",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Ran 5 tests. OK."
+              }
+            ],
+            "cues": [
+              0,
+              100,
+              130,
+              160,
+              180,
+              200,
+              225
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "re-prompt"
+        },
+        {
+          "at": 0.4,
+          "event": "diff"
+        },
+        {
+          "at": 0.9,
+          "event": "OK"
+        }
+      ],
+      "actual_duration_s": 10.43,
+      "audio_file": "mp3/beat-B06.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "BFLOW",
+      "act": "BFLOW — THE FIVE GATES",
+      "lane": "FLOW",
+      "narration_text": "The loop, drawn. Oracle: the test that says done. Ask: the sentence with scope in it. Plan: what Claude proposes, in text, before any edit. Diff: the exact change, before it runs. Verify: run the oracle again. Five gates. You approve every one. If any of them is missing, you are not conducting — you are watching.",
+      "estimated_duration_s": 20.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "FlowDiagram — 5-node partner loop, terracotta on cream",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "FlowDiagram",
+          "props": {
+            "skin": "claude",
+            "kicker": "ENGINEERING PARTNER LOOP",
+            "caption": "Five gates. You approve every one.",
+            "pulse": true,
+            "nodes": [
+              {
+                "id": "oracle",
+                "label": "ORACLE",
+                "sub": "defines done",
+                "tier": "data",
+                "x": 40,
+                "y": 440,
+                "w": 320,
+                "h": 180,
+                "hi": true
+              },
+              {
+                "id": "ask",
+                "label": "ASK",
+                "sub": "scope named",
+                "tier": "client",
+                "x": 420,
+                "y": 440,
+                "w": 320,
+                "h": 180
+              },
+              {
+                "id": "plan",
+                "label": "PLAN",
+                "sub": "text, no edit",
+                "tier": "compute",
+                "x": 800,
+                "y": 440,
+                "w": 320,
+                "h": 180,
+                "hi": true
+              },
+              {
+                "id": "diff",
+                "label": "DIFF",
+                "sub": "exact, no run",
+                "tier": "compute",
+                "x": 1180,
+                "y": 440,
+                "w": 320,
+                "h": 180,
+                "hi": true
+              },
+              {
+                "id": "verify",
+                "label": "VERIFY",
+                "sub": "run oracle",
+                "tier": "data",
+                "x": 1560,
+                "y": 440,
+                "w": 320,
+                "h": 180
+              }
+            ],
+            "edges": [
+              {
+                "from": "oracle",
+                "to": "ask",
+                "order": 1,
+                "kind": "flow"
+              },
+              {
+                "from": "ask",
+                "to": "plan",
+                "order": 2,
+                "kind": "flow"
+              },
+              {
+                "from": "plan",
+                "to": "diff",
+                "order": 3,
+                "kind": "flow"
+              },
+              {
+                "from": "diff",
+                "to": "verify",
+                "order": 4,
+                "kind": "flow"
+              }
+            ],
+            "viewBox": {
+              "w": 1920,
+              "h": 1080
+            }
+          },
+          "rendered": {
+            "out": "media/BFLOW.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "BFLOW: the five gates are implied by the session but not drawn anywhere in it"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Nodes"
+        },
+        {
+          "at": 0.5,
+          "event": "Edges draw"
+        },
+        {
+          "at": 0.9,
+          "event": "Pulse"
+        }
+      ],
+      "actual_duration_s": 16.53,
+      "audio_file": "mp3/beat-BFLOW.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BFLOW.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "BSHOW",
+      "act": "BSHOW — THE ORACLE, RUNNING",
+      "lane": "SHELL",
+      "narration_text": "And what the fifth gate looks like when you run it. Same command every cycle. Five tests, five OKs, one line at the bottom. That is the definition of done, on the terminal, and every cycle ends here — or the cycle is not done.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCPlainShell — real unittest -v output from evidence/verify.txt",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "zsh — scratch · python3 -m unittest -v",
+            "lines": [
+              "$ python3 -m unittest test_ranges -v",
+              "test_empty_raises          ... ok",
+              "test_extra_dash_raises     ... ok",
+              "test_range                 ... ok",
+              "test_reversed_raises       ... ok",
+              "test_single_number         ... ok",
+              "----------------------------------------",
+              "Ran 5 tests in 0.000s",
+              "",
+              "OK"
+            ],
+            "startCue": 12,
+            "lineGap": 22
+          },
+          "rendered": {
+            "out": "media/BSHOW.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "BSHOW: this is the real oracle output from evidence/verify.txt, held long enough to read"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "command"
+        },
+        {
+          "at": 0.4,
+          "event": "five OKs"
+        },
+        {
+          "at": 0.95,
+          "event": "OK holds"
+        }
+      ],
+      "actual_duration_s": 12.67,
+      "audio_file": "mp3/beat-BSHOW.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BSHOW.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "BCND",
+      "act": "CONDUCT — BOONDOGGLE SCORE",
+      "lane": "TERMINAL",
+      "narration_text": "Who did what. Step one, mine: name the oracle — pick the test that says done. Claude did the bare run; handoff was the oracle, and it met it. Dangerous middle, step three: I read the diff after it landed. If the scope had been wrong, this is when I would learn. Then the real work, mine: write the partner ask — same problem, plan required. Claude did the plan-first run; handoff was the diff in fences. And I caught the docstring drift the oracle could not see.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCBoondoggleScore",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCBoondoggleScore",
+          "props": {
+            "system": "the five-gate loop",
+            "steps": [
+              {
+                "n": 1,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "Name the oracle — pick the failing test"
+              },
+              {
+                "n": 2,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Bare run — Edit lands, 5 green",
+                "handoff": "oracle green; but no plan surface",
+                "dependsOn": [
+                  1
+                ]
+              },
+              {
+                "n": 3,
+                "phase": "C",
+                "labor": "human",
+                "capacity": "PA",
+                "text": "Read the diff — after it landed",
+                "dependsOn": [
+                  2
+                ]
+              },
+              {
+                "n": 4,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "Write the partner ask — plan required",
+                "dependsOn": [
+                  3
+                ]
+              },
+              {
+                "n": 5,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Plan + diff in fences; then apply",
+                "handoff": "diff shown before edit; oracle green",
+                "dependsOn": [
+                  4
+                ]
+              },
+              {
+                "n": 6,
+                "phase": "H",
+                "labor": "human",
+                "capacity": "IJ",
+                "text": "Grep catches docstring drift",
+                "dependsOn": [
+                  5
+                ]
+              }
+            ],
+            "dangerousMiddle": 3,
+            "distribution": true,
+            "stepGap": 22
+          },
+          "rendered": {
+            "out": "media/BCND.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "CONDUCT: the score is drawn from the session; the terminal does not draw it itself"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Header"
+        },
+        {
+          "at": 0.35,
+          "event": "Step 3 rings"
+        },
+        {
+          "at": 0.9,
+          "event": "Tally"
+        }
+      ],
+      "actual_duration_s": 21.91,
+      "audio_file": "mp3/beat-BCND.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BCND.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "BHMN",
+      "act": "HUMAN — THE LEDGER",
+      "lane": "TERMINAL",
+      "narration_text": "So what was mine. I must name the oracle — nobody else can decide what done means. I must approve the plan before the edit — that is the gate. I must read the diff, not the summary. I should catch drift the oracle cannot see — like a stale docstring. Claude can fix a failing test in one shot; it did. It should show the plan before the edit; it did, when I asked. It should stay in scope when scope is named; it did. It should run the oracle after the edit; it did.",
+      "estimated_duration_s": 34.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCHumanLedger",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCHumanLedger",
+          "props": {
+            "ai": [
+              {
+                "tier": "CAN",
+                "text": "fix a failing test in one shot"
+              },
+              {
+                "tier": "CAN",
+                "text": "write the plan before the edit"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "stay in the scope you named"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "run the oracle after each edit"
+              }
+            ],
+            "human": [
+              {
+                "tier": "MUST",
+                "text": "name the oracle"
+              },
+              {
+                "tier": "MUST",
+                "text": "approve the plan before edit"
+              },
+              {
+                "tier": "MUST",
+                "text": "read the diff, not the summary"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "catch drift the oracle misses"
+              }
+            ],
+            "closing": "The gate is before the diff, not after.",
+            "humanCue": 70,
+            "rowGap": 12
+          },
+          "rendered": {
+            "out": "media/BHMN.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "HUMAN: the ledger is drawn from the session; the terminal does not draw it itself"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "THE AI"
+        },
+        {
+          "at": 0.35,
+          "event": "THE HUMAN"
+        },
+        {
+          "at": 0.85,
+          "event": "Closing"
+        }
+      ],
+      "actual_duration_s": 21.8,
+      "audio_file": "mp3/beat-BHMN.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHMN.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "VERDICT",
+      "lane": "BOOKEND",
+      "narration_text": "Let's recap with Claude. One sentence in a folder with two failing tests: Claude fixes them in seven turns — I read the diff after. Same problem with an oracle-first ask that requires a plan: Claude writes the plan and the diff in text — I approve the scope before the edit exists. The diff is identical. What changed is the timing of my judgment. What would prove this reel wrong: a bare run that shows me the plan before the edit, unasked.",
+      "estimated_duration_s": 29.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeVerdictArtifact",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "verdict.md",
+            "artifactHeading": "Run the Engineering Partner Loop with Claude Code",
+            "artifactLines": [
+              "Bare run: fix works — but the diff lands before you see the plan.",
+              "Partner loop: plan and diff in text — approve scope before edit exists.",
+              "Same code, different job for you: not debugging after, approving before.",
+              "FALSIFIABLE: a bare run that shows the plan before the edit, unasked."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Artifact"
+        },
+        {
+          "at": 0.2,
+          "event": "Lines"
+        },
+        {
+          "at": 0.9,
+          "event": "Falsifiable"
+        }
+      ],
+      "lead_silence_s": 0.5,
+      "actual_duration_s": 21.76,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "YOUR TURN",
+      "lane": "BOOKEND",
+      "narration_text": "Your turn. Before your next fix, open Claude Code and paste this: The oracle is my failing test. Read it and the code around it. Do not edit yet. Give me a numbered plan and the exact diff, in fences, for the minimal change. Nothing outside the target function. Stop after the plan.",
+      "estimated_duration_s": 19.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeComposerAsk",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "The oracle is my failing test. Read it and the code around it. Do not edit yet. Give me a numbered plan and the exact diff, in fences, for the minimal change. Nothing outside the target function. Stop after the plan.",
+            "segment": "Run the Engineering Partner Loop with Claude Code",
+            "topic": "YOUR TURN · CLAUDE CODE 101",
+            "runningText": "paste this into Claude Code…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Composer"
+        },
+        {
+          "at": 0.6,
+          "event": "Send arms"
+        }
+      ],
+      "actual_duration_s": 15.0,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "OUTRO",
+      "lane": "BOOKEND",
+      "narration_text": "Run the Engineering Partner Loop with Claude Code. Liam, in for Bear.",
+      "estimated_duration_s": 5.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeTitleOutro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Run the Engineering Partner Loop with Claude Code",
+            "slug": "cc-engineering-partner-loop",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Title"
+        },
+        {
+          "at": 0.35,
+          "event": "@NikBearBrown"
+        },
+        {
+          "at": 0.55,
+          "event": "Mascot"
+        }
+      ],
+      "actual_duration_s": 4.67,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-15T13:53:43"
+      }
+    }
+  ]
+}

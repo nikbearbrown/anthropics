@@ -1,8 +1,5 @@
-import sys, json, pathlib
-sys.path.insert(0, str(
-    pathlib.Path(__file__).resolve().parents[3] / "vox/aspects/explainer/vox-explainer/manim"
-))
-from vox_graphics import *
+import json, pathlib
+from manim import *
 INK="#2A1A0E"; CREAM="#FFFFFF"; CRIMSON="#C8102E"; SLATE="#545454"; GOLD="#F6D8DC"
 DUR = {}
 try:
@@ -15,8 +12,9 @@ except Exception:
 
 class B04_ADCMechanism(Scene):
     def construct(self):
-        INK="#2A1A0E"; CREAM="#FFFFFF"; CRIMSON="#C8102E"; SLATE="#545454"; GOLD="#F6D8DC"
+        INK="#2A1A0E"; CREAM="#FFFFFF"; CRIMSON="#C8102E"; SLATE="#545454"; GOLD="#B8860B"
         PASS_CLR="#2A7A2A"
+        self.camera.background_color = CREAM
         title=Text("T-DM1 vs T-DXd: THE LINKER THAT CHANGED PATIENTS",font="Georgia",
                    font_size=20,color=ManimColor(INK),weight=BOLD).move_to([0,3.2,0])
         # Divider — stops at y=-2.0 so annotation below is not intersected

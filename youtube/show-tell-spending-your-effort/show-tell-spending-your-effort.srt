@@ -1,0 +1,151 @@
+1
+00:00:00,000 --> 00:00:04,446
+Salaam. This is Liam, in for Bear. Claude Code has an effort dial, and it's tempting
+
+2
+00:00:04,466 --> 00:00:08,911
+to always turn it up. The better question is how to match effort to the job.
+
+3
+00:00:08,981 --> 00:00:13,899
+Three terms. Effort: how much compute Claude spends on a task. An edge case: an
+
+4
+00:00:13,919 --> 00:00:18,508
+unusual input where code tends to break. And slash effort: the Claude Code command
+
+5
+00:00:18,528 --> 00:00:20,154
+that changes the level mid-conversation.
+
+6
+00:00:20,224 --> 00:00:25,627
+Here's the dial. Five settings: low, medium, high, x high, and max. Opus five point
+
+7
+00:00:25,647 --> 00:00:29,242
+five starts at medium. Most other models start at high.
+
+8
+00:00:29,312 --> 00:00:33,479
+So what is effort, really? Thariq Shihipar, in his post Spending your effort, says
+
+9
+00:00:33,499 --> 00:00:38,564
+it gives the model an approximation of how much compute you want it to spend on the
+
+10
+00:00:38,584 --> 00:00:38,863
+task.
+
+11
+00:00:38,933 --> 00:00:43,513
+Think of it like a deadline. Given one hour, you'd bring the best version that meets
+
+12
+00:00:43,533 --> 00:00:47,250
+the task, then expect to iterate. Given twelve hours straight, you'd assume they
+
+13
+00:00:47,270 --> 00:00:48,975
+want you to try very hard.
+
+14
+00:00:49,045 --> 00:00:54,148
+Effort works the same way. Claude always tries to do your task reasonably, but
+
+15
+00:00:54,168 --> 00:00:57,807
+higher effort means more independent action on verification and judgement.
+
+16
+00:00:57,877 --> 00:01:03,229
+The clearest case is HTML JS filter, a Terminal-Bench three point oh task: an HTML
+
+17
+00:01:03,249 --> 00:01:07,886
+sanitizer that strips every way of smuggling JavaScript into a page. In Anthropic's
+
+18
+00:01:07,906 --> 00:01:13,616
+runs, Fable five point one on low passed one of five tries: about two minutes, one
+
+19
+00:01:13,636 --> 00:01:15,407
+pass, one hand-written test page.
+
+20
+00:01:15,477 --> 00:01:20,350
+On x high, it passed five of five. The run he traced took about thirty-three
+
+21
+00:01:20,370 --> 00:01:23,939
+minutes. It reviewed its own draft adversarially, read the installed parser's
+
+22
+00:01:23,959 --> 00:01:28,506
+source, ran a standard X S S test suite, and wrote a random-document fuzzer.
+
+23
+00:01:28,576 --> 00:01:33,779
+His rule of thumb. Low for quick responses while you're in the loop: brainstorming,
+
+24
+00:01:33,799 --> 00:01:37,882
+sketching, easy changes. Medium for most regular engineering work, like new
+
+25
+00:01:37,902 --> 00:01:38,255
+features.
+
+26
+00:01:38,325 --> 00:01:43,445
+High where verification matters or there are edge cases, like fixing a bug. Max when
+
+27
+00:01:43,465 --> 00:01:47,215
+you want Claude working fully on its own on difficult problems.
+
+28
+00:01:47,285 --> 00:01:52,474
+And his loop for feature work. Have Claude interview you about the spec. Build it on
+
+29
+00:01:52,494 --> 00:01:57,358
+low. Review it, iterating on low. Then verify and test on high. In Claude Code,
+
+30
+00:01:57,378 --> 00:01:59,311
+slash effort switches the level mid-conversation.
+
+31
+00:01:59,381 --> 00:02:03,332
+Your turn. Paste this into Claude Code: Plan one real task with me through the
+
+32
+00:02:03,352 --> 00:02:07,039
+effort loop: name your task. First, interview me about any details I'm missing. Then
+
+33
+00:02:07,059 --> 00:02:11,010
+list which steps to run on low effort and which on high. For the high-effort
+
+34
+00:02:11,030 --> 00:02:14,452
+verification, say exactly what it must check: which edge cases, which tests, and
+
+35
+00:02:14,472 --> 00:02:18,159
+what counts as a failure. Don't build anything yet. Then check two things yourself.
+
+36
+00:02:18,179 --> 00:02:21,865
+Does every high step name something concrete to verify? And build on low, then
+
+37
+00:02:21,885 --> 00:02:25,572
+switch to high with slash effort to verify. Did it catch what low missed?
+
+38
+00:02:25,642 --> 00:02:29,452
+Spending Your Effort. At Nik Bear Brown.

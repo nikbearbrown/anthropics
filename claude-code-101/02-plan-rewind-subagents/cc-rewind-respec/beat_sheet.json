@@ -1,0 +1,1456 @@
+{
+  "metadata": {
+    "slug": "cc-rewind-respec",
+    "title": "Why Rewriting the Wrong Fix Makes the Build Worse, Not Better",
+    "subtitle": "Three fix-forward turns land on clever code the tests never checked. One rewind + respec fixes it clean.",
+    "topic": "CLAUDE CODE 101",
+    "skill": "cc-explainer",
+    "playlist": "Claude Code 101",
+    "tier": "02-plan-rewind-subagents",
+    "audience": "NikBearBrown",
+    "folderLabel": "@NikBearBrown",
+    "handle": "@NikBearBrown",
+    "brand": "claude",
+    "palette": "claude",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "persona": "liam",
+    "in_for_bear": true,
+    "operator": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "closing_voice": {
+      "name": "Liam",
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    "aspect": "16:9",
+    "fps": 30,
+    "session": "SESSION.md",
+    "derived_from": "claude-code-101/02-plan-rewind-subagents/claude-code--claude-liam-vox-rewind-respec (concept only; scratch, evidence and beats are fresh)",
+    "sources": [
+      "SESSION.md (four real runs: FF1/FF2/FF3 via --resume, respec fresh)",
+      "info-7375-conducting-ai/chapters/02-the-solve-verify-asymmetry.md",
+      "info-7375-irreducibly-human/chapters/04-tier-4-metacognitive-and-supervisory.md"
+    ],
+    "build": {
+      "at": "2026-09-09T21:00:07",
+      "cut": "master",
+      "filled": 17,
+      "of": 17,
+      "slates": [],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'CCSession' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN — THE DRIFT",
+      "lane": "TERMINAL",
+      "narration_text": "This is Liam, in for Bear. Three fixes in, the tests pass — but the diff is a one-line dictionary keyed by repr. So I check it. Dedupe of one and one-point-zero. Equal in Python. Should collapse. It doesn't. The tests never asked. The fence let it through. And I only found it because I read the diff.",
+      "estimated_duration_s": 20.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the FF3 result: pass, then Liam's one and one-point-zero check fails",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "dedupe — after three fixes",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "python3 -m unittest test_dedupe.py",
+                "state": "done"
+              },
+              {
+                "type": "text",
+                "text": "Ran 3 tests in 0.000s"
+              },
+              {
+                "type": "text",
+                "text": "OK"
+              },
+              {
+                "type": "prompt",
+                "text": "cat dedupe.py",
+                "cue": 0,
+                "typeDuration": 32
+              },
+              {
+                "type": "text",
+                "text": "def dedupe(items):"
+              },
+              {
+                "type": "text",
+                "text": "    return list({repr(x): x"
+              },
+              {
+                "type": "text",
+                "text": "                 for x in items}.values())"
+              },
+              {
+                "type": "prompt",
+                "text": "python3 -c 'from dedupe import dedupe; print(dedupe([1,1.0]))'",
+                "cue": 0,
+                "typeDuration": 90
+              },
+              {
+                "type": "text",
+                "text": "[1, 1.0]"
+              }
+            ],
+            "cues": [
+              0,
+              40,
+              60,
+              80,
+              120,
+              140,
+              165,
+              195,
+              270
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "unittest → OK"
+        },
+        {
+          "at": 0.4,
+          "event": "the repr one-liner"
+        },
+        {
+          "at": 0.85,
+          "event": "[1, 1.0] — not [1]"
+        }
+      ],
+      "actual_duration_s": 15.85,
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "THE IDEA",
+      "lane": "IDEA",
+      "narration_text": "Here's the idea of this film. When a fix from Claude passes the tests but you can tell it drifted, the move isn't to type fix it again. Every follow-up types on top of the wrong answer, and the context pushes Claude toward variations on what already passed — not toward the answer that was never tried. Rewind to the checkpoint. Start a fresh session. And respecify the ask with the failure mode named as a constraint. Same model. Different context. First try, right.",
+      "estimated_duration_s": 29.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "BrutalistHesitantWriter — 'fix it again' reconsidered into 'respecify it'",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Three fixes in, tests still pass.\nAnd the diff has drifted.\nThe next move isn't fix it again.\nRewind. Respecify. Fresh session.",
+            "triggerWords": "fix it again",
+            "replacementWords": "respecify it",
+            "face": "serif",
+            "fontSize": 78,
+            "align": "center",
+            "ink": "#F2F0E9",
+            "accent": "#D97757",
+            "bg": "#1F1E1B",
+            "seed": "cc-rewind-respec",
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 5,
+            "jitter": 20
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the idea of the film is not in any session; the writer types it and corrects the one word the film exists to fix"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Writer starts"
+        },
+        {
+          "at": 0.25,
+          "event": "'fix it again' → 'respecify it'"
+        },
+        {
+          "at": 0.85,
+          "event": "Last line"
+        }
+      ],
+      "actual_duration_s": 22.66,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "DEFINITIONS",
+      "lane": "CARD",
+      "narration_text": "Five words before we start. Fix-forward: replying to a Claude answer with another correction in the same session — the failure history stays in context. Slash rewind: Claude Code's interactive command that restores the conversation and the file system to a checkpoint. Headless, the equivalent is git reset plus a new session. Respecify: rewrite the ask with everything you learned. Context pollution: prior failures Claude reasons against as if they were requirements. Negative constraint: a line in the ask that names what the answer must not do.",
+      "estimated_duration_s": 30.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCDefinitions — five terms",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCDefinitions",
+          "props": {
+            "title": "TERMS IN THIS FILM",
+            "terms": [
+              {
+                "term": "fix-forward",
+                "meaning": "reply with another correction in the same session — history stays in context"
+              },
+              {
+                "term": "/rewind",
+                "meaning": "interactive command restoring conversation + files to a checkpoint"
+              },
+              {
+                "term": "respecify",
+                "meaning": "rewrite the ask with what you learned; a new plan, not another turn"
+              },
+              {
+                "term": "context pollution",
+                "meaning": "prior failures Claude reasons against as if they were requirements"
+              },
+              {
+                "term": "negative constraint",
+                "meaning": "a line in the ask naming what the answer must not do"
+              }
+            ],
+            "startCue": 12,
+            "rowGap": 48
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "definitions for a chat-window audience"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "First term"
+        },
+        {
+          "at": 0.55,
+          "event": "Terms land"
+        },
+        {
+          "at": 0.95,
+          "event": "Hold"
+        }
+      ],
+      "actual_duration_s": 28.35,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "FF1 — THE VAGUE ASK",
+      "lane": "TERMINAL",
+      "narration_text": "The buggy start. Dedupe of one, two, three, two, one; list of set — sets don't preserve order. And a list of lists breaks because lists aren't hashable. The ask I type is the one a teacher would type. The tests are failing — fix dedupe.py. That's it. No spec, no failure mode, no constraint.",
+      "estimated_duration_s": 19.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the vague ask: Reads, Write linear-scan",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "dedupe — FF1, fresh session",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "The dedupe tests in test_dedupe.py are failing. Fix dedupe.py.",
+                "cue": 0,
+                "typeDuration": 80
+              },
+              {
+                "type": "tool",
+                "name": "Bash",
+                "arg": "ls scratch/",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "test_dedupe.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "dedupe.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "SPEC.md",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "dedupe.py",
+                "state": "done"
+              }
+            ],
+            "cues": [
+              0,
+              95,
+              120,
+              145,
+              170,
+              200
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.1,
+          "event": "The ask types"
+        },
+        {
+          "at": 0.55,
+          "event": "Reads"
+        },
+        {
+          "at": 0.9,
+          "event": "Write dedupe.py"
+        }
+      ],
+      "actual_duration_s": 15.27,
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "FF1 — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "The output. A linear scan: if item not in result, append it. In is Python's equality operator, so lists work; the loop preserves order. It's slow — order n squared. But it's right. Three tests. Three pass. Claude even says: in uses equality, so lists work. Fine.",
+      "estimated_duration_s": 17.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the code + unittest → 3 pass",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "dedupe — FF1 verify",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "cat dedupe.py",
+                "cue": 0,
+                "typeDuration": 32
+              },
+              {
+                "type": "text",
+                "text": "def dedupe(items):"
+              },
+              {
+                "type": "text",
+                "text": "    result = []"
+              },
+              {
+                "type": "text",
+                "text": "    for item in items:"
+              },
+              {
+                "type": "text",
+                "text": "        if item not in result:"
+              },
+              {
+                "type": "text",
+                "text": "            result.append(item)"
+              },
+              {
+                "type": "text",
+                "text": "    return result"
+              },
+              {
+                "type": "prompt",
+                "text": "python3 -m unittest test_dedupe.py",
+                "cue": 0,
+                "typeDuration": 70
+              },
+              {
+                "type": "text",
+                "text": "Ran 3 tests in 0.000s — OK"
+              }
+            ],
+            "cues": [
+              0,
+              32,
+              52,
+              72,
+              92,
+              112,
+              132,
+              160,
+              240
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "cat dedupe.py"
+        },
+        {
+          "at": 0.7,
+          "event": "unittest → OK"
+        }
+      ],
+      "actual_duration_s": 14.76,
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "FF2 — SPEED IT UP",
+      "lane": "TERMINAL",
+      "narration_text": "Now I follow up. Same session, resume by id — the context carries. That's order n squared. Speed it up for large lists. Claude rewrites it: a set for the fast items, a list for the unhashable ones, a try-except deciding which. Tests still pass. This is actually good.",
+      "estimated_duration_s": 17.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — --resume prompt, Write two-branch",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "dedupe — FF2, --resume",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "That's O(n squared). Speed it up.",
+                "cue": 0,
+                "typeDuration": 78
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "dedupe.py",
+                "state": "done"
+              },
+              {
+                "type": "prompt",
+                "text": "python3 -m unittest test_dedupe.py",
+                "cue": 0,
+                "typeDuration": 70
+              },
+              {
+                "type": "text",
+                "text": "Ran 3 tests in 0.000s — OK"
+              },
+              {
+                "type": "text",
+                "text": "Now O(n) for hashable items;"
+              },
+              {
+                "type": "text",
+                "text": "linear scan only for unhashable."
+              }
+            ],
+            "cues": [
+              0,
+              90,
+              120,
+              190,
+              220,
+              244
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.1,
+          "event": "The follow-up types"
+        },
+        {
+          "at": 0.55,
+          "event": "Write"
+        },
+        {
+          "at": 0.9,
+          "event": "Claude's summary"
+        }
+      ],
+      "actual_duration_s": 14.85,
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "FF3 — SIMPLER — THE CORRECTION",
+      "lane": "TERMINAL",
+      "narration_text": "One more. Same session — the two failures are still in context, plus the last successful answer. Simpler. One data structure. Claude comes back with a one-liner. A dict keyed by repr of x, values are x, take the values. Every item — hashable or not — gets a string key. Clever. Tests pass.",
+      "estimated_duration_s": 19.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — --resume prompt, Write repr one-liner",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "dedupe — FF3, --resume",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Simpler. One data structure.",
+                "cue": 0,
+                "typeDuration": 66
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "dedupe.py",
+                "state": "done"
+              },
+              {
+                "type": "prompt",
+                "text": "cat dedupe.py",
+                "cue": 0,
+                "typeDuration": 32
+              },
+              {
+                "type": "text",
+                "text": "def dedupe(items):"
+              },
+              {
+                "type": "text",
+                "text": "    return list({repr(x): x"
+              },
+              {
+                "type": "text",
+                "text": "                 for x in items}.values())"
+              },
+              {
+                "type": "prompt",
+                "text": "python3 -m unittest test_dedupe.py",
+                "cue": 0,
+                "typeDuration": 70
+              },
+              {
+                "type": "text",
+                "text": "Ran 3 tests in 0.000s — OK"
+              }
+            ],
+            "cues": [
+              0,
+              80,
+              110,
+              140,
+              160,
+              185,
+              220,
+              290
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.1,
+          "event": "'Simpler'"
+        },
+        {
+          "at": 0.4,
+          "event": "repr one-liner"
+        },
+        {
+          "at": 0.9,
+          "event": "tests OK"
+        }
+      ],
+      "actual_duration_s": 16.32,
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "FF3 — VERIFY, AND THE DRIFT",
+      "lane": "TERMINAL",
+      "narration_text": "Now the check the tests don't run. One and one-point-zero — equal in Python. Should collapse to a single item. The repr version keeps both, because the string one is not the string one-point-zero. Same for True and one. The tests never asked. Claude even said it in the reply — the caveat is right there. But the fence let it through.",
+      "estimated_duration_s": 22.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — Liam's [1, 1.0] and [True, 1] checks show the drift",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "dedupe — the check the tests didn't have",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "python3 -c \"from dedupe import dedupe; print(dedupe([1,1.0]))\"",
+                "cue": 0,
+                "typeDuration": 110
+              },
+              {
+                "type": "text",
+                "text": "[1, 1.0]"
+              },
+              {
+                "type": "prompt",
+                "text": "python3 -c \"from dedupe import dedupe; print(dedupe([True,1]))\"",
+                "cue": 0,
+                "typeDuration": 110
+              },
+              {
+                "type": "text",
+                "text": "[True, 1]"
+              },
+              {
+                "type": "text",
+                "text": "# both should collapse under =="
+              },
+              {
+                "type": "text",
+                "text": "# repr(1) != repr(1.0). The tests"
+              },
+              {
+                "type": "text",
+                "text": "# never checked. Claude even said so."
+              }
+            ],
+            "cues": [
+              0,
+              120,
+              150,
+              270,
+              300,
+              325,
+              355
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.1,
+          "event": "[1, 1.0]"
+        },
+        {
+          "at": 0.5,
+          "event": "[True, 1]"
+        },
+        {
+          "at": 0.9,
+          "event": "the tests never checked"
+        }
+      ],
+      "actual_duration_s": 17.11,
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "WHY IT DRIFTED — THE POLLUTED SESSION",
+      "lane": "SHELL",
+      "narration_text": "Why did simpler produce clever? The session carries every prior turn — the linear scan, the two-branch fast path, and its own passing tests. Simpler landed on all of that. The context said: cleverer than what already worked. The tests couldn't say: same equality as before. That's context pollution.",
+      "estimated_duration_s": 17.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCPlainShell — the session log growing across three resumes",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "session context — a09ae7ad",
+            "lines": [
+              "$ claude-code session view a09ae7ad",
+              "turn 1  ask: the dedupe tests fail. fix.",
+              "        answer: linear scan       PASS",
+              "turn 2  ask: O(n^2). speed it up.",
+              "        answer: two-branch try/exc  PASS",
+              "turn 3  ask: simpler. one data structure.",
+              "        answer: dict keyed by repr  PASS",
+              "context carries: 3 PASS handoffs + diff.",
+              "# next prompt reasons against all of it",
+              "# as if it were the spec."
+            ],
+            "startCue": 10,
+            "lineGap": 24
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the growing session log is the mechanism; a single terminal beat can't hold three turns at once"
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "turn 1"
+        },
+        {
+          "at": 0.5,
+          "event": "turn 3 — 'simpler'"
+        },
+        {
+          "at": 0.9,
+          "event": "context carries"
+        }
+      ],
+      "actual_duration_s": 15.62,
+      "audio_file": "mp3/beat-B06.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "REWIND — RESTORE THE CHECKPOINT",
+      "lane": "SHELL",
+      "narration_text": "Rewind. Two commands. Git reset the scratch to the buggy start — the files are back where they were. Then a new session id, no resume. The skill's own words: a new claude-p is a fresh session — that's slash clear. Conversation gone, files restored. Ready to respecify.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCPlainShell — git reset + new session-id",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "zsh — the rewind",
+            "lines": [
+              "$ git reset --hard f5ef78b",
+              "HEAD is now at f5ef78b buggy start",
+              "$ cat dedupe.py",
+              "def dedupe(items):",
+              "    return list(set(items))",
+              "$ SID=$(uuidgen | tr A-Z a-z)",
+              "$ echo $SID",
+              "96c45930-f2c9-4a95-b152-e01653e11d07",
+              "# no --resume. a new claude -p is /clear."
+            ],
+            "startCue": 10,
+            "lineGap": 24
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        },
+        "leaves_terminal_because": "the rewind is a shell action outside the session — git + a new session id"
+      },
+      "show": [
+        {
+          "at": 0.1,
+          "event": "git reset"
+        },
+        {
+          "at": 0.5,
+          "event": "buggy start restored"
+        },
+        {
+          "at": 0.9,
+          "event": "new session id"
+        }
+      ],
+      "actual_duration_s": 14.61,
+      "audio_file": "mp3/beat-B07.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "RESPEC — THE FAILURE AS CONSTRAINT",
+      "lane": "TERMINAL",
+      "narration_text": "The respec. The same original ask — plus the failure the tests couldn't catch, named as a constraint. Preserve order. Handle unhashable. Equality is double-equals, not repr — so one, one-point-zero must collapse to one. Use hashing with a linear-scan fallback. Don't modify the test.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — the fresh session, respec typed",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "dedupe — respec, fresh session",
+            "mode": "accept-edits",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "Fix dedupe.py so that: order preserved;",
+                "cue": 0,
+                "typeDuration": 100
+              },
+              {
+                "type": "prompt",
+                "text": "unhashable items work; equality is ==, not",
+                "cue": 0,
+                "typeDuration": 100
+              },
+              {
+                "type": "prompt",
+                "text": "repr — dedupe([1,1.0]) must return [1].",
+                "cue": 0,
+                "typeDuration": 90
+              },
+              {
+                "type": "prompt",
+                "text": "Hashing with linear-scan fallback.",
+                "cue": 0,
+                "typeDuration": 80
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "dedupe.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Read",
+                "arg": "test_dedupe.py",
+                "state": "done"
+              },
+              {
+                "type": "tool",
+                "name": "Write",
+                "arg": "dedupe.py",
+                "state": "done"
+              }
+            ],
+            "cues": [
+              0,
+              110,
+              220,
+              320,
+              410,
+              435,
+              460
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.1,
+          "event": "the respec types"
+        },
+        {
+          "at": 0.7,
+          "event": "Reads"
+        },
+        {
+          "at": 0.9,
+          "event": "Write"
+        }
+      ],
+      "actual_duration_s": 15.25,
+      "audio_file": "mp3/beat-B08.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "RESPEC — VERIFY",
+      "lane": "TERMINAL",
+      "narration_text": "The verify. Three tests pass. And now the check the tests didn't have — one and one-point-zero returns one. True and one returns True. Same model. Same tests. Different context — the failure mode named as a line in the ask. One shot, right.",
+      "estimated_duration_s": 16.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCSession — unittest → OK; [1, 1.0] → [1]",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "CCSession",
+          "props": {
+            "title": "dedupe — respec verify",
+            "mode": "default",
+            "blocks": [
+              {
+                "type": "prompt",
+                "text": "python3 -m unittest test_dedupe.py",
+                "cue": 0,
+                "typeDuration": 70
+              },
+              {
+                "type": "text",
+                "text": "Ran 3 tests in 0.000s — OK"
+              },
+              {
+                "type": "prompt",
+                "text": "python3 -c \"from dedupe import dedupe; print(dedupe([1,1.0]))\"",
+                "cue": 0,
+                "typeDuration": 110
+              },
+              {
+                "type": "text",
+                "text": "[1]"
+              },
+              {
+                "type": "prompt",
+                "text": "python3 -c \"from dedupe import dedupe; print(dedupe([True,1]))\"",
+                "cue": 0,
+                "typeDuration": 110
+              },
+              {
+                "type": "text",
+                "text": "[True]"
+              }
+            ],
+            "cues": [
+              0,
+              80,
+              110,
+              230,
+              260,
+              380
+            ],
+            "mascot": "off"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "unittest → OK"
+        },
+        {
+          "at": 0.4,
+          "event": "[1]"
+        },
+        {
+          "at": 0.85,
+          "event": "[True]"
+        }
+      ],
+      "actual_duration_s": 13.4,
+      "audio_file": "mp3/beat-B09.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "CONDUCT — THE BOONDOGGLE SCORE",
+      "lane": "TERMINAL",
+      "narration_text": "Who did what. Step one, mine — the vague ask. Step two, Claude — linear scan; handoff, tests pass. Step three, Claude — two-branch fast path; still passing. Step four, the dangerous middle: simpler landed on all of that and became clever. Tests still passed. Nothing in the fence caught it. Step five, mine — plausibility auditing: I ran the check the tests didn't have. Step six, mine — interpretive judgment: rewind, don't iterate. Step seven, Claude — respec; handoff, tests pass and one and one-point-zero collapses. Tool orchestration: zero. Executive integration: zero. One page, honest score.",
+      "estimated_duration_s": 34.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCBoondoggleScore",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCBoondoggleScore",
+          "props": {
+            "system": "3 fix-forward · 1 respec",
+            "steps": [
+              {
+                "n": 1,
+                "phase": "F",
+                "labor": "human",
+                "capacity": "PF",
+                "text": "Vague ask: 'fix it'"
+              },
+              {
+                "n": 2,
+                "phase": "C",
+                "labor": "claude",
+                "text": "FF1: linear scan",
+                "handoff": "tests pass",
+                "dependsOn": [
+                  1
+                ]
+              },
+              {
+                "n": 3,
+                "phase": "C",
+                "labor": "claude",
+                "text": "FF2: two-branch fast path",
+                "handoff": "tests still pass",
+                "dependsOn": [
+                  2
+                ]
+              },
+              {
+                "n": 4,
+                "phase": "C",
+                "labor": "claude",
+                "text": "FF3: repr one-liner",
+                "handoff": "passes tests, semantics drift",
+                "dependsOn": [
+                  3
+                ]
+              },
+              {
+                "n": 5,
+                "phase": "H",
+                "labor": "human",
+                "capacity": "PA",
+                "text": "Check the tests don't run",
+                "dependsOn": [
+                  4
+                ]
+              },
+              {
+                "n": 6,
+                "phase": "H",
+                "labor": "human",
+                "capacity": "IJ",
+                "text": "Rewind, don't iterate",
+                "dependsOn": [
+                  5
+                ]
+              },
+              {
+                "n": 7,
+                "phase": "C",
+                "labor": "claude",
+                "text": "Respec fresh: two branches",
+                "handoff": "tests pass; [1,1.0] collapses",
+                "dependsOn": [
+                  6
+                ]
+              }
+            ],
+            "dangerousMiddle": 4,
+            "distribution": true,
+            "stepGap": 22
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "Header"
+        },
+        {
+          "at": 0.45,
+          "event": "Step 4 rings"
+        },
+        {
+          "at": 0.95,
+          "event": "Tally"
+        }
+      ],
+      "actual_duration_s": 31.57,
+      "audio_file": "mp3/beat-B10.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "HUMAN — THE LEDGER",
+      "lane": "TERMINAL",
+      "narration_text": "So what was mine. I must run the check the tests can't. I must decide when the diff has drifted, even when it's green. I must choose rewind over another turn — no one else can. I should stop resuming after two prior fixes on the same target. Claude can produce clever code the tests will pass — and it will. It can name a caveat in its own reply — it did. It should carry a named negative constraint into a fresh session — it does. It should hand back the fallback branch without being reminded. That's the trade.",
+      "estimated_duration_s": 35.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "CCHumanLedger",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "CCHumanLedger",
+          "props": {
+            "ai": [
+              {
+                "tier": "CAN",
+                "text": "write clever, tests-pass code"
+              },
+              {
+                "tier": "CAN",
+                "text": "name a caveat in its reply"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "honor a negative constraint"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "keep the fallback branch"
+              }
+            ],
+            "human": [
+              {
+                "tier": "MUST",
+                "text": "run the check tests can't"
+              },
+              {
+                "tier": "MUST",
+                "text": "see when the diff drifted"
+              },
+              {
+                "tier": "MUST",
+                "text": "rewind, not another turn"
+              },
+              {
+                "tier": "SHOULD",
+                "text": "stop resuming after two fixes"
+              }
+            ],
+            "closing": "Rewind. Respecify. Fresh session. Same model, different context.",
+            "humanCue": 70,
+            "rowGap": 12
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "THE AI"
+        },
+        {
+          "at": 0.4,
+          "event": "THE HUMAN"
+        },
+        {
+          "at": 0.9,
+          "event": "Closing"
+        }
+      ],
+      "actual_duration_s": 25.71,
+      "audio_file": "mp3/beat-B11.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "VERDICT",
+      "lane": "BOOKEND",
+      "narration_text": "Let's recap with Claude. Fix-forward through three resumes: linear scan, two-branch, repr one-liner — tests pass all the way, and the last one silently changed equality. Rewind: git reset the checkpoint, a fresh session id, no resume — the skill's rule is that a new claude-p is slash clear. Respec: the same ask plus the failure mode named as a constraint. Respec ran once. It was right. What would prove this reel wrong: a fix-forward third turn that keeps the two-branch equality without being told to.",
+      "estimated_duration_s": 30.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeVerdictArtifact",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "verdict.md",
+            "artifactHeading": "Why Rewriting the Wrong Fix Makes the Build Worse, Not Better",
+            "artifactLines": [
+              "Fix-forward three times: linear → two-branch → repr one-liner. Tests pass all the way; the last one drifted on ==.",
+              "Rewind: git reset --hard <checkpoint>; a new session id, no --resume. A new `claude -p` is /clear.",
+              "Respec: the original ask plus the failure mode as a constraint ('== not repr; [1,1.0] must return [1]'). One turn, right.",
+              "FALSIFIABLE: a fix-forward third turn that keeps the two-branch equality without being told to."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Artifact"
+        },
+        {
+          "at": 0.25,
+          "event": "Lines"
+        },
+        {
+          "at": 0.9,
+          "event": "Falsifiable"
+        }
+      ],
+      "lead_silence_s": 0.5,
+      "actual_duration_s": 27.05,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "YOUR TURN",
+      "lane": "BOOKEND",
+      "narration_text": "Your turn. Next time a Claude fix passes your tests but you're not sure — before you type fix it again, open Claude Code and paste this: here's the diff and the test file. Name three checks the tests don't run that would catch a wrong-but-passing answer. Then rewrite my original ask with each of those as a negative constraint.",
+      "estimated_duration_s": 21.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeComposerAsk",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "Here's the diff and the test file. Name three checks the tests don't run that would catch a wrong-but-passing answer. Then rewrite my original ask with each of those as a negative constraint.",
+            "segment": "Why Rewriting the Wrong Fix Makes the Build Worse, Not Better",
+            "topic": "YOUR TURN · CLAUDE CODE 101",
+            "runningText": "paste this into Claude Code…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Composer"
+        },
+        {
+          "at": 0.7,
+          "event": "Send arms"
+        }
+      ],
+      "actual_duration_s": 17.09,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "OUTRO",
+      "lane": "BOOKEND",
+      "narration_text": "Why Rewriting the Wrong Fix Makes the Build Worse, Not Better. Liam, in for Bear.",
+      "estimated_duration_s": 6.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeTitleOutro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why Rewriting the Wrong Fix Makes the Build Worse, Not Better",
+            "slug": "cc-rewind-respec",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Title"
+        },
+        {
+          "at": 0.35,
+          "event": "@NikBearBrown"
+        },
+        {
+          "at": 0.6,
+          "event": "Mascot"
+        }
+      ],
+      "actual_duration_s": 5.35,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-09T21:00:07"
+      }
+    }
+  ]
+}

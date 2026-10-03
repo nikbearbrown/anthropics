@@ -1,18 +1,28 @@
 {
   "metadata": {
     "title": "Research the Nanoparticle Characterization Cascade: Why a Nanoparticle Is a Distribution, Not a Molecule",
+    "short_title": "The Characterization Cascade",
     "slug": "nanoparticle-characterization",
     "topic": "CANCER NANOMEDICINE",
     "register": "Teardown",
     "voice": "nbbhuman",
-    "voice_id": "TyW6NH39JcFb5M3xdIIk",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
     "palette": "teardown",
     "style_preset": "nikbearbrown",
     "style": "cli",
     "ground": "#FFFFFF",
     "color_semantics": "teardown: INK #2A1A0E neutral/normal; CRIMSON #C8102E key finding/vulnerability; SLATE #545454 structure/neutral",
-    "note": "CLI video REQUIRED spine: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 slate (characterization cascade) · B05 CHANGE · B06 slate · B07 slate · B08 slate · B09 outro. Source: cancer-nanomedicine/chapters/11-characterization-manufacturing-and-regulatory-translation.md",
-    "total_estimated_duration_seconds": 148
+    "note": "CLI video REQUIRED spine: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 characterization cascade · B05 CHANGE · B06 in vitro/in vivo · B07 SUMMARY · B08 NEXT STEPS · B09 outro. Source: cancer-nanomedicine/chapters/11-characterization-manufacturing-and-regulatory-translation.md",
+    "total_estimated_duration_seconds": 148,
+    "build": {
+      "at": "2026-08-27T14:53:00",
+      "cut": "review",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": []
+    }
   },
   "beats": [
     {
@@ -31,40 +41,52 @@
               "Nik Bear Brown",
               "A nanoparticle is a distribution. Not a molecule."
             ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
           }
         }
       },
-      "estimated_duration_s": 5
+      "estimated_duration_s": 5,
+      "actual_duration_s": 4.59,
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      }
     },
     {
       "beat_id": "B01",
       "act": "PROBLEM",
       "role_note": "stakes/why before terminal -- <=60 words",
       "narration_text": "A pharmaceutical small molecule has a single defined structure — a molecular formula, a melting point, a purity specification. A nanoparticle is a distribution of objects with heterogeneous sizes, surface charges, drug loadings, and release rates. This nanoparticle is not a single thing. Characterizing a nanoparticle formulation requires a cascade of measurements — and each measurement has a different artifact, limitation, and interpretation.",
-      "visual_intent": "SLATE — title card: NANOPARTICLE CHARACTERIZATION CASCADE: 7 MEASUREMENTS, 7 ARTIFACTS; contrast small molecule (one number) vs nanoparticle (a population distribution); FDA now requires all seven",
+      "visual_intent": "FormBCard — small molecule vs nanoparticle vs the seven-measurement cascade",
       "shot": {
         "type": "REMOTION",
         "source": "own",
         "remotion": {
           "pattern": "FormBCard",
           "props": {
-            "title": "Research the Nanoparticle Characterization Cascade: Why a Nanoparticle Is a Distribution, Not a Molecule",
+            "title": "The Characterization Cascade",
             "items": [
               {
-                "label": "Key point one",
-                "sub": "",
+                "label": "One molecule, one number",
+                "sub": "Formula, purity, melting point — a single spec",
                 "icon": "target",
                 "cueFrame": 20
               },
               {
-                "label": "Key point two",
-                "sub": "",
+                "label": "One nanoparticle, a distribution",
+                "sub": "Sizes, charges, drug loads all vary",
                 "icon": "list-checks",
                 "cueFrame": 55
               },
               {
-                "label": "Key point three",
-                "sub": "",
+                "label": "Seven measurements, seven artifacts",
+                "sub": "Each answers a piece; none defines the whole",
                 "icon": "zap",
                 "cueFrame": 90
               }
@@ -82,8 +104,13 @@
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      },
+      "actual_duration_s": 23.72,
+      "audio_file": "mp3/beat-B01.mp3"
     },
     {
       "beat_id": "B02",
@@ -102,10 +129,22 @@
             "segment": "NANOPARTICLE CHARACTERIZATION",
             "runningText": "researching characterization cascade...",
             "greeting": "The ask,"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
           }
         }
       },
-      "estimated_duration_s": 15
+      "estimated_duration_s": 15,
+      "actual_duration_s": 11.46,
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      }
     },
     {
       "beat_id": "B03",
@@ -123,23 +162,72 @@
             "topic": "CANCER NANOMEDICINE",
             "segment": "NANOPARTICLE CHARACTERIZATION",
             "code": "# np_characterization.py — Claude Code output\nCASCADE = [\n  (\"Size (DLS)\",         \"1-1000 nm\",   \"overestimates large particles (intensity-weighted)\"),\n  (\"PDI\",               \"<0.2\",        \"not absolute — preparation-dependent\"),\n  (\"Zeta potential\",    \">±30 mV\",     \"ionic strength masks true surface charge\"),\n  (\"Encapsulation eff.\",\">70%\",        \"dialysis artifact: equilibrium not equilibrated\"),\n  (\"Drug release\",      \">80% in 24h\", \"in vitro release ≠ in vivo release (pH, enzymes)\"),\n  (\"Colloidal stability\",\"<10% change\", \"buffer ≠ serum conditions\"),\n  (\"Sterility/endotoxin\",\"<0.5 EU/mL\",  \"LAL assay — NP surface can interfere\"),\n]\nfor m, spec, artifact in CASCADE:\n    print(f\"  {m:<22} spec={spec:<12} artifact: {artifact}\")"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
           }
         }
       },
-      "estimated_duration_s": 15
+      "estimated_duration_s": 15,
+      "actual_duration_s": 24.34,
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      }
     },
     {
       "beat_id": "B04",
       "act": "OUTPUT — characterization cascade",
-      "role_note": "SLATE — characterization cascade narration; Remotion animated checklist intended for future fill",
+      "role_note": "characterization cascade output — four seed measurements from the seven",
       "narration_text": "Seven measurements. Each answers a different question, and each has a built-in artifact. DLS gives you the hydrodynamic radius — the particle as it sits in solution, surrounded by its hydration shell and protein corona. PDI below 0.2 means the population is narrow enough for reproducible dosing. Zeta potential above plus or minus thirty millivolts predicts colloidal stability. None of the seven alone defines the product. All seven together define the population.",
-      "visual_intent": "SLATE — characterization cascade checklist: seven measurements filling in sequence, each with purpose, artifact, and pass/fail annotation; final line: all seven together define the distribution, not any one alone; Remotion animated checklist intended for future fill",
+      "visual_intent": "FormBCard — the cascade's headline measurements with pass thresholds",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Seven Together Define the Product",
+            "items": [
+              {
+                "label": "Size (DLS)",
+                "sub": "Hydrodynamic radius, hydration shell included",
+                "icon": "ruler",
+                "cueFrame": 20
+              },
+              {
+                "label": "PDI < 0.2",
+                "sub": "Narrow population = reproducible dosing",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Zeta > ±30 mV",
+                "sub": "Predicts colloidal stability",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 20
+      "estimated_duration_s": 20,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      },
+      "actual_duration_s": 26.01,
+      "audio_file": "mp3/beat-B04.mp3"
     },
     {
       "beat_id": "B05",
@@ -158,49 +246,172 @@
             "segment": "NANOPARTICLE CHARACTERIZATION",
             "runningText": "evaluating in vitro/in vivo gap...",
             "greeting": "The ask,"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
           }
         }
       },
-      "estimated_duration_s": 14
+      "estimated_duration_s": 14,
+      "actual_duration_s": 12.59,
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      }
     },
     {
       "beat_id": "B06",
       "act": "OUTPUT — revised",
       "role_note": "change result narration",
       "narration_text": "The three discordances: first, protein corona — the nanoparticle you characterized in buffer is not what you injected. The hydrodynamic diameter in plasma is fifteen to forty nanometers larger than in buffer, and the surface charge is neutralized by adsorbed proteins. Second, in vitro drug release at pH 7.4 does not replicate the pH 5.5 endosomal environment or the lysosomal enzymes. Third, colloidal stability in PBS tells you nothing about stability in whole blood with shear forces and serum proteins.",
-      "visual_intent": "SLATE — in vitro/in vivo discordance table: CORONA (buffer vs plasma size); DRUG RELEASE (pH 7.4 vs endosomal pH 5.5); STABILITY (PBS vs whole blood shear + serum); each with experimental signature",
+      "visual_intent": "FormBCard — the three in vitro/in vivo discordances",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "In Vitro Passes, In Vivo Fails",
+            "items": [
+              {
+                "label": "Corona shifts size and charge",
+                "sub": "Plasma diameter +15–40 nm; surface neutralized",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Release at pH 7.4 ≠ endosome",
+                "sub": "Endosomal pH 5.5 and enzymes rewrite kinetics",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "PBS stability ≠ blood stability",
+                "sub": "Shear plus serum proteins destabilize",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 18
+      "estimated_duration_s": 18,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      },
+      "actual_duration_s": 30.06,
+      "audio_file": "mp3/beat-B06.mp3"
     },
     {
       "beat_id": "B07",
       "act": "SUMMARY",
       "role_note": "the lesson — one beat",
       "narration_text": "So the characterization cascade reveals what makes nanomedicines a different regulatory category from small molecules. A molecule has identity; a nanoparticle has a population distribution. Batch-to-batch variability is not impurity — it is the nature of the product. Regulators have spent twenty years building frameworks to define sameness for something that is inherently heterogeneous.",
-      "visual_intent": "SLATE — summary card: SMALL MOLECULE: identity = molecular formula; NANOPARTICLE: identity = population distribution; batch variability is the product, not an impurity; FDA nanoparticle guidance as regulatory acknowledgment of this",
+      "visual_intent": "FormBCard — small molecule identity vs nanoparticle population; batch variability is the product",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "A Different Regulatory Object",
+            "items": [
+              {
+                "label": "Small molecule = identity",
+                "sub": "One molecular formula, one spec",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Nanoparticle = distribution",
+                "sub": "A population, not a compound",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Variability is the product",
+                "sub": "Batch-to-batch spread is the nature, not impurity",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 16
+      "estimated_duration_s": 16,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      },
+      "actual_duration_s": 21.33,
+      "audio_file": "mp3/beat-B07.mp3"
     },
     {
       "beat_id": "B08",
       "act": "NEXT STEPS",
       "role_note": "what to do next",
       "narration_text": "Your move: run your nanoparticle formulation through all seven cascade measurements and build the characterization certificate. Then re-run size by DLS in fifty percent human serum and compare to the buffer measurement. The gap between those two numbers is your corona delta — and it predicts in vivo behavior more accurately than any single buffer measurement.",
-      "visual_intent": "SLATE — next steps card: 1) build full characterization certificate (all 7 measurements); 2) re-run DLS in 50% human serum (corona delta = serum size - buffer size); 3) cryo-TEM for morphology confirmation; pointer to protein corona reel",
+      "visual_intent": "FormBCard — three concrete next actions, cascade → serum comparison → cryo-TEM",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Your Move",
+            "items": [
+              {
+                "label": "Run all seven cascade tests",
+                "sub": "Build the characterization certificate",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Re-run DLS in 50% serum",
+                "sub": "Corona delta = serum size − buffer size",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Add cryo-TEM for morphology",
+                "sub": "See the actual particle, not just the shell",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 17
+      "estimated_duration_s": 17,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      },
+      "actual_duration_s": 19.54,
+      "audio_file": "mp3/beat-B08.mp3"
     },
     {
       "beat_id": "B09",
@@ -217,17 +428,29 @@
             "tagline": "Brutalist + Educational AI",
             "handle": "@NikBearBrown",
             "url": "nikbearbrown.com",
-            "title": "Research the Nanoparticle Characterization Cascade: Why a Nanoparticle Is a Distribution, Not a Molecule"
+            "title": "The Characterization Cascade"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
           }
         }
       },
-      "estimated_duration_s": 8
+      "estimated_duration_s": 8,
+      "actual_duration_s": 6.51,
+      "audio_file": "mp3/beat-B09.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict recap",
       "lane": "BOOKEND",
-      "narration_text": "",
+      "narration_text": "A nanoparticle is a distribution, not a molecule. Seven cascade measurements together define the product, and every one carries its own artifact — DLS overestimates large particles, PDI is preparation-dependent, buffer stability is not plasma stability. Batch variability is the nature of the material, not an impurity.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
@@ -238,12 +461,13 @@
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
-            "artifactTitle": "Research the Nanoparticle Characterization Cascade: Why a Nanoparticle Is a Distribution, Not a Molecule",
-            "artifactHeading": "Key findings",
+            "artifactTitle": "The Characterization Cascade",
+            "artifactHeading": "Verdict",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "A nanoparticle is a distribution, not a molecule.",
+              "Seven measurements; each has its own artifact.",
+              "Buffer characterization is not plasma behavior.",
+              "Batch variability is the product, not impurity."
             ]
           },
           "rendered": {
@@ -253,8 +477,13 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      },
+      "actual_duration_s": 18.75,
+      "audio_file": "mp3/beat-BVDT.mp3"
     },
     {
       "beat_id": "BHTF",
@@ -273,8 +502,8 @@
           "props": {
             "greeting": "Your turn.",
             "topic": "YOUR TURN · CANCER NANOMEDICINE",
-            "segment": "Research the Nanoparticle Characterization Cascade: Why a…",
-            "command": "Take what you learned from [Research the Nanoparticle Characterization Cascade: Why a Nanoparticle Is a Distribution, Not a Molecule] and apply it to your own work. What's one thing you'll try first?",
+            "segment": "The Characterization Cascade",
+            "command": "Run your own nanoparticle formulation through the seven-measurement cascade, then re-run DLS in fifty-percent human serum. What is your corona delta — and what does it predict about in vivo behavior?",
             "runningText": "paste this into Claude and run it on your own work…",
             "output": [],
             "folderLabel": "@NikBearBrown"
@@ -286,8 +515,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BOUT",
@@ -304,7 +537,7 @@
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "Research the Nanoparticle Characterization Cascade: Why a Nanoparticle Is a Distribution, Not a Molecule",
+            "title": "The Characterization Cascade",
             "slug": "nanoparticle-characterization"
           },
           "rendered": {
@@ -314,8 +547,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-27T14:53:00"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

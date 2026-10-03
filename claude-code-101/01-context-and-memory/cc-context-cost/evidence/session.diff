@@ -1,0 +1,233 @@
+diff --git a/src/gradebook.py b/src/gradebook.py
+index 1498535..5340b0b 100644
+--- a/src/gradebook.py
++++ b/src/gradebook.py
+@@ -1,8 +1,10 @@
+ """gradebook — add students, record scores, print averages."""
+-import json, sys
++import csv, json, sys
++from contextlib import contextmanager
+ from pathlib import Path
+ 
+ DB = Path("grades.json")
++CSV = Path("grades.csv")
+ 
+ 
+ def load():
+@@ -13,35 +15,85 @@ def save(data):
+     DB.write_text(json.dumps(data, indent=2))
+ 
+ 
+-def add(name):
++@contextmanager
++def session():
+     data = load()
+-    data.setdefault(name, [])
+-    save(data)
++    before = json.dumps(data)
++    yield data
++    if json.dumps(data) != before:
++        save(data)
++
++
++def add(name):
++    with session() as data:
++        data.setdefault(name, [])
+     print(f"added {name}")
+ 
+ 
+ def score(name, value):
+-    data = load()
+-    data.setdefault(name, []).append(float(value))
+-    save(data)
++    with session() as data:
++        data.setdefault(name, []).append(float(value))
+     print(f"{name}: {value}")
+ 
+ 
+ def remove(name):
+-    data = load()
+-    if data.pop(name, None) is None:
+-        print(f"no such student: {name}")
+-        return
+-    save(data)
++    with session() as data:
++        if data.pop(name, None) is None:
++            print(f"no such student: {name}")
++            return
+     print(f"removed {name}")
+ 
+ 
++def rename(old, new):
++    with session() as data:
++        if old not in data:
++            print(f"no such student: {old}")
++            return
++        if new in data:
++            print(f"already exists: {new}")
++            return
++        data[new] = data.pop(old)
++    print(f"renamed {old} to {new}")
++
++
+ def report():
+     for name, scores in load().items():
+         avg = sum(scores) / len(scores) if scores else 0.0
+         print(f"{name:12s} {avg:6.1f}")
+ 
+ 
++def stats(name):
++    data = load()
++    if name not in data:
++        print(f"no such student: {name}")
++        return
++    scores = data[name]
++    if not scores:
++        print(f"{name}: no scores")
++        return
++    print(f"{name} count={len(scores)} mean={sum(scores) / len(scores):.1f} min={min(scores):.1f} max={max(scores):.1f}")
++
++
++def export():
++    with CSV.open("w", newline="") as f:
++        writer = csv.writer(f)
++        writer.writerow(["name", "average", "scores"])
++        for name, scores in load().items():
++            avg = sum(scores) / len(scores) if scores else 0.0
++            writer.writerow([name, f"{avg:.1f}", " ".join(str(s) for s in scores)])
++    print(f"wrote {CSV}")
++
++
++def top(n):
++    averages = [
++        (name, sum(scores) / len(scores) if scores else 0.0)
++        for name, scores in load().items()
++    ]
++    averages.sort(key=lambda item: item[1], reverse=True)
++    for name, avg in averages[: int(n)]:
++        print(f"{name:12s} {avg:6.1f}")
++
++
+ if __name__ == "__main__":
+     cmd, *args = sys.argv[1:] or ["report"]
+-    {"add": add, "score": score, "remove": remove, "report": report}[cmd](*args)
++    {"add": add, "score": score, "remove": remove, "rename": rename, "report": report, "top": top, "stats": stats, "export": export}[cmd](*args)
+diff --git a/tests/test_gradebook.py b/tests/test_gradebook.py
+index 14a43d3..0002a74 100644
+--- a/tests/test_gradebook.py
++++ b/tests/test_gradebook.py
+@@ -47,5 +47,114 @@ class TestGradebook(unittest.TestCase):
+                 gradebook.DB = original_db
+ 
+ 
++    def test_rename(self):
++        with tempfile.TemporaryDirectory() as tmp:
++            original_db = gradebook.DB
++            gradebook.DB = Path(tmp) / "grades.json"
++            try:
++                gradebook.add("ada")
++                gradebook.score("ada", 90)
++                gradebook.add("grace")
++                buf = io.StringIO()
++                with redirect_stdout(buf):
++                    gradebook.rename("ada", "ada_l")
++                self.assertIn("renamed ada to ada_l", buf.getvalue())
++                self.assertEqual(gradebook.load(), {"ada_l": [90.0], "grace": []})
++
++                buf = io.StringIO()
++                with redirect_stdout(buf):
++                    gradebook.rename("nobody", "somebody")
++                self.assertIn("no such student", buf.getvalue())
++
++                buf = io.StringIO()
++                with redirect_stdout(buf):
++                    gradebook.rename("ada_l", "grace")
++                self.assertIn("already exists", buf.getvalue())
++                self.assertEqual(gradebook.load(), {"ada_l": [90.0], "grace": []})
++            finally:
++                gradebook.DB = original_db
++
++
++    def test_top(self):
++        with tempfile.TemporaryDirectory() as tmp:
++            original_db = gradebook.DB
++            gradebook.DB = Path(tmp) / "grades.json"
++            try:
++                gradebook.add("ada")
++                gradebook.score("ada", 80)
++                gradebook.add("grace")
++                gradebook.score("grace", 95)
++                gradebook.add("linus")
++                gradebook.score("linus", 70)
++                buf = io.StringIO()
++                with redirect_stdout(buf):
++                    gradebook.top(2)
++                lines = [l for l in buf.getvalue().splitlines() if l.strip()]
++                self.assertEqual(len(lines), 2)
++                self.assertTrue(lines[0].startswith("grace"))
++                self.assertIn("95.0", lines[0])
++                self.assertTrue(lines[1].startswith("ada"))
++                self.assertIn("80.0", lines[1])
++            finally:
++                gradebook.DB = original_db
++
++
++    def test_export(self):
++        with tempfile.TemporaryDirectory() as tmp:
++            original_db = gradebook.DB
++            original_csv = gradebook.CSV
++            gradebook.DB = Path(tmp) / "grades.json"
++            gradebook.CSV = Path(tmp) / "grades.csv"
++            try:
++                gradebook.add("ada")
++                gradebook.score("ada", 90)
++                gradebook.score("ada", 80)
++                gradebook.add("grace")
++                buf = io.StringIO()
++                with redirect_stdout(buf):
++                    gradebook.export()
++                self.assertIn("wrote", buf.getvalue())
++                self.assertTrue(gradebook.CSV.exists())
++                lines = gradebook.CSV.read_text().splitlines()
++                self.assertEqual(lines[0], "name,average,scores")
++                self.assertIn("ada,85.0,90.0 80.0", lines)
++                self.assertIn("grace,0.0,", lines)
++            finally:
++                gradebook.DB = original_db
++                gradebook.CSV = original_csv
++
++
++    def test_stats(self):
++        with tempfile.TemporaryDirectory() as tmp:
++            original_db = gradebook.DB
++            gradebook.DB = Path(tmp) / "grades.json"
++            try:
++                gradebook.add("ada")
++                gradebook.score("ada", 90)
++                gradebook.score("ada", 80)
++                gradebook.score("ada", 70)
++                gradebook.add("grace")
++                buf = io.StringIO()
++                with redirect_stdout(buf):
++                    gradebook.stats("ada")
++                out = buf.getvalue()
++                self.assertIn("count=3", out)
++                self.assertIn("mean=80.0", out)
++                self.assertIn("min=70.0", out)
++                self.assertIn("max=90.0", out)
++
++                buf = io.StringIO()
++                with redirect_stdout(buf):
++                    gradebook.stats("grace")
++                self.assertIn("no scores", buf.getvalue())
++
++                buf = io.StringIO()
++                with redirect_stdout(buf):
++                    gradebook.stats("nobody")
++                self.assertIn("no such student", buf.getvalue())
++            finally:
++                gradebook.DB = original_db
++
++
+ if __name__ == "__main__":
+     unittest.main()

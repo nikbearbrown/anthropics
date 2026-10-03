@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "PPTX",
+    "title": "Claude, Pptx.",
     "slug": "claude-liam-pptx",
     "topic": "PPTX · ANTHROPIC SKILL",
     "register": "Teardown",
@@ -13,17 +13,64 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Ciao, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/skills/skills/pptx/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/skills/skills/pptx/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Use this skill any time a .pptx file is involved in any way — as input",
+        "This includes: creating slide decks",
+        "or presentations",
+        "or extracting text from any .pptx file (even if the extracted content will be used elsewhere",
+        "like in an email or summary)"
+      ],
+      "constraints": [
+        "Dominance over equality: One color should dominate (60-70% visual weight), with 1-2 supporting tones and one sharp accent. Never give all colors equal weight",
+        "Every slide needs a visual element — image, chart, icon, or shape. Text-only slides are forgettable",
+        "Don't center body text — left-align paragraphs and lists; center only titles",
+        "Don't create text-only slides — add images, icons, charts, or visual elements; avoid plain title + bullets",
+        "NEVER use accent lines under titles — these are a hallmark of AI-generated slides; use whitespace or background color instead",
+        "## QA (Required)",
+        "Your first render is almost never correct. Approach QA as a bug hunt, not a confirmation step. If you found zero issues on first inspection, you weren't looking hard…",
+        "Do not declare success until you've completed at least one fix-and-verify cycle"
+      ],
+      "referenced_files": [
+        "python -m markitdown presentation.pptx",
+        "thumbnail.py",
+        "slide-01.jpg",
+        "slide-02.jpg",
+        "npm install -g pptxgenjs",
+        "scripts/office/soffice.py",
+        "editing.md",
+        "LICENSE.txt",
+        "pptxgenjs.md",
+        "scripts/"
+      ],
+      "code_signals": [
+        "code block: bash"
+      ],
+      "sections": [
+        "Quick Reference",
+        "Reading Content",
+        "Editing Workflow",
+        "Creating from Scratch",
+        "Design Ideas",
+        "Before Starting",
+        "Color Palettes",
+        "For Each Slide",
+        "Typography",
+        "Spacing"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T14:55:40",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T12:35:19",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +79,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Ciao — this is Liam, in for Bear. Ask Claude to build a pitch deck, parse a presentation, or update existing slides. The PPTX skill fires. It does not reach for python-pptx. It routes: markitdown to read, the editing workflow for template work, pptxgenjs to create from scratch. And it has a design mandate — boring slides are explicitly prohibited. Let me show you the routing logic, the design rules, and the QA standard that makes this skill serious.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is pptx. Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates, layouts, speaker notes, or comments. Trigger whenever the user mentions \\\"deck,\\\" \\\"slides,\\\" \\\"presentation,\\\" or references a .pptx filename, regardless of what they plan to do with the content afterward. If a .pptx file needs to be opened, created, or touched, use this skill.. Its concrete surface area includes Use this skill any time a .pptx file is involved in any way — as input; This includes: creating slide decks; or presentations. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 22,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Ciao, Liam",
+            "greeting": "Hola, Liam",
             "topic": "PPTX · ANTHROPIC SKILL",
-            "segment": "PRESENTATION",
-            "command": "Create a 10-slide pitch deck for our SaaS product. Bold design, no boring templates. Use our brand colors: teal and gold.",
+            "segment": "Claude, Pptx.",
+            "command": "Run the pptx skill.",
             "runningText": "reading pptx SKILL.md…",
             "output": [
-              "Path: create from scratch → reading pptxgenjs.md",
-              "Palette: teal (#028090) dominant 60-70%, gold accent",
-              "Design: commit to one visual motif, dark title + light content sandwich"
+              "skill: pptx",
+              "Use this skill any time a .pptx file is involved in any way — as input, output…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +109,69 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 25.26,
+      "actual_duration_s": 57.19,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T14:55:40"
+        "at": "2026-09-05T12:35:19"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — 3 routing paths + QA workflow",
-      "narration_text": "The skill routes across three paths. If the task is to read or analyze content, run markitdown against the pptx file — it extracts all text cleanly. If the task is to edit or modify an existing presentation, read editing.md: analyze the template with thumbnail dot py, unpack the slide XML, make changes, then repack. If the task is to create from scratch with no template, read pptxgenjs.md and build with pptxgenjs. After any generation, QA is mandatory in two stages: content QA with markitdown and a grep for placeholder text, then visual QA — convert slides to images and inspect them with subagents who have fresh eyes. The skill is explicit: assume there are problems. Your first render is almost never correct.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is pptx. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at python -m markitdown presentation.pptx, thumbnail.py, slide-01.jpg, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "PptxAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Read. Edit template. Create scratch. Then QA."
+            "skillName": "pptx",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "editing.md",
+                "size": "6k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📝",
+                "name": "LICENSE.txt",
+                "size": "1k",
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "pptxgenjs.md",
+                "size": "12k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "8k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "scripts",
+                "size": null,
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "5 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +180,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 41.92,
+      "actual_duration_s": 20.52,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T14:55:40"
+        "at": "2026-09-05T12:35:19"
       }
     },
     {
       "beat_id": "B02",
-      "act": "self-demo — design rules verbatim from SKILL.md",
-      "narration_text": "The design section is the most distinctive part of the skill. Before picking any colors, the rule is: the palette should feel designed for this specific topic — if swapping your colors into a different presentation would still work, you haven't made specific enough choices. One color should dominate sixty to seventy percent of the visual weight, with one or two supporting tones and a sharp accent. Commit to one visual motif and carry it across every slide. Dark slides for title and conclusion, light for content — the sandwich structure. For typography: never default to Arial. Pick a header font with personality. For QA, the rule is explicit: use subagents for visual inspection. You've been staring at the code and will see what you expect, not what's there. And the hard rule: never use accent lines under titles — that is a hallmark of AI-generated slides.",
+      "act": "pipeline",
+      "narration_text": "pptx is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Use this skill any time a .pptx file is involved in any way — as input; This includes: creating slide decks; or presentations; or extracting text from any .pptx file (even if the extracted content will be used elsewhere. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 32,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "PptxDesign",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Design for this topic. Not for any topic."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +231,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 43.05,
+      "actual_duration_s": 21.14,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T14:55:40"
+        "at": "2026-09-05T12:35:19"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — QA-first insight + what it gets right/bites",
-      "narration_text": "Here is the teardown. The architectural insight of the PPTX skill is that it treats design and QA as first-class requirements, not afterthoughts. The skill has a routing table for three distinct paths, an explicit design constitution with named palettes and typography rules, and a QA mandate that says assume there are problems and use subagents with fresh eyes. What it gets right: the subagent QA requirement prevents the common failure mode of approving slides that look fine in code but are broken visually. The design rules give concrete, specific guidance instead of vague advice. Where it bites: pptxgenjs requires npm and creates JavaScript-based slides that may need extra post-processing. The editing.md workflow involves XML manipulation which is error-prone. And the design rules are prescriptive enough that they can conflict with a client's existing brand guidelines.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. Dominance over equality: One color should dominate (60-70% visual weight), with 1-2 supporting tones and one sharp accent. Never give all colors equal weight. That is the constraint in pptx — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 32,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "PptxTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Design and QA are requirements. Not afterthoughts."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "Dominance over equality: One color should dominate (60-70% visual weight), with 1-2 supporting tones and one sharp accent. Never give all colors equal weight",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 49.24,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 17.9,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T14:55:40"
+        "at": "2026-09-05T12:35:19"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In pptx, supporting material: python -m markitdown presentation.pptx, thumbnail.py, slide-01.jpg, slide-02.jpg; implementation signals: code block: bash; sections: Quick Reference, Reading Content, Editing Workflow, Creating from Scratch. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Use this skill any time a .pptx file is involved in any way — as input; This includes: creating slide decks; or presentations; python -m markitdown presentation.pptx; thumbnail.py; slide-01.jpg; code block: bash",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 22.27,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T12:35:19"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. The PPTX skill routes across three paths: markitdown to read, editing.md workflow to edit a template, pptxgenjs to create from scratch. Design is mandatory: one dominant color at 60-70%, a committed visual motif, dark-light sandwich structure, never accent lines under titles. QA is two stages: content QA with markitdown and placeholder grep, then visual QA with subagents who have fresh eyes. The rule: assume there are problems. Your first render is almost never correct.",
+      "narration_text": "pptx makes Claude execute one task reliably. The SKILL.md is the spec — Use this skill any time a .pptx file is involved in any way — as input, output…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 22,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "PPTX",
+            "artifactHeading": "Claude, Pptx.",
             "artifactLines": [
-              "3 paths: markitdown (read) · editing.md (edit template) · pptxgenjs (create scratch)",
-              "Design: one dominant color (60-70%), one visual motif, dark/light sandwich",
-              "Typography: never default to Arial; pair header font with personality + clean body",
-              "Never use accent lines under titles — hallmark of AI-generated slides",
-              "QA stage 1: markitdown + grep for placeholders (xxxx, lorem, ipsum)",
-              "QA stage 2: subagents with fresh eyes — assume there are problems"
+              "Skill: pptx — Claude reads SKILL.md before acting",
+              "Use this skill any time a .pptx file is involved in any way — as input, output, or both.…",
+              "Capabilities: Use this skill any time a .pptx file is involved in any way — as input; This includes: creating slide decks; or presentations",
+              "Constraint: Dominance over equality: One color should dominate (60-70% visual weight), with 1-2…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +332,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 29.06,
+      "actual_duration_s": 14.55,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T14:55:40"
+        "at": "2026-09-05T12:35:19"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Open a Claude session. Paste this: Create a 5-slide investor pitch deck for a climate tech startup. The company makes carbon-capture hardware. Bold design — pick a palette that feels specific to this topic, commit to one visual motif, use the dark-light sandwich structure. Use the PPTX skill. Then watch two things: first, does Claude read pptxgenjs.md before starting? Second, after generating, does Claude run the QA sequence — content check with markitdown, then visual inspection with a subagent? If Claude generates slides and declares success without a visual QA pass, the QA mandate was ignored. And check the slides themselves: is there an accent line under any title? If yes, the design rules were not followed. That is the gate.",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to use this skill any time a .pptx file is involved in any way — as input, output. Read the pptx skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 34,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "PPTX · HANDOFF",
-            "segment": "PRESENTATION",
-            "command": "5-slide investor pitch for a climate tech startup (carbon-capture hardware). Bold design, topic-specific palette, dark-light sandwich, one visual motif. Use the PPTX skill.",
-            "runningText": "Watch: does Claude read pptxgenjs.md first? Does it run visual QA with subagents after?",
-            "output": [
-              "Expected: reads pptxgenjs.md before writing any code",
-              "Expected: visual QA pass with subagent after generation",
-              "Red flag: no QA pass, or accent lines under slide titles"
-            ],
+            "greeting": "Your turn.",
+            "topic": "PPTX · ANTHROPIC SKILL",
+            "segment": "Claude, Pptx.",
+            "command": "I want to use this skill any time a .pptx file is involved in any way — as. Read the pptx skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,27 +369,27 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 40.28,
+      "actual_duration_s": 15.0,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T14:55:40"
+        "at": "2026-09-05T12:35:19"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "PPTX. Liam, in for Bear.",
+      "narration_text": "Claude, Pptx. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "PPTX",
+            "title": "Claude, Pptx.",
             "handle": "@NikBearBrown",
             "subline": "pptx · Anthropic Skills"
           },
@@ -259,12 +400,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 2.73,
+      "actual_duration_s": 3.11,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T14:55:40"
+        "at": "2026-09-05T12:35:19"
       }
     }
   ]

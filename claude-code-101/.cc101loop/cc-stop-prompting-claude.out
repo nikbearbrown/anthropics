@@ -1,0 +1,130 @@
+
+##### attempt digest 2026-09-09T18:08:10  (/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/.cc101loop/cc-stop-prompting-claude.jsonl)
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/skills/make/cc-explainer/SKILL.md"}
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/author_shee
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/SESSION.md"
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/FACTCHECK.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/BUILD-LOG.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/claude-cowork--claude-liam
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/", "descri
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files && ls evid
+TOOL Bash {"command": "cat SHOTLIST.md PROMPTS.md SOURCES.md 2>/dev/null | head -100", "description": "Look at other paperwork templates"}
+TEXT Now I have the picture. Let me set up the reel folder and design the session — my differentiator vs the exemplar (which showed "one ask, three files as constraints") is **context reuse across many asks** — the file survives, prompting doesn't.
+TOOL Bash {"command": "mkdir -p /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-c
+TOOL ToolSearch {"query": "select:TaskCreate,TaskUpdate,TaskList", "max_results": 3}
+TOOL TaskCreate {"subject": "Design and run session (bare vs files)", "description": "Set up scratch/{bare,files}/, write ask files + CLAUDE.md, run 4 headl
+TOOL TaskCreate {"subject": "Write SESSION.md from evidence", "description": "Distill runs into SESSION.md with wc counts, quoted Claude sentences, verify c
+TOOL TaskCreate {"subject": "Author beat sheet", "description": "Write author_sheet.py with B00/BIDEA/BDEFS + loop + CONDUCT/HUMAN + BVDT/BHTF/BOUT; run to 
+TOOL TaskCreate {"subject": "Generate audio (Kokoro)", "description": "generate_audio_kokoro.py for the reel; measured mp3s become the master clock", "activ
+TOOL TaskCreate {"subject": "Write paperwork", "description": "FACTCHECK.md, CHECKS-REPORT.md, SHOTLIST.md, PROMPTS.md, SOURCES.md, BUILD-PROMPT.md; run fac
+TOOL TaskCreate {"subject": "Compile: art run \u2192 gates \u2192 art final", "description": "art run, read _qc/REPORT.md and TYPECHECK.md, fix any FAILs at
+TOOL TaskCreate {"subject": "Write BUILD-LOG and CC-BUILT.txt", "description": "Final BUILD-LOG.md, then CC-BUILT.txt in the concept folder", "activeForm": 
+TOOL TaskUpdate {"taskId": "1", "status": "in_progress"}
+TOOL Bash {"command": "for d in /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-c
+TOOL Bash {"command": "claude --help 2>&1 | head -80", "description": "Check Claude Code flags for CLAUDE.md disable"}
+TOOL Bash {"command": "env | grep -i anthropic\necho \"---\"\ncat ~/.claude/settings.json 2>/dev/null | head -20 || echo \"no settings\"", "descriptio
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/
+TEXT Ancestor `books/CLAUDE.md` auto-loads and would contaminate the "bare" run. Moving the scratch outside the tree to `/tmp/` for a clean baseline; artifacts still copy to `evidence/`.
+TOOL Bash {"command": "rm -rf /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-cla
+TOOL Write {"file_path": "/tmp/cc-stop-scratch/bare/README.md", "content": "bare \u2014 no CLAUDE.md, no context files. Every session starts empty.\n"}
+TOOL Write {"file_path": "/tmp/cc-stop-scratch/files/README.md", "content": "files \u2014 a single CLAUDE.md carries Bear's voice. Every session inheri
+TOOL Write {"file_path": "/tmp/cc-stop-scratch/files/CLAUDE.md", "content": "# CLAUDE.md \u2014 Bear's writing folder\n\nYou are drafting short pieces 
+TOOL Write {"file_path": "/tmp/cc-stop-scratch/bare/ask-a.txt", "content": "You are drafting a short note in Bear's voice, for Bear to sign and send. B
+TEXT Tasks in flight — #1 is in_progress. Continuing.
+TOOL Write {"file_path": "/tmp/cc-stop-scratch/bare/ask-b.txt", "content": "You are drafting a short reply in Bear's voice, for Bear to sign and send. 
+TOOL Write {"file_path": "/tmp/cc-stop-scratch/files/ask-a.txt", "content": "Note to the class: Wednesday's guest lecture is rescheduled to next Friday
+TOOL Write {"file_path": "/tmp/cc-stop-scratch/files/ask-b.txt", "content": "Reply to Priya, who missed today's quiz and says she is unwell. Medical ma
+TOOL Write {"file_path": "/tmp/cc-stop-scratch/check.py", "content": "#!/usr/bin/env python3\n\"\"\"check.py \u2014 Bear's voice rules, as a script. Ar
+TOOL Bash {"command": "cd /tmp/cc-stop-scratch/bare && git init -q && git add -A && git -c user.email=b@b -c user.name=b commit -qm init\ncd /tmp/cc-s
+TOOL Bash {"command": "cd /tmp/cc-stop-scratch/bare && claude -p \"$(cat ask-a.txt)\" --output-format stream-json --verbose --max-turns 4 --permission
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor line in open('/tmp/cc-stop-scratch/run-bare-a.jsonl'):\n    try:\n        d = json.loads(line)\
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor line in open('/tmp/cc-stop-scratch/run-bare-a.jsonl'):\n    try: d = json.loads(line)\n    exce
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor line in open('/tmp/cc-stop-scratch/run-bare-b.jsonl'):\n    try: d = json.loads(line)\n    exce
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor line in open('/tmp/cc-stop-scratch/run-files-a.jsonl'):\n    try: d = json.loads(line)\n    exc
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor line in open('/tmp/cc-stop-scratch/run-files-b.jsonl'):\n    try: d = json.loads(line)\n    exc
+TOOL Bash {"command": "cd /tmp/cc-stop-scratch && python3 check.py note-bare-a.txt note-bare-b.txt note-files-a.txt note-files-b.txt\necho '---'\nwc -
+TEXT All four runs succeeded. Now to gather evidence into the reel folder.
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claud
+TOOL Bash {"command": "# Harvest a compact transcript from all four runs\npython3 <<'PY' > /Users/bear/Documents/CoWork/bear-textbooks/books/anthropic
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/
+TOOL Bash {"command": "python3 <<'PY'\nimport json\n# Check if files runs loaded CLAUDE.md (system prompt indicators)\nfor p in ['/tmp/cc-stop-scratch
+TOOL TaskUpdate {"taskId": "1", "status": "completed"}
+TOOL TaskUpdate {"taskId": "2", "status": "in_progress"}
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/S
+TOOL TaskUpdate {"taskId": "2", "status": "completed"}
+TOOL TaskUpdate {"taskId": "3", "status": "in_progress"}
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/src/scenes/CC*.tsx | head -40\necho \"---\"
+TOOL Bash {"command": "grep -A 30 \"schema\\|zod\\|z\\.\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/src/scenes/
+TOOL Bash {"command": "grep -B1 -A 20 \"z.object\\|Schema = \" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/src/sc
+TOOL Bash {"command": "grep -B1 -A 20 \"^export const cc.*Schema\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/sr
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/a
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude 
+TOOL Bash {"command": "grep -o \"\\\".*\\\",\" /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-t
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-s
+TOOL Bash {"command": "python3 author_sheet.py", "description": "Re-author with correct budgets"}
+TOOL Bash {"command": "grep -B2 -A 60 \"trigger\\|replace\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/remotion/src/scene
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-s
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-s
+TOOL Bash {"command": "python3 author_sheet.py", "description": "Re-author sheet after edits"}
+TOOL TaskUpdate {"taskId": "3", "status": "completed"}
+TOOL TaskUpdate {"taskId": "4", "status": "in_progress"}
+TEXT Generating audio next.
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/scripts/generate_audio_kokoro.py /Users/bear/Do
+TOOL TaskUpdate {"taskId": "4", "status": "completed"}
+TOOL TaskUpdate {"taskId": "5", "status": "in_progress"}
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/F
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/factcheck_check.py /Users/bear/Documents/CoW
+TEXT Factcheck clean.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/C
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/S
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/P
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/S
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/B
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/s
+TOOL Bash {"command": "cat /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/scenes.py
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/s
+TOOL Bash {"command": "find /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art -name \"static*\" -type f 2>/dev/null | head -10\nfind /Us
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-cla
+TEXT The static-scene hook is a legacy check for the Bears-Doodles skill; it false-positives on a Remotion-only reel. The file wrote OK (same as exemplar). Proceeding.
+TOOL TaskUpdate {"taskId": "5", "status": "completed"}
+TOOL TaskUpdate {"taskId": "6", "status": "in_progress"}
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books && ./brutalist-art/art run anthropics/claude-code-101/01-context-and-memor
+TOOL ToolSearch {"query": "select:Monitor", "max_results": 1}
+TOOL Monitor {"description": "art run compile \u2014 waiting for exit signal", "timeout_ms": 1800000, "persistent": false, "command": "tail -f /private/t
+TOOL Bash {"command": "sleep 20 && tail -60 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/94848fb4-e3c5-4ad0-ac4b-b12d67a8
+TOOL Bash {"command": "wc -l /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/94848fb4-e3c5-4ad0-ac4b-b12d67a8aa6b/tasks/bglg
+TOOL TaskList {}
+TOOL TaskGet {}
+TOOL ToolSearch {"query": "select:TaskGet,TaskOutput,TaskStop", "max_results": 3}
+TOOL TaskOutput {"task_id": "bglg49eak", "block": true, "timeout": 600000}
+TEXT All gates PASS. Compiling final master now.
+TOOL TaskStop {"task_id": "bewrvv8p9"}
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books && ./brutalist-art/art final anthropics/claude-code-101/01-context-and-mem
+TOOL TaskOutput {"task_id": "boq452in0", "block": true, "timeout": 600000}
+TEXT Master compiled: `cc-stop-prompting-claude.mp4`, 239.2s, 3840×2160, all gates PASS. Let me spot-check a few dense frames.
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claud
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/_
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/_
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/_
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/_
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/_
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/_
+TEXT All dense frames render cleanly — session block stacks readable, plain shells clean, boondoggle score's dangerous-middle rung visible at step 3, human ledger paired columns fit, BVDT paginates correctly. Closing out.
+TOOL TaskUpdate {"taskId": "6", "status": "completed"}
+TOOL TaskUpdate {"taskId": "7", "status": "in_progress"}
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/B
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/claude-cowork--claude-liam
+TOOL TaskUpdate {"taskId": "7", "status": "completed"}
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claud
+TEXT Done. One reel built. /  / **Master:** `anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/cc-stop-prompting-claude.mp4` — 239.2s (3:59), 3840×2160, 13 beats. All hard gates PASS (V 0/0/0, T, BOOKEND, SHARPNESS, MASTER, LOUDNESS). /  / **Concept differentiator vs exemplar (`cc-three-f
+EVENTS 299
+RESULT {"subtype": "success", "num_turns": 111, "duration_ms": 1827170, "total_cost_usd": 12.27088325, "is_error": false}
+FINAL TEXT Done. One reel built.
+
+**Master:** `anthropics/claude-code-101/01-context-and-memory/cc-stop-prompting-claude/cc-stop-prompting-claude.mp4` — 239.2s (3:59), 3840×2160, 13 beats. All hard gates PASS (V 0/0/0, T, BOOKEND, SHARPNESS, MASTER, LOUDNESS).
+
+**Concept differentiator vs exemplar (`cc-three-files`):** exemplar showed "one task, three files as constraints"; this shows **context reuse across many tasks** — one CLAUDE.md, twice the tasks, 6.2× less typing every session, and the "don't invent URLs" rule survived (bare-A lost it and wrote "same time, same link" for a note about weather; files-A obeyed cleanly).
+
+**Session:** 4 real headless `claude -p` runs at `/tmp/cc-stop-scratch/{bare,files}/` (isolated from ancestor `books/CLAUDE.md`), evidence in `evidence/`. `CC-BUILT.txt` written in the concept folder.

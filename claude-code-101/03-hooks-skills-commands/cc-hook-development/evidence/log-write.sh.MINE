@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# PostToolUse hook — logs every Edit / Write / MultiEdit to hooks-log/writes.log.
+# stdin: the tool_use JSON. exit 0 always (advisory).
+set -e
+payload="$(cat)"
+name="$(printf '%s' "$payload" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d.get("tool_name",""))')"
+path="$(printf '%s' "$payload" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d.get("tool_input",{}).get("file_path",""))')"
+mkdir -p hooks-log
+printf '%s  %-10s  %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$name" "$path" >> hooks-log/writes.log
+exit 0

@@ -1,0 +1,320 @@
+{
+ "metadata": {
+  "title": "Claude, Earnings Preview.",
+  "subtitle": "What a Preview Skill Actually Previews",
+  "slug": "financial-services--claude-liam-earnings-preview",
+  "topic": "EARNINGS-PREVIEW · ANTHROPIC SKILL",
+  "purpose": "Answer one real question in the Teardown register: can Claude predict what a company's earnings will be? Take apart what a preview skill actually does — estimate models, bull-and-bear scenarios, metrics to watch — and name the design choice: repeatable scenario prep in place of a prediction it could not honestly make.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/financial-services/youtube/claude-liam-earnings-preview/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - source has no planted scenario (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-01T16:08:40",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Someone asks if Claude can predict this quarter's earnings. Wrong verb. It doesn't predict — it previews: builds the bull and bear scenarios ahead of the print, so either number lands on prepared ground.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Can Claude predict this quarter's earnings?', hesitates on 'predict', corrects to 'preview', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Can Claude\npredict\nthis quarter's\nearnings?",
+      "face": "serif",
+      "fontSize": 78,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "predict",
+      "replacementWords": "preview",
+      "mistakeRate": 6,
+      "hesitateWithin": 2,
+      "hesitateBetween": 14,
+      "charMs": 48,
+      "jitter": 26,
+      "seed": "hai-earnings-preview"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('predict' -> 'preview') lands on screen.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T16:08:40"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "1 stakes / mechanism",
+   "narration_text": "Here's what a Claude skill actually is: a folder Claude reads before it acts. This one is called earnings-preview. Inside it, a SKILL.md file — plain-language instructions, no hidden code. The file is the program. Claude reads it, then does what it says.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A SKILL IS A FOLDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A SKILL IS A FOLDER",
+     "chips": [
+      "SKILL.MD",
+      "REFERENCES"
+     ],
+     "arrows": true,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T16:08:40"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "The instructions live in a Steps section. Claude reads each step, then does it, in order. Linear — no branching unless a step explicitly asks for it. The design choice: predictability over cleverness. Same file, same order, same behavior every run.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "READ, THEN EXECUTE",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "READ, THEN EXECUTE",
+     "chips": [
+      "READ SKILL.MD",
+      "EXECUTE STEPS",
+      "RETURN RESULT"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "linear — no branching unless a step says so",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T16:08:40"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism / scope",
+   "narration_text": "The whole brief for this skill: build pre-earnings analysis — estimate models, bull-and-bear scenarios, and the handful of metrics likely to move the stock on print day. That's it. It doesn't forecast the number itself; that's deliberately outside what the file asks Claude to do. They optimized for repeatable scenario prep at the expense of a prediction it couldn't be honest about anyway.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SCENARIOS, NOT A FORECAST",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SCENARIOS, NOT A FORECAST",
+     "chips": [
+      "ESTIMATE MODELS",
+      "BULL / BEAR SCENARIOS",
+      "METRICS TO WATCH"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "ready either way — not a prediction of which way",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T16:08:40"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A skill gets Claude ready for earnings day — the same estimate models, the same scenarios, every run. It still won't tell you what the report is going to say. Ready, not predicted.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A skill gets Claude ready for earnings day — the same estimate models and scenarios, every run. It still won't tell you what the report is going to say.",
+      "attribution": "",
+      "sparkLine": "Ready, not predicted."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T16:08:40"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini. Pick a company reporting this quarter and ask: read Anthropic's earnings-preview skill and, before you run it, walk me through what estimate models you'll build, what shape a bull scenario looks like against a bear scenario, and which handful of metrics you'd flag as likely to move the stock on print day — then run it. Go deeper: once you have the two scenarios, ask which single metric would flip you from believing the bull case to believing the bear case — that inversion point is what a good pre-earnings note is really trying to name.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 38,
+   "llm_exercise": {
+    "prompt": "I want to build pre-earnings analysis for [COMPANY] reporting this quarter. Read Anthropic's earnings-preview skill and, before you run it, walk me through what you're going to do: what estimate models you'll build, what shape a bull scenario looks like versus a bear scenario, and which handful of metrics you'd flag as likely to move the stock on print day. Then run it, and tell me at the end which of those metrics is the one I should actually watch first.",
+    "dig_deeper": "Go deeper: once you have the two scenarios in front of you, ask which single metric would flip you from believing the bull case to believing the bear case — that inversion point is the thing a good pre-earnings note is really trying to identify."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "EARNINGS-PREVIEW · ANTHROPIC SKILL",
+      "segment": "Claude, Earnings Preview.",
+      "command": "I want to build pre-earnings analysis for [COMPANY] reporting this quarter. Read Anthropic's earnings-preview skill and, before you run it, walk me through what you're going to do — estimate models, bull vs bear scenario shape, and the handful of metrics likely to move the stock on print day. Then run it.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T16:08:40"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Earnings Preview — what a preview skill actually previews. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Earnings Preview — what a preview skill actually previews. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T16:08:40"
+   }
+  }
+ ]
+}

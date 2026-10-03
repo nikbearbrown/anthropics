@@ -1,0 +1,167 @@
+1
+00:00:00,000 --> 00:00:04,611
+Olá. This is Liam, in for Bear. Anthropic's claude tag plugins repo doesn't hook
+
+2
+00:00:04,631 --> 00:00:09,572
+Claude up to everything. Each service is its own plugin, so the real question is
+
+3
+00:00:09,592 --> 00:00:10,895
+what your team uses.
+
+4
+00:00:10,965 --> 00:00:15,716
+A plugin: one service's skill and scripts, packed to install. An agent scope:
+
+5
+00:00:15,736 --> 00:00:20,486
+Claude's settings for one workspace, or one channel. And an identity profile: a
+
+6
+00:00:20,506 --> 00:00:23,055
+reusable bundle of rules, credentials and plugins.
+
+7
+00:00:23,125 --> 00:00:27,451
+Here's your team's workspace, drawn as a wall of sockets, one for each service it
+
+8
+00:00:27,471 --> 00:00:32,376
+could use. And here's Claude Tag: the Claude that answers when you tag it in a chat
+
+9
+00:00:32,396 --> 00:00:34,404
+thread, backed by remote Claude Code sessions.
+
+10
+00:00:34,474 --> 00:00:39,085
+The repo lists eighteen plugins. Sixteen are services, from Asana and Big Query to
+
+11
+00:00:39,105 --> 00:00:44,377
+Jira and Datadog. The other two are helpers. You add the repo as a marketplace, then
+
+12
+00:00:44,397 --> 00:00:46,031
+install the services you use.
+
+13
+00:00:46,101 --> 00:00:50,954
+Each service is its own plugin, so a workspace can connect exactly the services it
+
+14
+00:00:50,974 --> 00:00:56,477
+uses. Say this team works in Asana, and keeps its data in Big Query. Two plugs go
+
+15
+00:00:56,497 --> 00:00:58,426
+in. Every other socket stays empty.
+
+16
+00:00:58,496 --> 00:01:04,333
+Now tag Claude in a thread. It can reach those two: Asana tasks, and S Q L in Big
+
+17
+00:01:04,353 --> 00:01:08,649
+Query. Each skill activates when it's relevant. Ask about Jira, and there's no Jira
+
+18
+00:01:08,669 --> 00:01:09,882
+plugin to reach for.
+
+19
+00:01:09,952 --> 00:01:15,134
+Open one plug. There's a manifest, plugin dot json. A skill: how to connect, and the
+
+20
+00:01:15,154 --> 00:01:19,360
+core operations. A catalog of endpoints, read only when needed. And usually, small
+
+21
+00:01:19,380 --> 00:01:24,237
+scripts. What you won't find is a key. The runtime injects the credentials into each
+
+22
+00:01:24,257 --> 00:01:24,562
+request.
+
+23
+00:01:24,632 --> 00:01:28,271
+Claude's settings come in layers: the organization, a workspace, then a channel.
+
+24
+00:01:28,291 --> 00:01:33,456
+Plugins add up along that chain. A channel can plug in more, but can't unplug what a
+
+25
+00:01:33,476 --> 00:01:37,725
+layer above provides. So what you plug in at the top reaches every channel.
+
+26
+00:01:37,795 --> 00:01:41,477
+For GitHub, the repo's best practice goes further: a read-only profile bound
+
+27
+00:01:41,497 --> 00:01:46,104
+everywhere, and a write profile bound only to the channels allowed to push or merge.
+
+28
+00:01:46,124 --> 00:01:51,348
+That limits the blast radius. Plug in what you use, and give each plug the least it
+
+29
+00:01:51,368 --> 00:01:51,656
+needs.
+
+30
+00:01:51,726 --> 00:01:56,141
+Now the two helpers. Hand the data visualization plugin a table, say rows from Big
+
+31
+00:01:56,161 --> 00:02:02,350
+Query, and it composes a polished chart: a P N G, an S V G, or an interactive H T M
+
+32
+00:02:02,370 --> 00:02:02,941
+L page.
+
+33
+00:02:03,011 --> 00:02:07,775
+The other helper is troubleshoot. Config changes only reach new sessions, so start a
+
+34
+00:02:07,795 --> 00:02:12,560
+fresh Slack thread. Then run debug plugins. From inside the session, it checks which
+
+35
+00:02:12,580 --> 00:02:14,952
+plugins actually loaded, which failed, and why.
+
+36
+00:02:15,022 --> 00:02:19,059
+Your turn. Paste this into Claude: Here are the tools my team uses each week: list
+
+37
+00:02:19,079 --> 00:02:22,863
+them. From the plugin list in Anthropic's claude tag plugins repo, pick the ones our
+
+38
+00:02:22,883 --> 00:02:26,920
+Claude Tag needs. For each, say whether it should only read or also write, and in
+
+39
+00:02:26,940 --> 00:02:30,470
+which channels. Then list what to leave unplugged, and why. Then check two things
+
+40
+00:02:30,490 --> 00:02:34,274
+yourself. For every plugin, who used that tool this week? And for every write, which
+
+41
+00:02:34,294 --> 00:02:35,542
+channel and task need it?
+
+42
+00:02:35,612 --> 00:02:39,806
+One Plugin per Service. At Nik Bear Brown.

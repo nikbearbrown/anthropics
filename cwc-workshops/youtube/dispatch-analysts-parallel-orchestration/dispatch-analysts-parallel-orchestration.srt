@@ -1,0 +1,64 @@
+1
+00:00:00,000 --> 00:00:10,740
+One agent can't analyze 50 SEC filings in
+parallel. But dispatch them separately —
+and have the main agent wait for all three
+
+2
+00:00:10,790 --> 00:00:20,360
+The question: how does a single agent
+coordinate long-running parallel sub-
+agents — without resorting to multiple
+
+3
+00:00:20,410 --> 00:00:43,310
+A custom tool becomes the orchestration
+trigger. When the head agent calls
+dispatch underscore analysts with a list
+
+4
+00:00:43,360 --> 00:01:19,850
+Here is the flow. Head of research
+receives the prompt: sweep NVDA, AMD, and
+MU, rank by margin durability. It calls
+
+5
+00:01:19,900 --> 00:01:34,380
+The spread is the mechanism. One call fans
+out into N parallel sessions. Each session
+is fully isolated — its own context, its
+
+6
+00:01:34,430 --> 00:02:01,470
+The timing difference is not incremental —
+it is categorical. Serial execution: fifty
+analysts, each taking thirty seconds, one
+
+7
+00:02:01,520 --> 00:02:33,530
+When the analysts finish, their results
+don't merge themselves. The aggregator box
+is the other half of the fan-out pattern —
+
+8
+00:02:33,580 --> 00:03:06,750
+What makes parallel agents safe is not
+clever engineering — it is a contract. The
+head sends a fixed schema: task ID,
+
+9
+00:03:06,800 --> 00:03:24,840
+Let's recap with Claude. A custom tool
+becomes the orchestration trigger — when
+the head calls dispatch analysts, the
+
+10
+00:03:24,890 --> 00:03:59,420
+Your turn. Here is the prompt: 'Fan this
+workload out across parallel sub-agents,
+then merge their results into one ranked
+
+11
+00:03:59,470 --> 00:04:04,050
+Fan Out: Coordinating Dozens of Agents in
+Parallel Without Blocking

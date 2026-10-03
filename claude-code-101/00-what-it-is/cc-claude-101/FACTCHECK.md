@@ -1,0 +1,31 @@
+# FACTCHECK — cc-claude-101
+
+Status: PASS — checked 2026-09-09 by the build session against `SESSION.md` (four real fresh headless runs) and `evidence/`.
+
+**Verification boundary.** Every number, tool call, path, and Claude sentence on screen traces to the four runs' stream-json in `evidence/run-{concrete,vague,middle,correction}.jsonl` and the artifacts `evidence/actions.md`, `evidence/commitments.txt`, `scratch/notes.md`. Liam's checks were run in a plain shell against those artifacts and are shown inside the session as `!`-prefixed bang commands. Claude's text spans are lightly split at clause boundaries to fit the ≤44-char text-block budget; wording is preserved. Prompts on screen are the same asks recorded in `SESSION.md`, condensed for one-screen legibility where the JSONL line is longer than the shell can render (documented row by row below).
+
+| # | Beat | Claim (as spoken / shown) | Verdict | Source / derivation | Fix |
+|---|---|---|---|---|---|
+| 1 | B00 | The concrete ask on screen | CORRECTED | display-condensed from `run-concrete.jsonl` for legibility; keeps the "one per line as '- [ ] who: what (when)'" shape; JSONL retains the fuller form ("that has a specific person's name attached") | narration says "in a shape I picked" |
+| 2 | B00 | One Read (`notes.md`), one Write (`actions.md`) | PASS | `run-concrete.jsonl` | — |
+| 3 | B00 | "Wrote actions.md with four items — two owned by Rafael, two owed to Priya. Skipped items with no named person (marketing freeze, retro room booking)." | PASS | Claude's summary in `run-concrete.jsonl`; light split into ≤44-char blocks; "copy freeze" shortened to "freeze" for legibility, "retro room booking" verbatim | — |
+| 4 | B00, B01 | Four items in `actions.md` | PASS | `wc -l evidence/actions.md` → 4 | — |
+| 5 | B01 | `wc -l actions.md` → 4; `grep -c '^- \[ \]' actions.md` → 4; `grep -o 'Priya\|Rafael' actions.md \| sort \| uniq -c` → 2 Priya, 2 Rafael | PASS | `SESSION.md` VERIFY block | — |
+| 6 | BIDEA | "'What is Claude?' — usually a list. Surfaces. Tiers. Models. Tokens. The oversimplification a beginner needs is different. Claude is one menu → function. Ask in, answer out." | EXEMPT | the film's own thesis; not a claim about the session | — |
+| 7 | BDEFS | Definitions of ask / ground / function / right answer / headless | EXEMPT | authorial definitions for a chat-window audience; each term is used in the film's own narration | — |
+| 8 | B02 | Vague ask verbatim ("What should I focus on this week?") | PASS | `run-vague.jsonl` | — |
+| 9 | B02 | Two errored reads (`ls memory/`, `MEMORY.md`) preceding the model's reply | PASS | `run-vague.jsonl`: first Bash was blocked (outside allowed working dir), then Read of a nonexistent path returned no-file — both rendered as `state: 'error'` for on-screen legibility; narration says "It looks at what it can see, lists what it inferred" | — |
+| 10 | B02 | "I don't have prior context saved yet." / "Working only from what I can see here." / "Rather than guess what matters most, tell me the goal — do you want me to: (a) read the worklist and cut a week, (b) audit the in-flight reels, or (c) something else entirely?" | PASS | `run-vague.jsonl` final assistant span, lightly compressed to ≤44-char blocks; original: "I don't have prior context saved for you yet, so I'm working only from what's visible in this tree. …"; the three options are the original three options from the assistant message, wording preserved | — |
+| 11 | B03 | Middle ask verbatim | PASS | `run-middle.jsonl` | — |
+| 12 | B03 | One Read (`notes.md`), then opinion | PASS | `run-middle.jsonl` — `ls -la` before Read is omitted for height, as in the exemplar (documented, not a fabrication) | — |
+| 13 | B03 | "You're doing OK, but there are gaps. What's weak — owners and dates are inconsistent; the reminder-emails question is a dangling blocker; p95 latency is a recurring flag. One-line verdict: good at capturing, weak at closing loops." | PASS | `run-middle.jsonl` — lightly compressed to fit ≤44-char blocks; original included "**What's working**" section, dropped for time (the narration flags this: "It sounds authoritative") | — |
+| 14 | B04 | Correction ask on screen | CORRECTED | display-condensed from `run-correction.jsonl` (original had the parenthetical "a sentence where I said I would do something"); shape and file paths preserved verbatim | — |
+| 15 | B04 | Read (`notes.md`) then Write (`commitments.txt`); Claude's summary about splitting line 10 into two distinct actions | PASS | `run-correction.jsonl` — `ls scratch/` omitted for height; the exclusion of "find a room" is trimmed for time (in the JSONL, kept in `SESSION.md`) | — |
+| 16 | B04, B05 | Three lines in `commitments.txt` | PASS | `wc -l evidence/commitments.txt` → 3 | — |
+| 17 | B05 | `wc -l commitments.txt` → 3; `grep -c '^I' commitments.txt` → 3; the three lines | PASS | `SESSION.md` VERIFY block; `cat evidence/commitments.txt`; "before Monday" → "by Mon." for the ≤44-char text budget (day-of-week preserved) | — |
+| 18 | B06 | Boondoggle score — eight steps; tally PF 2 · PA 1 · IJ 1 · TO 0 · EI 0; dangerous middle at step 4 | PASS | maps to `SESSION.md`: two human-authored asks (concrete, correction) are PF; the "opining against a file" audit is PA; the reading of the correction's output as testable is IJ; no plan/subagent orchestration, no cross-thread integration | — |
+| 19 | B07 | Ledger — CAN "execute an ask with a right answer" / "refuse to guess when no ground" ← both directly observed; SHOULD "say what it doesn't know first" / "ground its answer in a file" ← both observed on this session; MUST/SHOULD human rows ← all four were the human's contribution to this session | PASS | maps to the four runs | — |
+| 20 | BVDT | Verdict lines | PASS | rows 4, 8–10, 11–13, 16–17; falsifiable line is testable in a future run | — |
+| 21 | BHTF | Viewer's prompt | EXEMPT | instruction | — |
+| 22 | all | Model/version strings, prices, "as of" dates | EXEMPT | not shown or spoken (versions live only in `SESSION.md` header; costs recorded per run, not narrated) | — |
+| 23 | metadata | derived_from concept | PASS | `claude-code-101/00-what-it-is/claude-cowork--claude-liam-claude-101/beat_sheet.json` — title, topic, and framing kept; card copy (surfaces/tiers/models/rules) intentionally not reused per skill law | — |

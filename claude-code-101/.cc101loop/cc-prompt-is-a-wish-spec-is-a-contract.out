@@ -1,0 +1,117 @@
+
+##### attempt digest 2026-09-10T12:16:28  (/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/.cc101loop/cc-prompt-is-a-wish-spec-is-a-contract.jsonl)
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/skills/make/cc-explainer/SKILL.md"}
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/author_shee
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/SESSION.md"
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/FACTCHECK.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/BUILD-LOG.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/claude-code--claude-liam-pro
+TEXT I've read the SKILL.md, the exemplar files, and the concept spec. Now I'll design a real, checkable session that demonstrates the wish-vs-spec mechanism, then build the reel.
+TOOL Bash {"command": "which claude && claude --version && which python3 && python3 --version", "description": "Verify claude and python3 available"}
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/ 2>&1", "description": "Che
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spe
+TOOL ToolSearch {"query": "select:TaskCreate,TaskUpdate,TaskList", "max_results": 3}
+TOOL TaskCreate {"subject": "Design scratch codebase and tests", "description": "Create scratch/ folder with README, ask files, unittest tests that check th
+TOOL TaskCreate {"subject": "Run WISH condition headless", "description": "claude -p with a bare one-sentence ask, capture stream-json, run the tests agains
+TOOL TaskCreate {"subject": "Run SPEC condition headless", "description": "Write SPEC.md with invariants/boundaries/handoff; claude -p reads SPEC.md then bu
+TOOL TaskCreate {"subject": "Run TESTS-ONLY middle case", "description": "The \"checker alone\" third condition \u2014 hand it just the test file, see what 
+TOOL TaskCreate {"subject": "Write SESSION.md and FACTCHECK.md", "description": "Distill the three runs into SESSION.md; write the FACTCHECK table against e
+TOOL TaskCreate {"subject": "Author beat_sheet.json", "description": "author_sheet.py on the exemplar shape; every CCSession block traces to SESSION.md; che
+TOOL TaskCreate {"subject": "Generate audio (Kokoro Liam)", "description": "generate_audio_kokoro.py for all beats; DO NOT re-run author_sheet.py after this
+TOOL TaskCreate {"subject": "Paperwork + factcheck check", "description": "CHECKS-REPORT.md, SHOTLIST.md, PROMPTS.md, SOURCES.md, BUILD-PROMPT.md; then run 
+TOOL TaskCreate {"subject": "Compile: art run \u2192 art final", "description": "./art run then ./art final; grab frames, fix any gate failures at source, r
+TOOL TaskCreate {"subject": "Write BUILD-LOG + CC-BUILT.txt sentinel", "description": "BUILD-LOG.md describing session, compile passes, corrections; write C
+TOOL TaskUpdate {"taskId": "1", "status": "in_progress"}
+TEXT Now creating the reel folder and the scratch codebase with real, checkable tests.
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Bash {"command": "SC=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is
+TOOL TaskUpdate {"taskId": "1", "status": "completed"}
+TOOL TaskUpdate {"taskId": "2", "status": "in_progress"}
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-
+TEXT Now running the WISH condition headless.
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-
+TOOL Bash {"command": "SC=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is
+TOOL Bash {"command": "SC=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is
+TEXT The WISH output actually uses pbkdf2 (Opus 4.7 defaults are defensive) — but it fails the empty-password invariant, and it added a `login()` function nobody asked for. That IS the pedagogy: wishes get you the model's choices, not yours.
+TOOL TaskUpdate {"taskId": "2", "status": "completed"}
+TOOL TaskUpdate {"taskId": "3", "status": "in_progress"}
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-
+TOOL Bash {"command": "SC=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is
+TOOL TaskUpdate {"taskId": "3", "status": "completed"}
+TOOL TaskUpdate {"taskId": "4", "status": "in_progress"}
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-
+TOOL Bash {"command": "SC=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is
+TOOL TaskUpdate {"taskId": "4", "status": "completed"}
+TOOL Bash {"command": "SC=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is
+TOOL Bash {"command": "SC=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is
+TOOL Bash {"command": "E=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL TaskUpdate {"taskId": "5", "status": "in_progress"}
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TEXT Now writing FACTCHECK.md and then authoring the beat sheet.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL TaskUpdate {"taskId": "5", "status": "completed"}
+TOOL TaskUpdate {"taskId": "6", "status": "in_progress"}
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-
+TOOL TaskUpdate {"taskId": "6", "status": "completed"}
+TOOL TaskUpdate {"taskId": "7", "status": "in_progress"}
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-
+TOOL TaskUpdate {"taskId": "7", "status": "completed"}
+TOOL TaskUpdate {"taskId": "8", "status": "in_progress"}
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/ | head -2
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/scenes.py"}
+TOOL Bash {"command": "grep -n \"static-scene\\|scenes.py\" /Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/postedit-check.sh\necho \"
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spe
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/factcheck_check.py /Users/bear/Documents/CoW
+TOOL TaskUpdate {"taskId": "8", "status": "completed"}
+TOOL TaskUpdate {"taskId": "9", "status": "in_progress"}
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n# Check no concurrent art run for this slug (guard from feedback_concurre
+TOOL ToolSearch {"query": "select:Monitor", "max_results": 1}
+TEXT Compile is running in background. I'll wait for the notification.
+TOOL Bash {"command": "tail -100 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/94ea80f4-c260-4fb4-8bf9-cf8b89914ed0/tasks/
+TEXT All gates passed on first compile. Let me grab frames and spot-check the dense beats.
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TEXT All frames read clean. Running art final now.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books\n./brutalist-art/art final anthropics/claude-code-101/04-spec-before-code/
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-
+TEXT Master exists: 3840×2160, 24fps, 272.3s (~4:32).
+TOOL TaskUpdate {"taskId": "9", "status": "completed"}
+TOOL TaskUpdate {"taskId": "10", "status": "in_progress"}
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-is-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/claude-code--claude-liam-pro
+TOOL Bash {"command": "REEL=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/04-spec-before-code/cc-prompt-is-a-wish-spec-
+TOOL TaskUpdate {"taskId": "10", "status": "completed"}
+TEXT Now saving the memory entry per the standing convention for a built cc-explainer.
+TOOL Write {"file_path": "/Users/bear/.claude/projects/-Users-bear-Documents-CoWork-bear-textbooks-books/memory/project_cc_prompt_is_a_wish_spec_is_a_c
+TOOL Read {"file_path": "/Users/bear/.claude/projects/-Users-bear-Documents-CoWork-bear-textbooks-books/memory/MEMORY.md", "offset": 1, "limit": 5}
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/.claude/projects/-Users-bear-Documents-CoWork-bear-textbooks-books/memory/MEMORY.md", "old_
+TEXT Done. Reel built, all gates PASS on first compile, sentinel written. /  / **Summary** / - Built `cc-prompt-is-a-wish-spec-is-a-contract` (cc-explainer, Claude Code 101 tier 04): 13 beats, 4:32, native 4K, Liam throughout. / - Session-first: three REAL headless `claude -p` runs on a stdlib password module — 
+EVENTS 260
+RESULT {"subtype": "success", "num_turns": 22, "duration_ms": 282358, "total_cost_usd": 11.536999250000004, "is_error": false}
+FINAL TEXT Done. Reel built, all gates PASS on first compile, sentinel written.
+
+**Summary**
+- Built `cc-prompt-is-a-wish-spec-is-a-contract` (cc-explainer, Claude Code 101 tier 04): 13 beats, 4:32, native 4K, Liam throughout.
+- Session-first: three REAL headless `claude -p` runs on a stdlib password module — wish (README only), spec (22-line SPEC.md + tests), tests-only (tests only). Opus 4.7's defaults are hygienic (pbkdf2, salt, `compare_digest`), so the wish doesn't produce broken crypto — it produces defensible crypto plus decisions the human never made: 200k iters chosen for you, a third `login()` function added, and one invariant silently violated (1/5 tests fail). The tests-only run passed all tests but drifted on every axis the tests couldn't see (`os.urandom` vs `secrets`, 200k vs 100k iters, silent empty-verify). That IS the pedagogy: competence is not consent.
+- All gates PASS on the first compile pass (V 0/0/0, T, SHARPNESS, BOOKEND, AUDIO, MASTER, LOUDNESS, RECEIPTS). Master at `.../cc-prompt-is-a-wish-spec-is-a-contract/cc-prompt-is-a-wish-spec-is-a-contract.mp4`. `CC-BUILT.txt` written to the concept folder. **Not published** — per HARD RULE, TOPOST only on ask.

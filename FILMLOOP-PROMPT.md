@@ -78,6 +78,16 @@ the evidence shows.").
  - Thinner than that → `verdict_strip.py --only <slug> --apply`. A placeholder verdict is
    worse than no verdict.
 
+**5c. Your-Turn placeholder — FIX.** A `BHTF` command matching the template
+"Take what you learned from [ ... ] and apply it to your own work" is a
+placeholder wearing brackets — 3,472 sheets carry it (seeded at generation;
+caught 2026-08-30 on agent-decomposition). AUTHOR a real exercise from the
+video's own content: its numbers, its artifact, its method, turned into
+something the viewer DOES ("Paste your longest agent prompt. Sort every
+line: stateless call → tool, on-demand instructions → skill…"). No square
+brackets, no title restated, no generic "apply it". An empty `output` on a
+ClaudeComposerAsk BHTF gets 2–3 real next-step lines the same way.
+
 **5b. Chart text — FIX.** A Manim/D3 chart's axis and bar labels are SHORT CATEGORY
 NOUNS (1–3 words), never narration fragments — `Text(narration[:30])` produced
 colliding, mid-word-truncated labels in shipped cuts (enterprise-search B02/B09,

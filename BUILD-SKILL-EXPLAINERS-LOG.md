@@ -2260,3 +2260,1614 @@
 [319] nextflow-development: rendering Remotion…
 [319] nextflow-development: remotion OK
 [319] nextflow-development: compiling review cut…
+
+
+## Run 2026-09-05T11:19:40 rows 10–10  dry_run=True
+
+[ 10] pdf: DRY RUN → anthropics/skills/youtube/claude-liam-pdf
+
+## Summary: 0 built, 0 failed, 1 skipped | 2026-09-05T11:19:40
+
+
+## Run 2026-09-05T11:32:22 rows 10–10  dry_run=False
+
+[ 10] pdf: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-113222.json
+[ 10] pdf: generating audio…
+[ 10] pdf: audio OK
+[ 10] pdf: rendering Remotion…
+[ 10] pdf: remotion OK
+[ 10] pdf: compiling review cut…
+[ 10] pdf: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T11:37:14
+
+
+## Run 2026-09-05T11:37:14 rows 1–1  dry_run=False
+
+[  1] algorithmic-art: beat_sheet.json written
+[  1] algorithmic-art: generating audio…
+[  1] algorithmic-art: audio OK
+[  1] algorithmic-art: rendering Remotion…
+[  1] algorithmic-art: remotion OK
+[  1] algorithmic-art: compiling review cut…
+[  1] algorithmic-art: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T11:43:20
+
+
+## Run 2026-09-05T11:43:40 rows 2–2  dry_run=False
+
+[  2] brand-guidelines: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-114340.json
+[  2] brand-guidelines: generating audio…
+[  2] brand-guidelines: audio OK
+[  2] brand-guidelines: rendering Remotion…
+[  2] brand-guidelines: remotion OK
+[  2] brand-guidelines: compiling review cut…
+[  2] brand-guidelines: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T11:48:36
+
+
+## Run 2026-09-05T11:48:56 rows 3–3  dry_run=False
+
+[  3] canvas-design: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-114856.json
+[  3] canvas-design: generating audio…
+[  3] canvas-design: audio OK
+[  3] canvas-design: rendering Remotion…
+[  3] canvas-design: remotion OK
+[  3] canvas-design: compiling review cut…
+[  3] canvas-design: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T11:54:44
+
+
+## Run 2026-09-05T11:55:04 rows 4–4  dry_run=False
+
+[  4] claude-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-115504.json
+[  4] claude-api: generating audio…
+[  4] claude-api: audio OK
+[  4] claude-api: rendering Remotion…
+[  4] claude-api: remotion OK
+[  4] claude-api: compiling review cut…
+[  4] claude-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T11:59:01
+
+
+## Run 2026-09-05T11:59:21 rows 5–5  dry_run=False
+
+[  5] doc-coauthoring: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-115921.json
+[  5] doc-coauthoring: generating audio…
+[  5] doc-coauthoring: audio OK
+[  5] doc-coauthoring: rendering Remotion…
+[  5] doc-coauthoring: remotion OK
+[  5] doc-coauthoring: compiling review cut…
+[  5] doc-coauthoring: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:04:26
+
+
+## Run 2026-09-05T12:04:26 rows 1–1  dry_run=False
+
+[  1] algorithmic-art: already compiled — forcing deeper sheet/audio/render refresh
+[  1] algorithmic-art: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-120426.json
+[  1] algorithmic-art: generating audio…
+[  1] algorithmic-art: audio OK
+[  1] algorithmic-art: rendering Remotion…
+[  1] algorithmic-art: remotion OK
+[  1] algorithmic-art: compiling review cut…
+[  1] algorithmic-art: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:04:58
+
+
+## Run 2026-09-05T12:05:18 rows 2–2  dry_run=False
+
+[  2] brand-guidelines: already compiled — forcing deeper sheet/audio/render refresh
+[  2] brand-guidelines: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-120518.json
+[  2] brand-guidelines: generating audio…
+[  2] brand-guidelines: audio OK
+[  2] brand-guidelines: rendering Remotion…
+[  2] brand-guidelines: remotion OK
+[  2] brand-guidelines: compiling review cut…
+[  2] brand-guidelines: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:05:47
+
+
+## Run 2026-09-05T12:06:07 rows 3–3  dry_run=False
+
+[  3] canvas-design: already compiled — forcing deeper sheet/audio/render refresh
+[  3] canvas-design: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-120607.json
+[  3] canvas-design: generating audio…
+[  3] canvas-design: audio OK
+[  3] canvas-design: rendering Remotion…
+[  3] canvas-design: remotion OK
+[  3] canvas-design: compiling review cut…
+[  3] canvas-design: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:06:39
+
+
+## Run 2026-09-05T12:06:59 rows 4–4  dry_run=False
+
+[  4] claude-api: already compiled — forcing deeper sheet/audio/render refresh
+[  4] claude-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-120659.json
+[  4] claude-api: generating audio…
+[  4] claude-api: audio OK
+[  4] claude-api: rendering Remotion…
+[  4] claude-api: remotion OK
+[  4] claude-api: compiling review cut…
+[  4] claude-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:07:24
+
+
+## Run 2026-09-05T12:07:44 rows 5–5  dry_run=False
+
+[  5] doc-coauthoring: already compiled — forcing deeper sheet/audio/render refresh
+[  5] doc-coauthoring: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-120744.json
+[  5] doc-coauthoring: generating audio…
+[  5] doc-coauthoring: audio OK
+[  5] doc-coauthoring: rendering Remotion…
+[  5] doc-coauthoring: remotion OK
+[  5] doc-coauthoring: compiling review cut…
+[  5] doc-coauthoring: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:08:16
+
+
+## Run 2026-09-05T12:08:36 rows 6–6  dry_run=False
+
+[  6] docx: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-120836.json
+[  6] docx: generating audio…
+[  6] docx: audio OK
+[  6] docx: rendering Remotion…
+[  6] docx: remotion OK
+[  6] docx: compiling review cut…
+[  6] docx: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:13:13
+
+
+## Run 2026-09-05T12:13:33 rows 7–7  dry_run=False
+
+[  7] frontend-design: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-121333.json
+[  7] frontend-design: generating audio…
+[  7] frontend-design: audio OK
+[  7] frontend-design: rendering Remotion…
+[  7] frontend-design: remotion OK
+[  7] frontend-design: compiling review cut…
+[  7] frontend-design: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:17:59
+
+
+## Run 2026-09-05T12:18:19 rows 8–8  dry_run=False
+
+[  8] internal-comms: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-121819.json
+[  8] internal-comms: generating audio…
+[  8] internal-comms: audio OK
+[  8] internal-comms: rendering Remotion…
+[  8] internal-comms: remotion OK
+[  8] internal-comms: compiling review cut…
+[  8] internal-comms: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:23:37
+
+
+## Run 2026-09-05T12:23:57 rows 9–9  dry_run=False
+
+[  9] mcp-builder: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-122357.json
+[  9] mcp-builder: generating audio…
+[  9] mcp-builder: audio OK
+[  9] mcp-builder: rendering Remotion…
+[  9] mcp-builder: remotion OK
+[  9] mcp-builder: compiling review cut…
+[  9] mcp-builder: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:29:19
+
+
+## Run 2026-09-05T12:29:39 rows 10–10  dry_run=False
+
+[ 10] pdf: already compiled — forcing deeper sheet/audio/render refresh
+[ 10] pdf: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-122939.json
+[ 10] pdf: generating audio…
+[ 10] pdf: audio OK
+[ 10] pdf: rendering Remotion…
+[ 10] pdf: remotion OK
+[ 10] pdf: compiling review cut…
+[ 10] pdf: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:30:11
+
+
+## Run 2026-09-05T12:30:32 rows 11–11  dry_run=False
+
+[ 11] pptx: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-123032.json
+[ 11] pptx: generating audio…
+[ 11] pptx: audio OK
+[ 11] pptx: rendering Remotion…
+[ 11] pptx: remotion OK
+[ 11] pptx: compiling review cut…
+[ 11] pptx: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:35:26
+
+
+## Run 2026-09-05T12:35:46 rows 12–12  dry_run=False
+
+[ 12] skill-creator: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-123546.json
+[ 12] skill-creator: generating audio…
+[ 12] skill-creator: audio OK
+[ 12] skill-creator: rendering Remotion…
+[ 12] skill-creator: remotion OK
+[ 12] skill-creator: compiling review cut…
+[ 12] skill-creator: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:40:44
+
+
+## Run 2026-09-05T12:41:05 rows 13–13  dry_run=False
+
+[ 13] slack-gif-creator: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-124105.json
+[ 13] slack-gif-creator: generating audio…
+[ 13] slack-gif-creator: audio OK
+[ 13] slack-gif-creator: rendering Remotion…
+[ 13] slack-gif-creator: remotion OK
+[ 13] slack-gif-creator: compiling review cut…
+[ 13] slack-gif-creator: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:46:02
+
+
+## Run 2026-09-05T12:46:22 rows 14–14  dry_run=False
+
+[ 14] theme-factory: beat_sheet.json written
+[ 14] theme-factory: generating audio…
+[ 14] theme-factory: audio OK
+[ 14] theme-factory: rendering Remotion…
+[ 14] theme-factory: remotion OK
+[ 14] theme-factory: compiling review cut…
+[ 14] theme-factory: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:52:19
+
+
+## Run 2026-09-05T12:52:39 rows 15–15  dry_run=False
+
+[ 15] web-artifacts-builder: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-125239.json
+[ 15] web-artifacts-builder: generating audio…
+[ 15] web-artifacts-builder: audio OK
+[ 15] web-artifacts-builder: rendering Remotion…
+[ 15] web-artifacts-builder: remotion OK
+[ 15] web-artifacts-builder: compiling review cut…
+[ 15] web-artifacts-builder: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T12:57:37
+
+
+## Run 2026-09-05T12:57:57 rows 16–16  dry_run=False
+
+[ 16] webapp-testing: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-125757.json
+[ 16] webapp-testing: generating audio…
+[ 16] webapp-testing: audio OK
+[ 16] webapp-testing: rendering Remotion…
+[ 16] webapp-testing: remotion OK
+[ 16] webapp-testing: compiling review cut…
+[ 16] webapp-testing: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T13:03:16
+
+
+## Run 2026-09-05T13:03:36 rows 17–17  dry_run=False
+
+[ 17] xlsx: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-130336.json
+[ 17] xlsx: generating audio…
+[ 17] xlsx: audio OK
+[ 17] xlsx: rendering Remotion…
+[ 17] xlsx: remotion OK
+[ 17] xlsx: compiling review cut…
+[ 17] xlsx: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T13:12:12
+
+
+## Run 2026-09-05T13:12:32 rows 18–18  dry_run=False
+
+[ 18] Agent Development: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-131232.json
+[ 18] Agent Development: generating audio…
+[ 18] Agent Development: audio OK
+[ 18] Agent Development: rendering Remotion…
+[ 18] Agent Development: remotion OK
+[ 18] Agent Development: compiling review cut…
+[ 18] Agent Development: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T13:22:21
+
+
+## Run 2026-09-05T13:22:42 rows 19–19  dry_run=False
+
+[ 19] command-development: already compiled — forcing deeper sheet/audio/render refresh
+[ 19] command-development: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-132242.json
+[ 19] command-development: generating audio…
+[ 19] command-development: audio OK
+[ 19] command-development: rendering Remotion…
+[ 19] command-development: remotion OK
+[ 19] command-development: compiling review cut…
+[ 19] command-development: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T13:30:04
+
+
+## Run 2026-09-05T13:30:24 rows 20–20  dry_run=False
+
+[ 20] hook-development: already compiled — forcing deeper sheet/audio/render refresh
+[ 20] hook-development: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-133024.json
+[ 20] hook-development: generating audio…
+[ 20] hook-development: audio OK
+[ 20] hook-development: rendering Remotion…
+[ 20] hook-development: remotion OK
+[ 20] hook-development: compiling review cut…
+[ 20] hook-development: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T13:37:38
+
+
+## Run 2026-09-05T13:37:59 rows 21–21  dry_run=False
+
+[ 21] mcp-integration: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-133759.json
+[ 21] mcp-integration: generating audio…
+[ 21] mcp-integration: audio OK
+[ 21] mcp-integration: rendering Remotion…
+[ 21] mcp-integration: remotion OK
+[ 21] mcp-integration: compiling review cut…
+[ 21] mcp-integration: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T13:41:52
+
+
+## Run 2026-09-05T13:42:12 rows 22–22  dry_run=False
+
+[ 22] plugin-settings: already compiled — forcing deeper sheet/audio/render refresh
+[ 22] plugin-settings: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-134212.json
+[ 22] plugin-settings: generating audio…
+[ 22] plugin-settings: audio OK
+[ 22] plugin-settings: rendering Remotion…
+[ 22] plugin-settings: remotion OK
+[ 22] plugin-settings: compiling review cut…
+[ 22] plugin-settings: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T13:44:52
+
+
+## Run 2026-09-05T13:45:12 rows 23–23  dry_run=False
+
+[ 23] plugin-structure: already compiled — forcing deeper sheet/audio/render refresh
+[ 23] plugin-structure: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-134512.json
+[ 23] plugin-structure: generating audio…
+[ 23] plugin-structure: audio OK
+[ 23] plugin-structure: rendering Remotion…
+[ 23] plugin-structure: remotion OK
+[ 23] plugin-structure: compiling review cut…
+[ 23] plugin-structure: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T13:47:54
+
+
+## Run 2026-09-05T13:48:15 rows 24–24  dry_run=False
+
+[ 24] skill-development: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-134815.json
+[ 24] skill-development: generating audio…
+[ 24] skill-development: audio OK
+[ 24] skill-development: rendering Remotion…
+[ 24] skill-development: remotion OK
+[ 24] skill-development: compiling review cut…
+[ 24] skill-development: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T13:50:52
+
+
+## Run 2026-09-05T13:51:12 rows 25–25  dry_run=False
+
+[ 25] writing-rules: already compiled — forcing deeper sheet/audio/render refresh
+[ 25] writing-rules: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-135112.json
+[ 25] writing-rules: generating audio…
+[ 25] writing-rules: audio OK
+[ 25] writing-rules: rendering Remotion…
+[ 25] writing-rules: remotion OK
+[ 25] writing-rules: compiling review cut…
+[ 25] writing-rules: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T13:53:53
+
+
+## Run 2026-09-05T13:54:14 rows 26–26  dry_run=False
+
+[ 26] access: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-135414.json
+[ 26] access: generating audio…
+[ 26] access: audio OK
+[ 26] access: rendering Remotion…
+[ 26] access: remotion OK
+[ 26] access: compiling review cut…
+[ 26] access: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T14:06:00
+
+
+## Run 2026-09-05T14:06:21 rows 27–27  dry_run=False
+
+[ 27] agent-development: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-140621.json
+[ 27] agent-development: generating audio…
+[ 27] agent-development: audio OK
+[ 27] agent-development: rendering Remotion…
+[ 27] agent-development: remotion OK
+[ 27] agent-development: compiling review cut…
+[ 27] agent-development: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T14:25:07
+
+
+## Run 2026-09-05T14:25:28 rows 28–28  dry_run=False
+
+[ 28] asana-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-142528.json
+[ 28] asana-api: generating audio…
+[ 28] asana-api: audio OK
+[ 28] asana-api: rendering Remotion…
+[ 28] asana-api: remotion OK
+[ 28] asana-api: compiling review cut…
+[ 28] asana-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T14:44:34
+
+
+## Run 2026-09-05T14:44:54 rows 29–29  dry_run=False
+
+[ 29] bigquery-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-144454.json
+[ 29] bigquery-api: generating audio…
+[ 29] bigquery-api: audio OK
+[ 29] bigquery-api: rendering Remotion…
+[ 29] bigquery-api: remotion OK
+[ 29] bigquery-api: compiling review cut…
+[ 29] bigquery-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T14:53:04
+
+
+## Run 2026-09-05T14:53:24 rows 30–30  dry_run=False
+
+[ 30] build-mcp-app: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-145324.json
+[ 30] build-mcp-app: generating audio…
+[ 30] build-mcp-app: audio OK
+[ 30] build-mcp-app: rendering Remotion…
+[ 30] build-mcp-app: remotion OK
+[ 30] build-mcp-app: compiling review cut…
+[ 30] build-mcp-app: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T15:02:45
+
+
+## Run 2026-09-05T15:03:05 rows 31–31  dry_run=False
+
+[ 31] build-mcp-server: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-150305.json
+[ 31] build-mcp-server: generating audio…
+[ 31] build-mcp-server: audio OK
+[ 31] build-mcp-server: rendering Remotion…
+[ 31] build-mcp-server: remotion OK
+[ 31] build-mcp-server: compiling review cut…
+[ 31] build-mcp-server: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T15:08:57
+
+
+## Run 2026-09-05T15:09:18 rows 32–32  dry_run=False
+
+[ 32] build-mcpb: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-150918.json
+[ 32] build-mcpb: generating audio…
+[ 32] build-mcpb: audio OK
+[ 32] build-mcpb: rendering Remotion…
+[ 32] build-mcpb: remotion OK
+[ 32] build-mcpb: compiling review cut…
+[ 32] build-mcpb: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T15:14:49
+
+
+## Run 2026-09-05T15:15:09 rows 33–33  dry_run=False
+
+[ 33] cardputer-buddy: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-151509.json
+[ 33] cardputer-buddy: generating audio…
+[ 33] cardputer-buddy: audio OK
+[ 33] cardputer-buddy: rendering Remotion…
+[ 33] cardputer-buddy: remotion OK
+[ 33] cardputer-buddy: compiling review cut…
+[ 33] cardputer-buddy: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T15:20:26
+
+
+## Run 2026-09-05T15:20:46 rows 34–34  dry_run=False
+
+[ 34] claude-automation-recommender: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-152046.json
+[ 34] claude-automation-recommender: generating audio…
+[ 34] claude-automation-recommender: audio OK
+[ 34] claude-automation-recommender: rendering Remotion…
+[ 34] claude-automation-recommender: remotion OK
+[ 34] claude-automation-recommender: compiling review cut…
+[ 34] claude-automation-recommender: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T15:26:33
+
+
+## Run 2026-09-05T15:26:54 rows 35–35  dry_run=False
+
+[ 35] claude-md-improver: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-152654.json
+[ 35] claude-md-improver: generating audio…
+[ 35] claude-md-improver: audio OK
+[ 35] claude-md-improver: rendering Remotion…
+[ 35] claude-md-improver: remotion OK
+[ 35] claude-md-improver: compiling review cut…
+[ 35] claude-md-improver: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T15:32:41
+
+
+## Run 2026-09-05T15:33:01 rows 36–36  dry_run=False
+
+[ 36] claude-opus-4-5-migration: already compiled — forcing deeper sheet/audio/render refresh
+[ 36] claude-opus-4-5-migration: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-153301.json
+[ 36] claude-opus-4-5-migration: generating audio…
+[ 36] claude-opus-4-5-migration: audio OK
+[ 36] claude-opus-4-5-migration: rendering Remotion…
+[ 36] claude-opus-4-5-migration: remotion OK
+[ 36] claude-opus-4-5-migration: compiling review cut…
+[ 36] claude-opus-4-5-migration: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T15:35:19
+
+
+## Run 2026-09-05T15:35:39 rows 37–37  dry_run=False
+
+[ 37] command-development: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-153539.json
+[ 37] command-development: generating audio…
+[ 37] command-development: audio OK
+[ 37] command-development: rendering Remotion…
+[ 37] command-development: remotion OK
+[ 37] command-development: compiling review cut…
+[ 37] command-development: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T15:40:48
+
+
+## Run 2026-09-05T15:41:08 rows 38–38  dry_run=False
+
+[ 38] config-guide: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-154108.json
+[ 38] config-guide: generating audio…
+[ 38] config-guide: audio OK
+[ 38] config-guide: rendering Remotion…
+[ 38] config-guide: remotion OK
+[ 38] config-guide: compiling review cut…
+[ 38] config-guide: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T15:46:43
+
+
+## Run 2026-09-05T15:47:03 rows 39–39  dry_run=False
+
+[ 39] configure: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-154703.json
+[ 39] configure: generating audio…
+[ 39] configure: audio OK
+[ 39] configure: rendering Remotion…
+[ 39] configure: remotion OK
+[ 39] configure: compiling review cut…
+[ 39] configure: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T15:52:02
+
+
+## Run 2026-09-05T15:52:22 rows 40–40  dry_run=False
+
+[ 40] confluence-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-155222.json
+[ 40] confluence-api: generating audio…
+[ 40] confluence-api: audio OK
+[ 40] confluence-api: rendering Remotion…
+[ 40] confluence-api: remotion OK
+[ 40] confluence-api: compiling review cut…
+[ 40] confluence-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T15:57:34
+
+
+## Run 2026-09-05T15:57:54 rows 41–41  dry_run=False
+
+[ 41] datadog-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-155754.json
+[ 41] datadog-api: generating audio…
+[ 41] datadog-api: audio OK
+[ 41] datadog-api: rendering Remotion…
+[ 41] datadog-api: remotion OK
+[ 41] datadog-api: compiling review cut…
+[ 41] datadog-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T16:02:59
+
+
+## Run 2026-09-05T16:03:19 rows 42–42  dry_run=False
+
+[ 42] debug-plugins: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-160319.json
+[ 42] debug-plugins: generating audio…
+[ 42] debug-plugins: audio OK
+[ 42] debug-plugins: rendering Remotion…
+[ 42] debug-plugins: remotion OK
+[ 42] debug-plugins: compiling review cut…
+[ 42] debug-plugins: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T16:08:40
+
+
+## Run 2026-09-05T16:09:00 rows 43–43  dry_run=False
+
+[ 43] enterprise-search: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-160900.json
+[ 43] enterprise-search: generating audio…
+[ 43] enterprise-search: audio OK
+[ 43] enterprise-search: rendering Remotion…
+[ 43] enterprise-search: remotion OK
+[ 43] enterprise-search: compiling review cut…
+[ 43] enterprise-search: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T16:14:19
+
+
+## Run 2026-09-05T16:14:39 rows 44–44  dry_run=False
+
+[ 44] example-command: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-161439.json
+[ 44] example-command: generating audio…
+[ 44] example-command: audio OK
+[ 44] example-command: rendering Remotion…
+[ 44] example-command: remotion OK
+[ 44] example-command: compiling review cut…
+[ 44] example-command: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T16:20:02
+
+
+## Run 2026-09-05T16:20:22 rows 45–45  dry_run=False
+
+[ 45] example-skill: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-162022.json
+[ 45] example-skill: generating audio…
+[ 45] example-skill: audio OK
+[ 45] example-skill: rendering Remotion…
+[ 45] example-skill: remotion OK
+[ 45] example-skill: compiling review cut…
+[ 45] example-skill: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T16:25:42
+
+
+## Run 2026-09-05T16:26:02 rows 46–46  dry_run=False
+
+[ 46] google-drive-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-162602.json
+[ 46] google-drive-api: generating audio…
+[ 46] google-drive-api: audio OK
+[ 46] google-drive-api: rendering Remotion…
+[ 46] google-drive-api: remotion OK
+[ 46] google-drive-api: compiling review cut…
+[ 46] google-drive-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T16:33:13
+
+
+## Run 2026-09-05T16:33:33 rows 47–47  dry_run=False
+
+[ 47] grafana-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-163333.json
+[ 47] grafana-api: generating audio…
+[ 47] grafana-api: audio OK
+[ 47] grafana-api: rendering Remotion…
+[ 47] grafana-api: remotion OK
+[ 47] grafana-api: compiling review cut…
+[ 47] grafana-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T17:02:28
+
+
+## Run 2026-09-05T17:02:49 rows 48–48  dry_run=False
+
+[ 48] graphing: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-170249.json
+[ 48] graphing: generating audio…
+[ 48] graphing: audio OK
+[ 48] graphing: rendering Remotion…
+[ 48] graphing: remotion OK
+[ 48] graphing: compiling review cut…
+[ 48] graphing: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T17:16:44
+
+
+## Run 2026-09-05T17:17:04 rows 49–49  dry_run=False
+
+[ 49] hook-development: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-171704.json
+[ 49] hook-development: generating audio…
+[ 49] hook-development: audio OK
+[ 49] hook-development: rendering Remotion…
+[ 49] hook-development: remotion OK
+[ 49] hook-development: compiling review cut…
+[ 49] hook-development: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T17:26:39
+
+
+## Run 2026-09-05T17:27:00 rows 50–50  dry_run=False
+
+[ 50] hubspot-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-172700.json
+[ 50] hubspot-api: generating audio…
+[ 50] hubspot-api: audio OK
+[ 50] hubspot-api: rendering Remotion…
+[ 50] hubspot-api: remotion OK
+[ 50] hubspot-api: compiling review cut…
+[ 50] hubspot-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T17:33:59
+
+
+## Run 2026-09-05T17:34:20 rows 51–51  dry_run=False
+
+[ 51] jira-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-173420.json
+[ 51] jira-api: generating audio…
+[ 51] jira-api: audio OK
+[ 51] jira-api: rendering Remotion…
+[ 51] jira-api: remotion OK
+[ 51] jira-api: compiling review cut…
+[ 51] jira-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T17:41:36
+
+
+## Run 2026-09-05T17:41:57 rows 52–52  dry_run=False
+
+[ 52] linear-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-174157.json
+[ 52] linear-api: generating audio…
+[ 52] linear-api: audio OK
+[ 52] linear-api: rendering Remotion…
+[ 52] linear-api: remotion OK
+[ 52] linear-api: compiling review cut…
+[ 52] linear-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T17:49:10
+
+
+## Run 2026-09-05T17:49:30 rows 53–53  dry_run=False
+
+[ 53] m5-onboard: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-174930.json
+[ 53] m5-onboard: generating audio…
+[ 53] m5-onboard: audio OK
+[ 53] m5-onboard: rendering Remotion…
+[ 53] m5-onboard: remotion OK
+[ 53] m5-onboard: compiling review cut…
+[ 53] m5-onboard: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T17:56:56
+
+
+## Run 2026-09-05T17:57:17 rows 54–54  dry_run=False
+
+[ 54] math-olympiad: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-175717.json
+[ 54] math-olympiad: generating audio…
+[ 54] math-olympiad: audio OK
+[ 54] math-olympiad: rendering Remotion…
+[ 54] math-olympiad: remotion OK
+[ 54] math-olympiad: compiling review cut…
+[ 54] math-olympiad: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T18:04:18
+
+
+## Run 2026-09-05T18:04:39 rows 55–55  dry_run=False
+
+[ 55] mcp-integration: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-180439.json
+[ 55] mcp-integration: generating audio…
+[ 55] mcp-integration: audio OK
+[ 55] mcp-integration: rendering Remotion…
+[ 55] mcp-integration: remotion OK
+[ 55] mcp-integration: compiling review cut…
+[ 55] mcp-integration: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T18:12:07
+
+
+## Run 2026-09-05T18:12:28 rows 56–56  dry_run=False
+
+[ 56] notion-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-181228.json
+[ 56] notion-api: generating audio…
+[ 56] notion-api: audio OK
+[ 56] notion-api: rendering Remotion…
+[ 56] notion-api: remotion OK
+[ 56] notion-api: compiling review cut…
+[ 56] notion-api: COMPILE FAIL: es.py, then recompile
+[art] WARNING B02: sheet asks for Remotion 'SkillTeardownPipeline' but nothing rendered — run remotion_scenes.py, then recompile
+[art] WARNING B03: sheet asks for Remotion 'SkillTeardownMechanism' but nothing rendered — run remotion_scenes.py, then recompile
+[art] build stamp → beat_sheet.json (4/8 filled)
+[art] GATE LANE: REFUSED — fix pipeline/gen-AI slate violations above
+
+
+## Summary: 0 built, 1 failed, 0 skipped | 2026-09-05T18:19:38
+
+
+## Run 2026-09-05T18:19:59 rows 57–57  dry_run=False
+
+[ 57] pagerduty-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-181959.json
+[ 57] pagerduty-api: generating audio…
+[ 57] pagerduty-api: audio OK
+[ 57] pagerduty-api: rendering Remotion…
+[ 57] pagerduty-api: remotion OK
+[ 57] pagerduty-api: compiling review cut…
+[ 57] pagerduty-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T18:28:46
+
+
+## Run 2026-09-05T18:29:07 rows 58–58  dry_run=False
+
+[ 58] playground: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-182907.json
+[ 58] playground: generating audio…
+[ 58] playground: audio OK
+[ 58] playground: rendering Remotion…
+[ 58] playground: remotion OK
+[ 58] playground: compiling review cut…
+[ 58] playground: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T18:35:21
+
+
+## Run 2026-09-05T18:35:41 rows 59–59  dry_run=False
+
+[ 59] plugin-settings: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-183541.json
+[ 59] plugin-settings: generating audio…
+[ 59] plugin-settings: audio OK
+[ 59] plugin-settings: rendering Remotion…
+[ 59] plugin-settings: remotion OK
+[ 59] plugin-settings: compiling review cut…
+[ 59] plugin-settings: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T18:41:53
+
+
+## Run 2026-09-05T18:42:14 rows 60–60  dry_run=False
+
+[ 60] plugin-structure: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-184214.json
+[ 60] plugin-structure: generating audio…
+[ 60] plugin-structure: audio OK
+[ 60] plugin-structure: rendering Remotion…
+[ 60] plugin-structure: remotion OK
+[ 60] plugin-structure: compiling review cut…
+[ 60] plugin-structure: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T18:48:33
+
+
+## Run 2026-09-05T18:48:53 rows 61–61  dry_run=False
+
+[ 61] project-artifact: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-184853.json
+[ 61] project-artifact: generating audio…
+[ 61] project-artifact: audio OK
+[ 61] project-artifact: rendering Remotion…
+[ 61] project-artifact: remotion OK
+[ 61] project-artifact: compiling review cut…
+[ 61] project-artifact: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T18:55:12
+
+
+## Run 2026-09-05T18:55:33 rows 62–62  dry_run=False
+
+[ 62] redshift-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-185533.json
+[ 62] redshift-api: generating audio…
+[ 62] redshift-api: audio OK
+[ 62] redshift-api: rendering Remotion…
+[ 62] redshift-api: remotion OK
+[ 62] redshift-api: compiling review cut…
+[ 62] redshift-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T19:01:39
+
+
+## Run 2026-09-05T19:01:59 rows 63–63  dry_run=False
+
+[ 63] salesforce-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-190159.json
+[ 63] salesforce-api: generating audio…
+[ 63] salesforce-api: audio OK
+[ 63] salesforce-api: rendering Remotion…
+[ 63] salesforce-api: remotion OK
+[ 63] salesforce-api: compiling review cut…
+[ 63] salesforce-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T19:08:07
+
+
+## Run 2026-09-05T19:08:27 rows 64–64  dry_run=False
+
+[ 64] sentry-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-190827.json
+[ 64] sentry-api: generating audio…
+[ 64] sentry-api: audio OK
+[ 64] sentry-api: rendering Remotion…
+[ 64] sentry-api: remotion OK
+[ 64] sentry-api: compiling review cut…
+[ 64] sentry-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T19:14:46
+
+
+## Run 2026-09-05T19:15:07 rows 65–65  dry_run=False
+
+[ 65] session-report: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-191507.json
+[ 65] session-report: generating audio…
+[ 65] session-report: audio OK
+[ 65] session-report: rendering Remotion…
+[ 65] session-report: remotion OK
+[ 65] session-report: compiling review cut…
+[ 65] session-report: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T19:21:31
+
+
+## Run 2026-09-05T19:21:51 rows 66–66  dry_run=False
+
+[ 66] skill-development: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-192151.json
+[ 66] skill-development: generating audio…
+[ 66] skill-development: audio OK
+[ 66] skill-development: rendering Remotion…
+[ 66] skill-development: remotion OK
+[ 66] skill-development: compiling review cut…
+[ 66] skill-development: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T19:28:14
+
+
+## Run 2026-09-05T19:28:34 rows 67–67  dry_run=False
+
+[ 67] snowflake-api: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-192834.json
+[ 67] snowflake-api: generating audio…
+[ 67] snowflake-api: audio OK
+[ 67] snowflake-api: rendering Remotion…
+[ 67] snowflake-api: remotion OK
+[ 67] snowflake-api: compiling review cut…
+[ 67] snowflake-api: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T19:34:52
+
+
+## Run 2026-09-05T19:35:12 rows 68–68  dry_run=False
+
+[ 68] writing-hookify-rules: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-193512.json
+[ 68] writing-hookify-rules: generating audio…
+[ 68] writing-hookify-rules: audio OK
+[ 68] writing-hookify-rules: rendering Remotion…
+[ 68] writing-hookify-rules: remotion OK
+[ 68] writing-hookify-rules: compiling review cut…
+[ 68] writing-hookify-rules: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T19:41:36
+
+
+## Run 2026-09-05T19:41:56 rows 69–69  dry_run=False
+
+[ 69] action-creator: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-194156.json
+[ 69] action-creator: generating audio…
+[ 69] action-creator: audio OK
+[ 69] action-creator: rendering Remotion…
+[ 69] action-creator: remotion OK
+[ 69] action-creator: compiling review cut…
+[ 69] action-creator: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T19:48:27
+
+
+## Run 2026-09-05T19:48:47 rows 70–70  dry_run=False
+
+[ 70] analyzing-financial-statements: already compiled — forcing deeper sheet/audio/render refresh
+[ 70] analyzing-financial-statements: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-194847.json
+[ 70] analyzing-financial-statements: generating audio…
+[ 70] analyzing-financial-statements: audio OK
+[ 70] analyzing-financial-statements: rendering Remotion…
+[ 70] analyzing-financial-statements: remotion OK
+[ 70] analyzing-financial-statements: compiling review cut…
+[ 70] analyzing-financial-statements: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T19:55:15
+
+
+## Run 2026-09-05T19:55:35 rows 71–71  dry_run=False
+
+[ 71] applying-brand-guidelines: already compiled — forcing deeper sheet/audio/render refresh
+[ 71] applying-brand-guidelines: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-195535.json
+[ 71] applying-brand-guidelines: generating audio…
+[ 71] applying-brand-guidelines: audio OK
+[ 71] applying-brand-guidelines: rendering Remotion…
+[ 71] applying-brand-guidelines: remotion OK
+[ 71] applying-brand-guidelines: compiling review cut…
+[ 71] applying-brand-guidelines: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T20:02:08
+
+
+## Run 2026-09-05T20:02:28 rows 72–72  dry_run=False
+
+[ 72] cookbook-audit: already compiled — forcing deeper sheet/audio/render refresh
+[ 72] cookbook-audit: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-200228.json
+[ 72] cookbook-audit: generating audio…
+[ 72] cookbook-audit: audio OK
+[ 72] cookbook-audit: rendering Remotion…
+[ 72] cookbook-audit: remotion OK
+[ 72] cookbook-audit: compiling review cut…
+[ 72] cookbook-audit: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T20:09:02
+
+
+## Run 2026-09-05T20:09:22 rows 73–73  dry_run=False
+
+[ 73] creating-financial-models: already compiled — forcing deeper sheet/audio/render refresh
+[ 73] creating-financial-models: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-200922.json
+[ 73] creating-financial-models: generating audio…
+[ 73] creating-financial-models: audio OK
+[ 73] creating-financial-models: rendering Remotion…
+[ 73] creating-financial-models: remotion OK
+[ 73] creating-financial-models: compiling review cut…
+[ 73] creating-financial-models: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T20:16:02
+
+
+## Run 2026-09-05T20:16:22 rows 74–74  dry_run=False
+
+[ 74] edgartools-sec-data: already compiled — forcing deeper sheet/audio/render refresh
+[ 74] edgartools-sec-data: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-201622.json
+[ 74] edgartools-sec-data: generating audio…
+[ 74] edgartools-sec-data: audio OK
+[ 74] edgartools-sec-data: rendering Remotion…
+[ 74] edgartools-sec-data: remotion OK
+[ 74] edgartools-sec-data: compiling review cut…
+[ 74] edgartools-sec-data: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T20:23:08
+
+
+## Run 2026-09-05T20:23:28 rows 75–75  dry_run=False
+
+[ 75] eval-audit-and-sweep: already compiled — forcing deeper sheet/audio/render refresh
+[ 75] eval-audit-and-sweep: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-202328.json
+[ 75] eval-audit-and-sweep: generating audio…
+[ 75] eval-audit-and-sweep: audio OK
+[ 75] eval-audit-and-sweep: rendering Remotion…
+[ 75] eval-audit-and-sweep: remotion OK
+[ 75] eval-audit-and-sweep: compiling review cut…
+[ 75] eval-audit-and-sweep: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T20:30:18
+
+
+## Run 2026-09-05T20:30:38 rows 76–76  dry_run=False
+
+[ 76] executive-briefing: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-203038.json
+[ 76] executive-briefing: generating audio…
+[ 76] executive-briefing: audio OK
+[ 76] executive-briefing: rendering Remotion…
+[ 76] executive-briefing: remotion OK
+[ 76] executive-briefing: compiling review cut…
+[ 76] executive-briefing: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T20:37:38
+
+
+## Run 2026-09-05T20:37:58 rows 77–77  dry_run=False
+
+[ 77] first-run: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-203758.json
+[ 77] first-run: generating audio…
+[ 77] first-run: audio OK
+[ 77] first-run: rendering Remotion…
+[ 77] first-run: remotion OK
+[ 77] first-run: compiling review cut…
+[ 77] first-run: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T20:45:02
+
+
+## Run 2026-09-05T20:45:23 rows 78–78  dry_run=False
+
+[ 78] forecasting: already compiled — forcing deeper sheet/audio/render refresh
+[ 78] forecasting: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-204523.json
+[ 78] forecasting: generating audio…
+[ 78] forecasting: audio OK
+[ 78] forecasting: rendering Remotion…
+[ 78] forecasting: remotion OK
+[ 78] forecasting: compiling review cut…
+[ 78] forecasting: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T20:52:32
+
+
+## Run 2026-09-05T20:52:52 rows 79–79  dry_run=False
+
+[ 79] k12-lesson-differentiation: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-205252.json
+[ 79] k12-lesson-differentiation: generating audio…
+[ 79] k12-lesson-differentiation: audio OK
+[ 79] k12-lesson-differentiation: rendering Remotion…
+[ 79] k12-lesson-differentiation: remotion OK
+[ 79] k12-lesson-differentiation: compiling review cut…
+[ 79] k12-lesson-differentiation: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T21:00:21
+
+
+## Run 2026-09-05T21:00:41 rows 80–80  dry_run=False
+
+[ 80] k12-lesson-planning: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-210041.json
+[ 80] k12-lesson-planning: generating audio…
+[ 80] k12-lesson-planning: audio OK
+[ 80] k12-lesson-planning: rendering Remotion…
+[ 80] k12-lesson-planning: remotion OK
+[ 80] k12-lesson-planning: compiling review cut…
+[ 80] k12-lesson-planning: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T21:07:37
+
+
+## Run 2026-09-05T21:07:57 rows 81–81  dry_run=False
+
+[ 81] launch-your-agent: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-210757.json
+[ 81] launch-your-agent: generating audio…
+[ 81] launch-your-agent: audio OK
+[ 81] launch-your-agent: rendering Remotion…
+[ 81] launch-your-agent: remotion OK
+[ 81] launch-your-agent: compiling review cut…
+[ 81] launch-your-agent: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T21:14:28
+
+
+## Run 2026-09-05T21:14:48 rows 82–82  dry_run=False
+
+[ 82] listener-creator: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-211448.json
+[ 82] listener-creator: generating audio…
+[ 82] listener-creator: audio OK
+[ 82] listener-creator: rendering Remotion…
+[ 82] listener-creator: remotion OK
+[ 82] listener-creator: compiling review cut…
+[ 82] listener-creator: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T21:21:33
+
+
+## Run 2026-09-05T21:21:53 rows 83–83  dry_run=False
+
+[ 83] mining: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-212153.json
+[ 83] mining: generating audio…
+[ 83] mining: audio OK
+[ 83] mining: rendering Remotion…
+[ 83] mining: remotion OK
+[ 83] mining: compiling review cut…
+[ 83] mining: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T21:27:51
+
+
+## Run 2026-09-05T21:28:12 rows 84–84  dry_run=False
+
+[ 84] notify-templates: already compiled — forcing deeper sheet/audio/render refresh
+[ 84] notify-templates: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-212812.json
+[ 84] notify-templates: generating audio…
+[ 84] notify-templates: audio OK
+[ 84] notify-templates: rendering Remotion…
+[ 84] notify-templates: remotion OK
+[ 84] notify-templates: compiling review cut…
+[ 84] notify-templates: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T21:34:26
+
+
+## Run 2026-09-05T21:34:46 rows 85–85  dry_run=False
+
+[ 85] reorder-policy: already compiled — forcing deeper sheet/audio/render refresh
+[ 85] reorder-policy: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-213446.json
+[ 85] reorder-policy: generating audio…
+[ 85] reorder-policy: audio OK
+[ 85] reorder-policy: rendering Remotion…
+[ 85] reorder-policy: remotion OK
+[ 85] reorder-policy: compiling review cut…
+[ 85] reorder-policy: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T21:41:30
+
+
+## Run 2026-09-05T21:41:51 rows 86–86  dry_run=False
+
+[ 86] submit-solution: already compiled — forcing deeper sheet/audio/render refresh
+[ 86] submit-solution: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-214151.json
+[ 86] submit-solution: generating audio…
+[ 86] submit-solution: audio OK
+[ 86] submit-solution: rendering Remotion…
+[ 86] submit-solution: remotion OK
+[ 86] submit-solution: compiling review cut…
+[ 86] submit-solution: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T21:48:28
+
+
+## Run 2026-09-05T21:48:48 rows 87–87  dry_run=False
+
+[ 87] supplier-selection: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-214848.json
+[ 87] supplier-selection: generating audio…
+[ 87] supplier-selection: audio OK
+[ 87] supplier-selection: rendering Remotion…
+[ 87] supplier-selection: remotion OK
+[ 87] supplier-selection: compiling review cut…
+[ 87] supplier-selection: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T21:55:54
+
+
+## Run 2026-09-05T21:56:14 rows 88–88  dry_run=False
+
+[ 88] weekly-report: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-215614.json
+[ 88] weekly-report: generating audio…
+[ 88] weekly-report: audio OK
+[ 88] weekly-report: rendering Remotion…
+[ 88] weekly-report: remotion OK
+[ 88] weekly-report: compiling review cut…
+[ 88] weekly-report: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T22:03:14
+
+
+## Run 2026-09-05T22:03:35 rows 89–89  dry_run=False
+
+[ 89] workshop: already compiled — forcing deeper sheet/audio/render refresh
+[ 89] workshop: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-220335.json
+[ 89] workshop: generating audio…
+[ 89] workshop: audio OK
+[ 89] workshop: rendering Remotion…
+[ 89] workshop: remotion OK
+[ 89] workshop: compiling review cut…
+[ 89] workshop: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T22:10:34
+
+
+## Run 2026-09-05T22:10:54 rows 90–90  dry_run=False
+
+[ 90] wrap-up: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-221054.json
+[ 90] wrap-up: generating audio…
+[ 90] wrap-up: audio OK
+[ 90] wrap-up: rendering Remotion…
+[ 90] wrap-up: remotion OK
+[ 90] wrap-up: compiling review cut…
+[ 90] wrap-up: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T22:18:06
+
+
+## Run 2026-09-05T22:18:26 rows 91–91  dry_run=False
+
+[ 91] 3-statement-model: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-221826.json
+[ 91] 3-statement-model: generating audio…
+[ 91] 3-statement-model: audio OK
+[ 91] 3-statement-model: rendering Remotion…
+[ 91] 3-statement-model: remotion OK
+[ 91] 3-statement-model: compiling review cut…
+[ 91] 3-statement-model: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T22:26:12
+
+
+## Run 2026-09-05T22:26:32 rows 92–92  dry_run=False
+
+[ 92] accessibility-review: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-222632.json
+[ 92] accessibility-review: generating audio…
+[ 92] accessibility-review: audio OK
+[ 92] accessibility-review: rendering Remotion…
+[ 92] accessibility-review: remotion OK
+[ 92] accessibility-review: compiling review cut…
+[ 92] accessibility-review: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T22:33:30
+
+
+## Run 2026-09-05T22:33:50 rows 93–93  dry_run=False
+
+[ 93] account-research: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-223350.json
+[ 93] account-research: generating audio…
+[ 93] account-research: audio OK
+[ 93] account-research: rendering Remotion…
+[ 93] account-research: remotion OK
+[ 93] account-research: compiling review cut…
+[ 93] account-research: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T22:40:15
+
+
+## Run 2026-09-05T22:40:36 rows 94–94  dry_run=False
+
+[ 94] accrual-schedule: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-224036.json
+[ 94] accrual-schedule: generating audio…
+[ 94] accrual-schedule: audio OK
+[ 94] accrual-schedule: rendering Remotion…
+[ 94] accrual-schedule: remotion OK
+[ 94] accrual-schedule: compiling review cut…
+[ 94] accrual-schedule: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T22:47:20
+
+
+## Run 2026-09-05T22:47:40 rows 95–95  dry_run=False
+
+[ 95] ai-inventory: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-224740.json
+[ 95] ai-inventory: generating audio…
+[ 95] ai-inventory: audio OK
+[ 95] ai-inventory: rendering Remotion…
+[ 95] ai-inventory: remotion OK
+[ 95] ai-inventory: compiling review cut…
+[ 95] ai-inventory: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T22:54:20
+
+
+## Run 2026-09-05T22:54:40 rows 96–96  dry_run=False
+
+[ 96] ai-readiness: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-225440.json
+[ 96] ai-readiness: generating audio…
+[ 96] ai-readiness: audio OK
+[ 96] ai-readiness: rendering Remotion…
+[ 96] ai-readiness: remotion OK
+[ 96] ai-readiness: compiling review cut…
+[ 96] ai-readiness: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T23:01:34
+
+
+## Run 2026-09-05T23:01:54 rows 97–97  dry_run=False
+
+[ 97] ai-tool-handoff: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-230154.json
+[ 97] ai-tool-handoff: generating audio…
+[ 97] ai-tool-handoff: audio OK
+[ 97] ai-tool-handoff: rendering Remotion…
+[ 97] ai-tool-handoff: remotion OK
+[ 97] ai-tool-handoff: compiling review cut…
+[ 97] ai-tool-handoff: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T23:08:13
+
+
+## Run 2026-09-05T23:08:33 rows 98–98  dry_run=False
+
+[ 98] aia-generation: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-230833.json
+[ 98] aia-generation: generating audio…
+[ 98] aia-generation: audio OK
+[ 98] aia-generation: rendering Remotion…
+[ 98] aia-generation: REMOTION FAIL: ^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/shutil.py", line 313, in copyfile
+    with open(src, 'rb') as fsrc:
+         ~~~~^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-for-legal/youtube/claude-liam-aia-generation/media/_ext_B04.mp4'
+
+
+## Summary: 0 built, 1 failed, 0 skipped | 2026-09-05T23:12:26
+
+
+## Run 2026-09-05T23:12:46 rows 99–99  dry_run=False
+
+[ 99] amendment-history: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-231246.json
+[ 99] amendment-history: generating audio…
+[ 99] amendment-history: audio OK
+[ 99] amendment-history: rendering Remotion…
+[ 99] amendment-history: remotion OK
+[ 99] amendment-history: compiling review cut…
+[ 99] amendment-history: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T23:18:47
+
+
+## Run 2026-09-05T23:19:07 rows 100–100  dry_run=False
+
+[100] analyze: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-231907.json
+[100] analyze: generating audio…
+[100] analyze: audio OK
+[100] analyze: rendering Remotion…
+[100] analyze: remotion OK
+[100] analyze: compiling review cut…
+[100] analyze: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T23:25:48
+
+
+## Run 2026-09-05T23:26:09 rows 101–101  dry_run=False
+
+[101] architecture: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-232609.json
+[101] architecture: generating audio…
+[101] architecture: audio OK
+[101] architecture: rendering Remotion…
+[101] architecture: remotion OK
+[101] architecture: compiling review cut…
+[101] architecture: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T23:33:56
+
+
+## Run 2026-09-05T23:34:16 rows 102–102  dry_run=False
+
+[102] audit-support: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-233416.json
+[102] audit-support: generating audio…
+[102] audit-support: audio OK
+[102] audit-support: rendering Remotion…
+[102] audit-support: remotion OK
+[102] audit-support: compiling review cut…
+[102] audit-support: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T23:45:14
+
+
+## Run 2026-09-05T23:45:34 rows 103–103  dry_run=False
+
+[103] audit-xls: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-234534.json
+[103] audit-xls: generating audio…
+[103] audit-xls: audio OK
+[103] audit-xls: rendering Remotion…
+[103] audit-xls: remotion OK
+[103] audit-xls: compiling review cut…
+[103] audit-xls: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T23:51:37
+
+
+## Run 2026-09-05T23:51:57 rows 104–104  dry_run=False
+
+[104] auto-updater: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-235157.json
+[104] auto-updater: generating audio…
+[104] auto-updater: audio OK
+[104] auto-updater: rendering Remotion…
+[104] auto-updater: remotion OK
+[104] auto-updater: compiling review cut…
+[104] auto-updater: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-05T23:57:48
+
+
+## Run 2026-09-05T23:58:08 rows 105–105  dry_run=False
+
+[105] bar-prep-questions: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260905-235808.json
+[105] bar-prep-questions: generating audio…
+[105] bar-prep-questions: audio OK
+[105] bar-prep-questions: rendering Remotion…
+[105] bar-prep-questions: remotion OK
+[105] bar-prep-questions: compiling review cut…
+[105] bar-prep-questions: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-06T00:04:07
+
+
+## Run 2026-09-06T00:04:28 rows 106–106  dry_run=False
+
+[106] board-minutes: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260906-000428.json
+[106] board-minutes: generating audio…
+[106] board-minutes: audio OK
+[106] board-minutes: rendering Remotion…
+[106] board-minutes: remotion OK
+[106] board-minutes: compiling review cut…
+[106] board-minutes: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-06T00:10:12
+
+
+## Run 2026-09-06T00:10:33 rows 107–107  dry_run=False
+
+[107] bond-futures-basis: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260906-001033.json
+[107] bond-futures-basis: generating audio…
+[107] bond-futures-basis: audio OK
+[107] bond-futures-basis: rendering Remotion…
+[107] bond-futures-basis: remotion OK
+[107] bond-futures-basis: compiling review cut…
+[107] bond-futures-basis: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-06T00:16:34
+
+
+## Run 2026-09-06T00:16:54 rows 108–108  dry_run=False
+
+[108] bond-relative-value: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260906-001654.json
+[108] bond-relative-value: generating audio…
+[108] bond-relative-value: audio OK
+[108] bond-relative-value: rendering Remotion…
+[108] bond-relative-value: remotion OK
+[108] bond-relative-value: compiling review cut…
+[108] bond-relative-value: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-06T00:22:56
+
+
+## Run 2026-09-06T00:23:16 rows 109–109  dry_run=False
+
+[109] brand-review: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260906-002316.json
+[109] brand-review: generating audio…
+[109] brand-review: audio OK
+[109] brand-review: rendering Remotion…
+[109] brand-review: remotion OK
+[109] brand-review: compiling review cut…
+[109] brand-review: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-06T00:29:11
+
+
+## Run 2026-09-06T00:29:31 rows 110–110  dry_run=False
+
+[110] brand-voice-enforcement: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260906-002931.json
+[110] brand-voice-enforcement: generating audio…
+[110] brand-voice-enforcement: audio OK
+[110] brand-voice-enforcement: rendering Remotion…
+[110] brand-voice-enforcement: remotion OK
+[110] brand-voice-enforcement: compiling review cut…
+[110] brand-voice-enforcement: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-06T00:35:25
+
+
+## Run 2026-09-06T00:35:45 rows 111–111  dry_run=False
+
+[111] break-trace: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260906-003545.json
+[111] break-trace: generating audio…
+[111] break-trace: audio OK
+[111] break-trace: rendering Remotion…
+[111] break-trace: remotion OK
+[111] break-trace: compiling review cut…
+[111] break-trace: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-06T00:41:59
+
+
+## Run 2026-09-06T00:42:19 rows 112–112  dry_run=False
+
+[112] brief: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260906-004219.json
+[112] brief: generating audio…
+[112] brief: audio OK
+[112] brief: rendering Remotion…
+[112] brief: remotion OK
+[112] brief: compiling review cut…
+[112] brief: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-06T00:48:35
+
+
+## Run 2026-09-06T00:48:55 rows 113–113  dry_run=False
+
+[113] brief-section-drafter: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260906-004855.json
+[113] brief-section-drafter: generating audio…
+[113] brief-section-drafter: audio OK
+[113] brief-section-drafter: rendering Remotion…
+[113] brief-section-drafter: remotion OK
+[113] brief-section-drafter: compiling review cut…
+[113] brief-section-drafter: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-06T00:55:28
+
+
+## Run 2026-09-06T00:55:48 rows 114–114  dry_run=False
+
+[114] build-dashboard: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260906-005548.json
+[114] build-dashboard: generating audio…
+[114] build-dashboard: audio OK
+[114] build-dashboard: rendering Remotion…
+[114] build-dashboard: remotion OK
+[114] build-dashboard: compiling review cut…
+[114] build-dashboard: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-06T01:02:21
+
+
+## Run 2026-09-06T01:02:41 rows 115–115  dry_run=False
+
+[115] build-guide: beat_sheet.json rewritten with deeper detail; backup: beat_sheet.pre-detail-20260906-010241.json
+[115] build-guide: generating audio…
+[115] build-guide: audio OK
+[115] build-guide: rendering Remotion…
+[115] build-guide: remotion OK
+[115] build-guide: compiling review cut…
+[115] build-guide: DONE ✓
+
+## Summary: 1 built, 0 failed, 0 skipped | 2026-09-06T01:08:58

@@ -1,0 +1,290 @@
+{
+ "metadata": {
+  "title": "Claude Code, Hook Development.",
+  "slug": "claude-code--claude-liam-hook-development",
+  "topic": "HOOKS · CLAUDE CODE PLUGINS",
+  "purpose": "Take apart the hook-vs-reminder case: explain why a stateless config file survives what a conversation-scoped reminder cannot, name the two-shape config trade-off (plugin hooks.json wraps events inside a hooks key; project settings.json puts them at the top level), and evaluate what a permissive parser costs a caller. Lands the carry-out that a hook is a script wired to one exact event that fires exactly as configured — or silently, not at all.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/claude-code/youtube/claude-liam-hook-development/beat_sheet.json",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Code",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (the PreToolUse hook blocking .env writes: fires reliably in the right config shape, silently doesn't in the wrong one)",
+  "build": {
+   "at": "2026-08-29T02:16:46",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's what's actually happening. A reminder lives in the conversation — one session away from gone. A hook is the opposite: a script the runner reads before every action. What's inside one?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'How do I set a reminder for Claude Code to skip my .env file?', hesitates on 'reminder', corrects to 'hook', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "How do I set a reminder\nfor Claude Code\nto skip my .env file?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "reminder",
+      "replacementWords": "hook",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-hook-development"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('reminder' -> 'hook') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T02:16:46"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "The reminder guess isn't unreasonable — you told the model something, why wouldn't it hold? Because the conversation is finite. Scroll the reminder off the top, start a new session, and that instruction never existed. A hook is the design fix: a file the runner re-reads every time it's about to act, not a sentence hoping to survive the window. And it fires at exactly nine named moments, from before a tool runs to when a session starts or ends. Determinism over convenience — you pick which of the nine you actually want.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A reminder bubble scattering as conversation text scrolls past; beside it a config file staying fixed; nine tick marks lighting along a timeline"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A file, not a memory",
+     "mechanic": "Left: a speech-bubble labelled 'reminder' fades and scatters as lines of conversation scroll upward past it. Right: a file icon labelled 'hooks.json' stays fixed and solid while the same conversation scrolls behind it, unaffected. Beneath both, a horizontal line with nine tick marks lights up left to right; two are named directly — 'before a tool runs' under the first, 'session starts / ends' under the last two.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "HDVB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T02:16:46"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "Two ways to write a hook, and the choice is a philosophy. A command hook is a bash script — the runner shells out, reads the exit code, gets the same answer every time. A prompt-based hook hands the decision back to Claude's own judgment, flexible until the day you needed it not to be. Here's the anchor: PreToolUse. Before any tool runs, it gets the file path, checks it, and returns one of three answers — allow, deny, or ask. Deny fires. The write never happens. Not undone. Never happened.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — PreToolUse checking a write to .env, branching to allow / deny / ask, deny firing and the write struck"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — PreToolUse checks, then blocks",
+     "mechanic": "Two cards side by side fade in: 'command' (a terminal glyph, 'bash script, same check every time') and 'prompt-based' (a thought-glyph, 'Claude's judgment'). THE ANCHOR. Both cards shrink to the top; below, a PreToolUse box receives a write attempt to '.env', branches to three labelled outcomes — allow, deny, ask — and 'deny' lights up in terracotta while a strike mark lands over the attempted write. THIS EXACT SEQUENCE RETURNS AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "HDVB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T02:16:46"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "Get the shape right and that deny fires every time — no forgetting, no context to fall out of. That's the payoff. Now the trade. Two files can hold hooks, and they don't hold them the same way. A plugin's hooks.json wraps its events inside a hooks key. A project's settings.json puts those same events directly at the top level. Swap the shapes and nothing errors — the runner reads the file, doesn't find what it expects where it expects it, and just doesn't fire. Silence. Permissive parser is the design choice; the caller pays with a hook that looks configured and does nothing.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — the same deny firing three times reliably, then two config shapes side by side, the swapped one fading to silence with no error"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — reliable, then silently wrong",
+     "mechanic": "THE B02 DENY SEQUENCE RETURNS, identical, and fires three times in a row — each marked teal 'blocked'. Then two file shapes appear side by side: a wrapped object reading '{ hooks: { PreToolUse: [...] } }' labelled 'plugin hooks.json', and a flat object reading '{ PreToolUse: [...] }' labelled 'settings.json'. The wrapped shape is dragged into the settings.json slot; the PreToolUse box beneath goes dark — no strike mark, no error text, just silence — labelled 'never fires'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "HDVB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T02:16:46"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A hook isn't something you ask Claude to remember — it's a script wired to one exact moment, and it fires exactly as configured, or not at all.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A hook isn't something you ask Claude to remember — it's a script wired to one exact moment, and it fires exactly as configured, or not at all.",
+      "attribution": "",
+      "sparkLine": "Configured, or silent."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T02:16:46"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I'm building a Claude Code plugin and I want a PreToolUse hook that blocks writes to any dot-env file and to system paths like slash etc, slash usr, slash bin. First, write the hooks dot json wrapped in the plugin's hooks key with the correct top-level shape — and call out exactly where the hooks key sits and why the flat settings dot json shape would silently never fire here. Second, write the bash script the hook shells out to, using dollar CLAUDE_PLUGIN_ROOT so the path survives the plugin being moved, and return the exit code that maps to deny. Third, set an explicit timeout instead of relying on the sixty-second default, and explain what happens on timeout — does the tool call proceed, get denied, or hang? Go deeper: ask the same model what breaks when the exact same hook is installed twice — once in the plugin's hooks dot json and once in the project's settings dot json — do both fire, does one win, and how would you detect a duplicate PreToolUse in the wild before it ate a legitimate write?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 60,
+   "llm_exercise": {
+    "prompt": "I'm building a Claude Code plugin and I want a PreToolUse hook that blocks writes to any .env file and to system paths like /etc, /usr, /bin. (1) Write the hooks.json wrapped in the plugin's `hooks` key with the correct top-level shape — call out exactly where the `hooks` key sits and why the flat settings.json shape would silently never fire here. (2) Write the bash script the hook shells out to, using $CLAUDE_PLUGIN_ROOT so the path survives the plugin being moved, and return the exit code that maps to deny. (3) Set an explicit timeout instead of relying on the 60-second default, and explain what happens on timeout — does the tool call proceed, get denied, or hang?",
+    "dig_deeper": "Go deeper: ask the same model what breaks when the exact same hook is installed twice — once in the plugin's hooks.json and once in the project's settings.json — do both fire, does one win, and how would you detect a duplicate PreToolUse in the wild before it ate a legitimate write?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "HOOKS · CLAUDE CODE PLUGINS",
+      "segment": "Configured, Or Silent.",
+      "command": "I'm building a Claude Code plugin and I want a PreToolUse hook that blocks writes to any .env file and to system paths (/etc, /usr, /bin). (1) Write the hooks.json wrapped in the plugin's `hooks` key with the correct top-level shape — and note why the flat settings.json shape would silently never fire here. (2) Write the bash script it shells out to, using $CLAUDE_PLUGIN_ROOT so the path survives the plugin being moved, returning the exit code that maps to deny. (3) Set an explicit timeout instead of the 60-second default, and explain what happens on timeout — proceed, deny, or hang?",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T02:16:46"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude Code, Hook Development. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude Code, Hook Development. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T02:16:46"
+   }
+  }
+ ]
+}

@@ -1,0 +1,290 @@
+{
+ "metadata": {
+  "title": "What Actually Happens When Claude \"Initiates Coverage\"?",
+  "slug": "financial-services--claude-liam-initiating-coverage",
+  "topic": "INITIATING-COVERAGE · ANTHROPIC SKILL",
+  "purpose": "Take initiating-coverage apart in the Teardown register: not one continuous pass, but a five-task chain — research, model, valuation, charts, report — with each task refusing to start until the one before it has produced a verified deliverable. Name the design choice: guaranteed order at the expense of guaranteed judgment. A finished report proves the chain ran, not that the assumptions inside it are sound.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-initiating-coverage/beat_sheet.json",
+  "source_note": "Source sheet's narration already carries real skill-specific facts (not unfilled template placeholders) -- see QUESTION.md. Facts preserved: initiating-coverage runs a 5-task workflow (company research, financial modeling, valuation analysis, chart generation, final report assembly), tasks executed individually with verified prerequisites, tasks 3-5 depend on earlier tasks, deliverables are markdown docs/Excel models/charts/DOCX reports. Register re-registered Teardown -> Plain; source's B03 design-tell verdict became a plain mechanism + both-directions beat; a wrong-guess beat and an anchor (one ticker's coverage package traveling through all five tasks) were added per hai-simple's Phase 1 structure, since the source's Teardown shape carried neither.",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (one ticker's coverage package: RESEARCH -> MODEL -> VALUATION -> CHARTS -> REPORT, in order, then resting at REPORT)",
+  "build": {
+   "at": "2026-09-01T23:00:39",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Read 'Claude initiates coverage' and it sounds like one prompt in, whole research report out. It isn't — it's a five-task chain, dependency-gated. Let's open it and watch how each piece actually runs.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'What produces the report -- instantly?', hesitates on 'instantly', corrects to 'five ordered tasks', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "What produces\nthe report —\ninstantly?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "instantly",
+      "replacementWords": "five ordered tasks",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-initiating-coverage"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('instantly' -> 'five ordered tasks') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T23:00:39"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "The natural read: one pass — Claude writes the whole report, picks its own order, hands you the file. Actual mechanism: five tasks in fixed order — company research, financial model, valuation, charts, report assembly — and each one won't start until the one before it has finished and been verified. Ask it to jump to valuation before a financial model exists and it can't run: there's nothing there to value. Task three's input isn't optional — it's task two's output.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 27,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A one-pass generator, struck; a five-task ordered chain, lit"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "One pass, struck -- five tasks, lit",
+     "mechanic": "Left: a single card labelled 'ONE PASS' with a report icon appearing instantly beneath it. Right: a card labelled 'FIVE TASKS, IN ORDER' listing three grouped lines. The one-pass side dims and gets a terracotta strike; the five-task side stays lit. A final line reads 'valuation before a model exists -- can't run' and the chain does not reach for it.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "ICB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T23:00:39"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "What each task actually produces. One: company research written as a markdown document. Two: a financial model built out in Excel. Three: valuation analysis that reads its numbers from that Excel model — not from thin air. Four: charts generated off the valuation. Five: everything assembled into a Word doc as the final report. Watch the anchor — one ticker's coverage package traveling through those five tasks in order. Each stage refuses to start until the deliverable before it exists on disk and has been verified.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR -- one ticker's coverage package traveling through RESEARCH -> MODEL -> VALUATION -> CHARTS -> REPORT, in order"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR -- one package, five tasks",
+     "mechanic": "THE ANCHOR. Five stacked cards labelled 'RESEARCH', 'MODEL', 'VALUATION', 'CHARTS', 'REPORT'. A single highlighted token 'TICKER PACKAGE' travels down through all five cards in turn, each lighting as it arrives, never skipping ahead of an unlit card. THIS EXACT COMPOSITION RETURNS, PAID OFF, AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "ICB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T23:00:39"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "The package arrives at the other end as a finished report — every task ran only because the one before it produced a verified deliverable. That proves order was respected: no step ran on inputs that weren't there yet. It doesn't prove the analysis inside any step is sound. A financial model can pass verification with unrealistic growth assumptions baked in; verification checks that the file exists and has the right shape, not that the numbers are wise. And the other direction: a task that couldn't start because an earlier deliverable never arrived is a sequencing gap, not evidence the earlier research was wrong. They optimized for guaranteed order at the expense of guaranteed judgment.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 33,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS, resting at REPORT; splits into 'ran is not sound' and 'blocked is not bad'"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS -- report, then split",
+     "mechanic": "THE B02 FIVE-CARD COMPOSITION RETURNS, identical placement, the token resting at the 'REPORT' card. It shrinks and slides up. Two cards fade in beneath: left reads 'RAN: VALUATION' with a checkmark, then a struck-through 'SOUND?' beneath it, labelled 'ran is not sound'; right reads 'BLOCKED: TASK 3' beside a faint 'model missing, not wrong' note, labelled 'blocked is not bad'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "ICB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T23:00:39"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Initiating coverage doesn't mean Claude writes a report in one pass -- it runs five fixed tasks, in order, and each one is blocked until the task before it hands over a verified deliverable. A finished report means the chain completed end to end, not that a person checked the assumptions inside it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Initiating coverage doesn't mean Claude writes a report in one pass — it runs five fixed tasks, in order, and each one is blocked until the task before it hands over a verified deliverable. A finished report means the chain completed end to end, not that a person checked the assumptions inside it.",
+      "attribution": "",
+      "sparkLine": "Completed, not fact-checked."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T23:00:39"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini. Pick a public company you actually know. Ask the model to do three things in strict order — research the company, sketch a simple financial projection, then value it from that projection — and to show you each step's output before it starts the next. Then, in a second run, ask it to skip straight to the valuation without the projection step, and read what happens. Go deeper: for each of the three steps, decide which was doing analytical work you'd trust with real money, and which was doing paperwork that any ordered chain could have produced — that's the seam between running the tasks and being right about them.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42,
+   "llm_exercise": {
+    "prompt": "I want to understand a public company end to end. Pick [ticker or name] and do these three things in strict order, showing me each step's output before you start the next: (1) research the company — what it does, how it makes money, its most recent reported numbers; (2) sketch a simple three-year financial projection built from that research — revenue, margins, cash flow, with your assumptions written out plainly; (3) value it from that projection using two methods — a DCF and a comparable-multiple — and reconcile the two numbers. Then, in a second run, skip straight to step three without step two, and tell me exactly what breaks and why.",
+    "dig_deeper": "Go deeper: for each of the three steps, decide which was doing analytical work you'd trust with real money, and which was doing paperwork that any ordered chain could have produced — that's the seam between running the tasks and being right about them."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "INITIATING-COVERAGE · ANTHROPIC SKILL",
+      "segment": "Your Turn",
+      "command": "Pick a public company I know. Do three things in strict order — research the company, sketch a simple financial projection, then value it from that projection — and show me each step's output before starting the next. Then, in a second run, skip straight to the valuation without the projection step, and show me what breaks.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T23:00:39"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "What Actually Happens When Claude Initiates Coverage? Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "What Actually Happens When Claude Initiates Coverage? Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T23:00:39"
+   }
+  }
+ ]
+}

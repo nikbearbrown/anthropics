@@ -13,12 +13,22 @@ effect, NO five-step funnel, NO site-specific conjugation.
 
 All DAR example numbers (68%, 11%, 2.4, 0.3, 3 mice) are illustrative.
 """
-import sys, pathlib as _pl
-sys.path.insert(0, str(_pl.Path(__file__).resolve().parents[3]
-                        / "vox/aspects/explainer/vox-explainer/manim"))
+import sys, pathlib as _pl, json, os
+
+# Walk up from this file looking for books/vox/aspects/explainer/vox-explainer/manim.
+# The hard-coded parents[3] assumed a 3-deep books layout; this reel sits 5 levels
+# down under books/anthropics/youtube/cancer-nanomedicine/youtube/ — same fix
+# sibling `vox-delivery-funnel` applied 2026-08-28.
+_here = _pl.Path(__file__).resolve()
+for _p in _here.parents:
+    _cand = _p / "vox" / "aspects" / "explainer" / "vox-explainer" / "manim"
+    if _cand.is_dir() and (_cand / "vox_graphics.py").exists():
+        sys.path.insert(0, str(_cand))
+        break
+else:
+    raise ImportError("vox_graphics.py not found walking up from " + str(_here))
 from vox_graphics import *
 from vox_graphics import _quote_scene
-import json, os
 
 _bs = os.path.join(os.path.dirname(__file__), "beat_sheet.json")
 try:
@@ -234,7 +244,7 @@ class B06_HydrophobicLoad(Scene):
 
         # pause at DAR-4: label "DAR 4"
         d4_label = LabelChip("DAR 4", accent=TEAL, size=22)
-        d4_label.move_to(RIGHT * 3.5 + UP * 1.5)
+        d4_label.move_to(RIGHT * 4.7 + UP * 1.5)
         self.play(FadeIn(d4_label), run_time=0.4)
         self.wait(0.4)
 
@@ -246,8 +256,11 @@ class B06_HydrophobicLoad(Scene):
             self.play(FadeIn(d, scale=0.6), run_time=0.25)
 
         # whole conjugate shifts right slightly (aggregation pull)
+        # anchor the DAR-8 chip and sticky label to the right edge; first render
+        # placed them at RIGHT*3.5 which put the sticky label's left tail on top
+        # of the second (aggregating) antibody stem.
         agg_label = LabelChip("DAR 8 -- aggregating", accent=CRIMSON, size=22)
-        agg_label.move_to(RIGHT * 3.5 + UP * 0.8)
+        agg_label.move_to(RIGHT * 4.7 + UP * 0.8)
         self.play(FadeOut(d4_label), FadeIn(agg_label), run_time=0.4)
 
         # second conjugate appears to the right to show aggregation
@@ -260,8 +273,8 @@ class B06_HydrophobicLoad(Scene):
         self.play(FadeIn(ab2), FadeIn(dots2), run_time=0.5)
         self.play(ab2.animate.shift(LEFT * 0.8), dots2.animate.shift(LEFT * 0.8),
                   run_time=0.7)
-        sticky_lbl = SerifLabel("hydrophobic / sticking together", CRIMSON, size=22)
-        sticky_lbl.next_to(agg_label, DOWN, buff=0.35)
+        sticky_lbl = SerifLabel("hydrophobic / sticky", CRIMSON, size=20)
+        sticky_lbl.next_to(agg_label, DOWN, buff=0.35).align_to(agg_label, RIGHT)
         self.play(FadeIn(sticky_lbl), run_time=0.5)
         self.wait(max(0.3, total - 0.7 - 4 * 0.25 - 0.4 - 0.4 - 4 * 0.25 - 0.4 - 0.5 - 0.7 - 0.5))
 
@@ -286,7 +299,11 @@ class B07_ClearanceTrap(Scene):
         clear_lbl = Text("liver /", font=DISPLAY, color=CRIMSON, font_size=20, weight=BOLD)
         clear_lbl2 = Text("immune system", font=DISPLAY, color=CRIMSON, font_size=20, weight=BOLD)
         clear_text = VGroup(clear_lbl, clear_lbl2).arrange(DOWN, buff=0.1)
-        clear_text.move_to(clear_box.get_center())
+        # anchor "liver / immune system" text at the BOTTOM half of the box so
+        # the DAR-8 dot cluster (and its chip) can land in the top half without
+        # stepping on the label. First render put the dot at DOWN*1.0 and the
+        # label at box center — the dot landed on top of "immune system".
+        clear_text.move_to(clear_box.get_bottom() + UP * 0.42)
 
         self.play(Create(vessel_top), Create(vessel_bot), FadeIn(vessel_fill), run_time=0.7)
         self.play(FadeIn(clear_box), FadeIn(clear_text), run_time=0.5)
@@ -320,11 +337,14 @@ class B07_ClearanceTrap(Scene):
         self.play(d8.animate.move_to(RIGHT * 2.2 + UP * 0.1),
                   lbl_d8.animate.move_to(RIGHT * 2.2 + UP * 0.55),
                   run_time=1.0)
-        self.play(d8.animate.move_to(RIGHT * 5.0 + DOWN * 1.0),
-                  lbl_d8.animate.move_to(RIGHT * 5.0 + DOWN * 0.35),
+        # dot lands in the TOP HALF of the box (above the label); DAR-8 label
+        # sits above the box; "cleared" chip goes below the dot cluster,
+        # between the dot and the "liver / immune system" text.
+        self.play(d8.animate.move_to(RIGHT * 5.0 + UP * 0.05),
+                  lbl_d8.animate.move_to(RIGHT * 5.0 + UP * 0.7),
                   run_time=0.9)
         cleared_chip = LabelChip("cleared", accent=CRIMSON, size=20)
-        cleared_chip.next_to(d8, DOWN, buff=0.15)
+        cleared_chip.next_to(d8, DOWN, buff=0.35)
         self.play(FadeIn(cleared_chip), run_time=0.4)
         self.wait(max(0.3, total - 0.7 - 0.5 - 0.4 - 1.2 - 0.4 - 0.4 - 1.0 - 0.9 - 0.4))
 
@@ -346,57 +366,101 @@ class B08_MechanismCard(Scene):
 
 
 class B09_OptimumCurve(Scene):
-    """Optimum curve: DAR vs tumor delivery with both failure modes."""
+    """Optimum curve: DAR vs tumor delivery with both failure modes.
+
+    Rebuilt without manim's Axes class — first render produced only the y-axis
+    label (Axes + get_area + plot all rendered blank against this shared
+    vox_graphics import). Uses raw Lines / VMobject.set_points_smoothly like
+    B04_DARScale does, which renders cleanly.
+    """
     def construct(self):
         total = DUR["B09"]
-        # axes
-        ax = Axes(
-            x_range=[0, 10, 2],
-            y_range=[0, 1.1, 0.5],
-            x_length=9.0,
-            y_length=4.5,
-            axis_config={"color": INK, "stroke_width": 2,
-                         "include_tip": False,
-                         "numbers_to_include": [0, 2, 4, 6, 8, 10]},
-        )
-        ax.move_to(DOWN * 0.3)
+
+        # frame: x-axis 0..10 spans LEFT*5.5..RIGHT*5.5 at DOWN*2.4;
+        # y-axis rises 4.5 units up from that baseline.
+        x_left, x_right = -5.5, 5.5
+        y_bot, y_top = -2.4, 2.1
+        x_span = x_right - x_left  # 11.0 units for DAR 0..10  (1.1 per DAR)
+        y_span = y_top - y_bot     # 4.5 units for 0..1
+
+        def px(dar):
+            return x_left + dar * (x_span / 10.0)
+
+        def py(v):
+            return y_bot + v * y_span
+
+        x_axis = Line(np.array([x_left, y_bot, 0]),
+                      np.array([x_right, y_bot, 0]),
+                      color=INK, stroke_width=3)
+        y_axis = Line(np.array([x_left, y_bot, 0]),
+                      np.array([x_left, y_top, 0]),
+                      color=INK, stroke_width=3)
+
+        # x-axis tick labels 0, 2, 4, 6, 8, 10
+        tick_labels = VGroup()
+        for val in range(0, 11, 2):
+            t = Line(np.array([px(val), y_bot - 0.12, 0]),
+                     np.array([px(val), y_bot + 0.12, 0]),
+                     color=INK, stroke_width=2)
+            lbl = Text(str(val), font=MONO, color=INK, font_size=22)
+            lbl.move_to(np.array([px(val), y_bot - 0.4, 0]))
+            tick_labels.add(t, lbl)
+
         x_label = Text("DAR", font=MONO, color=INK, font_size=22)
-        x_label.next_to(ax.x_axis, DOWN, buff=0.4)
+        x_label.move_to(np.array([0.0, y_bot - 0.95, 0]))
         y_label = Text("tumor drug delivery", font=SERIF, color=INK,
                        font_size=20, slant=ITALIC)
-        y_label.next_to(ax.y_axis, LEFT, buff=0.15).rotate(PI / 2)
+        y_label.rotate(PI / 2).move_to(np.array([x_left - 0.4, (y_bot + y_top) / 2, 0]))
 
-        # bell-ish curve peaking around DAR 5-6
+        # bell-ish delivery curve peaking around DAR 5-6
         def delivery(x):
             return 0.95 * np.exp(-0.28 * (x - 5.5) ** 2)
 
-        curve = ax.plot(delivery, x_range=[0.1, 10], color=INK, stroke_width=2.5)
+        curve = VMobject().set_stroke(INK, width=3)
+        curve_pts = [np.array([px(d / 10.0 * 10), py(delivery(d / 10.0 * 10)), 0])
+                     for d in range(1, 101)]
+        curve.set_points_smoothly(curve_pts)
 
-        # teal shading under curve in sweet spot 4-8
-        teal_area = ax.get_area(curve, x_range=[4, 8], color=TEAL, opacity=0.3)
+        # teal sweet-spot polygon under the curve, DAR 4..8
+        teal_pts = ([np.array([px(4), y_bot, 0])] +
+                    [np.array([px(x), py(delivery(x)), 0])
+                     for x in [i * 0.2 for i in range(20, 41)]] +
+                    [np.array([px(8), y_bot, 0])])
+        teal_area = Polygon(*teal_pts, color=TEAL, fill_opacity=0.28, stroke_width=0)
 
-        # crimson zones for the two failure sides
-        crimson_l = ax.get_area(curve, x_range=[0.1, 4], color=CRIMSON, opacity=0.2)
-        crimson_r = ax.get_area(curve, x_range=[8, 10], color=CRIMSON, opacity=0.2)
+        # crimson under-delivery polygon, DAR 0..4
+        left_pts = ([np.array([px(0.2), y_bot, 0])] +
+                    [np.array([px(x), py(delivery(x)), 0])
+                     for x in [0.2 + i * 0.2 for i in range(20)]] +
+                    [np.array([px(4), y_bot, 0])])
+        crimson_l = Polygon(*left_pts, color=CRIMSON, fill_opacity=0.20, stroke_width=0)
 
-        # labels
-        sweet_lbl = Text("sweet spot", font=SERIF, color=TEAL, font_size=20, slant=ITALIC)
-        sweet_lbl.move_to(ax.c2p(5.5, 0.85))
+        # crimson over-aggregation polygon, DAR 8..10
+        right_pts = ([np.array([px(8), y_bot, 0])] +
+                     [np.array([px(x), py(delivery(x)), 0])
+                      for x in [8 + i * 0.1 for i in range(21)]] +
+                     [np.array([px(10), y_bot, 0])])
+        crimson_r = Polygon(*right_pts, color=CRIMSON, fill_opacity=0.20, stroke_width=0)
+
+        sweet_lbl = Text("sweet spot", font=SERIF, color=TEAL, font_size=22, slant=ITALIC)
+        sweet_lbl.move_to(np.array([px(5.5), py(0.95) + 0.35, 0]))
         under_lbl = Text("under-delivers", font=SERIF, color=CRIMSON,
-                         font_size=18, slant=ITALIC)
-        under_lbl.move_to(ax.c2p(2.0, 0.5))
+                         font_size=20, slant=ITALIC)
+        under_lbl.move_to(np.array([px(1.8), py(0.55), 0]))
         over_lbl = Text("overloaded /", font=SERIF, color=CRIMSON,
-                        font_size=18, slant=ITALIC)
+                        font_size=20, slant=ITALIC)
         over_lbl2 = Text("cleared fast", font=SERIF, color=CRIMSON,
-                         font_size=18, slant=ITALIC)
+                         font_size=20, slant=ITALIC)
         over_block = VGroup(over_lbl, over_lbl2).arrange(DOWN, buff=0.1)
-        over_block.move_to(ax.c2p(9.0, 0.5))
+        over_block.move_to(np.array([px(9.0), py(0.55), 0]))
 
-        self.play(Create(ax), FadeIn(x_label), FadeIn(y_label), run_time=0.9)
-        self.play(Create(curve), run_time=1.0)
-        self.play(FadeIn(teal_area), FadeIn(crimson_l), FadeIn(crimson_r), run_time=0.7)
-        self.play(FadeIn(sweet_lbl), FadeIn(under_lbl), FadeIn(over_block), run_time=0.7)
-        self.wait(max(0.3, total - 3.3))
+        self.play(Create(x_axis), Create(y_axis),
+                  FadeIn(tick_labels), FadeIn(x_label), FadeIn(y_label),
+                  run_time=1.0)
+        self.play(Create(curve), run_time=1.1)
+        self.play(FadeIn(teal_area), FadeIn(crimson_l), FadeIn(crimson_r), run_time=0.8)
+        self.play(FadeIn(sweet_lbl), FadeIn(under_lbl), FadeIn(over_block), run_time=0.8)
+        self.wait(max(0.3, total - 3.7))
 
 
 class B10_ExamplePharma(Scene):

@@ -1,0 +1,39 @@
+$ wc -l index.bare.html index.three.html
+     595 index.bare.html
+     111 index.three.html
+     706 total
+$ python3 check.py            # bare
+FAIL: more than one font-family
+FAIL: autoplay (setInterval/setTimeout/requestAnimationFrame)
+FAIL: speed slider (input type=range)
+FAIL: more than one button
+FAIL: colours outside DESIGN.md: #0B1220 #0F172A #1E293B #22C55E #334155 #38BDF8 #64748B #94A3B8 #A78BFA #E2E8F0 #F97316 #FACC15
+(exit 1)
+$ python3 check.py            # three
+PASS: index.html meets PROJECT.md's definition of done
+(exit 0)
+$ grep -oE '#[0-9A-Fa-f]{6}' index.bare.html | sort -u | wc -l
+      12
+$ grep -oE '#[0-9A-Fa-f]{6}' index.three.html | sort -u
+#111111
+#6B8E6B
+#8B7355
+#D97757
+#F6F1E6
+$ grep -c 'font-family' index.bare.html
+2
+$ grep -c 'font-family' index.three.html
+1
+$ grep -oE '<button' index.bare.html | wc -l
+       4
+$ grep -oE '<button[^>]*>[^<]*' index.three.html
+<button id="step">STEP
+$ grep -oE 'setInterval|setTimeout|type="range"' index.bare.html | sort -u
+setTimeout
+type="range"
+$ grep -oE 'setInterval|setTimeout|type="range"' index.three.html | sort -u
+$ wc -l CLAUDE.md DESIGN.md PROJECT.md
+       5 CLAUDE.md
+       7 DESIGN.md
+       7 PROJECT.md
+      19 total

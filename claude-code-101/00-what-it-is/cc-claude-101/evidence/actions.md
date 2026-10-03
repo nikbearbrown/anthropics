@@ -1,0 +1,4 @@
+- [ ] Rafael: write up search endpoint latency (p95 480ms vs 200ms target) (by Friday 2026-09-05)
+- [ ] Priya: send sanitized data dump for the migration (by Monday 2026-09-08)
+- [ ] Priya: get back to her on whether reminder emails ship this quarter (no deadline given)
+- [ ] Rafael: get him a review slot (no deadline given)

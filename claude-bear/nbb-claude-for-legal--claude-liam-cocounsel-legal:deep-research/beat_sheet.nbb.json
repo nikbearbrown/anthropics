@@ -1,0 +1,496 @@
+{
+ "metadata": {
+  "title": "Claude, Cocounsel Legal: Deep Research.",
+  "subtitle": "A Skill, Not a New Judgment",
+  "slug": "claude-for-legal--claude-liam-cocounsel-legal:deep-research",
+  "topic": "CLAUDE · SKILLS",
+  "purpose": "Take apart the cocounsel-legal deep-research skill: explain the machinery (one SKILL.md, read top-to-bottom, ordered steps, no branching unless the file itself branches), evaluate the design choice to route capability through documentation instead of through weights, and name what it does not do (exercise legal judgment, reach outside the sources the file's steps touch). Land the carry-out that a skill is a file of steps Claude reads before it starts, not new legal judgment.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/claude-for-legal/youtube/claude-liam-cocounsel-legal:deep-research/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B03 -> B06 (cocounsel-legal:deep-research's single SKILL.md: planted, then returned to)",
+  "one_flag": "N/A - no inference beat; every claim is generic, verifiable skill mechanics plus the one literal preserved source fact ('Legal research and synthesis via Westlaw Deep Research')",
+  "build": {
+   "at": "2026-08-29T16:37:40",
+   "cut": "master",
+   "filled": 11,
+   "of": 11,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's what's actually happening. Claude didn't reason its way through this research — it followed a written file. The deep-research skill just names that file. Let's open it and see what's inside.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "new_visual_element": "Writer types 'Claude used its own judgment to research this case.', hesitates on 'judgment', corrects to 'instructions', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude used its own judgment\nto research this case.\nWhat is a skill, really?",
+      "face": "serif",
+      "fontSize": 74,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "judgment",
+      "replacementWords": "instructions",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 12,
+      "charMs": 46,
+      "jitter": 26,
+      "seed": "hai-cocounsel-deep-research"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('judgment' -> 'instructions') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T16:37:40"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes",
+   "narration_text": "Say \"cocounsel-legal has a deep-research skill\" and the word \"skill\" does the work — it sounds like Claude weighed the cases itself and decided what mattered. That's the natural read. It's the wrong read.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SOUNDS LIKE LEGAL JUDGMENT",
+    "media": "manim/B01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SOUNDS LIKE LEGAL JUDGMENT",
+     "chips": [
+      "CLAUDE HAS A RESEARCH SKILL",
+      "USED ITS OWN JUDGMENT?"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "that's the natural read",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T16:37:40"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "2 wrong guess, broken",
+   "narration_text": "Here's the test. Delete the skill's folder and check what Claude lost. No legal reasoning is missing — because none was added. The skill only wrote in a procedure to follow. Take the file, Claude stops following it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NOTHING TO LOSE",
+    "media": "manim/B02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NOTHING TO LOSE",
+     "chips": [
+      "DELETE THE FOLDER",
+      "LOST ITS JUDGMENT?",
+      "NOTHING TO LOSE"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [
+      1
+     ],
+     "caption": "there was nothing to lose",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T16:37:40"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PLANTED",
+   "narration_text": "Here's what a skill actually is: one file. Cocounsel-legal deep-research is a folder holding a single SKILL.md — plain-language instructions for turning a research question into a synthesized, cited answer using Westlaw Deep Research, which Claude reads before it starts. The design choice is worth naming: capability routed through documentation, not through weights.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — ONE FILE",
+    "media": "manim/B03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — ONE FILE",
+     "chips": [
+      "deep-research/",
+      "SKILL.md"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "one file, the whole routine",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T16:37:40"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "3 mechanism",
+   "narration_text": "Here's the mechanism. Claude reads that file top to bottom, then works through it step by step — in the order the file wrote them down, no branching unless the file itself branches. The control flow lives in the document, not in the model.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "READ, THEN FOLLOW IN ORDER",
+    "media": "manim/B04.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "READ, THEN FOLLOW IN ORDER",
+     "chips": [
+      "READ THE FILE",
+      "STEP 1",
+      "STEP 2",
+      "STEP 3"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "top to bottom, in order",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB04Scene"
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T16:37:40"
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "3 mechanism",
+   "narration_text": "That makes a skill a specification, not new judgment. They optimized for consistency — the same search-and-cite process, every question, no matter which lawyer asked. The trade is scope: anything outside those written steps and Claude is off the map, with no procedure to fall back on.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SPEC, NOT JUDGMENT",
+    "media": "manim/B05.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SPEC, NOT JUDGMENT",
+     "chips": [
+      "SAME PROCESS EVERY TIME",
+      "OFF THE MAP"
+     ],
+     "arrows": false,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "the payoff, and the limit",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB05Scene"
+   },
+   "audio_file": "mp3/beat-B05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B05.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T16:37:40"
+   }
+  },
+  {
+   "beat_id": "B06",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "So deep-research never taught Claude legal judgment. It guarantees something else: every run, the same file, the same searched-and-cited structure. That's the whole trick — repeatability, not reasoning. This works if you value a stable output shape; it fails if you needed a lawyer's call on which case actually matters.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — SAME FILE, EVERY RUN",
+    "media": "manim/B06.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — SAME FILE, EVERY RUN",
+     "chips": [
+      "deep-research/",
+      "SKILL.md"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "same file, same structure, every run",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB06Scene"
+   },
+   "audio_file": "mp3/beat-B06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B06.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T16:37:40"
+   }
+  },
+  {
+   "beat_id": "B07",
+   "act": "5 both directions",
+   "narration_text": "Two failure modes here, both mistaking output for judgment. A well-cited memo doesn't prove legal reasoning — a file can be followed to the letter on a question Claude never really weighed. And a missed case doesn't prove the skill is broken — that case may just live outside the sources the file's steps reach. Same rule, both ways: read the file, not the memo.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NEITHER ONE IS PROOF",
+    "media": "manim/B07.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NEITHER ONE IS PROOF",
+     "pairs": [
+      [
+       "PRODUCED A WELL-CITED MEMO",
+       "PROVES JUDGMENT?"
+      ],
+      [
+       "MISSED A CASE",
+       "PROVES THE SKILL IS BROKEN?"
+      ]
+     ],
+     "strike": [
+      1,
+      3
+     ],
+     "caption": "neither one is proof",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB07Scene"
+   },
+   "audio_file": "mp3/beat-B07.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B07.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T16:37:40"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A skill doesn't hand Claude legal judgment — it's a file of steps that turns a research question into the same searched-and-cited answer, the same way, every time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A skill doesn't hand Claude legal judgment — it's a file of steps that turns a research question into the same searched-and-cited answer, the same way, every time.",
+      "attribution": "",
+      "sparkLine": "Same file, same structure."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T16:37:40"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I want to understand what actually makes a \"skill\" for an LLM different from just a prompt. I keep running the same kind of legal-research question over and over — say, find every court that's addressed personal jurisdiction over a Delaware LLC formed for a single deal. Write me a SKILL dot M-D file for that recurring task: plain-language ordered steps a model can read top to bottom and execute without branching, including the sources to consult, the output format, and the citation style. Then show me the exact difference between this file and a one-off prompt — what does the file guarantee that a prompt can't? Go deeper: hand the same model a research question that falls outside your SKILL dot M-D's steps and ask it to answer anyway. Where does the skill's scope end, and how would you notice you'd wandered off the map without the model telling you?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 50,
+   "llm_exercise": {
+    "prompt": "I want to understand what actually makes a 'skill' for an LLM different from just a prompt. I keep running the same kind of legal-research question over and over — say, find every court that's addressed personal jurisdiction over a Delaware LLC formed for a single deal. Write me a SKILL.md file for that recurring task: plain-language ordered steps a model can read top to bottom and execute without branching, including the sources to consult, the output format, and the citation style. Then show me the exact difference between this file and a one-off prompt — what does the file guarantee that a prompt can't?",
+    "dig_deeper": "Go deeper: hand the same model a research question that falls outside your SKILL.md's steps and ask it to answer anyway. Where does the skill's scope end, and how would you notice you'd wandered off the map without the model telling you?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE · SKILLS",
+      "segment": "A Skill, Not a New Judgment.",
+      "command": "I run the same legal-research question over and over — say, every court that's addressed personal jurisdiction over a Delaware LLC formed for a single deal. (1) Write me a SKILL.md for that recurring task: plain-language ordered steps a model can read top-to-bottom, no branching, including sources, output format, and citation style. (2) Then show me the exact difference between this file and a one-off prompt — what does the file guarantee that a prompt can't?",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T16:37:40"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Cocounsel Legal: Deep Research. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Cocounsel Legal: Deep Research. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T16:37:40"
+   }
+  }
+ ]
+}

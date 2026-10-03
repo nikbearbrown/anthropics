@@ -20,11 +20,48 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/knowledge-work-plugins/partner-built/common-room/skills/account-research/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Research a company using Common Room data",
+        "Triggers on 'research [company]'",
+        "'tell me about [domain]'",
+        "'pull up signals for [account]'",
+        "'what's going on with [company]'"
+      ],
+      "constraints": [
+        "→ Fetch only the relevant field(s). Return a direct, concise answer — do not produce a full brief for a simple question",
+        "→ If Common Room has limited data for an account, say so honestly: \"There is limited information available for this account.\" Never speculate or fill gaps with generic…",
+        "Use the Common Room object catalog to see available field groups and their contents. For full overviews, request all field groups. For targeted questions, request only…",
+        "Scores — always return as raw values or percentiles, never labels",
+        "## Step 4: Web Search (Sparse Data Only)",
+        "Common Room is the primary data source. Do not run web search when CR returns rich data",
+        "Only include sections where Common Room returned actual data. Omit sections entirely rather than filling them with guesses",
+        "[Present only the returned fields]"
+      ],
+      "referenced_files": [
+        "references/my-company-context.md",
+        "references/signals-guide.md",
+        "references/"
+      ],
+      "code_signals": [],
+      "sections": [
+        "Step 0: Load User Context (Me)",
+        "Step 1: Identify the Interaction Pattern",
+        "Step 2: Look Up the Account",
+        "Step 3: Fetch the Right Fields",
+        "Step 4: Web Search (Sparse Data Only)",
+        "Step 5: Apply Reasoning (Pattern 4)",
+        "Step 6: Produce Output",
+        "[Company Name] — Account Overview",
+        "[Company Name] — Account Overview (Limited Data)",
+        "Quality Standards"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T05:11:54",
+      "at": "2026-09-05T22:40:09",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +70,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is account-research. Research a company using Common Room data. Triggers on 'research [company]', 'tell me about [domain]', 'pull up signals for [account]', 'what's going on with [company]', or any account-level question.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is account-research. Research a company using Common Room data. Triggers on 'research [company]', 'tell me about [domain]', 'pull up signals for [account]', 'what's going on with [company]', or any account-level question.. Its concrete surface area includes Research a company using Common Room data; Triggers on 'research [company]'; 'tell me about [domain]'. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,8 +86,8 @@
             "runningText": "reading account-research SKILL.md…",
             "output": [
               "skill: account-research",
-              "Research a company using Common Room data. Triggers on 'research [company]', 'te",
-              "steps: 0 — executing."
+              "Research a company using Common Room data. Triggers on 'research [company]'…",
+              "steps: 7 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -63,18 +100,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 17.05,
+      "actual_duration_s": 22.55,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:11:54"
+        "at": "2026-09-05T22:40:09"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is account-research. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is account-research. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at references/my-company-context.md, references/signals-guide.md, references/, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -113,18 +150,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.29,
+      "actual_duration_s": 20.31,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:11:54"
+        "at": "2026-09-05T22:40:09"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "The pipeline has 7 steps. Load User Context (Me) → Identify the Interaction Pattern → Look Up the Account, plus 4 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -139,22 +176,27 @@
             "outputLabel": "RESULT",
             "phases": [
               {
-                "label": "Read SKILL.md",
-                "desc": "load the instruction set",
+                "label": "Load User Context (Me)",
+                "desc": "Before researching any account, fetch the Me object from…",
                 "accent": true
               },
               {
-                "label": "Execute",
-                "desc": "run each step in order",
+                "label": "Identify the Interaction…",
+                "desc": "Determine what the user actually needs before deciding how…",
                 "accent": false
               },
               {
-                "label": "Return output",
-                "desc": "deliver the result",
+                "label": "Look Up the Account",
+                "desc": "Search Common Room for the account by domain or company…",
+                "accent": false
+              },
+              {
+                "label": "Fetch the Right Fields",
+                "desc": "Use the Common Room object catalog to see available field…",
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "7 steps. Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -164,18 +206,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 13.85,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:11:54"
+        "at": "2026-09-05T22:40:09"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. account-research is a specification written as an instruction set. Claude's job: Research a company using Common Room data. Triggers on 'research [company]', 'tell me about [domain]. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. → Fetch only the relevant field(s). Return a direct, concise answer — do not produce a full brief for a simple question. That is the constraint in account-research — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -186,7 +228,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Research a company using Common Room data. Triggers on 'research [company]', 'tell me about [domain]', 'pull up signals for [account]', 'what's going on with [company]', or any account-level question.",
+            "body": "→ Fetch only the relevant field(s). Return a direct, concise answer — do not produce a full brief for a simple question",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -196,18 +238,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 15.62,
+      "actual_duration_s": 14.74,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:11:54"
+        "at": "2026-09-05T22:40:09"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In account-research, supporting material: references/my-company-context.md, references/signals-guide.md, references/; sections: Step 0: Load User Context (Me), Step 1: Identify the Interaction Pattern, Step 2: Look Up the Account, Step 3: Fetch the Right Fields. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Research a company using Common Room data; Triggers on 'research [company]'; 'tell me about [domain]'; references/my-company-context.md; references/signals-guide.md; references/",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 21.53,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T22:40:09"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "account-research makes Claude execute one task reliably. The SKILL.md is the spec — Research a company using Common Room data. Triggers on 'research [company]', 'te. Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "account-research makes Claude execute one task reliably. The SKILL.md is the spec — Research a company using Common Room data. Triggers on 'research [company]'…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -220,9 +294,10 @@
             "artifactHeading": "Claude, Account Research.",
             "artifactLines": [
               "Skill: account-research — Claude reads SKILL.md before acting",
-              "Research a company using Common Room data. Triggers on 'research [company]', 'tell me abou",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "Research a company using Common Room data. Triggers on 'research [company]', 'tell me…",
+              "7-step pipeline: Load User Context (Me) → Identify the Interaction Pattern → Look Up the Account",
+              "Constraint: → Fetch only the relevant field(s). Return a direct, concise answer — do not produce a…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -232,18 +307,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 14.34,
+      "actual_duration_s": 14.08,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:11:54"
+        "at": "2026-09-05T22:40:09"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to research a company using common room data. triggers on 'research [company]', 'te. Read the account-research skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to research a company using common room data. triggers on 'research [company]'. Read the account-research skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -255,7 +330,7 @@
             "greeting": "Your turn.",
             "topic": "ACCOUNT-RESEARCH · ANTHROPIC SKILL",
             "segment": "Claude, Account Research.",
-            "command": "I want to research a company using common room data. triggers on 'research [comp. Read the account-research skill and walk me through what you will do before you do it.",
+            "command": "I want to research a company using common room data. triggers on 'research. Read the account-research skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -269,12 +344,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 14.89,
+      "actual_duration_s": 14.81,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:11:54"
+        "at": "2026-09-05T22:40:09"
       }
     },
     {
@@ -305,7 +380,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:11:54"
+        "at": "2026-09-05T22:40:09"
       }
     }
   ]

@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Claude Automation Recommender",
+    "title": "Claude, Claude Automation Recommender.",
     "slug": "claude-liam-claude-automation-recommender",
-    "topic": "CLAUDE AUTOMATION RECOMMENDER · CLAUDE PLUGIN",
+    "topic": "CLAUDE-AUTOMATION-RECOMMENDER · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,67 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Bonjour, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-plugins-official/plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-plugins-official/plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Analyze a codebase and recommend Claude Code automations (hooks",
+        "MCP servers)",
+        "Use when user asks for automation recommendations",
+        "wants to optimize their Claude Code setup",
+        "mentions improving Claude Code workflows"
+      ],
+      "constraints": [
+        "This skill is read-only. It analyzes the codebase and outputs recommendations. It does NOT create or modify any files. Users implement the recommendations themselves or…",
+        "If user asks for a specific type: Focus only on that type and provide more options (3-5 recommendations)",
+        "| Database project | create-migration (with validation script) | User-only |",
+        "| Test suite | gen-test (with example tests) | User-only |",
+        "| Component library | new-component (with templates) | User-only |",
+        "| PR workflow | pr-check (with checklist) | User-only |",
+        "| Releases | release-notes (with git context) | User-only |",
+        "| Code style | project-conventions | Claude-only |"
+      ],
+      "referenced_files": [
+        "/skill-name",
+        ".claude/skills/<name>/SKILL.md",
+        ".env",
+        ".claude/skills/[name]/SKILL.md",
+        ".claude/settings.json",
+        ".claude/agents/[name].md",
+        "disable-model-invocation: true",
+        "user-invocable: false",
+        ".mcp.json",
+        "--mcp-debug"
+      ],
+      "code_signals": [
+        "code block: bash",
+        "code block: markdown",
+        "code block: yaml",
+        "code block: json"
+      ],
+      "sections": [
+        "Output Guidelines",
+        "Automation Types Overview",
+        "Workflow",
+        "Phase 1: Codebase Analysis",
+        "Phase 2: Generate Recommendations",
+        "Phase 3: Output Recommendations Report",
+        "Claude Code Automation Recommendations",
+        "Codebase Profile",
+        "🔌 MCP Servers",
+        "🎯 Skills"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T19:11:13",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T15:26:25",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +82,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Bonjour — this is Liam, in for Bear. Ask Claude for automation recommendations, ask how to optimize your Claude Code setup, or ask what Claude Code features you should use — the Claude Automation Recommender skill fires. It is a read-only analysis skill: it scans your codebase for signals, then recommends tailored automations across all five Claude Code extensibility types. It never creates files — you implement the recommendations yourself or ask Claude separately. Let me walk you through the five automation types, the analysis-then-recommend workflow, and where this skill gets the discipline right and where the gaps are.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is claude-automation-recommender. Analyze a codebase and recommend Claude Code automations (hooks, subagents, skills, plugins, MCP servers). Use when user asks for automation recommendations, wants to optimize their Claude Code setup, mentions improving Claude Code workflows, asks how to first set up Claude Code for a project, or wants to know what Claude Code features they should use.. Its concrete surface area includes Analyze a codebase and recommend Claude Code automations (hooks; MCP servers); Use when user asks for automation recommendations. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Bonjour, Liam",
-            "topic": "CLAUDE AUTOMATION RECOMMENDER · CLAUDE PLUGIN",
-            "segment": "CLAUDE CODE SETUP",
-            "command": "Analyze my codebase and recommend Claude Code automations.",
+            "greeting": "Hola, Liam",
+            "topic": "CLAUDE-AUTOMATION-RECOMMENDER · ANTHROPIC SKILL",
+            "segment": "Claude, Claude Automation Recommender.",
+            "command": "Run the claude-automation-recommender skill.",
             "runningText": "reading claude-automation-recommender SKILL.md…",
             "output": [
-              "Read-only: analyzes codebase, recommends — never creates files",
-              "Five types: Hooks · Subagents · Skills · Plugins · MCP Servers",
-              "1-2 per category — most valuable first, not an exhaustive dump"
+              "skill: claude-automation-recommender",
+              "Analyze a codebase and recommend Claude Code automations (hooks, subagents…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +112,48 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 32.34,
+      "actual_duration_s": 36.5,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T19:11:13"
+        "at": "2026-09-05T15:26:25"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — five automation types",
-      "narration_text": "There are five automation types covering the full Claude Code extensibility surface. Hooks run automatically on tool events — format on save, block sensitive edits, run tests after changes. Subagents are specialized agents that run in parallel — code reviewer, security auditor, test writer. Skills are packaged workflows invoked by Claude or by the user with a slash command. Plugins are collections of skills that can be installed as a bundle. MCP servers connect external tools — databases, APIs, browsers, documentation. Each type has a different trigger and different scope. Hooks are automatic and event-driven. Subagents are spawned by Claude for parallel work. Skills are invoked deliberately. Plugins group related skills. MCP servers expose external capabilities. The skill also covers invocation control for skills: omit both flags and both Claude and the user can invoke; set disable-model-invocation-true for user-only actions with side effects like deploy or commit; set user-invocable-false for Claude-only background knowledge.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is claude-automation-recommender. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at /skill-name, .claude/skills/<name>/SKILL.md, .env, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 32,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "AutomationRecommenderTypes",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Five types. Hooks automatic. Subagents parallel. Skills deliberate. Plugins bundle. MCP external."
+            "skillName": "claude-automation-recommender",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "10k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "references",
+                "size": null,
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "2 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +162,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 57.15,
+      "actual_duration_s": 19.73,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T19:11:13"
+        "at": "2026-09-05T15:26:25"
       }
     },
     {
       "beat_id": "B02",
-      "act": "design — analysis workflow + signal-to-recommendation mapping",
-      "narration_text": "The workflow is three phases. Phase 1: analyze the codebase — detect language and framework from package.json or pyproject.toml, check for existing Claude config, look for testing frameworks, CI config, database clients, and external API SDKs. Phase 2: generate recommendations — match each detected signal to a specific automation type, then apply the one-to-two-per-category cap: surface the most valuable recommendation, not everything possible. Tell users they can ask for more. Phase 3: output the report in a structured format — codebase profile, then one section per type with the specific recommendation, why it fits, and how to install or create it. Key signal examples: Prettier configured maps to a PostToolUse format hook. Context7 is the default MCP server recommendation when the project uses popular libraries. A GitHub repository gets the GitHub MCP server. Auth or payments code triggers a security-reviewer subagent. Large codebases — over five hundred files — get a code-reviewer subagent.",
+      "act": "pipeline",
+      "narration_text": "claude-automation-recommender is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Analyze a codebase and recommend Claude Code automations (hooks; MCP servers); Use when user asks for automation recommendations; wants to optimize their Claude Code setup. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 32,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "AutomationRecommenderSignals",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Detect signals. Match type. Cap at 1-2. Tell users they can ask for more."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +213,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 57.77,
+      "actual_duration_s": 19.05,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T19:11:13"
+        "at": "2026-09-05T15:26:25"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. The Claude Automation Recommender gets five things right. The read-only framing is clear and explicit up front — it analyzes and recommends, never creates, and users implement separately. The five-type taxonomy covers the full Claude Code extensibility surface with distinct triggers and scope for each. The one-to-two-per-category discipline prevents the skill from becoming an overwhelming dump — and the skill explicitly instructs Claude to tell users they can ask for more. The signal-to-recommendation tables give concrete codebase indicators for all five types. Invocation control is documented with three modes: user-only for side effects, Claude-only for background knowledge, and default for both. Where it bites. The instruction to go beyond the reference files has no enforcement mechanism — the model may stop at the reference tables rather than doing additional web searches. Phase 1 analysis commands assume standard file locations — there is no guidance for monorepos or non-standard project layouts where the signals may be in subdirectories. Subagent recommendations include examples but not how to create them — that's deferred to references-slash-subagent-templates-dot-md with no inline scaffold. Plugin recommendations don't include installation commands — each requires a separate lookup rather than a paste-ready command. And the decision framework covers when to recommend each type but not when not to — a small single-file script doesn't need a subagent, but the skill doesn't say so.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. This skill is read-only. It analyzes the codebase and outputs recommendations. It does NOT create or modify any files. Users implement the recommendations themselves or…. That is the constraint in claude-automation-recommender — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 40,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "AutomationRecommenderTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Five-type taxonomy and 1-2 discipline solid. Reference-file escape and monorepo gap: surface them."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "This skill is read-only. It analyzes the codebase and outputs recommendations. It does NOT create or modify any files. Users implement the recommendations themselves or…",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 80.53,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 17.75,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T19:11:13"
+        "at": "2026-09-05T15:26:25"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In claude-automation-recommender, supporting material: /skill-name, .claude/skills/<name>/SKILL.md, .env, .claude/skills/[name]/SKILL.md; implementation signals: code block: bash, code block: markdown, code block: yaml; sections: Output Guidelines, Automation Types Overview, Workflow, Phase 1: Codebase Analysis. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Analyze a codebase and recommend Claude Code automations (hooks; MCP servers); Use when user asks for automation recommendations; /skill-name; .claude/skills/<name>/SKILL.md; .env; code block: bash; code block: markdown",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 26.26,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T15:26:25"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. Claude Automation Recommender: read-only — analyzes, recommends, never creates. Five types: Hooks (event-driven), Subagents (parallel), Skills (invoked), Plugins (bundles), MCP Servers (external). Analyze first: language, framework, testing, CI, databases, APIs. 1-2 per category, most valuable first. Invocation control: user-only (disable-model-invocation), Claude-only (user-invocable:false), both (default). Gaps: beyond-reference instruction unenforced, monorepo analysis missing, subagent creation not inline, plugin install commands absent, when-not-to-recommend not documented.",
+      "narration_text": "claude-automation-recommender makes Claude execute one task reliably. The SKILL.md is the spec — Analyze a codebase and recommend Claude Code automations (hooks, subagents…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 22,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "Claude Automation Recommender",
+            "artifactHeading": "Claude, Claude Automation Recommender.",
             "artifactLines": [
-              "Read-only: analyze codebase → recommend, never create files",
-              "5 types: Hooks (events) · Subagents (parallel) · Skills · Plugins · MCP Servers",
-              "1-2 per category max · most valuable first · tell users they can ask for more",
-              "Invocation: disable-model-invocation (user-only) · user-invocable:false (Claude-only)",
-              "Signal → rec: Prettier→format hook · popular libs→context7 · auth code→security-reviewer",
-              "Gaps: beyond-refs unenforced · monorepo gap · subagent creation not inline · when-not missing"
+              "Skill: claude-automation-recommender — Claude reads SKILL.md before acting",
+              "Analyze a codebase and recommend Claude Code automations (hooks, subagents, skills…",
+              "Capabilities: Analyze a codebase and recommend Claude Code automations (hooks; MCP servers); Use when user asks for automation recommendations",
+              "Constraint: This skill is read-only. It analyzes the codebase and outputs recommendations. It does…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +314,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 35.07,
+      "actual_duration_s": 14.87,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T19:11:13"
+        "at": "2026-09-05T15:26:25"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Open a Claude Code session in a React TypeScript project. Paste this: Analyze this codebase and recommend Claude Code automations. Watch five things. First: does it run the Phase 1 bash commands to detect the project type before making any recommendations? Second: does it recommend context7 as the MCP server for the React libraries rather than a generic answer? Third: does it limit to one or two recommendations per category — or does it dump everything in the tables? Fourth: does it correctly classify the PostToolUse TypeScript type-check hook versus a subagent — hooks run on tool events, subagents run in parallel? Fifth: does it offer to help implement any of the recommendations, or does it leave the user to figure out the next step?",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to analyze a codebase and recommend claude code automations (hooks, subagents. Read the claude-automation-recommender skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 26,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "CLAUDE AUTOMATION RECOMMENDER · HANDOFF",
-            "segment": "CLAUDE CODE SETUP",
-            "command": "Analyze this React TypeScript codebase and recommend Claude Code automations.",
-            "runningText": "Watch: Phase 1 first? context7 for React? 1-2 per category? hook vs subagent?",
-            "output": [
-              "Expected: bash analysis before recommendations · context7 for React libs",
-              "Expected: 1-2 per category · PostToolUse type-check as hook not subagent",
-              "Red flag: recs without analysis · full table dump · hook/subagent confusion"
-            ],
+            "greeting": "Your turn.",
+            "topic": "CLAUDE-AUTOMATION-RECOMMENDER · ANTHROPIC SKILL",
+            "segment": "Claude, Claude Automation Recommender.",
+            "command": "I want to analyze a codebase and recommend claude code automations (hooks. Read the claude-automation-recommender skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +351,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 39.53,
+      "actual_duration_s": 15.47,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T19:11:13"
+        "at": "2026-09-05T15:26:25"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "Claude Automation Recommender. Liam, in for Bear.",
+      "narration_text": "Claude, Claude Automation Recommender. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "Claude Automation Recommender",
+            "title": "Claude, Claude Automation Recommender.",
             "handle": "@NikBearBrown",
-            "subline": "claude-automation-recommender · Setup"
+            "subline": "claude-automation-recommender · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +382,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 3.69,
+      "actual_duration_s": 4.12,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T19:11:13"
+        "at": "2026-09-05T15:26:25"
       }
     }
   ]

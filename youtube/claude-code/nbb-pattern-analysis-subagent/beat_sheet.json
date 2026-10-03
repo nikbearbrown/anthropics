@@ -26,7 +26,15 @@
     ],
     "body_duration_s": 118.0,
     "old_outro_beats": [],
-    "built_at": "2026-07-16T22:34:08.036696"
+    "built_at": "2026-07-16T22:34:08.036696",
+    "build": {
+      "at": "2026-08-31T09:42:28",
+      "cut": "review",
+      "filled": 17,
+      "of": 17,
+      "slates": [],
+      "skin_warnings": []
+    }
   },
   "beats": [
     {
@@ -47,8 +55,8 @@
           "props": {
             "command": "I teach, and I want a subagent that scans a batch of student submissions for recurring patterns without dragging every essay into my main session. I'm building a grading tool in Claude Code and the pattern analysis is the piece I'm unsure how to isolate. Help me: (1) write the subagent's system prompt so it reads the submissions in its own context and returns only patterns; (2) define the three-section summary format it should hand back; (3) specify which tools it's allowed so it can read but never edit my grade file.",
             "topic": "CLAUDE CODE FOR TEACHERS",
-            "segment": "Deploy a Pattern-Analysis Subagent for a",
-            "greeting": "Your turn.",
+            "segment": "Deploy a Pattern-Analysis Subagent for a Grading…",
+            "greeting": "Namaste, Liam",
             "runningText": "explaining the mechanism…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -63,7 +71,13 @@
       },
       "estimated_duration_s": 9.0,
       "audio_file": "mp3/beat-NBB00.mp3",
-      "actual_duration_s": 8.235
+      "actual_duration_s": 27.88,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/NBB00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      }
     },
     {
       "beat_id": "B00",
@@ -77,7 +91,7 @@
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Liam",
+            "greeting": "Policy fills the session.",
             "topic": "CLAUDE CODE FOR TEACHERS",
             "segment": "Deploy a Pattern-Analysis Subagent for a Grading…",
             "command": "What is: Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code?",
@@ -102,8 +116,12 @@
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      },
+      "actual_duration_s": 15.0
     },
     {
       "beat_id": "B01",
@@ -120,20 +138,20 @@
             "title": "Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code",
             "items": [
               {
-                "label": "Key point one",
-                "sub": "",
+                "label": "Delegate context",
+                "sub": "Context-heavy work runs outside main.",
                 "icon": "target",
                 "cueFrame": 20
               },
               {
-                "label": "Key point two",
-                "sub": "",
+                "label": "Return a summary",
+                "sub": "Structured output, not raw files.",
                 "icon": "list-checks",
                 "cueFrame": 55
               },
               {
-                "label": "Key point three",
-                "sub": "",
+                "label": "Stay isolated",
+                "sub": "Policy doc and submissions never touch main.",
                 "icon": "zap",
                 "cueFrame": 90
               }
@@ -156,8 +174,12 @@
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      },
+      "actual_duration_s": 10.0
     },
     {
       "beat_id": "B02",
@@ -175,13 +197,25 @@
             "topic": "CLAUDE CODE FOR TEACHERS",
             "segment": "SUBAGENT DESIGN",
             "runningText": "defining subagent…"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
           }
         }
       },
       "locked": true,
       "source_clip": "../pattern-analysis-subagent/clips/B02.mp4",
       "source_audio": "../pattern-analysis-subagent/mp3/beat-B02.mp3",
-      "audio_file": "../pattern-analysis-subagent/mp3/beat-B02.mp3"
+      "audio_file": "mp3/beat-B02.mp3",
+      "narration_text": "Ask Claude to write the subagent definition with YAML frontmatter specifying a read-only tool set.",
+      "actual_duration_s": 6.55,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      }
     },
     {
       "beat_id": "B03",
@@ -199,13 +233,25 @@
             "segment": "SUBAGENT DESIGN",
             "topic": "CLAUDE CODE FOR TEACHERS",
             "code": "---\nname: pattern-analyzer\ndescription: Scans student submissions for\n  rubric-criteria misconception patterns.\n  Returns structured report without grades.\ntools: [Read, Grep, Glob]\n---\n\n# Pattern Analyzer\n\nAccept: submissions_dir (str), rubric_file (str)\n\n1. Read rubric_file → extract criteria names\n2. For each submission in submissions_dir:\n   Grep for each criterion → flag present/absent\n3. Aggregate: count missing per criterion\n4. Output:\n   common_misconceptions: [criterion list]\n   severity_by_section: {section: count}\n   recommended_focus: <3-sentence max>"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
           }
         }
       },
       "locked": true,
       "source_clip": "../pattern-analysis-subagent/clips/B03.mp4",
       "source_audio": "../pattern-analysis-subagent/mp3/beat-B03.mp3",
-      "audio_file": "../pattern-analysis-subagent/mp3/beat-B03.mp3"
+      "audio_file": "mp3/beat-B03.mp3",
+      "narration_text": "The subagent definition: YAML frontmatter with name, description, and a Read-Grep-Glob tool whitelist. The workflow scans submissions against rubric criteria and outputs structured data — no grades, no Write calls.",
+      "actual_duration_s": 12.99,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      }
     },
     {
       "beat_id": "B04",
@@ -229,7 +275,15 @@
       "locked": true,
       "source_clip": "../pattern-analysis-subagent/clips/B04.mp4",
       "source_audio": "../pattern-analysis-subagent/mp3/beat-B04.mp3",
-      "audio_file": "../pattern-analysis-subagent/mp3/beat-B04.mp3"
+      "audio_file": "mp3/beat-B04.mp3",
+      "narration_text": "Subagent invoked on three submissions. It runs in isolation — Read, Grep, Glob only, no Write or Edit. The main session context meter stays flat while the subagent processes all three files. It returns a structured report: two common misconceptions, severity by section, one recommended focus sentence.",
+      "actual_duration_s": 18.2,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim:Scene_B04_NbbPatternAnalysis",
+        "at": "2026-08-31T09:42:28"
+      }
     },
     {
       "beat_id": "B05",
@@ -247,13 +301,25 @@
             "topic": "CLAUDE CODE FOR TEACHERS",
             "segment": "SUBAGENT DESIGN",
             "runningText": "adding reviewer…"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
           }
         }
       },
       "locked": true,
       "source_clip": "../pattern-analysis-subagent/clips/B05.mp4",
       "source_audio": "../pattern-analysis-subagent/mp3/beat-B05.mp3",
-      "audio_file": "../pattern-analysis-subagent/mp3/beat-B05.mp3"
+      "audio_file": "mp3/beat-B05.mp3",
+      "narration_text": "Add a WriterReviewer second subagent that reviews the pattern-analyzer output from a fresh context window.",
+      "actual_duration_s": 6.59,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      }
     },
     {
       "beat_id": "B06",
@@ -277,7 +343,15 @@
       "locked": true,
       "source_clip": "../pattern-analysis-subagent/clips/B06.mp4",
       "source_audio": "../pattern-analysis-subagent/mp3/beat-B06.mp3",
-      "audio_file": "../pattern-analysis-subagent/mp3/beat-B06.mp3"
+      "audio_file": "mp3/beat-B06.mp3",
+      "narration_text": "The reviewer subagent catches one error: the first subagent flagged loop termination as missing across all three submissions, but submission two addressed it in the conclusion section rather than the body. Fresh context, different reading. The WriterReviewer pattern improves accuracy without touching the main session.",
+      "actual_duration_s": 16.81,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim:Scene_B06_NbbPatternAnalysis",
+        "at": "2026-08-31T09:42:28"
+      }
     },
     {
       "beat_id": "B07",
@@ -301,7 +375,15 @@
       "locked": true,
       "source_clip": "../pattern-analysis-subagent/clips/B07.mp4",
       "source_audio": "../pattern-analysis-subagent/mp3/beat-B07.mp3",
-      "audio_file": "../pattern-analysis-subagent/mp3/beat-B07.mp3"
+      "audio_file": "mp3/beat-B07.mp3",
+      "narration_text": "A subagent definition is three things: a tool whitelist, a structured output format, and an isolation contract. The main session delegates the context-heavy work, receives the structured summary, and stays clean for the build.",
+      "actual_duration_s": 13.01,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim:Scene_B07_NbbPatternAnalysis",
+        "at": "2026-08-31T09:42:28"
+      }
     },
     {
       "beat_id": "B08",
@@ -325,7 +407,15 @@
       "locked": true,
       "source_clip": "../pattern-analysis-subagent/clips/B08.mp4",
       "source_audio": "../pattern-analysis-subagent/mp3/beat-B08.mp3",
-      "audio_file": "../pattern-analysis-subagent/mp3/beat-B08.mp3"
+      "audio_file": "mp3/beat-B08.mp3",
+      "narration_text": "Next: build a simulation with the three-file system.",
+      "actual_duration_s": 3.65,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim:Scene_B08_NbbPatternAnalysis",
+        "at": "2026-08-31T09:42:28"
+      }
     },
     {
       "beat_id": "B09",
@@ -343,13 +433,25 @@
             "tagline": "Brutalist + Educational AI",
             "handle": "@NikBearBrown",
             "url": "nikbearbrown.com"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
           }
         }
       },
       "locked": true,
       "source_clip": "../pattern-analysis-subagent/clips/B09.mp4",
       "source_audio": "../pattern-analysis-subagent/mp3/beat-B09.mp3",
-      "audio_file": "../pattern-analysis-subagent/mp3/beat-B09.mp3"
+      "audio_file": "mp3/beat-B09.mp3",
+      "narration_text": "Like and subscribe for more Claude Code for Teachers.",
+      "actual_duration_s": 3.61,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      }
     },
     {
       "beat_id": "NBB01",
@@ -357,7 +459,7 @@
       "title": "Liam verdict — ClaudeVerdictArtifact",
       "engine": "kokoro",
       "voice": "am_onyx",
-      "narration_text": "Let's recap with Claude. Here's what the body just demonstrated.",
+      "narration_text": "A subagent is three things: a tool whitelist, a structured output, and an isolation contract. The main session delegates the reads, receives the summary, and keeps its context clean for the build. Add a second reviewer subagent from a fresh window and you catch the errors the first one missed.",
       "shot": {
         "type": "CARD",
         "source": "remotion",
@@ -370,9 +472,9 @@
             "artifactTitle": "Verdict",
             "artifactHeading": "Deploy a Pattern-Analysis Subagent for a Grading Tool",
             "artifactLines": [
-              "Key mechanism established.",
-              "Key mechanism established.",
-              "Key mechanism established."
+              "A subagent is a tool whitelist, a structured output, and an isolation contract.",
+              "Main session delegates the reads; only the three-field summary comes back.",
+              "A reviewer subagent in a fresh window catches what the first one missed."
             ]
           },
           "rendered": {
@@ -383,8 +485,14 @@
       },
       "estimated_duration_s": 30.0,
       "audio_file": "mp3/beat-NBB01.mp3",
-      "actual_duration_s": 2.88,
-      "lead_silence_s": 0.5
+      "actual_duration_s": 15.81,
+      "lead_silence_s": 0.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/NBB01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      }
     },
     {
       "beat_id": "NBB02",
@@ -392,7 +500,7 @@
       "title": "Your turn handoff — ClaudeComposerAsk",
       "engine": "kokoro",
       "voice": "am_onyx",
-      "narration_text": "Take this prompt, run it on your own — pick any cancer type or clinical scenario you know about and ask how this mechanism applies there.",
+      "narration_text": "Your turn. Pick one task in your workflow that fills your session window with reads — grading, PR triage, log review — and write a subagent for it. Frontmatter, three structured fields, read-only tools. Then run it on three real inputs and check the summary.",
       "shot": {
         "type": "CARD",
         "source": "remotion",
@@ -402,9 +510,9 @@
           "provenance": "proven-core/ClaudeComposerAsk",
           "version": "1",
           "props": {
-            "command": "Explain how [Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code] applies to a specific cancer type or clinical case you're studying. What proteins are involved, what goes wrong at the molecular level, and what is the therapeutic or diagnostic significance?",
+            "command": "Write a Claude Code subagent for a read-heavy task in my workflow.\n\nFrontmatter: name, description, tools: [Read, Grep, Glob] ONLY.\nStructured output: three named fields, one of them a max-3-sentence recommendation.\n\nRun it on three real inputs. Return only the summary — no raw files.",
             "topic": "CLAUDE CODE FOR TEACHERS",
-            "segment": "Deploy a Pattern-Analysis Subagent for a",
+            "segment": "Deploy a Pattern-Analysis Subagent for a Grading…",
             "greeting": "Your turn.",
             "runningText": "paste this into Claude…",
             "output": [],
@@ -420,7 +528,13 @@
       },
       "estimated_duration_s": 8.0,
       "audio_file": "mp3/beat-NBB02.mp3",
-      "actual_duration_s": 7.765
+      "actual_duration_s": 14.34,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/NBB02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      }
     },
     {
       "beat_id": "NBB03",
@@ -438,7 +552,7 @@
           "props": {
             "title": "Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code",
             "handle": "@NikBearBrown",
-            "subline": "cancer biology, one mechanism at a time"
+            "subline": "Claude Code for teachers, one pattern at a time"
           },
           "rendered": {
             "out": "media/NBB03.mp4",
@@ -449,10 +563,16 @@
       "estimated_duration_s": 6.0,
       "audio_file": "mp3/beat-NBB03.mp3",
       "silence_s": 6.0,
-      "actual_duration_s": 6.03,
+      "actual_duration_s": 4.59,
       "engine": "kokoro",
       "voice": "am_onyx",
-      "narration_text": "Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code"
+      "narration_text": "Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/NBB03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      }
     },
     {
       "beat_id": "BVDT",
@@ -472,9 +592,9 @@
             "artifactTitle": "Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code",
             "artifactHeading": "Key findings",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "A subagent is a tool whitelist, a structured output, and an isolation contract.",
+              "Main session delegates the reads; only the three-field summary comes back.",
+              "A reviewer subagent in a fresh window catches what the first one missed."
             ]
           },
           "rendered": {
@@ -484,8 +604,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BHTF",
@@ -505,7 +629,7 @@
             "greeting": "Your turn.",
             "topic": "YOUR TURN · CLAUDE CODE FOR TEACHERS",
             "segment": "Deploy a Pattern-Analysis Subagent for a Grading…",
-            "command": "Take what you learned from [Deploy a Pattern-Analysis Subagent for a Grading Tool with Claude Code] and apply it to your own work. What's one thing you'll try first?",
+            "command": "Write a Claude Code subagent for a read-heavy task in my workflow.\n\nFrontmatter: name, description, tools: [Read, Grep, Glob] ONLY.\nStructured output: three named fields, one of them a max-3-sentence recommendation.\n\nRun it on three real inputs. Return only the summary — no raw files.",
             "runningText": "paste this into Claude and run it on your own work…",
             "output": [],
             "folderLabel": "@NikBearBrown"
@@ -517,8 +641,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      },
+      "actual_duration_s": 20.0
     },
     {
       "beat_id": "BOUT",
@@ -545,8 +673,12 @@
         }
       },
       "build": {
-        "status": "SLATE"
-      }
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T09:42:28"
+      },
+      "actual_duration_s": 8.0
     }
   ]
 }

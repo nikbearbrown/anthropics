@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "Checks the Picture, Then Stops.",
+  "subtitle": "The FSI-Strip-Profile Skill (Anthropic Skills)",
+  "slug": "financial-services--claude-liam-fsi-strip-profile",
+  "topic": "FSI-STRIP-PROFILE · ANTHROPIC SKILL",
+  "purpose": "Take apart Anthropic's fsi-strip-profile skill in the Teardown register: reveal how the file actually works — one folder, one SKILL.md, three ordered moves (ask scope first, then research, then build one slide at a time with a picture-check between each) — and name the design choice. They optimized for you signing off each slide, at the expense of throughput. 'The render came out clean' and 'the numbers are right' are two different claims; the skill guarantees the first, not the second.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-fsi-strip-profile/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the fsi-strip-profile skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout, grounded in the actual SKILL.md (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-01T18:58:00",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Assume Claude just trusts the slide it built and you'd be wrong — it renders the slide to an image and inspects it first. So: does the strip-profile skill actually enforce that check?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Does Claude trust the strip profile it builds?', hesitates on 'trust', corrects to 'check', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Does Claude trust\nthe strip profile\nit builds?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "trust",
+      "replacementWords": "check",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "hai-fsi-strip-profile"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": "2026-09-01T18:40:00"
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW fix (this build): first attempt used a 69-char text against a 9.34s narration and the typing did not finish before the clip ended (caught by frame pull at t=9.1s: 'the slide it buil|', missing 't?'). remotion_scenes.py sets B00's render duration directly from actual_duration_s (audio length) — lead_silence_s is NOT added to the render duration by this script, so the fix is a shorter on-screen text (46 chars) rather than a longer lead_silence_s. Re-verified by frame pull after the fix. NOTE: remotion_scenes.py's own extend_clip_to_duration step reported success ('extended to 9.0s') but the resulting media/B00.mp4 was actually the raw 20.2s render (the ffmpeg trim/pad call inside that function did not overwrite the output, and the script does not check its own ffmpeg call's exit code before claiming success). Verified by ffprobe (20.245s, contradicting the actual_duration_s=9.02 stamp), then fixed by re-running the same tpad+trim ffmpeg command manually (exit 0, confirmed 9.033s output) and installing that in place of the raw render.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "remotion:BrutalistHesitantWriter",
+    "at": "2026-09-01T18:58:00"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Here's what a skill actually is: a folder — this one is fsi-strip-profile — holding a single SKILL.md file. Plain English inside, no hidden logic, no fine-tuned weights. Claude reads the file top to bottom and does what it says. The program isn't in the model; it's in the document. Same file, same routine, every run.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A SKILL IS A FOLDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A SKILL IS A FOLDER",
+     "chips": [
+      "fsi-strip-profile/",
+      "SKILL.md",
+      "instructions"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T18:58:00"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Step one on the page is a question, not an action: one slide or several, and what to focus on. Nothing else happens — no filings pulled, no market data fetched, no news scraped — until you say yes. They optimized for you owning the scope, at the expense of the model just running ahead.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "ASK, THEN RESEARCH",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "ASK, THEN RESEARCH",
+     "chips": [
+      "scope first",
+      "you approve",
+      "then research"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "no research before you confirm",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T18:58:00"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's the machinery worth watching. One slide gets built. Then Claude renders that slide to an image and reads the image back — hunting for text that overflowed its box, labels chopped in half, a chart bleeding into the next frame. It fixes what the picture caught, hands you the slide, and stops. The next slide waits on your yes. Three moves per slide — build, inspect the picture, hold — and the loop runs one increment at a time on purpose.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "CHECKS ITS OWN PICTURE",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "CHECKS ITS OWN PICTURE",
+     "chips": [
+      "picture check",
+      "spot overlap",
+      "the approval"
+     ],
+     "arrows": false,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "one slide, then it stops",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T18:58:00"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Inside this skill, Claude checks its own picture before it ever shows you one — then it stops. That's what makes each slide something you actually approved, not just something the model produced.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Inside this skill, Claude checks its own picture before it ever shows you one — then it stops. That's what makes each slide something you actually approved, not just something the model produced.",
+      "attribution": "",
+      "sparkLine": "Checks the picture, then stops."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T18:58:00"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini — it borrows the mechanic without needing the skill installed. Ask the model to apply the same self-check loop: build one artifact at a time, render it into whatever form you'll actually see it in — a screenshot, an HTML preview, formatted text — then read that rendering back and list the specific things wrong with it: text overflowing its box, labels cut off, layout drift, numbers that don't add. Fix what it found, hand you the artifact, and stop until you say go. Go deeper: after the first pass, ask what visual inspection can't catch — the errors that would render out looking clean and still be wrong. That's the seam between 'the picture came out fine' and 'the numbers are actually right'.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 48,
+   "llm_exercise": {
+    "prompt": "I want you to apply the same check-your-own-work loop that Anthropic's fsi-strip-profile skill uses for slide-building — but to any single-artifact task, not just a slide. Pick a task I might actually do: a one-slide investment profile for Nike (ticker NKE), a one-page product brief, or a one-page résumé. For each artifact: (1) build it once, (2) render it into whatever form I'll actually see it in — a screenshot, an HTML preview, formatted text — (3) read that rendering back yourself and list, specifically, what's wrong with it: text overflowing a box, labels cut off, chart bleeding into the next region, layout drift, numbers that don't add. (4) Fix what you found, (5) show me the artifact, and (6) stop. Wait for my go-ahead before moving to the next one. Before you start, walk me through exactly what you'll check when you inspect the rendering — I want the check named, not implied.",
+    "dig_deeper": "Go deeper: after the first artifact comes back, ask the model what visual self-inspection cannot catch — the class of errors that would render out looking clean and still be wrong (e.g. a wrong number that's formatted correctly, a right-looking chart of the wrong dataset). That's the seam between 'the picture came out fine' and 'the numbers are actually right' — and it's where you still have to check."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "FSI-STRIP-PROFILE · ANTHROPIC SKILL",
+      "segment": "Checks the Picture, Then Stops.",
+      "command": "Apply the fsi-strip-profile self-check loop to a task I'd actually do (one-slide investment profile for Nike, or a one-page product brief). Build one artifact, render it into whatever form I'll see it in, inspect that picture yourself for overflow / cut-off labels / layout drift / numbers that don't add, fix what you find, then hand it back and stop. Before you start, walk me through exactly what you'll check.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T18:58:00"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Checks the Picture, Then Stops. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Checks the Picture, Then Stops. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T18:58:00"
+   }
+  }
+ ]
+}

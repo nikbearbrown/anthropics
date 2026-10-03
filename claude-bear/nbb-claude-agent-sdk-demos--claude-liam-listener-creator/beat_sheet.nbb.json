@@ -1,0 +1,302 @@
+{
+ "metadata": {
+  "title": "Claude, Listener Creator.",
+  "slug": "claude-agent-sdk-demos--claude-liam-listener-creator",
+  "topic": "SKILLS · LISTENER-CREATOR",
+  "purpose": "Answer whether a Skill's 'listener' is a live watcher hovering over your inbox, or a definition Claude writes to a file, using the listener-creator skill as the concrete case. Lands the carry-out that a listener is a file naming one condition, and it fires on exactly that condition, every time, and nothing that only feels the same.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/claude-agent-sdk-demos/youtube/claude-liam-listener-creator/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (the boss+urgent-forward listener: reliable on the exact written condition, silent on anything that only feels the same)",
+  "build": {
+   "at": "2026-08-29T00:05:14",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "The obvious guess is a live watcher scanning your inbox. It isn't. It's a text file naming one condition — Claude writes it, then walks away. So what does listener-creator actually build?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'A Skill must be some live watcher scanning my inbox. Is that it?', hesitates on 'watcher', corrects to 'template', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "A Skill must be\nsome live watcher\nscanning my inbox.\nIs that it?",
+      "face": "serif",
+      "fontSize": 68,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "watcher",
+      "replacementWords": "template",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-listener-creator"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('watcher' -> 'template') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T00:05:14"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "Open the folder and there's no process running — just SKILL.md, about nine kilobytes of plain text, and a templates folder beside it. Two files. Claude re-reads SKILL.md before every run, then writes a listener definition back to disk. The instruction set is a file, not a daemon. They optimized for something you can open, diff, and version — at the expense of an always-on watcher.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "The two-file folder: SKILL.md called out as plain text, templates folder beside it, no watcher process in sight"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A folder, not a watcher",
+     "mechanic": "A folder icon opens on cream to reveal exactly two items: a SKILL.md document (marked 'plain text, ~9k') and a templates folder. No live process, no spinning indicator anywhere. A label reads 'listener-creator'. The SKILL.md is called out with a line: 'the instruction set.'",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "LCRB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T00:05:14"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "Inside SKILL.md is a Steps section — read the request, write the condition, return the definition, top to bottom. Ask for a listener that flags any email from your boss marked urgent and forwards it right away, and listener-creator writes exactly that condition into a file. From then on, whenever a new email matches boss and urgent, the same forward fires — same words in, same action out, every time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 21,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — Steps executed top to bottom, then a listener condition card is written and fires once"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — read, write, return, then a listener fires",
+     "mechanic": "THE ANCHOR. Three phases stack top to bottom and light in sequence: 'Read the request', 'Write the condition', 'Return the definition'. Below, a listener card appears reading 'IF: from boss + urgent → THEN: forward', then an envelope icon flies out of it once. THIS EXACT CARD RETURNS AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "LCRB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T00:05:14"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "That's why it's reliable, and also why it can betray you. The condition in the file doesn't change, so every email from your boss marked urgent forwards the same way. But an equally urgent email from a client never fires it — 'client' was never written into the condition. The listener matches the words in the file, not how urgent the email actually is. They optimized for predictability at the expense of judgment.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — the same listener card fires three times identically, then a client email goes nowhere"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — reliable, then out of scope",
+     "mechanic": "THE B02 LISTENER CARD RETURNS, identical. It fires three times; each firing sends the same envelope, marked teal 'condition matched'. Then a new email label appears beside it — 'urgent, from a client' — with an arrow to the card that goes nowhere, struck through in terracotta, beside the words 'not in the condition'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "LCRB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T00:05:14"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A listener isn't a watcher hovering over your inbox — it's a file naming one condition, and it fires on exactly that condition, every time, and stays silent on anything that only feels the same.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A listener isn't a watcher hovering over your inbox — it's a file naming one condition, and it fires on exactly that condition, every time, and stays silent on anything that only feels the same.",
+      "attribution": "",
+      "sparkLine": "One condition, written down."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T00:05:14"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff",
+   "narration_text": "Your turn. Here's the prompt — read it with me. I want a listener that flags any email mentioning a contract renewal and forwards it to my legal team. Read the listener-creator skill and walk me through what you'll do before you do it — show me exactly which condition you're writing into the file. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "SKILLS · LISTENER-CREATOR",
+      "segment": "Your Turn",
+      "command": "I want a listener that flags any email mentioning a contract renewal and forwards it to my legal team. Read the listener-creator skill and walk me through what you'll do before you do it — show me exactly which condition you're writing into the file.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T00:05:14"
+   }
+  },
+  {
+   "beat_id": "B_LLM",
+   "act": "LLM EXERCISE",
+   "narration_text": "Here's a prompt you can paste straight into Claude, ChatGPT, or Gemini. Ask a frontier model to compare a file-based listener to a live event-watcher — what each one gets right, what each sacrifices, one workflow where the trade-off pays off, one where it fails. Go deeper: what would you have to add on top of the file to make one listener catch 'contract renewal' and its paraphrases, without also firing on unrelated legal mail?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "shot": {
+    "type": "CARD",
+    "source": "own",
+    "motion": "hold",
+    "new_visual_element": "Paste-ready LLM prompt card in teardown palette: the prompt as the main block in PT Mono on cream, a hairline rule, then 'Go deeper:' follow-up beneath in EB Garamond italic"
+   },
+   "llm_exercise": {
+    "prompt": "I want to understand how a 'Skill' in Anthropic's Claude system defines a 'listener'. A Skill is a folder containing a SKILL.md file that Claude reads before acting; the 'listener-creator' Skill writes a listener definition — a file naming one condition and one action — that fires whenever new input matches the condition. Compare this file-based approach to a live event-watcher (a background process polling an inbox in real time): what does each one get right, what does each sacrifice, and where would you expect each to fail? Give me one concrete workflow where the file-based trade-off pays off, and one where it doesn't.",
+    "dig_deeper": "Go deeper: If you had to design a listener that fires on the meaning of a message ('this email needs urgent legal attention') instead of the literal words in it, what would you have to add on top of the file? What's the smallest change that would let one listener catch 'contract renewal' and paraphrases of it, without also firing on unrelated legal mail?"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Listener Creator. Liam, in for Bear. Nik Bear Brown, at brutalist dot art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Listener Creator. Liam, in for Bear. Nik Bear Brown at brutalist.art.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T00:05:14"
+   }
+  }
+ ]
+}

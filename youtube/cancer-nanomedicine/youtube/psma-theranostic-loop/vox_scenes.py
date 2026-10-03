@@ -1,7 +1,5 @@
 import sys, json, pathlib
-sys.path.insert(0, str(
-    pathlib.Path(__file__).resolve().parents[3] / "vox/aspects/explainer/vox-explainer/manim"
-))
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from vox_graphics import *
 INK="#2A1A0E"; CREAM="#FFFFFF"; CRIMSON="#C8102E"; SLATE="#545454"; GOLD="#F6D8DC"
 DUR = {}

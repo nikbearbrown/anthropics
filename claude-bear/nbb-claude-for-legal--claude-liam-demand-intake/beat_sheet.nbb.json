@@ -1,0 +1,291 @@
+{
+ "metadata": {
+  "title": "Claude, Demand Intake.",
+  "slug": "claude-for-legal--claude-liam-demand-intake",
+  "topic": "DEMAND INTAKE · LEGAL AI GOVERNANCE",
+  "purpose": "Answer what Claude actually needs before it can draft a demand letter -- the case, gathered first, not the letter itself. Lands the carry-out that demand-intake gathers the parties, the facts, and the leverage into one file before any drafting starts, and the draft step only ever writes what's already there.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/claude-for-legal/youtube/claude-liam-demand-intake/beat_sheet.json",
+  "source_note": "Unlike sibling claude-for-legal redos with unfilled placeholder narration, this source sheet's narration already carries real facts (parties, facts, basis, leverage, BATNA, privilege filters; output to intake.md the demand-draft skill reads). Its named source_skill file does not exist on this machine, but that did not block this redo -- see QUESTION.md.",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (the unpaid invoice: $40,000, 60 days late -- resolved once all six intake questions are answered)",
+  "build": {
+   "at": "2026-08-29T20:34:26",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Someone on a legal team asks if Claude can just write their demand letter. Wrong first word — there's no case in the file yet. Prep first, draft after. Liam, take it from here.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Can Claude just write my demand letter?', hesitates on 'write', corrects to 'prep for', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Can Claude\njust write\nmy demand letter?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "write",
+      "replacementWords": "prep for",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-demand-intake"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('write' -> 'prep for') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T20:34:26"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "Here's the tempting move — tell Claude to write the letter and see what comes back. Now look at what that actually does. A skill is a folder Claude reads before it acts, and here there's no folder to read; the model has nothing to reach for. It fills the blanks by inventing plausible parties, plausible facts, a plausible dollar figure. They optimized letter-drafting for fluency at the expense of grounding — the prose comes out clean, and none of it is anchored to your case. What actually closes that gap isn't a sharper prompt. It's a checklist, spelled out in one file, of everything the letter needs before any drafting starts.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A 'DEMAND LETTER' card with blank fields -- PARTIES, FACTS, AMOUNT -- each a dim question mark"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "No case in it yet",
+     "mechanic": "A card labelled 'DEMAND LETTER' with three blank field rows inside: 'PARTIES: ?', 'FACTS: ?', 'AMOUNT: ?', each dim and unfilled. A caption fades in beneath: 'it can only guess.'",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "DIB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T20:34:26"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "Six questions per case, in order. The parties. The facts. The legal basis. The leverage. The fallback if talks fail. Anything privileged that should stay out of it. That's the whole shape. Same six questions every time — a missing field is visible at a glance, and no case moves forward with blanks. They optimized for coverage over ceremony. Watch the anchor. An unpaid invoice, forty thousand dollars, sixty days late — and intake doesn't start with the letter. It starts with those six answers.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR -- the six-item checklist appears one at a time; an invoice stamp card ($40,000, 60 days late) lands beside it"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR -- the six questions",
+     "mechanic": "Six labels appear in sequence down the left: PARTIES, FACTS, BASIS, LEVERAGE, BATNA, PRIVILEGE. Beside them, a stamped card fades in: 'INVOICE' / '$40,000' / '60 DAYS LATE'. THIS EXACT INVOICE CARD RETURNS, RESOLVED, AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "DIB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T20:34:26"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "Fill in those six for the invoice — the vendor, the due date, the late clause, the interest owed, the fallback of small claims — and the letter has ground to stand on. Now watch what intake doesn't do. It only captures what somebody says out loud; a fact nobody mentions never makes it in, and no clever prompt inside intake will surface it for you. And intake never writes the letter itself. It hands a finished file to a separate step whose only job is drafting. Here's the trade-off: they optimized intake for a single-purpose gather, at the expense of doing anything with what's gathered. Intake gives the draft step ground. What the draft step does with it is a different skill.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 29,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS -- the invoice card locks in as 'GROUND TO STAND ON', then splits into 'a fact nobody mentions -> never makes it in' and 'this step never drafts -> hands a file to the step that does'"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS -- ground to stand on",
+     "mechanic": "THE B02 INVOICE CARD RETURNS, identical placement, and the six checklist labels collapse into it one by one until it locks in, highlighted terracotta, reading 'GROUND TO STAND ON'. It then splits into two cards: left reads 'a fact nobody mentions' above 'never makes it in'; right reads 'this step never drafts' above 'hands a finished file onward', connected by a dashed line to a small second card labelled 'draft step'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "DIB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T20:34:26"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Claude doesn't draft a demand letter until it has a case: demand-intake gathers the parties, the facts, and the leverage into one file first — the draft step only ever writes what's already there.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Claude doesn't draft a demand letter until it has a case: demand-intake gathers the parties, the facts, and the leverage into one file first — the draft step only ever writes what's already there.",
+      "attribution": "",
+      "sparkLine": "The case first. The letter after."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T20:34:26"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I have an unpaid invoice — forty thousand dollars, sixty days late — and I want to prep a demand letter. Before drafting a single sentence, walk me through the six things any demand-intake needs: the parties, the facts, the legal basis, my leverage, my fallback if they refuse to pay, and anything privileged that should stay out of the letter. Ask me one question per field, then hand me back a filled intake file — and flag any field where my answer is thin enough that the draft would have to guess. Go deeper: take the leverage field and tell me exactly what would strengthen it — the one document, statement, or deadline that would move this case from 'they might pay' to 'they will pay before this reaches a courtroom.'",
+   "llm_exercise": {
+    "prompt": "I have an unpaid invoice — forty thousand dollars, sixty days late — and I want to prep a demand letter. Before drafting a single sentence, walk me through the six things any demand-intake needs: the parties, the facts, the legal basis, my leverage, my fallback if they refuse to pay, and anything privileged that should stay out of the letter. Ask me one question per field, then hand me back a filled intake file — and flag any field where my answer is thin enough that the draft would have to guess.",
+    "dig_deeper": "Go deeper: take the leverage field and tell me exactly what would strengthen it — the one document, statement, or deadline that would move this case from 'they might pay' to 'they will pay before this reaches a courtroom.'"
+   },
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 38,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "DEMAND INTAKE · LEGAL AI GOVERNANCE",
+      "segment": "Claude, Demand Intake.",
+      "command": "I have an unpaid invoice — forty thousand dollars, sixty days late — and I want to prep a demand letter. Before drafting a single sentence, walk me through the six things any demand-intake needs: the parties, the facts, the legal basis, my leverage, my fallback if they refuse to pay, and anything privileged that should stay out of the letter. Ask me one question per field, then hand me back a filled intake file — and flag any field where my answer is thin enough that the draft would have to guess.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T20:34:26"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Demand Intake. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Demand Intake. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T20:34:26"
+   }
+  }
+ ]
+}

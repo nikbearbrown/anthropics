@@ -20,11 +20,56 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/knowledge-work-plugins/data/skills/build-dashboard/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Build an interactive HTML dashboard with charts",
+        "Use when creating an executive overview with KPI cards",
+        "turning query results into a shareable self-contained report",
+        "building a team monitoring snapshot",
+        "or needing multiple charts with filters in one browser-openable file."
+      ],
+      "constraints": [
+        "Build a self-contained interactive HTML dashboard with charts, filters, tables, and professional styling. Opens directly in a browser -- no server or dependencies…",
+        "No external data fetches required",
+        "| 10,000 - 100,000 rows | Pre-aggregate server-side. Embed only aggregated data. |",
+        "Avoid rebuilding the entire DOM on filter change -- update only changed elements",
+        "// Render only pageData"
+      ],
+      "referenced_files": [
+        "sales_dashboard.html",
+        "${sign}${pctChange.toFixed(1)}% vs prior period",
+        "kpi-change ${pctChange >= 0 ? 'positive' : 'negative'}",
+        "$${(value / 1e6).toFixed(1)}M",
+        "$${(value / 1e3).toFixed(1)}K",
+        "$${value.toFixed(0)}",
+        "${value.toFixed(1)}%",
+        "${(value / 1e6).toFixed(1)}M",
+        "${(value / 1e3).toFixed(1)}K",
+        "${context.dataset.label}: ${formatValue(context.parsed.y, 'currency')}"
+      ],
+      "code_signals": [
+        "code block: html",
+        "code block: javascript",
+        "code block: css"
+      ],
+      "sections": [
+        "Usage",
+        "Workflow",
+        "1. Understand the Dashboard Requirements",
+        "2. Gather the Data",
+        "3. Design the Dashboard Layout",
+        "4. Build the HTML Dashboard",
+        "5. Implement Chart Types",
+        "6. Add Interactivity",
+        "7. Save and Open",
+        "Base Template"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T06:57:05",
+      "at": "2026-09-06T01:02:14",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +78,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is build-dashboard. Build an interactive HTML dashboard with charts, filters, and tables. Use when creating an executive overview with KPI cards, turning query results into a shareable self-contained report, building a team monitoring snapshot, or needing multiple charts with filters in one browser-openable file.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is build-dashboard. Build an interactive HTML dashboard with charts, filters, and tables. Use when creating an executive overview with KPI cards, turning query results into a shareable self-contained report, building a team monitoring snapshot, or needing multiple charts with filters in one browser-openable file.. Its concrete surface area includes Build an interactive HTML dashboard with charts; Use when creating an executive overview with KPI cards; turning query results into a shareable self-contained report. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,7 +94,7 @@
             "runningText": "reading build-dashboard SKILL.md…",
             "output": [
               "skill: build-dashboard",
-              "Build an interactive HTML dashboard with charts, filters, and tables. Use when c",
+              "Build an interactive HTML dashboard with charts, filters, and tables. Use when…",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
@@ -63,18 +108,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 23.17,
+      "actual_duration_s": 35.71,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:57:05"
+        "at": "2026-09-06T01:02:14"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is build-dashboard. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is build-dashboard. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at sales_dashboard.html, ${sign}${pctChange.toFixed(1)}% vs prior period, kpi-change ${pctChange >= 0 ? 'positive' : 'negative'}, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -106,18 +151,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.27,
+      "actual_duration_s": 25.49,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:57:05"
+        "at": "2026-09-06T01:02:14"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "build-dashboard is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Build an interactive HTML dashboard with charts; Use when creating an executive overview with KPI cards; turning query results into a shareable self-contained report; building a team monitoring snapshot. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -157,18 +202,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 20.03,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:57:05"
+        "at": "2026-09-06T01:02:14"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. build-dashboard is a specification written as an instruction set. Claude's job: Build an interactive HTML dashboard with charts, filters, and tables. Use when creating an executive. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. Build a self-contained interactive HTML dashboard with charts, filters, tables, and professional styling. Opens directly in a browser -- no server or dependencies…. That is the constraint in build-dashboard — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +224,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Build an interactive HTML dashboard with charts, filters, and tables. Use when creating an executive overview with KPI cards, turning query results into a shareable self-contained report, building a t",
+            "body": "Build a self-contained interactive HTML dashboard with charts, filters, tables, and professional styling. Opens directly in a browser -- no server or dependencies…",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,18 +234,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 16.34,
+      "actual_duration_s": 17.6,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:57:05"
+        "at": "2026-09-06T01:02:14"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In build-dashboard, supporting material: sales_dashboard.html, ${sign}${pctChange.toFixed(1)}% vs prior period, kpi-change ${pctChange >= 0 ? 'positive' : 'negative'}, $${(value / 1e6).toFixed(1)}M; implementation signals: code block: html, code block: javascript, code block: css; sections: Usage, Workflow, 1. Understand the Dashboard Requirements, 2. Gather the Data. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Build an interactive HTML dashboard with charts; Use when creating an executive overview with KPI cards; turning query results into a shareable self-contained report; sales_dashboard.html…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 31.55,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-06T01:02:14"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "build-dashboard makes Claude execute one task reliably. The SKILL.md is the spec — Build an interactive HTML dashboard with charts, filters, and tables. Use when c. Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "build-dashboard makes Claude execute one task reliably. The SKILL.md is the spec — Build an interactive HTML dashboard with charts, filters, and tables. Use when…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -213,9 +290,10 @@
             "artifactHeading": "Claude, Build Dashboard.",
             "artifactLines": [
               "Skill: build-dashboard — Claude reads SKILL.md before acting",
-              "Build an interactive HTML dashboard with charts, filters, and tables. Use when creating an",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "Build an interactive HTML dashboard with charts, filters, and tables. Use when creating…",
+              "Capabilities: Build an interactive HTML dashboard with charts; Use when creating an executive overview with KPI cards; turning query results into a shareable self-contained report",
+              "Constraint: Build a self-contained interactive HTML dashboard with charts, filters, tables, and…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -225,18 +303,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 14.7,
+      "actual_duration_s": 14.42,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:57:05"
+        "at": "2026-09-06T01:02:14"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to build an interactive html dashboard with charts, filters, and tables. use when c. Read the build-dashboard skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to build an interactive html dashboard with charts, filters, and tables. use when. Read the build-dashboard skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -248,7 +326,7 @@
             "greeting": "Your turn.",
             "topic": "BUILD-DASHBOARD · ANTHROPIC SKILL",
             "segment": "Claude, Build Dashboard.",
-            "command": "I want to build an interactive html dashboard with charts, filters, and tables. . Read the build-dashboard skill and walk me through what you will do before you do it.",
+            "command": "I want to build an interactive html dashboard with charts, filters, and tables. Read the build-dashboard skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -262,12 +340,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 15.49,
+      "actual_duration_s": 15.27,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:57:05"
+        "at": "2026-09-06T01:02:14"
       }
     },
     {
@@ -298,7 +376,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T06:57:05"
+        "at": "2026-09-06T01:02:14"
       }
     }
   ]

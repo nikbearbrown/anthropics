@@ -1,0 +1,77 @@
+1
+00:00:00,000 --> 00:00:06,200
+You tweak the system prompt. Does it
+actually help — or did you just shuffle
+tokens? This is Liam, in for Bear.
+
+2
+00:00:06,250 --> 00:00:13,730
+The question: how do you know a prompt
+change improves output without manually
+inspecting every variant — and spending
+
+3
+00:00:13,780 --> 00:00:35,750
+The answer is a two-layer eval. Layer one:
+structural. Parse the output — in this
+case a PowerPoint file's XML — and measure
+
+4
+00:00:35,800 --> 00:01:03,080
+Six variants, same 10-task eval suite.
+Naive agent: Comic Sans, poor contrast,
+cluttered layout. Add a typography hint —
+
+5
+00:01:03,130 --> 00:01:18,080
+The accumulation is the point. Each
+variant adds one change. Each change gets
+one measured delta. By variant six, you
+
+6
+00:01:18,130 --> 00:01:56,480
+Here is how the scoring actually works.
+Layer one is fast and free: parse the
+output XML, check the JSON schema, run the
+
+7
+00:01:56,530 --> 00:02:33,560
+Here is the cumulative improvement, laid
+out as a waterfall. The naive agent starts
+at 42 percent. Add a ReAct reasoning loop
+
+8
+00:02:33,610 --> 00:03:09,290
+Three moments demand an eval run. Before
+you deploy: establish a baseline. Without
+a number, you have nothing to beat. You
+
+9
+00:03:09,340 --> 00:03:26,270
+Let's recap with Claude. Split the eval
+into two layers: structural parses the
+output's metrics programmatically;
+
+10
+00:03:26,320 --> 00:04:03,580
+Your turn. Here is the prompt: 'Run my
+agent on the same 10-task eval before and
+after this prompt change, and grade both
+
+11
+00:04:03,630 --> 00:04:22,930
+Structural grader: parse the output, no
+model call, pass or fail in milliseconds.
+Semantic grader: render the output, hand
+
+12
+00:04:22,980 --> 00:04:35,940
+Your turn. Take your agent's prompt, make
+three variants — one change each — and
+build the structural grader first: parse
+
+13
+00:04:35,990 --> 00:04:41,490
+Six Agent Variants: How to Measure What
+Prompt Changes Actually Do. Thanks for
+watching.

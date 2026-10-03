@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Doc Co-Authoring",
+    "title": "Claude, Doc Coauthoring.",
     "slug": "claude-liam-doc-coauthoring",
-    "topic": "DOC CO-AUTHORING · ANTHROPIC SKILL",
+    "topic": "DOC-COAUTHORING · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,50 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Guten Tag, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/skills/skills/doc-coauthoring/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/skills/skills/doc-coauthoring/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Guide users through a structured workflow for co-authoring documentation",
+        "Use when user wants to write documentation",
+        "technical specs",
+        "decision docs",
+        "or similar structured content"
+      ],
+      "constraints": [
+        "Use str_replace to make edits (never reprint the whole doc)",
+        "Never use artifacts for brainstorming lists - that's just conversation"
+      ],
+      "referenced_files": [
+        "create_file",
+        "decision-doc.md",
+        "technical-spec.md",
+        "str_replace"
+      ],
+      "code_signals": [],
+      "sections": [
+        "When to Offer This Workflow",
+        "Stage 1: Context Gathering",
+        "Initial Questions",
+        "Info Dumping",
+        "Stage 2: Refinement & Structure",
+        "Step 1: Clarifying Questions",
+        "Step 2: Brainstorming",
+        "Step 3: Curation",
+        "Step 4: Gap Check",
+        "Step 5: Drafting"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T13:31:19",
-      "cut": "master",
-      "filled": 9,
-      "of": 9,
+      "at": "2026-09-05T12:08:10",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +65,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Guten Tag — this is Liam, in for Bear. Ask Claude to write a technical spec for a new API. Most of the time, Claude writes for you, not for your readers. The doc-coauthoring skill changes that. It runs a three-stage workflow: close the knowledge gap first, build section by section second, and test with a reader who wasn't in the room. Let me show you how it works.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is doc-coauthoring. Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.. Its concrete surface area includes Guide users through a structured workflow for co-authoring documentation; Use when user wants to write documentation; technical specs. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Guten Tag, Liam",
-            "topic": "DOC CO-AUTHORING · ANTHROPIC SKILL",
-            "segment": "Doc Co-Authoring",
-            "command": "Write a technical spec for our new payments API. It needs to go to the engineering team and product.",
+            "greeting": "Hola, Liam",
+            "topic": "DOC-COAUTHORING · ANTHROPIC SKILL",
+            "segment": "Claude, Doc Coauthoring.",
+            "command": "Run the doc-coauthoring skill.",
             "runningText": "reading doc-coauthoring SKILL.md…",
             "output": [
-              "Stage 1: Context Gathering — 5 meta questions + info dump",
-              "Stage 2: Refinement — brainstorm → curate → draft → refine per section",
-              "Stage 3: Reader Testing — fresh Claude, no context bleed"
+              "skill: doc-coauthoring",
+              "Guide users through a structured workflow for co-authoring documentation. Use…",
+              "steps: 14 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +95,41 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 18.73,
+      "actual_duration_s": 39.98,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:31:19"
+        "at": "2026-09-05T12:08:10"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — three stages + trigger + doc types",
-      "narration_text": "The doc-coauthoring skill is a structured workflow for collaborative document creation. The trigger fires when the user mentions writing documentation, proposals, technical specs, or decision docs — PRDs, design docs, RFCs, any substantial writing task. The workflow has three stages: context gathering, refinement and structure, and reader testing. Stage three is the key — it tests the document with a fresh Claude that has no context from this conversation.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is doc-coauthoring. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at create_file, decision-doc.md, technical-spec.md, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "DocCoauthoringAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Context first. Readers second."
+            "skillName": "doc-coauthoring",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "15k",
+                "accent": true
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "1 file total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +138,54 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 25.94,
+      "actual_duration_s": 18.43,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:31:19"
+        "at": "2026-09-05T12:08:10"
       }
     },
     {
       "beat_id": "B02",
-      "act": "stage 1 — context gathering",
-      "narration_text": "Stage one: context gathering. The goal is to close the gap between what the user knows and what Claude knows. Claude starts with five meta-context questions — what type of document, who is the audience, what is the desired impact, is there a template, and any constraints. Then Claude asks the user to dump all context: background, team discussions, why alternative solutions aren't being used, org dynamics, timeline pressures. The exit condition is when Claude can ask about edge cases and trade-offs without needing basics explained.",
+      "act": "pipeline",
+      "narration_text": "The pipeline has 14 steps. Clarifying Questions → Brainstorming → Curation, plus 11 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 34,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "DocCoauthoringStage1",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Dump context. Claude closes the gap."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Clarifying Questions",
+                "desc": "Announce work will begin on the [SECTION NAME] section. Ask…",
+                "accent": true
+              },
+              {
+                "label": "Brainstorming",
+                "desc": "For the [SECTION NAME] section, brainstorm [5-20] things…",
+                "accent": false
+              },
+              {
+                "label": "Curation",
+                "desc": "Ask which points should be kept, removed, or combined.…",
+                "accent": false
+              },
+              {
+                "label": "Gap Check",
+                "desc": "Based on what they've selected, ask if there's anything…",
+                "accent": false
+              }
+            ],
+            "footerNote": "14 steps. Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,27 +194,30 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 28.25,
+      "actual_duration_s": 12.84,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:31:19"
+        "at": "2026-09-05T12:08:10"
       }
     },
     {
       "beat_id": "B03",
-      "act": "stage 2 — refinement and structure",
-      "narration_text": "Stage two: refinement and structure. For each section, Claude runs a six-step loop. Clarify: five to ten questions. Brainstorm: five to twenty options — more for complex sections. Curate: user keeps, removes, or combines. Gap check: what is still missing. Draft: str-replace fills the placeholder. Refine: iterate until no substantial changes. The quality gate triggers after three iterations with no changes — ask if anything can be removed without losing information. At eighty percent completion, re-read the whole document and cut slop.",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. Use str_replace to make edits (never reprint the whole doc). That is the constraint in doc-coauthoring — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 36,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "DocCoauthoringStage2",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Brainstorm 20. Curate to what matters."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "Use str_replace to make edits (never reprint the whole doc)",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
             "out": "media/B03.mp4",
@@ -149,27 +226,30 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 30.14,
+      "actual_duration_s": 11.95,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:31:19"
+        "at": "2026-09-05T12:08:10"
       }
     },
     {
       "beat_id": "B04",
-      "act": "stage 3 — reader testing",
-      "narration_text": "Stage three: reader testing. This is the most underrated step. The skill invokes a fresh Claude with no context from this conversation — that is the reader. In Claude Code, this is automatic: Claude predicts reader questions, runs them through a sub-agent, and summarizes what the reader got wrong. In claude.ai, it is manual: open a new conversation, paste the doc, and run the questions yourself. The exit condition is when reader Claude answers consistently correctly and stops surfacing new gaps.",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In doc-coauthoring, supporting material: create_file, decision-doc.md, technical-spec.md, str_replace; sections: When to Offer This Workflow, Stage 1: Context Gathering, Initial Questions, Info Dumping. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 32,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "DocCoauthoringStage3",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "A fresh Claude finds your blind spots."
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Guide users through a structured workflow for co-authoring documentation; Use when user wants to write documentation; technical specs; create_file; decision-doc.md; technical-spec.md",
+            "sparkLine": "Ground the reel in the file."
           },
           "rendered": {
             "out": "media/B04.mp4",
@@ -178,64 +258,34 @@
         }
       },
       "audio_file": "mp3/beat-B04.mp3",
-      "actual_duration_s": 26.35,
+      "actual_duration_s": 18.79,
       "build": {
         "status": "VIDEO",
         "src": "media/B04.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:31:19"
-      }
-    },
-    {
-      "beat_id": "B05",
-      "act": "teardown — context bleed + reader gate",
-      "narration_text": "Here is the teardown moment. The insight behind this skill is that context bleeding is real. After a thirty-minute info dump, what makes sense to you looks like jargon to a fresh reader. What the skill gets right: the brainstorm and curate loop prevents the blank-page problem. Reader testing catches blind spots structurally. What it costs: this is a long workflow — it is designed for documents that will actually be reviewed at scale, not a quick write-up. The str-replace discipline breaks down if the user edits the doc directly and doesn't say so.",
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "estimated_duration_s": 36,
-      "shot": {
-        "type": "REMOTION",
-        "remotion": {
-          "pattern": "DocCoauthoringTell",
-          "props": {
-            "sparkLine": "Write for the reader. Test with the reader."
-          },
-          "rendered": {
-            "out": "media/B05.mp4",
-            "at": ""
-          }
-        }
-      },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 28.48,
-      "build": {
-        "status": "VIDEO",
-        "src": "media/B05.mp4",
-        "filled_by": "media",
-        "at": "2026-07-18T13:31:19"
+        "at": "2026-09-05T12:08:10"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. The doc-coauthoring skill is a three-stage workflow that treats the document as something that must work without the author in the room. Stage one closes the knowledge gap. Stage two builds section by section with a quality gate. Stage three tests with a fresh Claude — no shared context, no shared assumptions, no shared vocabulary.",
+      "narration_text": "doc-coauthoring makes Claude execute one task reliably. The SKILL.md is the spec — Guide users through a structured workflow for co-authoring documentation. Use…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "Doc Co-Authoring",
+            "artifactHeading": "Claude, Doc Coauthoring.",
             "artifactLines": [
-              "Stage 1: info dump + 5 meta questions → exit when edge cases can be discussed",
-              "Stage 2: 6-step per-section loop — brainstorm → curate → draft → refine",
-              "Quality gate: 3 iterations with no change → ask what can be cut",
-              "Stage 3: fresh Claude test — no context from this conversation",
-              "Best for: docs that will be reviewed at scale (PRD, RFC, decision doc)",
-              "Limit: str_replace discipline breaks if user edits doc directly"
+              "Skill: doc-coauthoring — Claude reads SKILL.md before acting",
+              "Guide users through a structured workflow for co-authoring documentation. Use when user…",
+              "14-step pipeline: Clarifying Questions → Brainstorming → Curation",
+              "Constraint: Use str_replace to make edits (never reprint the whole doc)",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -245,36 +295,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 18.67,
+      "actual_duration_s": 14.34,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:31:19"
+        "at": "2026-09-05T12:08:10"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Open a Claude session. Paste this: I need to write a decision doc about whether to migrate our auth service to OAuth 2.0. Walk me through the doc-coauthoring workflow. Then stop and watch what Claude does before it writes anything. Does it ask the five meta-context questions? Does it wait for your info dump before starting to draft? That is the gate.",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to guide users through a structured workflow for co-authoring documentation. use. Read the doc-coauthoring skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "DOC CO-AUTHORING · HANDOFF",
-            "segment": "Doc Co-Authoring",
-            "command": "I need to write a decision doc about whether to migrate our auth service to OAuth 2.0. Walk me through the doc-coauthoring workflow.",
-            "runningText": "Watch: does Claude gather context before drafting? That is the gate.",
-            "output": [
-              "Expected: Stage 1 — 5 meta questions before any drafting",
-              "Expected: info dump requested before clarifying questions",
-              "Stage 3 test: open a fresh Claude, paste the doc, ask reader questions"
-            ],
+            "greeting": "Your turn.",
+            "topic": "DOC-COAUTHORING · ANTHROPIC SKILL",
+            "segment": "Claude, Doc Coauthoring.",
+            "command": "I want to guide users through a structured workflow for co-authoring. Read the doc-coauthoring skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -286,27 +332,27 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 18.13,
+      "actual_duration_s": 14.83,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:31:19"
+        "at": "2026-09-05T12:08:10"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "Doc Co-Authoring. Liam, in for Bear.",
+      "narration_text": "Claude, Doc Coauthoring. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "Doc Co-Authoring",
+            "title": "Claude, Doc Coauthoring.",
             "handle": "@NikBearBrown",
             "subline": "doc-coauthoring · Anthropic Skills"
           },
@@ -317,12 +363,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 3.01,
+      "actual_duration_s": 3.37,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T13:31:19"
+        "at": "2026-09-05T12:08:10"
       }
     }
   ]

@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "BigQuery API",
+    "title": "Claude, Bigquery Api.",
     "slug": "claude-liam-bigquery-api",
-    "topic": "BIGQUERY API · CLAUDE TAG PLUGIN",
+    "topic": "BIGQUERY-API · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,59 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Namaste, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-tag-plugins/bigquery/skills/bigquery-api/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-tag-plugins/bigquery/skills/bigquery-api/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Run SQL against Google BigQuery and browse its catalog — submit queries (sync or async)",
+        "poll job status",
+        "page through results",
+        "list datasets/tables",
+        "and read table schemas"
+      ],
+      "constraints": [
+        "BigQuery's REST API (bigquery.googleapis.com/bigquery/v2) lets you run SQL, inspect jobs, and browse datasets and table schemas with plain curl — no SDK required",
+        "Authentication is handled by the runtime — credentials are injected into outbound requests to this API, so there is nothing to set up. Do not try to create, mint…",
+        "export GCP_PROJECT=\"my-project\" # the project that pays for queries — must be real"
+      ],
+      "referenced_files": [
+        "project.dataset.table",
+        "bigquery.googleapis.com/bigquery/v2",
+        "scripts/bq_query.sh",
+        "jobs.query",
+        "jobs.insert",
+        "jobs.get",
+        "jobs.getQueryResults",
+        "Authorization: Bearer ...",
+        "JSON — post-process with",
+        "bigquery-public-data.usa_names.usa_1910_current"
+      ],
+      "code_signals": [
+        "code block: bash"
+      ],
+      "sections": [
+        "Request setup",
+        "Core operations",
+        "1. Run a query (scripts/bq_query.sh)",
+        "2. Submit a job directly (jobs.insert → jobs.get)",
+        "3. Cancel a running job",
+        "4. List recent jobs",
+        "5. List datasets",
+        "6. List tables in a dataset",
+        "7. Get a table's schema and size",
+        "8. Preview table rows without a query (tabledata.list)"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T18:15:35",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T14:52:35",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +74,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Namaste — this is Liam, in for Bear. Ask Claude to run SQL against BigQuery, check a job's status, list datasets, or preview table rows — the BigQuery API skill fires. It covers bigquery.googleapis.com/bigquery/v2 with a bundled script that handles both execution modes. The central concept is a job. Every query runs as a job in a billing project — the project that pays is not necessarily where the data lives. Two modes: synchronous for quick queries that finish in time, asynchronous for everything else. Let me walk you through the job model, the eight core operations, and where this skill lands well and where it leaves gaps.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is bigquery-api. Run SQL against Google BigQuery and browse its catalog — submit queries (sync or async), poll job status, page through results, list datasets/tables, and read table schemas. Use this whenever the user wants to query a BigQuery table, ask \"what's in this dataset\", check a BigQuery job's status, or mentions bigquery.googleapis.com or a project.dataset.table path. Always start from this skill when interacting with this service — its bundled scripts and recipes are the fastest path.. Its concrete surface area includes Run SQL against Google BigQuery and browse its catalog — submit queries (sync or async); poll job status; page through results. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 22,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Namaste, Liam",
-            "topic": "BIGQUERY API · CLAUDE TAG PLUGIN",
-            "segment": "PLUGIN DEV",
-            "command": "Query the top 10 names in the USA names public dataset for California.",
+            "greeting": "Hola, Liam",
+            "topic": "BIGQUERY-API · ANTHROPIC SKILL",
+            "segment": "Claude, Bigquery Api.",
+            "command": "Run the bigquery-api skill.",
             "runningText": "reading bigquery-api SKILL.md…",
             "output": [
-              "Every query runs as a job in a billing project",
-              "Two modes: synchronous (blocks) or asynchronous (submit → poll → page)",
-              "Bundled bq_query.sh: polls, pages, decodes f/v cell encoding"
+              "skill: bigquery-api",
+              "Run SQL against Google BigQuery and browse its catalog — submit queries (sync…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +104,55 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 35.58,
+      "actual_duration_s": 43.22,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:15:35"
+        "at": "2026-09-05T14:52:35"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — job model + two execution modes",
-      "narration_text": "The job model is the foundation. A query submits to a billing project — the project that is charged. The data can live in a different project. Every query produces a job with a job ID and a location. Location matters: a job is pinned to the location it ran in, and omitting it on subsequent calls will 404. Two execution modes. Synchronous: one POST to jobs.query that blocks up to a timeout and returns rows inline. Fast and simple for queries that finish quickly. Asynchronous: POST to jobs.insert, which returns immediately with a job reference. Then poll jobs.get until status.state is DONE. Then page results with getQueryResults. Critical: a DONE job can still have failed — always check status.errorResult before fetching results. The bundled bq_query.sh script drives this entire flow — both modes, location threading, polling, pagination, and f-slash-v cell decoding.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is bigquery-api. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at project.dataset.table, bigquery.googleapis.com/bigquery/v2, scripts/bq_query.sh, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 30,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "BigQueryApiAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Job owns the query. Billing project pays. Location pins the job. DONE ≠ success."
+            "skillName": "bigquery-api",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "10k",
+                "accent": true
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "references",
+                "size": null,
+                "accent": false
+              },
+              {
+                "indent": 1,
+                "icon": "📁",
+                "name": "scripts",
+                "size": null,
+                "accent": false
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "3 files total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +161,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 49.02,
+      "actual_duration_s": 21.18,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:15:35"
+        "at": "2026-09-05T14:52:35"
       }
     },
     {
       "beat_id": "B02",
-      "act": "operations — eight core recipes",
-      "narration_text": "Eight core operations. One: run a query — bq_query.sh handles both modes; supports named parameters, dry-run, max-gb cost cap, row cap, TSV or JSON output. Two: submit a job directly — use this for destination tables, write disposition, BATCH priority, or load and extract jobs; POST jobs.insert, get a job reference, poll jobs.get until DONE. Three: cancel a running job — POST to jobs slash job-ID slash cancel; cancellation is best-effort, poll to confirm. Four: list recent jobs — GET slash jobs with stateFilter and projection; useful to inspect what ran and how many bytes it scanned. Five: list datasets — GET slash datasets; pass all=true for hidden ones. Six: list tables in a dataset — GET datasets slash dataset-ID slash tables; type is TABLE, VIEW, EXTERNAL, MATERIALIZED_VIEW, or SNAPSHOT. Seven: get a table's schema and size — GET the table resource; numRows, numBytes, time partitioning, and schema fields. Eight: preview table rows — GET tabledata slash list; reads from storage with no query job and no bytes-scanned cost.",
+      "act": "pipeline",
+      "narration_text": "bigquery-api is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Run SQL against Google BigQuery and browse its catalog — submit queries (sync or async); poll job status; page through results; list datasets/tables. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 32,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "BigQueryApiOps",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Eight operations. Script drives the hard parts. Preview is free. Direct submit for destination tables."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +212,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 60.42,
+      "actual_duration_s": 18.43,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:15:35"
+        "at": "2026-09-05T14:52:35"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. BigQuery API gets five things right. The job model is clearly explained: billing project concept, two execution modes with when to use each, and the full async flow. The bundled bq_query.sh handles both modes, location threading, polling, f-slash-v cell decoding, dry-run, max-gb cost cap, and named parameters — it is a complete reference implementation, not just a wrapper. The critical DONE-does-not-mean-success invariant is called out explicitly — always check status.errorResult before fetching results. The location requirement is documented: pass it on all subsequent calls or you get a 404 for non-US datasets. And the tabledata.list preview operation is identified as the no-cost alternative to querying for row previews. Where it bites. The pagination field name inconsistency is mentioned but easy to miss: collections return nextPageToken but query results return pageToken — reading the wrong one yields null silently and stops after one page. Same auth placeholder fiction as other tag-plugin skills: any value works confusing outside the runtime. The f-slash-v cell encoding for nested and repeated columns is left undocumented inline — only scalar decoding is explained, structured columns emit raw JSON with a jq post-process note and no examples. The totalRows field is not a pagination stop condition — it is the full count — this is counterintuitive and easy to misuse. And write-heavy operations — destination tables, load, extract, copy — all require jobs.insert directly and are deferred to references/api.md.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. BigQuery's REST API (bigquery.googleapis.com/bigquery/v2) lets you run SQL, inspect jobs, and browse datasets and table schemas with plain curl — no SDK required. That is the constraint in bigquery-api — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 38,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "BigQueryApiTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "DONE ≠ success and location-always are the two rules. Pagination field split: document it."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "BigQuery's REST API (bigquery.googleapis.com/bigquery/v2) lets you run SQL, inspect jobs, and browse datasets and table schemas with plain curl — no SDK required",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 88.36,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 19.31,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:15:35"
+        "at": "2026-09-05T14:52:35"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In bigquery-api, supporting material: project.dataset.table, bigquery.googleapis.com/bigquery/v2, scripts/bq_query.sh, jobs.query; implementation signals: code block: bash; sections: Request setup, Core operations, 1. Run a query (scripts/bq_query.sh), 2. Submit a job directly (jobs.insert → jobs.get). That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Run SQL against Google BigQuery and browse its catalog — submit queries (sync or async); poll job status; page through results; project.dataset.table; bigquery.googleapis.com/bigquery/v2; scripts/bq_query.sh; code…",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 28.03,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T14:52:35"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. BigQuery API: job-centric model, billing project concept, two modes (sync/async). Bundled bq_query.sh: both modes, location threading, polling, f/v decoding, dry-run, max-gb, named params. Eight operations: run, submit directly, cancel, list jobs, list datasets, list tables, get schema, preview rows (free). Critical invariants: DONE ≠ success — check status.errorResult; always pass location on job lookups. Gaps: pageToken vs nextPageToken split silent, auth placeholder fiction, nested/repeated f/v encoding unexplained, totalRows not a stop condition, write-heavy ops need references/api.md.",
+      "narration_text": "bigquery-api makes Claude execute one task reliably. The SKILL.md is the spec — Run SQL against Google BigQuery and browse its catalog — submit queries (sync…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 22,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "BigQuery API",
+            "artifactHeading": "Claude, Bigquery Api.",
             "artifactLines": [
-              "Job model: billing project · two modes (sync/async) · location-pinned",
-              "bq_query.sh: both modes · polling · f/v decoding · dry-run · max-gb · named params",
-              "Invariants: DONE ≠ success (check errorResult) · location required on all lookups",
-              "8 ops: run · submit · cancel · list-jobs · datasets · tables · schema · preview (free)",
-              "Pagination: pageToken (query results) vs nextPageToken (lists) — non-uniform",
-              "Gaps: pagination split silent · nested f/v unexplained · write-heavy deferred to api.md"
+              "Skill: bigquery-api — Claude reads SKILL.md before acting",
+              "Run SQL against Google BigQuery and browse its catalog — submit queries (sync or async)…",
+              "Capabilities: Run SQL against Google BigQuery and browse its catalog — submit queries (sync or async); poll job status; page through results",
+              "Constraint: BigQuery's REST API (bigquery.googleapis.com/bigquery/v2) lets you run SQL, inspect jobs…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +313,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 39.42,
+      "actual_duration_s": 14.83,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:15:35"
+        "at": "2026-09-05T14:52:35"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Open a Claude Code session. Paste this: Run a query against the BigQuery public dataset bigquery-public-data.usa_names.usa_1910_current and return the top five names for Texas. Watch three things. First: does it use bq_query.sh, or does it roll a raw curl loop that misses pagination? Second: does it pass the location on every subsequent call, or skip it and risk a 404? Third: if the job comes back DONE, does it check status.errorResult before fetching results — or assume DONE means success? Those three are your maintenance gates: script for pagination, location always, DONE does not mean success.",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to run sql against google bigquery and browse its catalog — submit queries (sync. Read the bigquery-api skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 28,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "BIGQUERY API · HANDOFF",
-            "segment": "PLUGIN DEV",
-            "command": "Run a query against bigquery-public-data.usa_names.usa_1910_current — top 5 names for Texas.",
-            "runningText": "Watch: bq_query.sh? location passed? DONE ≠ success checked?",
-            "output": [
-              "Expected: bq_query.sh used — handles pagination and f/v decoding",
-              "Expected: location passed on all job.get / getQueryResults calls",
-              "Red flag: DONE assumed success · no errorResult check · raw curl no pagination"
-            ],
+            "greeting": "Your turn.",
+            "topic": "BIGQUERY-API · ANTHROPIC SKILL",
+            "segment": "Claude, Bigquery Api.",
+            "command": "I want to run sql against google bigquery and browse its catalog — submit. Read the bigquery-api skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +350,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 35.16,
+      "actual_duration_s": 15.25,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:15:35"
+        "at": "2026-09-05T14:52:35"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "BigQuery API. Liam, in for Bear.",
+      "narration_text": "Claude, Bigquery Api. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "BigQuery API",
+            "title": "Claude, Bigquery Api.",
             "handle": "@NikBearBrown",
-            "subline": "bigquery-api · Plugin Dev"
+            "subline": "bigquery-api · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +381,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 3.26,
+      "actual_duration_s": 3.48,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T18:15:35"
+        "at": "2026-09-05T14:52:35"
       }
     }
   ]

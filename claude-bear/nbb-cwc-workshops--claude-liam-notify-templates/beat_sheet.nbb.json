@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "Fill The Template. Don't Write It.",
+  "subtitle": "The Notify-Templates Skill",
+  "slug": "cwc-workshops--claude-liam-notify-templates",
+  "topic": "NOTIFY-TEMPLATES · ANTHROPIC SKILL",
+  "purpose": "Take apart the notify-templates skill: explain why Claude fills three fixed message formats from data at hand instead of drafting each alert, evaluate the choice to route by written threshold rather than judgment, and name what a batch-then-append design leaves uncovered. Land the carry-out that Claude fills templates from data it already has, and a sweep becomes one summary and one append, never one call per SKU.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/cwc-workshops/youtube/claude-liam-notify-templates/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the low-stock alert decision itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout, grounded in the skill's own SKILL.md (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-01T01:28:09",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's the assumption: Claude writes each alert from scratch, choosing words case by case. It doesn't. It fills a fixed template. Identical output — not authorship. Does Claude fill the low-stock alert template?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "lead_silence_s": 1.3,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Does Claude write the low-stock alert template?', hesitates on 'write', corrects to 'fill', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Does Claude\nwrite the\nlow-stock alert\ntemplate?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "write",
+      "replacementWords": "fill",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "hai-notify-templates"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 1.3 to give the typing a >=9s window with margin (unpadded speech alone measured 9.00s, too close to the floor); verify media/B00.mp4 >= 8s and that the correction ('write' -> 'fill') lands on screen and the full corrected question finishes typing before the clip ends.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T01:28:09"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "A Claude skill is a folder Claude reads before it acts. This one — notify-templates — carries three fixed formats: a low-stock Slack alert, a supplier email, an escalation for human review. Fill the slots from data at hand, append the result, stop. The file rules out a subagent explicitly. They optimized for a reproducible append over adaptive judgment.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 21,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THREE TEMPLATES, NO SUBAGENT",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THREE TEMPLATES, NO SUBAGENT",
+     "chips": [
+      "templates",
+      "fill from data",
+      "no subagent"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "fill the slots, then append — never a subagent",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T01:28:09"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Routing is written down too — no interpretation. Default lands in ops. An active stockout on a top SKU adds an at-here. Over twenty-five thousand dollars skips the channel — straight to a purchasing lead. Past one hundred thousand outstanding, or a suspected duplicate order, finance is pinged. Cross a threshold; the message names which. Routed by rule, not taste — auditable, at the cost of adaptability.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "WHERE IT'S ROUTED",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "WHERE IT'S ROUTED",
+     "chips": [
+      "ops",
+      "purchasing",
+      "finance"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "over $25k goes to a lead, not the channel",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T01:28:09"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "A daily sweep works the same way — batched. One summary message, not one per SKU — even when the task says notify each, every line lands in a single batch append. Sending is one write to an outbox file: JSON, one line per notification. Past two tool calls to send an alert and something has already gone wrong. Same data, same template, same append — every time. Legible bill, legible paper trail — over per-SKU immediacy.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 27,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "BATCH, DON'T SPAM",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "BATCH, DON'T SPAM",
+     "chips": [
+      "one summary",
+      "one append",
+      "≤ 2 calls"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "same data, same template, same append — every time",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-01T01:28:09"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Claude doesn't write these alerts — it fills three fixed templates from data it already has. A sweep becomes one summary and one append, never one call per SKU.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Claude doesn't write these alerts — it fills three fixed templates from data it already has. A sweep becomes one summary and one append, never one call per SKU.",
+      "attribution": "",
+      "sparkLine": "Fill it. Batch it. One append."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T01:28:09"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I'm designing a notify-templates skill for an inventory ops workflow — three fixed message formats (low-stock Slack alert, supplier email, escalation for human review) that Claude fills from inventory data instead of drafting from scratch. (1) Draft the three SKILL.md templates as fillable slots — name each slot, describe the data feeding it, and explain why fixing the format matters more than clever wording. (2) Write a routing table: default to an ops channel; add an at-here for an active stockout on a top SKU; jump straight to a purchasing lead over twenty-five thousand dollars; escalate to finance past one hundred thousand outstanding or on a suspected duplicate order. Name every threshold. (3) Show the batch rule: for a daily sweep across many SKUs, one summary message and one append to a JSON outbox — never one call per SKU — with a two-tool-call ceiling per alert. Go deeper: ask the same model where a fixed template forces the wrong message — a partial shipment that's only half a stockout, a supplier who bounces the email, a threshold-crossing SKU that also has a returns issue — and show which of those the notify-templates design would silently mishandle.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 62,
+   "llm_exercise": {
+    "prompt": "I'm designing a notify-templates skill for an inventory ops workflow: three fixed message formats (low-stock Slack alert, supplier email, escalation for human review) that Claude fills from inventory data instead of drafting from scratch. (1) Draft the three SKILL.md templates as fillable slots — name each slot, describe the data feeding it, and explain why fixing the format matters more than clever wording. (2) Write a routing table: default to an ops channel; add an at-here for an active stockout on a top SKU; jump straight to a purchasing lead over twenty-five thousand dollars; escalate to finance past one hundred thousand outstanding or on a suspected duplicate order. Name every threshold. (3) Show the batch rule: for a daily sweep across many SKUs, one summary message and one append to a JSON outbox, never one call per SKU, with a two-tool-call ceiling per alert.",
+    "dig_deeper": "Go deeper: ask the same model where a fixed template forces the wrong message — a partial shipment that's only half a stockout, a supplier who bounces the email, a threshold-crossing SKU that also has a returns issue — and show which of those the notify-templates design would silently mishandle."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "NOTIFY-TEMPLATES · ANTHROPIC SKILL",
+      "segment": "Fill The Template. Don't Write It.",
+      "command": "I'm designing a notify-templates skill: three fixed formats (low-stock Slack alert, supplier email, escalation for human review) filled from inventory data, not drafted. (1) Draft the three SKILL.md templates as fillable slots — name the slots and the data feeding each. (2) Write the routing table: default ops channel; at-here for active top-SKU stockout; over $25k → purchasing lead; over $100k outstanding or duplicate order → finance. (3) Show the batch rule: one summary + one JSON-outbox append per sweep, ≤ 2 tool calls per alert.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T01:28:09"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Fill The Template. Don't Write It. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Fill The Template. Don't Write It. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T01:28:09"
+   }
+  }
+ ]
+}

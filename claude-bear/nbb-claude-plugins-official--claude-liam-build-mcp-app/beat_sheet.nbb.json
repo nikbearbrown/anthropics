@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "Return Data. Serve HTML.",
+  "subtitle": "The Build MCP App Skill",
+  "slug": "claude-plugins-official--claude-liam-build-mcp-app",
+  "topic": "BUILD MCP APP · CLAUDE PLUGIN",
+  "purpose": "Answer one real question in the Teardown register: when you add interactive UI to an MCP server, which object hands back the widget's HTML — the tool, or something else? Lands the carry-out that the tool returns data and a separately-registered resource serves the HTML, and that a wrong MIME type or an un-inlined bundle both fail the exact same silent way.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/claude-plugins-official/youtube/claude-liam-build-mcp-app/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Extending Claude — Skills, Plugins & Connectors",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the build-mcp-app skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-08-30T20:54:08",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "People come at this thinking the tool that handles the call also serves the widget's HTML. It doesn't. That job belongs to a separate object — a resource, registered on its own. So: how do you actually make a resource serve the widget's HTML?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'How do I make my tool serve the widget's HTML?', hesitates on 'tool', corrects to 'resource', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "How do I make\nmy tool serve\nthe widget's HTML?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "tool",
+      "replacementWords": "resource",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "hai-build-mcp-app"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('tool' -> 'resource') lands on screen and the full corrected question finishes typing before the clip ends. Text kept short (44 forward-typed chars, 3 lines) and params kept at the safe-margin values established on the claude-plugins-official siblings (42ms/char, 8% hesitateBetween, 4% mistakeRate) to avoid the TIMING LAW overrun caught on the agent-development sibling's first attempt.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T20:54:08"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Here's the actual split. Part one — the tool: it declares that a UI resource exists via underscore-meta dot ui dot resourceUri, and its handler returns plain data, not HTML. Part two — the resource: registered separately, it serves the widget's HTML with the exact MIME type text slash html semicolon profile equals mcp-app. The host follows the resourceUri, fetches the resource, drops it into an iframe, and pipes the tool's return value in through an ontoolresult event. Inside the iframe, an App class bridges the two sides — sendMessage, updateModelContext, callServerTool, openLink — all wired up before it connects. One non-negotiable at the end: the iframe's content security policy blocks CDN script fetches, so the widget's script bundle has to be inlined directly into the HTML at startup. They optimized for a clean split between data and rendering at the cost of making you learn the two-part registration up front.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "TOOL RETURNS DATA · RESOURCE SERVES HTML",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "TOOL RETURNS DATA · RESOURCE SERVES HTML",
+     "chips": [
+      "tool: data",
+      "resource: HTML",
+      "bundle inlined"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the resource serves the HTML, not the tool",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T20:54:08"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Route before you build. Elicitation is spec-native, zero UI code, works in any compliant host — that's what it's optimized for: yes-no confirmation, short enum picks, flat forms. A widget only earns its place when elicitation can't carry the load: large or searchable lists that need scrolling, visual previews before a choice, charts and maps, live-updating progress. Nothing on that list? Skip the widget — text ships faster and reads faster. Then five design rules that save rewrites. One widget per tool. The tool's description has to mention the widget, because that mention is the hook that makes Claude reach for it. Graceful degradation is automatic — hosts without the apps surface just render the tool's text content. Don't block on widget results for display-only tools — return a text summary alongside, so Claude can keep reasoning. And follow the host's theme once you're connected, instead of hard-coding one. That last rule reveals the priority: once the widget is inside the host, it belongs to the host, not to you.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "ROUTE FIRST: ELICITATION, WIDGET, OR TEXT",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "ROUTE FIRST: ELICITATION, WIDGET, OR TEXT",
+     "chips": [
+      "elicitation first",
+      "widget if needed",
+      "else: text"
+     ],
+     "arrows": true,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "route before you build",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T20:54:08"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's the failure mode nobody warns you about. Two different mistakes produce the exact same blank rectangle, and neither logs an error. Serve the widget with the wrong MIME type — the host silently refuses to render it. No complaint, just nothing. Or leave the ext-apps bundle un-inlined — the iframe's content security policy blocks the CDN fetch, and the widget stays blank there too. Same symptom, two causes, and the browser console tells you neither. That's the cost of the design's silence: it fails safely instead of loudly, so you debug by ruling both out.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "TWO CAUSES, ONE BLANK RECTANGLE",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "TWO CAUSES, ONE BLANK RECTANGLE",
+     "chips": [
+      "wrong MIME",
+      "no bundle",
+      "silently blank"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "same failure, two causes",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BDNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T20:54:08"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "An MCP app is a server with one extra resource. The tool still returns data; it's the resource that serves the widget's HTML. Get the type or the bundle wrong, and it fails blank, not loud.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "An MCP app is a server with one extra resource — the tool still returns data, and it's the resource that serves the widget's HTML. Get the type or the bundle wrong, and it fails blank, not loud.",
+      "attribution": "",
+      "sparkLine": "Data from the tool. HTML from the resource."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T20:54:08"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. I want to build my first MCP app — a Claude plugin with an interactive widget. Walk me through building a server that exposes a directory-scan tool and a widget that lets a user pick a file from what that tool returns. Explicitly: show the two-part registration — a tool that declares underscore-meta dot ui dot resourceUri and returns plain data, plus a separate resource that serves the widget's HTML with the exact MIME type text slash html semicolon profile equals mcp-app. Show the widget's script bundle inlined into the HTML at startup, not pulled from a CDN. And give the tool a description that mentions the widget, so Claude reaches for it. As you go, name what would silently fail if the MIME type or the inlining were wrong. Go deeper: ask the same model why the MCP designers chose to put data on the tool and HTML on the resource — what would break, and for whom, if a tool were allowed to return HTML directly?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 44,
+   "llm_exercise": {
+    "prompt": "I want to build my first MCP app — a Claude plugin with an interactive widget. Walk me through building an MCP server that exposes a directory-scan tool and a widget that lets a user pick a file from what that tool returns. Explicitly: (1) show the two-part registration — a tool that declares _meta.ui.resourceUri and returns plain data, plus a separate resource that serves the widget's HTML with the exact MIME type text/html;profile=mcp-app; (2) inline the widget's script bundle into the HTML at startup instead of pulling it from a CDN; and (3) give the tool a description that mentions the widget so Claude reaches for it. As you go, name what would silently fail if the MIME type or the inlining were wrong.",
+    "dig_deeper": "Go deeper: ask the same model why the MCP designers put data on the tool and HTML on the resource — what would break, and for whom, if a tool were allowed to return HTML directly?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "BUILD MCP APP · CLAUDE PLUGIN",
+      "segment": "Return Data. Serve HTML.",
+      "command": "I want to build my first MCP app — a Claude plugin with an interactive widget. Walk me through building an MCP server that exposes a directory-scan tool AND a widget that lets a user pick a file from what that tool returns. (1) Show the two-part registration — a tool that declares _meta.ui.resourceUri and returns plain data, plus a separate resource that serves the widget's HTML with MIME type text/html;profile=mcp-app. (2) Inline the widget's script bundle into the HTML at startup instead of pulling from a CDN. (3) Give the tool a description that mentions the widget so Claude reaches for it. As you go, name what would silently fail if the MIME type or the inlining were wrong.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T20:54:08"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Return Data. Serve HTML. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Return Data. Serve HTML. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T20:54:08"
+   }
+  }
+ ]
+}

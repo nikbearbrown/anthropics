@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "It Drafts the Protocol. It Doesn't Decide the Trial.",
+  "subtitle": "The Clinical Trial Protocol Skill (Spec-Driven Drafting, Not Clinical Judgment)",
+  "slug": "healthcare--claude-liam-clinical-trial-protocol-skill",
+  "topic": "CLAUDE · SKILLS",
+  "purpose": "Take the clinical-trial-protocol-skill apart: explain the folder-is-the-program mechanism, name the three-step pipeline, and judge the design choice to draft-only — what it costs (no adaptive judgment) and what it buys (a protocol you can review the same way twice).",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/healthcare/youtube/claude-liam-clinical-trial-protocol-skill/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the clinical-trial-protocol-skill skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-02T04:14:00",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "The reflex is to hear 'clinical trial protocol skill' and assume Claude is picking the endpoints, sizing the arms, choosing the population. Wrong verb. It drafts the document to a fixed spec — the trial-design calls never leave the human's desk. Here's why that line matters.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "lead_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Does Claude decide a clinical trial protocol?', hesitates on 'decide', corrects to 'draft', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Does Claude\ndecide a clinical\ntrial protocol?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "decide",
+      "replacementWords": "draft",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 8,
+      "charMs": 42,
+      "jitter": 26,
+      "seed": "hai-clinical-trial-protocol"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 1.0 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('decide' -> 'draft') lands on screen and the full corrected question finishes typing before the clip ends. Rates reused from the financial-services--claude-liam-kyc-rules sibling's proven working configuration (42ms/char, 8% hesitateBetween, 4% mistakeRate, short text).",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T04:14:00"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Take it apart and a skill is just a folder Claude opens before it starts. This one is clinical-trial-protocol-skill. Five files inside: SKILL.md carries the instructions in plain English, a README, and folders for assets, references, and scripts. Claude reads the file, then does what the file says. The file is the program.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 19,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A SKILL IS A FOLDER",
+    "media": "manim/NB01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A SKILL IS A FOLDER",
+     "chips": [
+      "SKILL.md",
+      "5 files",
+      "plain language"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "the file is the program",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BKNB01Scene"
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T04:14:00"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Here's what's actually happening. Three steps in a fixed order: read SKILL.md to load the instructions, execute each numbered step from the Steps section, hand back the result. No branching unless a step inside the file explicitly asks for one. They optimized for reproducibility — same input, same run, same shape of output.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THREE-STEP PIPELINE",
+    "media": "manim/NB02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THREE-STEP PIPELINE",
+     "chips": [
+      "read SKILL.md",
+      "execute steps",
+      "return output"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "linear, no branching",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BKNB02Scene"
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T04:14:00"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "The job is narrow on purpose: draft clinical trial protocols for medical devices or drugs when someone asks 'create a clinical trial protocol' or 'help me design a clinical study.' It follows SKILL.md verbatim, so the same request produces the same shape of protocol every run. What's outside the file, it won't touch — the trial-design decisions stay with the person running the trial. That's the trade-off: you lose adaptive judgment, you buy a document you can review the same way twice.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "DRAFTS TO SPEC, NEVER DECIDES",
+    "media": "manim/NB03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "DRAFTS TO SPEC, NEVER DECIDES",
+     "chips": [
+      "spec-driven",
+      "repeatable",
+      "scope-limited"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [],
+     "caption": "drafts the document, never the decision",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BKNB03Scene"
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T04:14:00"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Clinical-trial-protocol-skill drafts the protocol to a fixed spec — it doesn't decide how the trial should run; that call still belongs to a person.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Clinical-trial-protocol-skill drafts the protocol to a fixed spec — it doesn't decide how the trial should run; that call still belongs to a person.",
+      "attribution": "",
+      "sparkLine": "Drafts. Never decides."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T04:14:00"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I want to draft a clinical trial protocol for a medical device or drug — the fixed-spec kind that a person still reviews. Read the clinical-trial-protocol-skill, then walk me through the sections it will include and the sections it won't, before you write a single line. Flag any trial-design decisions the skill leaves to me. That way you see the shape of the document — and the shape of the empty space around it — before a single line gets drafted. Go deeper: which parts of a clinical trial protocol — primary endpoint, sample size, inclusion criteria — does the skill compose from my outline, and which parts is it structurally not designed to decide?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 40,
+   "llm_exercise": {
+    "prompt": "I want to draft a clinical trial protocol for a medical device or drug — the fixed-spec kind that a person still reviews. Read the clinical-trial-protocol-skill, then walk me through the sections it will include and the sections it won't, before you write a single line. Flag any trial-design decisions the skill leaves to me.",
+    "dig_deeper": "Go deeper: which parts of a clinical trial protocol — primary endpoint, sample size, inclusion criteria — does the skill compose from my outline, and which parts is it structurally not designed to decide?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE · SKILLS",
+      "segment": "It Drafts the Protocol. It Doesn't Decide the Trial.",
+      "command": "I want to draft a clinical trial protocol for a medical device or drug — the fixed-spec kind that a person still reviews. Read the clinical-trial-protocol-skill, then walk me through the sections it will include and the sections it won't, before you write a single line. Flag any trial-design decisions the skill leaves to me.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T04:14:00"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "It Drafts the Protocol. It Doesn't Decide the Trial. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroSeries",
+     "props": {
+      "eyebrow": "CLINICAL-TRIAL-PROTOCOL-SKILL · @HumanitariansAI",
+      "line": "It Drafts the Protocol. It Doesn't Decide the Trial."
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T04:14:00"
+   }
+  }
+ ]
+}

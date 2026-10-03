@@ -1,0 +1,289 @@
+{
+ "metadata": {
+  "title": "Claude, Asana API.",
+  "slug": "claude-tag-plugins--claude-liam-asana-api",
+  "topic": "ASANA API · CLAUDE TAG PLUGIN",
+  "purpose": "Answer whether Claude manages Asana tasks by operating the app or by calling Asana's REST API, using the Asana API skill's own documented facts as the concrete case. Lands the carry-out that every call turns on two habits — gid instead of name, and a response unwrapped from data. Teardown register.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/claude-tag-plugins/youtube/claude-liam-asana-api/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (list-my-incomplete-tasks request, traced through gid resolution + data envelope, then paginated to completion)",
+  "build": {
+   "at": "2026-08-31T12:12:12",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "People assume Claude opens the Asana app and clicks around like a person would. Wrong branch. It hits Asana's REST API directly — JSON out, JSON back, no app in the loop. So what's the actual shape of that API?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Claude must open the Asana app and click around to manage my tasks. Is that it?', hesitates on 'app', corrects to 'API', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude must open\nthe Asana app and\nclick around to manage\nmy tasks. Is that it?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "app",
+      "replacementWords": "API",
+      "mistakeRate": 3,
+      "hesitateWithin": 2,
+      "hesitateBetween": 10,
+      "charMs": 40,
+      "jitter": 22,
+      "seed": "hai-asana-api"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('app' -> 'API') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T12:12:12"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "Ask Claude to list your incomplete tasks and here's what you'd guess arrives — a plain array of tasks. That's not what Asana sends. Every response, read or write, comes wrapped under a top-level data key, and every object inside is addressed by a gid, a string ID, never by name. They optimized for stable references you can't accidentally break by renaming — at the cost of one extra unwrap on every single call.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A bare-array guess struck through; the actual response opened to reveal the data envelope, gid called out inside"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Not a bare list — a data envelope",
+     "mechanic": "A guessed response '[ task, task, task ]' fades in, then gets struck through in terracotta. Beside it, the real response shape opens: a curly-brace card with 'data:' at the top, tasks nested inside, each one tagged 'gid' in mono, never a name.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "AAB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T12:12:12"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "The nesting is uniform, always. A workspace holds projects, a project holds sections and tasks, a task carries comments and subtasks — one shape, everywhere in the graph. Now watch 'list every incomplete task assigned to me in this project.' Claude resolves your name to a gid first. Then queries tasks under the project's gid. Unwrapping data at each hop. One traversal pattern for the whole system — that's the design choice.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 23,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — workspace to task hierarchy nesting, then the 'list my incomplete tasks' request traced through gid resolution and the data envelope"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — workspace to task, then one request traced through",
+     "mechanic": "THE ANCHOR. Four boxes nest top to bottom: workspace, project, section, task. Then a request card appears — 'list my incomplete tasks in Launch' — and a path lights through the nesting: name resolved to gid, gid used to fetch the project, data unwrapped at each hop, tasks landing at the bottom. THIS EXACT REQUEST RETURNS AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "AAB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T12:12:12"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "Get both habits right — gid over name, unwrap the envelope — and the same request returns every task, page after page, because the bundled script keeps calling until the pages run out. Skip either one and here's what actually breaks. Pass a name where a gid is required and the request looks successful while quietly handing back the wrong task. Assume the first page is the whole list and you get the first batch, not the answer. One exception worth flagging: workspace search is capped at one hundred results and doesn't paginate at all. Nine operations follow the pattern; one doesn't. That asymmetry costs you if you don't know it's there.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 31,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — the same request completing across every page, then the same request silently truncated when a habit is skipped, then search flagged as the exception"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — complete, then quietly wrong, then the one exception",
+     "mechanic": "THE B02 REQUEST RETURNS, identical. Pages of tasks stack up cleanly, labelled 'page 1, 2, 3 — all requested'. Beside it, a second run: a name swapped in where a gid belongs, and only page 1 returned — both marked 'looks done' in terracotta even though it isn't. A small card breaks off to the side: 'search: capped at 100, no pagination' — the one operation that doesn't match the pattern.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "AAB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-31T12:12:12"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Every Asana call Claude makes turns on two habits — a gid instead of a name, and a response unwrapped from data — get those right and the ten operations take care of themselves.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Every Asana call Claude makes turns on two habits — a gid instead of a name, and a response unwrapped from data — get those right and the ten operations take care of themselves.",
+      "attribution": "",
+      "sparkLine": "Two habits, ten operations."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T12:12:12"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I use Asana at work and I've never looked at its REST API. Walk me through what an Asana workflow actually looks like from an API perspective — name the top-level objects and how they nest, explain why every response is wrapped under a data key and every object addressed by a gid instead of a name, and show me the exact sequence of calls to list every incomplete task assigned to me across every workspace I belong to, including how pagination works and which single operation doesn't paginate. Go deeper: ask the same model which of Asana's ten operations would silently return the wrong answer — not an error, just wrong — if the caller assumed the first page was the whole list, and rank them by how bad the miss would be. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 52,
+   "llm_exercise": {
+    "prompt": "I use Asana at work and I've never looked at its REST API. Walk me through what an Asana workflow actually looks like from an API perspective: (1) name the top-level objects and how they nest — workspace, project, section, task, comment, subtask — and show me one nested example; (2) explain why every response is wrapped under a top-level `data` key and why every object is addressed by a `gid` string instead of by name; (3) show me the exact sequence of calls to list every incomplete task assigned to me across every workspace I belong to, including how pagination is handled and which single operation is capped and doesn't paginate.",
+    "dig_deeper": "Go deeper: ask the same model which of Asana's ten operations would silently return the wrong answer — not an error, just wrong — if the caller assumed the first page was the whole list, and rank them by how bad the miss would be for a real team."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "ASANA API · YOUR TURN",
+      "segment": "Paste this into Claude",
+      "command": "I use Asana at work and I've never looked at its REST API. Walk me through what an Asana workflow actually looks like from an API perspective: (1) name the top-level objects and how they nest — workspace, project, section, task, comment, subtask — and show me one nested example; (2) explain why every response is wrapped under a top-level `data` key and why every object is addressed by a `gid` string instead of by name; (3) show me the exact sequence of calls to list every incomplete task assigned to me across every workspace I belong to, including how pagination is handled and which single operation is capped and doesn't paginate.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T12:12:12"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Asana API. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Asana API. Liam, in for Bear.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T12:12:12"
+   }
+  }
+ ]
+}

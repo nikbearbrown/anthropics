@@ -7,3 +7,5 @@
 - B09: clip 5.2s slowed 4.8x into 25.0s beat — extreme slow-mo; replace with a longer generation (pantry, B09.mp4)
 - B10: clip 3.5s slowed 6.5x into 23.0s beat — extreme slow-mo; replace with a longer generation (pantry, B10.mp4)
 - B12: clip 4.9s slowed 4.3x into 21.0s beat — extreme slow-mo; replace with a longer generation (pantry, B12.mp4)
+- B07: clip 3.5s slowed 3.4x into 11.9s beat — extreme slow-mo; replace with a longer generation (pantry, B07.mp4)
+- B10: clip 3.5s slowed 3.9x into 13.8s beat — extreme slow-mo; replace with a longer generation (pantry, B10.mp4)

@@ -1,0 +1,639 @@
+{
+  "metadata": {
+    "slug": "show-tell-loop-that-wont-let-go",
+    "title": "The Loop That Won't Let Claude Leave",
+    "topic": "CLAUDE CODE · THE RALPH LOOP PLUGIN",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Japanese (Konnichiwa)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Claude Code users and students who want Claude to keep iterating on a task (getting tests to pass) instead of stopping at the first 'done'",
+    "source_doc": "anthropics/claude-plugins-official/plugins/ralph-loop/: README.md, commands/ralph-loop.md, commands/cancel-ralph.md, commands/help.md, hooks/hooks.json, hooks/stop-hook.sh, scripts/setup-ralph-loop.sh (read in full 2026-09-27)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude",
+      "Claude Code",
+      "Ralph Loop",
+      "Ralph Wiggum technique",
+      "Stop hook",
+      "hooks",
+      "plugins",
+      "ralph-loop",
+      "completion promise",
+      "max iterations",
+      "agentic loop",
+      "claude-plugins-official",
+      "Anthropic",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T02:07:32",
+      "cut": "master",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Konnichiwa. This is Liam, in for Bear. Give Claude a big job, and it stops when it thinks it's finished, which can be too soon. So the real question is how to keep Claude working until the job is actually done.",
+      "estimated_duration_s": 16.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'Can Claude finish my task in one pass?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'finish my task in one pass' -> 'keep working until the job is done' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Can Claude\nfinish my task in one pass?",
+            "triggerWords": "finish my task in one pass",
+            "replacementWords": "keep working until the job is done",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-loop-that-wont-let-go",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T06:03:19.145689+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (can Claude finish my task in one pass) and corrects it to the real one (can Claude keep working until the job is done).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 11.16,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 11.166666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T02:07:32"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A Stop hook: a script Claude Code runs each time Claude tries to stop. A Ralph loop: the same prompt, fed back to Claude again and again. A promise: the exact phrase that ends the loop. And max iterations: the cap on how many laps it gets.",
+      "estimated_duration_s": 18.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "'Stop hook' lands"
+          },
+          {
+            "at": 0.3,
+            "event": "'Ralph loop' lands"
+          },
+          {
+            "at": 0.55,
+            "event": "'promise' lands"
+          },
+          {
+            "at": 0.75,
+            "event": "'max iterations' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "Stop hook",
+                "meaning": "a script that runs each time Claude tries to stop"
+              },
+              {
+                "term": "Ralph loop",
+                "meaning": "the same prompt, fed back again and again"
+              },
+              {
+                "term": "promise",
+                "meaning": "the exact phrase that ends the loop"
+              },
+              {
+                "term": "max iterations",
+                "meaning": "the cap on how many laps it gets"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T06:03:47.177435+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: four prerequisites, one line each."
+      },
+      "actual_duration_s": 13.53,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 13.541666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T02:07:32"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Ralph Loop is a plugin in Anthropic's official plugin directory for Claude Code. You run one command, slash ralph loop, with your task in quotes. That task becomes the prompt, pinned above Claude's bench.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft bench drops onto the stage and Claude, a kraft worker with a terracotta spark, slides in beside it ('Claude'); a command pill types in ('/ralph-loop'); a white prompt card rises out of it and pins to a board above the bench ('prompt').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "bench and worker"
+          },
+          {
+            "at": 0.4,
+            "event": "the /ralph-loop command"
+          },
+          {
+            "at": 0.8,
+            "event": "the prompt card pinned"
+          }
+        ],
+        "manim": {
+          "class": "B00_Command"
+        },
+        "motion_claim": "A kraft bench drops onto the stage and Claude, a kraft worker with a terracotta spark, slides in beside it ('Claude'); a command pill types in ('/ralph-loop'); a white prompt card rises out of it and pins to a board above the bench ('prompt')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn workshop scene (bench, shelf, doorway with a Stop-hook gate) on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.5,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 11.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:07:32"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The command also writes a small state file into your project. It holds the prompt, a lap counter that starts at one, your cap on laps, and your promise phrase.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A doorway stands at the right; a state-file card drops onto a hook beside it ('state file'); four grey lines draw on it one by one as they are named; a big ink numeral 1 pops beside it ('lap').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the state file"
+          },
+          {
+            "at": 0.45,
+            "event": "the lap counter: 1"
+          },
+          {
+            "at": 0.8,
+            "event": "cap and promise lines"
+          }
+        ],
+        "manim": {
+          "class": "B01_StateFile"
+        },
+        "motion_claim": "A doorway stands at the right; a state-file card drops onto a hook beside it ('state file'); four grey lines draw on it one by one as they are named; a big ink numeral 1 pops beside it ('lap')."
+      },
+      "actual_duration_s": 9.07,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 9.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:07:32"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Claude works on the task. Files change, and the work piles up in your repo, here on the shelf. Then Claude decides it's finished, and heads for the door.",
+      "estimated_duration_s": 11.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Pages and small commit cubes drop onto a shelf behind the bench ('your repo'); the worker walks from the bench toward the doorway.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "files pile up on the shelf"
+          },
+          {
+            "at": 0.75,
+            "event": "Claude heads for the door"
+          }
+        ],
+        "manim": {
+          "class": "B02_Work"
+        },
+        "motion_claim": "Pages and small commit cubes drop onto a shelf behind the bench ('your repo'); the worker walks from the bench toward the doorway."
+      },
+      "actual_duration_s": 8.41,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 8.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:07:32"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "At the door is the Stop hook. It reads the state file and Claude's last message. No promise there? Then it blocks the exit, adds one to the counter, and hands back the same prompt, word for word.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft booth rises beside the doorway ('Stop hook'); its gate arm swings down across the door and its light flashes terracotta; the lap numeral turns from 1 to 2; a copy of the prompt card slides from the booth back to the worker, who walks back to the bench.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the Stop hook at the door"
+          },
+          {
+            "at": 0.45,
+            "event": "the arm blocks the exit"
+          },
+          {
+            "at": 0.65,
+            "event": "lap 2"
+          },
+          {
+            "at": 0.85,
+            "event": "the same prompt handed back"
+          }
+        ],
+        "manim": {
+          "class": "B03_Hook"
+        },
+        "motion_claim": "A kraft booth rises beside the doorway ('Stop hook'); its gate arm swings down across the door and its light flashes terracotta; the lap numeral turns from 1 to 2; a copy of the prompt card slides from the booth back to the worker, who walks back to the bench."
+      },
+      "actual_duration_s": 10.65,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 10.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:07:32"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The prompt never changes. The work does. Each lap, Claude sees its own files and git history from the laps before, and picks up where it left off. And every lap is another full turn of work.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The worker runs two quick laps, bench to gate and back; the arm stays down; the lap numeral climbs 2, 3, 4; the shelf fills with more pages and cubes; the pinned prompt card never changes.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the same prompt"
+          },
+          {
+            "at": 0.4,
+            "event": "the shelf grows lap by lap"
+          },
+          {
+            "at": 0.85,
+            "event": "every lap is a full turn"
+          }
+        ],
+        "manim": {
+          "class": "B04_Laps"
+        },
+        "motion_claim": "The worker runs two quick laps, bench to gate and back; the arm stays down; the lap numeral climbs 2, 3, 4; the shelf fills with more pages and cubes; the pinned prompt card never changes."
+      },
+      "actual_duration_s": 10.54,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 10.541666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:07:32"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The loop ends one of two ways. One: Claude writes your promise phrase inside promise tags, as an exact match. The hook sees it, deletes the state file, and opens the door. The plugin tells Claude to say it only when it's completely true, never just to get out.",
+      "estimated_duration_s": 19.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The worker raises a white promise token with a terracotta dot ('promise'); it walks to the gate; an ink check lands by the booth; the state-file card and its numeral fade; the arm swings up; the worker walks out through the doorway.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the promise token"
+          },
+          {
+            "at": 0.5,
+            "event": "the hook sees it; the state file goes"
+          },
+          {
+            "at": 0.65,
+            "event": "the door opens"
+          },
+          {
+            "at": 0.9,
+            "event": "only when true"
+          }
+        ],
+        "manim": {
+          "class": "B05_Promise"
+        },
+        "motion_claim": "The worker raises a white promise token with a terracotta dot ('promise'); it walks to the gate; an ink check lands by the booth; the state-file card and its numeral fade; the arm swings up; the worker walks out through the doorway."
+      },
+      "actual_duration_s": 13.89,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 13.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:07:32"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Two: the counter reaches your max iterations. The hook ends the loop there, done or not. Set neither one, and the plugin warns that the loop runs forever.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The stage resets: the worker is back at the bench, the state card returns with the numeral at 8 and the cap beside it ('max 10'); the worker laps as the numeral climbs 9, 10; at 10 the arm swings up and the worker leaves with no token, a grey question mark on the shelf; then an ink loop draws around bench and door with a terracotta dot riding it ('forever').",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the counter climbs to the cap"
+          },
+          {
+            "at": 0.45,
+            "event": "out, done or not"
+          },
+          {
+            "at": 0.8,
+            "event": "no cap, no promise: forever"
+          }
+        ],
+        "manim": {
+          "class": "B06_Cap"
+        },
+        "motion_claim": "The stage resets: the worker is back at the bench, the state card returns with the numeral at 8 and the cap beside it ('max 10'); the worker laps as the numeral climbs 9, 10; at 10 the arm swings up and the worker leaves with no token, a grey question mark on the shelf; then an ink loop draws around bench and door with a terracotta dot riding it ('forever')."
+      },
+      "actual_duration_s": 8.47,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 8.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:07:32"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "So the plugin's advice: always set max iterations. The promise is one exact phrase, with no way to say stuck. The cap is your main safety net. Use the loop for work a test can check, not work that needs your judgment. And to stop early, run slash cancel ralph.",
+      "estimated_duration_s": 20.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The loop ring fades; the cap numeral pulses ('max 10'); a test board rises beside the bench and three ink checks land on it ('tests'); then the state-file card slides off into a bin ('/cancel-ralph') and the arm swings up.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "always set the cap"
+          },
+          {
+            "at": 0.55,
+            "event": "work a test can check"
+          },
+          {
+            "at": 0.9,
+            "event": "/cancel-ralph removes the state file"
+          }
+        ],
+        "manim": {
+          "class": "B07_Advice"
+        },
+        "motion_claim": "The loop ring fades; the cap numeral pulses ('max 10'); a test board rises beside the bench and three ink checks land on it ('tests'); then the state-file card slides off into a bin ('/cancel-ralph') and the arm swings up."
+      },
+      "actual_duration_s": 14.91,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 14.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T02:07:32"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Install the Ralph Loop plugin, open Claude Code in a repo you own with failing tests, and paste this. Slash ralph loop, and in quotes: Make every test in this repo pass. Do not delete or skip any test. Run the full suite each lap. Output COMPLETE in promise tags, only when every test passes. Then: completion promise, COMPLETE. Max iterations, ten. Then check two things yourself. Run the tests: do they all pass? And read the git diff: was any test deleted or skipped?",
+      "estimated_duration_s": 34.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the /ralph-loop command types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · YOUR TURN",
+            "segment": "The Loop That Won't Let Claude Leave",
+            "command": "/ralph-loop \"Make every test in this repo pass. Do not delete or skip any test. Run the full suite each lap. Output <promise>COMPLETE</promise> only when every test passes.\" --completion-promise \"COMPLETE\" --max-iterations 10",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: run the tests yourself. All pass?",
+              "Check: the git diff. Any test deleted or skipped?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T06:04:39.263489+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 25.13,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 25.166666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T02:07:32"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "The Loop That Won't Let Claude Leave. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Loop That Won't Let Claude Leave",
+            "slug": "show-tell-loop-that-wont-let-go",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T06:04:53.402090+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.61,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T02:07:32"
+      }
+    }
+  ]
+}

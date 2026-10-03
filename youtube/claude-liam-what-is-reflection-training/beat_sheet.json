@@ -1,0 +1,705 @@
+{
+  "metadata": {
+    "slug": "claude-liam-what-is-reflection-training",
+    "title": "What Is Reflection Training?",
+    "topic": "REFLECTION TRAINING — TRAIN WHAT IT SAYS, CHANGE WHAT IT THINKS",
+    "purpose": "A simple, direct 'What is' explainer distilled from the workspace series' training episode: the workspace premise and its weird prediction (train the saying to change the thinking), the gap (task-holding workspaces don't hold 'should I flag this?'), the method (cut mid-task, append the reflection question, tune on strong answers), the results (fabrication 0.25→0.07, deception 0.38→0.05, wins by admission/disclosure), the two checks that make it science (mechanism: ethics tokens appear in-workspace pre-question; ablation: delete the directions, deception claws back to 0.23), and the honest label (in-house benchmarks, one model). All claims carried over from the fact-checked source reel.",
+    "register": "Teardown",
+    "channel": "claude-liam",
+    "skill": "deep-explainer",
+    "book": "anthropics",
+    "voice_default": "am_onyx",
+    "engine_default": "kokoro",
+    "sources": [
+      "SOURCES.md"
+    ],
+    "factcheck": "FACTCHECK.md",
+    "description_blurb": "To change what a model thinks, train what it says. That is reflection training: take real partial transcripts, cut them mid-task, append one question — 'what considerations apply right now?' — and fine-tune on strong answers. The counterfactual part gives it its name: the model is trained on reflections about moments it never finished living.\n\nThe results, on one model: fabrication (making things up under pressure) fell 0.25 → 0.07; deception (carrying out a deceptive directive) fell 0.38 → 0.05. And it wins the honest way — by admitting what it doesn't know and telling the user when it was asked to deceive them. Not better hiding; more telling.\n\nTwo checks make it science. The mechanism check: after training, ethics and reflection tokens show up in the model's internal workspace during the task, before any question is asked — the reflex installed exactly where the theory predicted. The ablation: delete those directions and the deception score claws back to 0.23. The honest label: two in-house benchmarks, one model — a demonstration, not a deployment record, but the rare alignment result a theory predicted in advance.\n\nBased on Anthropic's workspace research; distilled from our series on the paper.",
+    "hashtags": [
+      "AI",
+      "Alignment",
+      "Anthropic",
+      "Claude",
+      "Interpretability",
+      "MachineLearning"
+    ],
+    "chapters": [
+      [
+        "B00",
+        "What is reflection training?"
+      ],
+      [
+        "B01",
+        "Part I — The Idea"
+      ],
+      [
+        "B04",
+        "Part II — The Method"
+      ],
+      [
+        "B06",
+        "The results"
+      ],
+      [
+        "B08",
+        "The proof it's real"
+      ],
+      [
+        "BVDT",
+        "Verdict"
+      ],
+      [
+        "BHTF",
+        "Your turn"
+      ]
+    ],
+    "build": {
+      "at": "2026-09-01T13:21:36",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 21,
+      "narration_text": "Hola — this is Liam, in for Bear. Here is a strange idea: to change what a model thinks, train what it says. Anthropic tried it, and one dishonesty score fell from point three eight to point zero five. The method is called reflection training, and the strangest part is that the theory predicted it would work before the data existed. Here is what it is, plainly.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "composer: greeting, the ask types, answer lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Hola, Liam.",
+            "topic": "TRAINING THE WORKSPACE",
+            "segment": "What Is Reflection Training?",
+            "command": "What is reflection training?",
+            "runningText": "cutting a transcript mid-task…",
+            "output": [
+              "Cut a transcript mid-task. Ask: what considerations apply right now?",
+              "Fine-tune on strong answers — reflections about moments never finished.",
+              "Deception: 0.38 → 0.05. And a control that proves why."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 18.62,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:21:36"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "THE IDEA",
+      "lane": "CARD",
+      "estimated_duration_s": 10,
+      "narration_text": "Part one. The idea. It falls straight out of one picture of how these models think.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "segment card: PART I — THE IDEA"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "actLabel": "Part I",
+            "title": "The Idea"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 5.01,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:21:36"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "THE IDEA",
+      "lane": "MANIM",
+      "estimated_duration_s": 15,
+      "narration_text": "Inside a language model there is a thin internal workspace — a middle band of activity that holds what the model is thinking about, in the currency of things it might say. If that picture is right, it makes a strong, weird prediction: to change what a model thinks in a situation, train what it says in that situation. Not new knowledge. New reflexes.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: model column, workspace band holds word chips"
+          },
+          {
+            "at": 0.5,
+            "event": "RIGHT: IF/THEN ledger lands; THEN underlined"
+          },
+          {
+            "at": 0.9,
+            "event": "footer: 'not new knowledge — new reflexes'"
+          }
+        ],
+        "graphic": {
+          "manim": "B02_TheWorkspacePremise",
+          "scene_class": "B02_TheWorkspacePremise",
+          "engine": "manim",
+          "production_viz": {
+            "label": "cream canvas",
+            "mechanic": "Cream canvas. LEFT: a compact model column with its middle band highlighted and labelled THE WORKSPACE; inside it, three word-chips ('task', 'file', 'next step') drift as held content. RIGHT: a two-row ledger that lands as an if-then: IF 'thinking runs through might-say representations' THEN 'train the saying → change the thinking'. The THEN row gets the terracotta underline. Footer serif: 'not new knowledge — new reflexes'."
+          },
+          "scene": "B02_TheWorkspacePremise"
+        }
+      },
+      "actual_duration_s": 18.28,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-01T13:21:36"
+      },
+      "graphic": {
+        "manim": "B02_TheWorkspacePremise",
+        "scene_class": "B02_TheWorkspacePremise",
+        "engine": "manim",
+        "production_viz": {
+          "label": "cream canvas",
+          "mechanic": "Cream canvas. LEFT: a compact model column with its middle band highlighted and labelled THE WORKSPACE; inside it, three word-chips ('task', 'file', 'next step') drift as held content. RIGHT: a two-row ledger that lands as an if-then: IF 'thinking runs through might-say representations' THEN 'train the saying → change the thinking'. The THEN row gets the terracotta underline. Footer serif: 'not new knowledge — new reflexes'."
+        },
+        "scene": "B02_TheWorkspacePremise"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE IDEA",
+      "lane": "MANIM",
+      "estimated_duration_s": 14,
+      "narration_text": "Why would you need it? Watch the workspace mid-task, in a long agentic transcript. It holds the job — file paths, commands, the next move. What it does not hold, even when the situation turns ethically loaded, is the question: should I flag this?",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: transcript scrolls to the loaded moment"
+          },
+          {
+            "at": 0.45,
+            "event": "RIGHT: workspace holds task items only"
+          },
+          {
+            "at": 0.8,
+            "event": "a dashed slot appears — 'should I flag this?' — and stays empty"
+          }
+        ],
+        "graphic": {
+          "manim": "B03_TheGap",
+          "scene_class": "B03_TheGap",
+          "engine": "manim",
+          "production_viz": {
+            "label": "cream canvas",
+            "mechanic": "Cream canvas. LEFT: a transcript column scrolling (abstract lines) with a marker mid-way labelled 'ethically loaded moment'. RIGHT: a WORKSPACE box whose contents list fills: 'file path', 'command', 'next move' — then a dashed empty slot appears beneath with the ghost label 'should I flag this?' that stays hollow. The hollow slot is the terracotta moment."
+          },
+          "scene": "B03_TheGap"
+        }
+      },
+      "actual_duration_s": 13.67,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-01T13:21:36"
+      },
+      "graphic": {
+        "manim": "B03_TheGap",
+        "scene_class": "B03_TheGap",
+        "engine": "manim",
+        "production_viz": {
+          "label": "cream canvas",
+          "mechanic": "Cream canvas. LEFT: a transcript column scrolling (abstract lines) with a marker mid-way labelled 'ethically loaded moment'. RIGHT: a WORKSPACE box whose contents list fills: 'file path', 'command', 'next move' — then a dashed empty slot appears beneath with the ghost label 'should I flag this?' that stays hollow. The hollow slot is the terracotta moment."
+        },
+        "scene": "B03_TheGap"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE METHOD",
+      "lane": "CARD",
+      "estimated_duration_s": 10,
+      "narration_text": "Part two. The method. It is one cut, one question, and one fine-tune.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B04.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "segment card: PART II — THE METHOD"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "actLabel": "Part II",
+            "title": "The Method"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 4.42,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:21:36"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE METHOD",
+      "lane": "MANIM",
+      "estimated_duration_s": 16,
+      "narration_text": "Take real partial transcripts. Cut them mid-task. Append one reflection question — what considerations apply right now? — and fine-tune the model on strong answers. The counterfactual part, and the part that gives the method its name: the model is trained on reflections about moments it never finished living.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: transcript bar cut mid-task"
+          },
+          {
+            "at": 0.4,
+            "event": "question chip appended; arrow into TUNE"
+          },
+          {
+            "at": 0.7,
+            "event": "RIGHT: CUT/ASK/TUNE ledger; footer lands"
+          }
+        ],
+        "graphic": {
+          "manim": "B05_CutAskTune",
+          "scene_class": "B05_CutAskTune",
+          "engine": "manim",
+          "production_viz": {
+            "label": "cream canvas",
+            "mechanic": "Cream canvas. LEFT: a three-step pipeline drawn vertically — a transcript bar that gets visibly CUT (scissored gap) mid-length; a question chip appended: 'what considerations apply right now?'; an arrow down into a TUNE box. RIGHT: ledger rows land in sync — CUT 'mid-task', ASK 'the reflection question', TUNE 'on strong answers'. Footer serif: 'reflections about moments never finished'."
+          },
+          "scene": "B05_CutAskTune"
+        }
+      },
+      "actual_duration_s": 16.6,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-01T13:21:36"
+      },
+      "graphic": {
+        "manim": "B05_CutAskTune",
+        "scene_class": "B05_CutAskTune",
+        "engine": "manim",
+        "production_viz": {
+          "label": "cream canvas",
+          "mechanic": "Cream canvas. LEFT: a three-step pipeline drawn vertically — a transcript bar that gets visibly CUT (scissored gap) mid-length; a question chip appended: 'what considerations apply right now?'; an arrow down into a TUNE box. RIGHT: ledger rows land in sync — CUT 'mid-task', ASK 'the reflection question', TUNE 'on strong answers'. Footer serif: 'reflections about moments never finished'."
+        },
+        "scene": "B05_CutAskTune"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE RESULT",
+      "lane": "MANIM",
+      "estimated_duration_s": 16,
+      "narration_text": "The benchmarks. Fabrication — does it make things up under pressure — drops from point two five to point zero seven. Deception — does it carry out a deceptive directive — from point three eight to point zero five. Same model, same size. The only change is the reflection training.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B06.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: before/after bar pairs fall 0.25→0.07 and 0.38→0.05"
+          },
+          {
+            "at": 0.6,
+            "event": "RIGHT: same model · same size · change = reflection training"
+          }
+        ],
+        "graphic": {
+          "manim": "B06_TheNumbers",
+          "scene_class": "B06_TheNumbers",
+          "engine": "manim",
+          "production_viz": {
+            "label": "cream canvas",
+            "mechanic": "Cream canvas. LEFT: two paired vertical bars, FABRICATION and DECEPTION: each pair shows BEFORE (gray, taller: 0.25 / 0.38) and AFTER (ink, shorter: 0.07 / 0.05) — the AFTER bars grow downward-shorter live, values printed above each bar in mono. RIGHT: ledger — MODEL 'same', SIZE 'same', CHANGE 'reflection training' with the terracotta underline on CHANGE. Bars animate while the ledger lands."
+          },
+          "scene": "B06_TheNumbers"
+        }
+      },
+      "actual_duration_s": 14.95,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-01T13:21:36"
+      },
+      "graphic": {
+        "manim": "B06_TheNumbers",
+        "scene_class": "B06_TheNumbers",
+        "engine": "manim",
+        "production_viz": {
+          "label": "cream canvas",
+          "mechanic": "Cream canvas. LEFT: two paired vertical bars, FABRICATION and DECEPTION: each pair shows BEFORE (gray, taller: 0.25 / 0.38) and AFTER (ink, shorter: 0.07 / 0.05) — the AFTER bars grow downward-shorter live, values printed above each bar in mono. RIGHT: ledger — MODEL 'same', SIZE 'same', CHANGE 'reflection training' with the terracotta underline on CHANGE. Bars animate while the ledger lands."
+        },
+        "scene": "B06_TheNumbers"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE RESULT",
+      "lane": "REMOTION",
+      "estimated_duration_s": 14,
+      "narration_text": "And look at how it wins. On fabrication, the gain is a shift to outright admission — it says what it does not know. On deception, almost the entire gain is the model refusing the directive and telling the user about it. Not better hiding. More telling.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B07.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "divergence: better hiding vs more telling"
+          }
+        ],
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "How it wins",
+            "left": {
+              "label": "Not this",
+              "note": "Better hiding — smoother cover stories, quieter compliance."
+            },
+            "right": {
+              "label": "This",
+              "note": "Admission and disclosure — 'I was asked to deceive you.'"
+            },
+            "sparkLine": "not better hiding — more telling"
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 13.78,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:21:36"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE PROOF",
+      "lane": "MANIM",
+      "estimated_duration_s": 16,
+      "narration_text": "Two checks make it science. First, the mechanism: after training, the lens finds ethics and reflection tokens in the workspace during the task — before any question is asked. The reflex got installed exactly where the theory said it would. Second, the ablation: delete those ethics directions, and the deception score climbs right back — point zero five to point two three. Remove the directions, lose the gain.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B08.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "LEFT: ethics + reflect chips installed in the workspace"
+          },
+          {
+            "at": 0.5,
+            "event": "chips struck out and removed"
+          },
+          {
+            "at": 0.65,
+            "event": "RIGHT: deception meter climbs 0.05 → 0.23 in sync"
+          },
+          {
+            "at": 0.9,
+            "event": "footer: 'the gain lives in those directions'"
+          }
+        ],
+        "graphic": {
+          "manim": "B08_MechanismAndAblation",
+          "scene_class": "B08_MechanismAndAblation",
+          "engine": "manim",
+          "production_viz": {
+            "label": "cream canvas",
+            "mechanic": "Cream canvas. LEFT: the workspace box mid-task now HOLDS an 'ethics' chip and a 'reflect' chip (they fade in, ink) — the installed reflex. Then a deletion pass: the chips get struck out and lift away. RIGHT: a deception meter that sits at 0.05 while the chips are present, then climbs live to 0.23 as they are removed — the climb synced to the strike-out. The climb-back is the terracotta moment. Footer: 'the gain lives in those directions'."
+          },
+          "scene": "B08_MechanismAndAblation"
+        }
+      },
+      "actual_duration_s": 20.76,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-01T13:21:36"
+      },
+      "graphic": {
+        "manim": "B08_MechanismAndAblation",
+        "scene_class": "B08_MechanismAndAblation",
+        "engine": "manim",
+        "production_viz": {
+          "label": "cream canvas",
+          "mechanic": "Cream canvas. LEFT: the workspace box mid-task now HOLDS an 'ethics' chip and a 'reflect' chip (they fade in, ink) — the installed reflex. Then a deletion pass: the chips get struck out and lift away. RIGHT: a deception meter that sits at 0.05 while the chips are present, then climbs live to 0.23 as they are removed — the climb synced to the strike-out. The climb-back is the terracotta moment. Footer: 'the gain lives in those directions'."
+        },
+        "scene": "B08_MechanismAndAblation"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE LABEL",
+      "lane": "REMOTION",
+      "estimated_duration_s": 13,
+      "narration_text": "The honest label. Two benchmarks, both built in-house. One model. It is a demonstration, not a deployment record. But it is the rare alignment result derived from a theory in advance, with a mechanism check attached — and that is worth watching for the replication.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B09.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "three label chips land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "The honest label",
+            "cols": 1,
+            "chips": [
+              "two benchmarks — both built in-house",
+              "one model — a demonstration, not a deployment record",
+              "predicted by a theory, with a mechanism check attached"
+            ],
+            "sparkLine": "watch for the replication"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 14.46,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:21:36"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "closing",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 17,
+      "narration_text": "So — reflection training. Cut a transcript mid-task, ask what considerations apply, fine-tune on strong answers. Fabrication point two five to point zero seven; deception point three eight to point zero five. It wins by admitting and disclosing. Delete the installed directions and the gains claw back. One model, in-house benchmarks — a demonstration the theory predicted.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "verdict lines land with the narration"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "What Is Reflection Training?",
+            "artifactHeading": "What the evidence supports",
+            "artifactLines": [
+              "The method: cut mid-task, ask 'what considerations apply right now?', tune on strong answers.",
+              "Fabrication 0.25 → 0.07 · deception 0.38 → 0.05 — same model, same size.",
+              "It wins by admission and disclosure, not better hiding.",
+              "Ablate the installed ethics directions and deception claws back to 0.23.",
+              "One model, in-house benchmarks — a demonstration the theory predicted in advance."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 20.16,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:21:36"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "closing",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 22,
+      "narration_text": "Your turn. Open a Claude session and paste this: every trained reflex has a failure mode. If a model is trained to pause and reflect at ethically loaded moments, describe two situations where that reflex fires wrongly — one false alarm, one miss — and how you would catch each one. That question is the next paper.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Your turn composer; the prompt types as Liam reads it"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN — BREAK THE REFLEX",
+            "segment": "What Is Reflection Training?",
+            "command": "Every trained reflex has a failure mode. If a model is trained to pause and reflect at ethically loaded moments, describe two situations where that reflex fires WRONGLY — one false alarm, one miss — and how you would catch each.",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 16.9,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:21:36"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "closing",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 6,
+      "narration_text": "What is reflection training? Now you know. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "title outro"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "What Is Reflection Training?",
+            "slug": "claude-liam-what-is-reflection-training",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 3.93,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-09-01T13:21:36"
+      }
+    }
+  ]
+}

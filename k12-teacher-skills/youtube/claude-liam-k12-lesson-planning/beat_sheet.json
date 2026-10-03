@@ -20,11 +20,51 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/k12-teacher-skills/plugin/skills/k12-lesson-planning/SKILL.md",
+    "source_detail": {
+      "capabilities": [],
+      "constraints": [
+        "Creates a lesson plan, student-facing materials, and observation template. Load this skill BEFORE asking the teacher any clarifying question about grade, subject, topic…",
+        "\"The teacher\" throughout this skill is the user you are talking with — the same person, never",
+        "teacher can watch them check off; the only reason to skip this is that no such tool exists",
+        "Teacher language only — name what the teacher is getting, never tool names, file names,",
+        "file doesn't cover, follow its \"no curriculum named\" path and do not fake",
+        "critical failure. Extract only what each call specifies, then proceed directly to Step 3 — do",
+        "general best practice.\"* Do not invent KG citations or attribute content to curriculum",
+        "structure, and non-negotiables. Respect the Copyright guardrail below — never reproduce"
+      ],
+      "referenced_files": [
+        "references/math.md",
+        "references/ela.md",
+        "references/science.md",
+        "references/social_studies.md",
+        "find_standard_statement",
+        "references/learning-commons-kg.md",
+        "lesson.json",
+        "{\"type\": \"from_shared\", \"key\": …}",
+        "references/example_lesson.json",
+        ".html"
+      ],
+      "code_signals": [
+        "code block: bash"
+      ],
+      "sections": [
+        "Keeping the teacher posted",
+        "Step 0 — Route (silent, before anything else)",
+        "Step 1 — Clarify",
+        "Step 2 — Ground in standards",
+        "Step 3 — Build the lesson",
+        "Copyright guardrail",
+        "Step 4 — The draft offer",
+        "Step 5 — Output (one turn)",
+        "5a. Write the complete lesson.json (same turn)",
+        "5b. Render every Word document — one command, same turn"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T04:06:02",
+      "at": "2026-09-05T21:07:29",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -50,7 +90,7 @@
             "output": [
               "skill: k12-lesson-planning",
               ">",
-              "steps: 0 — executing."
+              "steps: 6 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -68,13 +108,13 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:06:02"
+        "at": "2026-09-05T21:07:29"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is k12-lesson-planning. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is k12-lesson-planning. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at references/math.md, references/ela.md, references/science.md, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -127,18 +167,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.89,
+      "actual_duration_s": 20.5,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:06:02"
+        "at": "2026-09-05T21:07:29"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "The pipeline has 6 steps. Route (silent, before anything else) → Clarify → Ground in standards, plus 3 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -153,22 +193,27 @@
             "outputLabel": "RESULT",
             "phases": [
               {
-                "label": "Read SKILL.md",
-                "desc": "load the instruction set",
+                "label": "Route (silent, before…",
+                "desc": "1. Subject. Determine the subject of the requested lesson…",
                 "accent": true
               },
               {
-                "label": "Execute",
-                "desc": "run each step in order",
+                "label": "Clarify",
+                "desc": "Read the subject file first — its clarify section defines…",
                 "accent": false
               },
               {
-                "label": "Return output",
-                "desc": "deliver the result",
+                "label": "Ground in standards",
+                "desc": "If the LC Knowledge Graph is connected: follow the…",
+                "accent": false
+              },
+              {
+                "label": "Build the lesson",
+                "desc": "Follow the subject file's build section: curriculum…",
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "6 steps. Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -178,18 +223,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 13.14,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:06:02"
+        "at": "2026-09-05T21:07:29"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. k12-lesson-planning is a specification written as an instruction set. Claude's job: >. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. Creates a lesson plan, student-facing materials, and observation template. Load this skill BEFORE asking the teacher any clarifying question about grade, subject, topic…. That is the constraint in k12-lesson-planning — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -200,7 +245,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": ">",
+            "body": "Creates a lesson plan, student-facing materials, and observation template. Load this skill BEFORE asking the teacher any clarifying question about grade, subject, topic…",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -210,12 +255,44 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 11.35,
+      "actual_duration_s": 17.77,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:06:02"
+        "at": "2026-09-05T21:07:29"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In k12-lesson-planning, supporting material: references/math.md, references/ela.md, references/science.md, references/social_studies.md; implementation signals: code block: bash; sections: Keeping the teacher posted, Step 0 — Route (silent, before anything else), Step 1 — Clarify, Step 2 — Ground in standards. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "references/math.md; references/ela.md; references/science.md; code block: bash",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 26.22,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T21:07:29"
       }
     },
     {
@@ -235,8 +312,9 @@
             "artifactLines": [
               "Skill: k12-lesson-planning — Claude reads SKILL.md before acting",
               ">",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "6-step pipeline: Route (silent, before anything else) → Clarify → Ground in standards",
+              "Constraint: Creates a lesson plan, student-facing materials, and observation template. Load this…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -251,7 +329,7 @@
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:06:02"
+        "at": "2026-09-05T21:07:29"
       }
     },
     {
@@ -288,7 +366,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:06:02"
+        "at": "2026-09-05T21:07:29"
       }
     },
     {
@@ -319,7 +397,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:06:02"
+        "at": "2026-09-05T21:07:29"
       }
     }
   ]

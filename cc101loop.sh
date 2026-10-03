@@ -1,0 +1,209 @@
+#!/usr/bin/env bash
+# cc101loop.sh — unattended Claude Code 101 factory. A sibling of bookloop.sh.
+#
+# bookloop.sh films a book's chapters. cc101loop.sh films the concept folders in
+# claude-code-101/ (INDEX.md watch order, tier by tier) as cc-explainer reels — one
+# REAL headless Claude Code session per film, Liam in for Bear, never published.
+#
+# Same architecture as bookloop, for the same reason: one Claude session cannot run
+# all night — it fills its context. The loop lives in the shell, Claude is invoked
+# ONCE PER CONCEPT with a fresh context, and all state is on disk, so a crash, a
+# reboot, or a killed session resumes where it stopped.
+#
+#   ./cc101loop.sh            run every unbuilt concept in watch order, then exit
+#   ./cc101loop.sh --once     one concept, then exit   (RUN THIS FIRST)
+#   ./cc101loop.sh --n N      N concepts, then exit
+#   ./cc101loop.sh --tier 02  only that tier folder (prefix match)
+#   ./cc101loop.sh --dry      print the plan, invoke nothing
+#   ./cc101loop.sh --no-halt  do not halt after consecutive failures
+#
+# A concept is DONE when its folder holds CC-BUILT.txt naming a reel folder whose
+# <slug>.mp4 exists, is audible, and passed GATE T. BLOCKED concepts carry
+# CC-BLOCKED.txt (the worker's one-line reason) and are skipped, not retried.
+set -uo pipefail
+
+N=0; DRY=0; NOHALT=0; TIER=""
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --once)    N=1; shift ;;
+    --n)       shift; [[ "${1:-}" =~ ^[0-9]+$ ]] || { echo "--n requires an integer" >&2; exit 2; }; N="$1"; shift ;;
+    --tier)    shift; TIER="${1:-}"; shift ;;
+    --dry)     DRY=1; shift ;;
+    --no-halt) NOHALT=1; shift ;;
+    -h|--help) sed -n '2,22p' "$0"; exit 0 ;;
+    *)         echo "unknown flag: $1" >&2; exit 2 ;;
+  esac
+done
+
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BOOKS="$(cd "$HERE/.." && pwd)"
+ROOT="$HERE/claude-code-101"
+STATE="$ROOT/.cc101loop"
+QUEUE="$STATE/queue.json"
+LOG="$STATE/cc101loop.log"
+PROMPT="${CC101LOOP_PROMPT:-$HERE/CC101LOOP-PROMPT.md}"
+BRUTALIST_ART="${BRUTALIST_ART:-$BOOKS/brutalist.art}"   # brutalist-art (hyphen) retired 2026-09-17
+EXEMPLAR="${CC101LOOP_EXEMPLAR:-$ROOT/01-context-and-memory/cc-three-files}"
+MODEL="${CC101LOOP_MODEL:-}"
+TIMEOUT_S="${CC101LOOP_TIMEOUT:-7200}"      # a cc-explainer is 4–6 min of film; sessions + 2–3 compile passes ≈ 60–90 min
+CONSEC_FAIL_STOP="${CC101LOOP_CONSEC_FAIL_STOP:-3}"
+MIN_FREE_GB="${CC101LOOP_MIN_FREE_GB:-8}"   # a reel is ~0.3 GB; 20 was too strict on a 17 GB-free disk (paused all night 2026-09-09)
+COOLDOWN=20
+MAX_ATTEMPTS=2
+export BRUTALIST_ART
+
+mkdir -p "$STATE"
+say(){ printf '%s  %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$*" | tee -a "$LOG"; }
+
+[[ -f "$ROOT/INDEX.md" ]] || { say "FATAL: $ROOT/INDEX.md missing"; exit 1; }
+[[ -f "$PROMPT" ]] || { say "FATAL: $PROMPT missing"; exit 1; }
+[[ -x "$BRUTALIST_ART/art" ]] || { say "FATAL: $BRUTALIST_ART/art missing"; exit 1; }
+[[ -f "$EXEMPLAR/author_sheet.py" ]] || { say "FATAL: exemplar $EXEMPLAR has no author_sheet.py"; exit 1; }
+command -v claude >/dev/null || { say "FATAL: claude CLI not on PATH"; exit 1; }
+command -v ffprobe >/dev/null || { say "FATAL: ffprobe not on PATH"; exit 1; }
+TIMEOUT_BIN=""
+if command -v timeout >/dev/null 2>&1; then TIMEOUT_BIN="timeout -k 60"; elif command -v gtimeout >/dev/null 2>&1; then TIMEOUT_BIN="gtimeout -k 60"; else say "WARNING: no timeout on PATH — no watchdog"; fi
+
+audible(){  # 0 = audible, 1 = not
+  local out mv
+  out="$(ffprobe -v error -select_streams a -show_entries stream=codec_name -of csv=p=0 "$1" </dev/null 2>/dev/null)"; [[ -n "$out" ]] || return 1
+  mv="$(ffmpeg -nostdin -i "$1" -af volumedetect -f null - </dev/null 2>&1 | sed -n 's/.*mean_volume: \(-\{0,1\}[0-9.]*\) dB.*/\1/p' | tail -1)"; [[ -n "$mv" ]] || return 1
+  python3 -c "import sys; sys.exit(0 if float('$mv') > -40 else 1)"
+}
+
+# The queue: every concept folder under a tier folder, in INDEX.md order (the tier
+# tables list them in watch order). Built = CC-BUILT.txt points at a reel with a
+# master; blocked = CC-BLOCKED.txt; the cc-* reel folders themselves are not concepts.
+build_queue(){
+  python3 - "$ROOT" "$QUEUE" "$TIER" <<'PY'
+import json, os, re, sys
+root, out, tier = sys.argv[1], sys.argv[2], sys.argv[3]
+idx = open(os.path.join(root, "INDEX.md")).read()
+items, cur = [], None
+for line in idx.splitlines():
+    m = re.match(r"### `(\d\d-[^`]+)`", line)
+    if m: cur = m.group(1); continue
+    m = re.match(r"\|\s*[▶ ]*\|\s*`([^`]+)`\s*\|\s*([^|]*)\|", line)
+    if m and cur and not m.group(1).startswith("cc-"):
+        folder, title = m.group(1), m.group(2).strip()
+        d = os.path.join(root, cur, folder)
+        if not os.path.isdir(d): continue
+        if tier and not cur.startswith(tier): continue
+        slug = "cc-" + re.sub(r"^(claude-code|claude-cowork|claude-code-for-students|claude-code-for-teachers)--(claude-liam-|nbb-)?", "", folder)
+        slug = re.sub(r"^cc-(vox-|brutalist-)", "cc-", slug)
+        status = "pending"; note = ""
+        b = os.path.join(d, "CC-BUILT.txt"); k = os.path.join(d, "CC-BLOCKED.txt")
+        if os.path.exists(b): status, note = "done", open(b).read().strip()
+        elif os.path.exists(k): status, note = "blocked", open(k).read().strip()
+        items.append({"concept": d, "tier": cur, "title": title, "slug": slug,
+                      "dir": os.path.join(root, cur, slug), "status": status, "attempts": 0, "note": note})
+json.dump({"root": root, "items": items}, open(out, "w"), indent=1)
+import collections; c = collections.Counter(i["status"] for i in items)
+print("queued", len(items), dict(c))
+PY
+}
+claim(){ python3 - "$QUEUE" <<'PY'
+import json, sys
+p = sys.argv[1]; q = json.load(open(p))
+for i in q["items"]:
+    if i["status"] == "pending":
+        i["status"] = "building"; json.dump(q, open(p, "w"), indent=1)
+        print("%s\t%s\t%s\t%s" % (i["concept"], i["dir"], i["slug"], i["title"])); break
+PY
+}
+set_status(){ python3 - "$QUEUE" "$1" "$2" "${3:-}" "$MAX_ATTEMPTS" <<'PY'
+import json, sys
+p, d, st, note, mx = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], int(sys.argv[5])
+q = json.load(open(p))
+for i in q["items"]:
+    if i["concept"] == d:
+        i["status"], i["note"] = st, note
+        if st == "failed":
+            i["attempts"] += 1
+            if i["attempts"] < mx: i["status"] = "pending"
+json.dump(q, open(p, "w"), indent=1)
+PY
+}
+counts(){ python3 -c "
+import json, collections, sys; q=json.load(open('$QUEUE')); c=collections.Counter(i['status'] for i in q['items']); print(' '.join(f'{k}={v}' for k,v in sorted(c.items())))"; }
+free_gb(){ df -g "$ROOT" 2>/dev/null | awk 'NR==2{print $4}' || echo 999; }
+
+build_queue >/dev/null   # rescan every start: markers on disk are the truth
+say "root: $ROOT   exemplar: $EXEMPLAR   timeout: ${TIMEOUT_S}s"
+say "queue: $(counts)"
+
+if (( DRY )); then
+  say "DRY RUN — nothing is invoked."
+  python3 - "$QUEUE" "$N" <<'PY'
+import json, sys
+q, n = json.load(open(sys.argv[1])), int(sys.argv[2])
+items = [i for i in q["items"] if i["status"] == "pending"]
+if n > 0: items = items[:n]
+for k, i in enumerate(items, 1): print(f"  {k:>2}. [{i['tier']}] {i['slug']}  ←  {i['title']}")
+print(f"\n  {len(items)} film(s) would be built.")
+PY
+  exit 0
+fi
+
+consec_fail=0; attempted=0; done_count=0; failed_count=0; start_all=$(date +%s)
+summary(){ say "SUMMARY: attempted=$attempted done=$done_count failed=$failed_count wall=$(( $(date +%s) - start_all ))s · queue: $(counts)"; }
+
+while true; do
+  IFS=$'\t' read -r concept d slug title < <(claim)
+  if [[ -z "${concept:-}" ]]; then say "queue drained."; summary; exit 0; fi
+  gb="$(free_gb)"; if [[ "$gb" -lt "$MIN_FREE_GB" ]]; then say "PAUSED: ${gb}GB free"; set_status "$concept" "pending" "paused for disk"; sleep 600; continue; fi
+  say "── $slug   ← $(basename "$concept")   (free ${gb}GB, $(counts))"
+  mkdir -p "$d"; start=$(date +%s); attempted=$((attempted+1))
+  ( cd "$BOOKS" && \
+    BOOKS="$BOOKS" BRUTALIST_ART="$BRUTALIST_ART" EXEMPLAR="$EXEMPLAR" CONCEPT_DIR="$concept" REEL_DIR="$d" SLUG="$slug" \
+    ${TIMEOUT_BIN:+$TIMEOUT_BIN "$TIMEOUT_S"} claude -p "$(sed -e "s#\$BRUTALIST_ART#$BRUTALIST_ART#g" -e "s#\$EXEMPLAR#$EXEMPLAR#g" -e "s#\$CONCEPT_DIR#$concept#g" -e "s#\$REEL_DIR#$d#g" -e "s#\$SLUG#$slug#g" -e "s#\$BOOKS#$BOOKS#g" "$PROMPT")
+
+TARGET FOR THIS INVOCATION
+  concept folder : $concept
+  concept title  : $title
+  reel folder    : $d
+  slug           : $slug
+  reel path relative to books/ (for ./brutalist-art/art): ${d#$BOOKS/}
+Build this one film. When it is done or has failed, stop — the supervisor starts the next." \
+      ${MODEL:+--model "$MODEL"} --dangerously-skip-permissions --max-turns 800 \
+      --output-format stream-json --verbose \
+      </dev/null >>"$STATE/$slug.jsonl" 2>>"$STATE/$slug.err" )
+  rc=$?; dur=$(( $(date +%s) - start ))
+  # a readable digest of the worker's run: every tool call, its texts, and the result event (why it stopped)
+  python3 - "$STATE/$slug.jsonl" >>"$STATE/$slug.out" 2>&1 <<'PY2'
+import json, sys, datetime
+fn=sys.argv[1]; print(f"\n##### attempt digest {datetime.datetime.now().isoformat(timespec='seconds')}  ({fn})")
+n=0; res=None
+for line in open(fn):
+    try: e=json.loads(line)
+    except Exception: continue
+    n+=1
+    if e.get('type')=='assistant':
+        for c in e['message'].get('content',[]):
+            if c.get('type')=='tool_use': print("TOOL", c['name'], json.dumps(c.get('input',{}))[:140])
+            elif c.get('type')=='text': print("TEXT", c['text'][:300].replace('\n',' / '))
+    elif e.get('type')=='result': res=e
+print("EVENTS", n)
+print("RESULT", json.dumps({k:res.get(k) for k in ('subtype','num_turns','duration_ms','total_cost_usd','is_error')}) if res else "RESULT none — the worker produced no result event (killed, crashed, or cut off)")
+if res and res.get('result'): print("FINAL TEXT", str(res['result'])[:1500])
+PY2
+  cut="$d/$slug.mp4"
+  if (( rc == 124 )); then
+    note="timed out after ${dur}s"; set_status "$concept" "failed" "$note"; say "   FAILED — $note"; consec_fail=$((consec_fail+1)); failed_count=$((failed_count+1))
+  elif [[ -f "$concept/CC-BLOCKED.txt" ]]; then
+    set_status "$concept" "blocked" "$(cat "$concept/CC-BLOCKED.txt")"; say "   BLOCKED — $(cat "$concept/CC-BLOCKED.txt")"; consec_fail=0
+  elif [[ -f "$cut" ]] && audible "$cut" && grep -q "Overall: PASS" "$d/TYPECHECK.md" 2>/dev/null && [[ -f "$concept/CC-BUILT.txt" ]]; then
+    rm -f "$d/$slug-slate.mp4" "$d"/media/_ext_*.mp4 2>/dev/null   # regenerable intermediates; the master and per-beat media stay
+    set_status "$concept" "done" "$cut in ${dur}s"; say "   DONE in ${dur}s — $(basename "$cut") (audible, GATE T PASS)"; consec_fail=0; done_count=$((done_count+1))
+  else
+    if tail -c 400 "$STATE/$slug.out" 2>/dev/null | grep -q "hit your session limit"; then set_status "$concept" "pending" "session limit — requeued"; say "   LIMIT — sleeping 30m"; sleep 1800; continue; fi
+    if   [[ -f "$cut" ]] && ! audible "$cut"; then note="master exists but is SILENT"
+    elif [[ -f "$cut" ]]; then note="master exists but GATE T not PASS or CC-BUILT.txt missing"
+    elif (( rc == 0 )); then note="exit 0 but no master"
+    else note="claude exited $rc after ${dur}s"; fi
+    set_status "$concept" "failed" "$note"; say "   FAILED after ${dur}s — $note (see $STATE/$slug.out for the digest, $slug.jsonl for the stream)"; consec_fail=$((consec_fail+1)); failed_count=$((failed_count+1))
+  fi
+  if (( NOHALT == 0 && consec_fail >= CONSEC_FAIL_STOP )); then say "HALT: $consec_fail failures in a row — diagnose before restarting."; summary; exit 1; fi
+  if (( N > 0 && attempted >= N )); then summary; exit 0; fi
+  sleep "$COOLDOWN"
+done

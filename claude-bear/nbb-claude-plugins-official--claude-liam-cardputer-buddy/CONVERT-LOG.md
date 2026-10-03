@@ -1,0 +1,24 @@
+# CONVERT-LOG — nbb rewrite of claude-plugins-official--claude-liam-cardputer-buddy
+
+Source: `anthropics/claude-bear/claude-plugins-official--claude-liam-cardputer-buddy/beat_sheet.json` (Plain / hai-simple, 7 beats).
+Target: `beat_sheet.nbb.json` in this dir (Teardown / NikBearBrown, 7 beats — outro re-slotted, no beats added or removed since the source already had a paste-into-Claude handoff beat that folds cleanly into the LLM-exercise slot).
+
+## What changed
+
+- **Register.** Every `narration_text` rewritten in Teardown (Feynman × MKBHD): open on the mechanism (main.py auto-scans `apps/`; the folder listing IS the menu), name the design choice (four small tools, one job each, no manifest), name what each choice costs (nothing knows an app exists until boot; two scripts can push the same file with wildly different cost, and the tool's name doesn't tell you which). No specs without context. Forbidden phrases avoided.
+- **Facts preserved.** Every file name, script, path, port pattern, and workflow claim from the source survives — MicroPython on `/flash`, four scripts (`install_apps.py`, `push.py`, `tail_serial.py`, `repl_run.py`), `hello_cardputer.py` template, port formats per OS, the install_apps ↔ push overlap. Voice changed, reporting unchanged.
+- **Channel switch.** `folderLabel` and `channel_title` → `@NikBearBrown` (metadata + BHTF's `ClaudeComposerAsk` props). `playlist` kept as "Extending Claude — Skills, Plugins & Connectors" — the topic is still Claude Code plugins and the reference nbb sheet (`nbb-claude-basics--stable-element-refs`) keeps its source-appropriate playlist.
+- **LLM exercise slot (second-to-last).** BHTF was already a "paste this into Claude" handoff, so I converted-in-place rather than inserting a new beat: `act` → `LLM EXERCISE`; added the `llm_exercise` object with a paste-ready `prompt` (build a timer app + the four things to watch) and a `dig_deeper` follow-up (why auto-discovery instead of a manifest — what does it buy, where does the trade-off bite). Narration rewritten to end with `Go deeper: …` as SKILL.md §Step 3 specifies. Kept `ClaudeComposerAsk` shot; updated the `command` prop to match the tightened prompt and flipped `folderLabel` to `@NikBearBrown`.
+- **Outro (last).** Kept beat ID `BOUT` and narration `Push The One File. Liam, in for Bear.` (IN-FOR-BEAR LAW — Liam signs off as Liam). Flipped the shot from `OutroSeries` (`eyebrow` + `line`, HAI-flavored) to `OutroCTA` (`line` + `handle: "@NikBearBrown"`), matching the NBB pattern in `nbb-claude-basics--stable-element-refs`.
+- **Purpose rewritten.** Metadata `purpose` restated in Teardown (take apart the auto-discovery choice, the four-script split, the install_apps ↔ push overlap; land the carry-out that the tool doesn't remind you which script matches the size of your change).
+- **Scaffold checklist removed.** `_variant_todo` dropped now that Steps 2–5 are done.
+
+## Judgement calls
+
+- **Kept the `BHTF` beat instead of appending a new LLM-exercise beat.** The source already had a paste-into-Claude handoff at the second-to-last slot; inserting an extra LLM-exercise beat after it would have duplicated the same shape and doubled the runtime of the closing block. Converting-in-place matches the reference nbb sheet's pattern (see `nbb-claude-basics--stable-element-refs`, where the source `your-turn-handoff` beat becomes the `LLM EXERCISE` beat with the same `beat_id`).
+- **`playlist` left as-is.** "Extending Claude — Skills, Plugins & Connectors" still describes the topic; only the channel/folder switch to `@NikBearBrown`. If the NBB channel maps this to a different playlist, that's a metadata patch, not a re-conversion.
+- **Estimated durations bumped for the rewritten beats (NB01 24→32s, NB02 24→36s, NB03 20→28s, BHTF 30→44s).** The Teardown rewrites are longer than the Plain-register originals — mechanism-plus-trade-off runs wider than plain description. These are estimates for the audio-first clock; real durations will be measured when Kokoro is regenerated on the next build pass. B00/BCRY/BOUT budgets barely moved.
+- **`ground: "#F3EBDD"` and `style_preset: "humanitarians"` left in place** even though `palette: "teardown"` is authoritative — the reference nbb sheet does the same, and the compile pipeline reads `palette` for the register skin. Not my call to strip the source ground.
+- **Kept the `note` on B00 (BrutalistHesitantWriter TIMING LAW) verbatim** — the narration is 44 words, above the 20–35 window the note cites for the hai-simple text/rate combo. Kept the note because the narration's 15s estimated_duration_s still gives the ~9s typing window comfortable margin; if the render QCs under, that's an audio-first regenerate + shorten call at build time, not a scaffold-time trim.
+
+Done. No render, no audio, no compile — supervisor runs the next reel.

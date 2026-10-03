@@ -1,0 +1,73 @@
+# FACTCHECK — show-tell-what-a-compiler-does
+
+**What this is.** Every claim the film speaks or shows, checked against its named source: `anthropics/claudes-c-compiler/DESIGN_DOC.md` (High-Level Pipeline, Source Tree, Compilation Pipeline (Data Flow), Key Design Decisions, Assembler and Linker Architecture) and `README.md`, both read in full from the raw files on 2026-09-27 and diffed byte for byte against the raw upstream files (`raw.githubusercontent.com/anthropics/claudes-c-compiler/main/README.md` and `…/DESIGN_DOC.md`, HTTP 200): identical (`sources/live_*`). No WebFetch summary was used. **Result:** PASS. The stages are named and ordered as the design doc names them. The README's caveat is quoted word for word. No person is credited (the README's note says "I" and names no one). The only numbers are the files' own: four target chips and "up to 3 iterations". Where the film explains what a stage *means* in plain words (what a phi node does, what resolving a symbol means), the row says so. Drawings that are not data have EXEMPT rows.
+
+Status: PASS · 2026-09-27 · checked by Claude (Opus 5.5) for Bear
+
+| # | Beat | Claim (as spoken / shown) | Verdict | Source / derivation | Fix |
+|---|---|---|---|---|---|
+| 1 | BIDEA | Greeting "Salaam" | EXEMPT (greeting) | Arabic greeting; whisper (small.en, medium.en) heard "Salaam". | — |
+| 2 | BIDEA | A compiler doesn't turn your code into a program in one go | PASS | DESIGN_DOC: "The compiler is a multi-phase pipeline. Each phase is a separate Rust module with a well-defined input/output interface." | — |
+| 3 | BIDEA | Writer: "What does a compiler do to my code in one go?" corrected to "What does a compiler do at each stage?" | EXEMPT (framing) | The naive question corrected; the film then follows the design doc's phases. | — |
+| 4 | BDEFS | compiler: turns source code into a program a chip can run | PASS | Plain-words definition; README: CCC "produces ELF executables" for x86-64, i686, AArch64 and RISC-V 64 from C. | — |
+| 5 | BDEFS | token: one word of code: a name, a number, a symbol | PASS | DESIGN_DOC: Lexer → "tokens with spans"; `Vec<Token>` (each Token = { kind: TokenKind, span: Span }). Plain-words definition of a token kind. | — |
+| 6 | BDEFS | IR: the compiler's own in-between language | PASS | DESIGN_DOC: "IR SUBSYSTEM … Target-independent SSA IR"; "Each phase transforms the program into a progressively lower-level representation." | — |
+| 7 | BDEFS | assembly: a chip's instructions, written as text | PASS | DESIGN_DOC: code generation produces "String (target-specific assembly text)"; the builtin assembler parses "asm text". | — |
+| 8 | B00 | A compiler turns code written in C into a program a chip can run | PASS | README: "Compile and run a simple C program"; DESIGN_DOC: "from C source to ELF executable". | — |
+| 9 | B00 | Claude's C Compiler, which its read me says Claude wrote in Rust, from scratch | PASS | README title "CCC — Claude's C Compiler"; "A C compiler written entirely from scratch in Rust"; note: "100% of the code and documentation in this repository was written by Claude Opus 4.6" (except that one human-written paragraph). Said only as the README says it; the model version is not spoken. | — |
+| 10 | B00 | …does it as one pipeline, with no outside tools | PASS | DESIGN_DOC: "The entire flow -- from C source to ELF executable -- is handled internally with no external tools."; README: "produces ELF executables without any external toolchain". (Optional GCC fallback features exist; the default is standalone. Not mentioned.) | — |
+| 11 | B00 | A white page ('C source') rides a belt through four machines (three kraft, the last dark with four lamps) and comes out as a taped kraft box ('ELF program') | PASS (derived) | The four machines are the design doc's four boxes: FRONTEND, IR SUBSYSTEM, OPTIMIZATION PASSES, BACKEND; the four lamps are its four code generators; the output is "ELF". | — |
+| 12 | B01 | First, the preprocessor | PASS | DESIGN_DOC pipeline: Preprocessor is the first box of the frontend; data flow starts with `Preprocessor::preprocess()`. | — |
+| 13 | B01 | It works on the raw text | PASS | DESIGN_DOC Key Design Decisions: "Text-to-text preprocessor: The preprocessor operates on raw text". | — |
+| 14 | B01 | It pastes in each header named by a hash include, expands every macro, and drops any code that an if def switches off | PASS | DESIGN_DOC pipeline box: "macro expand, #include, #ifdef"; Source Tree: "Macro expansion, #include, #ifdef, #pragma once". What each directive does is its standard C meaning. | — |
+| 15 | B01 | The page grows; a header card merges at its top ('#include'); a tagged line widens into three ('macro'); a bracketed block of two lines drops out | EXEMPT (illustration) | Illustrates row 14; line counts are drawn, not data. | — |
+| 16 | B02 | Next, the lexer chops that text into tokens | PASS | DESIGN_DOC: Preprocessor → Lexer; `Lexer::tokenize()` → `Vec<Token>`. | — |
+| 17 | B02 | Each name, number and symbol becomes one tile | PASS | Token = { kind: TokenKind, span }; plain-words reading of token kinds. | — |
+| 18 | B02 | Every tile keeps its span: where in the file it came from | PASS | DESIGN_DOC: "tokens with spans"; Source Tree: "Tokenization with source locations". | — |
+| 19 | B02 | One page line becomes a strip; a terracotta scan line cuts it into nine tiles ('tokens'); grey threads tie each tile back to the page | EXEMPT (illustration) | Nine tiles stand for `int n = 4 * 8 + x ;`, an example line, not from the source. | — |
+| 20 | B03 | The parser reads the tokens in order and builds a syntax tree | PASS | DESIGN_DOC: Lexer → Parser → "spanned AST"; `Parser::parse()` → `TranslationUnit (AST …)`. | — |
+| 21 | B03 | …which shows how the pieces fit together | PASS | Plain-words meaning of an abstract syntax tree. | — |
+| 22 | B03 | It works by recursive descent: each grammar rule calls the rules for the parts inside it | PASS | DESIGN_DOC Source Tree: "parser/ Recursive descent, produces spanned AST". What recursive descent means is the standard definition. | — |
+| 23 | B03 | Tiles rise into a tree ('syntax tree'); a terracotta dot descends from the root through '=', '+', '*' to a leaf | EXEMPT (illustration) | The tree is the example line's shape (declaration → = → + → *, x → 4, 8); the dot is the descent. | — |
+| 24 | B04 | Then semantic analysis checks that the tree makes sense | PASS | DESIGN_DOC: Parser → Sema ("type check, const eval, symbol table"); `SemanticAnalyzer::analyze()`. | — |
+| 25 | B04 | It works out the type of every expression | PASS | DESIGN_DOC SemaResult: "expr_types: FxHashMap<ExprId, CType>". | — |
+| 26 | B04 | …computes constant values ahead of time | PASS | DESIGN_DOC: "const eval"; SemaResult "const_values: FxHashMap<ExprId, IrConst>". | — |
+| 27 | B04 | …and records each name in a symbol table | PASS | DESIGN_DOC: Sema "symbol table"; Source Tree "sema/ Type checking, symbol table, const evaluation". | — |
+| 28 | B04 | Terracotta type dots land on every node; the 4 * 8 subtree folds into one white node; the names n and x go into a card ('symbol table') | EXEMPT (illustration) | Illustrates rows 25–27. | — |
+| 29 | B05 | Lowering turns the checked tree into I R | PASS | DESIGN_DOC: "IR Lowering: AST -> alloca-based IR"; `Lowerer::lower()` → `IrModule`. | — |
+| 30 | B05 | …an in-between language that's the same for every chip | PASS | DESIGN_DOC: "IR SUBSYSTEM … Target-independent SSA IR"; Source Tree "ir/ Target-independent SSA IR". | — |
+| 31 | B05 | At first, every local variable gets a stack slot: its own box in memory | PASS | DESIGN_DOC: "AST -> alloca-based IR (every local is a stack slot)"; "IrModule (alloca-based IR: every local is a stack slot)". | — |
+| 32 | B05 | A column of white IR strips ('IR'); two open kraft boxes ('stack slots') tied to the strips that use them | EXEMPT (illustration) | Strip and slot counts are drawn, not data. | — |
+| 33 | B06 | A pass called mem to reg then promotes those slots into registers | PASS | DESIGN_DOC: "mem2reg: SSA promotion via dominator frontiers"; `promote_allocas() (mem2reg)` → "SSA form: phi nodes, virtual registers". | — |
+| 34 | B06 | The result is S S A form | PASS | DESIGN_DOC: "IrModule (SSA form: phi nodes, virtual registers)". | — |
+| 35 | B06 | …where two paths through the code meet, a phi node picks which value arrives | PASS | DESIGN_DOC mem2reg: "insert phi nodes, rename values". What a phi node does is its standard meaning. | — |
+| 36 | B06 | The slots sink away; dark register tabs snap on; two strips go side by side (two paths) and rejoin at a strip with a terracotta dot ('phi node') | EXEMPT (illustration) | Illustrates rows 33–35. | — |
+| 37 | B07 | The optimizer runs a chain of passes over the I R, looping up to three times | PASS | DESIGN_DOC OPTIMIZATION PASSES: "Main Loop (up to 3 iterations, dirty-tracked)"; `run_passes() (up to 3 iterations with dirty tracking)`. On screen: '≤ 3 rounds'. | — |
+| 38 | B07 | Constant folding does the math it can already see | PASS | DESIGN_DOC: `constant_fold` "Constant folding and propagation", in both Phase 0 and the main loop. | — |
+| 39 | B07 | Dead code elimination deletes what nothing uses | PASS | DESIGN_DOC: `dce` "Dead code elimination", in the main loop. | — |
+| 40 | B07 | Last, phi nodes become plain register copies | PASS | DESIGN_DOC: "Phi Elimination (SSA -> register copies)"; `eliminate_phis()` → "non-SSA: phi nodes lowered to register copies". | — |
+| 41 | B07 | A grey loop around the column with three markers; two strips merge, one drops out, the column closes up; the phi dot becomes two grey copy bars | EXEMPT (illustration) | Two markers light because a loop can stop before three rounds ("up to"); which strips merge or drop is drawn, not data. | — |
+| 42 | B08 | Then the back end | PASS | DESIGN_DOC: "BACKEND (src/backend/)" follows the passes. | — |
+| 43 | B08 | The same I R can go to one of four chips: x86-64, i686, AArch64, or RISC-V 64 | PASS | DESIGN_DOC Code Generation (ArchCodegen trait): x86-64, i686, AArch64, RISC-V64; README: "targeting x86-64, i686, AArch64, and RISC-V 64". Spoken as "x eighty-six sixty-four, i six eighty-six, A. Arch sixty-four, risk five sixty-four". | — |
+| 44 | B08 | The chosen code generator writes assembly for that chip | PASS | DESIGN_DOC: `Target::generate_assembly_with_opts_and_debug() (ArchCodegen dispatch)` → "String (target-specific assembly text)". README: the target is picked by the binary's name (not spoken). | — |
+| 45 | B08 | Four dark doors; each lamp lights as its chip is named; the first turns terracotta ('x86-64'); the IR goes in; assembly strips come out ('assembly') | EXEMPT (illustration) | x86-64 is the README's default target (`ccc`); drawn as the chosen one. | — |
+| 46 | B09 | Each back end then runs a peephole optimizer over its assembly | PASS | DESIGN_DOC: "Peephole Optimizer (per-arch)"; "Each backend has a post-codegen peephole optimizer". | — |
+| 47 | B09 | It finds wasted patterns, like storing a value and loading it straight back, and cuts the waste | PASS | DESIGN_DOC: "eliminates redundant patterns (store/load forwarding, dead stores, copy propagation)". | — |
+| 48 | B09 | A terracotta scan line runs down the assembly; a grey bracket closes on two strips ('store, load'); the second slides out | EXEMPT (illustration) | Illustrates row 47. | — |
+| 49 | B10 | The built-in assembler turns that text into machine code | PASS | DESIGN_DOC: "Builtin Assembler (per-arch)"; Encoder → "Vec<u8> (encoded machine code bytes + relocation entries)". | — |
+| 50 | B10 | It parses each line, encodes each instruction as bytes, and writes an object file, a dot o | PASS | DESIGN_DOC: "parse asm text -> encode instructions -> write ELF .o"; three stages Parser → Encoder → ELF Writer → "ELF object file (.o)". | — |
+| 51 | B10 | Strips ride into a kraft press ('assembler'); grey byte tiles come out, four per strip; they pack into a block on a dark plinth ('.o file') | EXEMPT (illustration) | Tile counts are drawn, not data. | — |
+| 52 | B11 | Last, the built-in linker | PASS | DESIGN_DOC: "Builtin Linker (per-arch)" is the last box before ELF. | — |
+| 53 | B11 | It reads the object file with the C runtime and libraries | PASS | DESIGN_DOC: "read .o + CRT + libs"; "Each linker reads ELF object files and static archives". CRT = C runtime. | — |
+| 54 | B11 | …resolves every symbol, finding where each named function lives | PASS | DESIGN_DOC: "resolve symbols"; plain-words meaning of symbol resolution. | — |
+| 55 | B11 | …patches the code to point there | PASS | DESIGN_DOC: "apply relocs" / "applies relocations"; plain-words meaning of applying relocations. | — |
+| 56 | B11 | …and writes the finished ELF executable | PASS | DESIGN_DOC: "write ELF"; "writes a complete ELF executable". | — |
+| 57 | B11 | The .o block and two more blocks ('runtime + libs'); grey cables join them; terracotta dots at the cable ends; they merge into one kraft box taped shut ('ELF') | EXEMPT (illustration) | Illustrates rows 53–56. | — |
+| 58 | B12 | In the read me's own words: "None of it has been validated for correctness." | PASS | README note, verbatim: "None of it has been validated for correctness." | — |
+| 59 | B12 | "The docs may be wrong." | PASS | README note: "The docs may be wrong and make claims that are false." Quoted up to its first clause. | — |
+| 60 | B12 | "I do not recommend you use this code." | PASS | README note, verbatim: "I do not recommend you use this code!" The "I" is the note's unnamed human author; no person is named. | — |
+| 61 | B12 | So use it to learn the stages, not to build real software | EXEMPT (framing) | The film's advice, drawn from rows 58–60. | — |
+| 62 | B12 | The taped ELF box; an empty check box ('not validated'); the design doc's page ('docs may be wrong') | EXEMPT (illustration) | Illustrates rows 58–60. | — |
+| 63 | BHTF | Your Turn prompt: write add.c (x = 2, y = 3, return x + y); with the C compiler on this machine, show the preprocessed text, the tokens, the syntax tree, and the assembly at -O0 and -O2; name the stage; build and run | EXEMPT (viewer prompt) | An exercise the viewer runs with their own compiler (the README warns against using CCC). It follows the film's stages. | — |
+| 64 | BHTF | Checks: does `echo $?` print 5; at -O2, is the add gone (folded into a 5) | EXEMPT (viewer checks) | The viewer verifies these themselves. 2 + 3 = 5 is the exit code; constant folding (row 38) is what removes the add. | — |
+| 65 | BOUT | "What a Compiler Does. At Nik Bear Brown." | EXEMPT (outro) | House outro. | — |

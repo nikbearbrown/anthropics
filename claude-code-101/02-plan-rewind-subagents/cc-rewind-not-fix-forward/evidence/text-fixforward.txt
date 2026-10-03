@@ -1,0 +1,3 @@
+Done. Both files use the `Todo` dataclass; `mark_all_done` uses `dataclasses.replace` so it stays non-mutating. I dropped the `test_preserves_other_fields` test since dataclass fields are now fixed to `text`/`done`.
+
+Heads-up: `check_immutable.py` in this folder feeds dicts into the module, so it will now fail with `AttributeError` — the external checker was written to the old dict shape. Let me know if you want me to update it (or leave it as evidence of the shape change).

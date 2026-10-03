@@ -1,0 +1,734 @@
+{
+  "metadata": {
+    "slug": "show-tell-one-plugin-per-service",
+    "title": "One Plugin per Service",
+    "topic": "CLAUDE · CLAUDE TAG PLUGINS",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Portuguese (Olá)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Teams and admins setting up Claude Tag (@Claude in a chat workspace) who want to connect only the services they use",
+    "source_doc": "anthropics/claude-tag-plugins (README.md, .claude-plugin/marketplace.json; asana, bigquery, claude-tag-data-viz, claude-tag-troubleshoot folders incl. config-guide references and debug-plugins), read 2026-09-26",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude Tag",
+      "@Claude",
+      "Claude in Slack",
+      "claude-tag-plugins",
+      "Claude plugins",
+      "Asana",
+      "BigQuery",
+      "agent scopes",
+      "identity profiles",
+      "least privilege",
+      "data viz",
+      "debug-plugins",
+      "Anthropic",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-26T18:50:58",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Olá. This is Liam, in for Bear. Anthropic's claude tag plugins repo doesn't hook Claude up to everything. Each service is its own plugin, so the real question is what your team uses.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I connect Claude to everything?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'everything' -> 'what we use' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I connect Claude\nto everything?",
+            "triggerWords": "everything",
+            "replacementWords": "what we use",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-one-plugin-per-service",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-26T22:46:41.788696+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (connect Claude to everything) and corrects it to the real one (what we use).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 10.965,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 11.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-26T18:50:58"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A plugin: one service's skill and scripts, packed to install. An agent scope: Claude's settings for one workspace, or one channel. And an identity profile: a reusable bundle of rules, credentials and plugins.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "'plugin' lands"
+          },
+          {
+            "at": 0.4,
+            "event": "'agent scope' lands"
+          },
+          {
+            "at": 0.7,
+            "event": "'identity profile' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "plugin",
+                "meaning": "one service's skill and scripts, packed to install"
+              },
+              {
+                "term": "agent scope",
+                "meaning": "Claude's settings for one workspace or one channel"
+              },
+              {
+                "term": "identity profile",
+                "meaning": "a reusable bundle of rules, credentials and plugins"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-26T22:47:11.124323+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 12.16,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 12.166666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-26T18:50:58"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Here's your team's workspace, drawn as a wall of sockets, one for each service it could use. And here's Claude Tag: the Claude that answers when you tag it in a chat thread, backed by remote Claude Code sessions.",
+      "estimated_duration_s": 15.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft wall rises; eight sockets draw onto its face, their lights blinking once; a white chat bubble with a terracotta spark drops in to the right ('@Claude') and three typing dots pulse in it.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the wall"
+          },
+          {
+            "at": 0.3,
+            "event": "sockets, one per service"
+          },
+          {
+            "at": 0.55,
+            "event": "the @Claude bubble"
+          },
+          {
+            "at": 0.85,
+            "event": "typing dots: remote sessions"
+          }
+        ],
+        "manim": {
+          "class": "B00_Wall"
+        },
+        "motion_claim": "A kraft wall rises; eight sockets draw onto its face, their lights blinking once; a white chat bubble with a terracotta spark drops in to the right ('@Claude') and three typing dots pulse in it."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn wall-of-sockets scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.349,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 11.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:50:58"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The repo lists eighteen plugins. Sixteen are services, from Asana and Big Query to Jira and Datadog. The other two are helpers. You add the repo as a marketplace, then install the services you use.",
+      "estimated_duration_s": 14.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft crate slides in below the wall; eighteen small plugs drop into it row by row (sixteen kraft, two grey); the hero '18' lands beside it; the two grey helper plugs lift and settle.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the crate"
+          },
+          {
+            "at": 0.3,
+            "event": "eighteen plugs drop in"
+          },
+          {
+            "at": 0.55,
+            "event": "two grey helpers lift"
+          },
+          {
+            "at": 0.85,
+            "event": "one at a time"
+          }
+        ],
+        "manim": {
+          "class": "B01_Crate"
+        },
+        "motion_claim": "A kraft crate slides in below the wall; eighteen small plugs drop into it row by row (sixteen kraft, two grey); the hero '18' lands beside it; the two grey helper plugs lift and settle."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn wall-of-sockets scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.627,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 11.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:50:58"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Each service is its own plugin, so a workspace can connect exactly the services it uses. Say this team works in Asana, and keeps its data in Big Query. Two plugs go in. Every other socket stays empty.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "One plug rises from the crate and rides an arc into a socket ('Asana'); a second follows ('BigQuery'); both sockets' lights turn terracotta; the six empty sockets fade to ghost.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "one plugin per service"
+          },
+          {
+            "at": 0.45,
+            "event": "Asana plugs in"
+          },
+          {
+            "at": 0.65,
+            "event": "BigQuery plugs in"
+          },
+          {
+            "at": 0.9,
+            "event": "the rest stay empty"
+          }
+        ],
+        "manim": {
+          "class": "B02_PlugIn"
+        },
+        "motion_claim": "One plug rises from the crate and rides an arc into a socket ('Asana'); a second follows ('BigQuery'); both sockets' lights turn terracotta; the six empty sockets fade to ghost."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn wall-of-sockets scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.395,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 12.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:50:58"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Now tag Claude in a thread. It can reach those two: Asana tasks, and S Q L in Big Query. Each skill activates when it's relevant. Ask about Jira, and there's no Jira plugin to reach for.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Ink cords draw from the bubble to the two plugs; request packets ride out along each and back; a dashed grey line reaches from the bubble toward an empty socket ('Jira') and stops short, then fades.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "cords to the two plugs"
+          },
+          {
+            "at": 0.4,
+            "event": "packets ride each"
+          },
+          {
+            "at": 0.8,
+            "event": "Jira: no plug, the line stops short"
+          }
+        ],
+        "manim": {
+          "class": "B03_Reach"
+        },
+        "motion_claim": "Ink cords draw from the bubble to the two plugs; request packets ride out along each and back; a dashed grey line reaches from the bubble toward an empty socket ('Jira') and stops short, then fades."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn wall-of-sockets scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.456,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 11.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:50:58"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Open one plug. There's a manifest, plugin dot json. A skill: how to connect, and the core operations. A catalog of endpoints, read only when needed. And usually, small scripts. What you won't find is a key. The runtime injects the credentials into each request.",
+      "estimated_duration_s": 18.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Close-up: the Asana plug opens as a kraft box; a manifest tag rises out ('plugin.json'), then a skill page ('SKILL.md'), a stack of reference pages and a small script tile; an empty key outline appears in the box; a key slides in from the wall side ('runtime') and rides out on a request packet.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the plug opens"
+          },
+          {
+            "at": 0.25,
+            "event": "plugin.json"
+          },
+          {
+            "at": 0.4,
+            "event": "SKILL.md, references, scripts"
+          },
+          {
+            "at": 0.65,
+            "event": "no key inside"
+          },
+          {
+            "at": 0.85,
+            "event": "the runtime brings the key"
+          }
+        ],
+        "manim": {
+          "class": "B04_Inside"
+        },
+        "motion_claim": "Close-up: the Asana plug opens as a kraft box; a manifest tag rises out ('plugin.json'), then a skill page ('SKILL.md'), a stack of reference pages and a small script tile; an empty key outline appears in the box; a key slides in from the wall side ('runtime') and rides out on a request packet."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn wall-of-sockets scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 14.68,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 14.708333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:50:58"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Claude's settings come in layers: the organization, a workspace, then a channel. Plugins add up along that chain. A channel can plug in more, but can't unplug what a layer above provides. So what you plug in at the top reaches every channel.",
+      "estimated_duration_s": 17.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The wall is three sections rising left to right ('org', 'workspace', 'channel'); a plug goes into the org section and copies slide along into the same socket on the other two; the channel section adds a plug of its own; a cursor tugs the inherited plug in the channel section, it comes out a little and snaps back.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "three layers"
+          },
+          {
+            "at": 0.35,
+            "event": "the org plug copies down the chain"
+          },
+          {
+            "at": 0.55,
+            "event": "the channel adds one"
+          },
+          {
+            "at": 0.75,
+            "event": "can't unplug the inherited one"
+          }
+        ],
+        "manim": {
+          "class": "B05_Layers"
+        },
+        "motion_claim": "The wall is three sections rising left to right ('org', 'workspace', 'channel'); a plug goes into the org section and copies slide along into the same socket on the other two; the channel section adds a plug of its own; a cursor tugs the inherited plug in the channel section, it comes out a little and snaps back."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn wall-of-sockets scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.163,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 13.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:50:58"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "For GitHub, the repo's best practice goes further: a read-only profile bound everywhere, and a write profile bound only to the channels allowed to push or merge. That limits the blast radius. Plug in what you use, and give each plug the least it needs.",
+      "estimated_duration_s": 18.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three channel sections; a grey read plug drops into each ('read'); one dark-taped write plug goes into a single section ('write'); a terracotta ring expands from it and stops at its own section's edges.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "read everywhere"
+          },
+          {
+            "at": 0.4,
+            "event": "write in one channel"
+          },
+          {
+            "at": 0.65,
+            "event": "the blast radius stays small"
+          },
+          {
+            "at": 0.9,
+            "event": "least access"
+          }
+        ],
+        "manim": {
+          "class": "B06_ReadWrite"
+        },
+        "motion_claim": "Three channel sections; a grey read plug drops into each ('read'); one dark-taped write plug goes into a single section ('write'); a terracotta ring expands from it and stops at its own section's edges."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn wall-of-sockets scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.931,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 13.958333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:50:58"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the two helpers. Hand the data visualization plugin a table, say rows from Big Query, and it composes a polished chart: a P N G, an S V G, or an interactive H T M L page.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white table card slides out from the BigQuery plug ('table'); a grey data-viz plug lights; a copy of the table moves and becomes a chart card: grey bars grow with gaps, an ink line draws, a terracotta dot lands on its end ('chart'); three small file cards fan out below.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "a table"
+          },
+          {
+            "at": 0.45,
+            "event": "the chart builds"
+          },
+          {
+            "at": 0.8,
+            "event": "PNG, SVG, HTML"
+          }
+        ],
+        "manim": {
+          "class": "B07_Chart"
+        },
+        "motion_claim": "A white table card slides out from the BigQuery plug ('table'); a grey data-viz plug lights; a copy of the table moves and becomes a chart card: grey bars grow with gaps, an ink line draws, a terracotta dot lands on its end ('chart'); three small file cards fan out below."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn wall-of-sockets scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.285,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 11.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:50:58"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The other helper is troubleshoot. Config changes only reach new sessions, so start a fresh Slack thread. Then run debug plugins. From inside the session, it checks which plugins actually loaded, which failed, and why.",
+      "estimated_duration_s": 14.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The wall with its two plugs; a new thread bubble replaces the old one; a small kraft tester slides in ('debug-plugins'); its probe line touches the Asana plug, a check lands; then the BigQuery plug, a second check.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "a fresh thread"
+          },
+          {
+            "at": 0.45,
+            "event": "the tester arrives"
+          },
+          {
+            "at": 0.7,
+            "event": "check: Asana loaded"
+          },
+          {
+            "at": 0.9,
+            "event": "check: BigQuery loaded"
+          }
+        ],
+        "manim": {
+          "class": "B08_Tester"
+        },
+        "motion_claim": "The wall with its two plugs; a new thread bubble replaces the old one; a small kraft tester slides in ('debug-plugins'); its probe line touches the Asana plug, a check lands; then the BigQuery plug, a second check."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn wall-of-sockets scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.011,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 12.041666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-26T18:50:58"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude: Here are the tools my team uses each week: list them. From the plugin list in Anthropic's claude tag plugins repo, pick the ones our Claude Tag needs. For each, say whether it should only read or also write, and in which channels. Then list what to leave unplugged, and why. Then check two things yourself. For every plugin, who used that tool this week? And for every write, which channel and task need it?",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE · YOUR TURN",
+            "segment": "Plug In Only What You Use",
+            "command": "Here are the tools my team uses each week: [list them]. From the plugin list in anthropics/claude-tag-plugins, pick the ones our Claude Tag needs. For each, say whether it should only read or also write, and in which channels. Then list what to leave unplugged, and why.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: every plugin. Who used that tool this week?",
+              "Check: every write. Which channel and task need it?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-26T22:48:06.497783+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 20.59,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 20.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-26T18:50:58"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "One Plugin per Service. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "One Plugin per Service",
+            "slug": "show-tell-one-plugin-per-service",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-26T22:48:21.514922+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.264,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.291666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-26T18:50:58"
+      }
+    }
+  ]
+}

@@ -4,42 +4,26 @@
     "slug": "nanoparticle-characterization",
     "topic": "CANCER NANOMEDICINE",
     "register": "Teardown",
-    "voice": "nbbhuman",
-    "voice_id": "TyW6NH39JcFb5M3xdIIk",
     "palette": "claude",
     "style_preset": "nikbearbrown",
     "style": "cli",
     "ground": "#FFFFFF",
     "color_semantics": "teardown: INK #2A1A0E neutral/normal; CRIMSON #C8102E key finding/vulnerability; SLATE #545454 structure/neutral",
-    "note": "CLI video REQUIRED spine: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 slate (characterization cascade) · B05 CHANGE · B06 slate · B07 slate · B08 slate · B09 outro. Source: cancer-nanomedicine/chapters/11-characterization-manufacturing-and-regulatory-translation.md",
-    "total_estimated_duration_seconds": 148,
+    "note": "CLI video spine: B00 intro (Claude cold open) · B01 PROBLEM · B02 ASK · B03 CODE · B04 cascade · B05 CHANGE · B06 in vitro/in vivo gap · B07 SUMMARY · B08 NEXT STEPS · B09 sign-off · BVDT verdict · BHTF your turn · BOUT outro. Source: cancer-nanomedicine/chapters/11-characterization-manufacturing-and-regulatory-translation.md",
+    "total_estimated_duration_seconds": 220,
     "audience": "Claude",
-    "derived_from": "beat_sheet.json",
+    "derived_from": "beat_sheet.pre-rebuild.json",
     "outro_source": "AUTHOR.MD :: NikBearBrown",
     "engine": "kokoro",
+    "voice": "am_onyx",
     "voice_kokoro": "am_onyx",
-    "_variant_todo": [
-      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
-      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
-      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
-      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
-    ],
     "build": {
-      "at": "2026-07-16T04:11:55",
-      "cut": "master",
-      "filled": 5,
-      "of": 10,
-      "slates": [
-        "B01",
-        "B04",
-        "B06",
-        "B07",
-        "B08"
-      ],
-      "skin_warnings": [
-        "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk",
-        "B09: palette=claude but the outro is 'NikBearBrownOutro' — OUTRO LAW wants ClaudeTitleOutro"
-      ]
+      "at": "2026-08-30T23:44:15",
+      "cut": "review",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": []
     }
   },
   "beats": [
@@ -48,17 +32,18 @@
       "act": "INTRO",
       "narration_text": "This is Liam, in for Bear. Nik Bear Brown. A nanoparticle is a distribution. Not a molecule.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
+        "form": "cold_open",
         "remotion": {
-          "pattern": "NikBearBrownOpen",
+          "pattern": "ClaudeComposerAsk",
           "props": {
-            "topic": "NIK BEAR BROWN",
-            "lines": [
-              "Nik Bear Brown",
-              "A nanoparticle is a distribution. Not a molecule."
-            ]
+            "greeting": "Sawubona, Liam",
+            "topic": "CANCER NANOMEDICINE",
+            "segment": "NANOPARTICLE CHARACTERIZATION",
+            "command": "A nanoparticle is a distribution. Not a molecule. Seven measurements, seven artifacts — no single number defines the product.",
+            "runningText": "opening the characterization cascade…",
+            "folderLabel": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/B00.mp4",
@@ -66,14 +51,17 @@
           }
         }
       },
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "audio_file": "mp3/beat-B00.mp3",
       "actual_duration_s": 6.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:11:55"
+        "at": "2026-08-30T23:44:15"
       }
     },
     {
@@ -85,28 +73,29 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
+        "form": "enum_short",
         "remotion": {
           "pattern": "FormBCard",
           "props": {
-            "title": "Research the Nanoparticle Characterization Cascade: Why a Nanoparticle Is a Distribution, Not a Molecule",
+            "title": "Small molecule vs. nanoparticle",
             "items": [
               {
-                "label": "Key point one",
-                "sub": "",
-                "icon": "target",
+                "label": "One structure",
+                "sub": "formula · melting point · purity spec",
+                "icon": "layers",
                 "cueFrame": 20
               },
               {
-                "label": "Key point two",
-                "sub": "",
+                "label": "A distribution",
+                "sub": "sizes · charges · loadings · release rates",
                 "icon": "list-checks",
-                "cueFrame": 55
+                "cueFrame": 90
               },
               {
-                "label": "Key point three",
-                "sub": "",
-                "icon": "zap",
-                "cueFrame": 90
+                "label": "A cascade of tests",
+                "sub": "each measurement has its own artifact",
+                "icon": "target",
+                "cueFrame": 160
               }
             ]
           },
@@ -116,34 +105,37 @@
           }
         }
       },
-      "estimated_duration_s": 10,
+      "estimated_duration_s": 24,
       "audio_file": "mp3/beat-B01.mp3",
       "actual_duration_s": 23.72,
-      "build": {
-        "status": "SLATE"
-      },
-      "lane": "BOOKEND",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "voice_kokoro": "am_onyx"
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T23:44:15"
+      }
     },
     {
       "beat_id": "B02",
       "act": "ASK",
-      "role_note": "terminal (Onda) — the claude research prompt",
+      "role_note": "terminal — the claude research prompt",
       "narration_text": "In the terminal: ask Claude to research the nanoparticle characterization cascade — all seven measurements, their artifacts, their regulatory expectations, and why no single measurement is sufficient.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
+        "form": "composer_ask",
         "remotion": {
-          "pattern": "NikBearBrownTerminalAsk",
+          "pattern": "ClaudeComposerAsk",
           "props": {
-            "command": "claude \"Research the nanoparticle characterization cascade\nrequired for regulatory submission. For each of the\nseven key measurements — size (DLS), polydispersity\nindex (PDI), zeta potential, encapsulation efficiency,\ndrug release rate, colloidal stability, sterility/\nendotoxin — explain: what it measures, its primary\nartifact or limitation, acceptable range or regulatory\nexpectation, and why it matters for clinical safety\nor efficacy. Explain what cryo-TEM adds vs. DLS.\"",
+            "greeting": "Ask Claude,",
             "topic": "CANCER NANOMEDICINE",
             "segment": "NANOPARTICLE CHARACTERIZATION",
-            "runningText": "researching characterization cascade...",
-            "greeting": "The ask,"
+            "command": "Research the nanoparticle characterization cascade required for regulatory submission. For each of the seven measurements — size (DLS), polydispersity index (PDI), zeta potential, encapsulation efficiency, drug release rate, colloidal stability, sterility/endotoxin — explain: what it measures, its primary artifact or limitation, acceptable range or regulatory expectation, and why it matters for clinical safety or efficacy. Explain what cryo-TEM adds vs. DLS.",
+            "runningText": "researching characterization cascade…",
+            "folderLabel": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -151,25 +143,28 @@
           }
         }
       },
-      "estimated_duration_s": 15,
+      "estimated_duration_s": 12,
       "audio_file": "mp3/beat-B02.mp3",
       "actual_duration_s": 11.46,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:11:55"
+        "at": "2026-08-30T23:44:15"
       }
     },
     {
       "beat_id": "B03",
       "act": "CODE",
-      "role_note": "terminal (Onda) — Python script reading Claude response",
+      "role_note": "terminal — Python script reading the cascade table",
       "narration_text": "Read the code before trusting it. The script builds the characterization cascade table — seven measurements, acceptable ranges, and primary artifacts. PDI below 0.2 for homogeneity. Zeta potential above plus or minus thirty millivolts for colloidal stability. DLS gives intensity-weighted hydrodynamic radius — it overestimates large particles. Cryo-TEM shows actual morphology. Read every row before accepting the spec.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
+        "form": "code_block",
         "remotion": {
           "pattern": "NikBearBrownCodeBlock",
           "props": {
@@ -184,56 +179,103 @@
           }
         }
       },
-      "estimated_duration_s": 15,
+      "estimated_duration_s": 25,
       "audio_file": "mp3/beat-B03.mp3",
       "actual_duration_s": 24.34,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:11:55"
+        "at": "2026-08-30T23:44:15"
       }
     },
     {
       "beat_id": "B04",
       "act": "OUTPUT — characterization cascade",
-      "role_note": "SLATE — characterization cascade narration; Remotion animated checklist intended for future fill",
+      "role_note": "the seven measurements as an enumerated card",
       "narration_text": "Seven measurements. Each answers a different question, and each has a built-in artifact. DLS gives you the hydrodynamic radius — the particle as it sits in solution, surrounded by its hydration shell and protein corona. PDI below 0.2 means the population is narrow enough for reproducible dosing. Zeta potential above plus or minus thirty millivolts predicts colloidal stability. None of the seven alone defines the product. All seven together define the population.",
-      "visual_intent": "SLATE — characterization cascade checklist: seven measurements filling in sequence, each with purpose, artifact, and pass/fail annotation; final line: all seven together define the distribution, not any one alone; Remotion animated checklist intended for future fill",
+      "visual_intent": "Enumerated card — five of the seven measurements shown with the artifact each hides. Line: none alone defines the product; all seven together define the population.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "form": "enum_short",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Seven measurements. Each hides an artifact.",
+            "items": [
+              {
+                "label": "Size (DLS)",
+                "sub": "hydrodynamic radius; overestimates the large tail",
+                "icon": "ruler",
+                "cueFrame": 20
+              },
+              {
+                "label": "PDI < 0.2",
+                "sub": "narrow enough for reproducible dosing",
+                "icon": "frame",
+                "cueFrame": 90
+              },
+              {
+                "label": "Zeta > ±30 mV",
+                "sub": "predicts colloidal stability",
+                "icon": "zap",
+                "cueFrame": 160
+              },
+              {
+                "label": "Cryo-TEM",
+                "sub": "actual morphology, not a scattering guess",
+                "icon": "target",
+                "cueFrame": 230
+              },
+              {
+                "label": "All seven together",
+                "sub": "define the population; none alone defines the product",
+                "icon": "list-checks",
+                "cueFrame": 300
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 26,
       "audio_file": "mp3/beat-B04.mp3",
       "actual_duration_s": 26.01,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:11:55",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
-        "suggested": "suggested prompt: Seven measurements. Each answers a different question, and each has a built-in artifact. DLS gives you the hydrodynamic radius — the particle as it sits in solu"
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T23:44:15"
       }
     },
     {
       "beat_id": "B05",
       "act": "CHANGE — check & revise",
-      "role_note": "terminal (Onda) — the REQUIRED revision",
+      "role_note": "terminal — the REQUIRED revision",
       "narration_text": "Passing all seven characterization tests in the lab does not guarantee the formulation works in a patient. Now iterate: ask Claude why a nanoparticle that passes all seven lab tests can still fail in vivo.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
+        "form": "composer_ask",
         "remotion": {
-          "pattern": "NikBearBrownTerminalAsk",
+          "pattern": "ClaudeComposerAsk",
           "props": {
-            "command": "claude \"Explain why a nanoparticle formulation that passes\nall seven lab characterization tests can still fail\nin vivo. Identify the three most common reasons for\nin vitro/in vivo discordance: (1) protein corona\nchanges everything after injection; (2) in vitro\nrelease assays don't replicate endosomal conditions;\n(3) DLS in buffer ≠ DLS in plasma. For each, what\ndoes the discordance look like experimentally?\"",
+            "greeting": "Now iterate,",
             "topic": "CANCER NANOMEDICINE",
-            "segment": "NANOPARTICLE CHARACTERIZATION",
-            "runningText": "evaluating in vitro/in vivo gap...",
-            "greeting": "The ask,"
+            "segment": "IN VITRO vs IN VIVO",
+            "command": "Explain why a nanoparticle formulation that passes all seven lab characterization tests can still fail in vivo. Identify the three most common reasons for in vitro / in vivo discordance: (1) protein corona changes everything after injection; (2) in vitro release assays don't replicate endosomal conditions; (3) DLS in buffer ≠ DLS in plasma. For each, what does the discordance look like experimentally?",
+            "runningText": "evaluating in vitro / in vivo gap…",
+            "folderLabel": "@NikBearBrown"
           },
           "rendered": {
             "out": "media/B05.mp4",
@@ -241,37 +283,71 @@
           }
         }
       },
-      "estimated_duration_s": 14,
+      "estimated_duration_s": 13,
       "audio_file": "mp3/beat-B05.mp3",
       "actual_duration_s": 12.59,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "build": {
         "status": "VIDEO",
         "src": "media/B05.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:11:55"
+        "at": "2026-08-30T23:44:15"
       }
     },
     {
       "beat_id": "B06",
-      "act": "OUTPUT — revised",
-      "role_note": "change result narration",
+      "act": "OUTPUT — the discordance",
+      "role_note": "the three lab-to-patient gaps",
       "narration_text": "The three discordances: first, protein corona — the nanoparticle you characterized in buffer is not what you injected. The hydrodynamic diameter in plasma is fifteen to forty nanometers larger than in buffer, and the surface charge is neutralized by adsorbed proteins. Second, in vitro drug release at pH 7.4 does not replicate the pH 5.5 endosomal environment or the lysosomal enzymes. Third, colloidal stability in PBS tells you nothing about stability in whole blood with shear forces and serum proteins.",
-      "visual_intent": "SLATE — in vitro/in vivo discordance table: CORONA (buffer vs plasma size); DRUG RELEASE (pH 7.4 vs endosomal pH 5.5); STABILITY (PBS vs whole blood shear + serum); each with experimental signature",
+      "visual_intent": "Three-panel enumerated card: CORONA (buffer vs plasma size), RELEASE (pH 7.4 vs pH 5.5 endosome), STABILITY (PBS vs whole blood).",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "form": "enum_short",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Three gaps between lab and patient",
+            "items": [
+              {
+                "label": "Protein corona",
+                "sub": "+15–40 nm in plasma; surface charge neutralized",
+                "icon": "shield-alert",
+                "cueFrame": 20
+              },
+              {
+                "label": "pH 7.4 ≠ pH 5.5",
+                "sub": "buffer release skips the endosomal environment",
+                "icon": "zap",
+                "cueFrame": 130
+              },
+              {
+                "label": "PBS ≠ whole blood",
+                "sub": "no shear, no serum proteins, no real stability answer",
+                "icon": "list-checks",
+                "cueFrame": 240
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 18,
+      "estimated_duration_s": 30,
       "audio_file": "mp3/beat-B06.mp3",
       "actual_duration_s": 30.06,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:11:55",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B06.mp4)",
-        "suggested": "suggested prompt: The three discordances: first, protein corona — the nanoparticle you characterized in buffer is not what you injected. The hydrodynamic diameter in plasma is fi"
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T23:44:15"
       }
     },
     {
@@ -279,22 +355,53 @@
       "act": "SUMMARY",
       "role_note": "the lesson — one beat",
       "narration_text": "So the characterization cascade reveals what makes nanomedicines a different regulatory category from small molecules. A molecule has identity; a nanoparticle has a population distribution. Batch-to-batch variability is not impurity — it is the nature of the product. Regulators have spent twenty years building frameworks to define sameness for something that is inherently heterogeneous.",
-      "visual_intent": "SLATE — summary card: SMALL MOLECULE: identity = molecular formula; NANOPARTICLE: identity = population distribution; batch variability is the product, not an impurity; FDA nanoparticle guidance as regulatory acknowledgment of this",
+      "visual_intent": "Enumerated card contrasting molecule identity vs population distribution, with a line on regulatory sameness.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "form": "enum_short",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "A different regulatory category.",
+            "items": [
+              {
+                "label": "Molecule",
+                "sub": "identity = a molecular formula",
+                "icon": "layers",
+                "cueFrame": 20
+              },
+              {
+                "label": "Nanoparticle",
+                "sub": "identity = a population distribution",
+                "icon": "frame",
+                "cueFrame": 130
+              },
+              {
+                "label": "Batch variance",
+                "sub": "the product, not an impurity",
+                "icon": "target",
+                "cueFrame": 240
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 16,
+      "estimated_duration_s": 22,
       "audio_file": "mp3/beat-B07.mp3",
       "actual_duration_s": 21.33,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:11:55",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
-        "suggested": "suggested prompt: So the characterization cascade reveals what makes nanomedicines a different regulatory category from small molecules. A molecule has identity; a nanoparticle h"
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T23:44:15"
       }
     },
     {
@@ -302,40 +409,72 @@
       "act": "NEXT STEPS",
       "role_note": "what to do next",
       "narration_text": "Your move: run your nanoparticle formulation through all seven cascade measurements and build the characterization certificate. Then re-run size by DLS in fifty percent human serum and compare to the buffer measurement. The gap between those two numbers is your corona delta — and it predicts in vivo behavior more accurately than any single buffer measurement.",
-      "visual_intent": "SLATE — next steps card: 1) build full characterization certificate (all 7 measurements); 2) re-run DLS in 50% human serum (corona delta = serum size - buffer size); 3) cryo-TEM for morphology confirmation; pointer to protein corona reel",
+      "visual_intent": "Enumerated next-steps card: full cascade, DLS in 50% serum, corona delta.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": null,
-        "motion": "hold"
+        "type": "REMOTION",
+        "source": "own",
+        "form": "enum_short",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Your move.",
+            "items": [
+              {
+                "label": "Full cascade",
+                "sub": "seven measurements, one certificate",
+                "icon": "list-checks",
+                "cueFrame": 20
+              },
+              {
+                "label": "DLS in 50% serum",
+                "sub": "compare to the buffer number",
+                "icon": "ruler",
+                "cueFrame": 130
+              },
+              {
+                "label": "Corona delta",
+                "sub": "the gap that predicts in vivo",
+                "icon": "target",
+                "cueFrame": 240
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
       },
-      "estimated_duration_s": 17,
+      "estimated_duration_s": 20,
       "audio_file": "mp3/beat-B08.mp3",
       "actual_duration_s": 19.54,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "build": {
-        "status": "SLATE",
-        "src": null,
-        "filled_by": null,
-        "at": "2026-07-16T04:11:55",
-        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
-        "suggested": "suggested prompt: Your move: run your nanoparticle formulation through all seven cascade measurements and build the characterization certificate. Then re-run size by DLS in fifty"
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T23:44:15"
       }
     },
     {
       "beat_id": "B09",
-      "act": "OUTRO",
+      "act": "SIGN-OFF",
+      "role_note": "brand colophon; BOUT owns the mascot outro",
       "narration_text": "Nik Bear Brown. Build it with a CLI. Then take it apart. At Nik Bear Brown, nikbearbrown dot com.",
       "shot": {
-        "type": "GRAPHIC",
-        "source": "remotion",
-        "motion": "fade",
+        "type": "REMOTION",
+        "source": "own",
+        "form": "text_card",
         "remotion": {
-          "pattern": "NikBearBrownOutro",
+          "pattern": "FormACard",
           "props": {
-            "brand": "Nik Bear Brown",
-            "tagline": "Brutalist + Educational AI",
-            "handle": "@NikBearBrown",
-            "url": "nikbearbrown.com",
-            "title": "Research the Nanoparticle Characterization Cascade: Why a Nanoparticle Is a Distribution, Not a Molecule"
+            "lines": [
+              "Nik Bear Brown.",
+              "Build it with a CLI. Then take it apart.",
+              "nikbearbrown.com"
+            ]
           },
           "rendered": {
             "out": "media/B09.mp4",
@@ -343,21 +482,24 @@
           }
         }
       },
-      "estimated_duration_s": 8,
+      "estimated_duration_s": 7,
       "audio_file": "mp3/beat-B09.mp3",
       "actual_duration_s": 6.51,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
       "build": {
         "status": "VIDEO",
         "src": "media/B09.mp4",
         "filled_by": "media",
-        "at": "2026-07-16T04:11:55"
+        "at": "2026-08-30T23:44:15"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict recap",
       "lane": "BOOKEND",
-      "narration_text": "",
+      "narration_text": "Verdict. A nanoparticle is a population, not a molecule. Seven measurements — DLS, PDI, zeta, encapsulation, release, stability, sterility — each with its own artifact; all seven together define the product. Buffer is not plasma; PBS is not blood. The corona delta is the number that predicts the patient.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
@@ -365,15 +507,16 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
+        "form": "verdict",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
-            "artifactTitle": "Research the Nanoparticle Characterization Cascade: Why a Nanoparticle Is a Distribution, Not a Molecule",
-            "artifactHeading": "Key findings",
+            "artifactTitle": "Nanoparticle characterization — the verdict",
+            "artifactHeading": "Three findings",
             "artifactLines": [
-              "Key finding one",
-              "Key finding two",
-              "Key finding three"
+              "A nanoparticle is a population; a molecule is a point. Seven measurements together define the product — none alone.",
+              "Buffer is not plasma: hydrodynamic diameter grows 15–40 nm and surface charge is neutralized once the corona forms.",
+              "The corona delta — DLS in 50% serum minus DLS in buffer — predicts in vivo behavior better than any single buffer number."
             ]
           },
           "rendered": {
@@ -382,31 +525,42 @@
           }
         }
       },
+      "actual_duration_s": 17.94,
+      "audio_file": "mp3/beat-BVDT.mp3",
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T23:44:15"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "your turn",
       "lane": "BOOKEND",
-      "narration_text": "",
+      "narration_text": "Your turn. Pick one nanoparticle formulation you have on hand. Measure DLS three ways — in the storage buffer, in PBS, and in fifty percent human serum, incubated thirty minutes at thirty-seven degrees. The gap between buffer and serum is your corona delta. If it exceeds fifteen nanometers, or your zeta potential in serum drops below plus or minus thirty millivolts, the in vitro certificate does not predict the patient. Write down what you'll change before the next batch.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "voice_kokoro": "am_onyx",
-      "estimated_duration_s": 20,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "source": "own",
+        "form": "composer_ask",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
             "greeting": "Your turn.",
             "topic": "YOUR TURN · CANCER NANOMEDICINE",
-            "segment": "Research the Nanoparticle Characterization Cascade: Why a…",
-            "command": "Take what you learned from [Research the Nanoparticle Characterization Cascade: Why a Nanoparticle Is a Distribution, Not a Molecule] and apply it to your own work. What's one thing you'll try first?",
-            "runningText": "paste this into Claude and run it on your own work…",
-            "output": [],
+            "segment": "Run the corona delta on one formulation",
+            "command": "Pick one nanoparticle formulation you have on hand. Measure DLS three ways: (a) in the storage buffer, (b) in PBS, (c) in 50% human serum, incubated 30 min at 37 °C. Report three numbers and one delta: buffer size, PBS size, serum size, and (serum − buffer) as the corona delta. Then decide: does the delta exceed 15 nm, and does your zeta potential in serum drop below ±30 mV? If either, the in vitro certificate does not predict the patient — write down what you'll change before the next batch.",
+            "runningText": "paste this into Claude and run it on your own bench…",
+            "output": [
+              "Answer three questions.",
+              "1. What is your corona delta in nm?",
+              "2. Does zeta in serum still exceed ±30 mV?",
+              "3. What one process change will you try next?"
+            ],
             "folderLabel": "@NikBearBrown"
           },
           "rendered": {
@@ -415,8 +569,13 @@
           }
         }
       },
+      "actual_duration_s": 25.86,
+      "audio_file": "mp3/beat-BHTF.mp3",
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T23:44:15"
       }
     },
     {
@@ -431,6 +590,7 @@
       "shot": {
         "type": "REMOTION",
         "source": "own",
+        "form": "title_outro",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
@@ -443,8 +603,12 @@
           }
         }
       },
+      "actual_duration_s": 8.0,
       "build": {
-        "status": "SLATE"
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-30T23:44:15"
       }
     }
   ]

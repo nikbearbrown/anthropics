@@ -62,7 +62,10 @@ fi
 audible(){
   ffprobe -v error -select_streams a -show_entries stream=codec_name -of csv=p=0 "$1" 2>/dev/null | grep -q . || return 1
   local mv
-  mv="$(ffmpeg -i "$1" -af volumedetect -f null - 2>&1 | sed -n 's/.*mean_volume: \(-\{0,1\}[0-9.]*\) dB.*/\1/p' | tail -1)"
+  # -nostdin is load-bearing: without it ffmpeg claims the loop's stdin waiting for
+  # interactive keys and blocks FOREVER when the loop runs detached (nohup/&).
+  # This froze a full overnight run on 2026-08-30 — 8h50m on one already-built reel.
+  mv="$(ffmpeg -nostdin -i "$1" -af volumedetect -f null - </dev/null 2>&1 | sed -n 's/.*mean_volume: \(-\{0,1\}[0-9.]*\) dB.*/\1/p' | tail -1)"
   [[ -n "$mv" ]] || return 1
   python3 -c "import sys; sys.exit(0 if float('$mv') > -40 else 1)"
 }

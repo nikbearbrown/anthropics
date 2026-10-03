@@ -1,0 +1,290 @@
+{
+ "metadata": {
+  "title": "Claude, Auto Updater.",
+  "slug": "claude-for-legal--claude-liam-auto-updater",
+  "topic": "SKILLS · ANTHROPIC AGENT SKILLS",
+  "purpose": "Take apart the Claude Skill mechanism: explain that auto-updater's logic lives in one plain file (SKILL.md, numbered steps top to bottom), evaluate the read-and-follow design (deterministic within the file, blind past its edge), and name the trade — auditability by reading, at the cost of anything the file forgot to say. Lands the carry-out that the SKILL.md is the whole program: reliable inside what's written, blind past its edge.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/claude-for-legal/youtube/claude-liam-auto-updater/beat_sheet.json",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Extending Claude — Skills, Plugins & Connectors",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B01 -> B03 (the SKILL.md card with its five numbered steps, run twice with identical results, then a case outside the file with nothing to match)",
+  "build": {
+   "at": "2026-08-29T09:00:21",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's the assumption most people start with: Claude's auto-updater must have its logic baked into the model itself — some hidden capability firing on cue. It isn't. It's baked into a plain file called SKILL.md. So — is the logic baked into the file?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Claude's auto-updater — is the logic baked into the model?', hesitates on 'model', corrects to 'file', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude's auto-updater —\nis the logic baked\ninto the model?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "model",
+      "replacementWords": "file",
+      "mistakeRate": 3,
+      "hesitateWithin": 2,
+      "hesitateBetween": 10,
+      "charMs": 38,
+      "jitter": 22,
+      "seed": "hai-auto-updater"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('model' -> 'file') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T09:00:21"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 4 ANCHOR PLANTED",
+   "narration_text": "Here's what a Claude Skill actually is: a folder with one file inside, SKILL.md, that Claude reads before it acts. The one named auto-updater keeps its whole program in that file — plain sentences, not code. Open it and you'd see something like five numbered steps, top to bottom. Claude reads the file, then follows what's written. They optimized for something you can audit by reading: no compiler, no hidden source. The trade — the file is the whole program. Nothing else is in play.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — a SKILL.md card opening, five numbered steps typing themselves in top to bottom"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — SKILL.md, five steps",
+     "mechanic": "A folder icon labelled 'auto-updater' opens to reveal a single file card, 'SKILL.md', in the center. The card expands; five numbered lines type themselves in top to bottom, 'Step 1' through 'Step 5', plain sentence style, no code font. THIS EXACT CARD RETURNS AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "AUB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T09:00:21"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "2 wrong guess, falsified / 3 mechanism",
+   "narration_text": "The wrong guess: that Claude is reasoning its way through, choosing what to do next. It isn't, here. It works straight down the Steps section — one step, then the next — and only branches where a step literally says to. Delete step three from that file and step three doesn't happen. Nothing in the model fills the gap; there is no hidden fallback. They optimized for predictability at the expense of anything the file forgot to say.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A linear pipeline of boxes, step 1 through done; step 3 struck out and skipped, nothing filling the gap"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Linear, no hidden fallback",
+     "mechanic": "A left-to-right pipeline: READ REQUEST -> STEP 1 -> STEP 2 -> STEP 3 -> STEP 4 -> DONE, arrows flowing forward only, one small diamond decision box under a step labelled 'only if the step says so'. Then STEP 3 fades to a dashed outline and strikes through; the arrow passes straight over the empty space to STEP 4 -- nothing appears in the gap.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "AUB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T09:00:21"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "Back to that same SKILL.md, the one with its five steps listed top to bottom. Run auto-updater on the same input twice and you get identical steps and an identical result — deterministic, as long as your input stays inside what the file describes. Push it outside — into a case the file never anticipated — and Claude has nothing written there to fall back on. This works if you value replayability you can audit by reading; it fails if you need graceful degradation on the edges the author didn't foresee.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — the same SKILL.md card, run twice side by side with identical checkmarks; then a case outside the file, a blank with nothing to match"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — same file, same result, then the edge",
+     "mechanic": "THE B01 SKILL.md CARD RETURNS, identical, its five numbered steps visible. It duplicates into two side-by-side copies, each fed the same 'input' token; both run their five steps in lockstep and land on identical green checkmarks at the end. Then a third token appears, shaped differently, outside the pattern -- it approaches the same five steps and stops short of step 1 with a small blank card: no matching step, nothing happens.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "AUB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T09:00:21"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A Skill's SKILL.md is the whole program. Claude follows it exactly — reliable inside what's written, blind past its edge.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A Skill's SKILL.md is the whole program. Claude follows it exactly — reliable inside what's written, blind past its edge.",
+      "attribution": "",
+      "sparkLine": "The file is the program."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T09:00:21"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: I'm trying to understand how Claude Skills actually run. My mental model is that a Skill is a folder with a SKILL.md file inside, and the numbered steps in that file are the whole program — Claude reads them and follows them literally. Walk me through the exact mechanism: what a Skill folder must contain at minimum for Claude to discover and load it, how Claude decides when to fire a Skill during a conversation, and what happens when the file's steps run out but the user's request keeps going. Then write me a minimal example SKILL.md — a name, a description, and three short numbered steps for a repeatable task — that I can drop into a dot-claude-slash-skills folder and see it fire. Go deeper: ask the same model to compare a Claude Skill with a Claude subagent and with an MCP server — what does each one optimize for, what does each one fail at, and where do you get burned if you reach for the wrong one?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 55,
+   "llm_exercise": {
+    "prompt": "I'm trying to understand how Claude Skills actually run. My mental model is that a Skill is a folder with a SKILL.md file inside, and the numbered steps in that file are the whole program — Claude reads them and follows them literally. Walk me through the exact mechanism: (1) what a Skill folder must contain at minimum for Claude to discover and load it, (2) how Claude decides when to fire a Skill during a conversation, (3) what happens when the file's steps run out but the user's request keeps going. Then write me a minimal example SKILL.md — a name, a description, and three short numbered steps for a repeatable task — that I can drop into a `.claude/skills/` folder and see it fire.",
+    "dig_deeper": "Go deeper: ask the same model to compare a Claude Skill with a Claude subagent and with an MCP server — what does each one optimize for, what does each one fail at, and where do you get burned if you reach for the wrong one?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "SKILLS · ANTHROPIC AGENT SKILLS",
+      "segment": "The File Is The Program.",
+      "command": "I'm trying to understand how Claude Skills actually run. My mental model: a Skill is a folder with a SKILL.md file inside, and the numbered steps in that file are the whole program — Claude reads them and follows them literally. (1) Explain what a Skill folder must contain at minimum for Claude to discover and load it. (2) Explain how Claude decides when to fire a Skill during a conversation, and what happens when the steps run out but the request keeps going. (3) Write a minimal example SKILL.md — name, description, three short numbered steps — I can drop into `.claude/skills/` and see fire.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T09:00:21"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Auto Updater. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Auto Updater. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T09:00:21"
+   }
+  }
+ ]
+}

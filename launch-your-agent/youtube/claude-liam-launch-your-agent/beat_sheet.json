@@ -20,11 +20,54 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/launch-your-agent/.claude/skills/launch-your-agent/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Help a technical founder build whatever they want on Claude Managed Agents — an internal worker",
+        "a piece of their product",
+        "a customer-facing agent",
+        "Find out what they want to build",
+        "launch it in their account"
+      ],
+      "constraints": [
+        "Interview iteratively, and prefer choices over essays. One question cluster at a time, never the whole questionnaire upfront. Whenever the answer space is enumerable…",
+        "Build what they need, scoped into versions. The starting point is one agent, newest Opus-class model, full toolset, cloud env, outcome kickoff with max_iterations: 3…",
+        "Never stop to wait — but give a heads-up early. Do everything that doesn't need their API key — the full build kit, validated payloads, the staged launch sequence…",
+        "Connectors are part of the conversation — and mockable. When an input or output lives in a SaaS (Slack, Gmail, Linear, Notion, GitHub…), name the MCP connector route…",
+        "Key hygiene. Check the shell env for ANTHROPIC_API_KEY first — if it's already there (many founders will have exported it themselves), use it without printing it.…",
+        "Honesty about capability — without underselling. If the idea needs something CMA truly can't do (live phone calls, sub-second real-time reaction), say so plainly and…",
+        "Their problem, their words. Anywhere the founder's problem or goal is written down — the brief, the build sheet problem field, the overview page header — use what they…",
+        "No timings you can't stand behind. Don't promise phase durations, don't ask the founder to estimate how long their task takes, and only quote run lengths you've verified…"
+      ],
+      "referenced_files": [
+        "references/examples-bank.md",
+        "references/interview.md",
+        "max_iterations: 3",
+        ".env",
+        "always_ask",
+        "references/mock-connectors.md",
+        "input_schema",
+        "ANTHROPIC_API_KEY",
+        "./my-agent/.env",
+        ".gitignore"
+      ],
+      "code_signals": [],
+      "sections": [
+        "Ground rules",
+        "Voice — how to talk to the founder",
+        "Working folder",
+        "Phase 1 — Interview → plan (no key needed)",
+        "Phase 2 — Stage, then launch",
+        "Phase 3 — Grade, iterate, eval",
+        "Phase 4 — Make it run without them",
+        "Fallbacks (move down one rung after two failures on a step; tell them in one sentence)",
+        "References"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T04:11:10",
+      "at": "2026-09-05T21:14:21",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +76,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is launch-your-agent. Help a technical founder build whatever they want on Claude Managed Agents — an internal worker, a piece of their product, a customer-facing agent. Find out what they want to build, scope a v0, launch it in their account, grade it, iterate, and (if it should run on a clock) put it on a scheduled deployment, with everything bigger laid out as v1/v2. Use when a founder says \"launch my agent\", \"/launch-your-agent\", \"build me a managed agent\", or wants to build something on CMA. Keywords: managed agents, CMA, founder, launch, scheduled deployment, outcome rubric.. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is launch-your-agent. Help a technical founder build whatever they want on Claude Managed Agents — an internal worker, a piece of their product, a customer-facing agent. Find out what they want to build, scope a v0, launch it in their account, grade it, iterate, and (if it should run on a clock) put it on a scheduled deployment, with everything bigger laid out as v1/v2. Use when a founder says \"launch my agent\", \"/launch-your-agent\", \"build me a managed agent\", or wants to build something on CMA. Keywords: managed agents, CMA, founder, launch, scheduled deployment, outcome rubric.. Its concrete surface area includes Help a technical founder build whatever they want on Claude Managed Agents — an internal worker; a piece of their product; a customer-facing agent. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,7 +92,7 @@
             "runningText": "reading launch-your-agent SKILL.md…",
             "output": [
               "skill: launch-your-agent",
-              "Help a technical founder build whatever they want on Claude Managed Agents — an ",
+              "Help a technical founder build whatever they want on Claude Managed Agents — an…",
               "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
@@ -63,18 +106,18 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 36.67,
+      "actual_duration_s": 45.33,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:11:10"
+        "at": "2026-09-05T21:14:21"
       }
     },
     {
       "beat_id": "B01",
       "act": "anatomy",
-      "narration_text": "A skill is a folder Claude reads before it works. This one is launch-your-agent. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is launch-your-agent. The SKILL.md contains the full instruction set — plain language, no hidden logic. It also points at references/examples-bank.md, references/interview.md, max_iterations: 3, so the skill is more than one paragraph of advice. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -113,18 +156,18 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 12.42,
+      "actual_duration_s": 20.16,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:11:10"
+        "at": "2026-09-05T21:14:21"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "launch-your-agent is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: Help a technical founder build whatever they want on Claude Managed Agents — an internal worker; a piece of their product; a customer-facing agent; Find out what they want to build. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -164,18 +207,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 18.24,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:11:10"
+        "at": "2026-09-05T21:14:21"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. launch-your-agent is a specification written as an instruction set. Claude's job: Help a technical founder build whatever they want on Claude Managed Agents — an internal worker, a p. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the design tell. Interview iteratively, and prefer choices over essays. One question cluster at a time, never the whole questionnaire upfront. Whenever the answer space is enumerable…. That is the constraint in launch-your-agent — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -186,7 +229,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Help a technical founder build whatever they want on Claude Managed Agents — an internal worker, a piece of their product, a customer-facing agent. Find out what they want to build, scope a v0, launch",
+            "body": "Interview iteratively, and prefer choices over essays. One question cluster at a time, never the whole questionnaire upfront. Whenever the answer space is enumerable…",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -196,18 +239,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 16.04,
+      "actual_duration_s": 16.6,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:11:10"
+        "at": "2026-09-05T21:14:21"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In launch-your-agent, supporting material: references/examples-bank.md, references/interview.md, max_iterations: 3, .env; sections: Ground rules, Voice — how to talk to the founder, Working folder, Phase 1 — Interview → plan (no key needed). That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Help a technical founder build whatever they want on Claude Managed Agents — an internal worker; a piece of their product; a customer-facing agent; references/examples-bank.md; references/interview.md; max_iterations: 3",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 20.39,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T21:14:21"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "launch-your-agent makes Claude execute one task reliably. The SKILL.md is the spec — Help a technical founder build whatever they want on Claude Managed Agents — an . Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "launch-your-agent makes Claude execute one task reliably. The SKILL.md is the spec — Help a technical founder build whatever they want on Claude Managed Agents — an…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -220,9 +295,10 @@
             "artifactHeading": "Claude, Launch Your Agent.",
             "artifactLines": [
               "Skill: launch-your-agent — Claude reads SKILL.md before acting",
-              "Help a technical founder build whatever they want on Claude Managed Agents — an internal w",
-              "Same input → same output, every run",
-              "Limit: only what the SKILL.md specifies"
+              "Help a technical founder build whatever they want on Claude Managed Agents — an internal…",
+              "Capabilities: Help a technical founder build whatever they want on Claude Managed Agents — an internal worker; a piece of their product; a customer-facing agent",
+              "Constraint: Interview iteratively, and prefer choices over essays. One question cluster at a time…",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -237,13 +313,13 @@
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:11:10"
+        "at": "2026-09-05T21:14:21"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to help a technical founder build whatever they want on claude managed agents — an . Read the launch-your-agent skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to help a technical founder build whatever they want on claude managed agents — an. Read the launch-your-agent skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -255,7 +331,7 @@
             "greeting": "Your turn.",
             "topic": "LAUNCH-YOUR-AGENT · ANTHROPIC SKILL",
             "segment": "Claude, Launch Your Agent.",
-            "command": "I want to help a technical founder build whatever they want on claude managed ag. Read the launch-your-agent skill and walk me through what you will do before you do it.",
+            "command": "I want to help a technical founder build whatever they want on claude managed. Read the launch-your-agent skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -274,7 +350,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:11:10"
+        "at": "2026-09-05T21:14:21"
       }
     },
     {
@@ -305,7 +381,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T04:11:10"
+        "at": "2026-09-05T21:14:21"
       }
     }
   ]

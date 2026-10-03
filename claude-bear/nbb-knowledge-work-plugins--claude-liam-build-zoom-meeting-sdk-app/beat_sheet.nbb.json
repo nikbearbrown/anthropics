@@ -1,0 +1,316 @@
+{
+ "metadata": {
+  "title": "It Doesn't Design the App. It Follows the File.",
+  "subtitle": "The Build-Zoom-Meeting-SDK-App Skill (Zoom Meeting SDK)",
+  "slug": "knowledge-work-plugins--claude-liam-build-zoom-meeting-sdk-app",
+  "topic": "BUILD-ZOOM-MEETING-SDK-APP · ZOOM MEETING SDK SKILL",
+  "purpose": "Take the build-zoom-meeting-sdk-app skill apart in the Teardown register: when Claude builds a Zoom meeting into an app, it isn't designing the integration — it's reading a file that already has the platform's exact rules written down. Name the trade-off: they optimized for platform-accuracy at the expense of scope. Land the carry-out that build-zoom-meeting-sdk-app never decides to embed a Zoom call — it hands Claude the platform's exact join rules once that decision has already been made.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/knowledge-work-plugins/youtube/claude-liam-build-zoom-meeting-sdk-app/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Extending Claude — Skills, Plugins & Connectors",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "N/A - single worked example (the build-zoom-meeting-sdk-app skill itself), named at B00 and present through NB01-NB03; no separate planted/paid-off case to pair (see SCRIPT.md six-move audit)",
+  "one_flag": "N/A - direct mechanism description throughout (see SCRIPT.md One-flag audit)",
+  "build": {
+   "at": "2026-09-02T16:02:49",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Liam here, in for Bear. You'd assume Claude designs a Zoom integration on its own — figures out the join flow, invents the waiting-room logic from scratch. It doesn't. It opens a file that already has the platform's exact rules written down. Here's what's actually happening.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "lead_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Does Claude\ndesign\nthe Zoom join\nfrom scratch?",
+      "face": "serif",
+      "fontSize": 68,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "design",
+      "replacementWords": "look up the rules for",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 10,
+      "charMs": 44,
+      "jitter": 26,
+      "seed": "nbb-build-zoom-meeting-sdk-app"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T16:02:49"
+   }
+  },
+  {
+   "beat_id": "NB01",
+   "act": "3 mechanism",
+   "narration_text": "Take it apart. A Claude skill is a folder Claude reads before it works. This one is named build-zoom-meeting-sdk-app. Inside: a RUNBOOK.md, a SKILL.md, and one folder per platform — android, electron, iOS, Linux, macOS, react-native. Six platforms, one shared reference. The file is the program — no code, just instructions Claude executes top to bottom.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A skill is a folder",
+    "graphic": {
+     "production_viz": {
+      "label": "A SKILL IS A FOLDER",
+      "chips": [
+       "RUNBOOK.md",
+       "SKILL.md",
+       "six platforms"
+      ],
+      "arrows": true,
+      "accent": [
+       1
+      ],
+      "strike": [],
+      "caption": "one shared reference, six platforms",
+      "colors": [
+       "#FFFFFF",
+       "#2A1A0E",
+       "#C8102E"
+      ]
+     },
+     "manim": "BZNB01Scene"
+    }
+   },
+   "audio_file": "mp3/beat-NB01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB01.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T16:02:49"
+   }
+  },
+  {
+   "beat_id": "NB02",
+   "act": "3 mechanism",
+   "narration_text": "Claude runs the steps in order. Read the SKILL.md, execute each step — initialize the SDK, exchange auth tokens, join the meeting, handle the waiting room, apply the platform's rules — return the result. No branching, no re-planning. If a step says branch, it branches. If a step doesn't, it doesn't. They optimized for repeatability: same inputs, same output, every time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Linear pipeline",
+    "graphic": {
+     "production_viz": {
+      "label": "LINEAR PIPELINE",
+      "chips": [
+       "read SKILL.md",
+       "run each step",
+       "return result"
+      ],
+      "arrows": true,
+      "accent": [
+       1
+      ],
+      "strike": [],
+      "caption": "no branching unless the list says so",
+      "colors": [
+       "#FFFFFF",
+       "#2A1A0E",
+       "#C8102E"
+      ]
+     },
+     "manim": "BZNB02Scene"
+    }
+   },
+   "audio_file": "mp3/beat-NB02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB02.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T16:02:49"
+   }
+  },
+  {
+   "beat_id": "NB03",
+   "act": "3 mechanism",
+   "narration_text": "Here's the trade-off. This skill is a reference, not a decision-maker. By the time Claude opens it, the choice to embed a meeting is already made — that routing happened somewhere else, upstream, before this file ever opens. Once it's open, it supplies the platform's exact rules: real meeting joins, auth and join flows, waiting-room handling, meeting-bot patterns, one platform folder at a time. What it can't do: pick the platform. What it won't do: decide whether the app needs a meeting embedded at all. They optimized for platform-accuracy at the expense of scope. This works if you already know what you're building; it fails if you're asking Claude to decide whether to build it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 32,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Reference, not decision",
+    "graphic": {
+     "production_viz": {
+      "label": "REFERENCE, NOT DECISION",
+      "chips": [
+       "already routed",
+       "platform rules",
+       "call handled"
+      ],
+      "arrows": true,
+      "accent": [
+       1
+      ],
+      "strike": [],
+      "caption": "the decision to embed happens elsewhere",
+      "colors": [
+       "#FFFFFF",
+       "#2A1A0E",
+       "#C8102E"
+      ]
+     },
+     "manim": "BZNB03Scene"
+    }
+   },
+   "audio_file": "mp3/beat-NB03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/NB03.mp4",
+    "filled_by": "manim",
+    "at": "2026-09-02T16:02:49"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Build-zoom-meeting-sdk-app doesn't decide to embed a Zoom call. It hands Claude the platform's exact join rules once that decision has already been made.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Build-zoom-meeting-sdk-app doesn't decide to embed a Zoom call. It hands Claude the platform's exact join rules once that decision has already been made.",
+      "attribution": "",
+      "sparkLine": "Rules, not decisions."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T16:02:49"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini: give it the shape of a SKILL.md for one platform's Zoom join, ask it to run the steps twice on the same inputs, then hand it a case the list clearly doesn't cover — a new SDK version, an unusual waiting-room policy — and watch exactly where the mechanism stops. Go deeper: add a step that says use your judgment. Watch whether the skill still behaves like a list of steps, or has just handed the whole platform decision back to the model.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "llm_exercise": {
+    "prompt": "I want to understand how a Claude 'skill' behaves. A skill is a folder holding a SKILL.md — a numbered list of steps Claude reads and runs top to bottom, with no judgment step. Write me a short SKILL.md for joining a Zoom meeting on one platform of your choice (android, iOS, macOS, electron, Linux, or react-native): five to seven numbered steps covering SDK initialization, auth token exchange, joining the call, handling the waiting room, and returning the result. Then run those steps twice on the same fake inputs and show the output is identical. Then hand it a case the list clearly doesn't cover — a new SDK version, an unusual waiting-room policy, an unfamiliar platform — and show me exactly where the mechanism stops.",
+    "dig_deeper": "Go deeper: add a step that says 'use your judgment if the platform behaves differently than expected.' Does the skill still behave like a list of steps — or has it just handed the whole platform decision back to the model?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "BUILD-ZOOM-MEETING-SDK-APP · ZOOM MEETING SDK SKILL",
+      "segment": "It Doesn't Design the App. It Follows the File.",
+      "command": "Write me a short SKILL.md for joining a Zoom meeting on one platform of your choice: 5–7 numbered steps covering SDK init, auth exchange, join, waiting-room handling, and return. Run it twice on the same inputs — output should be identical. Then hand it a case the list clearly doesn't cover, and show me exactly where the mechanism stops.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@NikBearBrown",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T16:02:49"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "It Doesn't Design the App. It Follows the File. Rules, not decisions. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "It Doesn't Design the App. It Follows the File. Rules, not decisions. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-02T16:02:49"
+   }
+  }
+ ]
+}

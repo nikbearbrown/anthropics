@@ -375,3 +375,56 @@ None.
 **Status: DONE** — cut exists, newer than sheet, audible (−23.8 dB).
 
 ---
+
+## 2026-08-31 — nbb-pagination-bug-dangerous-middle
+
+**Slug:** nbb-pagination-bug-dangerous-middle
+**Duration:** 286.9s (14 beats)
+**Channel:** @NikBearBrown · kokoro am_onyx (variant `nbb`, Liam-substitute per IN-FOR-BEAR LAW)
+
+### Checks fixed
+1. **Bookends (Check 2):** Old sheet carried BOTH empty B00/BVDT/BHTF/BOUT skeletons AND fully-authored NBB00/NBB01/NBB02/NBB03. Consolidated to the four canonical names; NBB* content moved into canonical slots. See REBUILD-LOG.md.
+2. **Spark lines (Check 3):** B00 greeting `"Your turn."` (a template copy-paste error — belongs to BHTF) → `"Hola, Liam"` (world-language hello + Liam persona).
+3. **Verdict (Check 4):** Authored, not stripped. Old artifactLines were ellipsis-truncated mid-sentence (`"A handoff condition is a falsifiable claim, written before the next step begins, about …"`). Rewrote all three lines as full summary sentences from body content; rewrote BVDT narration to say the verdict aloud.
+4. **Card text (Check 5):** B01 dropped a scaffolded FormBCard with `"Key point one"` placeholder items on top of the locked CARD content. Rebuilt B01 as FormACard with the real locked lines.
+5. **Your-Turn (Check 5c):** BHTF narration + command were cancer-oncology boilerplate ("cancer type or clinical scenario", "What proteins are involved") — stale scout template. Rewrote both to a real pagination-boundary exercise from this reel's own content.
+6. **Card text — Manim labels (Check 5b):** Nine Manim scenes carried narration-slice labels (`"For 247 items, page 5 comes back with 47 - the loop stops co"`, etc.) that overflowed their containers and collided (visible in `_qc_B05_mid.png`). Rewrote every label list to SHORT CATEGORY NOUNS: `["Function", "Loop", "Stop rule"]`, `["Function", "Handoff", "Caller"]`, `["Leaderboard", "Tests", "Deploy"]`, etc. Truncated in-scene Text() strings > 40 chars.
+7. **Envelope normalization (Phase 0):** dropped `locked: true`, `source_clip`, `source_audio` pointers into non-existent source-reel mp3s; dropped `actual_duration_s` (re-measured from fresh Kokoro).
+
+### Checks passing without fix
+- Punt sweep: 14/14 authored (5 Remotion patterns + 9 Manim scenes + 0 slates)
+- Card-only: 9 body beats are Manim graphics — not card-only
+- Lens: Popper (B06 falsifiable handoff-condition doctrine), Descartes (B03/B04 doubt → the `n × page + 1` case), Plato (B02 artifact-passed-tests / world-lost-item split) — 3 moves ✓
+- Brand fields: `folderLabel: "@NikBearBrown"`, `engine: "kokoro"`, `voice: "am_onyx"` ✓
+- Pacing: all beats 2.0–3.4 wps ✓
+
+### Punts authored
+Six Manim scene label-lists rewritten from narration-slice fragments to SHORT CATEGORY NOUNS (B03/B05/B06/B08/B09/B10). No PUNT costumes remain in the sheet.
+
+### Verdict
+Authored from body content (three-line artifact summarizing the function/handoff/write-first structure). Not stripped.
+
+### GATE T — FAIL (3 residual, marginal)
+After Manim re-render at 4K (`-qk`, up from initial `-ql`), font-size bump (~2.5×), scale-floor cap (0.75), and label rewrites:
+- **B02:** smallest text run 38px < floor 41px (7% below). Content is legible; sub-glyph fragment picked up.
+- **B04:** smallest text run 35px < floor 41px (14% below). Same class of finding.
+- **B08:** 2 text runs outside 5% safe box at 3840×2160 (partial-fade frames during box reveal).
+Down from 9 FAILs → 3 FAILs after fixes. Remaining failures reflect auto-generated scene template geometry that needs per-scene structural rewrite (larger base font sizes, tighter box widths, longer fade-in gates before mid-frame sampling). Not fixed this invocation.
+
+**No validator was loosened.** No `type_check.py` edit, no `--no-gate`, no exemption added.
+
+### Audio
+- Kokoro `am_onyx`, 14 beats generated cleanly, 0 failures
+- Master mean_volume: −23.9 dB (well above −40 dB floor) ✓
+- ffprobe: video 286.875s, audio 286.939s ✓ (matches within a frame)
+
+### Timestamps
+- beat_sheet.json: 2026-08-31 08:58:25
+- pagination-bug-dangerous-middle-slate.mp4: 2026-08-31 09:21:44
+- pagination-bug-dangerous-middle.mp4: 2026-08-31 09:15:22
+- Slate mp4 is 23 min newer than sheet ✓
+
+### Downgrade
+None. GATE T FAIL is reported as-is per audit rule #11.
+
+**Status: BUILT-BUT-GATE-T-FAIL** — review-cut mp4 exists, is audible, is newer than the sheet, and every beat has real narration + a rendered visual (no slates). GATE T fails on 3/14 beats with marginal min-size/overflow findings that need scene-source rewrites. The reel is watchable for review; it is NOT gate-clean.

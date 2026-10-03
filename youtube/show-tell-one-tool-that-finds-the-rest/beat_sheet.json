@@ -1,0 +1,626 @@
+{
+  "metadata": {
+    "slug": "show-tell-one-tool-that-finds-the-rest",
+    "title": "Carry One Tool That Finds the Rest",
+    "topic": "CLAUDE COOKBOOK · TOOL SEARCH",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Japanese (Konnichiwa)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "audience": "Developers building agents on the Claude API with large tool libraries, who want to know why loading every tool definition hurts and how tool search (built-in, or a custom embedding search like the cookbook's) loads only the tools Claude needs",
+    "source_doc": "anthropics/claude-cookbooks/tool_use/tool_search_with_embeddings.ipynb (every cell and output read in full 2026-09-27), checked against the raw live docs page platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool.md (sources/live_tool-search-tool-2026-09-27.md)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "Claude",
+      "Claude API",
+      "tool search",
+      "tool use",
+      "defer_loading",
+      "embeddings",
+      "semantic search",
+      "context window",
+      "tokens",
+      "agents",
+      "claude-cookbooks",
+      "Anthropic",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T14:14:45",
+      "cut": "master",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Konnichiwa. This is Liam, in for Bear. With hundreds of tools, it's tempting to ask how to fit them all into Claude's context. But each one costs room before any work starts. So the real question is how to let Claude find the tools it needs.",
+      "estimated_duration_s": 18.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'How do I fit every tool into the context?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'fit every tool into the context' -> 'let Claude find the tools it needs' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do I\nfit every tool into the context?",
+            "triggerWords": "fit every tool into the context",
+            "replacementWords": "let Claude find the tools it needs",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-one-tool-that-finds-the-rest",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T18:08:39.081739+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (how do I fit every tool into the context) and corrects it to the real one (how do I let Claude find the tools it needs).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 13.1,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 13.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T14:14:45"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "A tool: a function Claude can ask your app to run. A definition: its name, what it does, and its inputs. Context: everything Claude reads, counted in tokens. And an embedding: numbers that place text by its meaning.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "'tool' lands"
+          },
+          {
+            "at": 0.3,
+            "event": "'definition' lands"
+          },
+          {
+            "at": 0.55,
+            "event": "'context' lands"
+          },
+          {
+            "at": 0.8,
+            "event": "'embedding' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "tool",
+                "meaning": "a function Claude can ask your app to run"
+              },
+              {
+                "term": "definition",
+                "meaning": "a tool's name, what it does, and its inputs"
+              },
+              {
+                "term": "context",
+                "meaning": "everything Claude reads, counted in tokens"
+              },
+              {
+                "term": "embedding",
+                "meaning": "numbers that place text by its meaning"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T18:09:25.933109+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: four prerequisites, one line each."
+      },
+      "actual_duration_s": 12.2,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 12.208333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T14:14:45"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Say your app has hundreds of tools. Each has a definition: its name, what it does, and its inputs. Normally, every definition goes into Claude's context, on every request.",
+      "estimated_duration_s": 11.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Claude (a kraft block with a terracotta spark on a dark plinth) drops in at the left with its context tray, a low kraft open box ('Claude'); at the right a dark pegboard rises and fills with white tool cards row by row ('tools'); one card slides out and swells, and three grey bars draw on it (name, what it does, inputs) ('definition').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Claude and the context tray"
+          },
+          {
+            "at": 0.3,
+            "event": "a wall of tool cards"
+          },
+          {
+            "at": 0.6,
+            "event": "one definition: name, description, inputs"
+          }
+        ],
+        "manim": {
+          "class": "B00_Wall"
+        },
+        "motion_claim": "Claude (a kraft block with a terracotta spark on a dark plinth) drops in at the left with its context tray, a low kraft open box ('Claude'); at the right a dark pegboard rises and fills with white tool cards row by row ('tools'); one card slides out and swells, and three grey bars draw on it (name, what it does, inputs) ('definition')."
+      },
+      "actual_duration_s": 10.03,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 10.041666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:14:45"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The context fills before work begins. Anthropic's cookbook says that past about a hundred tools, this becomes impractical: more cost, more time, and the right tool is harder to find.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Card after card flies from the wall into the tray and a white pile grows past the tray's rim ('context'); the hero number lands above ('~100 tools', 'per Anthropic's cookbook').",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "every card goes into the tray"
+          },
+          {
+            "at": 0.4,
+            "event": "the pile overflows"
+          },
+          {
+            "at": 0.7,
+            "event": "~100 tools, per Anthropic's cookbook"
+          }
+        ],
+        "manim": {
+          "class": "B01_Overflow"
+        },
+        "motion_claim": "Card after card flies from the wall into the tray and a white pile grows past the tray's rim ('context'); the hero number lands above ('~100 tools', 'per Anthropic's cookbook')."
+      },
+      "actual_duration_s": 10.54,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 10.541666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:14:45"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "So Claude carries one tool instead: tool search. You still send every definition, but mark the rest defer loading. They stay out of Claude's context until a search finds them.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The pile sinks out of the tray; one small kraft block with a dark lens and a terracotta light drops into the empty tray ('tool_search'); the wall's cards fade to ghost one row at a time ('deferred').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the tray empties; one tool lands"
+          },
+          {
+            "at": 0.5,
+            "event": "the rest are marked deferred"
+          },
+          {
+            "at": 0.85,
+            "event": "they wait outside the context"
+          }
+        ],
+        "manim": {
+          "class": "B02_OneTool"
+        },
+        "motion_claim": "The pile sinks out of the tray; one small kraft block with a dark lens and a terracotta light drops into the empty tray ('tool_search'); the wall's cards fade to ghost one row at a time ('deferred')."
+      },
+      "actual_duration_s": 9.83,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 9.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:14:45"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The cookbook searches by meaning. Each definition becomes text, and a small embedding model turns it into three hundred eighty-four numbers: a point on a map. Similar tools land close together.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The wall shrinks to the top right; a pale kraft map plane on a dark plinth draws in below it ('map'); card after card drops from the wall onto the map and becomes an ink dot; the dots gather in clusters ('weather', 'finance').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the map"
+          },
+          {
+            "at": 0.45,
+            "event": "each definition becomes a point"
+          },
+          {
+            "at": 0.85,
+            "event": "similar tools land together"
+          }
+        ],
+        "manim": {
+          "class": "B03_Map"
+        },
+        "motion_claim": "The wall shrinks to the top right; a pale kraft map plane on a dark plinth draws in below it ('map'); card after card drops from the wall onto the map and becomes an ink dot; the dots gather in clusters ('weather', 'finance')."
+      },
+      "actual_duration_s": 10.86,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 10.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:14:45"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Claude calls tool search in plain words, like the cookbook's test: I need to check the weather. The query lands on the same map, and the closest points come back: get weather, get forecast, air quality.",
+      "estimated_duration_s": 14.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white query slip arcs from Claude down onto the map ('query') and becomes a terracotta dot inside the weather cluster; grey spokes draw from it to the three closest dots, which swell (three of the four weather dots; the fourth stays small) ('closest 3').",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "Claude sends a plain-words query"
+          },
+          {
+            "at": 0.55,
+            "event": "it lands on the map"
+          },
+          {
+            "at": 0.8,
+            "event": "the three closest points win"
+          }
+        ],
+        "manim": {
+          "class": "B04_Query"
+        },
+        "motion_claim": "A white query slip arcs from Claude down onto the map ('query') and becomes a terracotta dot inside the weather cluster; grey spokes draw from it to the three closest dots, which swell (three of the four weather dots; the fourth stays small) ('closest 3')."
+      },
+      "actual_duration_s": 10.9,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 10.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:14:45"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Your code sends back just their names. The API swaps each name for its full definition, and Claude calls get weather like any other tool. Tools it didn't find never entered its context.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three white name tags rise from the three winning dots and arc into the tray ('names'); in the tray each tag grows into a full white card beside tool_search ('definitions'); the first card gets an ink check; the ghost wall stays outside.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "names only come back"
+          },
+          {
+            "at": 0.45,
+            "event": "the API expands them into full cards"
+          },
+          {
+            "at": 0.75,
+            "event": "Claude calls get_weather"
+          }
+        ],
+        "manim": {
+          "class": "B05_Found"
+        },
+        "motion_claim": "Three white name tags rise from the three winning dots and arc into the tray ('names'); in the tray each tag grows into a full white card beside tool_search ('definitions'); the first card gets an ink check; the ghost wall stays outside."
+      },
+      "actual_duration_s": 10.88,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 10.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:14:45"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "You don't have to build the search yourself. The live docs offer a built-in tool search on Anthropic's side: one version matches patterns, one takes plain queries. The cookbook adds search by meaning.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The map and cards clear; beside the kraft tool_search block, a dark block with two terracotta lights drops onto the tray ('built-in'); the kraft block gets a small map face ('custom'); from each, one card flies back from the wall to the tray.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "the built-in search, two versions"
+          },
+          {
+            "at": 0.7,
+            "event": "the custom one searches by meaning"
+          }
+        ],
+        "manim": {
+          "class": "B06_BuiltIn"
+        },
+        "motion_claim": "The map and cards clear; beside the kraft tool_search block, a dark block with two terracotta lights drops onto the tray ('built-in'); the kraft block gets a small map face ('custom'); from each, one card flies back from the wall to the tray."
+      },
+      "actual_duration_s": 11.14,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 11.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:14:45"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The docs suggest tool search from ten tools up. With fewer, or when every tool is used on every request, just load them. And keep your three to five most used tools loaded, ready without a search.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A short row of four cards slides into the tray and fits, and an ink check lands ('10+ tools' sits over the wall as the threshold); the four leave, and three favourite cards settle in the tray beside tool_search for good ('always loaded'); the ghost wall stays deferred.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "ten tools and up"
+          },
+          {
+            "at": 0.45,
+            "event": "fewer: just load them"
+          },
+          {
+            "at": 0.8,
+            "event": "keep three to five loaded"
+          }
+        ],
+        "manim": {
+          "class": "B07_When"
+        },
+        "motion_claim": "A short row of four cards slides into the tray and fits, and an ink check lands ('10+ tools' sits over the wall as the threshold); the four leave, and three favourite cards settle in the tray beside tool_search for good ('always loaded'); the ghost wall stays deferred."
+      },
+      "actual_duration_s": 11.07,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 11.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:14:45"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. In Claude Code, paste this. Read the live docs for the tool search tool. Then write a Python script with twenty mock tools, including get weather, all set to defer loading, plus a custom tool search that ranks them by embeddings. Ask about the weather in Tokyo and print each tool Claude calls, in order, with each call's input tokens. Then rerun it with all twenty loaded. Then check: did Claude call tool search before get weather? And did the first call use fewer input tokens than with all twenty loaded?",
+      "estimated_duration_s": 37.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "CLAUDE CODE · YOUR TURN",
+            "segment": "Carry One Tool That Finds the Rest",
+            "command": "Read the live docs for the tool search tool. Then write a Python script with twenty mock tools, including get_weather, all set to defer loading, plus a custom tool_search that ranks them by embeddings. Ask about the weather in Tokyo and print each tool Claude calls, in order, with each call's input tokens. Then rerun it with all twenty loaded.",
+            "runningText": "paste this into Claude Code…",
+            "output": [
+              "Check: tool_search called before get_weather?",
+              "Check: fewer input tokens on the first call?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T18:10:29.565755+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 26.28,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 26.291666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T14:14:45"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Carry One Tool That Finds the Rest. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Carry One Tool That Finds the Rest",
+            "slug": "show-tell-one-tool-that-finds-the-rest",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T18:10:44.502013+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.86,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T14:14:45"
+      }
+    }
+  ]
+}

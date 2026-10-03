@@ -1,0 +1,305 @@
+{
+ "metadata": {
+  "title": "Claude, Catalyst Calendar.",
+  "slug": "financial-services--claude-liam-catalyst-calendar",
+  "topic": "CATALYST-CALENDAR · CLAUDE SKILLS",
+  "purpose": "Teardown redo of claude-liam-catalyst-calendar for @NikBearBrown: take the catalyst-calendar skill apart, explain what actually runs (a folder + a SKILL.md read linearly), and judge the reproducibility-over-adaptability trade the design makes.",
+  "skill": "hai-simple",
+  "register": "Teardown",
+  "audience": "NikBearBrown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "claude",
+  "ground": "#F3EBDD",
+  "channel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "folderLabel": "@HumanitariansAI",
+  "in_for_bear": true,
+  "playlist": "Claude Basics",
+  "modelLabel": "Opus 4.8",
+  "mode": "redo",
+  "source_sheet": "/Users/nik/Documents/books/anthropics/financial-services/youtube/claude-liam-catalyst-calendar/beat_sheet.json",
+  "source_register": "Plain",
+  "carry_out": "A Skill doesn't make Claude smarter — it makes Claude follow your steps, in order, every time.",
+  "build": {
+   "at": "2026-09-01T09:30:57",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer — cold open",
+   "narration_text": "People ask how the catalyst-calendar app tracks events on its own. Liam here, in for Bear. Here's what's actually happening — it isn't an app. It's a skill: a folder Claude reads before it works. So the real question is how the catalyst-calendar skill tracks anything.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "How does the\ncatalyst-calendar app\ntrack events?",
+      "triggerWords": "app",
+      "replacementWords": "skill",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "align": "center",
+      "face": "serif"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T09:30:57"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "anatomy",
+   "narration_text": "Here's the anatomy. The whole thing is a folder — this one's called catalyst-calendar — and inside it sits a single SKILL.md. That file is the instruction set, written in plain markdown a person can read. No hidden logic, no clever routing layer, no compiled binary calling the shots. Claude opens the file, reads it, then acts. They optimized for transparency at the expense of concealment. The file isn't a config for the program. The file is the program.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "SkillTeardownAnatomy",
+     "props": {
+      "skillName": "catalyst-calendar",
+      "eyebrow": "SKILL · ANATOMY",
+      "title": "A skill is a folder.",
+      "files": [
+       {
+        "indent": 1,
+        "icon": "📄",
+        "name": "SKILL.md",
+        "size": "3k",
+        "accent": true
+       }
+      ],
+      "calloutText": "The SKILL.md is the instruction set.",
+      "calloutSub": "1 file total.",
+      "sparkLine": "The file is the program."
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T09:30:57"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "pipeline",
+   "narration_text": "Here's the actual machinery. The pipeline is just the Steps section of that SKILL.md. Claude walks it top to bottom, executes each step, moves to the next. Linear — no branching unless the step itself says to branch. They optimized for reproducibility at the expense of cleverness. It isn't choosing what to do. It's obeying a list.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "SkillTeardownPipeline",
+     "props": {
+      "eyebrow": "SKILL · PIPELINE",
+      "title": "How the skill works.",
+      "inputLabel": "YOUR REQUEST",
+      "outputLabel": "RESULT",
+      "phases": [
+       {
+        "label": "Read SKILL.md",
+        "desc": "load the instruction set",
+        "accent": true
+       },
+       {
+        "label": "Execute",
+        "desc": "run each step in order",
+        "accent": false
+       },
+       {
+        "label": "Return output",
+        "desc": "deliver the result",
+        "accent": false
+       }
+      ],
+      "footerNote": "Linear execution.",
+      "sparkLine": "Input in. Output out."
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T09:30:57"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "mechanism + scope",
+   "narration_text": "So what does this particular list tell Claude to do? Build and maintain a calendar of upcoming catalysts across a coverage universe — earnings dates, conferences, product launches, regulatory decisions, macro events. That's the whole scope. Because Claude follows exactly what's written, two runs on the same universe produce the same calendar. That's the strength. It's also the limit. Anything the page doesn't name — a private industry event, a court date the author forgot to list — will not appear. The output is the page, executed. Nothing more.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 25,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "SkillTeardownMechanism",
+     "props": {
+      "eyebrow": "SKILL · MECHANISM",
+      "heading": "What the page says, exactly.",
+      "body": "Build and maintain a catalyst calendar.",
+      "sparkLine": "Same page, same result, every run."
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T09:30:57"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "carry-out",
+   "narration_text": "A Skill doesn't make Claude smarter — it makes Claude follow your steps, in order, every time.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A Skill doesn't make Claude smarter — it makes Claude follow your steps, in order, every time.",
+      "attribution": "",
+      "sparkLine": "Steps, not smarts."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T09:30:57"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. Ask it to draft a three-step SKILL.md for building a weekly catalyst calendar — earnings dates, conferences, product launches, regulatory decisions, macro events — and then, before it produces any calendar, walk you through each step it's about to execute and in what order. Watching it name the steps before it starts is what shows you the mechanism is real: it's obeying a page, not improvising. Go deeper: change 'weekly' to 'daily' and ask which steps have to be rewritten, which stay identical, and where the skill still misses catalysts because the page never named that case. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 33,
+   "llm_exercise": {
+    "prompt": "I want to understand how a Claude Skill actually runs. A Skill is a folder Claude reads before it works — inside sits a SKILL.md that holds the full instruction set in plain markdown, and Claude executes those steps linearly, with no branching unless a step says to. Draft me a three-step SKILL.md for building a weekly catalyst calendar covering earnings dates, conferences, product launches, regulatory decisions, and macro events. Before you produce any calendar, walk me through each step you're about to execute, in order — the exact inputs it reads, the action it takes, and the output it hands to the next step. Then execute those steps against a small example coverage universe of five public U.S. tech companies for the coming week.",
+    "dig_deeper": "Go deeper: change 'weekly' to 'daily' and describe exactly which steps in your SKILL.md have to be rewritten, which stay identical, and where a well-scoped skill still misses catalysts because the page never named that case."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CATALYST-CALENDAR · CLAUDE SKILLS",
+      "segment": "Your Turn",
+      "command": "Draft a three-step SKILL.md for a weekly catalyst calendar (earnings dates, conferences, product launches, regulatory decisions, macro events). Before you produce any calendar, walk me through each step you're about to execute, in order — inputs, action, output — then run it against five public U.S. tech companies for the coming week.",
+      "runningText": "paste this into Claude…",
+      "output": [],
+      "folderLabel": "@HumanitariansAI",
+      "modelLabel": "Opus 4.8",
+      "effortLabel": "High"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T09:30:57"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro — NikBearBrown",
+   "narration_text": "Claude, Catalyst Calendar. Liam, in for Bear. Brutalist dot art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Catalyst Calendar. Liam, in for Bear. www.brutalist.art",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-09-01T09:30:57"
+   }
+  }
+ ]
+}

@@ -1,7 +1,16 @@
 import sys, json, pathlib, numpy as np
-sys.path.insert(0, str(
-    pathlib.Path(__file__).resolve().parents[3] / "vox/aspects/explainer/vox-explainer/manim"
-))
+# Reel lives under books/anthropics/youtube/…/<reel>/vox_scenes.py; the vox
+# library is at bear-textbooks/books/vox/aspects/explainer/vox-explainer/manim.
+_HERE = pathlib.Path(__file__).resolve()
+for _up in range(3, 9):
+    _cand = _HERE.parents[_up] / "books" / "vox" / "aspects" / "explainer" / "vox-explainer" / "manim"
+    if _cand.is_dir():
+        sys.path.insert(0, str(_cand))
+        break
+    _cand2 = _HERE.parents[_up] / "vox" / "aspects" / "explainer" / "vox-explainer" / "manim"
+    if _cand2.is_dir():
+        sys.path.insert(0, str(_cand2))
+        break
 from vox_graphics import *
 INK="#2A1A0E"; CREAM="#FFFFFF"; CRIMSON="#C8102E"; SLATE="#545454"; GOLD="#F6D8DC"
 DUR = {}

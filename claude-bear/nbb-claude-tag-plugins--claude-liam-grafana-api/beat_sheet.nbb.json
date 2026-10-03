@@ -1,0 +1,293 @@
+{
+ "metadata": {
+  "title": "Claude, Grafana API.",
+  "slug": "claude-tag-plugins--claude-liam-grafana-api",
+  "topic": "CLAUDE BASICS · GRAFANA API SKILL",
+  "purpose": "Take apart what a Claude skill actually is when the target is an outside REST API. Explain why Grafana's API punishes wrong assumptions silently (three time formats, per-endpoint role checks, errors hidden inside HTTP 200 responses, a version-tagged dashboard write, a UI-lock header on provisioning), evaluate the choice to make the skill a map-of-traps rather than a tutorial, and name what that choice covers and what it leaves for the reader.",
+  "skill": "hai-simple",
+  "register": "Teardown",
+  "brand": "hai-fellows",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "bookend_exempt": [
+   "cold-open"
+  ],
+  "one_flag": "N/A — every claim in this reel is carried directly from the source Teardown's own stated facts about the grafana-api skill, not an inference this build is making",
+  "gate_c": "SIGNED — CARRY-OUT.md",
+  "gate_h": "N/A — hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "redo_of": "anthropics/claude-tag-plugins/youtube/claude-liam-grafana-api/beat_sheet.json (Teardown, 7 beats, fully-written narration — no source_skill file present on this machine, see QUESTION.md)",
+  "build": {
+   "at": "2026-08-31T16:39:55",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's the wrong guess up front. Claude's training set has a lot of Grafana in it, so the assumption is Claude already knows Grafana's API. It doesn't — not the way this reel needs it to. It gets shown, in a file it reads before acting. So what does that file actually have to spell out to keep Claude from tripping?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types the naive framing, hesitates on 'KNOWS', corrects to 'has to be shown', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude already\nKNOWS how APIs\nlike Grafana\nwork, right?",
+      "face": "serif",
+      "fontSize": 80,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "KNOWS",
+      "replacementWords": "has to be shown",
+      "mistakeRate": 8,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 50,
+      "jitter": 28,
+      "seed": "hai-grafana-api"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md. Writer types the newcomer's wrong-guess word 'KNOWS' (implying Claude already possesses this from training), hesitates, corrects to 'has to be shown' -> lands 'Claude already has to be shown how APIs like Grafana work, right?'. The wrong guess is picked up directly by B01's 'file it reads before acting' framing. Narration is 36 words + lead_silence_s 0.8, giving the typing a >=9s window (TIMING LAW).",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T16:39:55"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "anatomy",
+   "narration_text": "Here's what's actually happening under the surface. Grafana's REST API uses three different time formats depending on which endpoint you're hitting — and picking the wrong one doesn't return an error. It comes back empty. The datasource query endpoint and annotations both want Unix milliseconds. State-history wants Unix seconds. Silences want RFC-3339 — and the example command only works with GNU date; macOS's built-in date needs a different flag. That's the first design read: they optimized each subsystem for its own convenience, and pushed the cost of remembering which is which onto the caller. Every request also carries a role — Viewer, Editor, or Admin — and a 403 means the identity is missing the role that call needs. Reading dashboards and querying data only takes Viewer; writing alert rules or silences takes Editor or higher. Datasource query responses don't come back as raw Prometheus JSON either — they come back wrapped in Grafana's own frame format, and a failure lands inside the successful response, in results dot ref-id dot error, with the HTTP status still reading 200. They chose one response shape for every backend at the expense of a failure that can look like a success. There's also a one-line helper that wraps the bearer token for you — but it only lives for the session, it isn't saved anywhere. That's the security choice: nothing on disk. The cost is you re-do it every shell.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 70,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "GrafanaApiAnatomy",
+     "props": {
+      "sparkLine": "Three time formats. Same API, wrong format returns empty, not an error."
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T16:39:55"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "design",
+   "narration_text": "Alert rules aren't one thing here — they live on two separate surfaces, and the split is a design choice. The Prometheus API gives live state — firing, pending, or inactive — and it's read only. The provisioning API gives the definition — the query, the condition, the labels — with full create, update, and delete. But anything written through provisioning is locked in the Grafana UI unless the request carries a header telling Grafana to disable that lock. That's the trade: they made the API the source of truth by default, at the expense of a UI editor who can no longer touch what the API touched. Dashboards work differently again. There's no partial update — you GET the whole thing, change it, POST the whole thing back. Leave out the version number and Grafana returns a 412 conflict instead of guessing which copy wins. That's optimistic concurrency, on purpose: two writers can't stomp each other silently. Datasource queries fan out to the underlying database on every single call, so the design here is to batch several queries into one request instead of looping separate calls. And the annotations endpoint has no page parameter at all — for a long time window, the fix is narrowing the window, not paging through it. They chose a simpler API surface at the expense of the caller who has to shape the window themselves.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 65,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "GrafanaApiDesign",
+     "props": {
+      "sparkLine": "Two alert surfaces: live state vs. definitions. Dashboards: full replace, not patch."
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T16:39:55"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "5 both directions",
+   "narration_text": "So does having this file mean Claude never trips on Grafana's API? Honestly, no. The map only covers what the map marks. Where the file spells something out plainly — the time-format warning up front, the exact field to check on a datasource error — Claude follows it and skips the mistake entirely. Where it's one line, or buried after the read-only examples, Claude can still get it wrong the same way a person skimming the same page would. This works if you value a short, scannable skill file that names the sharpest traps up front; it fails if you needed exhaustive coverage of every corner.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Two columns: what the skill spells out plainly, what it leaves easy to miss — no verdict frame, per-item facts only",
+    "remotion": {
+     "pattern": "MedhavyTwoColumnCard",
+     "props": {
+      "sparkLine": "Clear traps get dodged. Buried ones don't.",
+      "leftHeader": "documented plainly",
+      "leftItems": [
+       "time-format warning leads, before the first operation",
+       "two alert surfaces given separate endpoints, separate verbs",
+       "ds/query error named exactly: results.<refId>.error, even at HTTP 200",
+       "dashboard's 412 version conflict comes with two stated fixes"
+      ],
+      "rightHeader": "easy to miss",
+      "rightItems": [
+       "grafana() helper is session-only — not a saved script",
+       "GNU vs BSD date gap for silences is one code comment",
+       "the provisioning UI-lock header appears after the read examples",
+       "the literal \"grafana\" path segment reads like a placeholder — no callout"
+      ]
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T16:39:55"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A skill doesn't make Claude know an API. It gives Claude a map of where the traps are — and Claude only avoids the ones the map actually marks.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A skill doesn't make Claude know an API. It gives Claude a map of where the traps are — and Claude only avoids the ones the map actually marks.",
+      "attribution": "",
+      "sparkLine": "A map, not knowledge — and only where it's marked.",
+      "citation": ""
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T16:39:55"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Paste this into Claude, ChatGPT, or Gemini. I'm about to use Claude to talk to Grafana's REST API for the first time. Give me a one-page pre-flight card I should read before I run any command: which endpoints use which time format — Unix milliseconds, Unix seconds, or RFC-3339; which endpoints require which role — Viewer, Editor, or Admin; how to tell a partial failure from a total one, including where the error hides when HTTP still returns 200; and which write endpoints lock the resource in the Grafana UI unless a specific header is set. Be concrete — name the endpoint paths, the exact field names, and the header. Then go deeper: ask the same model to draft a Claude skill file for a different observability API you use — Datadog, Honeycomb, or New Relic — that names the traps up front the way the grafana-api skill names Grafana's, and compare where the two APIs made opposite design calls.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 52,
+   "llm_exercise": {
+    "prompt": "I'm about to use Claude to talk to Grafana's REST API for the first time. Give me a one-page pre-flight card I should read before I run any command: (1) which endpoints use which time format — Unix milliseconds, Unix seconds, or RFC-3339; (2) which endpoints require which role — Viewer, Editor, or Admin; (3) how to tell a partial failure from a total one, including where the error hides when HTTP still returns 200; and (4) which write endpoints lock the resource in the Grafana UI unless a specific header is set. Be concrete — name the endpoint paths, the exact field names, and the header. If Grafana's docs are the source of truth, note where I should double-check each item.",
+    "dig_deeper": "Go deeper: ask the same model to draft a Claude skill file for a different observability API you use — Datadog, Honeycomb, or New Relic — that names the traps up front the way the grafana-api skill names Grafana's, and compare where the two APIs made opposite design calls."
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE BASICS · GRAFANA API SKILL",
+      "segment": "A Map, Not Knowledge.",
+      "command": "I'm about to use Claude to talk to Grafana's REST API for the first time. Give me a one-page pre-flight card before I run any command: (1) which endpoints use which time format (ms, s, RFC-3339); (2) which endpoints require which role (Viewer/Editor/Admin); (3) how to tell a partial failure from a total one — including where the error hides when HTTP still returns 200; (4) which write endpoints lock the resource in the UI unless a specific header is set. Name the paths, the exact field names, and the header.",
+      "runningText": "paste this into Claude…",
+      "output": [],
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T16:39:55"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Grafana API. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Grafana API. Liam, in for Bear.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-31T16:39:55"
+   }
+  }
+ ]
+}

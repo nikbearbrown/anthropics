@@ -1,0 +1,212 @@
+#!/usr/bin/env python3
+"""author_sheet.py — cc-claude-md-length (cc-explainer · Claude Code 101 · tier 01, film 02)
+"I Tried to Break CLAUDE.md by Making It Long." Every block traces to SESSION.md (six real fresh runs;
+on-screen runs are trial 2 of each length). Liam, in for Bear, on every beat."""
+import json, os
+SLUG="cc-claude-md-length"; TITLE="I Tried to Break CLAUDE.md by Making It Long"; TOPIC="CLAUDE CODE 101"; LIAM="am_onyx"; WPS=2.9
+ASK=("Add a \"clear NAME\" command that empties a student's scores but keeps the student. Follow this repo's conventions "
+     "and run the tests when you are done.")
+beats=[]
+def est(t): return round(len(t.split())/WPS+0.9,1)
+def B(bid, act, lane, voice, narration, element, shot, show, **extra):
+    b={"beat_id":bid,"act":act,"lane":lane,"narration_text":narration,"estimated_duration_s":est(narration),"voice":voice,"engine":"kokoro",
+       "voice_kokoro":voice,"new_visual_element":element,"shot":shot,"show":show}; b.update(extra); beats.append(b)
+def R(pattern, props, motion="type", **shot_extra):
+    s={"type":"REMOTION","source":"own","motion":motion,"remotion":{"pattern":pattern,"props":props,"rendered":{"out":"","at":""}}}; s.update(shot_extra); return s
+def writer(text, trig, rep, seed):
+    return {"text":text,"triggerWords":trig,"replacementWords":rep,"face":"serif","fontSize":78,"align":"center","ink":"#F2F0E9","accent":"#D97757","bg":"#1F1E1B","seed":seed,
+            "charMs":22,"hesitateBetween":6,"hesitateWithin":1,"mistakeRate":5,"jitter":20}
+def session(title, mode, blocks, cues, mascot="auto"): return {"title":title,"mode":mode,"blocks":blocks,"cues":cues,"mascot":mascot}
+
+B("B00","COLD OPEN","TERMINAL",LIAM,
+  "This is Liam, in for Bear. The advice everywhere is: keep CLAUDE.md short, because a long one gets ignored. I wanted to see it get ignored. "
+  "So: one rule that's easy to skip — every write to the grades file must call audit — one task that tempts you to skip it, "
+  "and three briefings: fourteen lines, three hundred seventy, and a thousand and sixty-six, the rule buried deeper each time. Same ask, fresh session, every time.",
+  "CCSession — the ask types in the short-file repo; the first Reads",
+  R("CCSession", session("gradebook · CLAUDE.md 14 lines","accept-edits",[
+      {"type":"prompt","text":ASK,"cue":0,"typeDuration":110},
+      {"type":"status","verb":"Reading","elapsed":"0m 03s","tokens":"16.1k tokens"},
+      {"type":"tool","name":"Read","arg":"src/gradebook.py","state":"done"},
+      {"type":"tool","name":"Read","arg":"tests/test_gradebook.py","state":"done"},
+      {"type":"tool","name":"Read","arg":"src/audit.py","state":"done"},
+  ],[0,130,170,200,230])),
+  [{"at":0.05,"event":"The ask types"},{"at":0.6,"event":"Three Reads"}])
+
+B("BIDEA","THE IDEA","IDEA",LIAM,
+  "Here's the idea of this film. Everyone says a long CLAUDE.md gets ignored. I tried to make that happen — one rule, buried at line nine hundred twenty-five of a thousand-line file, "
+  "six fresh sessions. It was obeyed every time. What a long file actually costs is tokens: every session reads all of it, before you've said a word. "
+  "And it obeys the lines you forgot you wrote.",
+  "BrutalistHesitantWriter — 'ignored' reconsidered into 'expensive'",
+  R("BrutalistHesitantWriter", writer("A long CLAUDE.md gets ignored.\nI buried one rule at line 925.\nSix fresh sessions. Six times obeyed.\nThe cost was tokens, not obedience.","ignored","expensive",SLUG), motion="type",
+    leaves_terminal_because="the idea of the film is not in any session; the writer types it and corrects the one word the film exists to fix"),
+  [{"at":0.05,"event":"Writer starts"},{"at":0.25,"event":"'ignored' → 'expensive'"},{"at":0.85,"event":"Last line"}])
+
+B("BDEFS","DEFINITIONS","CARD",LIAM,
+  "Five words before we start. Rule: one line in CLAUDE.md the code must follow — here, call audit after every write. Fresh session: a new run with no memory of the last; it reads CLAUDE.md again. "
+  "Tokens: the units the model reads and writes; a session's cost is counted in them. Context: everything the model has read this session — CLAUDE.md lands there first. "
+  "Trial: the same ask run again. One run proves nothing.",
+  "CCDefinitions — five terms",
+  R("CCDefinitions",{"title":"TERMS IN THIS FILM","terms":[
+      {"term":"rule","meaning":"one line in CLAUDE.md the code must follow — here: call audit() after every write"},
+      {"term":"fresh session","meaning":"a new run with no memory of the last one; it reads CLAUDE.md again"},
+      {"term":"tokens","meaning":"the units the model reads and writes; a session's cost is counted in them"},
+      {"term":"context","meaning":"everything the model has read this session — CLAUDE.md lands there first"},
+      {"term":"trial","meaning":"the same ask run again; one run proves nothing"}],
+    "startCue":12,"rowGap":48}, motion="drawon",
+    leaves_terminal_because="definitions for a chat-window audience"),
+  [{"at":0.05,"event":"First term"},{"at":0.5,"event":"Terms land"},{"at":0.9,"event":"Hold"}])
+
+B("B01","THE THREE FILES","SHELL",LIAM,
+  "Three briefings. Same commands, same architecture, same rule. Short: the rule is on line eight. Long: line two twenty-nine, under code style, git etiquette, error handling, testing. "
+  "Extra long: line nine twenty-five, after twelve retrospectives of filler I generated to bury it. The filler is on purpose. The test is whether the rule survives the noise.",
+  "CCPlainShell — wc and grep on the three files",
+  R("CCPlainShell",{"title":"zsh — ~/evidence","lines":[
+      "$ wc -l CLAUDE.md.short CLAUDE.md.long CLAUDE.md.xlong",
+      "      13 CLAUDE.md.short",
+      "     370 CLAUDE.md.long",
+      "    1066 CLAUDE.md.xlong",
+      "$ grep -n \"must call\" CLAUDE.md.short CLAUDE.md.long CLAUDE.md.xlong",
+      "CLAUDE.md.short:8:- **Every function that writes grades.json must call …",
+      "CLAUDE.md.long:229:- **Every function that writes grades.json must call …",
+      "CLAUDE.md.xlong:925:- **Every function that writes grades.json must call …"],
+    "startCue":12,"lineGap":24}, motion="type",
+    leaves_terminal_because="three files across three repos, compared in a plain shell; no single session contains them"),
+  [{"at":0.05,"event":"wc → 13, 370, 1066"},{"at":0.55,"event":"grep → lines 8, 229, 925"}])
+
+B("B02","RUN 1 — 14 LINES","TERMINAL",LIAM,
+  "Fourteen lines. It reads three files, edits two, runs the tests: three pass. And the sentence I'm watching for: save, then audit name clear. Rule followed. "
+  "Thirty seconds. Sixteen thousand tokens of new context.",
+  "CCSession — short: Edit ×2, tests OK, the audit sentence",
+  R("CCSession", session("gradebook · CLAUDE.md 14 lines","accept-edits",[
+      {"type":"tool","name":"Edit","arg":"src/gradebook.py","state":"done"},
+      {"type":"tool","name":"Edit","arg":"tests/test_gradebook.py","state":"done"},
+      {"type":"tool","name":"Bash","arg":"python3 tests/test_gradebook.py","state":"done"},
+      {"type":"text","text":"Ran 3 tests in 0.003s — OK"},
+      {"type":"text","text":"All 3 tests pass. Added `clear(name)`"},
+      {"type":"text","text":"… empties the list, then `save` +"},
+      {"type":"text","text":"`audit(name, \"clear\")`, wired it into"},
+      {"type":"text","text":"the dispatch dict …"},
+  ],[0,30,60,90,120,145,170,195], mascot="off"), motion="drawon"),
+  [{"at":0.05,"event":"Edit · Edit · tests"},{"at":0.5,"event":"'save + audit(name, \"clear\")'"}])
+
+B("B03","RUN 2 — 370 LINES","TERMINAL",LIAM,
+  "Three hundred seventy lines. Same reads, same edits, tests pass — and it calls audit, per the rule, and quotes the rule back. "
+  "It also honoured a line I'd forgotten: keep the dict in the order commands were added, not alphabetical. Forty-seven seconds. Twenty-one thousand tokens. "
+  "In the other long trial it went further and updated the command list inside CLAUDE.md itself, because a line on page two said to.",
+  "CCSession — long: tests OK; the rule quoted back; the forgotten line honoured",
+  R("CCSession", session("gradebook · CLAUDE.md 370 lines","accept-edits",[
+      {"type":"tool","name":"Edit","arg":"src/gradebook.py","state":"done"},
+      {"type":"tool","name":"Edit","arg":"tests/test_gradebook.py","state":"done"},
+      {"type":"tool","name":"Bash","arg":"python3 tests/test_gradebook.py","state":"done"},
+      {"type":"text","text":"Ran 3 tests in 0.003s — OK"},
+      {"type":"text","text":"Calls `audit(name, \"clear\")` immediately"},
+      {"type":"text","text":"after `save(data)`, per the rule"},
+      {"type":"text","text":"Added to the dispatch dict at the end"},
+      {"type":"text","text":"(order commands were added, not"},
+      {"type":"text","text":"alphabetical)"},
+  ],[0,30,60,90,120,145,185,205,225], mascot="off"), motion="drawon"),
+  [{"at":0.05,"event":"Edit · Edit · tests"},{"at":0.45,"event":"'per the rule'"},{"at":0.75,"event":"'order commands were added'"}])
+
+B("B04","RUN 3 — 1,066 LINES","TERMINAL",LIAM,
+  "A thousand and sixty-seven lines, the rule at nine twenty-five. It says what it's going to do before it does it: audit after save, missing-student branch. "
+  "Tests pass. Rule followed, again. Forty-nine seconds. Thirty-eight thousand tokens of context before the first edit — two and a half times the short file.",
+  "CCSession — xlong: the plan sentence names the rule; tests OK",
+  R("CCSession", session("gradebook · CLAUDE.md 1,066 lines","accept-edits",[
+      {"type":"tool","name":"Read","arg":"src/gradebook.py","state":"done"},
+      {"type":"text","text":"I've read the code and tests. Now I'll add"},
+      {"type":"text","text":"`clear(name)` following the `remove` pattern"},
+      {"type":"text","text":"(audit after save, missing-student branch)"},
+      {"type":"tool","name":"Edit","arg":"src/gradebook.py","state":"done"},
+      {"type":"tool","name":"Edit","arg":"tests/test_gradebook.py","state":"done"},
+      {"type":"tool","name":"Bash","arg":"python3 tests/test_gradebook.py","state":"done"},
+      {"type":"text","text":"Ran 3 tests in 0.002s — OK"},
+  ],[0,30,50,70,110,140,170,200], mascot="off"), motion="drawon"),
+  [{"at":0.05,"event":"'audit after save' — before the edit"},{"at":0.6,"event":"Edit · Edit · tests OK"}])
+
+B("B05","VERIFY","SHELL",LIAM,
+  "Check it, across the three diffs: audit name clear, once in each. Six trials in all, counting the ones I ran twice: six for six. "
+  "Then the receipt — new context per session: sixteen thousand, twenty-one, thirty-eight. The rule didn't degrade. The bill did.",
+  "CCPlainShell — grep across the diffs; the token receipt",
+  R("CCPlainShell",{"title":"zsh — ~/evidence","lines":[
+      "$ grep -c 'audit(name, \"clear\")' diff-short-2.patch diff-long-2.patch diff-xlong-2.patch",
+      "diff-short-2.patch:1",
+      "diff-long-2.patch:1",
+      "diff-xlong-2.patch:1",
+      "$ python3 -c \"…trials.json…\"",
+      "short  trial 2   30.2s  new context  16137 tokens  rule followed",
+      "long   trial 2   47.4s  new context  21511 tokens  rule followed",
+      "xlong  trial 2   49.1s  new context  38505 tokens  rule followed"],
+    "startCue":12,"lineGap":24}, motion="type",
+    leaves_terminal_because="checks across three repos' diffs and the run receipts; no single session contains them"),
+  [{"at":0.05,"event":"grep → 1, 1, 1"},{"at":0.55,"event":"16k → 21k → 38k"}])
+
+B("B06","CONDUCT — THE BOONDOGGLE SCORE","TERMINAL",LIAM,
+  "Who did what. Step one, mine: one rule, one tempting task, three lengths — that's the experiment. Claude did the short run; the handoff was the audit line in the diff, and it was there. "
+  "Step three, the dangerous middle: reading each diff for that one line, not the summary that says all tests pass. Claude did the long and extra-long runs, same handoff, met — plus rules I'd forgotten. "
+  "Then interpretive judgment: the claim was ignored; the data says expensive. And tool orchestration: two trials per length, because one run proves nothing. Executive integration, zero. One question, one answer.",
+  "CCBoondoggleScore — six steps",
+  R("CCBoondoggleScore",{"system":"one rule · three lengths · six runs","steps":[
+      {"n":1,"phase":"F","labor":"human","capacity":"PF","text":"One rule, one tempting task, three lengths"},
+      {"n":2,"phase":"C","labor":"claude","text":"Short: clear() + audit + test","handoff":"audit(name, \"clear\") in the diff; tests pass","dependsOn":[1]},
+      {"n":3,"phase":"C","labor":"human","capacity":"PA","text":"Read each diff for the audit line","dependsOn":[2]},
+      {"n":4,"phase":"C","labor":"claude","text":"Long, xlong: same — plus rules I forgot","handoff":"audit line present; tests pass","dependsOn":[3]},
+      {"n":5,"phase":"H","labor":"human","capacity":"IJ","text":"The claim said ignored; the data says expensive","dependsOn":[4]},
+      {"n":6,"phase":"I","labor":"human","capacity":"TO","text":"Two trials per length — one run proves nothing","dependsOn":[1]},
+  ],"dangerousMiddle":3,"distribution":True,"stepGap":22}, motion="drawon"),
+  [{"at":0.05,"event":"Header"},{"at":0.4,"event":"Step 3 rings"},{"at":0.9,"event":"Tally"}])
+
+B("B07","HUMAN — THE LEDGER","TERMINAL",LIAM,
+  "So what was mine. I must test the claim, not repeat it. I must read the diff for the rule, every run. I must know what every line in the file costs — because every session pays for it. "
+  "I should run it twice before I believe it. Claude can find a rule at line nine twenty-five and obey it. It can quote the rule back — it did. It should say what it will do first — it did. "
+  "And it will follow lines you forgot — so the file is not where you keep old thoughts.",
+  "CCHumanLedger",
+  R("CCHumanLedger",{"ai":[{"tier":"CAN","text":"find a rule at line 925; obey it"},{"tier":"CAN","text":"quote the rule back — it did"},
+                          {"tier":"SHOULD","text":"say what it will do first — it did"},{"tier":"SHOULD","text":"follow lines you forgot — it will"}],
+                    "human":[{"tier":"MUST","text":"test the claim, not repeat it"},{"tier":"MUST","text":"read every diff for the rule"},
+                             {"tier":"MUST","text":"know what every line costs"},{"tier":"SHOULD","text":"run it twice before believing it"}],
+                    "closing":"Keep it short because you pay per line, not because it stops working.","humanCue":70,"rowGap":12}, motion="drawon"),
+  [{"at":0.05,"event":"THE AI"},{"at":0.35,"event":"THE HUMAN"},{"at":0.85,"event":"Closing"}])
+
+B("BVDT","VERDICT","BOOKEND",LIAM,
+  "Let's recap with Claude. The claim: a long CLAUDE.md gets ignored. The test: one rule buried at line nine twenty-five, six fresh sessions. Six for six — obeyed, quoted back, "
+  "and in one run it followed a line on page two I'd forgotten writing. What grew was the context: sixteen thousand tokens, twenty-one, thirty-eight, before the first edit. "
+  "Keep the file short because you pay for every line every session — not because it stops working. What would prove this reel wrong: a rule at line nine hundred that a fresh session skips.",
+  "ClaudeVerdictArtifact",
+  R("ClaudeVerdictArtifact",{"artifactTitle":"verdict.md","artifactHeading":TITLE,"artifactLines":[
+      "The claim: a long CLAUDE.md gets ignored. Tested: one rule at line 925, six fresh sessions.",
+      "Six for six: obeyed, quoted back, and a forgotten line on page two followed too.",
+      "What grew: 16k → 21k → 38k tokens of new context per session. You pay per line, every session.",
+      "FALSIFIABLE: a rule at line 900 that a fresh session skips.",
+  ]}, motion="hold"),
+  [{"at":0.0,"event":"Artifact"},{"at":0.2,"event":"Lines"},{"at":0.9,"event":"Falsifiable line"}], lead_silence_s=0.5)
+
+B("BHTF","YOUR TURN","BOOKEND",LIAM,
+  "Your turn. Open Claude Code in a project with a CLAUDE.md and paste this: Read CLAUDE.md and list every rule in it you would have to follow for the next change I ask for. "
+  "Then tell me which lines in this file you did not need. Delete those. Then look at what one session reads before you've typed a word.",
+  "ClaudeComposerAsk",
+  R("ClaudeComposerAsk",{"greeting":"Your turn.","command":"Read CLAUDE.md and list every rule in it you would have to follow for the next change I ask for. Then tell me which lines in this file you did not need.",
+      "segment":TITLE,"topic":"YOUR TURN · "+TOPIC,"runningText":"paste this into Claude Code…","output":[],"folderLabel":"@NikBearBrown","modelLabel":"Opus 5","effortLabel":"High"}),
+  [{"at":0.0,"event":"Composer"},{"at":0.6,"event":"Send arms"}])
+
+B("BOUT","OUTRO","BOOKEND",LIAM,"I Tried to Break CLAUDE.md by Making It Long. Liam, in for Bear.","ClaudeTitleOutro",
+  R("ClaudeTitleOutro",{"title":TITLE,"slug":SLUG,"handle":"@NikBearBrown","subline":""}, motion="hold"),
+  [{"at":0.0,"event":"Title"},{"at":0.35,"event":"@NikBearBrown"},{"at":0.55,"event":"Mascot"}])
+
+sheet={"metadata":{"slug":SLUG,"title":TITLE,"subtitle":"One rule at line 925. Six fresh sessions. Six for six — and a bigger bill.",
+    "topic":TOPIC,"skill":"cc-explainer","playlist":"Claude Code 101","tier":"01-context-and-memory","audience":"NikBearBrown","folderLabel":"@NikBearBrown","handle":"@NikBearBrown",
+    "brand":"claude","palette":"claude","register":"Teardown","engine":"kokoro","voice_kokoro":LIAM,"persona":"liam","in_for_bear":True,
+    "operator":{"name":"Liam","voice":LIAM,"engine":"kokoro"},"closing_voice":{"name":"Liam","voice":LIAM,"engine":"kokoro"},"aspect":"16:9","fps":30,"session":"SESSION.md",
+    "derived_from":"claude-code-101/01-context-and-memory/claude-code--claude-liam-vox-claudemd-length (the concept; the claim is tested, not repeated)",
+    "sources":["SESSION.md (six real runs)","info-7375-conducting-ai/chapters/02-the-solve-verify-asymmetry.md","info-7375-irreducibly-human/chapters/04-tier-4-metacognitive-and-supervisory.md"]},"beats":beats}
+here=os.path.dirname(os.path.abspath(__file__)); json.dump(sheet,open(os.path.join(here,"beat_sheet.json"),"w"),indent=2,ensure_ascii=False)
+print(f"{len(beats)} beats — est {sum(b['estimated_duration_s'] for b in beats):.0f}s")
+for b in beats:
+    r=b["shot"]["remotion"]
+    if r["pattern"]=="CCSession":
+        assert len(r["props"]["blocks"])==len(r["props"]["cues"]), b["beat_id"]
+        for blk in r["props"]["blocks"]:
+            if blk["type"]=="text" and len(blk["text"])>44: print("  ⚠",b["beat_id"],len(blk["text"]),blk["text"])
+    if r["pattern"]=="CCHumanLedger":
+        for c in ("ai","human"):
+            for row in r["props"][c]:
+                if len(row["text"])>34: print("  ⚠ ledger",len(row["text"]),row["text"])

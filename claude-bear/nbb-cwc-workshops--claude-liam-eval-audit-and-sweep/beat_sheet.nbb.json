@@ -1,0 +1,429 @@
+{
+ "metadata": {
+  "title": "Claude's Eval Skill: Audits First, Sweeps Second",
+  "slug": "cwc-workshops--claude-liam-eval-audit-and-sweep",
+  "topic": "CLAUDE BASICS · EVAL AUDIT & SWEEP",
+  "purpose": "Answer one real question in the Teardown register: ask Claude's eval-audit-and-sweep skill which model is cheapest and best, does it jump straight to that comparison, or does something else happen first? Take the ordering apart, explain the machinery, name the design trade-off (correctness over speed), land the carry-out that the skill audits the eval before it ranks models, and only answers 'which model' when more than one model actually made the grid.",
+  "skill": "nbb",
+  "register": "Teardown",
+  "brand": "nbb",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "teardown",
+  "ground": "#FFFFFF",
+  "folderLabel": "@NikBearBrown",
+  "channel_title": "@NikBearBrown",
+  "in_for_bear": true,
+  "clock": "narration",
+  "source_sheet": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-bear/cwc-workshops--claude-liam-eval-audit-and-sweep/beat_sheet.json",
+  "redo_of": "claude-liam-eval-audit-and-sweep",
+  "anchor_pair": "S03 -> S08 (must be the SAME case: the audit-before-sweep order, enforced)",
+  "one_flag": "none needed - all claims restate the source SKILL.md's own text, not this reel's inference",
+  "mirror_pair": "S09 / S10 - mirrored construction (both directions)",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple chassis (BrutalistHesitantWriter cold open, no puppet host)",
+  "build": {
+   "at": "2026-09-01T00:02:40",
+   "cut": "master",
+   "filled": 14,
+   "of": 14,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Here's the intuitive read: Claude's eval skill sees your question — which model is cheapest and still good — and jumps straight to a model-versus-model bake-off. That's not what it does. The skill was designed to audit your eval first, and only then sweep the models. Let's take that ordering apart and see what they optimized for. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types the naive claim, hesitates on 'sweeps', corrects to 'audits', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude's eval skill picks my best model — it just sweeps?\nWhat does it actually do first?",
+      "face": "serif",
+      "fontSize": 72,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2A1A0E",
+      "accent": "#C8102E",
+      "bg": "#FFFFFF",
+      "triggerWords": "sweeps",
+      "replacementWords": "audits",
+      "mistakeRate": 4,
+      "hesitateWithin": 2,
+      "hesitateBetween": 10,
+      "charMs": 45,
+      "jitter": 22,
+      "seed": "cwc-eval-audit-and-sweep"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter). Palette retinted from humanitarians to teardown: bg #FFFFFF, ink #2A1A0E, accent #C8102E. Text/params otherwise match the verified precedent (charMs 45, hesitateBetween 10, mistakeRate 4). VERIFY media/B00.mp4 by pulling a frame near end and confirming the 'audits' replacement and the second line are both fully typed before compiling further.",
+   "audio_file": "mp3/beat-B00.mp3"
+  },
+  {
+   "beat_id": "S01",
+   "act": "1 stakes",
+   "narration_text": "The question is money and quality at the same time. You want the cheapest Claude model that still passes your tests — and you reach for a skill that names itself for exactly that job: eval-audit-and-sweep. Two verbs in the name, in that order. The order isn't cosmetic.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A request, and a folder that answers it"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A request, and a folder that answers it",
+     "mechanic": "A speech-bubble request ('cheapest model that still passes?') on the left. An arrow to a folder icon labelled eval-audit-and-sweep on the right.",
+     "colors": [
+      "#2A1A0E",
+      "#545454",
+      "#FFFFFF"
+     ]
+    },
+    "manim": "S01Scene"
+   },
+   "audio_file": "mp3/beat-S01.mp3"
+  },
+  {
+   "beat_id": "S02",
+   "act": "2 wrong guess",
+   "narration_text": "The natural read is a straight bake-off. Hand it your eval, point at the models, run them all head to head, and read off the winner on cost against quality. Clean, fast, done. That's what most benchmark tools do. This one refuses.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "The straight-to-sweep reading"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "The straight-to-sweep reading",
+     "mechanic": "The folder icon glows and an arrow shoots directly to a grid labelled 'SWEEP' — skipping past a dimmed, unlabelled first box. Sell the reading as reasonable.",
+     "colors": [
+      "#2A1A0E",
+      "#545454",
+      "#FFFFFF"
+     ]
+    },
+    "manim": "S02Scene"
+   },
+   "audio_file": "mp3/beat-S02.mp3"
+  },
+  {
+   "beat_id": "S03",
+   "act": "4 ANCHOR PLANTED",
+   "narration_text": "Here's the order the skill enforces, and it's a design decision worth naming: audit first, sweep second. Vague request, urgent request — doesn't matter. The order is load-bearing. They optimized for correctness over speed, and they will not let you skip the check.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — audit, then sweep, in that order"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — audit, then sweep, in that order",
+     "mechanic": "THE ANCHOR. Two stacked boxes in serif on white: '1. AUDIT' with an ink check, then a locked arrow down to '2. SWEEP', greyed until the first check lands. A closing line: 'ORDER DOESN'T MOVE.' THIS EXACT COMPOSITION RETURNS AT S08.",
+     "colors": [
+      "#2A1A0E",
+      "#545454",
+      "#FFFFFF"
+     ]
+    },
+    "manim": "S03Scene"
+   },
+   "audio_file": "mp3/beat-S03.mp3"
+  },
+  {
+   "beat_id": "S04",
+   "act": "2 BREAK IT",
+   "narration_text": "Ask it to skip to the sweep and watch what happens: it won't. Here's why. A sweep is a comparison, and a comparison is only as trustworthy as the eval underneath it. Run a sweep over a broken eval and the numbers come back clean-looking and wrong. So the audit isn't polite — it's a gate.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "The shortcut, blocked"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "The shortcut, blocked",
+     "mechanic": "The S02 direct arrow to SWEEP is struck through in crimson. Beneath it, a broken-eval icon (cracked golden-set card) feeds into a grid whose numbers visibly scramble — 'MISLEADING NUMBERS' in crimson.",
+     "colors": [
+      "#2A1A0E",
+      "#C8102E",
+      "#FFFFFF"
+     ]
+    },
+    "manim": "S04Scene"
+   },
+   "audio_file": "mp3/beat-S04.mp3"
+  },
+  {
+   "beat_id": "S05",
+   "act": "3 mechanism",
+   "narration_text": "Here's what's actually inside the folder — and what isn't. There is no runnable script. No harness. No 'python sweep.py.' Instead there are reference files: audit.md, sweep.md, tau2-bench.md. Claude reads your eval code, reads those reference files, and writes the glue code your specific setup needs. They optimized for portability over convenience — no script means no assumptions about your stack.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "No script inside — just files to read"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "No script inside — just files to read",
+     "mechanic": "A folder opens to reveal three file cards side by side — audit.md, sweep.md, tau2-bench.md — with a struck-through gear icon labelled 'NO SCRIPT'. An arrow from the files toward a hand-drawn 'glue code' card.",
+     "colors": [
+      "#2A1A0E",
+      "#545454",
+      "#FFFFFF"
+     ]
+    },
+    "manim": "S05Scene"
+   },
+   "audio_file": "mp3/beat-S05.mp3"
+  },
+  {
+   "beat_id": "S06",
+   "act": "3 mechanism",
+   "narration_text": "First move: it locates your eval. Three concrete parts, and it needs all three. The golden set — your labelled examples. The scoring function — how a run gets graded. And the one command that runs a full pass end to end. Anything missing here and the sweep can't be trusted, because the sweep is just this command run over and over.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Locating the eval: three parts found"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Locating the eval: three parts found",
+     "mechanic": "A magnifying glass sweeps across a codebase outline and highlights three cards in turn: GOLDEN SET, SCORING FUNCTION, RUN-ONE-PASS COMMAND — each checked ink as it's found.",
+     "colors": [
+      "#2A1A0E",
+      "#545454",
+      "#FFFFFF"
+     ]
+    },
+    "manim": "S06Scene"
+   },
+   "audio_file": "mp3/beat-S06.mp3"
+  },
+  {
+   "beat_id": "S07",
+   "act": "3 mechanism",
+   "narration_text": "The audit is a four-item health check on the eval itself. Task design — are the tasks measuring what you claim. Harness design — is the runner deterministic and fair. Metric hygiene — do the numbers actually mean what their names imply. And grader bias — if the grader is an LLM, is it quietly favouring its own kind. Break any one of these and the sweep produces confident nonsense.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "The audit checklist, four items"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "The audit checklist, four items",
+     "mechanic": "A clipboard with four items ticking down in ink: TASK DESIGN, HARNESS DESIGN, METRIC HYGIENE, GRADER BIAS. A small stethoscope-style cross icon marks it as a health check.",
+     "colors": [
+      "#2A1A0E",
+      "#545454",
+      "#FFFFFF"
+     ]
+    },
+    "manim": "S07Scene"
+   },
+   "audio_file": "mp3/beat-S07.mp3"
+  },
+  {
+   "beat_id": "S08",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "The lock opens. Only after the audit clears does the sweep run — and it runs the full grid. Every model you have access to against every parameter setting. No pre-emptive trimming, no 'let's just try Sonnet.' The design choice: measure everything, decide afterward. Expensive in tokens, honest in signal.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — audit clears, sweep unlocks"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — audit clears, sweep unlocks",
+     "mechanic": "THE S03 TWO-BOX COMPOSITION RETURNS, identical. '1. AUDIT' checks ink, the lock on '2. SWEEP' springs open, and it expands into a full grid of model-x-parameter cells filling in left to right, uncut.",
+     "colors": [
+      "#2A1A0E",
+      "#545454",
+      "#FFFFFF"
+     ]
+    },
+    "manim": "S08Scene"
+   },
+   "audio_file": "mp3/beat-S08.mp3"
+  },
+  {
+   "beat_id": "S09",
+   "act": "5 DIRECTION A",
+   "narration_text": "Here's where the grid actually earns the name 'sweep.' If two or more models cleared the access check, the grid answers the real question — which model wins on cost against quality, plotted side by side. This is the case people picture when they hear the word.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Two-plus models: a real answer"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Two-plus models: a real answer",
+     "mechanic": "Three model columns in the grid, each with a cost-vs-quality point plotted. One point rises above the rest, ink ring around it, stamp 'WHICH MODEL WINS'.",
+     "colors": [
+      "#2A1A0E",
+      "#545454",
+      "#FFFFFF"
+     ]
+    },
+    "manim": "S09Scene"
+   },
+   "audio_file": "mp3/beat-S09.mp3"
+  },
+  {
+   "beat_id": "S10",
+   "act": "5 DIRECTION B",
+   "narration_text": "Now flip it. If only one model survived the access check, the grid can't compare the field — there is no field. What it can do is rank that one model's own parameter settings. Same machinery, different question. The skill is honest about this: it won't tell you which model wins when only one model was on the shelf to begin with.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "Mirroring S09: one model, settings only"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "Mirroring S09: one model, settings only",
+     "mechanic": "Mirroring S09's layout: two of the three model columns fade to grey and drop away, leaving one column whose rows are parameter settings instead of models. Crimson stamp 'SETTINGS, NOT THE FIELD'.",
+     "colors": [
+      "#2A1A0E",
+      "#C8102E",
+      "#FFFFFF"
+     ]
+    },
+    "manim": "S10Scene"
+   },
+   "audio_file": "mp3/beat-S10.mp3"
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Eval-audit-and-sweep audits the eval before it ranks models — and it only answers \"which model\" when more than one model actually made the grid.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Eval-audit-and-sweep audits the eval before it ranks models — and it only answers \"which model\" when more than one model actually made the grid.",
+      "attribution": "",
+      "sparkLine": "Audit gates the sweep."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3"
+  },
+  {
+   "beat_id": "B_LLM",
+   "act": "LLM EXERCISE",
+   "narration_text": "Here's a prompt you can paste directly into Claude, ChatGPT, or Gemini. Ask it: I want to understand how eval sweeps can quietly go wrong. When someone runs a sweep of multiple LLMs against a benchmark to pick the cheapest passing model, what four categories of eval-quality bugs — task design, harness design, metric hygiene, and grader bias — could make the winner meaningless? For each category, give me one concrete example and one pattern in the sweep results that would let me detect it. Then go deeper: if the sweep only had one accessible model, what parameter-setting comparisons would be most valuable to run, and how would I know when I'd found the setting worth locking in?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "llm_exercise": {
+    "prompt": "I want to understand how eval sweeps can quietly go wrong. When someone runs a sweep of multiple LLMs against a benchmark to pick the cheapest passing model, what four categories of eval-quality bugs — task design, harness design, metric hygiene, and grader bias — could make the winner meaningless? For each category, give me one concrete example of the bug and one pattern in the sweep results that would let me detect it.",
+    "dig_deeper": "Go deeper: If the sweep only had one accessible model, what parameter-setting comparisons would be most valuable to run, and how would you know when you'd found the setting worth locking in?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The LLM exercise — a paste-ready prompt, then a dig-deeper question",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Paste this into any frontier LLM.",
+      "topic": "LLM EXERCISE · EVAL AUDIT & SWEEP",
+      "segment": "LLM Exercise",
+      "command": "I want to understand how eval sweeps can quietly go wrong. When someone runs a sweep of multiple LLMs against a benchmark to pick the cheapest passing model, what four categories of eval-quality bugs — task design, harness design, metric hygiene, and grader bias — could make the winner meaningless? For each category, give me one concrete example of the bug and one pattern in the sweep results that would let me detect it.",
+      "runningText": "then go deeper: if only one model cleared access, what settings comparisons matter, and how do you know when to lock one in?",
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/B_LLM.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B_LLM.mp3"
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude's Eval Skill: Audits First, Sweeps Second. More teardowns at brutalist dot art. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroSeries",
+     "props": {
+      "eyebrow": "EVAL AUDIT & SWEEP · @NikBearBrown",
+      "line": "Claude's Eval Skill: Audits First, Sweeps Second.",
+      "cta": "More teardowns at www.brutalist.art"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3"
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+# How a Skill Loads
+
+**What this is.** A 140-second show-tell explainer of how Claude's Agent Skills load, drawn as one isometric filing cabinet: labels only, with Liam's voice doing the explaining. **Why.** Card #2 in `../show-tell-ideas.md`; Bear said to build all eight cards in order (2026-09-26). **Found.** Every claim matches Anthropic's skills repository and the Agent Skills specification (agentskills.io/specification). Only the name and description of every skill are always in context; a skill's SKILL.md body loads when its description matches a task; its other files load only when needed, and scripts can run without their code being loaded. No sizes or token counts are claimed.
+
+- What it covers: a skill as a drawer; what's in one (SKILL.md with its name + description and instructions, plus optional scripts, references and assets); what's read at startup (the labels only); a task that matches one label (the pdf skill) and opens only that drawer; files pulled on demand (the pdf skill's own "read FORMS.md" line) and a script that runs in place; why many skills cost little (progressive disclosure); what makes a good description (the spec's bad example "Helps with PDFs", and the skill guide's "a little pushy"); and your turn.
+- The cast: a kraft filing cabinet, drawers with white label plates, hanging folders (SKILL.md white, scripts dark, references and assets kraft), a kraft tray for "context", a task card.
+- Built with the `show-tell` skill (`brutalist.art/skills/make/show-tell/`). `scenes.py` carries the pasted ISO KIT.
+- Master: `exports/landscape/show-tell-how-a-skill-loads.mp4`, 3840×2160, 24 fps, 140.29 s, sha256 979857f3…d155d1. All gates PASS (A, B, W, V, GATE T, F, bookend).
+- Status: **built, not staged, not published.** Staging (`art post`) and publishing wait for Bear's word.

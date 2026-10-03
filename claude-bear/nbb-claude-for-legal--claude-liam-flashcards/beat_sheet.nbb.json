@@ -1,0 +1,492 @@
+{
+ "metadata": {
+  "title": "Claude, Flashcards.",
+  "subtitle": "What a Skill Actually Is",
+  "slug": "claude-for-legal--claude-liam-flashcards",
+  "topic": "CLAUDE · SKILLS",
+  "purpose": "Teardown of the 'flashcards skill' — take apart the naming misdirection, explain the actual mechanism (one file, read top to bottom before Claude starts), name the trade-off (structure at the expense of range), and land the carry-out that a skill is a specification being enforced, not new model knowledge.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/claude-for-legal/youtube/claude-liam-flashcards/beat_sheet.json",
+  "register": "Teardown",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B03 -> B06 (flashcards' single SKILL.md: planted, then returned to)",
+  "one_flag": "N/A - no inference beat; every claim is generic, verifiable skill mechanics plus the well-known flashcard document shape",
+  "build": {
+   "at": "2026-08-30T04:13:57",
+   "cut": "master",
+   "filled": 11,
+   "of": 11,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "The name 'flashcards skill' does a bit of misdirection. You hear it and picture Claude picking up an ability. Here's what's actually happening: Claude gets handed a file of instructions. 'Flashcards' is what the file is named. Let's open it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'Claude learned to make flashcards from that skill.', hesitates on 'learned', corrects to 'was given', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "Claude learned to make\nflashcards from that skill.\nWhat is a skill?",
+      "face": "serif",
+      "fontSize": 74,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "learned",
+      "replacementWords": "was given",
+      "mistakeRate": 5,
+      "hesitateWithin": 2,
+      "hesitateBetween": 12,
+      "charMs": 46,
+      "jitter": 26,
+      "seed": "hai-flashcards"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('learned' -> 'was given') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T04:13:57"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes",
+   "narration_text": "Say 'Claude has a flashcards skill' out loud and it lands like a capability upgrade — as if the model went off, studied quiz-writing, and came back with new wiring. That reading is intuitive. It's also wrong.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SOUNDS LIKE A STUDY UPGRADE",
+    "media": "manim/B01.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SOUNDS LIKE A STUDY UPGRADE",
+     "chips": [
+      "CLAUDE HAS A STUDY SKILL",
+      "KNOWS HOW TO QUIZ NOW?"
+     ],
+     "arrows": true,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "that's the natural read",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T04:13:57"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "2 wrong guess, broken",
+   "narration_text": "Test the intuition: delete the folder. If Claude had actually learned something, deletion would erase it. Nothing erases. Claude still writes flashcards the same way it always could — it just stops running that specific routine on top.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NOTHING TO FORGET",
+    "media": "manim/B02.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NOTHING TO FORGET",
+     "chips": [
+      "DELETE THE FOLDER",
+      "CLAUDE FORGETS FLASHCARDS?",
+      "NOTHING TO FORGET"
+     ],
+     "arrows": true,
+     "accent": [
+      2
+     ],
+     "strike": [
+      1
+     ],
+     "caption": "there was nothing to learn",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T04:13:57"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PLANTED",
+   "narration_text": "Here's the mechanism, stripped: a skill is one file. The flashcards skill is a folder holding a single SKILL.md — plain-language instructions for turning source material into prompt-and-answer cards. Claude reads that file before it starts. That's the whole payload.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — ONE FILE",
+    "media": "manim/B03.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — ONE FILE",
+     "chips": [
+      "flashcards/",
+      "SKILL.md"
+     ],
+     "arrows": false,
+     "accent": [],
+     "strike": [],
+     "caption": "one file, the whole routine",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T04:13:57"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "3 mechanism",
+   "narration_text": "The execution model is deliberately dumb: top to bottom, step by step, in the order the file lists them. No branching unless the file itself says branch. That choice trades cleverness for reproducibility.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "READ, THEN FOLLOW IN ORDER",
+    "media": "manim/B04.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "READ, THEN FOLLOW IN ORDER",
+     "chips": [
+      "READ THE FILE",
+      "STEP 1",
+      "STEP 2",
+      "STEP 3"
+     ],
+     "arrows": true,
+     "accent": [],
+     "strike": [],
+     "caption": "top to bottom, in order",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB04Scene"
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T04:13:57"
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "3 mechanism",
+   "narration_text": "So a skill is a specification, not a power. The payoff is consistency: same structure, every card, one prompt, one answer, every run. The cost is generality — anything outside the written steps and Claude is off the map. They optimized for structure at the expense of range.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "SPEC, NOT POWER",
+    "media": "manim/B05.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "SPEC, NOT POWER",
+     "chips": [
+      "SAME STRUCTURE EVERY TIME",
+      "OFF THE MAP"
+     ],
+     "arrows": false,
+     "accent": [
+      0
+     ],
+     "strike": [],
+     "caption": "the payoff, and the limit",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB05Scene"
+   },
+   "audio_file": "mp3/beat-B05.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B05.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T04:13:57"
+   }
+  },
+  {
+   "beat_id": "B06",
+   "act": "4 ANCHOR PAYOFF",
+   "narration_text": "So the flashcards skill never taught Claude anything. What it guarantees is repetition: every run, same file, same prompt-and-answer structure. That's not learning. That's a specification being enforced — and it's the whole trick.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — SAME FILE, EVERY RUN",
+    "media": "manim/B06.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — SAME FILE, EVERY RUN",
+     "chips": [
+      "flashcards/",
+      "SKILL.md"
+     ],
+     "arrows": false,
+     "accent": [
+      1
+     ],
+     "strike": [],
+     "caption": "same file, same structure, every run",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB06Scene"
+   },
+   "audio_file": "mp3/beat-B06.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B06.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T04:13:57"
+   }
+  },
+  {
+   "beat_id": "B07",
+   "act": "5 both directions",
+   "narration_text": "Neither output proves what you'd think. Clean cards don't mean Claude understood the material — a specification can be followed to the letter on a topic the model never really grasped. Messy cards don't mean the skill is broken — sometimes the material just doesn't fit the file's shape.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "NEITHER ONE IS PROOF",
+    "media": "manim/B07.mp4"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "NEITHER ONE IS PROOF",
+     "pairs": [
+      [
+       "PRODUCED CLEAN CARDS",
+       "PROVES IT UNDERSTOOD?"
+      ],
+      [
+       "PRODUCED MESSY CARDS",
+       "PROVES THE SKILL IS BROKEN?"
+      ]
+     ],
+     "strike": [
+      1,
+      3
+     ],
+     "caption": "neither one is proof",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E"
+     ]
+    },
+    "manim": "BGB07Scene"
+   },
+   "audio_file": "mp3/beat-B07.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B07.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-30T04:13:57"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "A skill doesn't teach Claude anything. It's a file of steps Claude reads before it starts. Every card set comes out with the same structure — because the structure is written down, not learned.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 10,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "A skill doesn't teach Claude anything. It's a file of steps Claude reads before it starts. Every card set comes out with the same structure — because the structure is written down, not learned.",
+      "attribution": "",
+      "sparkLine": "Written down, not learned."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T04:13:57"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Here's a prompt you can paste straight into Claude, ChatGPT, or Gemini — it'll write you a real specification you can use tomorrow. Go deeper: what would break if two people wrote SKILL.md files for the same task and Claude ran both?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "llm_exercise": {
+    "prompt": "I want to turn one of my repeatable tasks into a SKILL.md — a plain-language, ordered specification another AI could follow. Help me pick a task: any document I produce roughly the same way every time (a status update, a lesson plan, a code review, a customer reply). Ask me three sharp questions to pin down the exact inputs, the ordered steps, and how I know it's done. Then write the SKILL.md — no branches unless a step demands one — read it back to me, and walk me through exactly what you'd do on a fresh input before doing it.",
+    "dig_deeper": "Go deeper: if two people wrote SKILL.md files for the same task and Claude ran both, what would come out different — and what does that tell you about where the specification really lives: in the file, or in the person who wrote it?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "CLAUDE · SKILLS",
+      "segment": "Claude, Flashcards.",
+      "command": "Help me pick one document I produce the same way every time. Ask me three sharp questions to pin down the inputs, the ordered steps, and how I know it's done. Then write me the SKILL.md — no branches unless a step demands one — read it back, and walk me through exactly what you'd do on a fresh input before doing it.",
+      "runningText": "paste this into Claude…",
+      "folderLabel": "@HumanitariansAI",
+      "output": []
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T04:13:57"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Flashcards. Liam here, in for Bear. Full teardown at brutalist dot art.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Flashcards. Liam, in for Bear. Full teardown at brutalist.art.",
+      "handle": "@HumanitariansAI"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-30T04:13:57"
+   }
+  }
+ ]
+}

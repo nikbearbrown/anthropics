@@ -1,0 +1,132 @@
+
+##### attempt digest 2026-09-10T11:44:06  (/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/.cc101loop/cc-claude-skills--what-is-claude-skills.jsonl)
+TEXT I'll start by reading the required files to understand the skill, the exemplar, and the concept.
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/skills/make/cc-explainer/SKILL.md"}
+TEXT Now let me read the exemplar reel files.
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/author_shee
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/SESSION.md"
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/FACTCHECK.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/BUILD-LOG.m
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/claude-skills--what-is-
+TEXT Now let me check the target folders and existing state.
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/ 2>/dev/null", "descri
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/claude-skills--what-is
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/", "descri
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/claude-skills--what-is
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/evidence/ 
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/CHECKS-REPO
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/BUILD-PROMP
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/PROMPTS.md"
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/SHOTLIST.md
+TOOL Read {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/SOURCES.md"
+TEXT I have the pattern. Now planning the session: this is a concept film about "how to judge a Claude Skill before you trust it." I'll build a scratch skill library with intentional description-vs-body mismatches, run real headless Claude Code sessions demonstrating naive-read vs skeptical-read, then bu
+TOOL Bash {"command": "mkdir -p /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills
+TOOL Bash {"command": "which claude && claude --version 2>&1", "description": "Check claude CLI availability"}
+TEXT Now writing the scratch skill files — designed with real description-vs-body mismatches.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TEXT Now I'll run the two real headless Claude Code sessions — the naive read (frontmatter descriptions only) and the skeptical read (full body). Saving both to evidence.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what
+TOOL Bash {"command": "claude -p \"$(cat /tmp/ask_naive.txt)\" --output-format stream-json --verbose --max-turns 16 --permission-mode acceptEdits --st
+TOOL Bash {"command": "cat evidence/../evidence/run-naive.jsonl 2>/dev/null | python3 -c \"\nimport json, sys\nfor line in open('/Users/bear/Documents
+TEXT Naive run captured. Now the skeptical read — reading the bodies of the two "deceptive" skills.
+TOOL Bash {"command": "echo \"Read the FULL body (everything after the closing '---' of the frontmatter) of skills/summarizer/SKILL.md. List every dis
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor line in open('/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-h
+TOOL Bash {"command": "echo \"Read the FULL body (everything after the closing '---' of the frontmatter) of skills/tone-warmer/SKILL.md. List every di
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor line in open('/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-h
+TOOL Bash {"command": "echo \"Read the FULL body (everything after the closing '---' of the frontmatter) of skills/format-strict/SKILL.md. List every 
+TOOL Bash {"command": "python3 -c \"\nimport json\nfor line in open('/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-h
+TEXT Three real runs captured. Now Liam's plain-shell verification checks to shore up the receipts.
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what
+TOOL Bash {"command": "{\necho \"> for f in scratch/skills/*/SKILL.md; do echo \\\"# \\$f\\\"; sed -n '1,4p' \\$f; echo; done\"\nfor f in scratch/skil
+TEXT Now writing SESSION.md and then the author_sheet.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TEXT Now writing the author sheet — modelled on the cc-three-files exemplar.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TOOL Bash {"command": "python3 author_sheet.py", "description": "Run author_sheet.py first pass"}
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/c
+TOOL Bash {"command": "python3 author_sheet.py 2>&1", "description": "Re-run author with ledger trims"}
+TEXT Beats and budgets clean. Now generating audio.
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/scripts/generate_audio_kokoro.py /Users/bear/Do
+TEXT Now paperwork: FACTCHECK, SHOTLIST, PROMPTS, SOURCES, CHECKS-REPORT, BUILD-PROMPT.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TEXT I need to fix a false claim before compile — narration says "thirty-one words" but wc counts 21. Trimming that specific number.
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/c
+TOOL Bash {"command": "python3 author_sheet.py && python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/scripts/generate_aud
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/c
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/c
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TEXT Now the factcheck gate + compile.
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/factcheck_check.py /Users/bear/Documents/CoW
+TOOL Bash {"command": "pgrep -fa \"cc-claude-skills--what-is-claude-skills\" 2>&1 | grep -v pgrep || echo \"no concurrent sessions\"", "description": 
+TOOL Bash {"command": "cd /Users/bear/Documents/CoWork/bear-textbooks/books && ./brutalist-art/art run anthropics/claude-code-101/03-hooks-skills-comm
+TOOL Bash {"command": "head -20 /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/scen
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TOOL Bash {"command": "wc -l /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/01-context-and-memory/cc-three-files/scenes.
+TOOL Bash {"command": "cat /Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/postedit-check.sh 2>/dev/null | head -80", "description": "
+TOOL Bash {"command": "sed -n '80,200p' /Users/bear/Documents/CoWork/bear-textbooks/books/.claude/hooks/postedit-check.sh", "description": "Continue r
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Bash {"command": "python3 /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py /Users/bear/Documents/
+TOOL Bash {"command": "grep -n \"BearsDoodles\" /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py | hea
+TOOL Bash {"command": "sed -n '600,625p' /Users/bear/Documents/CoWork/bear-textbooks/books/brutalist-art/runtime/qc/static_scene_check.py", "descripti
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--
+TOOL Bash {"command": "./brutalist-art/art run anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-is-claude-skills 2>&1 | tail
+TOOL Bash {"command": "tail -200 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/c420bb2a-d756-4563-a549-ece7e23fa4ad/tasks/
+TOOL Bash {"command": "ls -la /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/c420bb2a-d756-4563-a549-ece7e23fa4ad/tasks/ 2>
+TOOL Bash {"command": "pgrep -fa \"art run\" 2>&1 | head -5; echo \"---\"; pgrep -fa \"cc-claude-skills\" 2>&1 | head -5; echo \"---\"; pgrep -fa \"re
+TOOL Bash {"command": "ps -p 9400 -o pid,etime,command | head -3", "description": "See running remotion process details"}
+TOOL Bash {"command": "ps ax | grep -E \"art|remotion_scenes|ffmpeg\" | grep -v grep | grep -v pgrep | head -20", "description": "Get process details"
+TOOL Bash {"command": "ps ax -o pid,etime,command | grep -E \"art run|remotion_scenes|cc-claude\" | grep -v grep | head -10", "description": "Filter f
+TOOL ToolSearch {"query": "select:Monitor", "max_results": 1}
+TOOL Monitor {"description": "Wait for compile.py to exit", "timeout_ms": 1800000, "persistent": false, "command": "until ! pgrep -f \"compile.py.*cc-cla
+TOOL Bash {"command": "tail -200 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/c420bb2a-d756-4563-a549-ece7e23fa4ad/tasks/
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what
+TOOL Bash {"command": "cat /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--wha
+TOOL Bash {"command": "ls /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what
+TOOL Bash {"command": "tail -100 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/c420bb2a-d756-4563-a549-ece7e23fa4ad/tasks/
+TOOL Bash {"command": "wc -c /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/c420bb2a-d756-4563-a549-ece7e23fa4ad/tasks/bca2
+TOOL Bash {"command": "ps ax -o pid,etime,command | grep -E \"art run|type_check|cc-claude-skills\" | grep -v grep | head -10", "description": "Check 
+TOOL Monitor {"description": "Wait for art run wrapper to exit", "timeout_ms": 1200000, "persistent": false, "command": "until ! pgrep -f \"run.sh anthro
+TOOL Bash {"command": "cat /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--wha
+TEXT GATE T PASS, 0 FAILs. Let me spot-check dense frames before running final.
+TOOL Bash {"command": "for B in B00 B02 B06 B07 BVDT BOUT; do\n  F=/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hoo
+TOOL Read {"file_path": "/tmp/frame-B00.png"}
+TOOL Read {"file_path": "/tmp/frame-B02.png"}
+TOOL Read {"file_path": "/tmp/frame-B06.png"}
+TOOL Read {"file_path": "/tmp/frame-B07.png"}
+TOOL Read {"file_path": "/tmp/frame-BVDT.png"}
+TOOL Read {"file_path": "/tmp/frame-BOUT.png"}
+TEXT All frames clean — dense beats read fine, no clipping, no overprint. Running final for the master.
+TOOL Bash {"command": "./brutalist-art/art final anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-is-claude-skills 2>&1 | ta
+TOOL Bash {"command": "tail -60 /private/tmp/claude-501/-Users-bear-Documents-CoWork-bear-textbooks-books/c420bb2a-d756-4563-a549-ece7e23fa4ad/tasks/b
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--
+TOOL Bash {"command": "ffprobe -v error -show_entries stream=width,height,codec_name,duration -select_streams v:0 -of csv=p=0 /Users/bear/Documents/Co
+TEXT Native 4K master, 4:01. Now writing the BUILD-LOG and CC-BUILT marker.
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--what-
+TOOL Write {"file_path": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/claude-skills--what-is-
+TOOL Write {"file_path": "/Users/bear/.claude/projects/-Users-bear-Documents-CoWork-bear-textbooks-books/memory/project_cc_claude_skills_what_is_playli
+TOOL Read {"file_path": "/Users/bear/.claude/projects/-Users-bear-Documents-CoWork-bear-textbooks-books/memory/MEMORY.md", "offset": 1, "limit": 10}
+TOOL Edit {"replace_all": false, "file_path": "/Users/bear/.claude/projects/-Users-bear-Documents-CoWork-bear-textbooks-books/memory/MEMORY.md", "old_
+TOOL Bash {"command": "ls -la /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-code-101/03-hooks-skills-commands/cc-claude-skills--
+TEXT Reel built. Master `cc-claude-skills--what-is-claude-skills.mp4` (240.96 s / 4:01, 3840×2160, 14.5 MB) sits in the reel folder; `CC-BUILT.txt` is written to the concept folder. Not published — TOPOST only via `post`, only on ask. /  / **Summary:** / - 13 beats · concept film · all gates PASS on first comp
+EVENTS 304
+RESULT {"subtype": "success", "num_turns": 10, "duration_ms": 94900, "total_cost_usd": 10.831037999999998, "is_error": false}
+FINAL TEXT Reel built. Master `cc-claude-skills--what-is-claude-skills.mp4` (240.96 s / 4:01, 3840×2160, 14.5 MB) sits in the reel folder; `CC-BUILT.txt` is written to the concept folder. Not published — TOPOST only via `post`, only on ask.
+
+**Summary:**
+- 13 beats · concept film · all gates PASS on first compile (Gate V 0/0/0 · GATE T 0 FAILs · BOOKEND · content/frame/lane · GATE AUDIO −23.6 dB)
+- The four real headless `claude -p` runs live in `evidence/`; the scratch skill library lives in `scratch/skills/`; the receipts trace beat-by-beat in `FACTCHECK.md`
+- Pre-compile correction: dropped a false "thirty-one words" claim from B03 narration (real `wc -w` was 21), replaced with "one-sentence description; 23-line body", regenerated audio
+- Advisories logged but non-blocking: §8.10 BVDT narration echoes the card (by design — the exemplar carries the same); COLD OPEN LAW skin-lint on CCSession (exempt for cc-explainer per SKILL.md); motion `type` at 46 % (necessary for TERMINAL-FIRST)
+
+Stopping — supervisor starts the next.

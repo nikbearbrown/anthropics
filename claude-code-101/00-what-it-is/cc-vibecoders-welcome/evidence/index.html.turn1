@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading Log</title>
+<style>
+  :root {
+    --ink: #222;
+    --muted: #666;
+    --line: #ddd;
+    --bg: #fafaf7;
+    --card: #fff;
+    --accent: #8a5a2b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font: 16px/1.5 Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    background: var(--bg);
+    margin: 0;
+    padding: 2rem 1rem;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.25rem;
+  }
+  .sub {
+    color: var(--muted);
+    margin: 0 0 2rem;
+    font-style: italic;
+  }
+  section {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  h2 {
+    font-size: 1.05rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 1rem;
+    color: var(--muted);
+  }
+  form { display: grid; gap: 0.75rem; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+  input, select {
+    width: 100%;
+    font: inherit;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    border-radius: 2px;
+  }
+  input:focus, select:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: -1px;
+  }
+  button {
+    font: inherit;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  button.link {
+    background: none;
+    border: none;
+    color: var(--muted);
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  button.link:hover { color: var(--accent); }
+  ul.log {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.log li {
+    padding: 0.9rem 0;
+    border-bottom: 1px dotted var(--line);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+  ul.log li:last-child { border-bottom: none; }
+  .title { font-weight: bold; }
+  .author { color: var(--muted); }
+  .meta {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+  .stars { color: var(--accent); letter-spacing: 0.1em; }
+  .stars .off { color: #ccc; }
+  .empty {
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  .right { text-align: right; }
+  @media (max-width: 480px) {
+    .row { grid-template-columns: 1fr; }
+    body { padding: 1rem 0.75rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Reading Log</h1>
+  <p class="sub">A quiet shelf of books finished.</p>
+
+  <section>
+    <h2>Add a book</h2>
+    <form id="book-form">
+      <div>
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text" required maxlength="200">
+      </div>
+      <div>
+        <label for="author">Author</label>
+        <input id="author" name="author" type="text" required maxlength="200">
+      </div>
+      <div class="row">
+        <div>
+          <label for="finished">Date finished</label>
+          <input id="finished" name="finished" type="date" required>
+        </div>
+        <div>
+          <label for="rating">Rating</label>
+          <select id="rating" name="rating" required>
+            <option value="5">5 — loved it</option>
+            <option value="4">4 — very good</option>
+            <option value="3" selected>3 — fine</option>
+            <option value="2">2 — meh</option>
+            <option value="1">1 — didn't work for me</option>
+          </select>
+        </div>
+      </div>
+      <div class="right">
+        <button type="submit">Add to log</button>
+      </div>
+    </form>
+  </section>
+
+  <section>
+    <h2>Books logged (<span id="count">0</span>)</h2>
+    <ul class="log" id="log"></ul>
+  </section>
+</main>
+
+<script>
+(function () {
+  var STORAGE_KEY = "reading-log:v1";
+  var form = document.getElementById("book-form");
+  var logEl = document.getElementById("log");
+  var countEl = document.getElementById("count");
+  var finishedInput = document.getElementById("finished");
+
+  finishedInput.valueAsDate = new Date();
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return [];
+      var data = JSON.parse(raw);
+      return Array.isArray(data) ? data : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function save(books) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(books));
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function formatDate(iso) {
+    var parts = iso.split("-");
+    if (parts.length !== 3) return iso;
+    var d = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+    if (isNaN(d.getTime())) return iso;
+    var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+  }
+
+  function stars(n) {
+    n = Math.max(1, Math.min(5, +n || 0));
+    var on = "★".repeat(n);
+    var off = "★".repeat(5 - n);
+    return '<span class="stars">' + on + '<span class="off">' + off + '</span></span>';
+  }
+
+  function render() {
+    var books = load();
+    books.sort(function (a, b) {
+      if (a.finished === b.finished) return b.added - a.added;
+      return a.finished < b.finished ? 1 : -1;
+    });
+
+    countEl.textContent = books.length;
+
+    if (books.length === 0) {
+      logEl.innerHTML = '<li class="empty">Nothing logged yet.</li>';
+      return;
+    }
+
+    logEl.innerHTML = books.map(function (b) {
+      return (
+        '<li>' +
+          '<div>' +
+            '<div><span class="title">' + escapeHtml(b.title) + '</span>' +
+            ' <span class="author">— ' + escapeHtml(b.author) + '</span></div>' +
+            '<div class="meta">Finished ' + escapeHtml(formatDate(b.finished)) + ' · ' + stars(b.rating) + '</div>' +
+          '</div>' +
+          '<div><button class="link" data-id="' + b.id + '">remove</button></div>' +
+        '</li>'
+      );
+    }).join("");
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var title = document.getElementById("title").value.trim();
+    var author = document.getElementById("author").value.trim();
+    var finished = finishedInput.value;
+    var rating = document.getElementById("rating").value;
+    if (!title || !author || !finished || !rating) return;
+
+    var books = load();
+    books.push({
+      id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+      title: title,
+      author: author,
+      finished: finished,
+      rating: +rating,
+      added: Date.now()
+    });
+    save(books);
+
+    form.reset();
+    finishedInput.valueAsDate = new Date();
+    document.getElementById("rating").value = "3";
+    document.getElementById("title").focus();
+    render();
+  });
+
+  logEl.addEventListener("click", function (e) {
+    var btn = e.target.closest("button.link");
+    if (!btn) return;
+    var id = btn.getAttribute("data-id");
+    var books = load().filter(function (b) { return b.id !== id; });
+    save(books);
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

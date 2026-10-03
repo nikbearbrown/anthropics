@@ -20,11 +20,32 @@
     "modifier": "skill-teardown",
     "modelLabel": "Opus 4.8",
     "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/financial-services/plugins/vertical-plugins/private-equity/skills/ai-readiness/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "Scan the portfolio for the highest-leverage AI opportunities and rank where to deploy operating-partner time",
+        "Ingests quarterly updates and financials across multiple portfolio companies",
+        "identifies quick wins at each",
+        "and stacks them into a single ranked action list",
+        "Use during quarterly portfolio reviews"
+      ],
+      "constraints": [],
+      "referenced_files": [],
+      "code_signals": [],
+      "sections": [
+        "Workflow",
+        "Step 1: Connect to Portfolio Data",
+        "Step 2: Per-Company Scan",
+        "Step 3: Rank Across the Portfolio",
+        "Step 4: Find the Replays",
+        "Step 5: Output",
+        "Important Notes"
+      ]
+    },
     "build": {
-      "at": "2026-07-25T05:26:56",
+      "at": "2026-09-05T23:01:26",
       "cut": "review",
-      "filled": 7,
-      "of": 7,
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -33,7 +54,7 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Hola — this is Liam, in for Bear. The skill is ai-readiness. Scan the portfolio for the highest-leverage AI opportunities and rank where to deploy operating-partner time. Ingests quarterly updates and financials across multiple portfolio companies, identifies quick wins at each, and stacks them into a single ranked action list. Use during quarterly portfolio reviews, annual planning, or when deciding which companies get AI investment first. Triggers on \"AI readiness\", \"AI opportunity scan\", \"where should we deploy AI\", \"AI across the portfolio\", \"AI quick wins\", or \"which portcos are ready for AI\".. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is ai-readiness. Scan the portfolio for the highest-leverage AI opportunities and rank where to deploy operating-partner time. Ingests quarterly updates and financials across multiple portfolio companies, identifies quick wins at each, and stacks them into a single ranked action list. Use during quarterly portfolio reviews, annual planning, or when deciding which companies get AI investment first. Triggers on \"AI readiness\", \"AI opportunity scan\", \"where should we deploy AI\", \"AI across the portfolio\", \"AI quick wins\", or \"which portcos are ready for AI\".. Its concrete surface area includes Scan the portfolio for the highest-leverage AI opportunities and rank where to deploy operating-partner time; Ingests quarterly updates and financials across multiple portfolio…. A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -49,8 +70,8 @@
             "runningText": "reading ai-readiness SKILL.md…",
             "output": [
               "skill: ai-readiness",
-              "Scan the portfolio for the highest-leverage AI opportunities and rank where to d",
-              "steps: 0 — executing."
+              "Scan the portfolio for the highest-leverage AI opportunities and rank where to…",
+              "steps: 5 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -63,12 +84,12 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 36.82,
+      "actual_duration_s": 47.85,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:26:56"
+        "at": "2026-09-05T23:01:26"
       }
     },
     {
@@ -111,13 +132,13 @@
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:26:56"
+        "at": "2026-09-05T23:01:26"
       }
     },
     {
       "beat_id": "B02",
       "act": "pipeline",
-      "narration_text": "The pipeline is in the Steps section. Claude reads each step in order and executes it. Linear — no branching unless the step says so.",
+      "narration_text": "The pipeline has 5 steps. Connect to Portfolio Data → Per-Company Scan → Rank Across the Portfolio, plus 2 more. Each step is a discrete action — Claude works through them in sequence. Input in, steps run, output out.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 26,
@@ -132,22 +153,27 @@
             "outputLabel": "RESULT",
             "phases": [
               {
-                "label": "Read SKILL.md",
-                "desc": "load the instruction set",
+                "label": "Connect to Portfolio Data",
+                "desc": "First, ask the user where the portfolio materials live.…",
                 "accent": true
               },
               {
-                "label": "Execute",
-                "desc": "run each step in order",
+                "label": "Per-Company Scan",
+                "desc": "For each company, answer three gate questions. All three…",
                 "accent": false
               },
               {
-                "label": "Return output",
-                "desc": "deliver the result",
+                "label": "Rank Across the Portfolio",
+                "desc": "Stack every leverage point from every company into one…",
+                "accent": false
+              },
+              {
+                "label": "Find the Replays",
+                "desc": "The highest-leverage move in a portfolio is running one…",
                 "accent": false
               }
             ],
-            "footerNote": "Linear execution.",
+            "footerNote": "5 steps. Linear execution.",
             "sparkLine": "Input in. Output out."
           },
           "rendered": {
@@ -157,18 +183,18 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 7.83,
+      "actual_duration_s": 13.46,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:26:56"
+        "at": "2026-09-05T23:01:26"
       }
     },
     {
       "beat_id": "B03",
       "act": "design tell",
-      "narration_text": "Here is the Teardown moment. ai-readiness is a specification written as an instruction set. Claude's job: Scan the portfolio for the highest-leverage AI opportunities and rank where to deploy operating-part. What it gets right: repeatable results. What it bites: anything outside the spec.",
+      "narration_text": "Here is the Teardown moment. ai-readiness is a specification written as an instruction set. Claude's job: Scan the portfolio for the highest-leverage AI opportunities and rank where to deploy…. What it gets right: repeatable results. What it bites: anything outside the spec.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 28,
@@ -179,7 +205,7 @@
           "props": {
             "eyebrow": "SKILL · DESIGN TELL",
             "heading": "The interesting constraint.",
-            "body": "Scan the portfolio for the highest-leverage AI opportunities and rank where to deploy operating-partner time. Ingests quarterly updates and financials across multiple portfolio companies, identifies q",
+            "body": "Scan the portfolio for the highest-leverage AI opportunities and rank where to deploy operating-partner time. Ingests quarterly updates and financials across multiple portfolio companies, identifies…",
             "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
@@ -189,18 +215,50 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 15.7,
+      "actual_duration_s": 15.23,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:26:56"
+        "at": "2026-09-05T23:01:26"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In ai-readiness, sections: Workflow, Step 1: Connect to Portfolio Data, Step 2: Per-Company Scan, Step 3: Rank Across the Portfolio. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "Scan the portfolio for the highest-leverage AI opportunities and rank where to deploy operating-partner time; Ingests quarterly updates and financials across multiple portfolio companies; identifies quick wins at each",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 15.04,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T23:01:26"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "ai-readiness makes Claude execute one task reliably. The SKILL.md is the spec — Scan the portfolio for the highest-leverage AI opportunities and rank where to d. Same input, same output, every run. Know the limit: only what the file says.",
+      "narration_text": "ai-readiness makes Claude execute one task reliably. The SKILL.md is the spec — Scan the portfolio for the highest-leverage AI opportunities and rank where to…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 18,
@@ -213,7 +271,8 @@
             "artifactHeading": "Claude, Ai Readiness.",
             "artifactLines": [
               "Skill: ai-readiness — Claude reads SKILL.md before acting",
-              "Scan the portfolio for the highest-leverage AI opportunities and rank where to deploy oper",
+              "Scan the portfolio for the highest-leverage AI opportunities and rank where to deploy…",
+              "5-step pipeline: Connect to Portfolio Data → Per-Company Scan → Rank Across the Portfolio",
               "Same input → same output, every run",
               "Limit: only what the SKILL.md specifies"
             ]
@@ -225,18 +284,18 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 14.49,
+      "actual_duration_s": 14.4,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:26:56"
+        "at": "2026-09-05T23:01:26"
       }
     },
     {
       "beat_id": "BHTF",
       "act": "handoff — Your Turn",
-      "narration_text": "Your turn. Paste this into Claude: 'I want to scan the portfolio for the highest-leverage ai opportunities and rank where to d. Read the ai-readiness skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to scan the portfolio for the highest-leverage ai opportunities and rank where to. Read the ai-readiness skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "estimated_duration_s": 24,
@@ -248,7 +307,7 @@
             "greeting": "Your turn.",
             "topic": "AI-READINESS · ANTHROPIC SKILL",
             "segment": "Claude, Ai Readiness.",
-            "command": "I want to scan the portfolio for the highest-leverage ai opportunities and rank . Read the ai-readiness skill and walk me through what you will do before you do it.",
+            "command": "I want to scan the portfolio for the highest-leverage ai opportunities and rank. Read the ai-readiness skill and walk me through what you will do before you do it.",
             "runningText": "paste this into Claude…",
             "output": [],
             "folderLabel": "@NikBearBrown",
@@ -262,12 +321,12 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 15.1,
+      "actual_duration_s": 14.98,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:26:56"
+        "at": "2026-09-05T23:01:26"
       }
     },
     {
@@ -298,7 +357,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-25T05:26:56"
+        "at": "2026-09-05T23:01:26"
       }
     }
   ]

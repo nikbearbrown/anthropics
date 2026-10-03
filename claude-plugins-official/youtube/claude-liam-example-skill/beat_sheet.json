@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "example-skill",
+    "title": "Claude, Example Skill.",
     "slug": "claude-liam-example-skill",
-    "topic": "EXAMPLE SKILL · CLAUDE PLUGINS",
+    "topic": "EXAMPLE-SKILL · ANTHROPIC SKILL",
     "register": "Teardown",
     "audience": "Claude",
     "brand": "claude-liam",
@@ -13,17 +13,48 @@
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
-    "greeting": "Merhaba, Liam",
+    "greeting": "Hola, Liam",
     "folderLabel": "@NikBearBrown",
     "in_for_bear": true,
     "playlist": "Claude Taught",
     "modifier": "skill-teardown",
-    "source_skill": "../anthropics/claude-plugins-official/plugins/example-plugin/skills/example-skill/SKILL.md",
+    "modelLabel": "Opus 4.8",
+    "source_skill": "/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/claude-plugins-official/plugins/example-plugin/skills/example-skill/SKILL.md",
+    "source_detail": {
+      "capabilities": [
+        "This skill should be used when the user asks to \"demonstrate skills\"",
+        "\"show skill format\"",
+        "\"create a skill template\"",
+        "or discusses skill development patterns",
+        "Provides a reference template for creating Claude Code plugin skills."
+      ],
+      "constraints": [
+        "### Required Files",
+        "└── SKILL.md # Main skill definition (required)",
+        "name (required): Skill identifier",
+        "description (required): Trigger conditions - describe when Claude should use this skill"
+      ],
+      "referenced_files": [],
+      "code_signals": [
+        "code block: yaml"
+      ],
+      "sections": [
+        "Overview",
+        "When This Skill Applies",
+        "Skill Structure",
+        "Required Files",
+        "Optional Supporting Files",
+        "Frontmatter Options",
+        "Writing Effective Descriptions",
+        "Skill Content Guidelines",
+        "Best Practices"
+      ]
+    },
     "build": {
-      "at": "2026-07-18T21:11:00",
-      "cut": "master",
-      "filled": 7,
-      "of": 7,
+      "at": "2026-09-05T16:25:35",
+      "cut": "review",
+      "filled": 8,
+      "of": 8,
       "slates": [],
       "skin_warnings": []
     }
@@ -32,24 +63,24 @@
     {
       "beat_id": "B00",
       "act": "cold open",
-      "narration_text": "Merhaba — this is Liam, in for Bear. You are building a model-invoked skill for Claude — the example-skill is the reference template. Unlike commands, which users invoke with a slash, skills are activated by Claude autonomously based on context. The description field is the trigger. The file lives at skills slash name slash SKILL.md. Let me walk you through the schema, the trigger mechanism, and the teardown.",
+      "narration_text": "Hola — this is Liam, in for Bear. The skill is example-skill. This skill should be used when the user asks to \"demonstrate skills\", \"show skill format\", \"create a skill template\", or discusses skill development patterns. Provides a reference template for creating Claude Code plugin skills.. Its concrete surface area includes This skill should be used when the user asks to \"demonstrate skills\"; \"show skill format\"; \"create a skill template\". A SKILL.md tells Claude exactly how. Let me show you what's in it.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 18,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Merhaba, Liam",
-            "topic": "EXAMPLE SKILL · CLAUDE PLUGINS",
-            "segment": "PLUGINS",
-            "command": "Show me the skill format — I want to create a model-invoked skill for my plugin.",
+            "greeting": "Hola, Liam",
+            "topic": "EXAMPLE-SKILL · ANTHROPIC SKILL",
+            "segment": "Claude, Example Skill.",
+            "command": "Run the example-skill skill.",
             "runningText": "reading example-skill SKILL.md…",
             "output": [
-              "Skills: model-invoked · Commands: user-invoked · Agents: spawned by Claude",
-              "4 frontmatter fields: name · description (trigger) · version · license",
-              "description = activation trigger: phrases, keywords, topic areas"
+              "skill: example-skill",
+              "This skill should be used when the user asks to \"demonstrate skills\", \"show…",
+              "steps: 0 — executing."
             ],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
@@ -62,27 +93,41 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 21.08,
+      "actual_duration_s": 25.66,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:11:00"
+        "at": "2026-09-05T16:25:35"
       }
     },
     {
       "beat_id": "B01",
-      "act": "anatomy — frontmatter schema + file structure",
-      "narration_text": "The skill has four frontmatter fields and an optional directory structure. Name is the identifier — required. Description is the trigger — required, and it deserves more attention than any other field. Version is optional semantic versioning. License is optional. For the description, the skill gives concrete guidance: include specific trigger phrases users might say, keywords that indicate relevance, and topic areas the skill covers. The file structure is minimal for simple skills: just SKILL.md in a named directory under skills slash. For complex skills, the same directory can hold README.md for documentation, a references subdirectory for reference materials, an examples subdirectory for example files, and a scripts subdirectory for helper scripts. The skill activates when Claude determines the user's context matches the description — not when the user types a slash command, not when Claude spawns it as an agent, but when Claude reads the context and decides the skill is relevant.",
+      "act": "anatomy",
+      "narration_text": "A skill is a folder Claude reads before it works. This one is example-skill. The SKILL.md contains the full instruction set — plain language, no hidden logic. Claude reads it, then acts. The file is the program.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 34,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ExampleSkillAnatomy",
+          "pattern": "SkillTeardownAnatomy",
           "props": {
-            "sparkLine": "Description is the trigger. Required: name + description. Optional: version, license, subdirectories."
+            "skillName": "example-skill",
+            "eyebrow": "SKILL · ANATOMY",
+            "title": "A skill is a folder.",
+            "files": [
+              {
+                "indent": 1,
+                "icon": "📄",
+                "name": "SKILL.md",
+                "size": "2k",
+                "accent": true
+              }
+            ],
+            "calloutText": "The SKILL.md is the instruction set.",
+            "calloutSub": "1 file total.",
+            "sparkLine": "The file is the program."
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -91,27 +136,49 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 52.35,
+      "actual_duration_s": 12.25,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:11:00"
+        "at": "2026-09-05T16:25:35"
       }
     },
     {
       "beat_id": "B02",
-      "act": "design — description trigger + three activation modes + overlap avoidance",
-      "narration_text": "Three design points. The description-as-trigger pattern is the most important thing to get right. The skill gives a concrete template: this skill should be used when the user asks to quote specific phrase unquote, mentions keyword, or discusses topic area. The pattern works because it tells Claude how to pattern-match: look for these words or phrases, not just general topic similarity. The three activation modes clarify what kind of capability you are building. A skill is contextual guidance that Claude incorporates autonomously — no user action, no explicit invocation. A command requires the user to type a slash command. An agent is something Claude spawns to handle a subtask. Getting the mode wrong means building a command when you needed a skill, and users will never see it activate. Overlap avoidance is the best practice that's hardest to test. If two skills have overlapping trigger conditions, Claude may activate the wrong one, or activate both, or activate neither consistently. The skill says to avoid overlap but gives no method for detecting it — you have to read every other skill's description and decide.",
+      "act": "pipeline",
+      "narration_text": "example-skill is not a simple numbered pipeline. It is a reference Claude reads and applies. The concrete pieces are: This skill should be used when the user asks to \"demonstrate skills\"; \"show skill format\"; \"create a skill template\"; or discusses skill development patterns. The instruction set IS the behaviour.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 38,
+      "estimated_duration_s": 26,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ExampleSkillDesign",
+          "pattern": "SkillTeardownPipeline",
           "props": {
-            "sparkLine": "Description triggers model judgment. Three modes: skill vs command vs agent. Overlap: no detection method."
+            "eyebrow": "SKILL · PIPELINE",
+            "title": "How the skill works.",
+            "inputLabel": "YOUR REQUEST",
+            "outputLabel": "RESULT",
+            "phases": [
+              {
+                "label": "Read SKILL.md",
+                "desc": "load the instruction set",
+                "accent": true
+              },
+              {
+                "label": "Execute",
+                "desc": "run each step in order",
+                "accent": false
+              },
+              {
+                "label": "Return output",
+                "desc": "deliver the result",
+                "accent": false
+              }
+            ],
+            "footerNote": "Linear execution.",
+            "sparkLine": "Input in. Output out."
           },
           "rendered": {
             "out": "media/B02.mp4",
@@ -120,64 +187,98 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 57.77,
+      "actual_duration_s": 16.62,
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:11:00"
+        "at": "2026-09-05T16:25:35"
       }
     },
     {
-      "beat_id": "B05",
-      "act": "teardown — what it gets right / where it bites",
-      "narration_text": "Here is the teardown. The skill gets five things right. The skills versus commands versus agents distinction is stated at the top — contextual guidance, user-invoked slash command, Claude-spawned agent — with enough precision to choose the right abstraction before building. Description-as-trigger is explained with concrete good patterns: specific phrases the user might say, keywords, topic areas. The five-point skill content guidelines are actionable: clear purpose, when to use, structured guidance, actionable instructions, examples. The optional directory structure is documented — references, examples, scripts — giving a clear upgrade path from single-file to complex skill. And the best practice to avoid overlap with other skills' trigger conditions names a non-obvious risk. Where it bites. The version and license frontmatter fields are documented but their effect on runtime behavior isn't explained — are they enforced? Displayed somewhere? The trigger mechanism is unspecified: no explanation of whether Claude uses embedding similarity, keyword matching, or exact phrase detection, which would help a skill author tune the description. Testing methodology is absent — the skill says to test that the skill activates for expected queries but gives no method, tooling, or example. There is no guidance on description length — whether longer descriptions reduce false positives or create noise. And overlap avoidance is a best practice with no detection method or resolution process.",
+      "beat_id": "B03",
+      "act": "design tell",
+      "narration_text": "Here is the design tell. ### Required Files. That is the constraint in example-skill — not decoration, but a rule that changes how Claude is supposed to act.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 44,
+      "estimated_duration_s": 28,
       "shot": {
         "type": "REMOTION",
         "remotion": {
-          "pattern": "ExampleSkillTell",
+          "pattern": "SkillTeardownMechanism",
           "props": {
-            "sparkLine": "Three-mode distinction and description trigger solid. Trigger mechanism and testing: unspecified."
+            "eyebrow": "SKILL · DESIGN TELL",
+            "heading": "The interesting constraint.",
+            "body": "### Required Files",
+            "sparkLine": "This is the part worth knowing."
           },
           "rendered": {
-            "out": "media/B05.mp4",
+            "out": "media/B03.mp4",
             "at": ""
           }
         }
       },
-      "audio_file": "mp3/beat-B05.mp3",
-      "actual_duration_s": 76.74,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 9.96,
       "build": {
         "status": "VIDEO",
-        "src": "media/B05.mp4",
+        "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:11:00"
+        "at": "2026-09-05T16:25:35"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "detail layer",
+      "narration_text": "The detail layer matters. In example-skill, implementation signals: code block: yaml; sections: Overview, When This Skill Applies, Skill Structure, Required Files. That is what keeps the explanation tied to the actual skill, not a generic Claude demo.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "SkillTeardownMechanism",
+          "props": {
+            "eyebrow": "SKILL · DETAIL LAYER",
+            "heading": "What the source actually names.",
+            "body": "This skill should be used when the user asks to \"demonstrate skills\"; \"show skill format\"; \"create a skill template\"; code block: yaml",
+            "sparkLine": "Ground the reel in the file."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 14.76,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-05T16:25:35"
       }
     },
     {
       "beat_id": "BVDT",
       "act": "verdict",
-      "narration_text": "Verdict. example-skill: model-invoked skill reference. Skills vs commands vs agents: contextual guidance vs slash command vs Claude-spawned. 4 frontmatter fields: name + description required, version + license optional. Description = activation trigger: phrases, keywords, topic areas. Optional dirs: references, examples, scripts. Content guidelines: purpose, when, structure, actionable, examples. Gaps: version/license runtime effect unstated · trigger mechanism unspecified · no testing methodology · no description length guidance · overlap avoidance advice without detection method.",
+      "narration_text": "example-skill makes Claude execute one task reliably. The SKILL.md is the spec — This skill should be used when the user asks to \"demonstrate skills\", \"show…. Same input, same output, every run. Know the limit: only what the file says.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 24,
+      "estimated_duration_s": 18,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "example-skill",
+            "artifactHeading": "Claude, Example Skill.",
             "artifactLines": [
-              "Model-invoked skill: contextual guidance Claude activates autonomously",
-              "vs command (user slash) · vs agent (Claude-spawned subtask)",
-              "4 frontmatter: name + description (required) · version + license (optional)",
-              "description = trigger: specific phrases · keywords · topic areas",
-              "Optional dirs: references/ · examples/ · scripts/ for complex skills",
-              "Gaps: trigger mechanism · testing methodology · overlap detection · version effect"
+              "Skill: example-skill — Claude reads SKILL.md before acting",
+              "This skill should be used when the user asks to \"demonstrate skills\", \"show skill…",
+              "Capabilities: This skill should be used when the user asks to \"demonstrate skills\"; \"show skill format\"; \"create a skill template\"",
+              "Constraint: ### Required Files",
+              "Same input → same output, every run"
             ]
           },
           "rendered": {
@@ -187,36 +288,32 @@
         }
       },
       "audio_file": "mp3/beat-BVDT.mp3",
-      "actual_duration_s": 36.97,
+      "actual_duration_s": 13.48,
       "build": {
         "status": "VIDEO",
         "src": "media/BVDT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:11:00"
+        "at": "2026-09-05T16:25:35"
       }
     },
     {
       "beat_id": "BHTF",
-      "act": "handoff",
-      "narration_text": "Your turn. Build a model-invoked skill for a plugin that helps with database query optimization. Watch five things. First: does it write the description with specific trigger phrases — not just a topic summary? Second: does it include the 'when to use' section that maps activation conditions to concrete examples? Third: does it check whether the description overlaps with any other skill in the plugin? Fourth: does it create a scripts subdirectory if the skill needs helper queries, or put everything in SKILL.md? Fifth: does it test the skill by giving Claude a realistic query and checking whether the skill activates, or does it just declare it done?",
+      "act": "handoff — Your Turn",
+      "narration_text": "Your turn. Paste this into Claude: 'I want to this skill should be used when the user asks to \"demonstrate skills\", \"show. Read the example-skill skill and walk me through what you will do before you do it.' That clause matters — explaining first surfaces the real constraint logic.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 26,
+      "estimated_duration_s": 24,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Your Turn",
-            "topic": "EXAMPLE SKILL · HANDOFF",
-            "segment": "PLUGINS",
-            "command": "Build a model-invoked skill for database query optimization in my plugin.",
-            "runningText": "Watch: trigger phrases specific? when-to-use section? overlap check? subdirs? test?",
-            "output": [
-              "Expected: description with specific phrases · when-to-use with examples",
-              "Expected: overlap check · scripts/ for queries · activation test",
-              "Red flag: topic summary only · no when-to-use · no test · everything in SKILL.md"
-            ],
+            "greeting": "Your turn.",
+            "topic": "EXAMPLE-SKILL · ANTHROPIC SKILL",
+            "segment": "Claude, Example Skill.",
+            "command": "I want to this skill should be used when the user asks to \"demonstrate skills\". Read the example-skill skill and walk me through what you will do before you do it.",
+            "runningText": "paste this into Claude…",
+            "output": [],
             "folderLabel": "@NikBearBrown",
             "modelLabel": "Opus 4.8",
             "effortLabel": "High"
@@ -228,29 +325,29 @@
         }
       },
       "audio_file": "mp3/beat-BHTF.mp3",
-      "actual_duration_s": 32.04,
+      "actual_duration_s": 14.27,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:11:00"
+        "at": "2026-09-05T16:25:35"
       }
     },
     {
       "beat_id": "BOUT",
       "act": "outro",
-      "narration_text": "example-skill. Liam, in for Bear.",
+      "narration_text": "Claude, Example Skill. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "estimated_duration_s": 5,
+      "estimated_duration_s": 6,
       "shot": {
         "type": "REMOTION",
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "example-skill",
+            "title": "Claude, Example Skill.",
             "handle": "@NikBearBrown",
-            "subline": "example-skill · Claude Plugins"
+            "subline": "example-skill · Anthropic Skills"
           },
           "rendered": {
             "out": "media/BOUT.mp4",
@@ -259,12 +356,12 @@
         }
       },
       "audio_file": "mp3/beat-BOUT.mp3",
-      "actual_duration_s": 2.67,
+      "actual_duration_s": 3.22,
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-07-18T21:11:00"
+        "at": "2026-09-05T16:25:35"
       }
     }
   ]

@@ -1,0 +1,289 @@
+{
+ "metadata": {
+  "title": "Claude, Cookbook Audit.",
+  "slug": "claude-cookbooks--claude-liam-cookbook-audit",
+  "topic": "COOKBOOK-AUDIT · ANTHROPIC SKILL",
+  "purpose": "Answer whether Claude auditing a cookbook notebook is general editorial taste or something more specific, using the cookbook-audit skill's own description as the concrete case. Lands the carry-out that a cookbook-audit skill is SKILL.md, a rubric Claude reads, applies, and checks the same way against whatever notebook you hand it.",
+  "skill": "hai-simple",
+  "mode": "redo",
+  "source_sheet": "anthropics/claude-cookbooks/youtube/claude-liam-cookbook-audit/beat_sheet.json",
+  "register": "Teardown",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "teardown",
+  "style_preset": "humanitarians",
+  "ground": "#F3EBDD",
+  "folderLabel": "@HumanitariansAI",
+  "channel_title": "@HumanitariansAI",
+  "playlist": "Claude Basics",
+  "in_for_bear": true,
+  "clock": "narration",
+  "gate_c": "SIGNED - CARRY-OUT.md",
+  "gate_h": "N/A - hai-simple (BrutalistHesitantWriter, no puppet host)",
+  "anchor_pair": "B02 -> B03 (hand the skill a notebook: same three steps run every time; then the same pipeline runs identically twice, and just as readily against an issue outside the rubric)",
+  "build": {
+   "at": "2026-08-29T06:02:26",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "audience": "NikBearBrown",
+  "derived_from": "beat_sheet.json",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "typography": {
+   "display": "Montserrat",
+   "serif": "EB Garamond",
+   "mono": "PT Mono"
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "hesitant writer cold open",
+   "narration_text": "Someone types: how do I get Claude to judge my notebook. They stop on judge — wrong verb. This skill audits against a written rubric. It doesn't have taste. Here's what that swap actually costs, and buys.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "lead_silence_s": 0.8,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "Writer types 'How do I get Claude to judge my notebook?', hesitates on 'judge', corrects to 'audit', lands the real question",
+    "remotion": {
+     "pattern": "BrutalistHesitantWriter",
+     "props": {
+      "text": "How do I get Claude\nto judge my notebook?",
+      "face": "serif",
+      "fontSize": 64,
+      "lineSpacing": 1.3,
+      "align": "center",
+      "ink": "#2F2A26",
+      "accent": "#E4572E",
+      "bg": "#F3EBDD",
+      "triggerWords": "judge",
+      "replacementWords": "audit",
+      "mistakeRate": 6,
+      "hesitateWithin": 3,
+      "hesitateBetween": 22,
+      "charMs": 55,
+      "jitter": 26,
+      "seed": "hai-cookbook-audit"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "B00 is Remotion (BrutalistHesitantWriter) per hai-simple SKILL.md WRITER LAW. TIMING LAW: 20-35 word narration + lead_silence_s 0.8 to give the typing a >=9s window; verify media/B00.mp4 >= 8s and that the correction ('judge' -> 'audit') is visible on a late frame.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T06:02:26"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "1 stakes / 2 wrong guess, falsified",
+   "narration_text": "Here's what's actually happening: a skill is a folder Claude reads before it works — not weights, not training. cookbook-audit holds three files: SKILL.md, style_guide.md, and validate_notebook.py. Twelve kilobytes of plain English, no hidden logic. Claude reads the folder, then acts on what it says. The file is the program. They optimized for you being able to open it in a text editor and change it — at the expense of anything the model might do on its own.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "A folder opening to three files, SKILL.md highlighted; 'not trained on it' callout; 'the file is the program' closer"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "A skill is a folder",
+     "mechanic": "A folder icon opens into three file rows: SKILL.md (12k), style_guide.md (5k), and validate_notebook.py (17k) — SKILL.md recolors teal and grows slightly. A 'not trained on it' tag crosses out a brain glyph. Closing line: 'the file is the program'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "CBAB01Scene"
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T06:02:26"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "3 mechanism / 4 ANCHOR PLANTED",
+   "narration_text": "The instructions live in a Steps section: read SKILL.md, execute each step in order, return the result. Linear, no branching unless a step says so. Watch the anchor. Hand the skill a notebook, and here's what runs: it reads the rubric, checks the notebook against it, returns a score. Same three steps, every time. That's the trade — predictable mechanics on identical input, at the expense of any cleverness on input the rubric doesn't cover.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR — three linear pipeline phases, then a notebook arrowing through validate_notebook.py to a rubric-score output"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR — a notebook, three steps",
+     "mechanic": "Three phase cards appear left to right and connect with arrows: 'read SKILL.md' / 'execute' / 'return result'. They fade back. THE ANCHOR. A card labelled 'notebook' arrows into a card labelled 'validate_notebook.py', which arrows into a card labelled 'rubric score'. Closing line beneath: 'same three steps, every time'. THIS EXACT SEQUENCE RETURNS AT B03.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "CBAB02Scene"
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T06:02:26"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "4 ANCHOR PAYOFF / 5 both directions",
+   "narration_text": "Here's the payoff. Same notebook, same score, every run — hand cookbook-audit the identical notebook twice and you get identical rubric scores both times. That's what a file-as-program buys you. The reverse holds too: a notebook with an issue outside the stated rubric still runs the same three steps, checking only what SKILL.md names. validate_notebook.py is the check on the check — right structure, right rubric items, right scope, all caught the same way. They optimized for auditability. If you wanted a general reviewer that catches surprises, that's a different tool.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "new_visual_element": "THE ANCHOR RETURNS — the same pipeline firing identically twice, then split: identical notebook twice = identical score; issue outside rubric = same steps still run, both checked by validate_notebook.py"
+   },
+   "graphic": {
+    "production_viz": {
+     "label": "THE ANCHOR RETURNS — same input, same output; then the limit",
+     "mechanic": "THE B02 PIPELINE RETURNS, identical, running twice in a row — two matching 'rubric score' cards appear side by side, labelled 'same input, same output'. Then it splits: left card 'in-rubric notebook' → pipeline → clean score, labelled 'the payoff'; right card 'out-of-rubric issue' → the same pipeline → score returned anyway, labelled 'the limit'. Beneath both, a small 'validate_notebook.py' tag with a check and a cross — right structure, right rubric items, right scope. Closing line: 'only what SKILL.md names'.",
+     "colors": [
+      "#F3EBDD",
+      "#2F2A26",
+      "#E4572E",
+      "#1F4E5F"
+     ]
+    },
+    "manim": "CBAB03Scene"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B03.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-29T06:02:26"
+   }
+  },
+  {
+   "beat_id": "BCRY",
+   "act": "6 CARRY-OUT",
+   "narration_text": "Auditing a cookbook notebook isn't Claude forming its own opinion of quality — it's SKILL.md, a rubric Claude reads, applies, and checks the same way against whatever notebook you hand it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "lead_silence_s": 0.6,
+   "shot": {
+    "type": "REMOTION",
+    "new_visual_element": "The carry-out sentence, alone",
+    "remotion": {
+     "pattern": "WantQuote",
+     "props": {
+      "quote": "Auditing a cookbook notebook isn't Claude forming its own opinion of quality — it's SKILL.md, a rubric Claude reads, applies, and checks the same way against whatever notebook you hand it.",
+      "attribution": "",
+      "sparkLine": "Applies it. Then checks it."
+     },
+     "rendered": {
+      "out": "media/BCRY.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BCRY.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BCRY.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T06:02:26"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "LLM EXERCISE",
+   "narration_text": "Your turn. Here's a prompt to paste into Claude, ChatGPT, or Gemini — enough context that it produces something useful without this video. Then go deeper: what happens if you hand cookbook-audit a notebook with a problem the rubric never anticipated? Where does the scope hard-stop, and would you fix that by editing SKILL.md, style_guide.md, or validate_notebook.py? Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "llm_exercise": {
+    "prompt": "I want to understand how Anthropic's skill pattern actually runs. A skill is a folder of plain-text instructions Claude reads before it acts — not something it's trained on. Explain how a skill like cookbook-audit runs when you invoke it: what does Claude read, in what order, what does it return, and how does the skill enforce that the same input yields the same output every time? Then name one design trade-off the skill pattern makes.",
+    "dig_deeper": "Go deeper: what happens when you hand cookbook-audit a notebook with a problem the rubric never anticipated — where does the scope hard-stop, and would you fix that by editing SKILL.md, style_guide.md, or validate_notebook.py?"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "COOKBOOK-AUDIT · ANTHROPIC SKILL",
+      "segment": "LLM Exercise",
+      "command": "I want to understand how Anthropic's skill pattern actually runs. A skill is a folder of plain-text instructions Claude reads before it acts — not trained on. Explain how cookbook-audit runs when you invoke it: what Claude reads, in what order, what it returns, and how the skill enforces that the same input yields the same output. Then name one design trade-off skills make.",
+      "runningText": "paste this into Claude, ChatGPT, or Gemini…",
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T06:02:26"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Claude, Cookbook Audit. Liam, in for Bear. More teardowns at @NikBearBrown.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "tail_silence_s": 1.0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "OutroCTA",
+     "props": {
+      "line": "Claude, Cookbook Audit. Liam, in for Bear. More teardowns at @NikBearBrown.",
+      "handle": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-29T06:02:26"
+   }
+  }
+ ]
+}
