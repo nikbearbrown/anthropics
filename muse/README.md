@@ -23,7 +23,7 @@ it renders the narration audio and the video.
 | 9 | [Muse Code, the Harness](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-09-muse-code-harness) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-09-muse-code-harness/CLAUDE-CODE-PROMPT.md) |
 | 10 | [Memory, Skills, and Guardrails](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-10-memory-skills-guardrails) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-10-memory-skills-guardrails/CLAUDE-CODE-PROMPT.md) |
 | 11 | [Capstone: Ship a Full-Stack App](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-11-capstone-full-stack-app) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-11-capstone-full-stack-app/CLAUDE-CODE-PROMPT.md) |
-| 12 | Muse the Agent | ⏳ Planned | — |
+| 12 | [Muse the Agent](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-12-muse-the-agent) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-12-muse-the-agent/CLAUDE-CODE-PROMPT.md) |
 
 ## Series documents
 
