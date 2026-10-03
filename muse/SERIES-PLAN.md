@@ -131,19 +131,28 @@ we saw last time", no "this chapter").
   rules that keep an agent from ruining their week.
 - **Source coverage:** `source/muse-agent-brief.md` (§§1–6),
   `source/session-summary-blast-radius.md` (Parts I–V),
-  `source/compartmentalization.md`.
+  `source/compartmentalization.md`,
+  `source/agent-queues-fandom-risk.md`.
 - **Key beats:** what the agent is (goal → plan → acts, approval before
   consequential actions; endurance, not intelligence — "it saves time, not
   thought"); what it does (errands, connectors, small business, the missing
   creative tools); pricing tiers and the transaction-fee business model (who
   really pays; the intent layer; why heavy non-transacting users are pure
-  cost); security concerns (Full Disk Access, deny-list vs allow-list,
+  cost); what agents do to queues (waiting becomes free → waiting signals
+  nothing → queues become markets, money to the wrong party); where devotion
+  signals move (fan history, proof of personhood, in-person rituals,
+  sanctioned agent channels); the airline-loyalty drift (spending vs
+  engagement history; invisible unfairness of status systems); the engagement
+  hierarchy (time beats effort; backdating is impossible; Goodhart's law);
+  security concerns (Full Disk Access, deny-list vs allow-list,
   prompt injection as adversarial probability, approval fatigue, trust by
   design); the safe setup (assume breach, blast radius, caps outside the
   agent, the short list: email, money, credentials, public voice);
   compartmentalization as the mental model (bulkheads, Saltzer & Schroeder,
-  the recoverability 2×2); the five rules for ordinary people.
-- **Est.:** 12–16 min. The capstone of the series: everything Films 1–11
+  the recoverability 2×2); risk refined for agents (irreversibility weight,
+  adversarial probability, compounding small risks); the five rules for
+  ordinary people.
+- **Est.:** 14–18 min. The capstone of the series: everything Films 1–11
   taught about using the models, applied to surviving the agent.
 - **Note:** this film is about the muse.ai consumer agent, distinct from the
   Spark/Code developer track of Films 1–11. If Bear prefers, it can stand
