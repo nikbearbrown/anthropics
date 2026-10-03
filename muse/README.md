@@ -19,7 +19,7 @@ it renders the narration audio and the video.
 | 5 | [Grounded Answers](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-05-grounded-answers) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-05-grounded-answers/CLAUDE-CODE-PROMPT.md) |
 | 6 | [Structured Outputs](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-06-structured-outputs) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-06-structured-outputs/CLAUDE-CODE-PROMPT.md) |
 | 7 | [Muse in Code](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-07-muse-in-code) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-07-muse-in-code/CLAUDE-CODE-PROMPT.md) |
-| 8 | Agents and Frameworks | ⏳ Planned | — |
+| 8 | [Agents and Frameworks](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-08-agents-and-frameworks) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-08-agents-and-frameworks/CLAUDE-CODE-PROMPT.md) |
 | 9 | Muse Code, the Harness | ⏳ Planned | — |
 | 10 | Memory, Skills, and Guardrails | ⏳ Planned | — |
 | 11 | Capstone: Ship a Full-Stack App | ⏳ Planned | — |
