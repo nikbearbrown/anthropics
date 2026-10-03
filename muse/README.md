@@ -15,7 +15,7 @@ it renders the narration audio and the video.
 | 1 | [What Muse Is](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-01-what-muse-is) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-01-what-muse-is/CLAUDE-CODE-PROMPT.md) |
 | 2 | Your First Prompts | 🔨 Building | — |
 | 3 | Muse Can See | 🔨 Building | — |
-| 4 | Thinking on Canvas | 🔨 Building | — |
+| 4 | [Thinking on Canvas](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-04-thinking-on-canvas) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-04-thinking-on-canvas/CLAUDE-CODE-PROMPT.md) |
 | 5 | Grounded Answers | ⏳ Planned | — |
 | 6 | Structured Outputs | ⏳ Planned | — |
 | 7 | Muse in Code | ⏳ Planned | — |
