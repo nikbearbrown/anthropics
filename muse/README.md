@@ -20,8 +20,8 @@ it renders the narration audio and the video.
 | 6 | [Structured Outputs](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-06-structured-outputs) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-06-structured-outputs/CLAUDE-CODE-PROMPT.md) |
 | 7 | [Muse in Code](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-07-muse-in-code) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-07-muse-in-code/CLAUDE-CODE-PROMPT.md) |
 | 8 | [Agents and Frameworks](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-08-agents-and-frameworks) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-08-agents-and-frameworks/CLAUDE-CODE-PROMPT.md) |
-| 9 | Muse Code, the Harness | ⏳ Planned | — |
-| 10 | Memory, Skills, and Guardrails | ⏳ Planned | — |
+| 9 | [Muse Code, the Harness](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-09-muse-code-harness) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-09-muse-code-harness/CLAUDE-CODE-PROMPT.md) |
+| 10 | [Memory, Skills, and Guardrails](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-10-memory-skills-guardrails) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-10-memory-skills-guardrails/CLAUDE-CODE-PROMPT.md) |
 | 11 | Capstone: Ship a Full-Stack App | ⏳ Planned | — |
 | 12 | Muse the Agent | ⏳ Planned | — |
 
