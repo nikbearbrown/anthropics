@@ -3,20 +3,34 @@
 Lecture-skill film series for **@NikBearBrown**. Persona: **Liam, in for Bear**.
 Voice: Kokoro `am_onyx`. Register: Teardown.
 
-This folder holds the pre-render packages (everything except narration audio
-and rendered video) for a comprehensive tutorial series on Meta's Muse models
-(Muse Spark, Muse Glimmer) and the Muse Code coding harness — built with the
-`lecture` skill from brutalist.art.
+Each film is a pre-render package (everything except narration audio and
+rendered video). To finish a film: open its **Claude Code prompt** link below,
+download the film folder, paste the prompt into Claude Code on your Mac —
+it renders the narration audio and the video.
 
-Source inspiration: the MetaMuse Code Essentials course transcript
-(see `SOURCE-NOTES.md`). The transcript is inspiration, not scripture: every
-film is planned from what the topic needs, and every claim in every film must
-still pass the factcheck gate against a real source.
+## Films
 
-## Series plan
+| # | Film | Status | Finish it |
+|---|---|---|---|
+| 1 | [What Muse Is](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-01-what-muse-is) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-01-what-muse-is/CLAUDE-CODE-PROMPT.md) |
+| 2 | Your First Prompts | 🔨 Building | — |
+| 3 | Muse Can See | 🔨 Building | — |
+| 4 | Thinking on Canvas | 🔨 Building | — |
+| 5 | Grounded Answers | ⏳ Planned | — |
+| 6 | Structured Outputs | ⏳ Planned | — |
+| 7 | Muse in Code | ⏳ Planned | — |
+| 8 | Agents and Frameworks | ⏳ Planned | — |
+| 9 | Muse Code, the Harness | ⏳ Planned | — |
+| 10 | Memory, Skills, and Guardrails | ⏳ Planned | — |
+| 11 | Capstone: Ship a Full-Stack App | ⏳ Planned | — |
+| 12 | Muse the Agent | ⏳ Planned | — |
 
-`SERIES-PLAN.md` is the breakdown: the full set of lectures to be built, in
-order, each with its promise, source coverage, and key beats.
+## Series documents
+
+- [SERIES-PLAN.md](https://github.com/nikbearbrown/anthropics/blob/main/muse/SERIES-PLAN.md) — the full 12-film breakdown
+- [REFERENCE-film-pattern.md](https://github.com/nikbearbrown/anthropics/blob/main/muse/REFERENCE-film-pattern.md) — the package spec every film follows
+- [CLAUDE-CODE-PROMPT-TEMPLATE.md](https://github.com/nikbearbrown/anthropics/blob/main/muse/CLAUDE-CODE-PROMPT-TEMPLATE.md) — the template each film's prompt is filled from
+- [source/](https://github.com/nikbearbrown/anthropics/tree/main/muse/source) — source material (transcript outline, research briefs)
 
 ## Standing rules
 
@@ -25,7 +39,8 @@ order, each with its promise, source coverage, and key beats.
 - Never publish a film. No uploads, no staging for publishing, without Bear's
   explicit instruction.
 - Never commit MP3 / MP4 / WAV. Narration and renders live on Bear's Mac only.
-- Every film ships as a complete pre-render package (see `SERIES-PLAN.md` for
-  the package spec) before the next film starts.
+- Every film ships as a complete 12-file pre-render package before the next
+  film starts. This README is updated with every film, each linking directly
+  to its Claude Code prompt.
 - The repo is public: no contact details, private names, or absolute local
   paths in any pushed file.
