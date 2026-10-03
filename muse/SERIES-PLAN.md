@@ -176,6 +176,10 @@ the lecture-skill output contract adapted to the film-builder gate:
 | `CHECKS-REPORT.md` | QC results per scene + issues found and fixed |
 | `PROMPTS.md` | Prompts that shaped the film, in order ("no generation prompts" if none) |
 | `CLAUDE-CODE-RENDER.md` | Render instructions for Bear's Mac |
+| `CLAUDE-CODE-PROMPT.md` | Paste-ready prompt for Claude Code on Bear's Mac: takes over the
+  finished package and renders the narration audio (Kokoro `am_onyx`,
+  one MP3 per beat) and the video (review cut + 4K master). Filled in
+  per film from `CLAUDE-CODE-PROMPT-TEMPLATE.md` |
 
 Spine per film (lecture law): BIDEA hesitant writer → BDEFS key terms →
 acts → BVDT recap → BHTF your turn → BOUT @NikBearBrown outro. No cap on
@@ -186,9 +190,11 @@ length; one film per lecture; never split, never pad.
 1. This plan (done — pushed).
 2. Per film, in order: read the source slice → ACTS.md → SHOTLIST.md →
    FACTCHECK.md → make_sheet.py → beat_sheet.json → scenes.py → static QC
-   gate (0 errors, 0 warnings) → docs → push the 11 files → verify via API →
+   gate (0 errors, 0 warnings) → docs → fill in CLAUDE-CODE-PROMPT.md from the
+   template → push the 12 files → verify via API →
    log in FRICTIONAL.md.
-3. Bear renders locally with Kokoro `am_onyx` + the render instructions.
+3. Bear (or Claude Code on his Mac, via the paste-ready prompt) renders
+   locally with Kokoro `am_onyx` + the render instructions.
    Nothing is published without his word.
 
 ## Open questions for Bear
