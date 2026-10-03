@@ -13,8 +13,8 @@ it renders the narration audio and the video.
 | # | Film | Status | Finish it |
 |---|---|---|---|
 | 1 | [What Muse Is](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-01-what-muse-is) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-01-what-muse-is/CLAUDE-CODE-PROMPT.md) |
-| 2 | Your First Prompts | 🔨 Building | — |
-| 3 | Muse Can See | 🔨 Building | — |
+| 2 | [Your First Prompts](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-02-your-first-prompts) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-02-your-first-prompts/CLAUDE-CODE-PROMPT.md) |
+| 3 | [Muse Can See](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-03-muse-can-see) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-03-muse-can-see/CLAUDE-CODE-PROMPT.md) |
 | 4 | [Thinking on Canvas](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-04-thinking-on-canvas) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-04-thinking-on-canvas/CLAUDE-CODE-PROMPT.md) |
 | 5 | Grounded Answers | ⏳ Planned | — |
 | 6 | Structured Outputs | ⏳ Planned | — |
