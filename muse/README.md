@@ -17,7 +17,7 @@ it renders the narration audio and the video.
 | 3 | [Muse Can See](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-03-muse-can-see) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-03-muse-can-see/CLAUDE-CODE-PROMPT.md) |
 | 4 | [Thinking on Canvas](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-04-thinking-on-canvas) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-04-thinking-on-canvas/CLAUDE-CODE-PROMPT.md) |
 | 5 | Grounded Answers | ⏳ Planned | — |
-| 6 | Structured Outputs | ⏳ Planned | — |
+| 6 | [Structured Outputs](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-06-structured-outputs) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-06-structured-outputs/CLAUDE-CODE-PROMPT.md) |
 | 7 | Muse in Code | ⏳ Planned | — |
 | 8 | Agents and Frameworks | ⏳ Planned | — |
 | 9 | Muse Code, the Harness | ⏳ Planned | — |
