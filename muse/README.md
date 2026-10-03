@@ -16,9 +16,9 @@ it renders the narration audio and the video.
 | 2 | [Your First Prompts](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-02-your-first-prompts) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-02-your-first-prompts/CLAUDE-CODE-PROMPT.md) |
 | 3 | [Muse Can See](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-03-muse-can-see) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-03-muse-can-see/CLAUDE-CODE-PROMPT.md) |
 | 4 | [Thinking on Canvas](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-04-thinking-on-canvas) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-04-thinking-on-canvas/CLAUDE-CODE-PROMPT.md) |
-| 5 | Grounded Answers | ⏳ Planned | — |
+| 5 | [Grounded Answers](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-05-grounded-answers) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-05-grounded-answers/CLAUDE-CODE-PROMPT.md) |
 | 6 | [Structured Outputs](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-06-structured-outputs) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-06-structured-outputs/CLAUDE-CODE-PROMPT.md) |
-| 7 | Muse in Code | ⏳ Planned | — |
+| 7 | [Muse in Code](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-07-muse-in-code) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-07-muse-in-code/CLAUDE-CODE-PROMPT.md) |
 | 8 | Agents and Frameworks | ⏳ Planned | — |
 | 9 | Muse Code, the Harness | ⏳ Planned | — |
 | 10 | Memory, Skills, and Guardrails | ⏳ Planned | — |
