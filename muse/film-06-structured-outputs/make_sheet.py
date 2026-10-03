@@ -1,0 +1,281 @@
+"""make_sheet.py — Structured Outputs (Film 6). Generates beat_sheet.json."""
+import json
+
+BEATS = [
+    {
+        "id": "BIDEA",
+        "scene": "M01",
+        "dur_s": 14,
+        "act": "hook",
+        "voice": "Muse",
+        "line": (
+            "Hallo. This is Liam, in for Bear. Today we make the model fill in "
+            "a form. You give it a schema, a rigid description of exactly what "
+            "the answer must look like, and it returns data you can actually "
+            "use. Structured outputs."
+        ),
+        "screen": (
+            "Hook card reading 'make the model fill in your form'. A form "
+            "outline and JSON braces slide together into one mark."
+        ),
+    },
+    {
+        "id": "BDEFS",
+        "scene": "M02",
+        "dur_s": 22,
+        "act": "hook",
+        "voice": "Muse",
+        "line": (
+            "Four terms before we start. JSON Schema: a contract describing "
+            "the shape of an answer. Constraint: the contract forces the "
+            "model's thinking, not just its formatting. Rubric: a schema that "
+            "grades something — score, feedback, categories. Report: the grade "
+            "turned into something a human can read."
+        ),
+        "screen": (
+            "Four term cards appear one by one: 'JSON Schema — a contract "
+            "describing the shape of an answer' / 'Constraint — the contract "
+            "forces the model's thinking, not just its formatting' / 'Rubric — "
+            "a schema that grades: score, feedback, categories' / 'Report — "
+            "the grade turned into something a human can read'."
+        ),
+    },
+    {
+        "id": "B01",
+        "scene": "M03",
+        "dur_s": 22,
+        "act": "1",
+        "voice": "Muse",
+        "line": (
+            "The usual way to use a model is to ask for prose and hope. But "
+            "prose is a guess. You cannot check it, you cannot pipe it "
+            "anywhere. A schema changes the deal. The model must produce "
+            "exactly these fields, exactly these types. And that does not "
+            "just tidy the output. It constrains the reasoning. To fill the "
+            "score field, it has to actually score."
+        ),
+        "screen": (
+            "A grey prose blob labeled 'a guess' with an arrow to a white "
+            "contract card labeled 'exactly these fields'. A green check lands "
+            "on the card with the caption 'it has to actually score'."
+        ),
+    },
+    {
+        "id": "B02",
+        "scene": "M04",
+        "dur_s": 20,
+        "act": "1",
+        "voice": "Muse",
+        "line": (
+            "He was building a Japanese tutor, a grader for his own studies. "
+            "So he wrote the rubric as JSON Schema. A score out of one "
+            "hundred. Categories like grammar and vocabulary, each with a mark "
+            "and a comment. And a feedback field, written for the student. "
+            "The schema is the test plan."
+        ),
+        "screen": (
+            "A schema card builds field by field: 'score / 100', then "
+            "'grammar: mark + comment', then 'vocabulary: mark + comment', "
+            "then 'feedback: for the student'. Caption: 'the schema is the "
+            "test plan'."
+        ),
+    },
+    {
+        "id": "B03",
+        "scene": "M05",
+        "dur_s": 18,
+        "act": "1",
+        "voice": "Muse",
+        "line": (
+            "This is the part people miss. You write the schema once. Every "
+            "prompt after that just says: grade this, using the schema. The "
+            "contract never changes. The model's attention is free to do the "
+            "one thing that matters, the judging. The format takes care of "
+            "itself."
+        ),
+        "screen": (
+            "One schema card duplicates into a small stack labeled 'reuse'. "
+            "Checks appear on each copy. Caption: 'write it once'."
+        ),
+    },
+    {
+        "id": "B04",
+        "scene": "M06",
+        "dur_s": 20,
+        "act": "2",
+        "voice": "Muse",
+        "line": (
+            "The loop starts with a challenge. A Japanese sentence, one with "
+            "a grammar point that is easy to get wrong. The model generates "
+            "the challenge itself. Then the student, that is him, learning "
+            "Japanese, writes his attempt: a translation, and his explanation "
+            "of the grammar."
+        ),
+        "screen": (
+            "A card labeled 'challenge' appears, holding a Japanese sentence "
+            "line. An arrow leads to a second card labeled 'attempt' with two "
+            "lines: 'translation' and 'grammar explanation'."
+        ),
+    },
+    {
+        "id": "B05",
+        "scene": "M07",
+        "dur_s": 22,
+        "act": "2",
+        "voice": "Muse",
+        "line": (
+            "Here is the student's attempt. A translation of the sentence, "
+            "and his read on the grammar point. It looks fine. It is the kind "
+            "of answer that would pass if you were not looking closely. And "
+            "that is exactly the problem the schema was built to catch."
+        ),
+        "screen": (
+            "The 'attempt' card fills with two text lines. A magnifier ring "
+            "moves over the second line. Caption: 'looks fine. That is the "
+            "problem'."
+        ),
+    },
+    {
+        "id": "B06",
+        "scene": "M08",
+        "dur_s": 24,
+        "act": "2",
+        "voice": "Muse",
+        "line": (
+            "Back comes graded JSON. Not a paragraph of praise, data. Score: "
+            "seventy out of one hundred. Grammar: marked down, with a comment "
+            "naming exactly which particle was misused. Vocabulary: fine. And "
+            "a feedback field, written for the student, explaining the "
+            "mistake in plain terms."
+        ),
+        "screen": (
+            "A JSON card builds row by row: 'score: 70/100' big at top, then "
+            "'grammar: marked down — wrong particle', then 'vocabulary: "
+            "fine', then 'feedback: for the student'."
+        ),
+    },
+    {
+        "id": "B07",
+        "scene": "M09",
+        "dur_s": 24,
+        "act": "2",
+        "voice": "Muse",
+        "line": (
+            "Read the grade the way a practitioner reads it. The machine did "
+            "not just say wrong. It pointed at the particle, named the rule, "
+            "and gave the correction. The prose of a normal answer would bury "
+            "that in politeness. The schema forces it into the light. Seventy "
+            "out of one hundred, and you know exactly where the thirty went."
+        ),
+        "screen": (
+            "'70/100' large on the left. An arrow points to the grammar row, "
+            "highlighted in terracotta: 'wrong particle — named, corrected'. "
+            "Caption: 'you know exactly where the thirty went'."
+        ),
+    },
+    {
+        "id": "B08",
+        "scene": "M10",
+        "dur_s": 24,
+        "act": "3",
+        "voice": "Muse",
+        "line": (
+            "Now the second trick. Take the graded JSON and feed it back in. "
+            "New instruction: render this as a report, an HTML page a "
+            "student can read. The model is not grading anymore, it is "
+            "designing. And because the input is structured, it cannot drop "
+            "the feedback or invent a new score. The data survives the trip."
+        ),
+        "screen": (
+            "The JSON card slides left; an arrow crosses to a new card "
+            "labeled 'report' shaped like an HTML page. A green check lands "
+            "between them. Caption: 'the data survives the trip'."
+        ),
+    },
+    {
+        "id": "B09",
+        "scene": "M11",
+        "dur_s": 24,
+        "act": "3",
+        "voice": "Muse",
+        "line": (
+            "Here is the report. The seventy out of one hundred, big at the "
+            "top. The grammar section, the vocabulary section, each with its "
+            "mark and the model's comment. The feedback, rewritten for a "
+            "human. One loop, challenge, attempt, graded JSON, report, and a "
+            "study session became a system he can run forever."
+        ),
+        "screen": (
+            "A report page builds section by section: header '70/100', then "
+            "a grammar section row, then a vocabulary section row, then a "
+            "feedback block. A loop arrow rings the page."
+        ),
+    },
+    {
+        "id": "BVDT",
+        "scene": "M12",
+        "dur_s": 20,
+        "act": "recap",
+        "voice": "Muse",
+        "line": (
+            "Recap. One: a schema is a contract, it constrains the model's "
+            "reasoning, not just its formatting. Two: the Japanese grader "
+            "loop, challenge, attempt, graded JSON. Three: feed the JSON back "
+            "in and you get a report a human can read."
+        ),
+        "screen": (
+            "Recap card: three lines appear one by one — 'a schema is a "
+            "contract: it constrains reasoning' / 'the grader loop: challenge "
+            "→ attempt → graded JSON' / 'feed the JSON back: a report a human "
+            "can read'."
+        ),
+    },
+    {
+        "id": "BHTF",
+        "scene": "M12",
+        "dur_s": 16,
+        "act": "do_today",
+        "voice": "Muse",
+        "line": (
+            "Your turn. Write one tiny schema, three fields, for something "
+            "you actually wrote this week. Ask the model to fill it. When the "
+            "format stops being your problem, the content finally is."
+        ),
+        "screen": (
+            "Your-turn card: 'one tiny schema, three fields, something you "
+            "wrote this week'. A pencil glyph underlines it."
+        ),
+    },
+    {
+        "id": "BOUT",
+        "scene": "M12",
+        "dur_s": 14,
+        "act": "outro",
+        "voice": "Muse",
+        "line": (
+            "Muse, in for Bear. Thanks for watching. Next film: Muse in Code, "
+            "we leave the playground and call the model from Python."
+        ),
+        "screen": (
+            "Outro title card 'Structured Outputs' with '@NikBearBrown', and "
+            "'Next: Muse in Code' below with an underline bar."
+        ),
+    },
+]
+
+BODY_IDS = ["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B09"]
+
+if __name__ == "__main__":
+    ids = [b["id"] for b in BEATS]
+    assert len(BEATS) == 14, f"expected 14 beats, got {len(BEATS)}"
+    assert len(ids) == len(set(ids)), "duplicate beat ids"
+    assert [b["id"] for b in BEATS if b["id"] in set(BODY_IDS)] == BODY_IDS, "body beats"
+    assert all(b["scene"].startswith("M") for b in BEATS), "scene naming"
+    assert all(b["voice"] == "Muse" for b in BEATS), "voice"
+    assert all(12 <= b["dur_s"] <= 30 for b in BEATS if b["act"] not in ("recap", "do_today", "outro")), "body durations"
+    body = sum(b["dur_s"] for b in BEATS if b["id"] in set(BODY_IDS))
+    total = sum(b["dur_s"] for b in BEATS)
+    print(f"beats={len(BEATS)} body={len(BODY_IDS)} total={total}s")
+    with open("beat_sheet.json", "w") as f:
+        json.dump(BEATS, f, indent=2, ensure_ascii=False)
+    print("wrote beat_sheet.json")
