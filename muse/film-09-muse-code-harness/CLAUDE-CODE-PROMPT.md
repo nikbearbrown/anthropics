@@ -1,8 +1,7 @@
 # CLAUDE-CODE-PROMPT.md — paste-ready prompt for Claude Code (Bear's Mac)
 
-Copy everything below the line into Claude Code, running inside this film
-folder (`muse/film-09-muse-code-harness/`).
-
+Copy everything below the line into Claude Code, running inside this film folder:
+`/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-09-muse-code-harness/`
 
 ---
 
@@ -15,7 +14,7 @@ video. Do not publish anything.
 - Title: Muse Code, the Harness
 - Reel slug: muse-film-09-muse-code-harness
 - Beats: 15 (see beat_sheet.json), total runtime 280s
-- You are in the film folder: muse/film-09-muse-code-harness
+- You are in the film folder: /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-09-muse-code-harness
 
 ## Files you have
 - `beat_sheet.json` — the script. Each beat: id, scene, dur_s, act, voice,
@@ -41,7 +40,7 @@ EXACTLY as written using Kokoro TTS voice `am_onyx`, and save to
 From the brutalist.art toolkit directory on this Mac:
 
 ```
-./art run --reel muse-film-09-muse-code-harness --beats muse/film-09-muse-code-harness/beat_sheet.json --scenes muse/film-09-muse-code-harness/scenes.py --audio muse/film-09-muse-code-harness/audio/
+./art run --reel muse-film-09-muse-code-harness --beats /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-09-muse-code-harness/beat_sheet.json --scenes /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-09-muse-code-harness/scenes.py --audio /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-09-muse-code-harness/audio/
 ```
 
 Watch the review cut (or spot-check act by act). If a scene visibly breaks,
