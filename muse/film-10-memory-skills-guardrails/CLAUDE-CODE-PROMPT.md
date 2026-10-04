@@ -1,4 +1,9 @@
-# CLAUDE-CODE-PROMPT.md — Memory, Skills, and Guardrails (Film 10)
+# CLAUDE-CODE-PROMPT.md — paste-ready prompt for Claude Code (Bear's Mac)
+
+Copy everything below the line into Claude Code, running inside this film folder:
+`/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-10-memory-skills-guardrails/`
+
+---
 
 You are finishing a lecture film for the @NikBearBrown YouTube channel.
 Persona: Liam, in for Bear. Everything except narration audio and rendered
@@ -9,7 +14,7 @@ video. Do not publish anything.
 - Title: Memory, Skills, and Guardrails
 - Reel slug: muse-film-10-memory-skills-guardrails
 - Beats: 15 (see beat_sheet.json), total runtime 288s
-- You are in the film folder: muse/film-10-memory-skills-guardrails
+- You are in the film folder: /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-10-memory-skills-guardrails
 
 ## Files you have
 - `beat_sheet.json` — the script. Each beat: id, scene, dur_s, act, voice,
@@ -35,7 +40,7 @@ EXACTLY as written using Kokoro TTS voice `am_onyx`, and save to
 From the brutalist.art toolkit directory on this Mac:
 
 ```
-./art run --reel muse-film-10-memory-skills-guardrails --beats muse/film-10-memory-skills-guardrails/beat_sheet.json --scenes muse/film-10-memory-skills-guardrails/scenes.py --audio muse/film-10-memory-skills-guardrails/audio/
+./art run --reel muse-film-10-memory-skills-guardrails --beats /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-10-memory-skills-guardrails/beat_sheet.json --scenes /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-10-memory-skills-guardrails/scenes.py --audio /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-10-memory-skills-guardrails/audio/
 ```
 
 Watch the review cut (or spot-check act by act). If a scene visibly breaks,
