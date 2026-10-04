@@ -1,3 +1,10 @@
+# CLAUDE-CODE-PROMPT.md — paste-ready prompt for Claude Code (Bear's Mac)
+
+Copy everything below the line into Claude Code, running inside this film folder:
+`/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-05-grounded-answers/`
+
+---
+
 You are finishing a lecture film for the @NikBearBrown YouTube channel.
 Persona: Liam, in for Bear. Everything except narration audio and rendered
 video is already done and in this folder. Your job: render the audio and the
@@ -7,7 +14,7 @@ video. Do not publish anything.
 - Title: Grounded Answers
 - Reel slug: muse-film-05-grounded-answers
 - Beats: 13 (see beat_sheet.json), total runtime 282s
-- You are in the film folder: muse/film-05-grounded-answers
+- You are in the film folder: /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-05-grounded-answers
 
 ## Files you have
 - `beat_sheet.json` — the script. Each beat: id, scene, dur_s, act, voice,
@@ -33,7 +40,7 @@ EXACTLY as written using Kokoro TTS voice `am_onyx`, and save to
 From the brutalist.art toolkit directory on this Mac:
 
 ```
-./art run --reel muse-film-05-grounded-answers --beats muse/film-05-grounded-answers/beat_sheet.json --scenes muse/film-05-grounded-answers/scenes.py --audio muse/film-05-grounded-answers/audio/
+./art run --reel muse-film-05-grounded-answers --beats /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-05-grounded-answers/beat_sheet.json --scenes /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-05-grounded-answers/scenes.py --audio /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-05-grounded-answers/audio/
 ```
 
 Watch the review cut (or spot-check act by act). If a scene visibly breaks,
