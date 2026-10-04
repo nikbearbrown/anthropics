@@ -1,7 +1,7 @@
 # CLAUDE-CODE-PROMPT.md — paste-ready prompt for Claude Code (Bear's Mac)
 
-Copy everything below the line into Claude Code, running inside this film
-folder (`muse/film-01-what-muse-is/`).
+Copy everything below the line into Claude Code, running inside this film folder:
+`/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-01-what-muse-is/`
 
 ---
 
@@ -14,7 +14,7 @@ video. Do not publish anything.
 - Title: What Muse Is
 - Reel slug: muse-film-01-what-muse-is
 - Beats: 16 (see beat_sheet.json), total runtime 286s (4m46s)
-- You are in the film folder: muse/film-01-what-muse-is
+- You are in the film folder: /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-01-what-muse-is
 
 ## Files you have
 - `beat_sheet.json` — the script. Each beat: id, scene, dur_s, act, voice,
@@ -40,7 +40,7 @@ EXACTLY as written using Kokoro TTS voice `am_onyx`, and save to
 From the brutalist.art toolkit directory on this Mac:
 
 ```
-./art run --reel muse-film-01-what-muse-is --beats <film-dir>/beat_sheet.json --scenes <film-dir>/scenes.py --audio <film-dir>/audio/
+./art run --reel muse-film-01-what-muse-is --beats /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-01-what-muse-is/beat_sheet.json --scenes /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-01-what-muse-is/scenes.py --audio /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-01-what-muse-is/audio/
 ```
 
 Watch the review cut (or spot-check act by act). If a scene visibly breaks,
