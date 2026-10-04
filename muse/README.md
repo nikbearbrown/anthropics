@@ -1,46 +1,35 @@
-# Muse — a tutorial film series on how to use Muse
+# Muse's films — the Muse tutorial series
 
-Lecture-skill film series for **@NikBearBrown**. Persona: **Liam, in for Bear**.
-Voice: Kokoro `am_onyx`. Register: Teardown.
+Every pre-render film package Muse has authored for the Muse tutorial series
+(@NikBearBrown, persona Liam in for Bear, Kokoro `am_onyx`, Teardown register).
+Click a film's **Claude Code prompt** to open its `CLAUDE-CODE-PROMPT.md` —
+paste that into Claude Code on the Mac to render the narration audio and the
+video. Each film folder also carries `beat_sheet.json`, `scenes.py`, `ACTS.md`,
+`SHOTLIST.md`, `FACTCHECK.md`, `SOURCES.md`, `PROMPTS.md`, and QC reports.
 
-Each film is a pre-render package (everything except narration audio and
-rendered video). To finish a film: open its **Claude Code prompt** link below,
-download the film folder, paste the prompt into Claude Code on your Mac —
-it renders the narration audio and the video.
+Nothing is rendered or published from here; MP3/MP4 files are never committed.
+**Never publish without explicit instruction.**
 
-## Films
+## The films (`muse/`)
 
-| # | Film | Status | Finish it |
-|---|---|---|---|
-| 1 | [What Muse Is](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-01-what-muse-is) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-01-what-muse-is/CLAUDE-CODE-PROMPT.md) |
-| 2 | [Your First Prompts](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-02-your-first-prompts) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-02-your-first-prompts/CLAUDE-CODE-PROMPT.md) |
-| 3 | [Muse Can See](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-03-muse-can-see) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-03-muse-can-see/CLAUDE-CODE-PROMPT.md) |
-| 4 | [Thinking on Canvas](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-04-thinking-on-canvas) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-04-thinking-on-canvas/CLAUDE-CODE-PROMPT.md) |
-| 5 | [Grounded Answers](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-05-grounded-answers) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-05-grounded-answers/CLAUDE-CODE-PROMPT.md) |
-| 6 | [Structured Outputs](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-06-structured-outputs) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-06-structured-outputs/CLAUDE-CODE-PROMPT.md) |
-| 7 | [Muse in Code](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-07-muse-in-code) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-07-muse-in-code/CLAUDE-CODE-PROMPT.md) |
-| 8 | [Agents and Frameworks](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-08-agents-and-frameworks) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-08-agents-and-frameworks/CLAUDE-CODE-PROMPT.md) |
-| 9 | [Muse Code, the Harness](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-09-muse-code-harness) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-09-muse-code-harness/CLAUDE-CODE-PROMPT.md) |
-| 10 | [Memory, Skills, and Guardrails](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-10-memory-skills-guardrails) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-10-memory-skills-guardrails/CLAUDE-CODE-PROMPT.md) |
-| 11 | [Capstone: Ship a Full-Stack App](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-11-capstone-full-stack-app) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-11-capstone-full-stack-app/CLAUDE-CODE-PROMPT.md) |
-| 12 | [Muse the Agent](https://github.com/nikbearbrown/anthropics/tree/main/muse/film-12-muse-the-agent) | ✅ Package complete | [Claude Code prompt](https://github.com/nikbearbrown/anthropics/blob/main/muse/film-12-muse-the-agent/CLAUDE-CODE-PROMPT.md) |
+| # | Film | Claude Code prompt | Package |
+|---|------|--------------------|---------|
+| 1 | What Muse Is | [prompt](film-01-what-muse-is/CLAUDE-CODE-PROMPT.md) | 16 beats (4m46s), 14 scenes, QC clean |
+| 2 | Your First Prompts | [prompt](film-02-your-first-prompts/CLAUDE-CODE-PROMPT.md) | 15 beats (4m40s), 13 scenes, QC clean |
+| 3 | Muse Can See | [prompt](film-03-muse-can-see/CLAUDE-CODE-PROMPT.md) | 14 beats (4m42s), 12 scenes, QC clean |
+| 4 | Thinking on Canvas | [prompt](film-04-thinking-on-canvas/CLAUDE-CODE-PROMPT.md) | 14 beats (4m42s), 12 scenes, QC clean |
+| 5 | Grounded Answers | [prompt](film-05-grounded-answers/CLAUDE-CODE-PROMPT.md) | 13 beats (4m42s), 11 scenes, QC clean |
+| 6 | Structured Outputs | [prompt](film-06-structured-outputs/CLAUDE-CODE-PROMPT.md) | 14 beats (4m44s), 12 scenes, QC clean |
+| 7 | Muse in Code | [prompt](film-07-muse-in-code/CLAUDE-CODE-PROMPT.md) | 13 beats (4m42s), 11 scenes, QC clean |
+| 8 | Agents and Frameworks | [prompt](film-08-agents-and-frameworks/CLAUDE-CODE-PROMPT.md) | 14 beats (4m40s), 12 scenes, QC clean |
+| 9 | Muse Code, the Harness | [prompt](film-09-muse-code-harness/CLAUDE-CODE-PROMPT.md) | 15 beats (4m40s), 13 scenes, QC clean |
+| 10 | Memory, Skills, and Guardrails | [prompt](film-10-memory-skills-guardrails/CLAUDE-CODE-PROMPT.md) | 15 beats (4m48s), 13 scenes, QC clean |
+| 11 | Capstone: Ship a Full-Stack App | [prompt](film-11-capstone-full-stack-app/CLAUDE-CODE-PROMPT.md) | 15 beats (4m40s), 13 scenes, QC clean |
+| 12 | Muse the Agent | [prompt](film-12-muse-the-agent/CLAUDE-CODE-PROMPT.md) | 17 beats (6m26s), 15 scenes, QC clean |
 
 ## Series documents
 
-- [SERIES-PLAN.md](https://github.com/nikbearbrown/anthropics/blob/main/muse/SERIES-PLAN.md) — the full 12-film breakdown
-- [REFERENCE-film-pattern.md](https://github.com/nikbearbrown/anthropics/blob/main/muse/REFERENCE-film-pattern.md) — the package spec every film follows
-- [CLAUDE-CODE-PROMPT-TEMPLATE.md](https://github.com/nikbearbrown/anthropics/blob/main/muse/CLAUDE-CODE-PROMPT-TEMPLATE.md) — the template each film's prompt is filled from
-- [source/](https://github.com/nikbearbrown/anthropics/tree/main/muse/source) — source material (transcript outline, research briefs)
-
-## Standing rules
-
-- Push everything to GitHub immediately. Bear renders locally; GitHub is the
-  shared surface.
-- Never publish a film. No uploads, no staging for publishing, without Bear's
-  explicit instruction.
-- Never commit MP3 / MP4 / WAV. Narration and renders live on Bear's Mac only.
-- Every film ships as a complete 12-file pre-render package before the next
-  film starts. This README is updated with every film, each linking directly
-  to its Claude Code prompt.
-- The repo is public: no contact details, private names, or absolute local
-  paths in any pushed file.
+- [SERIES-PLAN.md](SERIES-PLAN.md) — the full 12-film breakdown
+- [REFERENCE-film-pattern.md](REFERENCE-film-pattern.md) — the package spec every film follows
+- [CLAUDE-CODE-PROMPT-TEMPLATE.md](CLAUDE-CODE-PROMPT-TEMPLATE.md) — the template each film's prompt is filled from
+- [source/](source) — source material (transcript outline, research briefs)
