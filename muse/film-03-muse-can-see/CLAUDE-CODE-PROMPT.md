@@ -1,7 +1,7 @@
 # CLAUDE-CODE-PROMPT.md — paste-ready prompt for Claude Code (Bear's Mac)
 
-Copy everything below the line into Claude Code, running inside this film
-folder (`muse/film-03-muse-can-see/`).
+Copy everything below the line into Claude Code, running inside this film folder:
+`/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-03-muse-can-see/`
 
 ---
 
@@ -14,7 +14,7 @@ video. Do not publish anything.
 - Title: Muse Can See
 - Reel slug: muse-film-03-muse-can-see
 - Beats: 14 (see beat_sheet.json), total runtime 282s
-- You are in the film folder: muse/film-03-muse-can-see
+- You are in the film folder: /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-03-muse-can-see
 
 ## Files you have
 - `beat_sheet.json` — the script. Each beat: id, scene, dur_s, act, voice,
@@ -40,7 +40,7 @@ EXACTLY as written using Kokoro TTS voice `am_onyx`, and save to
 From the brutalist.art toolkit directory on this Mac:
 
 ```
-./art run --reel muse-film-03-muse-can-see --beats muse/film-03-muse-can-see/beat_sheet.json --scenes muse/film-03-muse-can-see/scenes.py --audio muse/film-03-muse-can-see/audio/
+./art run --reel muse-film-03-muse-can-see --beats /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-03-muse-can-see/beat_sheet.json --scenes /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-03-muse-can-see/scenes.py --audio /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-03-muse-can-see/audio/
 ```
 
 Watch the review cut (or spot-check act by act). If a scene visibly breaks,
