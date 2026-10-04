@@ -1,8 +1,7 @@
-# CLAUDE-CODE-PROMPT.md — Film 11: Capstone: Ship a Full-Stack App
+# CLAUDE-CODE-PROMPT.md — paste-ready prompt for Claude Code (Bear's Mac)
 
-Bear pastes everything below the line into Claude Code on his Mac, running
-inside the film folder. Claude Code renders the narration audio and the
-video. It never publishes.
+Copy everything below the line into Claude Code, running inside this film folder:
+`/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-11-capstone-full-stack-app/`
 
 ---
 
@@ -15,7 +14,7 @@ video. Do not publish anything.
 - Title: Capstone: Ship a Full-Stack App
 - Reel slug: muse-film-11-capstone-full-stack-app
 - Beats: 15 (see beat_sheet.json), total runtime 280s
-- You are in the film folder: muse/film-11-capstone-full-stack-app/
+- You are in the film folder: /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-11-capstone-full-stack-app/
 
 ## Files you have
 - `beat_sheet.json` — the script. Each beat: id, scene, dur_s, act, voice,
@@ -41,7 +40,7 @@ EXACTLY as written using Kokoro TTS voice `am_onyx`, and save to
 From the brutalist.art toolkit directory on this Mac:
 
 ```
-./art run --reel muse-film-11-capstone-full-stack-app --beats muse/film-11-capstone-full-stack-app/beat_sheet.json --scenes muse/film-11-capstone-full-stack-app/scenes.py --audio muse/film-11-capstone-full-stack-app/audio/
+./art run --reel muse-film-11-capstone-full-stack-app --beats /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-11-capstone-full-stack-app/beat_sheet.json --scenes /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-11-capstone-full-stack-app/scenes.py --audio /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-11-capstone-full-stack-app/audio/
 ```
 
 Watch the review cut (or spot-check act by act). If a scene visibly breaks,
