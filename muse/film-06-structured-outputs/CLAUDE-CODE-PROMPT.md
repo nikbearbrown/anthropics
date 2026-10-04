@@ -1,3 +1,10 @@
+# CLAUDE-CODE-PROMPT.md — paste-ready prompt for Claude Code (Bear's Mac)
+
+Copy everything below the line into Claude Code, running inside this film folder:
+`/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-06-structured-outputs/`
+
+---
+
 You are finishing a lecture film for the @NikBearBrown YouTube channel.
 Persona: Liam, in for Bear. Everything except narration audio and rendered
 video is already done and in this folder. Your job: render the audio and the
@@ -7,7 +14,7 @@ video. Do not publish anything.
 - Title: Structured Outputs
 - Reel slug: muse-film-06-structured-outputs
 - Beats: 14 (see beat_sheet.json), total runtime 284s
-- You are in the film folder: muse/film-06-structured-outputs
+- You are in the film folder: /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-06-structured-outputs
 
 ## Files you have
 - `beat_sheet.json` — the script. Each beat: id, scene, dur_s, act, voice,
@@ -33,7 +40,7 @@ EXACTLY as written using Kokoro TTS voice `am_onyx`, and save to
 From the brutalist.art toolkit directory on this Mac:
 
 ```
-./art run --reel muse-film-06-structured-outputs --beats ./beat_sheet.json --scenes ./scenes.py --audio ./audio/
+./art run --reel muse-film-06-structured-outputs --beats /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-06-structured-outputs/beat_sheet.json --scenes /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-06-structured-outputs/scenes.py --audio /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-06-structured-outputs/audio/
 ```
 
 Watch the review cut (or spot-check act by act). If a scene visibly breaks,
