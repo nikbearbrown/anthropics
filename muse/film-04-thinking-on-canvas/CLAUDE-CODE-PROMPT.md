@@ -1,7 +1,7 @@
 # CLAUDE-CODE-PROMPT.md — paste-ready prompt for Claude Code (Bear's Mac)
 
-Copy everything below the line into Claude Code, running inside this film
-folder (`muse/film-04-thinking-on-canvas/`).
+Copy everything below the line into Claude Code, running inside this film folder:
+`/Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-04-thinking-on-canvas/`
 
 ---
 
@@ -14,7 +14,7 @@ video. Do not publish anything.
 - Title: Thinking on Canvas
 - Reel slug: muse-film-04-thinking-on-canvas
 - Beats: 14 (see beat_sheet.json), total runtime 282s
-- You are in the film folder: muse/film-04-thinking-on-canvas
+- You are in the film folder: /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-04-thinking-on-canvas
 
 ## Files you have
 - `beat_sheet.json` — the script. Each beat: id, scene, dur_s, act, voice,
@@ -40,7 +40,7 @@ EXACTLY as written using Kokoro TTS voice `am_onyx`, and save to
 From the brutalist.art toolkit directory on this Mac:
 
 ```
-./art run --reel muse-film-04-thinking-on-canvas --beats muse/film-04-thinking-on-canvas/beat_sheet.json --scenes muse/film-04-thinking-on-canvas/scenes.py --audio muse/film-04-thinking-on-canvas/audio/
+./art run --reel muse-film-04-thinking-on-canvas --beats /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-04-thinking-on-canvas/beat_sheet.json --scenes /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-04-thinking-on-canvas/scenes.py --audio /Users/bear/Documents/CoWork/bear-textbooks/books/anthropics/muse/film-04-thinking-on-canvas/audio/
 ```
 
 Watch the review cut (or spot-check act by act). If a scene visibly breaks,
