@@ -46,6 +46,7 @@ def labeled_box(label, pos, w=3.4, h=1.6, box_color=INK, label_size=36):
 
 class M01_Bidea(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         plate = RoundedRectangle(corner_radius=0.3, width=12.4, height=6.4,
                                  fill_color=CARD, fill_opacity=1,
                                  stroke_color=INK, stroke_width=3).move_to(ORIGIN)
@@ -72,6 +73,7 @@ class M01_Bidea(Scene):
 
 class M02_Bdefs(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         head = Text("Four terms", font_size=48, color=INK).to_edge(UP, buff=0.7)
         head_rule = Line(LEFT * 2.2, RIGHT * 2.2, color=ACCENT, stroke_width=5)
         head_rule.next_to(head, DOWN, buff=0.25)
@@ -98,6 +100,7 @@ class M02_Bdefs(Scene):
 
 class M03_B01(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         b_models = labeled_box("models", [-3.6, 0.4, 0], w=3.6, h=1.8, box_color=ACCENT)
         b_harness = labeled_box("harness", [3.6, 0.4, 0], w=3.6, h=1.8, box_color=BLUE)
         self.play(Create(b_models[0]), Write(b_models[1]))
@@ -115,6 +118,7 @@ class M03_B01(Scene):
 
 class M04_B02(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         marks = []
         for i, x in enumerate([-3.6, 0.0, 3.6]):
             sq = Square(side_length=1.6, stroke_color=GREY, stroke_width=4,
@@ -131,6 +135,7 @@ class M04_B02(Scene):
 
 class M05_B03(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         card = RoundedRectangle(corner_radius=0.25, width=7.6, height=2.4,
                                 fill_color=ACCENT, fill_opacity=1,
                                 stroke_color=INK, stroke_width=3).move_to([0, 1.9, 0])
@@ -148,6 +153,7 @@ class M05_B03(Scene):
 
 class M06_B04(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         card = RoundedRectangle(corner_radius=0.25, width=7.6, height=2.2,
                                 fill_color=BLUE, fill_opacity=1,
                                 stroke_color=INK, stroke_width=3).move_to([0, 2.0, 0])
@@ -173,6 +179,7 @@ class M06_B04(Scene):
 
 class M07_B05(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         plate = RoundedRectangle(corner_radius=0.3, width=12.0, height=5.6,
                                  fill_color=CARD, fill_opacity=1,
                                  stroke_color=INK, stroke_width=3).move_to(ORIGIN)
@@ -190,6 +197,7 @@ class M07_B05(Scene):
 
 class M08_B06(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         base = Line(LEFT * 5.5, RIGHT * 5.5, color=INK, stroke_width=4).move_to([0, -2.2, 0])
         self.play(Create(base))
         heights = [1.2, 2.0, 2.6, 3.4, 1.6]
@@ -212,6 +220,7 @@ class M08_B06(Scene):
 
 class M09_B07(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         card = RoundedRectangle(corner_radius=0.25, width=8.6, height=2.4,
                                 fill_color=CARD, fill_opacity=1,
                                 stroke_color=INK, stroke_width=3).move_to([0, 1.8, 0])
@@ -233,6 +242,7 @@ class M09_B07(Scene):
 
 class M10_B08(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         head_std = Text("Standard", font_size=44, color=INK).move_to([-3.2, 2.4, 0])
         head_con = Text("Contributor", font_size=44, color=BLUE).move_to([3.2, 2.4, 0])
         self.play(Write(head_std))
@@ -259,6 +269,7 @@ class M10_B08(Scene):
 
 class M11_B09(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         chips = [
             ("$1.25 in", -4.2),
             ("$4.25 out", 0.0),
@@ -282,6 +293,7 @@ class M11_B09(Scene):
 
 class M12_B10(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         b_want = labeled_box("you want", [-4.2, 0.6, 0], w=3.0, h=1.5)
         self.play(Create(b_want[0]), Write(b_want[1]))
         a1 = Arrow([-2.4, 0.6, 0], [-1.2, 0.6, 0], color=INK, stroke_width=8)
@@ -305,6 +317,7 @@ class M12_B10(Scene):
 
 class M13_B11(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         col_l = RoundedRectangle(corner_radius=0.2, width=5.4, height=3.4,
                                  fill_color=CARD, fill_opacity=1,
                                  stroke_color=GREEN, stroke_width=4).move_to([-3.1, 0.6, 0])
@@ -326,6 +339,7 @@ class M13_B11(Scene):
 
 class M14_BvdtHtfOut(Scene):
     def construct(self):
+        self.camera.background_color = PAPER
         # --- recap: four lines, one per act ---
         plate = RoundedRectangle(corner_radius=0.25, width=12.2, height=6.2,
                                  fill_color=CARD, fill_opacity=1,
