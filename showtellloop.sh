@@ -27,8 +27,8 @@ shift
 #   number  slug  title  mcp_budget  greeting  brief(what the agent does tonight)  pending(what needs Bear)
 # Lines starting with # are comments.
 #
-# A film is DONE when $REPO/youtube/<slug>/exports/landscape/<slug>.mp4 exists, is newer
-# than beat_sheet.json, is audible (mean volume > -40 dB), TYPECHECK.md shows 0 FAILs,
+# A film is DONE when $REPO/youtube/<slug>/exports/landscape/<slug>.mp4 exists, was written
+# during this session (the Stop hook re-stamps beat_sheet.json after the cut, so "newer than the sheet" is wrong), is audible (mean volume > -40 dB), TYPECHECK.md shows 0 FAILs,
 # and the supervisor has written SHOWTELL-DONE.txt beside the sheet.
 # NEVER PUBLISHES, NEVER SPENDS, NEVER COMMITS. The Figma MCP server must be connected
 # in the terminal Claude Code once (interactive `claude`, /mcp, figma, Connect) before
@@ -123,6 +123,13 @@ for row in csv.reader((l for l in open(tsv,encoding='utf-8') if l.strip() and no
     d=os.path.join(outdir,slug)
     done=os.path.exists(os.path.join(d,"SHOWTELL-DONE.txt")) and not rebuild
     items.append(dict(num=int(num),slug=slug,title=title,budget=budget,greeting=greet,brief=brief,pending=pending,dir=d,status="done" if done else "pending",attempts=0,note="already built" if done else ""))
+# --only must not drop the other films: a second worker (or a one-off --only rebuild) shares
+# this queue file, and overwriting it with one item made a running worker exit "queue drained".
+if only and os.path.exists(out):
+    try:
+        keep=[i for i in json.load(open(out))["items"] if only not in i["slug"]]
+        items+=keep
+    except Exception: pass
 items.sort(key=lambda i:i["num"])
 json.dump({"items":items},open(out,"w"),indent=1)
 print(f"queue: {len(items)} films, {sum(i['status']=='pending' for i in items)} pending")
@@ -183,22 +190,28 @@ while true; do
   # Fresh context per film. --dangerously-skip-permissions is appropriate ONLY because this
   # loop never publishes, never commits, never spends, and every output is regenerable.
   ( cd "$BOOKS" && \
-    ${TIMEOUT_BIN:+$TIMEOUT_BIN "$FILM_TIMEOUT"} claude -p "$(render_prompt "$num" "$slug" "$title" "$budget" "$greeting" "$brief" "$pending" "$d")" \
+    render_prompt "$num" "$slug" "$title" "$budget" "$greeting" "$brief" "$pending" "$d" | \
+    ${TIMEOUT_BIN:+$TIMEOUT_BIN "$FILM_TIMEOUT"} claude -p \
       ${MODEL:+--model "$MODEL"} --dangerously-skip-permissions \
-      </dev/null >>"$STATE/$slug.out" 2>&1 )
-  rc=$?; dur=$(( $(date +%s)-start ))
+      >>"$STATE/$slug.out" 2>&1 )
+  # The prompt goes in on STDIN, never on the command line: other sessions on this Mac run
+  # `pkill -f compile.py` / `pkill -f "art run"` to clear their own renders, and pkill -f
+  # matches the whole command line, so a prompt that mentions those words got this session
+  # killed (film 31, three times, 2026-10-06).
+  rc=${PIPESTATUS[1]:-$?}; dur=$(( $(date +%s)-start ))
   rm -rf "$RENDER_LOCK" 2>/dev/null   # a killed session must not leave the render lock behind
   cut="$d/exports/landscape/$slug.mp4"
   if (( rc == 124 )); then
     note="timed out after ${dur}s"; with_lock set_status "$slug" "failed" "$note"; say "   FAILED — $note"; consec_fail=$((consec_fail+1)); failed_count=$((failed_count+1)); failures+=("$slug: $note")
-  elif tail -c 600 "$STATE/$slug.out" 2>/dev/null | grep -qi "hit your session limit\|hit your weekly limit\|rate_limit"; then
-    with_lock set_status "$slug" "pending" "session limit — requeued"; say "   LIMIT — requeued $slug; sleeping ${LIMIT_SLEEP}s"; sleep "$LIMIT_SLEEP"; continue
-  elif [[ -f "$cut" && "$cut" -nt "$d/beat_sheet.json" ]] && audible "$cut" && typecheck_clean "$d"; then
+  elif [[ -f "$cut" && "$(stat -f %m "$cut")" -ge "$start" ]] && audible "$cut" && typecheck_clean "$d"; then
+    # DONE is checked BEFORE the limit grep: a finished session's summary may mention an earlier limit.
     printf '%s  %s  film %s  %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$(basename "$cut")" "$num" "$title" >"$d/SHOWTELL-DONE.txt"
     with_lock set_status "$slug" "done" "master in ${dur}s"; say "   DONE in ${dur}s — $(basename "$cut") (4K, audible, GATE T clean)"; consec_fail=0; done_count=$((done_count+1))
+  elif (( rc != 0 )) && tail -c 600 "$STATE/$slug.out" 2>/dev/null | grep -qi "hit your session limit\|hit your weekly limit\|rate_limit"; then
+    with_lock set_status "$slug" "pending" "session limit — requeued"; say "   LIMIT — requeued $slug; sleeping ${LIMIT_SLEEP}s"; sleep "$LIMIT_SLEEP"; continue
   else
     if [[ ! -f "$cut" ]]; then note="no master at exports/landscape after ${dur}s (rc=$rc)"
-    elif [[ ! "$cut" -nt "$d/beat_sheet.json" ]]; then note="master is STALE (older than beat_sheet.json)"
+    elif [[ "$(stat -f %m "$cut")" -lt "$start" ]]; then note="master is STALE (older than this session: no new cut was made)"
     elif ! typecheck_clean "$d"; then note="TYPECHECK.md has FAILs or is missing"
     else note="master exists but is SILENT"; fi
     with_lock set_status "$slug" "failed" "$note"; say "   FAILED after ${dur}s — $note (see $STATE/$slug.out)"; consec_fail=$((consec_fail+1)); failed_count=$((failed_count+1)); failures+=("$slug: $note")
