@@ -15,4 +15,4 @@ Nothing is rendered or published from here; MP3/MP4 files are never committed.
 
 | # | Film | Claude Code prompt | Package |
 |---|------|--------------------|---------|
-| 1 | Meet Your Three Claudes | [prompt](film-01-meet-your-three-claudes/CLAUDE-CODE-PROMPT.md) | 16 beats (5m08s), 14 scenes, QC clean |
+| 1 | Meet Your Three Claudes | [prompt](film-01-meet-your-three-claudes/CLAUDE-CODE-PROMPT.md) | 16 beats (3m34s actual), 14 scenes, QC clean |
