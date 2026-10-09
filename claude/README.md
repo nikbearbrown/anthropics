@@ -17,3 +17,4 @@ Nothing is rendered or published from here; MP3/MP4 files are never committed.
 |---|------|--------------------|---------|
 | 1 | Meet Your Three Claudes | [prompt](film-01-meet-your-three-claudes/CLAUDE-CODE-PROMPT.md) | 16 beats (3m34s actual), 14 scenes, QC clean |
 | 2 | Delegate It: Your First Cowork Task | [prompt](film-02-delegate-it-your-first-cowork-task/CLAUDE-CODE-PROMPT.md) | 15 beats (3m07s actual), 13 scenes, QC clean |
+| 3 | While You Were Away: Scheduled Tasks | [prompt](film-03-while-you-were-away-scheduled-tasks/CLAUDE-CODE-PROMPT.md) | 16 beats (3m41s actual), 14 scenes, QC clean |
